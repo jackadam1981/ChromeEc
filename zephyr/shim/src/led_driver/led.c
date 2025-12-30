@@ -188,6 +188,7 @@ static inline void advance_led_pattern(struct led_pattern_node_t *pattern,
 				       uint32_t increment)
 {
 	uint32_t duration;
+	int steps = 0;
 
 	/* If we have finished the requested number of cycles, hold state. */
 	if (pattern->cycle_limit > 0 &&
@@ -197,16 +198,17 @@ static inline void advance_led_pattern(struct led_pattern_node_t *pattern,
 
 	duration = GET_DURATION((*pattern), pattern->cur_color);
 
-	/* If the current step has no duration, we can't advance time */
-	if (duration == 0) {
-		return;
-	}
-
 	pattern->elapsed_ms += increment;
 
-	while (pattern->elapsed_ms >= duration) {
+	/*
+	 * Process steps that have lapsed. We limit transitions to pattern
+	 * length to prevent infinite loops.
+	 */
+	while (pattern->elapsed_ms >= duration &&
+	       steps < pattern->pattern_len) {
 		pattern->elapsed_ms -= duration;
 		pattern->cur_color++;
+		steps++;
 
 		/* Wrap around if we reached the end of the pattern */
 		if (pattern->cur_color >= pattern->pattern_len) {
@@ -228,11 +230,11 @@ static inline void advance_led_pattern(struct led_pattern_node_t *pattern,
 		}
 
 		duration = GET_DURATION((*pattern), pattern->cur_color);
+	}
 
-		/* Stop if the next state has 0 duration (hold state) */
-		if (duration == 0) {
-			break;
-		}
+	/* Reset time if limit hit to prevent accumulation/overflow */
+	if (steps >= pattern->pattern_len) {
+		pattern->elapsed_ms = 0;
 	}
 }
 
@@ -357,6 +359,8 @@ static int match_node(int node_idx)
 			pattern->cur_color = 0;
 			pattern->elapsed_ms = 0;
 			pattern->cycle_curr = 0;
+			/* Skip initial 0-duration colors before first render */
+			advance_led_pattern(pattern, 0);
 		}
 	}
 
