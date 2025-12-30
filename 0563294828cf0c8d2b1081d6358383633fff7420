@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5bdcd079_a99b54e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3436255
+      },
+      "writtenOn": "2025-12-30T06:06:55Z",
+      "side": 1,
+      "message": "Not the great suggestion, but since you inherited this coverage problem just by modifying this file, I would suggest you to bring the coverage down to 90% threshold w/ correct test cases in order to land your CL. You can add the rest of them in a following CL. Ofcourse this is in case you are not able to fix the tests immediately.",
+      "parentUuid": "b949fcea_cc879f54",
+      "revId": "0563294828cf0c8d2b1081d6358383633fff7420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9cd31902_9e0c9332",
         "filename": "zephyr/test/rauru/src/usbc_test.c",
         "patchSetId": 7
