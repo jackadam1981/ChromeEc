@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8458d556_033e0fc6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2025-12-30T04:24:49Z",
+      "side": 1,
+      "message": "LGTM. Only one nit.  \nPlease consider to separate chip change and board change into two CLs.",
+      "revId": "b3f1aba86934a5c08847df7a11f56967f205f49e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2480326_8b03728a",
@@ -14,6 +31,24 @@
       "writtenOn": "2025-12-29T09:12:26Z",
       "side": 1,
       "message": "@chlin56@nuvoton.corp-partner.google.com\n\nIs this line duplicated by mistake?",
+      "revId": "b3f1aba86934a5c08847df7a11f56967f205f49e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0a08848_c95af465",
+        "filename": "chip/npcx/clock_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2025-12-30T04:24:49Z",
+      "side": 1,
+      "message": "Yes, this is a duplicate line. Please help remove it",
+      "parentUuid": "b2480326_8b03728a",
       "revId": "b3f1aba86934a5c08847df7a11f56967f205f49e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
