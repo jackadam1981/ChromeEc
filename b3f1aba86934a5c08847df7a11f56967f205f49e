@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dc70a4e_b48c6e8d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-12-30T04:58:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8458d556_033e0fc6",
+      "revId": "b3f1aba86934a5c08847df7a11f56967f205f49e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2480326_8b03728a",
@@ -49,6 +67,24 @@
       "side": 1,
       "message": "Yes, this is a duplicate line. Please help remove it",
       "parentUuid": "b2480326_8b03728a",
+      "revId": "b3f1aba86934a5c08847df7a11f56967f205f49e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3718216_ad741e2a",
+        "filename": "chip/npcx/clock_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-12-30T04:58:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0a08848_c95af465",
       "revId": "b3f1aba86934a5c08847df7a11f56967f205f49e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
