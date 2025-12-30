@@ -34,6 +34,24 @@
       "parentUuid": "9f127a72_a52296b3",
       "revId": "8733bcc7445d5f7a268794e84d84e50260b61e90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf8ce04e_99dcc53e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-12-30T06:29:25Z",
+      "side": 1,
+      "message": "Pardon the typo - `cache_init` should have been named `cache_valid`.",
+      "parentUuid": "f2ad1f3c_5c6d8fa1",
+      "revId": "8733bcc7445d5f7a268794e84d84e50260b61e90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
