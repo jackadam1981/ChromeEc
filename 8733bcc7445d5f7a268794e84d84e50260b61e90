@@ -16,6 +16,24 @@
       "message": "Whats the difference between `cache_init` and `cached_auto_discharge_disconnect` that we already have?",
       "revId": "8733bcc7445d5f7a268794e84d84e50260b61e90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2ad1f3c_5c6d8fa1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2025-12-30T06:25:39Z",
+      "side": 1,
+      "message": "`cache_init` shoulde\u0027ve been names `cache_valid`. We had multiple bring-up failures in `Pujjoga` when running the entire PD test suite. This ensures that the very first time you call the function after a reset, the hardware update always happen.",
+      "parentUuid": "9f127a72_a52296b3",
+      "revId": "8733bcc7445d5f7a268794e84d84e50260b61e90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
