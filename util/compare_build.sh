@@ -252,7 +252,6 @@ PARENT_DIR ?= $(realpath ../)
 BORINGSSL_DIR ?= $(realpath ../../third_party/boringssl)
 CRYPTOC_DIR ?= $(realpath ../../third_party/cryptoc)
 EIGEN3_DIR ?= $(realpath ../../third_party/eigen3)
-ZEPHYR_BASE ?= $(realpath ../../../src/third_party/zephyr/main)
 BOARDS ?= ${BOARDS[*]}
 LINKS ?= ${LINKS[*]}
 HEREDOC
@@ -280,7 +279,6 @@ build-%: ec-%
 		BORINGSSL_DIR=\$(BORINGSSL_DIR)                               \\
 		CRYPTOC_DIR=\$(CRYPTOC_DIR)                                   \\
 		EIGEN3_DIR=\$(EIGEN3_DIR)                                     \\
-		ZEPHYR_BASE=\$(ZEPHYR_BASE)                                   \\
 HEREDOC
 
 # Add the variables to the environment
