@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b475857b_b5f016ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2025-12-30T11:12:09Z",
+      "side": 1,
+      "message": "SDCP functionality is complementary to FP authentication implemented in fpsensor_auth_commands.cc. Somehow this is FP specific. It may also not need to remain so. I chose the simplest path but am open to alternative approaches.",
+      "parentUuid": "61d92df7_87f73b75",
+      "revId": "e192dfc0920a8b4500c16e76645dd32382db413b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8644bdcd_39b0f828",
         "filename": "include/ec_commands.h",
         "patchSetId": 11
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f33623e2_6cb980e1",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 8803,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2025-12-30T11:12:09Z",
+      "side": 1,
+      "message": "I think it is related to general comment above.",
+      "parentUuid": "8644bdcd_39b0f828",
+      "revId": "e192dfc0920a8b4500c16e76645dd32382db413b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f498b9b8_37f4f49c",
         "filename": "include/fpsensor/fpsensor.h",
         "patchSetId": 11
@@ -48,6 +84,24 @@
       "writtenOn": "2025-12-22T14:40:55Z",
       "side": 1,
       "message": "IMO the name suggests it will send/receive some command. How about something like `get_sdcp_claim`?",
+      "revId": "e192dfc0920a8b4500c16e76645dd32382db413b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45476c4a_6003cb9e",
+        "filename": "include/fpsensor/fpsensor.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2025-12-30T11:12:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f498b9b8_37f4f49c",
       "revId": "e192dfc0920a8b4500c16e76645dd32382db413b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
