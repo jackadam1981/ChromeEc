@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7445bd31_bd329577",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2025-12-30T09:49:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12fb8dc2_0d639587",
+      "revId": "cea0d57910368c8e782895f84b06229633cd28f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db4c115c_ba6ab610",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9123d6fb_d26ad902",
+        "filename": "zephyr/Kconfig.fingerprint",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2025-12-30T09:49:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db4c115c_ba6ab610",
+      "revId": "cea0d57910368c8e782895f84b06229633cd28f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "587155e3_e7cb2847",
@@ -65,6 +101,42 @@
       "writtenOn": "2025-12-22T12:10:22Z",
       "side": 1,
       "message": "```suggestion\nvoid btn_ign_activate(void)\n```",
+      "revId": "cea0d57910368c8e782895f84b06229633cd28f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95f04b76_08456dfc",
+        "filename": "zephyr/drivers/btn_ign/btn_ign.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2025-12-30T09:49:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "587155e3_e7cb2847",
+      "revId": "cea0d57910368c8e782895f84b06229633cd28f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "706651fd_963a15f3",
+        "filename": "zephyr/drivers/btn_ign/btn_ign.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2025-12-30T09:49:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "587155e3_e7cb2847",
       "revId": "cea0d57910368c8e782895f84b06229633cd28f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -88,6 +160,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e1a6e637_1e1e55aa",
+        "filename": "zephyr/drivers/btn_ign/btn_ign.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2025-12-30T09:49:08Z",
+      "side": 1,
+      "message": "schedule works better in my opinion. BTN_IGN should not be sustained by subsequent deactivate calls. Only way to reschedule is to activate and deactivate again.",
+      "parentUuid": "a3ed0a3f_71655da3",
+      "revId": "cea0d57910368c8e782895f84b06229633cd28f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6be3a48e_9ee24934",
         "filename": "zephyr/program/fpmcu/et171/btn_ign.dtsi",
         "patchSetId": 2
@@ -99,6 +189,42 @@
       "writtenOn": "2025-12-22T12:10:22Z",
       "side": 1,
       "message": "drop? it\u0027s literally in the name of the file and the name of the gpio, does not really add any information",
+      "revId": "cea0d57910368c8e782895f84b06229633cd28f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af4a1fbb_0787f326",
+        "filename": "zephyr/program/fpmcu/et171/btn_ign.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2025-12-30T09:49:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6be3a48e_9ee24934",
+      "revId": "cea0d57910368c8e782895f84b06229633cd28f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49067676_f4b8c3cd",
+        "filename": "zephyr/program/fpmcu/et171/btn_ign.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2025-12-30T09:49:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6be3a48e_9ee24934",
       "revId": "cea0d57910368c8e782895f84b06229633cd28f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
