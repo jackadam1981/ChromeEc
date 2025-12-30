@@ -184,19 +184,10 @@ test_export_static enum power_state get_chipset_state(void)
 	return chipset_state;
 }
 
-static inline void update_led_pattern(struct led_pattern_node_t *pattern)
+static inline void advance_led_pattern(struct led_pattern_node_t *pattern,
+				       uint32_t increment)
 {
 	uint32_t duration;
-
-	/* Check if auto control is enabled */
-	if (!led_auto_control_is_enabled(
-		    pattern->pattern_color[0].led_color_node->led_id)) {
-		return;
-	}
-
-	/* Apply color calculated in the previous tick */
-	pattern->pattern_color[0].led_color_node->api.led_set_color_with_pattern(
-		pattern);
 
 	/* If we have finished the requested number of cycles, hold state. */
 	if (pattern->cycle_limit > 0 &&
@@ -211,7 +202,7 @@ static inline void update_led_pattern(struct led_pattern_node_t *pattern)
 		return;
 	}
 
-	pattern->elapsed_ms += HOOK_TICK_INTERVAL_MS;
+	pattern->elapsed_ms += increment;
 
 	while (pattern->elapsed_ms >= duration) {
 		pattern->elapsed_ms -= duration;
@@ -243,6 +234,22 @@ static inline void update_led_pattern(struct led_pattern_node_t *pattern)
 			break;
 		}
 	}
+}
+
+static inline void update_led_pattern(struct led_pattern_node_t *pattern)
+{
+	/* Check if auto control is enabled */
+	if (!led_auto_control_is_enabled(
+		    pattern->pattern_color[0].led_color_node->led_id)) {
+		return;
+	}
+
+	/* Apply color calculated in the previous tick */
+	pattern->pattern_color[0].led_color_node->api.led_set_color_with_pattern(
+		pattern);
+
+	/* Advance state machine for the next tick */
+	advance_led_pattern(pattern, HOOK_TICK_INTERVAL_MS);
 }
 
 static void update_node_patterns(int node_idx)
