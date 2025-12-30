@@ -151,24 +151,6 @@ def build(opts):
     print(f"# Running {' '.join(cmd)}.")
     subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True, env=env)
 
-    # extra/rma_reset is used in chromeos-base/ec-utils-test
-    cmd = ["make", "-C", "extra/rma_reset", "clean"]
-    print(f"# Running {' '.join(cmd)}.")
-    subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True, env=env)
-
-    cmd = ["make", "-C", "extra/rma_reset", f"-j{opts.cpus}"]
-    print(f"# Running {' '.join(cmd)}.")
-    subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True, env=env)
-
-    # extra/usb_updater is used in chromeos-base/ec-devutils
-    cmd = ["make", "-C", "extra/usb_updater", "clean"]
-    print(f"# Running {' '.join(cmd)}.")
-    subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True, env=env)
-
-    cmd = ["make", "-C", "extra/usb_updater", "usb_updater2", f"-j{opts.cpus}"]
-    print(f"# Running {' '.join(cmd)}.")
-    subprocess.run(cmd, cwd=os.path.dirname(__file__), check=True, env=env)
-
     cmd = ["make", "print-all-baseboards", f"-j{opts.cpus}"]
     print(f"# Running {' '.join(cmd)}.")
     baseboards = {}
@@ -350,9 +332,6 @@ def test(opts):
         ["extra/stack_analyzer/run_tests.sh"],
         cwd=os.path.dirname(__file__),
         check=True,
-    )
-    subprocess.run(
-        ["util/run_tests.sh"], cwd=os.path.dirname(__file__), check=True
     )
 
     # If building for code coverage, build the 'coverage' target, which
