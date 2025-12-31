@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4ef408f_ab7da9d7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 3436255
+      },
+      "writtenOn": "2025-12-31T10:14:54Z",
+      "side": 1,
+      "message": "You would need to run ALL TESTS on ALL TESTERS to confirm nothing breaks w/ this change",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 18
+      },
+      "revId": "cf37289039a7e05801a2ffc5417a958c01363a35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "feb51030_d38e53e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3436255
+      },
+      "writtenOn": "2025-12-31T10:14:54Z",
+      "side": 1,
+      "message": "This is probably the first time we are changing the PD timer value to something board specific. Not sure how I feel about this change. Let\u0027s wait for Abe to take this decision. If we are going ahead, you might want to address the below comments.",
+      "revId": "cf37289039a7e05801a2ffc5417a958c01363a35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a3fd315_7639362d",
+        "filename": "zephyr/Kconfig.retimer",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 3436255
+      },
+      "writtenOn": "2025-12-31T10:14:54Z",
+      "side": 1,
+      "message": "This does not belong here. Make this config option generic (Remove Pujjoga reference and remove specific value 28ms mention from the help section) with bool set to n by default. You would also want another config to set value (PLATFORM_EC_USBC_PD3_SENDER_RESPONSE_MS) . Move them both to Kconfig.pd file",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 0
+      },
+      "revId": "cf37289039a7e05801a2ffc5417a958c01363a35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88571bc1_91f5689d",
+        "filename": "zephyr/program/nissa/include/nissa_sub_board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 3436255
+      },
+      "writtenOn": "2025-12-31T10:14:54Z",
+      "side": 1,
+      "message": "This is also not the right file to do this. You need to integrate this with the PD3_T_SENDER_RESPONSE configuration in ec/include/usb_pd.h\n\n```\n#ifdef CONFIG_PLATFORM_EC_USBC_PD3_SENDER_RESPONSE_OVERRIDE\n#define PD3_T_SENDER_RESPONSE CONFIG_PLATFORM_EC_USBC_PD3_T_SENDER_RESPONSE_MS\n#else\n#define PD3_T_SENDER_RESPONSE (29 * MSEC)\n#endif\n```",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 6
+      },
+      "revId": "cf37289039a7e05801a2ffc5417a958c01363a35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
