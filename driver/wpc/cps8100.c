@@ -691,11 +691,12 @@ static int cps8x00_read_firmware_ver(struct pchg *ctx)
 
 static int cps8x00_reset(struct pchg *ctx)
 {
+#ifndef CONFIG_CPS8X00_NO_RESET_PIN
 	gpio_set_level(GPIO_QI_RESET_L, 0);
-	cps8100_status_update(ctx, 0);
 	udelay(15);
 	gpio_set_level(GPIO_QI_RESET_L, 1);
-
+#endif
+	cps8100_status_update(ctx, 0);
 	return EC_SUCCESS;
 }
 
