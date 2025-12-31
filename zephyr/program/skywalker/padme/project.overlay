@@ -148,7 +148,6 @@
 
 		gpio_ec_pen_dis: ec_pen_dis {
 			gpios = <&gpiof 5 (GPIO_OUTPUT_HIGH)>;
-			enum-name = "GPIO_QI_RESET_L";
 		};
 	};
 
