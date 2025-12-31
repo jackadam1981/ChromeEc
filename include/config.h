@@ -7535,6 +7535,9 @@
 #define CONFIG_IT83XX_EXTENDED_ILM
 #endif
 
+#undef CONFIG_USBC_PD3_SENDER_RESPONSE_OVERRIDE
+#undef CONFIG_USBC_PD3_T_SENDER_RESPONSE_MS
+
 #ifdef HAVE_PRIVATE
 #include "private_config.h"
 #endif /* HAVE_PRIVATE */
