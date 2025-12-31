@@ -16,8 +16,14 @@
 #define KEYBOARD_ROWS 8
 
 #ifdef CONFIG_KEYBOARD_CUSTOMIZATION
+
+#ifdef CONFIG_CROS_EC_KEYBOARD_INPUT
+#define KEYBOARD_COLS_MAX DT_PROP(DT_CHOSEN(cros_ec_keyboard), col_size)
+#else
 /* include the board layer keyboard header file */
 #include "keyboard_customization.h"
+#endif
+
 #define KEYBOARD_COLS KEYBOARD_COLS_MAX
 #else /* CONFIG_KEYBOARD_CUSTOMIZATION */
 
