@@ -63,6 +63,9 @@
 		gpio_pen_eject: pen_eject {
 			gpios = <&gpiof 4 (GPIO_INPUT | GPIO_PULL_UP)>;
 		};
+		gpio_tchscr_report_ec_disable: tchscr_report_ec_disable {
+			gpios = <&gpiof 2 (GPIO_OUTPUT | GPIO_OPEN_DRAIN | GPIO_ACTIVE_HIGH | GPIO_OUTPUT_INIT_LOW)>;
+		};
 	};
 
 	named-i2c-ports {
@@ -79,7 +82,7 @@
 			<&gpioe 0 GPIO_INPUT_PULL_DOWN>,
 			<&gpioe 7 GPIO_INPUT_PULL_DOWN>,
 			<&gpiof 1 GPIO_INPUT_PULL_DOWN>,
-			<&gpiof 2 GPIO_INPUT_PULL_DOWN>,
+			// <&gpiof 2 GPIO_INPUT_PULL_DOWN>,
 			<&gpioh 1 GPIO_INPUT_PULL_DOWN>,
 			<&gpioh 2 GPIO_INPUT_PULL_DOWN>,
 			<&gpioi 5 GPIO_INPUT_PULL_DOWN>,
