@@ -691,11 +691,12 @@ static int cps8x00_read_firmware_ver(struct pchg *ctx)
 
 static int cps8x00_reset(struct pchg *ctx)
 {
+#ifndef CONFIG_CPS8X00_NO_RESET_PIN
 	gpio_set_level(GPIO_QI_RESET_L, 0);
-	cps8100_status_update(ctx, 0);
 	udelay(15);
 	gpio_set_level(GPIO_QI_RESET_L, 1);
-
+#endif
+	cps8100_status_update(ctx, 0);
 	return EC_SUCCESS;
 }
 
@@ -1296,8 +1297,6 @@ static int cps8601_update_write(struct pchg *ctx)
 			      ctx->update.size))
 		return EC_ERROR_UNKNOWN;
 
-	CPRINTS("WGX SIZE : %d ", ctx->update.size);
-
 	crec_msleep(short_sleep_ms);
 
 	/* Write buffer to flash */
@@ -1388,6 +1387,19 @@ static int cps8601_update_close(struct pchg *ctx)
 	rv = cps8601_write32(port, 0x40040008, 0x00000001);
 	if (rv)
 		return rv;
+
+	/* power off MCU */
+	board_pchg_power_on(PCHG_CTX_TO_PORT(ctx), 0);
+	crec_msleep(short_sleep_ms);
+	/* power on MCU */
+	board_pchg_power_on(PCHG_CTX_TO_PORT(ctx), 1);
+
+	crec_msleep(20);
+	/* Update the information of firmware version */
+	cps8601_unlock(port);
+	rv = cps8x00_read_firmware_ver(ctx);
+	if (!rv)
+		CPRINTS("FW=0x%02x", ctx->fw_version);
 
 	return EC_SUCCESS;
 }
