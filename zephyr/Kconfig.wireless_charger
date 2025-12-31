@@ -19,5 +19,10 @@ config PLATFORM_EC_CTN730
 	help
 	  Use CTN730 driver. CTN730 is a nfc wireless power transmitter.
 
+config PLATFORM_EC_CPS8X00_NO_RESET_PIN
+	bool "CPS8x00 without hardware reset pin"
+	help
+	  Enable this option for CPS8x00 variants that do not provide a
+	  dedicated hardware reset pin (e.g. CPS8601).
 
 endif # PLATFORM_EC_PERIPHERAL_CHARGER

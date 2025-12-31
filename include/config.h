@@ -1468,6 +1468,8 @@
 /* Wireless chargers */
 #undef CONFIG_CPS8100
 
+/* CPS8x00 disable reset pin handling*/
+#undef CONFIG_CPS8X00_NO_RESET_PIN
 /*
  * SM5803 PROCHOT configuration
  * This follow the hardware default value.
