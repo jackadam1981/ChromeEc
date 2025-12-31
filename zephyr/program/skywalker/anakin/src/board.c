@@ -6,6 +6,7 @@
 #include "chipset.h"
 #include "gpio/gpio_int.h"
 #include "hooks.h"
+#include "power.h"
 #include "timer.h"
 
 #include <zephyr/drivers/gpio.h>
@@ -78,3 +79,32 @@ static void board_setup_init()
 	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_jd1));
 }
 DECLARE_HOOK(HOOK_INIT, board_setup_init, HOOK_PRIO_PRE_DEFAULT);
+
+static void tchscr_init(void)
+{
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_tchscr_report_ec_disable),
+			1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, tchscr_init, HOOK_PRIO_DEFAULT);
+
+static void tchscr_close(void)
+{
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_tchscr_report_ec_disable),
+			0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, tchscr_close, HOOK_PRIO_DEFAULT);
+
+static void tchscr_reset(void)
+{
+	enum power_state chipset_state = power_get_state();
+	if (chipset_state == POWER_S0) {
+		gpio_pin_set_dt(
+			GPIO_DT_FROM_NODELABEL(gpio_tchscr_report_ec_disable),
+			0);
+		k_busy_wait(10 * USEC_PER_MSEC);
+		gpio_pin_set_dt(
+			GPIO_DT_FROM_NODELABEL(gpio_tchscr_report_ec_disable),
+			1);
+	}
+}
+DECLARE_HOOK(HOOK_AC_CHANGE, tchscr_reset, HOOK_PRIO_DEFAULT);
