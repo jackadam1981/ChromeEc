@@ -329,6 +329,139 @@ ZTEST_USER(fpsensor_capture,
 	zassert_mem_equal(frame_buffer, image_buffer, image_size);
 }
 
+ZTEST_USER(fpsensor_capture,
+	   test_finger_capture_simple_image_scan_success_get_frame_v1)
+{
+	struct ec_params_fp_mode params = {
+		.mode = FP_MODE_CAPTURE |
+			(FP_CAPTURE_SIMPLE_IMAGE << FP_MODE_CAPTURE_TYPE_SHIFT),
+	};
+	struct ec_response_fp_mode response;
+	struct fingerprint_sensor_state state;
+	struct ec_params_fp_frame_v1 frame_request = {
+		.cmd = FP_FRAME_GET_RAW_IMAGE,
+		.offset = FP_FRAME_INDEX_RAW_IMAGE << FP_FRAME_INDEX_SHIFT,
+		.size = IMAGE_SIZE,
+	};
+
+	/* Switch mode to capture. */
+	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+	zassert_true(response.mode & FP_MODE_CAPTURE);
+	zassert_equal(FP_CAPTURE_TYPE(response.mode), FP_CAPTURE_SIMPLE_IMAGE);
+
+	/* Give opportunity for fpsensor task to change mode. */
+	k_msleep(1);
+
+	/* Put finger on the sensor. */
+	fingerprint_get_state(fp_sim, &state);
+	state.finger_state = FINGERPRINT_FINGER_STATE_PRESENT;
+	fingerprint_set_state(fp_sim, &state);
+
+	/* Prepare image. */
+	memset(image_buffer, 1, IMAGE_SIZE);
+
+	/* Load image to simulator. */
+	fingerprint_load_image(fp_sim, image_buffer, IMAGE_SIZE);
+
+	/* Ping fpsensor task. */
+	fingerprint_run_callback(fp_sim);
+
+	/* Give opportunity for fpsensor task process event. */
+	k_msleep(1);
+
+	/* Get fingerprint raw image and compare buffers. */
+	zassert_ok(ec_cmd_fp_frame_v1(NULL, &frame_request, frame_buffer));
+	zassert_mem_equal(frame_buffer, image_buffer, IMAGE_SIZE);
+}
+
+ZTEST_USER(fpsensor_capture, test_finger_capture_get_frame_v1_size_too_big)
+{
+	struct ec_params_fp_mode params = {
+		.mode = FP_MODE_CAPTURE |
+			(FP_CAPTURE_SIMPLE_IMAGE << FP_MODE_CAPTURE_TYPE_SHIFT),
+	};
+	struct ec_response_fp_mode response;
+	struct fingerprint_sensor_state state;
+	uint8_t buffer[IMAGE_SIZE + 1];
+	struct ec_params_fp_frame_v1 frame_request = {
+		.cmd = FP_FRAME_GET_RAW_IMAGE,
+		.offset = FP_FRAME_INDEX_RAW_IMAGE << FP_FRAME_INDEX_SHIFT,
+		.size = IMAGE_SIZE + 1,
+	};
+
+	/* Switch mode to capture. */
+	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+
+	/* Give opportunity for fpsensor task to change mode. */
+	k_msleep(1);
+
+	/* Put finger on the sensor. */
+	fingerprint_get_state(fp_sim, &state);
+	state.finger_state = FINGERPRINT_FINGER_STATE_PRESENT;
+	fingerprint_set_state(fp_sim, &state);
+
+	/* Ping fpsensor task. */
+	fingerprint_run_callback(fp_sim);
+
+	/* Give opportunity for fpsensor task process event. */
+	k_msleep(1);
+
+	/* Confirm that FP_FRAME host command will return an error. */
+	zassert_equal(ec_cmd_fp_frame_v1(NULL, &frame_request, buffer),
+		      EC_RES_INVALID_PARAM);
+}
+
+ZTEST_USER(fpsensor_capture, test_finger_capture_get_frame_v1_bad_offset)
+{
+	struct ec_params_fp_mode params = {
+		.mode = FP_MODE_CAPTURE |
+			(FP_CAPTURE_SIMPLE_IMAGE << FP_MODE_CAPTURE_TYPE_SHIFT),
+	};
+	struct ec_response_fp_mode response;
+	struct fingerprint_sensor_state state;
+	struct ec_params_fp_frame_v1 frame_request = {
+		.cmd = FP_FRAME_GET_RAW_IMAGE,
+		.offset = ((FP_FRAME_INDEX_RAW_IMAGE << FP_FRAME_INDEX_SHIFT) |
+			   (IMAGE_SIZE + 1)),
+		.size = 1,
+	};
+
+	/* Switch mode to capture. */
+	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
+
+	/* Give opportunity for fpsensor task to change mode. */
+	k_msleep(1);
+
+	/* Put finger on the sensor. */
+	fingerprint_get_state(fp_sim, &state);
+	state.finger_state = FINGERPRINT_FINGER_STATE_PRESENT;
+	fingerprint_set_state(fp_sim, &state);
+
+	/* Ping fpsensor task. */
+	fingerprint_run_callback(fp_sim);
+
+	/* Give opportunity for fpsensor task process event. */
+	k_msleep(1);
+
+	/* Confirm that FP_FRAME host command will return an error. */
+	zassert_equal(ec_cmd_fp_frame_v1(NULL, &frame_request, frame_buffer),
+		      EC_RES_INVALID_PARAM);
+}
+
+ZTEST_USER(fpsensor_capture,
+	   test_finger_capture_get_frame_v1_invalid_capture_type)
+{
+	struct ec_params_fp_frame_v1 frame_request = {
+		.cmd = FP_FRAME_GET_RAW_IMAGE,
+		.offset = FP_FRAME_INDEX_RAW_IMAGE << FP_FRAME_INDEX_SHIFT,
+		.size = IMAGE_SIZE,
+	};
+
+	/* Confirm that FP_FRAME host command will return an error. */
+	zassert_equal(ec_cmd_fp_frame_v1(NULL, &frame_request, frame_buffer),
+		      EC_RES_INVALID_PARAM);
+}
+
 static void *fpsensor_setup(void)
 {
 	/* Start shimmed tasks. */
@@ -359,7 +492,12 @@ static void fpsensor_before(void *f)
 	struct ec_response_fp_mode response;
 
 	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
-	zassert_equal(response.mode, 0);
+
+	/* Give opportunity for fpsensor task to change mode. */
+	k_msleep(1);
+
+	params.mode = FP_MODE_RESET_SENSOR;
+	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
 
 	/* Give opportunity for fpsensor task to change mode. */
 	k_msleep(1);
