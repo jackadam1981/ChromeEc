@@ -110,6 +110,8 @@ struct fpsensor_context {
 	/** Salt used in derivation of positive match secret. */
 	uint8_t fp_positive_match_salt[FP_MAX_FINGER_COUNT]
 				      [FP_POSITIVE_MATCH_SALT_BYTES];
+	/** ID of encrypted template in the buffer. */
+	uint16_t template_encrypted;
 };
 
 extern struct fpsensor_context global_context;

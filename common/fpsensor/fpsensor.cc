@@ -235,6 +235,8 @@ static void fp_process_finger(void)
 }
 #endif /* HAVE_FP_PRIVATE_DRIVER */
 
+static enum ec_error_list encrypt_template(uint16_t fgr);
+
 extern "C" void fp_task(void)
 {
 	int timeout_us = -1;
@@ -325,6 +327,17 @@ extern "C" void fp_task(void)
 				fp_maintenance();
 				global_context.sensor_mode &=
 					~FP_MODE_SENSOR_MAINTENANCE;
+			} else if (mode & FP_MODE_ENCRYPT_TEMPLATE) {
+				if (global_context.template_encrypted !=
+				    FP_NO_SUCH_TEMPLATE) {
+					ScopedFastCpu fast_cpu;
+
+					encrypt_template(
+						global_context
+							.template_encrypted);
+				}
+				global_context.sensor_mode &=
+					~FP_MODE_ENCRYPT_TEMPLATE;
 			} else {
 				fp_sensor_low_power();
 			}
@@ -451,7 +464,15 @@ static enum ec_error_list encrypt_template(uint16_t fgr)
 		templ.data(),
 		templ.size_bytes() + positive_match_salt.size_bytes());
 
+	global_context.fp_encryption_status &= ~FP_ENCRYPTED_TEMPLATE_READY;
 	fp_enc_buffer = {};
+
+	if (fgr >= FP_MAX_FINGER_COUNT)
+		return EC_ERROR_INVAL;
+
+	if (fgr >= global_context.templ_valid)
+		return EC_ERROR_UNAVAILABLE;
+
 	/*
 	 * The beginning of the buffer contains nonce, encryption_salt
 	 * and tag.
@@ -484,6 +505,8 @@ static enum ec_error_list encrypt_template(uint16_t fgr)
 				    global_context.tpm_seed);
 	if (ret != EC_SUCCESS) {
 		CPRINTS("fgr%d: Failed to derive key", fgr);
+		global_context.fp_encryption_status &=
+			~FP_TEMPLATE_ENCRYPTION_IN_PROGRESS;
 		return EC_ERROR_UNAVAILABLE;
 	}
 
@@ -503,9 +526,15 @@ static enum ec_error_list encrypt_template(uint16_t fgr)
 	if (ret != EC_SUCCESS) {
 		OPENSSL_cleanse(&fp_enc_buffer, sizeof(fp_enc_buffer));
 		CPRINTS("fgr%d: Failed to encrypt template", fgr);
+		global_context.fp_encryption_status &=
+			~FP_TEMPLATE_ENCRYPTION_IN_PROGRESS;
 		return EC_ERROR_UNAVAILABLE;
 	}
+
 	global_context.templ_dirty &= ~BIT(fgr);
+	global_context.fp_encryption_status |= FP_ENCRYPTED_TEMPLATE_READY;
+	global_context.fp_encryption_status &=
+		~FP_TEMPLATE_ENCRYPTION_IN_PROGRESS;
 
 	return EC_SUCCESS;
 }
@@ -546,7 +575,7 @@ static enum ec_status get_frame(uint32_t offset, uint32_t size, uint8_t *output)
 	return EC_RES_SUCCESS;
 }
 
-static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
+static enum ec_status fp_command_frame_v0(struct host_cmd_handler_args *args)
 {
 	const auto *params =
 		static_cast<const struct ec_params_fp_frame *>(args->params);
@@ -603,7 +632,110 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_FP_FRAME, fp_command_frame, EC_VER_MASK(0));
+
+static enum ec_status fp_command_frame_v1(struct host_cmd_handler_args *args)
+{
+	const auto *params =
+		static_cast<const struct ec_params_fp_frame_v1 *>(args->params);
+	void *out = args->response;
+	uint16_t idx = FP_FRAME_GET_BUFFER_INDEX(params->offset);
+	uint32_t offset = params->offset & FP_FRAME_OFFSET_MASK;
+	uint32_t size = params->size;
+	timestamp_t now;
+	enum ec_error_list ret;
+	enum ec_status status;
+	uint32_t mode_output;
+
+	/* Templates are numbered from 1 in this host request. */
+	uint16_t fgr = idx - FP_FRAME_INDEX_TEMPLATE;
+
+	if (size > args->response_max)
+		return EC_RES_INVALID_PARAM;
+
+	switch (params->cmd) {
+	case FP_FRAME_GET_RAW_IMAGE:
+		/* The host requested a frame. */
+		status = get_frame(offset, size, (uint8_t *)out);
+		if (status != EC_RES_SUCCESS) {
+			return status;
+		}
+
+		args->response_size = size;
+		return EC_RES_SUCCESS;
+	case FP_FRAME_ENCRYPT_TEMPLATE:
+		/*
+		 * Do not change the content of fp_enc_buffer if the encryption
+		 * is in progress.
+		 */
+		if (global_context.fp_encryption_status &
+		    FP_TEMPLATE_ENCRYPTION_IN_PROGRESS) {
+			return EC_RES_BUSY;
+		}
+
+		if (fgr >= FP_MAX_FINGER_COUNT)
+			return EC_RES_INVALID_PARAM;
+		if (fgr >= global_context.templ_valid)
+			return EC_RES_UNAVAILABLE;
+
+		now = get_time();
+
+		/* b/114160734: Not more than 1 encrypted message per second. */
+		if (!timestamp_expired(encryption_deadline, &now))
+			return EC_RES_BUSY;
+		encryption_deadline.val = now.val + (1 * SECOND);
+
+		global_context.fp_encryption_status &=
+			~FP_ENCRYPTED_TEMPLATE_READY;
+		global_context.fp_encryption_status |=
+			FP_TEMPLATE_ENCRYPTION_IN_PROGRESS;
+		global_context.template_encrypted = fgr;
+		fp_set_sensor_mode(FP_MODE_ENCRYPT_TEMPLATE, &mode_output,
+				   std::nullopt);
+		break;
+	case FP_FRAME_GET_ENCRYPTED_TEMPLATE:
+		/* Encryption is still running */
+		if (global_context.fp_encryption_status &
+		    FP_TEMPLATE_ENCRYPTION_IN_PROGRESS) {
+			return EC_RES_BUSY;
+		}
+
+		/*
+		 * Encrypted template not available (or encryption finished
+		 * with error)
+		 */
+		if (!(global_context.fp_encryption_status &
+		      FP_ENCRYPTED_TEMPLATE_READY)) {
+			return EC_RES_UNAVAILABLE;
+		}
+
+		/* Validate data request */
+		ret = validate_fp_buffer_offset(sizeof(fp_enc_buffer), offset,
+						size);
+		if (ret != EC_SUCCESS)
+			return EC_RES_INVALID_PARAM;
+
+		/* Encryption succeeded */
+		memcpy(out,
+		       reinterpret_cast<uint8_t *>(&fp_enc_buffer) + offset,
+		       size);
+		args->response_size = size;
+
+		break;
+	}
+
+	return EC_RES_SUCCESS;
+}
+
+static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
+{
+	if (args->version == 1) {
+		return fp_command_frame_v1(args);
+	}
+
+	return fp_command_frame_v0(args);
+}
+DECLARE_HOST_COMMAND(EC_CMD_FP_FRAME, fp_command_frame,
+		     EC_VER_MASK(0) | EC_VER_MASK(1));
 
 static enum ec_status fp_command_stats(struct host_cmd_handler_args *args)
 {
