@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8722a720_3f2ef18b",
+        "filename": "driver/wpc/cps8100.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 694,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2026-01-02T04:45:12Z",
+      "side": 1,
+      "message": "Is there an alternative way to reset cps8100?\n\nIf yes, please implement it here",
+      "revId": "19998a6cd59746efe16c27c7996a94100ec185f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "042c2dac_0c198fad",
         "filename": "include/config.h",
         "patchSetId": 5
