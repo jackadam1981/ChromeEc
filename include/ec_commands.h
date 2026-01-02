@@ -8593,6 +8593,32 @@ struct ec_params_fp_frame {
 	uint32_t size;
 } __ec_align4;
 
+/*
+ * FP_FRAME commands:
+ *
+ * - FP_FRAME_GET_RAW_IMAGE command can be used to get raw image from sensor.
+ *   This command works only when the system is not locked. The template index
+ *   is ignored.
+ * - FP_FRAME_ENCRYPT_TEMPLATE command is used to request encryption of the
+ *   template with provided template index. Offset and size are ignored.
+ *   The encryption process is considered as started only after EC_SUCCESS
+ *   was returned.
+ * - FP_FRAME_GET_ENCRYPTED_TEMPLATE command is used to obtain the encrypted
+ *   template.
+ */
+enum fp_frame_cmd {
+	FP_FRAME_GET_RAW_IMAGE = 0,
+	FP_FRAME_ENCRYPT_TEMPLATE = 1,
+	FP_FRAME_GET_ENCRYPTED_TEMPLATE = 2,
+};
+
+struct ec_params_fp_frame_v1 {
+	uint8_t cmd;
+	uint8_t reserved[3];
+	uint32_t offset;
+	uint32_t size;
+} __ec_align4;
+
 /* Load a template into the MCU */
 #define EC_CMD_FP_TEMPLATE 0x0405
 
@@ -8665,6 +8691,10 @@ struct ec_params_fp_seed {
 #define FP_CONTEXT_USER_ID_SET BIT(3)
 /* The operation authentication challenge was generated */
 #define FP_AUTH_CHALLENGE_SET BIT(4)
+/* Template encryption is in progress */
+#define FP_TEMPLATE_ENCRYPTION_IN_PROGRESS BIT(5)
+/* Encrypted template is available */
+#define FP_ENCRYPTED_TEMPLATE_READY BIT(6)
 
 struct ec_response_fp_encryption_status {
 	/* Used bits in encryption engine status */
