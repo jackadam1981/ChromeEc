@@ -43,6 +43,17 @@ static const struct led_driver_api gpio_led_driver_api = {
 	.set_color = gpio_set_color,
 };
 
+/* Build-time bitmask of supported IDs for this driver */
+#define LED_ID_BIT(node_id) | (1 << DT_STRING_UPPER_TOKEN(node_id, led_id))
+#define GET_DRIVER_ID_MASK(inst) \
+	(0 DT_FOREACH_CHILD(DT_DRV_INST(inst), LED_ID_BIT))
+
+/* Generate one handle for the driver instance */
+const struct led_driver_t PINS_NODE(DT_DRV_INST(0)) = {
+	.led_id_mask = GET_DRIVER_ID_MASK(0),
+	.api = &gpio_led_driver_api,
+};
+
 /* EC_LED_COLOR maps to LED_COLOR - 1 */
 #define SET_PIN_NODE(node_id)                                   \
 	{                                                       \
