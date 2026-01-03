@@ -127,6 +127,13 @@ struct led_driver_api {
 			  uint8_t brightness);
 };
 
+/* Driver handle containing the API table */
+struct led_driver_t {
+	/* Bitmask of ec_led_id values supported by this driver */
+	uint32_t led_id_mask;
+	const struct led_driver_api *api;
+};
+
 /*
  * Pin node contains LED color and array of gpio/pwm pins
  * to alter in order to enable the given color.
