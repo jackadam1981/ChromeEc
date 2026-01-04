@@ -16,6 +16,11 @@
 #define TEMP_MAX 120
 #define TEMP_MIN 0
 
+#define MODEL_L25D2PK6 "l25d2pk6"
+#define MODEL_L25N2PK6 "l25n2pk6"
+
+static uint8_t usb_pd_3a_ports = 1;
+
 static int current_limit;
 
 static uint8_t charger_limit_level = 0;
@@ -164,6 +169,29 @@ static void update_typec_limit(void)
 	}
 }
 
+static bool is_2s_battery(const char *model)
+{
+	return !strncasecmp(model, MODEL_L25D2PK6, strlen(MODEL_L25D2PK6)) ||
+	       !strncasecmp(model, MODEL_L25N2PK6, strlen(MODEL_L25N2PK6));
+}
+
+void battery_policy(void)
+{
+	struct battery_static_info *bs = &battery_static[BATT_IDX_MAIN];
+
+	if (!is_2s_battery(bs->model_ext)) {
+		/* 3-cell*/
+		usb_pd_3a_ports=1;
+	}else{
+		usb_pd_3a_ports=0;
+	}
+}
+
+int get_board_3a_ports(void)
+{
+	return usb_pd_3a_ports;
+}
+
 static void update_current_limit(void)
 {
 	int i;
@@ -199,6 +227,7 @@ int charger_profile_override(struct charge_state_data *curr)
 {
 	curr->requested_current = min(curr->requested_current, current_limit);
 
+	battery_policy();
 	return EC_SUCCESS;
 }
 
