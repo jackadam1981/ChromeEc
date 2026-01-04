@@ -3874,6 +3874,9 @@ int typec_update_cc(int port);
 __override_proto enum pd_sdb_power_indicator
 board_get_pd_sdb_power_indicator(enum pd_sdb_power_state power_state);
 
+#ifdef CONFIG_PLATFORM_EC_USB_PD_3A_PORTS_CUSTOM
+__overridable int get_board_3a_port(void);
+#endif
 /****************************************************************************/
 
 #ifdef __cplusplus
