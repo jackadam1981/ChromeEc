@@ -33,6 +33,23 @@
       "message": "The commit message needs to be fixed. Otherwise, if this passes the test, LGTM.",
       "revId": "9ba49ba46bcc4096f04ac284c22ac75abb5e1de7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e49582d2_3f494024",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2026-01-05T20:24:03Z",
+      "side": 1,
+      "message": "FYI, the earlier CQ failure appears totally unrelated to this change.",
+      "revId": "9ba49ba46bcc4096f04ac284c22ac75abb5e1de7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
