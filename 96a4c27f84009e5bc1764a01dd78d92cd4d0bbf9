@@ -16,6 +16,24 @@
       "message": "Is there a specific fix we\u0027re trying to pull in?",
       "revId": "96a4c27f84009e5bc1764a01dd78d92cd4d0bbf9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e597fc7_a5379218",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-05T19:26:44Z",
+      "side": 1,
+      "message": "yes, this one:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7311125",
+      "parentUuid": "8c6d464b_3feeb89d",
+      "revId": "96a4c27f84009e5bc1764a01dd78d92cd4d0bbf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
