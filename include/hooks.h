@@ -321,10 +321,6 @@ struct hook_data {
  */
 void hook_notify(enum hook_type type);
 
-#ifdef __cplusplus
-}
-#endif
-
 /*
  * CONFIG_PLATFORM_EC_HOOKS is enabled by default during a Zephyr
  * build, but can be disabled via Kconfig if desired (leaving the stub
@@ -426,6 +422,10 @@ int hook_call_deferred(const struct deferred_data *data, int us);
 	{                                          \
 		func();                            \
 	}
+#endif
+
+#ifdef __cplusplus
+}
 #endif
 
 #endif /* __CROS_EC_HOOKS_H */
