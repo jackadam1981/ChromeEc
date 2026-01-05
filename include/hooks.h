@@ -333,6 +333,11 @@ void hook_notify(enum hook_type type);
 #if defined(CONFIG_PLATFORM_EC_HOOKS)
 #include "zephyr_hooks_shim.h"
 #elif defined(CONFIG_COMMON_RUNTIME)
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 struct deferred_data {
 	/* Deferred function pointer */
 	void (*routine)(void);
@@ -410,6 +415,11 @@ int hook_call_deferred(const struct deferred_data *data, int us);
 	const struct deferred_data __keep __no_sanitize_address CONCAT2( \
 		routine, _data)                                          \
 		__attribute__((section(".rodata.deferred"))) = { routine }
+
+#ifdef __cplusplus
+}
+#endif
+
 #else
 /*
  * Stub implementation in case hooks are disabled (neither
