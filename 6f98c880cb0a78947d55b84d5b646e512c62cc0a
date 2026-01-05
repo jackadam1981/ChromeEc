@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d9d1e8c_29271a61",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-01-05T17:12:45Z",
+      "side": 1,
+      "message": "Note that dashes and commas are converted to underscores by DT_NODE_FULL_NAME. So this should be checking `psl_in` not `psl-in`.\n\nHowever, I don\u0027t like using the node name to figure out the wake source mapping.\n\nThe PSL pin nodes already provide the `psl-offset` parameter, which is what I think you\u0027re trying to derive.\n\n```\n/* node \u0027/pinctrl/periph-psl-in1\u0027 defined in main/dts/arm/nuvoton/npcx/npcx9/npcx9-pinctrl.dtsi:395 */\npsl_in1_gpd2: periph-psl-in1 {\n    pinmux \u003d \u003c \u0026altd_npsl_in1_sl \u003e;       /* in main/dts/arm/nuvoton/npcx/npcx9/npcx9-pinctrl.dtsi:396 */\n    psl-offset \u003d \u003c 0x0 \u003e;                 /* in main/dts/arm/nuvoton/npcx/npcx9/npcx9-pinctrl.dtsi:397 */\n    psl-polarity \u003d \u003c \u0026altd_psl_in1_ahi \u003e; /* in main/dts/arm/nuvoton/npcx/npcx9/npcx9-pinctrl.dtsi:398 */\n    psl-in-mode \u003d \"edge\";                 /* in ../../platform/ec/zephyr/program/bluey/psl.dtsi:16 */\n    psl-in-pol \u003d \"high-rising\";           /* in ../../platform/ec/zephyr/program/bluey/psl.dtsi:17 */\n    phandle \u003d \u003c 0x13d \u003e;                  /* in ../../platform/ec/zephyr/program/bluey/psl.dtsi:36 */\n};\n```\n\n`DT_FOREACH_PROP_ELEM` below iterates through the phandles assigned to `pinctrl-0`.\n\nYou can use `DT_PROP(node_id, psl_offset)` to get the bit number.",
+      "range": {
+        "startLine": 514,
+        "startChar": 0,
+        "endLine": 514,
+        "endChar": 28
+      },
+      "revId": "6f98c880cb0a78947d55b84d5b646e512c62cc0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eeb60f7_d894d902",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-01-05T17:12:45Z",
+      "side": 1,
+      "message": "You can use `DT_SAME_NODE(node_id, DT_NODELABEL(label))`.",
+      "range": {
+        "startLine": 532,
+        "startChar": 0,
+        "endLine": 533,
+        "endChar": 58
+      },
+      "revId": "6f98c880cb0a78947d55b84d5b646e512c62cc0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9f0ac37_31d48492",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-01-05T17:12:45Z",
+      "side": 1,
+      "message": "To avoid name conflicts, make this expected node labels more verbose: `wake_source_lid_open`, `wake_source_pwr_btn`, `wake_source_acok`.\n\nYou also need to update the [documentation](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/docs/zephyr/zephyr_hibernate.md).",
+      "range": {
+        "startLine": 546,
+        "startChar": 44,
+        "endLine": 546,
+        "endChar": 52
+      },
+      "revId": "6f98c880cb0a78947d55b84d5b646e512c62cc0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
