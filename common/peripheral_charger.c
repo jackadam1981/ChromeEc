@@ -407,6 +407,9 @@ static void pchg_state_enabled(struct pchg *ctx)
 
 	switch (ctx->event) {
 	case PCHG_EVENT_RESET:
+		if (ctx->bist_cmd != PCHG_BIST_CMD_NONE) {
+			ctx->mode = PCHG_MODE_BIST;
+		}
 		ctx->state = pchg_reset(ctx);
 		break;
 	case PCHG_EVENT_DISABLE:
@@ -842,7 +845,7 @@ static void pchg_shutdown(void)
 	CPRINTS("%s", __func__);
 
 	for (p = 0; p < pchg_count; p++) {
-		ctx = &pchgs[0];
+		ctx = &pchgs[p];
 		gpio_disable_interrupt(ctx->cfg->irq_pin);
 		board_pchg_power_on(p, 0);
 	}
@@ -856,8 +859,18 @@ void wpc_hall_handler(void)
 {
 	if (!gpio_get_level(GPIO_HALL_CTL_PCHG))
 		pchg_startup();
-	else
+	else {
+		struct pchg *ctx;
+		int p;
+
 		pchg_shutdown();
+		for (p = 0; p < pchg_count; p++) {
+			ctx = &pchgs[p];
+			ctx->battery_percent = 0;
+			pchg_queue_event(ctx, PCHG_EVENT_DEVICE_LOST);
+		}
+		task_wake(TASK_ID_PCHG);
+	}
 }
 DECLARE_DEFERRED(wpc_hall_handler);
 
