@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e499c939_8d469a67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3436255
+      },
+      "writtenOn": "2026-01-05T08:21:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8be321ab_a4e92319",
+      "revId": "0563294828cf0c8d2b1081d6358383633fff7420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9cd31902_9e0c9332",
@@ -138,6 +156,30 @@
       "side": 1,
       "message": "Yes, removed else case updated test assertion",
       "parentUuid": "e571f938_facb72d5",
+      "range": {
+        "startLine": 60,
+        "startChar": 3,
+        "endLine": 62,
+        "endChar": 2
+      },
+      "revId": "0563294828cf0c8d2b1081d6358383633fff7420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2fa0e3f_e318bfce",
+        "filename": "zephyr/test/rauru/src/usbc_test.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 3436255
+      },
+      "writtenOn": "2026-01-05T08:21:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "459fb16e_ca005c0c",
       "range": {
         "startLine": 60,
         "startChar": 3,

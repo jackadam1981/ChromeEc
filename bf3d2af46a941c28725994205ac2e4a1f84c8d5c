@@ -206,6 +206,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b11d8414_be085461",
+        "filename": "zephyr/test/rauru/src/usbc_test.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 3436255
+      },
+      "writtenOn": "2026-01-05T08:21:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8ba62f5_59979625",
+      "revId": "bf3d2af46a941c28725994205ac2e4a1f84c8d5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "951d403c_33593c25",
@@ -241,6 +259,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8effa01_825d0c24",
+        "filename": "zephyr/test/rauru/src/usbc_test.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 3436255
+      },
+      "writtenOn": "2026-01-05T08:21:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1b58111_e7b26423",
+      "revId": "bf3d2af46a941c28725994205ac2e4a1f84c8d5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "306ca043_6a3d9144",
@@ -272,6 +308,24 @@
       "side": 1,
       "message": "Agreed, board_set_active_charge_port() does not control charge manager state.\nI’ve removed that assertion and updated the test to validate the PPC sink enable/disable behavior directly.",
       "parentUuid": "306ca043_6a3d9144",
+      "revId": "bf3d2af46a941c28725994205ac2e4a1f84c8d5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a512c050_04c52d58",
+        "filename": "zephyr/test/rauru/src/usbc_test.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 3436255
+      },
+      "writtenOn": "2026-01-05T08:21:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "402f4d84_ffdea84e",
       "revId": "bf3d2af46a941c28725994205ac2e4a1f84c8d5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
