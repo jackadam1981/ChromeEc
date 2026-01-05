@@ -16,7 +16,6 @@
 #include "printf.h"
 #include "shared_mem.h"
 #include "system.h"
-#include "system_safe_mode.h"
 #include "task.h"
 #include "timer.h"
 #include "util.h"
@@ -103,8 +102,10 @@ test_mockable void host_send_response(struct host_cmd_handler_args *args)
 			 * the completion of that command, so stash the result
 			 * code.
 			 */
-			CPRINTS("HC pending done, size=%d, result=%d",
-				args->response_size, args->result);
+			if (hcdebug >= HCDEBUG_NORMAL) {
+				CPRINTS("HC pending done, size=%d, result=%d",
+					args->response_size, args->result);
+			}
 
 			/*
 			 * We don't support stashing response data, so mark the
@@ -125,7 +126,9 @@ test_mockable void host_send_response(struct host_cmd_handler_args *args)
 
 		} else if (args->result == EC_RES_IN_PROGRESS) {
 			command_pending = 1;
-			CPRINTS("HC pending");
+			if (hcdebug >= HCDEBUG_NORMAL) {
+				CPRINTS("HC pending");
+			}
 		}
 	}
 #endif
@@ -333,10 +336,6 @@ host_packet_bad:
 
 const struct host_command *find_host_command(int command)
 {
-	if (IS_ENABLED(CONFIG_SYSTEM_SAFE_MODE) && system_is_in_safe_mode()) {
-		if (!command_is_allowed_in_safe_mode(command))
-			return NULL;
-	}
 	if (IS_ENABLED(CONFIG_ZEPHYR)) {
 		return zephyr_find_host_command(command);
 	} else if (IS_ENABLED(CONFIG_HOSTCMD_SECTION_SORTED)) {
