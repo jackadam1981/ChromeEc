@@ -22,6 +22,30 @@
       },
       "revId": "bbf6aa30e101284f7a47fd8280ee8fc7b15525b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84869fbf_081c0a2f",
+        "filename": "driver/fingerprint/fpc/libfp/fpc1145_private.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-05T22:18:43Z",
+      "side": 0,
+      "message": "created \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7399086",
+      "parentUuid": "9da90e9f_fec4691b",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 0
+      },
+      "revId": "bbf6aa30e101284f7a47fd8280ee8fc7b15525b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
