@@ -390,26 +390,6 @@ static void show_charging_progress(bool is_full)
 	}
 }
 
-/* Calculate if battery is full based on whether it is accepting charge */
-test_mockable int calc_is_full(void)
-{
-	static int ret;
-
-	/* If bad state of charge reading, return last value */
-	if (curr.batt.flags & BATT_FLAG_BAD_STATE_OF_CHARGE ||
-	    curr.batt.state_of_charge > 100)
-		return ret;
-	/*
-	 * Battery is full when SoC is above 90% and battery desired current
-	 * is 0. This is necessary because some batteries stop charging when
-	 * the SoC still reports <100%, so we need to check desired current
-	 * to know if it is actually full.
-	 */
-	ret = (curr.batt.state_of_charge >= 90 &&
-	       curr.batt.desired_current == 0);
-	return ret;
-}
-
 __overridable int board_should_charger_bypass(void)
 {
 	return false;
@@ -1498,8 +1478,11 @@ static int process_charge_state(int *need_staticp, int sleep_usec)
 		charge_manager_leave_safe_mode();
 
 	/* Keep the AP informed */
-	if (*need_staticp)
+	if (*need_staticp) {
 		*need_staticp = update_static_battery_info();
+		if (*need_staticp)
+			charge_problem(PR_STATIC_UPDATE, *need_staticp);
+	}
 
 	/* Wait on the dynamic info until the static info is good. */
 	if (!*need_staticp)
@@ -1568,7 +1551,7 @@ void charger_task(void *u)
 		sleep_usec = process_charge_state(&need_static, sleep_usec);
 
 		/* And the EC console */
-		is_full = calc_is_full();
+		is_full = battery_is_full(&curr.batt);
 
 		/* Run battery sustainer (no-op if not applicable). */
 		sustain_battery_soc();
@@ -1825,11 +1808,6 @@ test_mockable int charge_get_percent(void)
 	 * anything.
 	 */
 	return local_state.is_full ? 100 : curr.batt.state_of_charge;
-}
-
-test_mockable int charge_get_display_charge(void)
-{
-	return curr.batt.display_charge;
 }
 
 int charge_get_battery_temp(int idx, int *temp_ptr)

@@ -143,18 +143,26 @@ static void print_battery_strings(void)
 		ccprintf("%s\n", text);
 }
 
+__attribute__((weak)) const struct batt_params *
+charger_current_battery_params(void)
+{
+	static struct batt_params batt;
+
+	battery_get_params(&batt);
+	return &batt;
+}
+
+int charge_get_display_charge(void)
+{
+	const struct batt_params *batt = charger_current_battery_params();
+
+	return batt->display_charge;
+}
+
 static void print_battery_params(void)
 {
-#if defined(HAS_TASK_CHARGER)
 	/* Ask charger so that we don't need to ask battery again. */
 	const struct batt_params *batt = charger_current_battery_params();
-#else
-	/* This is for test code, where doesn't have charger task. */
-	struct batt_params _batt;
-	const struct batt_params *batt = &_batt;
-
-	battery_get_params(&_batt);
-#endif
 
 	print_item_name("Param flags:");
 	ccprintf("%08x\n", batt->flags);
@@ -844,4 +852,24 @@ void battery_validate_params(struct batt_params *batt)
 			batt->state_of_charge);
 		batt->flags |= BATT_FLAG_BAD_STATE_OF_CHARGE;
 	}
+}
+
+/* Calculate if battery is full based on whether it is accepting charge */
+test_mockable int battery_is_full(struct batt_params *batt)
+{
+	static int ret;
+
+	/* If bad state of charge reading, return last value */
+	if (batt->flags & BATT_FLAG_BAD_STATE_OF_CHARGE ||
+	    batt->state_of_charge > 100)
+		return ret;
+
+	/*
+	 * Battery is full when SoC is above 90% and battery desired current
+	 * is 0. This is necessary because some batteries stop charging when
+	 * the SoC still reports <100%, so we need to check desired current
+	 * to know if it is actually full.
+	 */
+	ret = (batt->state_of_charge >= 90 && batt->desired_current == 0);
+	return ret;
 }
