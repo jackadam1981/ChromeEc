@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2ef2a5a_aee2a688",
+        "filename": "zephyr/Kconfig.pd",
+        "patchSetId": 2
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 3436255
+      },
+      "writtenOn": "2026-01-05T05:06:34Z",
+      "side": 1,
+      "message": "This config should depend on PLATFORM_EC_USBC_PD3_T_SENDER_RESPONSE_OVERRIDE config.",
+      "range": {
+        "startLine": 476,
+        "startChar": 0,
+        "endLine": 476,
+        "endChar": 46
+      },
+      "revId": "6f268477873a2ea12b7ac90002ff31373ee1d420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
