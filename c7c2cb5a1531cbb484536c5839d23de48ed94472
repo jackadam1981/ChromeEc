@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "760aff50_b52f4724",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1815,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2026-01-05T21:16:47Z",
+      "side": 1,
+      "message": "do you need this #ifdef?\nshouldn\u0027t `battery_is_present()` handle all the cases already?",
+      "range": {
+        "startLine": 1815,
+        "startChar": 1,
+        "endLine": 1815,
+        "endChar": 7
+      },
+      "revId": "c7c2cb5a1531cbb484536c5839d23de48ed94472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
