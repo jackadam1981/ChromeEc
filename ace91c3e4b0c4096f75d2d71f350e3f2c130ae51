@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b13a4189_4f00ebad",
+        "filename": "zephyr/include/drivers/cros_system.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-01-05T16:30:26Z",
+      "side": 1,
+      "message": "Instead of overloading the wake source enum, change the API to return `int` and take a pointer to `enum hibernate_wake_source` as a parameter.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 25
+      },
+      "revId": "ace91c3e4b0c4096f75d2d71f350e3f2c130ae51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
