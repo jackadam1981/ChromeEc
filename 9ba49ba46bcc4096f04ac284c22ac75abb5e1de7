@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "279b0eec_ad2c4ac5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2026-01-05T20:21:20Z",
+      "side": 1,
+      "message": "1. This isn\u0027t changing pujjoga code. It should be something like, \"TCPMv2: Increase PD_DRP_SW_TOGGLE_LIMIT to maintain tDRP timing\"\n2. This commit message says 15, but the code says 14.",
+      "revId": "9ba49ba46bcc4096f04ac284c22ac75abb5e1de7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ff0fc40_d69dd84e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2026-01-05T20:21:20Z",
+      "side": 1,
+      "message": "The commit message needs to be fixed. Otherwise, if this passes the test, LGTM.",
+      "revId": "9ba49ba46bcc4096f04ac284c22ac75abb5e1de7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
