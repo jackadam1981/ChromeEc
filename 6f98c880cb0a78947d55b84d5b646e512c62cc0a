@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ace52e02_ccd9157d",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2026-01-06T12:00:29Z",
+      "side": 1,
+      "message": "Acknowledged, removed the string check and directly checked the offset using psl-offset bit. Thanks for pointing this out!",
+      "parentUuid": "8d9d1e8c_29271a61",
+      "range": {
+        "startLine": 514,
+        "startChar": 0,
+        "endLine": 514,
+        "endChar": 28
+      },
+      "revId": "6f98c880cb0a78947d55b84d5b646e512c62cc0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8eeb60f7_d894d902",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49ab38ef_e57e2f2a",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2026-01-06T12:00:29Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "8eeb60f7_d894d902",
+      "range": {
+        "startLine": 532,
+        "startChar": 0,
+        "endLine": 533,
+        "endChar": 58
+      },
+      "revId": "6f98c880cb0a78947d55b84d5b646e512c62cc0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9f0ac37_31d48492",
@@ -60,6 +108,30 @@
       "writtenOn": "2026-01-05T17:12:45Z",
       "side": 1,
       "message": "To avoid name conflicts, make this expected node labels more verbose: `wake_source_lid_open`, `wake_source_pwr_btn`, `wake_source_acok`.\n\nYou also need to update the [documentation](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/docs/zephyr/zephyr_hibernate.md).",
+      "range": {
+        "startLine": 546,
+        "startChar": 44,
+        "endLine": 546,
+        "endChar": 52
+      },
+      "revId": "6f98c880cb0a78947d55b84d5b646e512c62cc0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00aef3a5_8750ab09",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2026-01-06T12:00:29Z",
+      "side": 1,
+      "message": "Acknowledged, updated the documentation in crrev/c/7366019",
+      "parentUuid": "c9f0ac37_31d48492",
       "range": {
         "startLine": 546,
         "startChar": 44,
