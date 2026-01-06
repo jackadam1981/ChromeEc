@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cf2cec9_05aac1c4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-01-06T18:27:06Z",
+      "side": 1,
+      "message": "Nit - drop these 2 paragraphs.  This level of detail is captured in the code change itself.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 34
+      },
+      "revId": "cfc26a484430448076621afdae4e722894d0c90a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74e5c3a0_4fcd5286",
+        "filename": "docs/zephyr/zephyr_hibernate.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-01-06T18:27:06Z",
+      "side": 1,
+      "message": "Nit - indent one more level so this nests under the PSL block.",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 35
+      },
+      "revId": "cfc26a484430448076621afdae4e722894d0c90a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b062ab6_f45d35e9",
+        "filename": "docs/zephyr/zephyr_hibernate.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-01-06T18:27:06Z",
+      "side": 1,
+      "message": "Nit - line lengths exceed 80 chars.",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 50
+      },
+      "revId": "cfc26a484430448076621afdae4e722894d0c90a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
