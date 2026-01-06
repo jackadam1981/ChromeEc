@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a48fab0_a22bf208",
+        "filename": "include/power/qcom.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2026-01-06T11:49:06Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "77b4c9ee_c81a17c4",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 41
+      },
+      "revId": "039b543998e47dd08393f8e3a195f662699563cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca645f01_ea969c4b",
@@ -37,6 +61,30 @@
       "writtenOn": "2026-01-06T11:28:34Z",
       "side": 1,
       "message": "Not defined yet. Reorder the CLs.",
+      "range": {
+        "startLine": 476,
+        "startChar": 9,
+        "endLine": 476,
+        "endChar": 39
+      },
+      "revId": "039b543998e47dd08393f8e3a195f662699563cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24f0eeb2_f065de8c",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2026-01-06T11:49:06Z",
+      "side": 1,
+      "message": "no need, this function will be called in crrev/c/7365510, to avoid CQ errors.",
+      "parentUuid": "ca645f01_ea969c4b",
       "range": {
         "startLine": 476,
         "startChar": 9,
@@ -108,6 +156,30 @@
       "side": 1,
       "message": "`ensure_system_poweroff` or `force_system_poweroff`",
       "parentUuid": "2134aa51_5a0984cc",
+      "range": {
+        "startLine": 653,
+        "startChar": 5,
+        "endLine": 653,
+        "endChar": 22
+      },
+      "revId": "039b543998e47dd08393f8e3a195f662699563cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d505962_d37b3165",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2026-01-06T11:49:06Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "4a53dd33_2df27b5b",
       "range": {
         "startLine": 653,
         "startChar": 5,
