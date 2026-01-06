@@ -46,6 +46,8 @@ enum power_on_event_t {
 };
 
 enum power_on_event_t chipset_get_power_on_reason(void);
+
+int board_is_switchcap_power_reset(void);
 #endif
 
 /* Swithcap functions */
