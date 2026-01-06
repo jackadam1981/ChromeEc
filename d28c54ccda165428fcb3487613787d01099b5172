@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16a746e4_835f1b8b",
+        "filename": "zephyr/drivers/keyboard_input/scancode_set2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2026-01-06T20:20:53Z",
+      "side": 1,
+      "message": "BUILD_ASSERT that KEYBOARD_COLS_MAX \u003d\u003d 18 ? Won\u0027t it be an error if there are too many or too few columns?",
+      "range": {
+        "startLine": 44,
+        "startChar": 30,
+        "endLine": 44,
+        "endChar": 47
+      },
+      "revId": "d28c54ccda165428fcb3487613787d01099b5172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
