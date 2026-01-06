@@ -749,12 +749,13 @@ enum power_state power_chipset_init(void)
 	uint32_t reset_flags = system_get_reset_flags();
 
 	/*
-	 * Force the AP shutdown unless we are doing SYSJUMP. Otherwise,
-	 * the AP could stay in strange state.
+	 * Properly initialize the switchcap power unless we are doing SYSJUMP.
+	 * This ensures the switchcap is in a known reset state, preventing
+	 * the AP from being in an inconsistent state.
 	 */
 	if (!(reset_flags & EC_RESET_FLAG_SYSJUMP)) {
 		CPRINTS("not sysjump; forcing system shutdown");
-		set_system_power_no_check(0);
+		system_reset_switchcap_power();
 		init_power_state = POWER_G3;
 	} else {
 		/* In the SYSJUMP case, we check if the AP is on */
