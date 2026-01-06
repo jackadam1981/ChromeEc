@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21796f13_d52db2af",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 756,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2026-01-06T11:18:17Z",
+      "side": 0,
+      "message": "you don\u0027t need to change the debug msg. this is indeed a shutdown flow",
+      "range": {
+        "startLine": 756,
+        "startChar": 0,
+        "endLine": 756,
+        "endChar": 50
+      },
+      "revId": "b41fc08beb7ac2f2d6de0eedecad95c38336e2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
