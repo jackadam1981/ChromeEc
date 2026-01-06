@@ -399,7 +399,26 @@ static int command_wait(int argc, const char **argv)
 	 * watchdog timeout. This is intended behaviour and is in fact used by
 	 * a FAFT test to check that the watchdog timer is working.
 	 */
-	udelay(i * 1000);
+	//udelay(i * 1000);
+	while(1) {
+		uint32_t a, b, c, d, e, f, g, h, i, j, k, l, m, n, o;
+
+		a = __hw_clock_source_read();
+		b = __hw_clock_source_read();
+		c = __hw_clock_source_read();
+		d = __hw_clock_source_read();
+		e = __hw_clock_source_read();
+		f = __hw_clock_source_read();
+		g = __hw_clock_source_read();
+		h = __hw_clock_source_read();
+		i = __hw_clock_source_read();
+		j = __hw_clock_source_read();
+		k = __hw_clock_source_read();
+		l = __hw_clock_source_read();
+		m = __hw_clock_source_read();
+		n = __hw_clock_source_read();
+		o = __hw_clock_source_read();
+	}
 
 	return EC_SUCCESS;
 }
