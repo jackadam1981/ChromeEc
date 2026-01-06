@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb5e2ecb_52f34425",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-01-06T18:12:39Z",
+      "side": 1,
+      "message": "Guard not needed.  This file is only compiled for Zephyr builds.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 20
+      },
+      "revId": "498e53f2a15b46020ba37f17c07c28eac9c77abd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21085eae_e87b693f",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-01-06T18:12:39Z",
+      "side": 1,
+      "message": "Guard not needed.",
+      "range": {
+        "startLine": 770,
+        "startChar": 0,
+        "endLine": 770,
+        "endChar": 20
+      },
+      "revId": "498e53f2a15b46020ba37f17c07c28eac9c77abd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3953a0b_23abec2f",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 776,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-01-06T18:12:39Z",
+      "side": 1,
+      "message": "Add a wrapper function to [shim/src/system.c](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/shim/src/system.c;l\u003d200;drc\u003d6832714adc150c80ab8b6e5fd0af77bfd9c69240) instead of referencing the cros-system driver here.",
+      "range": {
+        "startLine": 775,
+        "startChar": 0,
+        "endLine": 776,
+        "endChar": 37
+      },
+      "revId": "498e53f2a15b46020ba37f17c07c28eac9c77abd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
