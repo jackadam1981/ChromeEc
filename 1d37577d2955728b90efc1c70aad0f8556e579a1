@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe2cc963_9f5345bc",
+        "filename": "zephyr/emul/emul_rt3645.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-01-06T22:16:43Z",
+      "side": 1,
+      "message": "The actual driver code writes to `NVM_PRGRM_CTRL_REG` and not `NVM_RESTORE_DAT`.\n\n```\n/* load config */\n\treturn rt3645_write_reg(dev, NVM_PRGRM_CTRL_REG, NVM_RESTORE_DAT);\n/* store config */\n\treturn rt3645_write_reg(dev, NVM_PRGRM_CTRL_REG, NVM_PRGRM_DAT);\n```\n\nAdding a test that executes `imvp load_cfg` and `imvp store_cfg` should detect this problem, and should get the code coverage must closer to 90%.",
+      "range": {
+        "startLine": 155,
+        "startChar": 6,
+        "endLine": 155,
+        "endChar": 21
+      },
+      "revId": "1d37577d2955728b90efc1c70aad0f8556e579a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
