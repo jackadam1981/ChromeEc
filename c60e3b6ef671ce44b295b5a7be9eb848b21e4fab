@@ -16,6 +16,24 @@
       "message": "Nit: You can use `zassert_true` and `zassert_false`.",
       "revId": "c60e3b6ef671ce44b295b5a7be9eb848b21e4fab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "254bd322_d00a8e51",
+        "filename": "zephyr/test/rauru/src/usbc_test.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 3923218
+      },
+      "writtenOn": "2026-01-06T06:15:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fe262eb_9568596a",
+      "revId": "c60e3b6ef671ce44b295b5a7be9eb848b21e4fab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
