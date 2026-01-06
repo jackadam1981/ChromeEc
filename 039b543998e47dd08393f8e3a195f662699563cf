@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77b4c9ee_c81a17c4",
+        "filename": "include/power/qcom.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2026-01-06T11:14:54Z",
+      "side": 1,
+      "message": "at line 57",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 41
+      },
+      "revId": "039b543998e47dd08393f8e3a195f662699563cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f65b3453_de0c7559",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2026-01-06T11:14:54Z",
+      "side": 1,
+      "message": "nit: we may need a more applicable name",
+      "range": {
+        "startLine": 653,
+        "startChar": 5,
+        "endLine": 653,
+        "endChar": 22
+      },
+      "revId": "039b543998e47dd08393f8e3a195f662699563cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
