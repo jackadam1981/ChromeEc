@@ -41,7 +41,7 @@ nodes are included in your project.
 
 ## Devicetree Nodes
 
-### `CONFIG_PLATFORM_EC_HIBERNATE_PSL`
+### NPCX `CONFIG_PLATFORM_EC_HIBERNATE_PSL`
 
 Supported by the Nuvoton NPCX families only. The `enabled-gpios` property in
 the [`nuvoton,npcx-power-psl`] devictree node configures the GPIO corresponding
