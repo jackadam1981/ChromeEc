@@ -22,6 +22,30 @@
       },
       "revId": "c7c2cb5a1531cbb484536c5839d23de48ed94472",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1822ffa4_4afc2a29",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1815,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2026-01-06T02:58:25Z",
+      "side": 1,
+      "message": "We only want LED_PWRS_ERROR state for BP_NOT_SURE only when CONFIG_PLATFORM_EC_BATTERY_PRESENT_GPIO not defined.",
+      "parentUuid": "760aff50_b52f4724",
+      "range": {
+        "startLine": 1815,
+        "startChar": 1,
+        "endLine": 1815,
+        "endChar": 7
+      },
+      "revId": "c7c2cb5a1531cbb484536c5839d23de48ed94472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
