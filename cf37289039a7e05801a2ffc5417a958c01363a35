@@ -64,6 +64,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa0c1631_13eb79d7",
+        "filename": "zephyr/Kconfig.retimer",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 4253897
+      },
+      "writtenOn": "2026-01-06T09:04:20Z",
+      "side": 1,
+      "message": "Marked as resolved.",
+      "parentUuid": "9a3fd315_7639362d",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 0
+      },
+      "revId": "cf37289039a7e05801a2ffc5417a958c01363a35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88571bc1_91f5689d",
@@ -77,6 +101,30 @@
       "writtenOn": "2025-12-31T10:14:54Z",
       "side": 1,
       "message": "This is also not the right file to do this. You need to integrate this with the PD3_T_SENDER_RESPONSE configuration in ec/include/usb_pd.h\n\n```\n#ifdef CONFIG_PLATFORM_EC_USBC_PD3_SENDER_RESPONSE_OVERRIDE\n#define PD3_T_SENDER_RESPONSE CONFIG_PLATFORM_EC_USBC_PD3_T_SENDER_RESPONSE_MS\n#else\n#define PD3_T_SENDER_RESPONSE (29 * MSEC)\n#endif\n```",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 6
+      },
+      "revId": "cf37289039a7e05801a2ffc5417a958c01363a35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6297a0f9_24b6132c",
+        "filename": "zephyr/program/nissa/include/nissa_sub_board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 4253897
+      },
+      "writtenOn": "2026-01-06T09:04:20Z",
+      "side": 1,
+      "message": "Marked as resolved.",
+      "parentUuid": "88571bc1_91f5689d",
       "range": {
         "startLine": 11,
         "startChar": 0,
