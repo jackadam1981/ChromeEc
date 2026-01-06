@@ -267,29 +267,12 @@
 	pinctrl-0 = <&i2c5_0_sda_scl_gp33_36>;
 };
 
-&usbc_port0 {
+&pdc_power_p0 {
 	zephyr,deferred-init;
 };
 
-&usbc_port1 {
+&pdc_power_p1 {
 	zephyr,deferred-init;
-};
-
-&i2c1_0 {
-	pdc_power_p0: rts54-pdc@66 {
-		compatible = "realtek,rts54-pdc";
-		reg = <0x66>;
-		irq-gpios = <&gpioe 1 GPIO_ACTIVE_LOW>;
-		zephyr,deferred-init;
-		ccd;
-	};
-	pdc_power_p1: rts54-pdc@67 {
-		compatible = "realtek,rts54-pdc";
-		reg = <0x67>;
-		irq-gpios = <&gpio6 2 GPIO_ACTIVE_LOW>;
-		zephyr,deferred-init;
-	};
-	/* TODO(b:380121396): enable PDC I2C_S port if we need it */
 };
 
 &thermistor_3V3_51K1_47K_4050B {
