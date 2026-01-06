@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67300c98_729bbdd7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2026-01-06T01:09:38Z",
+      "side": 1,
+      "message": "Please wait for the CL chain that supports the instant transition.",
+      "revId": "ff1dafebe6daa2c1677bab7775d2af23223d3d8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab48b07d_de314e60",
@@ -37,6 +54,30 @@
       "writtenOn": "2026-01-06T01:08:41Z",
       "side": 1,
       "message": "yes, that’s for achieving 8 steps/second (period-ms \u003d \u003c125\u003e;). If the HOOK_TICK_INTERVAL is set longer than 125ms, the LED will not blink or transition normally.",
+      "parentUuid": "ab48b07d_de314e60",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 33
+      },
+      "revId": "ff1dafebe6daa2c1677bab7775d2af23223d3d8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "346f025f_767c5a22",
+        "filename": "zephyr/program/brox/caboc/project.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2026-01-06T01:09:38Z",
+      "side": 1,
+      "message": "Changing it from 4Hz to 8Hz is still considered low relatively. It adds some CPU overhead to calculate of the slope for the linear transition for PWM LED. The LED power consumption remains the same.",
       "parentUuid": "ab48b07d_de314e60",
       "range": {
         "startLine": 21,
