@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08d6831d_438c8ff3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-07T14:10:12Z",
+      "side": 1,
+      "message": "The `TEST\u003d` line describes how to test the change e.g.\n```\nTEST\u003dectool chipinfo\nTEST\u003dRun \"reboot\" console command make sure chip is fully rebooted and shows the reset cause correctly\n```",
+      "revId": "8070f3b0dd992afd0e64fd0d38fc9199e24bbed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "338ff17a_13b50444",
+        "filename": "zephyr/drivers/cros_system/cros_system_ft90.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-07T14:10:12Z",
+      "side": 1,
+      "message": "2026",
+      "revId": "8070f3b0dd992afd0e64fd0d38fc9199e24bbed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

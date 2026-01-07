@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bed49d73_b01f86b8",
+        "filename": "zephyr/drivers/cros_system/cros_system_ft90.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-07T14:10:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffdcefdf_5a85bbf8",
+      "revId": "9c7c2c41745409eb55daba0a1ae284e8f35eb52d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55f012f6_bb611dda",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "It only set the specific bit, will not overwrite other bits.",
       "parentUuid": "55f012f6_bb611dda",
+      "revId": "9c7c2c41745409eb55daba0a1ae284e8f35eb52d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "470c82c4_0f0e0756",
+        "filename": "zephyr/drivers/cros_system/cros_system_ft90.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-07T14:10:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc57d2ec_84c6535c",
       "revId": "9c7c2c41745409eb55daba0a1ae284e8f35eb52d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +156,24 @@
       "side": 1,
       "message": "I tried this, it works, I\u0027ll modify it.",
       "parentUuid": "dde24f0e_3672ee6e",
+      "revId": "9c7c2c41745409eb55daba0a1ae284e8f35eb52d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c4e5c67_56e5bf79",
+        "filename": "zephyr/drivers/cros_system/cros_system_ft90.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-07T14:10:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11aca921_dc6c9c8e",
       "revId": "9c7c2c41745409eb55daba0a1ae284e8f35eb52d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
