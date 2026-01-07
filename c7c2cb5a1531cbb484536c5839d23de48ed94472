@@ -69,6 +69,30 @@
       },
       "revId": "c7c2cb5a1531cbb484536c5839d23de48ed94472",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac812bf5_d9dbaaee",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1815,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2026-01-07T02:50:35Z",
+      "side": 1,
+      "message": "i\u0027m having difficulty following this logic.\nwhen `CONFIG_PLATFORM_EC_BATTERY_PRESENT_GPIO` is defined,\nis there ever a case where we get `BP_NOT_SURE`?\n\ni suppose we could have `CONFIG_BATTERY_PRESENT_CUSTOM` instead\nwhich makes it more complex to decide which LED pattern is appropriate\nor desired for `BP_NOT_SURE` on affected platforms.",
+      "parentUuid": "1822ffa4_4afc2a29",
+      "range": {
+        "startLine": 1815,
+        "startChar": 1,
+        "endLine": 1815,
+        "endChar": 7
+      },
+      "revId": "c7c2cb5a1531cbb484536c5839d23de48ed94472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
