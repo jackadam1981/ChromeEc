@@ -2037,12 +2037,16 @@ static enum strongbox_error sb_GenerateCertificateReq(struct km *km,
 		CBOR_HDR1(CBOR_MAJOR_BSTR, 0),
 	};
 
-	/* We should have at least 1 key + challenge + DeviceInfo */
-	if (req_len_words < CBOR_MACED_KEY_WORDS + 4)
+	/* We should have at least key count + challenge len + DeviceInfo len */
+	if (req_len_words < 3)
 		return SBERR_InvalidArgument;
 
 	key_count = buf[0];
-	if (key_count == 0 || key_count > MAX_CSR_PUB_KEYS)
+	if (key_count > MAX_CSR_PUB_KEYS)
+		return SBERR_InvalidArgument;
+
+	/* Req is big enough to contain key count, all keys and challenge len */
+	if (1 + key_count * (CBOR_MACED_KEY_WORDS + 1) >= req_len_words)
 		return SBERR_InvalidArgument;
 
 	/* Check that we have at least space for all the keys */
@@ -2076,9 +2080,12 @@ static enum strongbox_error sb_GenerateCertificateReq(struct km *km,
 		memcpy(public_key[i], b8 + 8, CBOR_PUBLIC_KEY_LEN);
 		index += CBOR_MACED_KEY_WORDS + 1;
 	}
+
+	/* Already checked that req is big enough to contain challenge len */
 	challenge_len = buf[index];
 	challenge_words =
 		(challenge_len + sizeof(uint32_t) - 1) / sizeof(uint32_t);
+	/* Req is big enough to contain challenge (w/ len) + DeviceInfo len */
 	if (challenge_len > KM_MAX_CHALLENGE_LEN ||
 	    (challenge_words + index + 1 >= req_len_words))
 		return SBERR_InvalidArgument;
@@ -2086,6 +2093,7 @@ static enum strongbox_error sb_GenerateCertificateReq(struct km *km,
 	memcpy(challenge, buf + index + 1, challenge_len);
 	index += challenge_words + 1;
 
+	/* Already checked that req is big enough to contain DeviceInfo len */
 	device_info_len = buf[index];
 
 	if (device_info_len / sizeof(uint32_t) + index > req_len_words)
