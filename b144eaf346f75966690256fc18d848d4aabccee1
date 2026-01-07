@@ -34,6 +34,24 @@
       "parentUuid": "d3d0816a_10e64dcb",
       "revId": "b144eaf346f75966690256fc18d848d4aabccee1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f45560f_c7d1eb32",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2026-01-07T19:44:42Z",
+      "side": 1,
+      "message": "The API was just returning `\"\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\"`.\n\nI just discovered that shell state was not active, this is due to its thread not running through the whole test execution, I had to put test to sleep for a few ms to allow shell thread to run and activate print.\n\nNow I can see console output.",
+      "parentUuid": "0089fbff_778a9966",
+      "revId": "b144eaf346f75966690256fc18d848d4aabccee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
