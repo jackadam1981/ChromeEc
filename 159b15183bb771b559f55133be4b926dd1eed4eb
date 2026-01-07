@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12d5797f_98193091",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_ft.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-07T17:12:52Z",
+      "side": 1,
+      "message": "Can you please split the driver into two CLs The first one just adds the erase and write functionality. The second one adds the rest of the functionality.\n\nThis way, we can quickly merge the basic functionality and build the FW from merged code and take our time to review the protection part.",
+      "revId": "159b15183bb771b559f55133be4b926dd1eed4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2548d27_69c2a14b",
+        "filename": "zephyr/shim/chip/ft90/clock.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-07T17:12:52Z",
+      "side": 1,
+      "message": "ship/chip/ft90/... changes should be a part of this CL. I\u0027ll add it as general SOC support once the cros_flash and cros_system drivers are merged.",
+      "revId": "159b15183bb771b559f55133be4b926dd1eed4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
