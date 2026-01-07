@@ -51,6 +51,24 @@
       "parentUuid": "a8c281b5_ab71f595",
       "revId": "0f43a6d9b6f43732f497ee4fa4ad700a5d137cf1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dacd297b_df8a18c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-07T11:11:13Z",
+      "side": 1,
+      "message": "I never meant to use the invalidate functions. I just suggested to use it for testing purposes, to check if it is a problem with cache or not.\n\nAdditional logic in flash driver is not a good idea. We need to mark the rollback regions as non-cache memory. Have you been able to do that?\n\nThere is also something like [NOCACHE_MEMORY](https://github.com/zephyrproject-rtos/zephyr/blob/main/arch/Kconfig#L430), but the memory attribute in the dts sounds like the best option at the first glance.",
+      "parentUuid": "e5eb63eb_f5672cdc",
+      "revId": "0f43a6d9b6f43732f497ee4fa4ad700a5d137cf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
