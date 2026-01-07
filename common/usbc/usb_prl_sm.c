@@ -671,6 +671,10 @@ void prl_send_ctrl_msg(int port, enum tcpci_msg_type type,
 void prl_send_data_msg(int port, enum tcpci_msg_type type,
 		       enum pd_data_msg_type msg)
 {
+	if (msg == PD_DATA_REQUEST) {
+		pd_record_timestamp_start(port, PD_INTERVAL_PRL_SEND_DATA_MSG);
+	}
+
 	pdmsg[port].xmit_type = type;
 	pdmsg[port].msg_type = msg;
 
@@ -684,6 +688,9 @@ void prl_send_data_msg(int port, enum tcpci_msg_type type,
 #endif /* CONFIG_USB_PD_EXTENDED_MESSAGES */
 
 	task_wake(PD_PORT_TO_TASK_ID(port));
+	if (msg == PD_DATA_REQUEST) {
+		pd_record_timestamp_end(port, PD_INTERVAL_PRL_SEND_DATA_MSG);
+	}
 }
 
 #ifdef CONFIG_USB_PD_EXTENDED_MESSAGES

@@ -2012,6 +2012,8 @@ static void send_source_cap(int port)
  */
 static bool pe_send_request_msg(int port)
 {
+	pd_record_timestamp_start(port, PD_INTERVAL_PE_SEND_REQ_MSG);
+
 	uint32_t vpd_vdo = 0;
 	uint32_t rdo;
 	uint32_t curr_limit;
@@ -2071,6 +2073,8 @@ static bool pe_send_request_msg(int port)
 	}
 
 	send_data_msg(port, TCPCI_MSG_SOP, msg);
+
+	pd_record_timestamp_end(port, PD_INTERVAL_PE_SEND_REQ_MSG);
 
 	return true;
 }
@@ -3534,6 +3538,10 @@ static void pe_snk_wait_for_capabilities_exit(int port)
  */
 static void pe_snk_evaluate_capability_entry(int port)
 {
+	pd_record_timestamp_start(
+		port, PD_INTERVAL_PE_SNK_EVAL_CAP_ENTRY); /* Source capabilities
+							     message received */
+
 	uint32_t *pdo = (uint32_t *)rx_emsg[port].buf;
 	uint32_t num = rx_emsg[port].len >> 2;
 
@@ -3575,6 +3583,8 @@ static void pe_snk_evaluate_capability_entry(int port)
 	/* Wake DPS task to evaluate the SrcCaps */
 	task_wake(TASK_ID_DPS);
 #endif
+
+	pd_record_timestamp_end(port, PD_INTERVAL_PE_SNK_EVAL_CAP_ENTRY);
 }
 
 /**
@@ -3582,6 +3592,8 @@ static void pe_snk_evaluate_capability_entry(int port)
  */
 static void pe_snk_select_capability_entry(int port)
 {
+	pd_record_timestamp_start(port, PD_INTERVAL_PE_SNK_SEL_CAP_ENTRY);
+
 	print_current_state(port);
 
 	/* Send Request */
@@ -3589,6 +3601,8 @@ static void pe_snk_select_capability_entry(int port)
 		set_state_pe(port, PE_SNK_READY);
 		return;
 	}
+	pd_record_timestamp_end(port, PD_INTERVAL_PE_SNK_SEL_CAP_ENTRY);
+
 	pe_sender_response_msg_entry(port);
 
 	/* We are PD Connected */
@@ -3800,6 +3814,8 @@ static void pe_snk_select_capability_run(int port)
 void pe_snk_select_capability_exit(int port)
 {
 	pe_sender_response_msg_exit(port);
+
+	pd_print_timestamps(port);
 }
 
 /**
