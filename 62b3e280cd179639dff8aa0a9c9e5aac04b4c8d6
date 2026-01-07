@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc0177f7_bd538f6f",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-07T08:32:44Z",
+      "side": 1,
+      "message": "The check is not redundant. This won\u0027t happen in our application, but if there are 2 FP sensors, one has the base image address configured and the other one doesn\u0027t, this will fail. `cfg` is for specific sensor instance, `#if` is for any instance of the sensor.",
+      "revId": "62b3e280cd179639dff8aa0a9c9e5aac04b4c8d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
