@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89785f7a_084e58f2",
+        "filename": "zephyr/dts/bindings/leds/cros-ec,led-policy.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-01-07T16:53:01Z",
+      "side": 1,
+      "message": "Nit - you can drop the `default` attribute because the C code sets the cycle-count to 0 if the property is not specified.\n\nI don\u0027t often see the `default` attribute used. https://docs.zephyrproject.org/latest/build/dts/bindings-upstream.html#rules-for-default-values",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 18
+      },
+      "revId": "d1bb152ef2325f6df3680e7f5d96fc17def45693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
