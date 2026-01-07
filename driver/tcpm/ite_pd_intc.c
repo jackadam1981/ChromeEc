@@ -11,6 +11,8 @@
 #include "timer.h"
 #include "usb_pd.h"
 
+timestamp_t rx_irq_ts[CONFIG_USB_PD_PORT_MAX_COUNT];
+
 void chip_pd_irq(enum usbpd_port port)
 {
 	timestamp_t irq_ts = get_time();
@@ -44,6 +46,8 @@ void chip_pd_irq(enum usbpd_port port)
 	}
 
 	if (USBPD_IS_RX_DONE(port)) {
+		pd_record_timestamp_end(port, PD_INTERVAL_PRL_RX_EN);
+		rx_irq_ts[port] = irq_ts;
 		tcpm_enqueue_message(port);
 		/* clear RX done interrupt */
 		IT83XX_USBPD_ISR(port) = USBPD_REG_MASK_MSG_RX_DONE;
