@@ -16,6 +16,24 @@
       "message": "I could add cover to all this by running console command `imvp dump_regs`. However, I was not able to access console output to validate registers.\n\n`CONFIG_SHELL_BACKEND_DUMMY` is enabled, Any suggestion to access console output?",
       "revId": "b144eaf346f75966690256fc18d848d4aabccee1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0089fbff_778a9966",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-01-07T18:37:28Z",
+      "side": 1,
+      "message": "Can you use `shell_backend_dummy_get_output()?`",
+      "parentUuid": "d3d0816a_10e64dcb",
+      "revId": "b144eaf346f75966690256fc18d848d4aabccee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
