@@ -19,6 +19,8 @@
 #include "cbor_boot_param.h"
 #include "boot_param.h"
 
+#define STRINGIFY_VALUE_INTERNAL(x) #x
+#define STRINGIFY_VALUE(x) STRINGIFY_VALUE_INTERNAL(x)
 #define CPRINTS(format, args...) cprints(CC_EXTENSION, format, ##args)
 
 struct slice {
@@ -309,8 +311,10 @@ uint32_t extension_route_strongbox_command(struct vendor_cmd_params *p)
 			/* Check that input size is aligned, which is convention
 			 * for all SB commands.
 			 */
-			if (p->in_size & (sizeof(uint32_t) - 1))
+			if (p->in_size & (sizeof(uint32_t) - 1)) {
+				CPRINTS("(INVALID ARGUMENT) " __FILE__ ":" STRINGIFY_VALUE(__LINE__));
 				return SBERR_InvalidArgument;
+			}
 
 			if (!km.initialized) {
 				enum strongbox_error err = keymint_init();
@@ -410,11 +414,15 @@ enum strongbox_error sb_GetHardwareInfo(struct km *km, uint32_t *buf,
 	};
 	(void)km;
 
-	if (buf_size_words < sizeof(r) / sizeof(uint32_t))
+	if (buf_size_words < sizeof(r) / sizeof(uint32_t)) {
+		CPRINTS("(INVALID ARGUMENT) " __FILE__ ":" STRINGIFY_VALUE(__LINE__));
 		return SBERR_InvalidArgument;
+	}
 	/* No arguments are expected for the command. */
-	if (req_len_words)
+	if (req_len_words) {
+		CPRINTS("(INVALID ARGUMENT) " __FILE__ ":" STRINGIFY_VALUE(__LINE__));
 		return SBERR_InvalidArgument;
+	}
 
 	*out_len_bytes = sizeof(r);
 	memcpy(buf, &r, sizeof(r));
@@ -446,8 +454,10 @@ enum strongbox_error sb_SetHalBootInfo(struct km *km, uint32_t *buf,
 				       size_t *out_len_bytes)
 {
 	/* 4 32-bit word arguments are expected for the command. */
-	if (req_len_words != 4)
+	if (req_len_words != 4) {
+		CPRINTS("(INVALID ARGUMENT) " __FILE__ ":" STRINGIFY_VALUE(__LINE__));
 		return SBERR_InvalidArgument;
+	}
 
 	km->os_version = buf[0];
 	km->os_patchlevel = buf[1];
@@ -747,6 +757,7 @@ static enum strongbox_error process_gen_import_tags(
 		if (tag_is_hw_enforced(tag)) {
 			if (hw_tag_start + word_len > out_len_words) {
 				/* Not enough space */
+				CPRINTS("(INVALID ARGUMENT) " __FILE__ ":" STRINGIFY_VALUE(__LINE__));
 				return SBERR_InvalidArgument;
 			}
 			memcpy(&out[hw_tag_start], p_tag,
@@ -763,22 +774,28 @@ static enum strongbox_error process_gen_import_tags(
 		return SBERR_IncompatiblePurpose;
 	}
 
-	if (params->attrs.algorithm == 0)
+	if (params->attrs.algorithm == 0) {
+		CPRINTS("(INVALID ARGUMENT) " __FILE__ ":" STRINGIFY_VALUE(__LINE__));
 		return SBERR_InvalidArgument;
+	}
 
 	/* Set length of HW-enforced tags */
 	out[1] = (hw_tag_start - 2);
 
-	if (out_len_words < hw_tag_start + 2)
+	if (out_len_words < hw_tag_start + 2) {
+		CPRINTS("(INVALID ARGUMENT) " __FILE__ ":" STRINGIFY_VALUE(__LINE__));
 		return SBERR_InvalidArgument;
+	}
 
 	/* Mark start of SW-enforced tags */
 	out[hw_tag_start] = KM_SECURITY_KEYSTORE;
 	out[hw_tag_start + 1] = sw_enforced_tag_size_words;
 
 	sw_out_start = hw_tag_start + 2;
-	if (out_len_words < sw_out_start + sw_enforced_tag_size_words)
+	if (out_len_words < sw_out_start + sw_enforced_tag_size_words) {
+		CPRINTS("(INVALID ARGUMENT) " __FILE__ ":" STRINGIFY_VALUE(__LINE__));
 		return SBERR_InvalidArgument;
+	}
 
 	/* Pass 2: Copy SW enforced tags */
 	sw_tag_write_pos = 0;
@@ -791,8 +808,10 @@ static enum strongbox_error process_gen_import_tags(
 
 		if (tag_is_sw_enforced(tag)) {
 			if (sw_out_start + sw_tag_write_pos + word_len >
-			    out_len_words)
+			    out_len_words) {
+				CPRINTS("(INVALID ARGUMENT) " __FILE__ ":" STRINGIFY_VALUE(__LINE__));
 				return SBERR_InvalidArgument;
+			}
 
 			memcpy(&out[sw_out_start + sw_tag_write_pos], p_tag,
 			       word_len * sizeof(uint32_t));
@@ -1216,8 +1235,10 @@ static enum strongbox_error generate_key_blob(
 		    k.params.attrs.key_size != 2048)
 			err = SBERR_UnsupportedKeySize;
 		if (k.params.attrs.rsa_exponent != 3 &&
-		    k.params.attrs.rsa_exponent != 65537)
+		    k.params.attrs.rsa_exponent != 65537) {
+			CPRINTS("(INVALID ARGUMENT) " __FILE__ ":" STRINGIFY_VALUE(__LINE__));
 			err = SBERR_InvalidArgument;
+		}
 	}
 
 	if (k.params.attrs.algorithm == KM_ALG_AES) {
@@ -1457,12 +1478,16 @@ static enum strongbox_error sb_Begin(struct km *km, uint32_t *buf,
 	uint32_t operation_id;
 
 	/* Minimum size of the input parameters: purpose, blob, sizes */
-	if (req_len_words < 3 + KM_KEY_CHARACTERISTICS_WORDS)
+	if (req_len_words < 3 + KM_KEY_CHARACTERISTICS_WORDS) {
+		CPRINTS("(INVALID ARGUMENT) " __FILE__ ":" STRINGIFY_VALUE(__LINE__));
 		return SBERR_InvalidArgument;
+	}
 
 	/* Minimum size of the output: challenge, key params, operation_id */
-	if (buf_size_words < 4)
+	if (buf_size_words < 4) {
+		CPRINTS("(INVALID ARGUMENT) " __FILE__ ":" STRINGIFY_VALUE(__LINE__));
 		return SBERR_InvalidArgument;
+	}
 
 	/* Check if we have free slots for the operation. */
 	if (km->used_slots == ((1U << KM_MAX_OPS) - 1))
@@ -1478,8 +1503,10 @@ static enum strongbox_error sb_Begin(struct km *km, uint32_t *buf,
 
 	params_words = buf[blob_words + 2];
 	if (params_words > req_len_words ||
-	    (params_words + blob_words + 2) > req_len_words)
+	    (params_words + blob_words + 2) > req_len_words) {
+		CPRINTS("(INVALID ARGUMENT) " __FILE__ ":" STRINGIFY_VALUE(__LINE__));
 		return SBERR_InvalidArgument;
+	}
 
 	err = import_blob(km, buf + 2, blob_words, buf + blob_words + 3,
 			  params_words, &params, km->ops[slot].key);
@@ -1569,12 +1596,16 @@ static enum strongbox_error sb_Update(struct km *km, uint32_t *buf,
 {
 	size_t op_index, update_size;
 
-	if (req_len_words < 2)
+	if (req_len_words < 2) {
+		CPRINTS("(INVALID ARGUMENT) " __FILE__ ":" STRINGIFY_VALUE(__LINE__));
 		return SBERR_InvalidArgument;
+	}
 
 	update_size = buf[1];
-	if (update_size > (req_len_words - 2) * 4)
+	if (update_size > (req_len_words - 2) * 4) {
+		CPRINTS("(INVALID ARGUMENT) " __FILE__ ":" STRINGIFY_VALUE(__LINE__));
 		return SBERR_InvalidArgument;
+	}
 
 	for (op_index = 0; op_index < ARRAY_SIZE(km->ops); op_index++)
 		if (km->ops[op_index].operation_id == buf[0])
@@ -1591,8 +1622,10 @@ static enum strongbox_error sb_Update(struct km *km, uint32_t *buf,
 				 (uint8_t *)(buf + 2), update_size);
 	} else if (km->ops[op_index].attrs.digest_flags == KM_DIGESTFLAG_NONE) {
 		if (update_size + km->ops[op_index].none_ctx.update_size >
-		    sizeof(km->ops[op_index].none_ctx.update_context))
+		    sizeof(km->ops[op_index].none_ctx.update_context)) {
+			CPRINTS("(INVALID ARGUMENT) " __FILE__ ":" STRINGIFY_VALUE(__LINE__));
 			return SBERR_InvalidArgument;
+		}
 		memcpy((uint8_t *)(km->ops[op_index].none_ctx.update_context) +
 			       km->ops[op_index].none_ctx.update_size,
 		       buf + 2, update_size);
@@ -1639,13 +1672,19 @@ static enum strongbox_error sb_Finish(struct km *km, uint32_t *buf,
 	const uint8_t *sign_data = NULL;
 
 	/* Minimum 2 words - Operation Handler and Input Size */
-	if (req_len_words < 2)
+	if (req_len_words < 2) {
+		CPRINTS("(INVALID ARGUMENT) " __FILE__ ":" STRINGIFY_VALUE(__LINE__));
 		return SBERR_InvalidArgument;
+	}
 	update_size = buf[1];
-	if (update_size > (req_len_words - 2) * 4)
+	if (update_size > (req_len_words - 2) * 4) {
+		CPRINTS("(INVALID ARGUMENT) " __FILE__ ":" STRINGIFY_VALUE(__LINE__));
 		return SBERR_InvalidArgument;
-	if (buf_size_words < ECDSA_SIG_BYTES / sizeof(uint32_t))
+	}
+	if (buf_size_words < ECDSA_SIG_BYTES / sizeof(uint32_t)) {
+		CPRINTS("(INVALID ARGUMENT) " __FILE__ ":" STRINGIFY_VALUE(__LINE__));
 		return SBERR_InvalidArgument;
+	}
 
 	for (op_index = 0; op_index < ARRAY_SIZE(km->ops); op_index++)
 		if (km->ops[op_index].operation_id == buf[0])
@@ -1671,8 +1710,10 @@ static enum strongbox_error sb_Finish(struct km *km, uint32_t *buf,
 		sign_data = SHA512_sw_final(&km->ops[op_index].sha512_ctx)->b8;
 	} else if (km->ops[op_index].attrs.digest_flags == KM_DIGESTFLAG_NONE) {
 		if (update_size + km->ops[op_index].none_ctx.update_size >
-		    sizeof(km->ops[op_index].none_ctx.update_context))
+		    sizeof(km->ops[op_index].none_ctx.update_context)) {
+		CPRINTS("(INVALID ARGUMENT) " __FILE__ ":" STRINGIFY_VALUE(__LINE__));
 			return SBERR_InvalidArgument;
+		}
 
 		memcpy((uint8_t *)(km->ops[op_index].none_ctx.update_context) +
 			       km->ops[op_index].none_ctx.update_size,
@@ -1888,8 +1929,10 @@ enum strongbox_error sb_GetDiceChain(struct km *km, uint32_t *buf,
 				     size_t *out_len_bytes)
 {
 	/* No arguments are expected for the command. */
-	if (req_len_words)
+	if (req_len_words) {
+		CPRINTS("(INVALID ARGUMENT) " __FILE__ ":" STRINGIFY_VALUE(__LINE__));
 		return SBERR_InvalidArgument;
+	}
 
 	/* DiceCertChain */
 	*out_len_bytes = get_dice_chain_bytes_for_chain(
@@ -2003,24 +2046,32 @@ static enum strongbox_error sb_GenerateCertificateReq(struct km *km,
 	};
 
 	/* We should have at least 1 key + challenge + DeviceInfo */
-	if (req_len_words < CBOR_MACED_KEY_WORDS + 4)
+	if (req_len_words < CBOR_MACED_KEY_WORDS + 4) {
+		CPRINTS("(INVALID ARGUMENT) " __FILE__ ":" STRINGIFY_VALUE(__LINE__));
 		return SBERR_InvalidArgument;
+	}
 
 	key_count = buf[0];
-	if (key_count == 0 || key_count > MAX_CSR_PUB_KEYS)
+	if (key_count == 0 || key_count > MAX_CSR_PUB_KEYS) {
+		CPRINTS("(INVALID ARGUMENT) " __FILE__ ":" STRINGIFY_VALUE(__LINE__));
 		return SBERR_InvalidArgument;
+	}
 
 	/* Check that we have at least space for all the keys */
-	if (key_count * (CBOR_PUBLIC_KEY_WORDS + 1) > buf_size_words)
+	if (key_count * (CBOR_PUBLIC_KEY_WORDS + 1) > buf_size_words) {
+		CPRINTS("(INVALID ARGUMENT) " __FILE__ ":" STRINGIFY_VALUE(__LINE__));
 		return SBERR_InvalidArgument;
+	}
 
 	index = 1;
 	for (size_t i = 0; i < key_count; i++) {
 		maced_len = buf[index];
 
 		/* Only support MAC'ed keys we produce with fixed size */
-		if (maced_len != CBOR_MACED_KEY_LEN)
+		if (maced_len != CBOR_MACED_KEY_LEN) {
+			CPRINTS("(INVALID ARGUMENT) " __FILE__ ":" STRINGIFY_VALUE(__LINE__));
 			return SBERR_InvalidArgument;
+		}
 
 		b8 = (uint8_t *)(buf + index + 1);
 
@@ -2045,16 +2096,20 @@ static enum strongbox_error sb_GenerateCertificateReq(struct km *km,
 	challenge_words =
 		(challenge_len + sizeof(uint32_t) - 1) / sizeof(uint32_t);
 	if (challenge_len > KM_MAX_CHALLENGE_LEN ||
-	    (challenge_words + index + 1 >= req_len_words))
+	    (challenge_words + index + 1 >= req_len_words)) {
+		CPRINTS("(INVALID ARGUMENT) " __FILE__ ":" STRINGIFY_VALUE(__LINE__));
 		return SBERR_InvalidArgument;
+	}
 
 	memcpy(challenge, buf + index + 1, challenge_len);
 	index += challenge_words + 1;
 
 	device_info_len = buf[index];
 
-	if (device_info_len / sizeof(uint32_t) + index > req_len_words)
+	if (device_info_len / sizeof(uint32_t) + index > req_len_words) {
+		CPRINTS("(INVALID ARGUMENT) " __FILE__ ":" STRINGIFY_VALUE(__LINE__));
 		return SBERR_InvalidArgument;
+	}
 
 	/**
 	 * Csr = AuthenticatedRequest<CsrPayload>
