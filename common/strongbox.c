@@ -59,6 +59,7 @@ struct km_key_params {
 	struct slice application_id;
 	struct slice application_data;
 	struct slice certificate_subject;
+	struct slice certificate_issuer;
 	struct slice certificate_serial;
 	/* TAG::ROOT_OF_TRUST */
 	struct slice rootOfTrust;
@@ -1243,6 +1244,7 @@ static enum strongbox_error generate_key_blob(
 
 	if (attest == ATTEST_TRUE) {
 		size_t attest_key_space, attest_key_size = 0;
+		size_t issuer_subject_start, issuer_subject_size = 0;
 		/* Check below is already done, but keep it for safety */
 		if (tags[0] > tag_words - 1)
 			goto cleanup; /* return SBERR_UnknownError; */
@@ -1260,7 +1262,7 @@ static enum strongbox_error generate_key_blob(
 			attest = ATTEST_NO_KEY;
 		} else {
 			/* Check if attest key blob is plausible */
-			if (attest_key_size + 1 != attest_key_space) {
+			if (attest_key_size + 1 > attest_key_space) {
 				err = SBERR_InvalidKeyBlob;
 				goto cleanup;
 			}
@@ -1276,6 +1278,21 @@ static enum strongbox_error generate_key_blob(
 				err = SBERR_IncompatiblePurpose;
 				goto cleanup;
 			}
+			/* The remainder is the issuer_subject */
+			attest_key_space -= attest_key_size + 1;
+			if (attest_key_space < 2) {
+				err = SBERR_MissingIssuerSubject;
+				goto cleanup;
+			}
+			issuer_subject_start = tags[0] + 2 + attest_key_size;
+			issuer_subject_size = tags[issuer_subject_start];
+			if ((issuer_subject_size + 3)/4 != attest_key_space) {
+				err = SBERR_InvalidIssuerSubject;
+				goto cleanup;
+			}
+			k.params.certificate_issuer =
+				SLICE(tags + issuer_subject_start + 1,
+				      issuer_subject_size);
 		}
 	}
 
@@ -1313,15 +1330,32 @@ static enum strongbox_error generate_key_blob(
 	if (attest == ATTEST_TRUE) {
 		/**
 		 * Tag::CERTIFICATE_SUBJECT the certificate subject.  The value
-		 * is a DER encoded X509 NAME. This value is used when
+		 * is a DER encoded SEQUENCE. This value is used when
 		 * generating a self signed certificates.  This tag may be
 		 * specified during generateKey and importKey. If not provided
 		 * the subject name shall default to CN="Android Keystore Key".
 		 */
 		if (!k.params.certificate_subject.p) {
-			static const char cname[] = "Android Keystore Key";
-
-			k.params.certificate_subject = SLICE_STR(cname);
+			/* Set the default subject:
+			 * SEQUENCE
+			 * 0x30 <size = 0x1b>
+			 *      OBJECT            :commonName
+			 *  0x06 <size = 0x03> 0x55 0x04 0x03
+			 *      PRINTABLESTRING   :Android Keystore Key
+			 *  0x13 <size = 0x14> ...
+			 */
+			static const char default_subject[] = {
+				0x30, 0x1b, 0x06, 0x03, 0x55, 0x04, 0x03, 0x13,
+				0x14, 0x41, 0x6e, 0x64, 0x72, 0x6f, 0x69, 0x64,
+				0x20, 0x4b, 0x65, 0x79, 0x73, 0x74, 0x6f, 0x72,
+				0x65, 0x20, 0x4b, 0x65, 0x79
+			};
+			k.params.certificate_subject =
+				SLICE(default_subject, sizeof(default_subject));
+		}
+		if (!k.params.certificate_issuer.p) {
+			err = SBERR_MissingIssuerSubject;
+			goto cleanup;
 		}
 		*cert_size = SB_cert_name(
 			&k.attest_key, &km->last_pk_x, &km->last_pk_y,
@@ -2517,57 +2551,53 @@ static void asn1_pub(struct asn1 *ctx, const p256_int *x, const p256_int *y)
 	ctx->n = p - ctx->p;
 }
 
-static void add_name(struct asn1 *ctx, struct slice oname, struct slice cname)
+/* Verify that the `seq` slice is an asn.1 DER SEQ with the valid length.
+ * Add it to `ctx` if the verification was successful and return 1.
+ * Otherwise, return 0.
+ *
+ * Only shotr and long length forms are allowed, with up to 4 length bytes,
+ * indefinite form for the length is not supported.
+ */
+static int verify_and_add_seq(struct asn1 *ctx, const struct slice *seq)
 {
-	/*
-	 *  Name ::= CHOICE {rdnSequence  RDNSequence }
-	 *  RDNSequence ::= SEQUENCE OF RelativeDistinguishedName
-	 *  RelativeDistinguishedName ::= SET SIZE (1..MAX)
-	 *           OF AttributeTypeAndValue
-	 *  AttributeTypeAndValue ::= SEQUENCE {
-	 *   type     AttributeType,
-	 *   value    AttributeValue }
-	 *   AttributeType ::= OBJECT IDENTIFIER
-	 *
-	 *  AttributeValue ::= ANY -- DEFINED BY AttributeType
-	 *   DirectoryString ::= CHOICE {
-	 *        teletexString           TeletexString (SIZE (1..MAX)),
-	 *        printableString         PrintableString (SIZE (1..MAX)),
-	 *        universalString         UniversalString (SIZE (1..MAX)),
-	 *        utf8String              UTF8String (SIZE (1..MAX)),
-	 *        bmpString               BMPString (SIZE (1..MAX)) }
-	 */
-	static const uint8_t OID_commonName[3] = { 0x55, 0x04, 0x03 };
-	static const uint8_t OID_organizationName[3] = { 0x55, 0x04, 0x0a };
+	unsigned char *p = (char *)seq->p;
 
-	SEQ_START(*ctx, V_SEQ, SEQ_SMALL)
-	{
-		if (oname.n) {
-			SEQ_START(*ctx, V_SET, SEQ_SMALL)
-			{
-				SEQ_START(*ctx, V_SEQ, SEQ_SMALL)
-				{
-					asn1_object(ctx, OID(organizationName));
-					asn1_bytes(ctx, V_ASN1_UTF8, oname);
-				}
-				SEQ_END(*ctx);
-			}
-			SEQ_END(*ctx);
+	/* 1. Verify */
+	if (p == NULL || seq->n < 2)
+		return 0;
+	if (p[0] != V_SEQ)
+		return 0;
+	if (p[1] < 128) {
+		/* short length form: 0x30 N <N bytes> */
+		size_t len = p[1];
+
+		if (seq->n != 2 + len)
+			return 0;
+	} else {
+		/* long or indefinite length form:
+		 * 0x30 0x80|M <M len bytes = N> <N bytes>
+		 */
+		size_t len_len = p[1] & 0x7f;
+		size_t len;
+		size_t i;
+
+		if (len_len == 0 || len_len > 4)
+			return 0;
+		if (seq->n < 2 + len_len)
+			return 0;
+		len = p[2 + len_len];
+		for (i = 1; i < len_len; i++) {
+			len <<= 8;
+			len |= p[2 + len_len + i];
 		}
-		if (cname.n) {
-			SEQ_START(*ctx, V_SET, SEQ_SMALL)
-			{
-				SEQ_START(*ctx, V_SEQ, SEQ_SMALL)
-				{
-					asn1_object(ctx, OID(commonName));
-					asn1_bytes(ctx, V_ASN1_UTF8, cname);
-				}
-				SEQ_END(*ctx);
-			}
-			SEQ_END(*ctx);
-		}
+		if (seq->n != 2 + len_len + len)
+			return 0;
 	}
-	SEQ_END(*ctx);
+
+	/* 2. Add the verified sequence */
+	memcpy(ctx->p + ctx->n, seq->p, seq->n);
+	ctx->n += seq->n;
+	return 1;
 }
 
 /*
@@ -3031,8 +3061,9 @@ static size_t SB_cert_name(const p256_int *d, const p256_int *pk_x,
 			/* Issuer: Same as the subject field of the batch
 			 * attestation key.
 			 */
-			add_name(&ctx, SLICE("Google LLC", 10),
-				 SLICE("CR50", 4));
+			if (!verify_and_add_seq(&ctx,
+						&params->certificate_issuer))
+				return 0;
 
 			/* Expiry */
 			SEQ_START(ctx, V_SEQ, SEQ_SMALL)
@@ -3045,8 +3076,9 @@ static size_t SB_cert_name(const p256_int *d, const p256_int *pk_x,
 			SEQ_END(ctx);
 
 			/* Subject */
-			add_name(&ctx, SLICE("StrongBox", 9),
-				 params->certificate_subject);
+			if (!verify_and_add_seq(&ctx,
+						&params->certificate_subject))
+				return 0;
 
 			/* Subject pk */
 			SEQ_START(ctx, V_SEQ, SEQ_SMALL)
