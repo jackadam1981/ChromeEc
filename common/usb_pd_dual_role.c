@@ -57,6 +57,7 @@ static bool pd_get_usb_comm_capable(int port)
 void pd_build_request(int32_t vpd_vdo, uint32_t *rdo, uint32_t *ma,
 		      uint32_t *mv, int port)
 {
+	pd_record_timestamp_start(port, PD_INTERVAL_PD_BUILD_REQ_MSG);
 	uint32_t pdo;
 	int pdo_index, flags = 0;
 	int uw;
@@ -199,6 +200,8 @@ void pd_build_request(int32_t vpd_vdo, uint32_t *rdo, uint32_t *ma,
 		if (pd_get_power_role(port) == PD_ROLE_SINK)
 			*rdo |= RDO_NO_SUSPEND;
 	}
+
+	pd_record_timestamp_end(port, PD_INTERVAL_PD_BUILD_REQ_MSG);
 }
 
 void pd_process_source_cap(int port, int cnt, uint32_t *src_caps)
