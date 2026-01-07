@@ -93,6 +93,30 @@
       },
       "revId": "c7c2cb5a1531cbb484536c5839d23de48ed94472",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6121ab55_fa7763d1",
+        "filename": "common/charge_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1815,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2026-01-07T07:48:17Z",
+      "side": 1,
+      "message": "Check the EC code found BP_NOT_SURE only return when CONFIG_PLATFORM_EC_BATTERY_PRESENT_GPIO is not defined.(except those old project, ex:reef/volteer...)\n\nIssue no. already update, i think we can discuss in issue.",
+      "parentUuid": "ac812bf5_d9dbaaee",
+      "range": {
+        "startLine": 1815,
+        "startChar": 1,
+        "endLine": 1815,
+        "endChar": 7
+      },
+      "revId": "c7c2cb5a1531cbb484536c5839d23de48ed94472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
