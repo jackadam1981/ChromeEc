@@ -877,6 +877,12 @@ struct pd_debug_timestamps pd_ts[CONFIG_USB_PD_PORT_MAX_COUNT]
 				[PD_INTERVAL_COUNT] = { 0 };
 const char *pd_ts_name[] = {
 	"Invalid interval",
+	[PD_INTERVAL_PE_SNK_EVAL_CAP_ENTRY] =
+		"pe_snk_evaluate_capability_entry",
+	[PD_INTERVAL_PE_SNK_SEL_CAP_ENTRY] = "pe_snk_select_capability_entry",
+	[PD_INTERVAL_PD_BUILD_REQ_MSG] = "pd_build_request_message",
+	[PD_INTERVAL_PE_SEND_REQ_MSG] = "ps_send_req_message",
+	[PD_INTERVAL_PRL_SEND_DATA_MSG] = "prl_send_data_message",
 };
 BUILD_ASSERT(ARRAY_SIZE(pd_ts_name) == PD_INTERVAL_COUNT);
 
