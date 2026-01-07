@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "829c1744_5d08dacc",
+        "filename": "zephyr/drivers/keyboard_input/scancode_set2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2026-01-07T22:24:18Z",
+      "side": 1,
+      "message": "Is this meant to build if the DT prop isn\u0027t set on line 30? It seems like that case wouldn\u0027t come up based on the build assertions.",
+      "revId": "af368d83fb2c3405b3eb6e5bddad612123f3cd41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
