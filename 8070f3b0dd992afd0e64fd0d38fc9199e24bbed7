@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2883a62e_38bdbb63",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-08T08:04:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3c843c9_3f3844f3",
+      "revId": "8070f3b0dd992afd0e64fd0d38fc9199e24bbed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "338ff17a_13b50444",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "modified this",
       "parentUuid": "338ff17a_13b50444",
+      "revId": "8070f3b0dd992afd0e64fd0d38fc9199e24bbed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16edd8db_2944816a",
+        "filename": "zephyr/drivers/cros_system/cros_system_ft90.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-08T08:04:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e9ccc27_3fdd75f9",
       "revId": "8070f3b0dd992afd0e64fd0d38fc9199e24bbed7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
