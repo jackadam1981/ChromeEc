@@ -39,6 +39,30 @@
       },
       "revId": "e789c8479a836229a6239a46f4d7cc82344b992f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26dd7737_cf3a203c",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-08T22:54:55Z",
+      "side": 1,
+      "message": "I created this CL: https://chromium-review.googlesource.com/c/infra/infra/+/7417231\n\nMy question is why do we have to modify the modify the infra recovery code to handle this issue? Is this the purpose for infra recovery?",
+      "parentUuid": "0033c3c3_eac1a9df",
+      "range": {
+        "startLine": 381,
+        "startChar": 0,
+        "endLine": 387,
+        "endChar": 3
+      },
+      "revId": "e789c8479a836229a6239a46f4d7cc82344b992f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
