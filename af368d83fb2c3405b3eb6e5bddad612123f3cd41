@@ -16,6 +16,24 @@
       "message": "Is this meant to build if the DT prop isn\u0027t set on line 30? It seems like that case wouldn\u0027t come up based on the build assertions.",
       "revId": "af368d83fb2c3405b3eb6e5bddad612123f3cd41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "619eb819_3360e69e",
+        "filename": "zephyr/drivers/keyboard_input/scancode_set2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2026-01-08T11:16:33Z",
+      "side": 1,
+      "message": "Can\u0027t happen, properties from 0 to 12 are marked as required so at least those have to be set or it won\u0027t get to that point, the assertion is checks that they are set for the whole array, then the upper limit is checked in the keyboard driver itself, so overall this should be fairly solid I think.",
+      "parentUuid": "829c1744_5d08dacc",
+      "revId": "af368d83fb2c3405b3eb6e5bddad612123f3cd41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
