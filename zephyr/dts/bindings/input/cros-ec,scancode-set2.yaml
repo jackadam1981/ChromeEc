@@ -92,3 +92,73 @@ properties:
 
   col17-codes:
     type: array
+
+child-binding:
+  properties:
+    col0-codes:
+      type: array
+      required: true
+      description: The codes for col0, 8 values.
+
+    col1-codes:
+      type: array
+      required: true
+
+    col2-codes:
+      type: array
+      required: true
+
+    col3-codes:
+      type: array
+      required: true
+
+    col4-codes:
+      type: array
+      required: true
+
+    col5-codes:
+      type: array
+      required: true
+
+    col6-codes:
+      type: array
+      required: true
+
+    col7-codes:
+      type: array
+      required: true
+
+    col8-codes:
+      type: array
+      required: true
+
+    col9-codes:
+      type: array
+      required: true
+
+    col10-codes:
+      type: array
+      required: true
+
+    col11-codes:
+      type: array
+      required: true
+
+    col12-codes:
+      type: array
+      required: true
+
+    col13-codes:
+      type: array
+
+    col14-codes:
+      type: array
+
+    col15-codes:
+      type: array
+
+    col16-codes:
+      type: array
+
+    col17-codes:
+      type: array
