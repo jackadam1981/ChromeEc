@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ddbab7b5_88184757",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_ft.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2026-01-08T07:37:00Z",
+      "side": 1,
+      "message": "I have modified this CL, only implement erase and write funcionts.",
+      "parentUuid": "c34c787d_540b1e2b",
+      "revId": "159b15183bb771b559f55133be4b926dd1eed4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b2548d27_69c2a14b",
         "filename": "zephyr/shim/chip/ft90/clock.c",
         "patchSetId": 4
