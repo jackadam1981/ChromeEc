@@ -235,8 +235,7 @@
 #undef CONFIG_DCRYPTO
 
 /* Enable Strongbox for Cr50 */
-/* TODO: enable Strongbox for CR50_DEV too. */
-#if !defined(CR50_DEV) && !defined(CRYPTO_TEST_SETUP)
+#if !defined(CRYPTO_TEST_SETUP)
 #define CONFIG_STRONGBOX
 #endif
 
