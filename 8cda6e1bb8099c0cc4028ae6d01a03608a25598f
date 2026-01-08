@@ -22,6 +22,30 @@
       },
       "revId": "8cda6e1bb8099c0cc4028ae6d01a03608a25598f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3863222_a3f37ca1",
+        "filename": "zephyr/shim/core/riscv/mpu.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-08T21:49:39Z",
+      "side": 1,
+      "message": "I believe this is where is uses the lock bit [rv \u003d mpu_config_region(rollback_mpu_region, rollback_region_start_address + (rollback_region_total_size / 2), rollback_region_total_size / 2, mpu_attr, lock)](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/core/cortex-m/mpu.c;l\u003d403;drc\u003d69bea9a3f3d5b8c3ec157387ec25016298846971#:~:text\u003d402-,403,-404)\n\n```\n/**\n * Configure a region\n *\n * region: index of the region to update\n * addr: Base address of the region\n * size: Size of the region in bytes\n * attr: Attribute bits. Current value will be overwritten if enable is set.\n * enable: Enables the region if non zero. Otherwise, disables the region.\n *\n * Returns EC_SUCCESS on success, -EC_ERROR_OVERFLOW if it is not possible to\n * fully configure the given region, or -EC_ERROR_INVAL if a parameter is\n * invalid (such as the address or size having unsupported alignment).\n */\nint mpu_config_region(uint8_t region, uint32_t addr, uint32_t size,\n\t\t      uint16_t attr, uint8_t enabl\n```",
+      "parentUuid": "712205cd_9cfb05eb",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 51
+      },
+      "revId": "8cda6e1bb8099c0cc4028ae6d01a03608a25598f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
