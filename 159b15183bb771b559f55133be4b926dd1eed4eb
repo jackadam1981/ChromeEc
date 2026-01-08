@@ -105,6 +105,24 @@
       "parentUuid": "ff8e583f_4c50bc1d",
       "revId": "159b15183bb771b559f55133be4b926dd1eed4eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1031205_519a7cfb",
+        "filename": "zephyr/shim/chip/ft90/clock.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2026-01-08T09:03:50Z",
+      "side": 1,
+      "message": "OK, removed it.",
+      "parentUuid": "da510948_09e015b0",
+      "revId": "159b15183bb771b559f55133be4b926dd1eed4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
