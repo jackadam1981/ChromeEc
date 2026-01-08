@@ -218,15 +218,15 @@ int8_t board_vivaldi_keybd_idx(void)
 
 	switch (config_index) {
 	case 0: // No backlight, no numeric pad
-		return DT_NODE_CHILD_IDX(DT_NODELABEL(kbd_config_0));
+		return VIVALDI_CFG_IDX(kbd_config_0);
 	case 1: // No backlight, with numeric pad
-		return DT_NODE_CHILD_IDX(DT_NODELABEL(kbd_config_1));
+		return VIVALDI_CFG_IDX(kbd_config_1);
 	case 2: // With backlight, no numeric pad
-		return DT_NODE_CHILD_IDX(DT_NODELABEL(kbd_config_2));
+		return VIVALDI_CFG_IDX(kbd_config_2);
 	case 3: // With backlight, with numeric pad
-		return DT_NODE_CHILD_IDX(DT_NODELABEL(kbd_config_3));
+		return VIVALDI_CFG_IDX(kbd_config_3);
 	default: // Default to configuration 0
-		return DT_NODE_CHILD_IDX(DT_NODELABEL(kbd_config_0));
+		return VIVALDI_CFG_IDX(kbd_config_0);
 	}
 }
 
