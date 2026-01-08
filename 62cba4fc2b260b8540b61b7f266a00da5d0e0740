@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afaf3f4d_1aa0211c",
+        "filename": "zephyr/shim/core/riscv/mpu.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-08T22:26:01Z",
+      "side": 1,
+      "message": "For readability, how about:\n\n```suggestion\n\tconst int region_idx \u003d 0;\n\tif (lock) {\n\t\tz_riscv_pmp_change_permissions(region_idx, 0);\n\t} else {\n\t\tz_riscv_pmp_change_permissions(region_idx, PMP_R | PMP_W);\n\t}\n```",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 2
+      },
+      "revId": "62cba4fc2b260b8540b61b7f266a00da5d0e0740",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
