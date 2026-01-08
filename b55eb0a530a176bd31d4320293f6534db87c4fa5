@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca9dcc9c_3c999d56",
+        "filename": "zephyr/test/hwtest/src/rollback.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-08T21:23:15Z",
+      "side": 1,
+      "message": "```suggestion\n\t\t\t/* b/468379650#comment17: Force a read of data so that the compiler doesn\u0027t optimize out the call to crec_flash_read. */\n```",
+      "range": {
+        "startLine": 59,
+        "startChar": 6,
+        "endLine": 59,
+        "endChar": 18
+      },
+      "revId": "b55eb0a530a176bd31d4320293f6534db87c4fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
