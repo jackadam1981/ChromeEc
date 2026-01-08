@@ -118,6 +118,30 @@
       },
       "revId": "8cda6e1bb8099c0cc4028ae6d01a03608a25598f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bba52c55_444242e5",
+        "filename": "zephyr/shim/core/riscv/mpu.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-08T22:14:55Z",
+      "side": 1,
+      "message": "I do not believe the U-mode has access to this region. This region is set using MEM-ATTR and U-mode will not have this region\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/arch/riscv/core/pmp.c;l\u003d704?q\u003dpmp.c\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch#:~:text\u003d703-,704,-705\n\nthe U-mode will only have access to the global region prior to the ones generated from MEM-ATTR and the rollback region is created using MEM_ATTR config",
+      "parentUuid": "99405e27_635d34e7",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 51
+      },
+      "revId": "8cda6e1bb8099c0cc4028ae6d01a03608a25598f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
