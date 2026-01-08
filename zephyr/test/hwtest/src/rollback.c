@@ -47,16 +47,19 @@ struct rollback_info rollback_info = {
 static int read_rollback_region(const struct rollback_info *info, int region)
 {
 	int i;
-	char data;
+	volatile char data;
 	uint32_t bytes_read = 0;
 
 	int offset = region == 0 ? info->region_0_offset :
 				   info->region_1_offset;
 
 	for (i = 0; i < info->region_size_bytes; i++) {
-		if (crec_flash_read(offset + i, sizeof(data), &data) ==
-		    EC_SUCCESS)
+		if (crec_flash_read(offset + i, sizeof(data), (char *)&data) ==
+		    EC_SUCCESS) {
+			/* force a read */
+			(void)data;
 			bytes_read++;
+		}
 	}
 
 	return bytes_read;
