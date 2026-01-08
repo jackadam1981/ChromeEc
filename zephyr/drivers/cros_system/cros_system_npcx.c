@@ -378,6 +378,13 @@ static const char *cros_system_npcx_get_chip_name(const struct device *dev)
 
 #if DT_NODE_EXISTS(SYSTEM_DT_NODE_SOC_ID_CONFIG)
 	if (chip_id == NPCX_CHIP_ID && device_id == NPCX_DEVICE_ID) {
+		/*
+		 * To align the chip name by converting "npcx9mfp" defined
+		 * in Zephyr to "NPCX99FP" defined in CROS-EC.
+		 */
+		if (!strcmp(CONFIG_SOC, "npcx9mfp")) {
+			return "NPCX99FP";
+		}
 		return CONFIG_SOC;
 	}
 
