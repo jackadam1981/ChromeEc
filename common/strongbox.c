@@ -236,6 +236,24 @@ static size_t SB_cert_name(const p256_int *d, const p256_int *pk_x,
 
 static const uint8_t g_keymint_var_name[] = { 'K', 'M' };
 
+/* Set the default subject:
+ * SEQUENCE
+ * 0x30 <size = 0x1b>
+ *      OBJECT            :commonName
+ *  0x06 <size = 0x03> 0x55 0x04 0x03
+ *      PRINTABLESTRING   :Android Keystore Key
+ *  0x13 <size = 0x14> ...
+ */
+static const char g_default_subject_data[] = {
+	0x30, 0x1b, 0x06, 0x03, 0x55, 0x04, 0x03, 0x13,
+	0x14, 0x41, 0x6e, 0x64, 0x72, 0x6f, 0x69, 0x64,
+	0x20, 0x4b, 0x65, 0x79, 0x73, 0x74, 0x6f, 0x72,
+	0x65, 0x20, 0x4b, 0x65, 0x79
+};
+static const struct slice g_default_subject =
+	SLICE(g_default_subject_data, sizeof(g_default_subject_data));
+
+
 static enum strongbox_error keymint_init(void)
 {
 	const struct tuple *var;
@@ -1323,6 +1341,11 @@ static enum strongbox_error generate_key_blob(
 		memcpy(k.attest_key.a, k.key, sizeof(k.attest_key));
 		k.sign_params = k.params;
 		attest = ATTEST_TRUE;
+		if (!k.params.certificate_subject.p)
+			k.params.certificate_subject = g_default_subject;
+		if (!k.params.certificate_issuer.p)
+			k.params.certificate_issuer =
+				k.params.certificate_subject;
 	}
 	total_words = blob_start_words + blob_size_words;
 	/* Total size of key blob in 32-bit words */
@@ -1336,24 +1359,8 @@ static enum strongbox_error generate_key_blob(
 		 * specified during generateKey and importKey. If not provided
 		 * the subject name shall default to CN="Android Keystore Key".
 		 */
-		if (!k.params.certificate_subject.p) {
-			/* Set the default subject:
-			 * SEQUENCE
-			 * 0x30 <size = 0x1b>
-			 *      OBJECT            :commonName
-			 *  0x06 <size = 0x03> 0x55 0x04 0x03
-			 *      PRINTABLESTRING   :Android Keystore Key
-			 *  0x13 <size = 0x14> ...
-			 */
-			static const char default_subject[] = {
-				0x30, 0x1b, 0x06, 0x03, 0x55, 0x04, 0x03, 0x13,
-				0x14, 0x41, 0x6e, 0x64, 0x72, 0x6f, 0x69, 0x64,
-				0x20, 0x4b, 0x65, 0x79, 0x73, 0x74, 0x6f, 0x72,
-				0x65, 0x20, 0x4b, 0x65, 0x79
-			};
-			k.params.certificate_subject =
-				SLICE(default_subject, sizeof(default_subject));
-		}
+		if (!k.params.certificate_subject.p)
+			k.params.certificate_subject = g_default_subject;
 		if (!k.params.certificate_issuer.p) {
 			err = SBERR_MissingIssuerSubject;
 			goto cleanup;
