@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1f7c51f_86c29b1e",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2026-01-08T11:20:50Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "bb5e2ecb_52f34425",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 20
+      },
+      "revId": "498e53f2a15b46020ba37f17c07c28eac9c77abd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21085eae_e87b693f",
@@ -37,6 +61,30 @@
       "writtenOn": "2026-01-06T18:12:39Z",
       "side": 1,
       "message": "Guard not needed.",
+      "range": {
+        "startLine": 770,
+        "startChar": 0,
+        "endLine": 770,
+        "endChar": 20
+      },
+      "revId": "498e53f2a15b46020ba37f17c07c28eac9c77abd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0adc0dab_88bd83a0",
+        "filename": "power/qcom_exp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2026-01-08T11:20:50Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "21085eae_e87b693f",
       "range": {
         "startLine": 770,
         "startChar": 0,
