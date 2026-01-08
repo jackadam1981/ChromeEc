@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21c5db91_0e4b4236",
+        "filename": "common/strongbox.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1296,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2026-01-08T17:54:40Z",
+      "side": 1,
+      "message": "main question here is wherever we need the same for the self-signed keys (no attestation key is provided which would mean to use generated key for the signing cert below.\n\nIn the current code the provided certificate issuer will be ignored for self-signed key and default would be used below. If this behavior is ok for now, lets implement it.",
+      "range": {
+        "startLine": 1281,
+        "startChar": 0,
+        "endLine": 1296,
+        "endChar": 31
+      },
+      "revId": "a567e8bd60239f7101285929ff56013d5d25f0fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
