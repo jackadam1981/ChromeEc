@@ -23,3 +23,8 @@
 		int-gpios = <&gpio0 1 GPIO_ACTIVE_LOW>;
 	};
 };
+
+/* FIXME - find a common place to put this...  Maybe a shield overlay? */
+&sram {
+	reg = < 0xff200000 0x90000 >;
+};
