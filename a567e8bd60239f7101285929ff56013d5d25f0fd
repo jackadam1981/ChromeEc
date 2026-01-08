@@ -22,6 +22,30 @@
       },
       "revId": "a567e8bd60239f7101285929ff56013d5d25f0fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17b32792_abd102c3",
+        "filename": "common/strongbox.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1296,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2026-01-08T18:29:05Z",
+      "side": 1,
+      "message": "yes, let\u0027s set issuer \u003d signer for the self-signed case. will send a followuo CL",
+      "parentUuid": "21c5db91_0e4b4236",
+      "range": {
+        "startLine": 1281,
+        "startChar": 0,
+        "endLine": 1296,
+        "endChar": 31
+      },
+      "revId": "a567e8bd60239f7101285929ff56013d5d25f0fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
