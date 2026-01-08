@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20c75f87_3d84029d",
+        "filename": "include/system.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-01-08T16:10:36Z",
+      "side": 1,
+      "message": "Extra #ifdef block not needed.  Just use the existing #ifdef\n```suggestion\n#ifdef CONFIG_ZEPHYR\n#include \u003cdrivers/cros_system.h\u003e\n```",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 20
+      },
+      "revId": "73fa52a15c214cdd2893e4cf3857c5057a6f0ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
