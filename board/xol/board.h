@@ -67,7 +67,7 @@
 
 /* TODO: b/177608416 - measure and check these values on brya */
 #define PD_POWER_SUPPLY_TURN_ON_DELAY 30000 /* us */
-#define PD_POWER_SUPPLY_TURN_OFF_DELAY 30000 /* us */
+#define PD_POWER_SUPPLY_TURN_OFF_DELAY 60000 /* us */
 #define PD_VCONN_SWAP_DELAY 5000 /* us */
 
 /* PD */
