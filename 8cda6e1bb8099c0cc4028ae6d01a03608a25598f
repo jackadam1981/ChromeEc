@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "712205cd_9cfb05eb",
+        "filename": "zephyr/shim/core/riscv/mpu.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-08T21:42:13Z",
+      "side": 1,
+      "message": "I think this is right, but when [looking at the ARM version, it looks like it\u0027s always setting \"no access\"](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/core/cortex-m/mpu.c;l\u003d363-365;drc\u003d69bea9a3f3d5b8c3ec157387ec25016298846971), even when `lock` is `false`?\n\nThe bits are defined [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/core/cortex-m/include/mpu.h;l\u003d67-78;drc\u003dce133b4bf51ceef7abff0e7f56c6f8e81a12a521).",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 51
+      },
+      "revId": "8cda6e1bb8099c0cc4028ae6d01a03608a25598f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
