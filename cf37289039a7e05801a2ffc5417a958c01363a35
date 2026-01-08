@@ -59,6 +59,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63185349_63ea2fe6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2026-01-08T00:52:11Z",
+      "side": 1,
+      "message": "You\u0027re right to be skeptical. Previously, when we tuned the tSenderResponse values in `usb_pd.h` and fixed latency issues in the error paths, that was explicitly to avoid tuning these timeouts per-model.\n\nAt the moment, pujjoga is already benefitting from known latency fixes, and it still fails this test intermittently. I suspect there is probably further opportunity for latency debugging, but I don\u0027t think we have any obvious culprits right now.\n\nUltimately, I\u0027d like to fix this cleanly if at all possible. In the short term, I\u0027m reluctantly OK with a config hack if it\u0027s urgent.",
+      "parentUuid": "48a8700d_782cae72",
+      "revId": "cf37289039a7e05801a2ffc5417a958c01363a35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a3fd315_7639362d",
