@@ -94,6 +94,30 @@
       },
       "revId": "8cda6e1bb8099c0cc4028ae6d01a03608a25598f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99405e27_635d34e7",
+        "filename": "zephyr/shim/core/riscv/mpu.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-08T22:10:41Z",
+      "side": 1,
+      "message": "\u003e I believe there is the equivalent M-mode vs. U-Mode\n\nYes, I think that\u0027s right.\n\n\u003e U-Mode will have no privileges to change the PMP from Memory attributes.\n\nIt looks like those ARM settings allow you to restrict permissions to the different modes. e.g., you can set it so that when running in M mode, you can read/write some region, but the same region cannot be read/written in U mode. Is something like that possible in RISC-V?",
+      "parentUuid": "e4f51300_c7691a5e",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 51
+      },
+      "revId": "8cda6e1bb8099c0cc4028ae6d01a03608a25598f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
