@@ -69,6 +69,24 @@
       "message": "ship/chip/ft90/... changes should be a part of this CL. I\u0027ll add it as general SOC support once the cros_flash and cros_system drivers are merged.",
       "revId": "159b15183bb771b559f55133be4b926dd1eed4eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff8e583f_4c50bc1d",
+        "filename": "zephyr/shim/chip/ft90/clock.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2026-01-08T08:03:30Z",
+      "side": 1,
+      "message": "Do you need me to remove it from this CL?",
+      "parentUuid": "b2548d27_69c2a14b",
+      "revId": "159b15183bb771b559f55133be4b926dd1eed4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
