@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2535b3c4_946da33a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 37
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-08T12:22:58Z",
+      "side": 1,
+      "message": "Some nit comments, the rest looks good.",
+      "revId": "26048dfd02b398acb8b05ce451ecffe24cd3c6cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7279d2b7_d74d1982",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elani80sa_config.h",
+        "patchSetId": 37
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-08T12:22:58Z",
+      "side": 1,
+      "message": "It should probably be `ZEPHYR_DRIVERS_FINGERPRINT_FINGERPRINT_ELANI80SA_CONFIG_H_`.",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 0
+      },
+      "revId": "26048dfd02b398acb8b05ce451ecffe24cd3c6cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18212f05_4be66cc1",
+        "filename": "zephyr/dts/bindings/fingerprint/elan.elani80sa.yaml",
+        "patchSetId": 37
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-08T12:22:58Z",
+      "side": 1,
+      "message": "2026",
+      "revId": "26048dfd02b398acb8b05ce451ecffe24cd3c6cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
