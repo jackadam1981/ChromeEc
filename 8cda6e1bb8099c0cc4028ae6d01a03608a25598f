@@ -46,6 +46,30 @@
       },
       "revId": "8cda6e1bb8099c0cc4028ae6d01a03608a25598f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24cb9e21_20d32122",
+        "filename": "zephyr/shim/core/riscv/mpu.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-08T22:03:46Z",
+      "side": 1,
+      "message": "Oh, I see. In the case where we `lock`, we enable the MPU region and in the case where we unlock, we disable the enforcement completely (rather than setting the attributes to something more permissive).\n\nOne additional question: does RISC-V PMP have an option to enable read/write for only privileged or unprivileged access? e.g., like [this](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/core/cortex-m/include/mpu.h;l\u003d73-78;drc\u003dce133b4bf51ceef7abff0e7f56c6f8e81a12a521)?",
+      "parentUuid": "b3863222_a3f37ca1",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 51
+      },
+      "revId": "8cda6e1bb8099c0cc4028ae6d01a03608a25598f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
