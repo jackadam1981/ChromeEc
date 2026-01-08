@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "522465c3_721e5394",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2026-01-08T22:08:28Z",
+      "side": 1,
+      "message": "I\u0027m OK with this workaround merging as an urgent fix, if you clean it up a bit per my other comments. I\u0027d like to pull it out and find the real optimization when we\u0027re not as pressed for time.",
+      "revId": "3919299a27f07b9e2a9bc3f7c252c66bd94205f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04176e4f_d9e5a1bd",
@@ -20,6 +37,23 @@
         "endLine": 276,
         "endChar": 59
       },
+      "revId": "3919299a27f07b9e2a9bc3f7c252c66bd94205f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0de1c970_ae46cb73",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2026-01-08T22:08:28Z",
+      "side": 1,
+      "message": "Can you add a \"TODO(b/442730096): Debug pujjoga ErrorRecovery latency and remove this config\"?",
       "revId": "3919299a27f07b9e2a9bc3f7c252c66bd94205f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
