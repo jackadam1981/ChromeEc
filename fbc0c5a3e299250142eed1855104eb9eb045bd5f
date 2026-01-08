@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c755d26a_7c07173c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-08T12:29:03Z",
+      "side": 1,
+      "message": "Please also add following CL adding the protection functionality.",
+      "revId": "fbc0c5a3e299250142eed1855104eb9eb045bd5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76b51af2_98ed80ca",
+        "filename": "zephyr/drivers/cros_flash/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-08T12:29:03Z",
+      "side": 1,
+      "message": "Copy-paste error.",
+      "range": {
+        "startLine": 182,
+        "startChar": 48,
+        "endLine": 182,
+        "endChar": 56
+      },
+      "revId": "fbc0c5a3e299250142eed1855104eb9eb045bd5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dcc99ef_92d7ef32",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_ft.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-08T12:29:03Z",
+      "side": 1,
+      "message": "This check is redundant.",
+      "revId": "fbc0c5a3e299250142eed1855104eb9eb045bd5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
