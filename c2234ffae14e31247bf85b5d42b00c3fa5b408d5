@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81073671_0987190c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 31
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-08T16:13:07Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "f10a3648_3d4e1bce",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "c2234ffae14e31247bf85b5d42b00c3fa5b408d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54079c8f_5ea7bbc6",
@@ -285,6 +309,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03662d32_80106f1d",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-08T16:13:07Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "de86acd6_96ffc376",
+      "range": {
+        "startLine": 52,
+        "startChar": 11,
+        "endLine": 52,
+        "endChar": 26
+      },
+      "revId": "c2234ffae14e31247bf85b5d42b00c3fa5b408d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cde36628_99bb403b",
@@ -346,6 +394,30 @@
       "side": 1,
       "message": "@fsammoura@google.com does it meet your expectations?",
       "parentUuid": "0bcbf826_cd8dfe42",
+      "range": {
+        "startLine": 178,
+        "startChar": 11,
+        "endLine": 178,
+        "endChar": 29
+      },
+      "revId": "c2234ffae14e31247bf85b5d42b00c3fa5b408d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76a7cf29_1a6a5a60",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-08T16:13:07Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "6ff06e04_ff6fc6b2",
       "range": {
         "startLine": 178,
         "startChar": 11,
@@ -470,6 +542,30 @@
       "side": 1,
       "message": "@fsammoura@google.com does it meet your expectations?",
       "parentUuid": "6e818150_1669f582",
+      "range": {
+        "startLine": 69,
+        "startChar": 10,
+        "endLine": 69,
+        "endChar": 23
+      },
+      "revId": "c2234ffae14e31247bf85b5d42b00c3fa5b408d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb506a7d_363982d7",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx_pal.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-08T16:13:07Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "bb805d4a_36953ee3",
       "range": {
         "startLine": 69,
         "startChar": 10,
@@ -636,6 +732,30 @@
       "side": 1,
       "message": "@fsammoura@google.com does it meet your expectations?",
       "parentUuid": "4956b8b6_64d08e0a",
+      "range": {
+        "startLine": 341,
+        "startChar": 0,
+        "endLine": 351,
+        "endChar": 116
+      },
+      "revId": "c2234ffae14e31247bf85b5d42b00c3fa5b408d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dcf9745_e0020a61",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx_private.h",
+        "patchSetId": 31
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-08T16:13:07Z",
+      "side": 1,
+      "message": "I do not believe these are proper doxygen documentation comments",
+      "parentUuid": "d4a7620c_d1842d51",
       "range": {
         "startLine": 341,
         "startChar": 0,
