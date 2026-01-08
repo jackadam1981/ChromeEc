@@ -22,6 +22,30 @@
       },
       "revId": "62cba4fc2b260b8540b61b7f266a00da5d0e0740",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a83dd78_4fd25412",
+        "filename": "zephyr/shim/core/riscv/mpu.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-08T22:59:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afaf3f4d_1aa0211c",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 2
+      },
+      "revId": "62cba4fc2b260b8540b61b7f266a00da5d0e0740",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
