@@ -16,6 +16,29 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "e789c8479a836229a6239a46f4d7cc82344b992f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0033c3c3_eac1a9df",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-08T20:59:38Z",
+      "side": 1,
+      "message": "For other boards, I think we handled the [conversion in the test](https://source.chromium.org/chromium/infra/infra_superproject/+/main:infra/go/src/infra/cros/recovery/internal/execs/cros/cros_fingerprint_execs.go;l\u003d77-84;drc\u003d48a3b47e3cc7db14c87730b586c93f6f4b8f8ec3).\n\nIf that\u0027s the only place we\u0027re relying on it to be a specific value then it\u0027s probably better to do the conversion in the test so that the name reported matches the [SoC name in Zephyr](https://docs.zephyrproject.org/latest/boards/google/quincy/doc/index.html).",
+      "range": {
+        "startLine": 381,
+        "startChar": 0,
+        "endLine": 387,
+        "endChar": 3
+      },
+      "revId": "e789c8479a836229a6239a46f4d7cc82344b992f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
