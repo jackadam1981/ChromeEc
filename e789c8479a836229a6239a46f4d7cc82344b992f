@@ -87,6 +87,30 @@
       },
       "revId": "e789c8479a836229a6239a46f4d7cc82344b992f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c1d9fcc_c477e56e",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-08T22:58:28Z",
+      "side": 1,
+      "message": "I think that code that I pointed to was just for recovery. There\u0027s an equivalent [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/go.chromium.org/tast-tests/cros/local/bundles/cros/biod/check_hwid.go;l\u003d55-61;drc\u003ddd842306a44e7a5c151cc495167ef2a54b615f99).\n\nUse codesearch to see if there are any other instances.",
+      "parentUuid": "fbb59032_ac547b16",
+      "range": {
+        "startLine": 381,
+        "startChar": 0,
+        "endLine": 387,
+        "endChar": 3
+      },
+      "revId": "e789c8479a836229a6239a46f4d7cc82344b992f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
