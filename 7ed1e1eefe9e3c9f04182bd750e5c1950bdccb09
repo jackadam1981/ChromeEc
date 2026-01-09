@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8995b73f_f1466f9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-01-09T19:12:24Z",
+      "side": 1,
+      "message": "The new tests are failing with the LLVM toolchain and are passing using the HOST toolchain.\n\n\n```\nSTART - test_page_setting\n\n    Assertion failed at CMAKE_SOURCE_DIR/rt3645/src/imvp.c:140: rt3645_imvp_test_page_setting: page_in equal to page_out\n\n FAIL - test_page_setting in 0.000 seconds\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nSTART - test_product_id\n PASS - test_product_id in 0.000 seconds\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nSTART - test_setting_page_regs\n\n    Assertion failed at CMAKE_SOURCE_DIR/rt3645/src/imvp.c:163: rt3645_imvp_test_setting_page_regs: rt3645_imvp_test_fill_page_regs( page_in, regs_in, RT3654_IMVP_TEST_SET_REGS_COUNT) is non-zero\n\n FAIL - test_setting_page_regs in 0.000 seconds\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nSTART - test_store_load_reg_0\n\n    Assertion failed at CMAKE_SOURCE_DIR/rt3645/src/imvp.c:254: rt3645_imvp_test_store_load_reg_0: rt3645_imvp_set_in_config_mode() is non-zero\n\n FAIL - test_store_load_reg_0 in 0.000 seconds\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nSTART - test_store_load_reg_1\n\n    Assertion failed at CMAKE_SOURCE_DIR/rt3645/src/imvp.c:274: rt3645_imvp_test_store_load_reg_1: rt3645_imvp_set_in_config_mode() is non-zero\n\n FAIL - test_store_load_reg_1 in 0.000 seconds\n```",
+      "revId": "7ed1e1eefe9e3c9f04182bd750e5c1950bdccb09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
