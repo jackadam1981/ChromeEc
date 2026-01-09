@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ca1a472_70bce32b",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-01-09T23:12:10Z",
+      "side": 1,
+      "message": "I\u0027m going to leave their formatting alone for now.",
+      "parentUuid": "eb8fc3bf_e27c5cd1",
+      "range": {
+        "startLine": 147,
+        "startChar": 30,
+        "endLine": 147,
+        "endChar": 32
+      },
+      "revId": "0ee4579797354167257b874d62ac721ffd9fd8b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "843f3c17_82db7e01",
@@ -37,6 +61,30 @@
       "writtenOn": "2026-01-09T22:48:09Z",
       "side": 1,
       "message": "this is the common \"nothing to see here, move on\" case.\nLOG_DBG seems appropriate here.",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 153,
+        "endChar": 9
+      },
+      "revId": "0ee4579797354167257b874d62ac721ffd9fd8b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "035cb40f_92af7f7a",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-01-09T23:12:10Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "843f3c17_82db7e01",
       "range": {
         "startLine": 153,
         "startChar": 2,
@@ -70,6 +118,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "027a0696_cf576cf1",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-01-09T23:12:10Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "5d605bca_5def8972",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 77
+      },
+      "revId": "0ee4579797354167257b874d62ac721ffd9fd8b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63f1fabb_fcaa9cfa",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-01-09T23:12:10Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "5d605bca_5def8972",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 77
+      },
+      "revId": "0ee4579797354167257b874d62ac721ffd9fd8b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46fd4075_c2341b6e",
@@ -83,6 +179,30 @@
       "writtenOn": "2026-01-09T22:45:45Z",
       "side": 1,
       "message": "I still think it\u0027s worthwhile to only allow this code to be called once.\n\nLooks like the DSP comms uses the \"event based\" callback with `ap_power_ev_init_callback()`.  The event based callbacks provide `ap_power_ev_remove_callback()`, but the power state entry/exit callbacks don\u0027t have a remove function.",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 33
+      },
+      "revId": "0ee4579797354167257b874d62ac721ffd9fd8b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cd91ae3_76a75d67",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-01-09T23:12:10Z",
+      "side": 1,
+      "message": "That makes sense but I don\u0027t want to change up the existing functionality right now",
+      "parentUuid": "46fd4075_c2341b6e",
       "range": {
         "startLine": 196,
         "startChar": 0,
@@ -116,6 +236,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fa47df5_52d111b1",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-01-09T23:12:10Z",
+      "side": 1,
+      "message": "I\u0027ll make this one debug level but leave the overall level at debug until this driver has seen more use.",
+      "parentUuid": "5456b265_419066c9",
+      "range": {
+        "startLine": 197,
+        "startChar": 2,
+        "endLine": 197,
+        "endChar": 9
+      },
+      "revId": "0ee4579797354167257b874d62ac721ffd9fd8b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d9141ae_764a47b0",
@@ -129,6 +273,30 @@
       "writtenOn": "2026-01-09T22:59:32Z",
       "side": 1,
       "message": "ugh, i thought i had the timing sorted out with\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7149623\n\nis there a DT property somewhere to describe \"slow\" devices?",
+      "range": {
+        "startLine": 199,
+        "startChar": 5,
+        "endLine": 199,
+        "endChar": 10
+      },
+      "revId": "0ee4579797354167257b874d62ac721ffd9fd8b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "650f77fe_0740a9ea",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-01-09T23:12:10Z",
+      "side": 1,
+      "message": "Ideally the PCA95xx driver init function would have a simple poll routine to check device readiness. IDK if this is caused by RVP power rails needing time to stabilize or if the PCA95xx has a brief internal startup delay.",
+      "parentUuid": "9d9141ae_764a47b0",
       "range": {
         "startLine": 199,
         "startChar": 5,
