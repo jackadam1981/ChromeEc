@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a830de08_fdd58b69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-01-09T16:52:54Z",
+      "side": 1,
+      "message": "You should also update zephyr_leds.md",
+      "revId": "777b776beb42b281c2ea4aa098c92c376f09253c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1263cf0c_60c5b098",
+        "filename": "zephyr/shim/src/led_driver/led_gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-01-09T16:52:54Z",
+      "side": 1,
+      "message": "These macros are duplicated between led_pwm.c and led_gpio.c.  Move to a shared header?",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 52
+      },
+      "revId": "777b776beb42b281c2ea4aa098c92c376f09253c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
