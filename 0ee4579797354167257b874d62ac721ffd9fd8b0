@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb8fc3bf_e27c5cd1",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2026-01-09T22:48:09Z",
+      "side": 1,
+      "message": "suggest hex output",
+      "range": {
+        "startLine": 147,
+        "startChar": 30,
+        "endLine": 147,
+        "endChar": 32
+      },
+      "revId": "0ee4579797354167257b874d62ac721ffd9fd8b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "843f3c17_82db7e01",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2026-01-09T22:48:09Z",
+      "side": 1,
+      "message": "this is the common \"nothing to see here, move on\" case.\nLOG_DBG seems appropriate here.",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 153,
+        "endChar": 9
+      },
+      "revId": "0ee4579797354167257b874d62ac721ffd9fd8b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5d605bca_5def8972",
         "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
         "patchSetId": 2
@@ -42,6 +88,29 @@
         "startChar": 0,
         "endLine": 196,
         "endChar": 33
+      },
+      "revId": "0ee4579797354167257b874d62ac721ffd9fd8b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5456b265_419066c9",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2026-01-09T22:48:09Z",
+      "side": 1,
+      "message": "do we want this console spam on every AP boot?\ni was kinda hoping we would be able to eventually\nset the default log level `LOG_LEVEL_INF` and avoid\nconsole spam for normal operations.",
+      "range": {
+        "startLine": 197,
+        "startChar": 2,
+        "endLine": 197,
+        "endChar": 9
       },
       "revId": "0ee4579797354167257b874d62ac721ffd9fd8b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
