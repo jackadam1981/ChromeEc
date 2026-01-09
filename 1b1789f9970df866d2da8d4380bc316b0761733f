@@ -16,6 +16,23 @@
       "message": "Reworked to support multiple maps as well, ended up putting all maps on child nodes and setting the first one at start manually, nothing to lose since the maps are in flash so the first one would have taken both flash and ram anyway. Had to do it because having the capability of resetting the original map makes some tests a bit more robust.",
       "revId": "1b1789f9970df866d2da8d4380bc316b0761733f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68a1db6f_9af782d2",
+        "filename": "zephyr/drivers/keyboard_input/Kconfig",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2026-01-09T20:36:03Z",
+      "side": 1,
+      "message": "should we include `KEYBOARD_` in these config names?",
+      "revId": "1b1789f9970df866d2da8d4380bc316b0761733f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
