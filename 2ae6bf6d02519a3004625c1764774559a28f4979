@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b099b7a6_10467964",
+        "filename": "zephyr/shim/core/riscv/mpu.c",
+        "patchSetId": 44
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-09T07:17:06Z",
+      "side": 1,
+      "message": "Why are we hardcoding `region_idx` to 0? Is there any way to find the rollback region index dynamically?",
+      "revId": "2ae6bf6d02519a3004625c1764774559a28f4979",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
