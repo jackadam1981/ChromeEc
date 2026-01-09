@@ -84,6 +84,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bd2e685a_66682a1b",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2026-01-09T22:56:01Z",
+      "side": 1,
+      "message": "In `config.h`, just\n```\n#undef CONFIG_USBC_PD3_SENDER_RESPONSE_OVERRIDE\n#undef CONFIG_USBC_PD3_T_SENDER_RESPONSE_MS\n```\n\nIn `zephyr/shim/include/config_chip.h`\n```\n#undef CONFIG_USBC_PD3_SENDER_RESPONSE_OVERRIDE\n#ifdef CONFIG_PLATFORM_EC_USBC_PD3_SENDER_RESPONSE_OVERRIDE\n#define CONFIG_USBC_PD3_SENDER_RESPONSE_OVERRIDE\n#endif\n```\nand similar for `CONFIG_USBC_PD3_SENDER_RESPONSE_MS`.\n\nThere are a lot of examples in that file. You\u0027ll get the idea.",
+      "parentUuid": "74527636_0b99ee10",
+      "range": {
+        "startLine": 276,
+        "startChar": 7,
+        "endLine": 276,
+        "endChar": 59
+      },
+      "revId": "3919299a27f07b9e2a9bc3f7c252c66bd94205f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eefcafd4_58c7a71d",
         "filename": "zephyr/Kconfig.pd",
         "patchSetId": 3
