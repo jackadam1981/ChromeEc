@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d605bca_5def8972",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-01-09T22:45:45Z",
+      "side": 1,
+      "message": "This macro would be useful upstream.",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 77
+      },
+      "revId": "0ee4579797354167257b874d62ac721ffd9fd8b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46fd4075_c2341b6e",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-01-09T22:45:45Z",
+      "side": 1,
+      "message": "I still think it\u0027s worthwhile to only allow this code to be called once.\n\nLooks like the DSP comms uses the \"event based\" callback with `ap_power_ev_init_callback()`.  The event based callbacks provide `ap_power_ev_remove_callback()`, but the power state entry/exit callbacks don\u0027t have a remove function.",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 33
+      },
+      "revId": "0ee4579797354167257b874d62ac721ffd9fd8b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

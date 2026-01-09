@@ -39,6 +39,30 @@
       },
       "revId": "4df7e9d0a866f7f6297f0f43d99921624487974b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e8c9ee6_bee4c1ac",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-01-09T22:45:45Z",
+      "side": 1,
+      "message": "If the board is **not** using deferred initialization and the board has an initialization order problem, this code will manually trigger the device init.\n\nThe [kernel](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/kernel/init.c;l\u003d243;drc\u003d954e29ed38a42fb5f4ff00c3845162c0ab5afb35) will also attempt initialization because it doesn\u0027t check the `initialized` flag.\n\nYou could check `dev-\u003eflags \u0026 DEVICE_FLAG_INIT_DEFERRED` as well.  If the flag is clear and the device isn\u0027t ready, generate an ASSERT.",
+      "parentUuid": "93e401ac_cf996e78",
+      "range": {
+        "startLine": 302,
+        "startChar": 0,
+        "endLine": 302,
+        "endChar": 28
+      },
+      "revId": "4df7e9d0a866f7f6297f0f43d99921624487974b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
