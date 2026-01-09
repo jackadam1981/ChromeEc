@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a02e354_9f32b5fa",
+        "filename": "zephyr/drivers/cros_flash/Kconfig",
+        "patchSetId": 8
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-09T06:55:52Z",
+      "side": 1,
+      "message": "This is not 100% correct. The flash size depends on a flash chip connected to SOC. It can be different for different SOCs from `SOC_SERIES_FT90` family. Just drop the comment.",
+      "revId": "6062c4ee3e45363de5ea8d3a716f9d580f163077",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

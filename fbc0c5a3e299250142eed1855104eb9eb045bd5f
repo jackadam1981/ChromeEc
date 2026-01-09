@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d0d4390f_c16b36dc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-09T06:55:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "521b9b39_ba169d1f",
+      "range": {
+        "startLine": 10,
+        "startChar": 13,
+        "endLine": 10,
+        "endChar": 21
+      },
+      "revId": "fbc0c5a3e299250142eed1855104eb9eb045bd5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c755d26a_7c07173c",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 7
@@ -112,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd6c3ad4_e0a7c0ba",
+        "filename": "zephyr/drivers/cros_flash/Kconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-09T06:55:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb0e1c28_38bd10c0",
+      "range": {
+        "startLine": 182,
+        "startChar": 48,
+        "endLine": 182,
+        "endChar": 56
+      },
+      "revId": "fbc0c5a3e299250142eed1855104eb9eb045bd5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2dcc99ef_92d7ef32",
@@ -143,6 +191,24 @@
       "side": 1,
       "message": "OK, modified this.",
       "parentUuid": "2dcc99ef_92d7ef32",
+      "revId": "fbc0c5a3e299250142eed1855104eb9eb045bd5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d72b612d_3eea6007",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_ft.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-09T06:55:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f8d1c9f_4a8e8129",
       "revId": "fbc0c5a3e299250142eed1855104eb9eb045bd5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
