@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f199167d_9a1a7e1a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2026-01-09T18:23:24Z",
+      "side": 1,
+      "message": "Reworked to support multiple maps as well, ended up putting all maps on child nodes and setting the first one at start manually, nothing to lose since the maps are in flash so the first one would have taken both flash and ram anyway. Had to do it because having the capability of resetting the original map makes some tests a bit more robust.",
+      "revId": "1b1789f9970df866d2da8d4380bc316b0761733f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
