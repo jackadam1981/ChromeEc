@@ -16,6 +16,24 @@
       "message": "You can delete this todo. It was already obsolete, in that the referenced bug is closed. But also, I think this was copied from the brya reference board file, and xol empirically has different delays.",
       "revId": "7d465ea9ff1248f4a5ed4fba2fd58795b4ada020",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce76a87b_e7315a98",
+        "filename": "board/xol/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2026-01-09T23:06:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd593803_273136ca",
+      "revId": "7d465ea9ff1248f4a5ed4fba2fd58795b4ada020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
