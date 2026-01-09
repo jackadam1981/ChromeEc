@@ -16,6 +16,24 @@
       "message": "Why are we hardcoding `region_idx` to 0? Is there any way to find the rollback region index dynamically?",
       "revId": "2ae6bf6d02519a3004625c1764774559a28f4979",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13bf04be_787f89f1",
+        "filename": "zephyr/shim/core/riscv/mpu.c",
+        "patchSetId": 44
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-09T14:35:54Z",
+      "side": 1,
+      "message": "theoretically we can. This is the only region for the mem-attr. In case we have more in the future, we can do dynamic search.",
+      "parentUuid": "b099b7a6_10467964",
+      "revId": "2ae6bf6d02519a3004625c1764774559a28f4979",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
