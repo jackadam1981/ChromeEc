@@ -34,6 +34,24 @@
       "parentUuid": "b099b7a6_10467964",
       "revId": "2ae6bf6d02519a3004625c1764774559a28f4979",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9ade0a9_a31a415b",
+        "filename": "zephyr/shim/core/riscv/mpu.c",
+        "patchSetId": 44
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-09T15:08:44Z",
+      "side": 1,
+      "message": "You are assuming how many region are present only for sanok project. The MPU code doesn\u0027t know that. Please at least add a build assert to make sure there is only one ` mem-attr` region in dts.",
+      "parentUuid": "13bf04be_787f89f1",
+      "revId": "2ae6bf6d02519a3004625c1764774559a28f4979",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
