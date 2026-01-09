@@ -114,6 +114,29 @@
       },
       "revId": "0ee4579797354167257b874d62ac721ffd9fd8b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d9141ae_764a47b0",
+        "filename": "zephyr/drivers/board_id/board_id_intel_rvp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2026-01-09T22:59:32Z",
+      "side": 1,
+      "message": "ugh, i thought i had the timing sorted out with\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7149623\n\nis there a DT property somewhere to describe \"slow\" devices?",
+      "range": {
+        "startLine": 199,
+        "startChar": 5,
+        "endLine": 199,
+        "endChar": 10
+      },
+      "revId": "0ee4579797354167257b874d62ac721ffd9fd8b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
