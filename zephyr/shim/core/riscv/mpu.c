@@ -5,7 +5,13 @@
 #include "hooks.h"
 #include "system.h"
 
+#include <assert.h>
+#include <errno.h>
+#include <string.h>
+
 #include <zephyr/arch/riscv/pmp.h>
+#include <zephyr/devicetree.h>
+#include <zephyr/mem_mgmt/mem_attr.h>
 
 static void prepare_for_sysjump_to_ec(void)
 {
@@ -21,13 +27,23 @@ static void prepare_for_sysjump_to_ec(void)
 DECLARE_HOOK(HOOK_SYSJUMP, prepare_for_sysjump_to_ec, HOOK_PRIO_LAST);
 
 #if defined(CONFIG_PLATFORM_EC_ROLLBACK_MPU_PROTECT)
+
+#define ROLLBACK_NODE DT_NODELABEL(rollback)
+
+BUILD_ASSERT(DT_NODE_EXISTS(ROLLBACK_NODE),
+	     "The 'rollback' node label is not defined in the Devicetree.");
+
 int mpu_lock_rollback(int lock)
 {
-	const int region_idx = 0;
+	const char *rollback_node_name = DT_NODE_FULL_NAME(ROLLBACK_NODE);
+	int rollback_region_idx =
+		mem_attr_get_region_index_by_name(rollback_node_name);
+
 	if (lock) {
-		z_riscv_pmp_change_permissions(region_idx, 0);
+		return z_riscv_pmp_change_permissions(rollback_region_idx, 0);
 	} else {
-		z_riscv_pmp_change_permissions(region_idx, PMP_R | PMP_W);
+		return z_riscv_pmp_change_permissions(rollback_region_idx,
+						      PMP_R | PMP_W);
 	}
 	return 0;
 }
