@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "74527636_0b99ee10",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 4253897
+      },
+      "writtenOn": "2026-01-09T09:38:37Z",
+      "side": 1,
+      "message": "#undef CONFIG_PLATFORM_EC_USBC_PD3_SENDER_RESPONSE_OVERRIDE\\\n\n#ifdef CONFIG_PLATFORM_EC_USBC_PD3_SENDER_RESPONSE_OVERRIDE\n#define CONFIG_PLATFORM_EC_USBC_PD3_T_SENDER_RESPONSE_MS\n#endif\n\nIs this how it should appear in include/config.h?",
+      "parentUuid": "04176e4f_d9e5a1bd",
+      "range": {
+        "startLine": 276,
+        "startChar": 7,
+        "endLine": 276,
+        "endChar": 59
+      },
+      "revId": "3919299a27f07b9e2a9bc3f7c252c66bd94205f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eefcafd4_58c7a71d",
         "filename": "zephyr/Kconfig.pd",
         "patchSetId": 3
