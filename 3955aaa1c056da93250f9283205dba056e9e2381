@@ -33,6 +33,24 @@
       "message": "Could we start with 2000?\n(long story short: if watchdog timer is locked for some reason it might collide with 2100-500\u003d1600ms Pre-watchdog interrupt, so the increment should be less than 500ms)",
       "revId": "3955aaa1c056da93250f9283205dba056e9e2381",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8988a5b1_9d55fd02",
+        "filename": "zephyr/program/skyrim/program.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2026-01-09T22:21:33Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "2f55da17_428db073",
+      "revId": "3955aaa1c056da93250f9283205dba056e9e2381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
