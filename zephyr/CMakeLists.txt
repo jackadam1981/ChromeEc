@@ -101,6 +101,7 @@ if (DEFINED CONFIG_ARM)
 endif()
 zephyr_cc_option(-Wimplicit-fallthrough)
 zephyr_cc_option(-Wint-conversion)
+zephyr_cc_option(-Werror=lto-type-mismatch)
 
 if (DEFINED CONFIG_RISCV)
   zephyr_cc_option(-fsanitize=integer-divide-by-zero)
