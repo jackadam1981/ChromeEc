@@ -1794,7 +1794,7 @@ enum ec_status host_command_reboot(struct host_cmd_handler_args *args)
 	    p.cmd == EC_REBOOT_COLD || p.cmd == EC_REBOOT_HIBERNATE ||
 	    p.cmd == EC_REBOOT_COLD_AP_OFF) {
 		/* Clean busy bits on host for commands that won't return */
-#ifndef CONFIG_EC_HOST_CMD
+#ifndef CONFIG_ZEPHYR
 		args->result = EC_RES_SUCCESS;
 		host_send_response(args);
 #else
@@ -1834,7 +1834,7 @@ host_command_bootloader(struct host_cmd_handler_args *args)
 	 * We trust bootloader by definition and system is unlocked,
 	 * so no need to clear secrets.
 	 */
-#ifndef CONFIG_EC_HOST_CMD
+#ifndef CONFIG_ZEPHYR
 	args->result = EC_RES_SUCCESS;
 	host_send_response(args);
 #else

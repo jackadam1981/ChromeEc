@@ -56,22 +56,4 @@ static void install_power_change_handler(void)
 /* Call hook after chipset sets initial power state */
 DECLARE_HOOK(HOOK_INIT, install_power_change_handler, HOOK_PRIO_POST_CHIPSET);
 
-#ifndef CONFIG_EC_HOST_CMD
-/* Get protocol information */
-enum ec_status spi_get_protocol_info(struct host_cmd_handler_args *args)
-{
-	struct ec_response_get_protocol_info *r = args->response;
 
-	memset(r, 0, sizeof(*r));
-	r->protocol_versions = BIT(3);
-	r->max_request_packet_size = SPI_MAX_REQUEST_SIZE;
-	r->max_response_packet_size = SPI_MAX_RESPONSE_SIZE;
-	r->flags = EC_PROTOCOL_INFO_IN_PROGRESS_SUPPORTED;
-
-	args->response_size = sizeof(*r);
-
-	return EC_SUCCESS;
-}
-DECLARE_HOST_COMMAND(EC_CMD_GET_PROTOCOL_INFO, spi_get_protocol_info,
-		     EC_VER_MASK(0));
-#endif /* !#ifdef CONFIG_EC_HOST_CMD */
