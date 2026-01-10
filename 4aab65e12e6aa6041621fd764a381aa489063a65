@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6db4881_5c295c7a",
+        "filename": "zephyr/program/corsola/ite_interrupts.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-10T01:22:54Z",
+      "side": 0,
+      "message": "Need to double-check these `corsola` changes.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 4
+      },
+      "revId": "4aab65e12e6aa6041621fd764a381aa489063a65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "395df12a_408af96f",
+        "filename": "zephyr/program/geralt/interrupts.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-10T01:22:54Z",
+      "side": 0,
+      "message": "Need to double-check these `geralt` changes",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 4
+      },
+      "revId": "4aab65e12e6aa6041621fd764a381aa489063a65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
