@@ -69,6 +69,12 @@
 	pinctrl-names = "default";
 };
 
+/ {
+	chosen {
+		zephyr,host-cmd-espi-backend = &espi0;
+	};
+};
+
 /* Enable hardware acceleration */
 &sha0 {
 	status = "okay";
