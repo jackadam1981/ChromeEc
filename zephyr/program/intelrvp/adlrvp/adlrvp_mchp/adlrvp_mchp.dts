@@ -4,6 +4,10 @@
  */
 
 / {
+	chosen {
+		zephyr,host-cmd-espi-backend = &espi0;
+	};
+
 	hibernate-wake-pins {
 		compatible = "cros-ec,hibernate-wake-pins";
 		wakeup-irqs = <

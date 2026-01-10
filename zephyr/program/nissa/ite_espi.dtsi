@@ -3,6 +3,12 @@
  * found in the LICENSE file.
  */
 
+/ {
+	chosen {
+		zephyr,host-cmd-espi-backend = &espi0;
+	};
+};
+
 &espi0 {
 	status = "okay";
 };

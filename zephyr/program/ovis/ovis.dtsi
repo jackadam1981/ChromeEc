@@ -41,6 +41,12 @@
 	pinctrl-names = "default";
 };
 
+/ {
+	chosen {
+		zephyr,host-cmd-espi-backend = &espi0;
+	};
+};
+
 /* Power switch logic input pads */
 &psl_in1_gpd2 {
 	/* LID_OPEN */

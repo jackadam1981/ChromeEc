@@ -173,6 +173,19 @@
 	};
 };
 
+/* host interface */
+&espi0 {
+	status = "okay";
+	pinctrl-0 = <&espi_lpc_gp46_47_51_52_53_54_55_57>;
+	pinctrl-names = "default";
+};
+
+/ {
+	chosen {
+		zephyr,host-cmd-espi-backend = &espi0;
+	};
+};
+
 /* i2c overrides */
 &i2c0_0 {
 	/delete-node/ nx20p348x@71;
