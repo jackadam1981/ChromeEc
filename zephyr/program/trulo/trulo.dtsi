@@ -67,6 +67,12 @@ gpio_ec_pch_wake_odl: &gpio_ec_soc_wake_odl {
 	pinctrl-names = "default";
 };
 
+/ {
+	chosen {
+		zephyr,host-cmd-espi-backend = &espi0;
+	};
+};
+
 &sha0 {
 	status = "okay";
 };
