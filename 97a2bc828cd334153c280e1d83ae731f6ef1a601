@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0701e2ac_25f87f5c",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-11T17:44:52Z",
+      "side": 1,
+      "message": "`elan_spi_transaction(regdata, 2, regdata, 2);` reuses `regdata`. Please add a comment to clarify that the first byte of `regdata` is the register to read (`SENSOR_STATUS`), and the received status overwrites the buffer content.",
+      "range": {
+        "startLine": 312,
+        "startChar": 3,
+        "endLine": 312,
+        "endChar": 23
+      },
+      "revId": "97a2bc828cd334153c280e1d83ae731f6ef1a601",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8268338_49bb3903",
+        "filename": "zephyr/dts/bindings/fingerprint/elan.elani80sa.yaml",
+        "patchSetId": 39
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-11T17:44:52Z",
+      "side": 1,
+      "message": "let us be more specific here:\n\n`Base address for sensor firmware in internal flash`??",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 45
+      },
+      "revId": "97a2bc828cd334153c280e1d83ae731f6ef1a601",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46004c30_e869ecf0",
+        "filename": "zephyr/dts/bindings/fingerprint/elan.elani80sa.yaml",
+        "patchSetId": 39
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-11T17:44:52Z",
+      "side": 1,
+      "message": "expand ft\n\nlet us be more descriptive here: is this `Address of the Factory Test information in internal flash`?",
+      "range": {
+        "startLine": 32,
+        "startChar": 6,
+        "endLine": 32,
+        "endChar": 8
+      },
+      "revId": "97a2bc828cd334153c280e1d83ae731f6ef1a601",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
