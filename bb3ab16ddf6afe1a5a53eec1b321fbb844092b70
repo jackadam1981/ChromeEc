@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d4abb89_e9cd0011",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2026-01-12T22:17:31Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Spellchecker: \"propertly\" is a possible misspelling of \"properly\" or \"property\".\n\nTo bypass Sp...\n\n\"propertly\" is a possible misspelling of \"properly\" or \"property\".\n\nTo bypass Spellchecker, add a footer with DISABLE_SPELLCHECKER",
+      "range": {
+        "startLine": 9,
+        "startChar": 23,
+        "endLine": 9,
+        "endChar": 32
+      },
+      "revId": "bb3ab16ddf6afe1a5a53eec1b321fbb844092b70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
