@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5fb87c37_651de018",
+        "filename": "zephyr/shim/core/riscv/mpu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-12T07:58:02Z",
+      "side": 1,
+      "message": "Please add build assert to make sure the rollback node is defined.",
+      "revId": "560213abcaa66ab8cfd9f7eab683813744526085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c79b310a_54a7aa62",
         "filename": "zephyr/shim/core/riscv/mpu.c",
         "patchSetId": 2
@@ -84,6 +101,30 @@
       "side": 1,
       "message": "created this PR: https://github.com/zephyrproject-rtos/zephyr/pull/102052",
       "parentUuid": "1e1441ae_58dccdb5",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 1
+      },
+      "revId": "560213abcaa66ab8cfd9f7eab683813744526085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77d7160e_9d8d4506",
+        "filename": "zephyr/shim/core/riscv/mpu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-12T07:58:02Z",
+      "side": 1,
+      "message": "Great, thanks.",
+      "parentUuid": "6e5d6e52_de1fdd4d",
       "range": {
         "startLine": 38,
         "startChar": 0,
