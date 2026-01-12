@@ -16,6 +16,24 @@
       "message": "Why is this specific to coverage?",
       "revId": "1d826258bc0b1386d4428366a21e0e4f0576ad17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "086ea8cc_7829bc58",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-01-12T23:14:57Z",
+      "side": 1,
+      "message": "We only need to run this once, so it is only run when **not** in code coverage mode.",
+      "parentUuid": "f0cc995e_8b988478",
+      "revId": "1d826258bc0b1386d4428366a21e0e4f0576ad17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
