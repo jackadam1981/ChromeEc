@@ -4,6 +4,7 @@
 
 config PLATFORM_EC_ROLLBACK
 	bool "Rollback support"
+	depends on !RISCV || MEM_ATTR
 	help
 	  Enable rollback support. Rollback mechanism is used to manage minimal
 	  version of RW firmware that can be booted (to block downgrade attacks
