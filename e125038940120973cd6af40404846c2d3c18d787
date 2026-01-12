@@ -22,6 +22,30 @@
       },
       "revId": "e125038940120973cd6af40404846c2d3c18d787",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d869de67_ba906535",
+        "filename": "zephyr/Kconfig.rollback",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-12T17:44:40Z",
+      "side": 1,
+      "message": "this syntax does not work. I tried it at the beginning.\n\n```\n/mnt/host/source/src/third_party/zephyr/main/scripts/kconfig/kconfig.py: /mnt/host/source/src/platform/ec/zephyr/Kconfig.rollback:7: error: couldn\u0027t parse \u0027depends on MEM_ATTR if RISCV_PMP\u0027: extra tokens at end of line\n```\n\n```\nThe Kconfig parser does not support the depends on X if Y shorthand. It interprets if Y as \"extra tokens\" that don\u0027t belong on a dependency line.\n```",
+      "parentUuid": "3b5d9287_6d89c3b0",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 0
+      },
+      "revId": "e125038940120973cd6af40404846c2d3c18d787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
