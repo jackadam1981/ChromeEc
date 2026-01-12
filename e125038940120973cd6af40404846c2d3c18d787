@@ -70,6 +70,30 @@
       },
       "revId": "e125038940120973cd6af40404846c2d3c18d787",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "659cfb10_53db1a55",
+        "filename": "zephyr/Kconfig.rollback",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-12T17:57:53Z",
+      "side": 1,
+      "message": "I can use this. This will enable MEM_ATTR by default on sanok so I do not need to explicitly enable it.",
+      "parentUuid": "4132f6c9_633ad680",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 0
+      },
+      "revId": "e125038940120973cd6af40404846c2d3c18d787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
