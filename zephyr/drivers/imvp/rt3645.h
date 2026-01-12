@@ -12,15 +12,18 @@
 #define NVM_STAT_REG 0xEC
 #define NVM_RELOAD_STAT_BIT 0x7
 #define NVM_PRGRM_FINISH_STAT_BIT 0x6
-#define NVM_STAT 0x0
+#define NVM_STAT_BITS 0x0
 
 #define NVM_PRGRM_CTRL_REG 0xED
 #define NVM_PRGRM_DAT 0xAA
 #define NVM_RESTORE_DAT 0x66
 
 #define CONFIG_MODE_REG 0xF1
+#define LOCK_CODE1 0x00
+#define LOCK_CODE2 0xFF
 
 #define PRODUCT_ID_REG 0xFE
+#define PRODUCT_ID 0x45
 
 #define ICC_MAX_REG 0x00
 #define ICC_MAX_RAILA_VAL 0x32
@@ -87,6 +90,63 @@
 
 #define PAGE_SET_REG 0xEF
 #define CRC_REG 0x13
+
+/*
+ * Pages between 1 to 9 also exists, other than global page, which are
+ * not exposed in datasheet by vendor. Based on request, such pages may
+ * also need update.
+ */
+enum rt3645_page {
+	RT3645_PAGE_GLOBAL = 0x0,
+	RT3645_PAGE_5 = 0x05,
+	RT3645_PAGE_9 = 0x09,
+	RT3645_PAGE_A,
+	RT3645_PAGE_B,
+	RT3645_PAGE_C,
+	RT3645_PAGE_D,
+	RT3645_PAGE_LIMIT
+};
+
+/*
+ * Each page can have a maximum of 20 registers.
+ */
+enum rt3645_page_reg {
+	REG_00,
+	REG_01,
+	REG_02,
+	REG_03,
+	REG_04,
+	REG_05,
+	REG_06,
+	REG_07,
+	REG_08,
+	REG_09,
+	REG_0A,
+	REG_0B,
+	REG_0C,
+	REG_0D,
+	REG_0E,
+	REG_0F,
+	REG_10,
+	REG_11,
+	REG_12,
+	REG_13,
+	REG_LIMIT
+};
+
+struct rt3645_info {
+	uint8_t page;
+	uint8_t reg;
+	uint8_t val;
+};
+
+/* External data from board specific file */
+extern const struct rt3645_info update_data[];
+extern const size_t update_data_size;
+extern const int crc;
+
+/* Function to apply update data */
+//static int rt3645_apply_update_data(const struct device *dev);
 
 int rt3645_read_reg(const struct device *dev, uint8_t reg, uint8_t *val);
 
