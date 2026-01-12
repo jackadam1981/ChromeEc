@@ -7,11 +7,16 @@
 #include "rt3645.h"
 #include "console.h"
 
+#ifdef CONFIG_AP_PWRSEQ_DRIVER
+#include <ap_power/ap_pwrseq_sm.h>
+#endif
+
 #include <ctype.h>
 #include <stdlib.h>
 
 #include <zephyr/drivers/i2c.h>
 #include <zephyr/shell/shell.h>
+#include <zephyr/logging/log.h>
 
 #define DT_DRV_COMPAT richtek_rt3645
 
@@ -46,12 +51,29 @@ static const struct rt3645_config_t config0 = {
 	.enable_gpio = GPIO_DT_SPEC_GET(DT_NODELABEL(pwr_en_pp3300_a), gpios),
 };
 
+#ifdef CONFIG_IMVP_FACT_UPDATE
+static void imvp_init_cb(const struct device *dev,
+				const enum ap_pwrseq_state entry,
+				const enum ap_pwrseq_state exit);
+#endif
+
 static int rt3645_update(const struct device *dev);
 
 static int rt3645_init(const struct device *dev)
 {
 	config = dev->config;
 
+#ifdef CONFIG_AP_PWRSEQ_DRIVER
+#ifdef CONFIG_IMVP_FACT_UPDATE
+	static struct ap_pwrseq_state_callback ap_pwrseq_imvp_cb;
+	const struct device *ap_pwrseq_dev = ap_pwrseq_get_instance();
+
+	ap_pwrseq_imvp_cb.cb = imvp_init_cb;
+	ap_pwrseq_imvp_cb.states_bit_mask = BIT(AP_POWER_STATE_G3);
+	ap_pwrseq_register_state_exit_callback(ap_pwrseq_dev,
+						&ap_pwrseq_imvp_cb);
+#endif
+#endif
 	return 0;
 }
 
@@ -84,7 +106,7 @@ static int rt3645_apply_update_data(const struct device *dev)
 
 		/* Write the register value */
 		rv = rt3645_write_reg(dev, update_data[i].reg, update_data[i].val);
-		ccprintf("page:0x%x Reg:0x%x Data:0x%x \n", update_data[i].page,
+		LOG_INF("page:0x%x Reg:0x%x Data:0x%x \n", update_data[i].page,
 							update_data[i].reg,
 							update_data[i].val);
 
@@ -105,11 +127,11 @@ static int rt3645_crc_check(const struct device *dev)
 	rt3645_read_reg(dev, REG_13, &crc_val);
 
 	if (crc_val == crc) {
-		ccprintf("Good CRC.\n");
+		LOG_INF("Good CRC.\n");
 		return EC_SUCCESS;
 	}
 
-	ccprintf("CRC not matching!\n");
+	LOG_ERR("CRC not matching!\n");
 	return -EINVAL;
 }
 
@@ -124,7 +146,7 @@ static int rt3645_lock_nvm(const struct device *dev)
 
 	rv = rt3645_write_reg(dev, CONFIG_MODE_REG, LOCK_CODE2);
 
-	ccprints("NVM Locked! \n");
+	LOG_INF("NVM Locked! \n");
 	return rv;
 }
 
@@ -144,12 +166,12 @@ static int rt3645_nvm_program_status(const struct device *dev, int stat_bit)
 
 		if (stat_bit == NVM_STAT_BITS) {
 			if (status_reg == 0xE0) {
-				ccprintf("Match to NVM_STAT \n");
+				LOG_INF("Match to NVM_STAT \n");
 				return EC_SUCCESS;
 			}
 		} else {
 			if ((status_reg >> stat_bit) & 0x1 ) {
-				ccprintf("NVM_Reload/Programming Done \n");
+				LOG_INF("NVM_Reload/Programming Done \n");
 				return EC_SUCCESS;
 			}
 		}
@@ -176,7 +198,7 @@ static int rt3645_update(const struct device *dev)
 
 		/* Print Config Values */
 		for(int i=0;i<len;i++)
-		ccprints("Config_sequence - 0x%x ",config_seq[i]);
+		LOG_INF("Config_sequence - 0x%x ",config_seq[i]);
 
 		rt3645_set_cfg_mode(dev,config_seq,len);
 
@@ -185,7 +207,7 @@ static int rt3645_update(const struct device *dev)
 
 		//Read ID
 		rv = rt3645_read_reg(dev, PRODUCT_ID_REG, &reg_val);
-		ccprints("\n Product id Read - %d \n",reg_val);
+		LOG_INF("\n Product id Read - %d \n",reg_val);
 
 		if (reg_val != PRODUCT_ID ) {
 			rv = 1;
@@ -197,7 +219,7 @@ static int rt3645_update(const struct device *dev)
 
 
 		if (rt3645_crc_check(dev) == EC_SUCCESS)
-			ccprints(" CRC Match. Imvp already updated");
+			LOG_INF(" CRC Match. Imvp already updated");
 		else {
 
 			rv = rt3645_apply_update_data(dev);
@@ -229,6 +251,33 @@ static int rt3645_update(const struct device *dev)
 	}
 	return rv;
 }
+
+#ifdef CONFIG_AP_PWRSEQ_DRIVER
+#ifdef CONFIG_IMVP_FACT_UPDATE
+static void imvp_init_cb(const struct device *dev,
+                                     const enum ap_pwrseq_state entry,
+                                     const enum ap_pwrseq_state exit)
+{
+	int ret;
+
+	if (entry == AP_POWER_STATE_S5) {
+
+		if (config->enable_gpio.port != NULL) {
+
+			gpio_pin_configure_dt(&config->enable_gpio, GPIO_OUTPUT);
+			gpio_pin_set_dt(&config->enable_gpio, 1);
+
+			LOG_INF("IMVP Update to start... \n");
+			ret = rt3645_update(rt3645_dev);
+			if (!ret)
+				LOG_INF("IMVP Update Done!NVM Locked! \n");
+			else
+				LOG_ERR("IMVP update Failed! \n");
+		}
+	}
+}
+#endif
+#endif
 
 int rt3645_read_reg(const struct device *dev, uint8_t reg, uint8_t *val)
 {
@@ -469,7 +518,7 @@ static int command_imvp_update(int argc, const char **argv)
 
 	chipset_force_shutdown(CHIPSET_SHUTDOWN_G3);
 
-	ccprints("System shutting_down for IMVP update \n");
+	LOG_INF("System shutting_down for IMVP update \n");
 
 	// Reasonable delay for system to shutdown
 	k_msleep(100);
@@ -487,13 +536,13 @@ static int command_imvp_update(int argc, const char **argv)
 
 			/* Start Updation */
 			if (!rt3645_update(rt3645_dev))
-				ccprints("IMVP Update Success! \n");
+				LOG_INF("IMVP Update Success! \n");
 			else
-				ccprints("IMVP update Failed! \n");
+				LOG_ERR("IMVP update Failed! \n");
 			}
 
 		gpio_pin_set_dt(&config->enable_gpio, 0);
-		ccprints("Press powerbtn/Command to boot system \n");
+		LOG_INF("Press powerbtn/Command to boot system \n");
 	}
 
 	return EC_SUCCESS;
