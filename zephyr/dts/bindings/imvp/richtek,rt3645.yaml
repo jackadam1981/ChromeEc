@@ -2,8 +2,14 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-description: Richtek IMVP chip
+description: Richtek RT3645 IMVP chip
 
 include: i2c-device.yaml
 
 compatible: "richtek,rt3645"
+
+properties:
+        enable-gpio:
+                type: phandle
+                description: |
+                        GPIO used to control power supply enable for the RT3645
