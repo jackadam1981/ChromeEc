@@ -34,6 +34,24 @@
       "parentUuid": "6c66fdfd_f1b3df8a",
       "revId": "859291efbe534c5194d08e2d2414e2803b15f7bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c99b29c_d0cc858f",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2026-01-12T19:23:39Z",
+      "side": 1,
+      "message": "Wait. The `led_policy.py` script is updated for the \"true\" multi-instance support. This CL (instant transitions) doesn\u0027t need the update.",
+      "parentUuid": "3b8bbfa8_47d700a7",
+      "revId": "859291efbe534c5194d08e2d2414e2803b15f7bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
