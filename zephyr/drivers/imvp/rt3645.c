@@ -28,7 +28,7 @@ BUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(DT_DRV_COMPAT) == 1,
 	     "only one 'richtek,rt3645' compatible node may be present");
 
 /* Unlock Configuration must be changed to as recieved from vendor */
-uint8_t config_seq[]= {0xFF, 0xFF, 0xFF};
+uint8_t config_seq[]= {0xFF, 0xFF,0};
 
 struct rt3645_data_t {
 	uint8_t cur_page;
