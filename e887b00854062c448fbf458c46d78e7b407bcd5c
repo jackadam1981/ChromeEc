@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56186be1_41f4ead9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2026-01-12T18:17:58Z",
+      "side": 1,
+      "message": "Hey Vincent, fyi I\u0027m landing a commit to convert all of these to be devicetree based: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7368308, this is going to clash with that and has to be redone on the new file, it\u0027s a similar format just on a dt array rather than the c file, the new one is `zephyr/program/fatcat/ruby/keyboard.dtsi`.\n\nApologies for the extra work, just a bit of bad timing on this one.",
+      "revId": "e887b00854062c448fbf458c46d78e7b407bcd5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
