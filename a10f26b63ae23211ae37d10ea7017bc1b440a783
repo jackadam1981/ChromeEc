@@ -16,6 +16,24 @@
       "message": "Did we lose the SET required here?",
       "revId": "a10f26b63ae23211ae37d10ea7017bc1b440a783",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "369d1ca1_c334cd29",
+        "filename": "common/strongbox.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2526,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2026-01-12T21:08:54Z",
+      "side": 0,
+      "message": "you mean for defaults (default_subject)? yes, there Name is just AttributeTypeAndValue, in this case SEQUENCE { OBJECT IDENTIFIER (for CN), PrintableString }, not a SET of those. not sure if it is per spec, which requires a DistinguishedName here (https://www.rfc-editor.org/rfc/rfc3739.html#section-3.1.2), but it was copied from an existing example, and seems to be accepted by openssl x509 parsing and by RKP. Let\u0027s change the defaults to be the set if necessary.",
+      "parentUuid": "3b4da59f_71311993",
+      "revId": "a10f26b63ae23211ae37d10ea7017bc1b440a783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
