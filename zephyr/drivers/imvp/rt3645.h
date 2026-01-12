@@ -12,15 +12,18 @@
 #define NVM_STAT_REG 0xEC
 #define NVM_RELOAD_STAT_BIT 0x7
 #define NVM_PRGRM_FINISH_STAT_BIT 0x6
-#define NVM_STAT 0x0
+#define NVM_STAT_BITS 0x0
 
 #define NVM_PRGRM_CTRL_REG 0xED
 #define NVM_PRGRM_DAT 0xAA
 #define NVM_RESTORE_DAT 0x66
 
 #define CONFIG_MODE_REG 0xF1
+#define LOCK_CODE1 0x00
+#define LOCK_CODE2 0xFF
 
 #define PRODUCT_ID_REG 0xFE
+#define PRODUCT_ID 0x45
 
 #define ICC_MAX_REG 0x00
 #define ICC_MAX_RAILA_VAL 0x32
@@ -59,6 +62,8 @@
 #define DVID_ENHANCE_SPM_EN_RAILC_VAL 0x03
 #define DVID_ENHANCE_SPM_EN_RAILD_VAL 0xED
 
+#define AR_TH_REG 0x0B
+
 #define DEM_SHRINK_TON_REG 0x0C
 #define DEM_SHRINK_TON_PAGE5_VAL 0xC1
 #define DEM_SHRINK_TON_RAILC_VAL 0x11
@@ -87,6 +92,28 @@
 
 #define PAGE_SET_REG 0xEF
 #define CRC_REG 0x13
+
+/*
+ * Pages between 1 to 9 also exists, other than global page, which are
+ * not exposed in datasheet by vendor. Based on request, such pages may
+ * also need update.
+ */
+enum rt3645_page {
+	RT3645_PAGE_GLOBAL = 0x0,
+	RT3645_PAGE_5 = 0x05,
+	RT3645_PAGE_9 = 0x09,
+	RT3645_PAGE_A,
+	RT3645_PAGE_B,
+	RT3645_PAGE_C,
+	RT3645_PAGE_D,
+	RT3645_PAGE_LIMIT
+};
+
+struct rt3645_info {
+	uint8_t page;
+	uint8_t reg;
+	uint8_t val;
+};
 
 int rt3645_read_reg(const struct device *dev, uint8_t reg, uint8_t *val);
 
