@@ -1839,6 +1839,9 @@ def main():
         platform, board_config, args.tests, args.with_private, args.zephyr
     )
     logging.debug("Running tests: %s", [test.config_name for test in test_list])
+    # Create the config dir first before starting the threads, otherwise 2
+    # jobs might try to create it at the same time, and fail.
+    os.makedirs(Path.home() / ".config" / "renode", exist_ok=True)
 
     with ThreadPoolExecutor(max_workers=1) as executor:
         for test in test_list:
