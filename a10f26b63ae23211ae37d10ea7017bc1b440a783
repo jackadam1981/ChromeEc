@@ -34,6 +34,24 @@
       "parentUuid": "3b4da59f_71311993",
       "revId": "a10f26b63ae23211ae37d10ea7017bc1b440a783",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd481802_c6876c8e",
+        "filename": "common/strongbox.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2526,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2026-01-12T21:26:50Z",
+      "side": 0,
+      "message": "Golang seems to require asn1.SET at the start of RDNSequence:\nhttps://source.corp.google.com/piper///depot/google3/third_party/go/gc/src/crypto/x509/parser.go;l\u003d152",
+      "parentUuid": "369d1ca1_c334cd29",
+      "revId": "a10f26b63ae23211ae37d10ea7017bc1b440a783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
