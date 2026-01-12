@@ -108,6 +108,48 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "809c6683_598ba915",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 4253897
+      },
+      "writtenOn": "2026-01-12T07:27:57Z",
+      "side": 1,
+      "message": "Updated in latest patchset.",
+      "parentUuid": "bd2e685a_66682a1b",
+      "range": {
+        "startLine": 276,
+        "startChar": 7,
+        "endLine": 276,
+        "endChar": 59
+      },
+      "revId": "3919299a27f07b9e2a9bc3f7c252c66bd94205f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0785268a_d0909b53",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 4253897
+      },
+      "writtenOn": "2026-01-12T07:27:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0de1c970_ae46cb73",
+      "revId": "3919299a27f07b9e2a9bc3f7c252c66bd94205f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eefcafd4_58c7a71d",
         "filename": "zephyr/Kconfig.pd",
         "patchSetId": 3
@@ -119,6 +161,24 @@
       "writtenOn": "2026-01-08T00:52:11Z",
       "side": 1,
       "message": "Presumably, the default should be 29 ms, the same as it would be if this override were not used.\n\nIn general, I\u0027d prefer a simpler organization where this config is always used, has the default value we want, and there\u0027s no separate \"override\" config. However, this is probably better thought of as a temporary workaround, and maybe the clunky interface will discourage further use of it. 😊",
+      "revId": "3919299a27f07b9e2a9bc3f7c252c66bd94205f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e2c6781_8cea2433",
+        "filename": "zephyr/Kconfig.pd",
+        "patchSetId": 3
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 4253897
+      },
+      "writtenOn": "2026-01-12T07:27:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eefcafd4_58c7a71d",
       "revId": "3919299a27f07b9e2a9bc3f7c252c66bd94205f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
