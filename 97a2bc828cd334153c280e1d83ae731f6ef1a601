@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "422d1719_cb394ad3",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series_pal.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2026-01-12T07:00:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0701e2ac_25f87f5c",
+      "range": {
+        "startLine": 312,
+        "startChar": 3,
+        "endLine": 312,
+        "endChar": 23
+      },
+      "revId": "97a2bc828cd334153c280e1d83ae731f6ef1a601",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8268338_49bb3903",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99456c00_3092bd93",
+        "filename": "zephyr/dts/bindings/fingerprint/elan.elani80sa.yaml",
+        "patchSetId": 39
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2026-01-12T07:00:05Z",
+      "side": 1,
+      "message": "Actually, \"base image\" here refers to the fingerprint sensor\u0027s image. I\u0027ve updated the description to: \"The address in internal flash for storing the fingerprint sensor\u0027s base image.\"",
+      "parentUuid": "a8268338_49bb3903",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 45
+      },
+      "revId": "97a2bc828cd334153c280e1d83ae731f6ef1a601",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46004c30_e869ecf0",
@@ -60,6 +108,30 @@
       "writtenOn": "2026-01-11T17:44:52Z",
       "side": 1,
       "message": "expand ft\n\nlet us be more descriptive here: is this `Address of the Factory Test information in internal flash`?",
+      "range": {
+        "startLine": 32,
+        "startChar": 6,
+        "endLine": 32,
+        "endChar": 8
+      },
+      "revId": "97a2bc828cd334153c280e1d83ae731f6ef1a601",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5870667d_4a56fa77",
+        "filename": "zephyr/dts/bindings/fingerprint/elan.elani80sa.yaml",
+        "patchSetId": 39
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2026-01-12T07:00:05Z",
+      "side": 1,
+      "message": "Yes, FT stands for Factory Test. I have expanded the description to: \"Address of the Factory Test (FT) information in internal flash,\"",
+      "parentUuid": "46004c30_e869ecf0",
       "range": {
         "startLine": 32,
         "startChar": 6,
