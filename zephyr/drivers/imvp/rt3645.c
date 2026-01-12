@@ -7,6 +7,10 @@
 #include "rt3645.h"
 #include "console.h"
 
+#ifdef CONFIG_AP_PWRSEQ_DRIVER
+#include <ap_power/ap_pwrseq_sm.h>
+#endif
+
 #include <ctype.h>
 #include <stdlib.h>
 
@@ -24,7 +28,7 @@ BUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(DT_DRV_COMPAT) == 1,
 	     "only one 'richtek,rt3645' compatible node may be present");
 
 /* Unlock Configuration must be changed to as recieved from vendor */
-uint8_t config_seq[]= {0x24, 0x54, 0x2};
+uint8_t config_seq[]= {0xFF, 0xFF, 0xFF};
 
 struct rt3645_data_t {
 	uint8_t cur_page;
@@ -46,12 +50,29 @@ static const struct rt3645_config_t config0 = {
 	.enable_gpio = GPIO_DT_SPEC_GET(DT_NODELABEL(pwr_en_pp3300_a), gpios),
 };
 
+#ifdef CONFIG_IMVP_FACT_UPDATE
+static void imvp_init_cb(const struct device *dev,
+				const enum ap_pwrseq_state entry,
+				const enum ap_pwrseq_state exit);
+#endif
+
 static int rt3645_update(const struct device *dev);
 
 static int rt3645_init(const struct device *dev)
 {
 	config = dev->config;
 
+#ifdef CONFIG_AP_PWRSEQ_DRIVER
+#ifdef CONFIG_IMVP_FACT_UPDATE
+	static struct ap_pwrseq_state_callback ap_pwrseq_imvp_cb;
+	const struct device *ap_pwrseq_dev = ap_pwrseq_get_instance();
+
+	ap_pwrseq_imvp_cb.cb = imvp_init_cb;
+	ap_pwrseq_imvp_cb.states_bit_mask = BIT(AP_POWER_STATE_G3);
+	ap_pwrseq_register_state_exit_callback(ap_pwrseq_dev,
+						&ap_pwrseq_imvp_cb);
+#endif
+#endif
 	return 0;
 }
 
@@ -229,6 +250,33 @@ static int rt3645_update(const struct device *dev)
 	}
 	return rv;
 }
+
+#ifdef CONFIG_AP_PWRSEQ_DRIVER
+#ifdef CONFIG_IMVP_FACT_UPDATE
+static void imvp_init_cb(const struct device *dev,
+                                     const enum ap_pwrseq_state entry,
+                                     const enum ap_pwrseq_state exit)
+{
+	int ret;
+
+	if (entry == AP_POWER_STATE_S5) {
+
+		if (config->enable_gpio.port != NULL) {
+
+			gpio_pin_configure_dt(&config->enable_gpio, GPIO_OUTPUT);
+			gpio_pin_set_dt(&config->enable_gpio, 1);
+
+			ccprints("IMVP Update to start... \n");
+			ret = rt3645_update(rt3645_dev);
+			if (!ret)
+				ccprints("IMVP Update Done!NVM Locked! \n");
+			else
+				ccprints("IMVP update Failed! \n");
+		}
+	}
+}
+#endif
+#endif
 
 int rt3645_read_reg(const struct device *dev, uint8_t reg, uint8_t *val)
 {
