@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aecd3642_c2be4ac3",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2026-01-12T23:50:27Z",
+      "side": 1,
+      "message": "The code now supports multiple instances. We can remove this restriction.",
+      "parentUuid": "30e57f1c_8d87f21b",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 70
+      },
+      "revId": "a5311aac466df4a6c4af146a7f2e966b070cfbec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "867a3eaf_42c88d87",
@@ -37,6 +61,30 @@
       "writtenOn": "2026-01-12T22:04:59Z",
       "side": 1,
       "message": "Non-blocking comment\n\nShould this driver move to a more traditional Zephyr driver init model?\n\n`DT_INST_FOREACH_STATUS_OKAY` is invoked multiple times to create separate data structures indexed by an undefined \"led-policy\" instance.\n\nFor example, could `node_array[]` and `pins_drivers[]` arrays be replaced by the typical Zephyr `const *config` and `*data` values?",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 26
+      },
+      "revId": "a5311aac466df4a6c4af146a7f2e966b070cfbec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61e1f415_3e137499",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2026-01-12T23:50:27Z",
+      "side": 1,
+      "message": "This is a great suggestion. I will address the migration to the Zephyr model in a follow-up series. The current refactoring work (the following CLs) is required to clean up the structure and logic, which will make the migration easier to implement later.",
+      "parentUuid": "867a3eaf_42c88d87",
       "range": {
         "startLine": 163,
         "startChar": 0,
