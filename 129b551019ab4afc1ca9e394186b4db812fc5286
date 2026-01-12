@@ -180,6 +180,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "48f7e443_eb3df5b7",
+        "filename": "zephyr/shim/chip/egis/otp_key_et171.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-12T16:51:16Z",
+      "side": 1,
+      "message": "yes, it builds correctly with the current implementation. I can compile the OTP key unit test as well. It fails because the provision of the key on my board is trivial.",
+      "parentUuid": "ec3d1bc0_f0d12e56",
+      "revId": "129b551019ab4afc1ca9e394186b4db812fc5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "350b161e_be9b64a2",
         "filename": "zephyr/shim/chip/egis/otp_key_et171.c",
         "patchSetId": 15
