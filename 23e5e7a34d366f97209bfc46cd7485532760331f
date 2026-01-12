@@ -16,6 +16,24 @@
       "message": "Do not set `CONFIG_PLATFORM_EC_LED_COMMON\u003dn` since it is the default. I would remove all `CONFIG_PLATFORM_EC_LED_COMMON\u003dn` instances.",
       "revId": "23e5e7a34d366f97209bfc46cd7485532760331f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24797e75_05630f50",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2026-01-12T19:45:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7c33645_9cfe3e5a",
+      "revId": "23e5e7a34d366f97209bfc46cd7485532760331f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
