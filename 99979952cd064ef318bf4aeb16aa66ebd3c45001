@@ -120,6 +120,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "204d7f5a_e554ed90",
+        "filename": "common/usb_common.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2026-01-13T09:46:08Z",
+      "side": 1,
+      "message": "Got it. We keep this for the potential of porting this to TCPMv2 devices.",
+      "parentUuid": "e56a1c72_cbf48e26",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 6
+      },
+      "revId": "99979952cd064ef318bf4aeb16aa66ebd3c45001",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "100986eb_81699a72",
@@ -161,6 +185,30 @@
         "startChar": 0,
         "endLine": 3882,
         "endChar": 13
+      },
+      "revId": "99979952cd064ef318bf4aeb16aa66ebd3c45001",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a728150_3c3a1265",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 3882,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2026-01-13T09:46:08Z",
+      "side": 1,
+      "message": "No need.",
+      "parentUuid": "100986eb_81699a72",
+      "range": {
+        "startLine": 3882,
+        "startChar": 18,
+        "endLine": 3882,
+        "endChar": 32
       },
       "revId": "99979952cd064ef318bf4aeb16aa66ebd3c45001",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
