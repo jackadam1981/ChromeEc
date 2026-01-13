@@ -5,6 +5,11 @@ cmake_minimum_required(VERSION 3.20.1)
 
 find_package(Zephyr REQUIRED HINTS "${ZEPHYR_BASE}")
 
+#if(DEFINED CONFIG_SOC_IT8XXX2_PIGWEED_IN_RAM)
+#	zephyr_linker_sources(SECTIONS ite_extra_sections.ld)
+#endif()
+zephyr_linker_sources_ifdef(CONFIG_SOC_IT8XXX2_PIGWEED_IN_RAM SECTIONS ite_extra_sections.ld)
+
 zephyr_library_sources_ifdef(CONFIG_AP_PWRSEQ "src/board_power.c")
 
 if(DEFINED CONFIG_BOARD_TRULO)
