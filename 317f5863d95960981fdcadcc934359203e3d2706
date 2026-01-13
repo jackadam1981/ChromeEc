@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3872c48_06c52a1d",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1278,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2026-01-13T12:03:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "116badbf_ad7bd05d",
+      "range": {
+        "startLine": 1278,
+        "startChar": 0,
+        "endLine": 1278,
+        "endChar": 57
+      },
+      "revId": "317f5863d95960981fdcadcc934359203e3d2706",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d75c4d16_1d3a0448",
@@ -70,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fdeac55_27fd33fa",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1975,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2026-01-13T12:03:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d75c4d16_1d3a0448",
+      "range": {
+        "startLine": 1975,
+        "startChar": 10,
+        "endLine": 1975,
+        "endChar": 37
+      },
+      "revId": "317f5863d95960981fdcadcc934359203e3d2706",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "416a9f43_e3188dcd",
@@ -83,6 +131,30 @@
       "writtenOn": "2025-12-12T18:12:58Z",
       "side": 1,
       "message": "We can\u0027t use this variable to evaluate swapping to sink. This gets populated by the sink\n\nWe need to add 2 Src policy states\n\n1. Get partner Src Caps (only do this if the partner is a DRP, it will say in the vSafe5 PDO)\n2. After getting Src Caps, evaluate swap to sink",
+      "range": {
+        "startLine": 2192,
+        "startChar": 0,
+        "endLine": 2192,
+        "endChar": 57
+      },
+      "revId": "317f5863d95960981fdcadcc934359203e3d2706",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "685fd3a2_f60469a4",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2192,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2026-01-13T12:03:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "416a9f43_e3188dcd",
       "range": {
         "startLine": 2192,
         "startChar": 0,
