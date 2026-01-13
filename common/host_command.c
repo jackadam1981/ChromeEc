@@ -130,8 +130,8 @@ DECLARE_HOST_COMMAND(EC_CMD_READ_MEMMAP, host_command_read_memmap,
 		     EC_VER_MASK(0));
 #endif
 
-/* CONFIG_EC_HOST_CMD enables the upstream Host Command support */
-#ifndef CONFIG_EC_HOST_CMD
+/* CONFIG_ZEPHYR enables the upstream Host Command support */
+#ifndef CONFIG_ZEPHYR
 static enum ec_status
 host_command_get_cmd_versions(struct host_cmd_handler_args *args)
 {
@@ -154,7 +154,7 @@ host_command_get_cmd_versions(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_GET_CMD_VERSIONS, host_command_get_cmd_versions,
 		     EC_VER_MASK(0) | EC_VER_MASK(1));
-#endif /* CONFIG_EC_HOST_CMD */
+#endif /* CONFIG_ZEPHYR */
 
 /* Returns what we tell it to. */
 static enum ec_status
@@ -199,7 +199,7 @@ host_command_get_comms_status(struct host_cmd_handler_args *args)
 	struct ec_response_get_comms_status *r = args->response;
 	bool command_ended;
 
-#ifndef CONFIG_EC_HOST_CMD
+#ifndef CONFIG_ZEPHYR
 	command_ended = host_command_in_process_ended();
 #else
 	command_ended = ec_host_cmd_send_in_progress_ended();
@@ -219,7 +219,7 @@ host_command_resend_response(struct host_cmd_handler_args *args)
 {
 	uint16_t result;
 
-#ifndef CONFIG_EC_HOST_CMD
+#ifndef CONFIG_ZEPHYR
 	result = host_command_get_saved_result();
 #else
 	result = ec_host_cmd_send_in_progress_status();
@@ -228,7 +228,7 @@ host_command_resend_response(struct host_cmd_handler_args *args)
 	/* Handle resending response */
 	args->response_size = 0;
 
-#ifndef CONFIG_EC_HOST_CMD
+#ifndef CONFIG_ZEPHYR
 	args->result = result;
 	return EC_RES_SUCCESS;
 #else
