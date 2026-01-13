@@ -192,6 +192,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "70bb316d_38c5adde",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 4253897
+      },
+      "writtenOn": "2026-01-13T08:41:02Z",
+      "side": 1,
+      "message": "Modified in latest patchset.",
+      "parentUuid": "2351126e_01f01826",
+      "revId": "3919299a27f07b9e2a9bc3f7c252c66bd94205f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eefcafd4_58c7a71d",
         "filename": "zephyr/Kconfig.pd",
         "patchSetId": 3

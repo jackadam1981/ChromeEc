@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "29e3a004_091c8745",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 7538,
+      "author": {
+        "id": 4253897
+      },
+      "writtenOn": "2026-01-13T08:41:02Z",
+      "side": 1,
+      "message": "Modified in latest patchset.",
+      "parentUuid": "bcd97797_67023049",
+      "revId": "747a823489a4bd2a6ef8044ee2f9f93ed5a7aeb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06156091_df4ca992",
         "filename": "zephyr/shim/include/config_chip.h",
         "patchSetId": 4
@@ -31,6 +49,24 @@
       "writtenOn": "2026-01-13T00:18:43Z",
       "side": 1,
       "message": "This needs to have the value of `CONFIG_PLATFORM_EC_USBC_PD3_SENDER_RESPONSE_MS`.",
+      "revId": "747a823489a4bd2a6ef8044ee2f9f93ed5a7aeb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f7fae92_8b94571a",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3813,
+      "author": {
+        "id": 4253897
+      },
+      "writtenOn": "2026-01-13T08:41:02Z",
+      "side": 1,
+      "message": "Modified in latest patchset.",
+      "parentUuid": "06156091_df4ca992",
       "revId": "747a823489a4bd2a6ef8044ee2f9f93ed5a7aeb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
