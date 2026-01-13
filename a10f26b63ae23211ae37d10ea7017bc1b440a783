@@ -52,6 +52,24 @@
       "parentUuid": "369d1ca1_c334cd29",
       "revId": "a10f26b63ae23211ae37d10ea7017bc1b440a783",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dc6d08c_2adf7a1e",
+        "filename": "common/strongbox.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2526,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2026-01-13T00:26:43Z",
+      "side": 0,
+      "message": "I suppose we can put SET into ASN.1 of the Issuer if needed, and update a verify_and_add_seq() which validates it.",
+      "parentUuid": "dd481802_c6876c8e",
+      "revId": "a10f26b63ae23211ae37d10ea7017bc1b440a783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
