@@ -683,6 +683,10 @@ enum policy_src_attached_t {
 	/** Trigger a call into DPM source current balancing policy */
 	SRC_POLICY_EVAL_SNK_FIXED_PDO,
 	/** Triggers a Get_Sink_Cap message to the partner. */
+	SRC_POLICY_GET_SRC_CAPS,
+	/** Evaluate source PDOs from sink partner to evaluate swap to sink. */
+	SRC_POLICY_EVAL_SRC_PDOS,
+	/** Triggers a Get_Sink_Cap message to the partner. */
 	SRC_POLICY_GET_SINK_CAPS,
 	/** Set new SRC CAP for PDC port in source power role */
 	SRC_POLICY_UPDATE_SRC_CAPS,
@@ -1272,7 +1276,7 @@ static void invalidate_charger_settings(struct pdc_port_t *port,
 
 	/* Invalidate PDOS */
 	port->snk_policy.pdo = 0;
-	memset(port->snk_policy.src.pdos, 0, sizeof(port->snk_policy.snk.pdos));
+	memset(port->snk_policy.src.pdos, 0, sizeof(port->snk_policy.src.pdos));
 	port->snk_policy.src.pdo_count = 0;
 	memset(port->src_policy.snk.pdos, 0, sizeof(port->src_policy.snk.pdos));
 	port->src_policy.snk.pdo_count = 0;
@@ -1952,6 +1956,11 @@ static void run_src_policies(struct pdc_port_t *port)
 		/* Adjust source current limits if necessary */
 		pdc_dpm_eval_sink_fixed_pdo(port_num,
 					    port->src_policy.snk.pdos[0]);
+		/* If partner is DRP set bit to request SRC Caps */
+		if (port->src_policy.snk.pdos[0] & PDO_FIXED_GET_DRP) {
+			atomic_set_bit(port->src_policy.flags, SRC_POLICY_GET_SRC_CAPS);
+			LOG_INF("Setting SRC_POLICY_GET_SRC_CAPS bit since partner is DRP\n");
+		}
 		return;
 	} else if (atomic_test_and_clear_bit(port->src_policy.flags,
 					     SRC_POLICY_GET_SINK_CAPS)) {
@@ -2002,6 +2011,41 @@ static void run_src_policies(struct pdc_port_t *port)
 		/* Get the RDO from the port partner */
 		queue_internal_cmd(port, CMD_PDC_GET_RDO);
 		return;
+	} else if (atomic_test_and_clear_bit(port->src_policy.flags,
+					     SRC_POLICY_GET_SRC_CAPS)) {
+		/* Request up to 4 pdos to honor USCI 6.5.15 Get PDOs - Number
+		 * of PDOs to return starting from the PDO Offset. The number of
+		 * PDOs to return is the value in this field plus 1.
+		 */
+		if (!port->get_pdo.updating) {
+			port->get_pdo.num_pdos = PDO_MAX_OBJECTS;
+			port->get_pdo.pdo_offset = PDO_OFFSET_0;
+			port->get_pdo.updating = true;
+		}
+		if (port->get_pdo.num_pdos > UCSI_GET_PDOS_MAX_NUM) {
+			/* More src caps needed, rearm this path. */
+			atomic_set_bit(port->src_policy.flags,
+				       SRC_POLICY_GET_SRC_CAPS);
+		} else {
+			/* All sink caps will be known following the next
+			 * queued GET_PDOS operation. Trigger source policy
+			 * evaluation.
+			 */
+			atomic_set_bit(port->src_policy.flags,
+				       SRC_POLICY_EVAL_SRC_PDOS);
+			port->get_pdo.updating = false;
+		}
+		port->get_pdo.pdo_type = SOURCE_PDO;
+		port->get_pdo.pdo_source = PARTNER_PDO;
+		queue_internal_cmd(port, CMD_PDC_GET_PDOS);
+		return;
+	} else if (atomic_test_and_clear_bit(port->src_policy.flags,
+					     SRC_POLICY_EVAL_SRC_PDOS)) {
+		/* Evaluate the received source PDOs to adjust check for Swap to Sink */
+		if (port->snk_policy.src.pdos[0] & PDO_FIXED_GET_UNCONSTRAINED_PWR) {
+			atomic_set_bit(port->src_policy.flags, SRC_POLICY_SWAP_TO_SNK);
+		}
+
 	} else if (atomic_test_and_clear_bit(port->src_policy.flags,
 					     SRC_POLICY_UPDATE_ALLOW_PR_SWAP)) {
 		/* Remain a source but update external swap policy */
