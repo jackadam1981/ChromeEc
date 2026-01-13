@@ -36,3 +36,9 @@
     offset = <0x50000>;
     size = <0x1000>;
 };
+
+/ {
+	chosen {
+		zephyr,host-cmd-espi-backend = &espi0;
+	};
+};

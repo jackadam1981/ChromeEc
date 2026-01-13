@@ -8,6 +8,7 @@
 / {
 	chosen {
 		cros,rtc = &mtc;
+		zephyr,host-cmd-espi-backend = &espi0;
 	};
 
 	hibernate-wake-pins {

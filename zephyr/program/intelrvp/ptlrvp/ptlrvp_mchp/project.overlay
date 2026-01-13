@@ -37,6 +37,7 @@
 	};
 	chosen {
 		cros-ec,sha = &symcr;
+		zephyr,host-cmd-espi-backend = &espi0;
 	};
 	named-gpios {
 		/delete-node/  ec-jtag-tms;

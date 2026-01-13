@@ -46,6 +46,12 @@
 	irq-gpios = <MCHP_GPIO_DECODE_025 GPIO_ACTIVE_HIGH>;
 };
 
+/ {
+	chosen {
+		zephyr,host-cmd-espi-backend = &espi0;
+	};
+};
+
 &cbi_flash {
        offset = <0x3F000>;
        size = <0x1000>;

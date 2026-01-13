@@ -101,6 +101,12 @@ i2c3ALT: &i2c3 {
 	status = "okay";
 };
 
+/ {
+	chosen {
+		zephyr,host-cmd-espi-backend = &espi0;
+	};
+};
+
 &sha0 {
 	status = "okay";
 };
