@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a1acc9f_1926ca49",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 7538,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2026-01-13T15:04:50Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "29e3a004_091c8745",
+      "revId": "747a823489a4bd2a6ef8044ee2f9f93ed5a7aeb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06156091_df4ca992",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "Modified in latest patchset.",
       "parentUuid": "06156091_df4ca992",
+      "revId": "747a823489a4bd2a6ef8044ee2f9f93ed5a7aeb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6aa34fcf_7451cd74",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3813,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2026-01-13T15:04:50Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "9f7fae92_8b94571a",
       "revId": "747a823489a4bd2a6ef8044ee2f9f93ed5a7aeb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
