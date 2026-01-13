@@ -240,8 +240,11 @@ void _plat__StartupCallback(int shall_reset_state)
 	 * enable Strongbox again. Don't clear the bit on S3 resume.
 	 * Keep SB enable bit as is.
 	 */
-	if (shall_reset_state)
+	if (shall_reset_state) {
 		reset_board_cfg(BOARD_CFG_SB_DISABLE_SET);
+		/* Set Keymint/SB as not-initialized to clear state. */
+		keymint_deinit();
+	}
 #endif
 
 	/*

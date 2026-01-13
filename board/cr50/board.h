@@ -16,6 +16,8 @@
 #undef CONFIG_CCD_OPEN_PREPVT
 /* MP: Remove chargen command. */
 #undef CONFIG_CMD_CHARGEN
+/* MP: Remove pinmux command. */
+#undef CONFIG_CMD_PINMUX
 
 /* PrePVT branch config options. */
 #elif defined(BRANCH_PREPVT)
@@ -25,6 +27,8 @@
 #define CONFIG_CCD_OPEN_PREPVT
 /* PrePVT: Remove chargen command. */
 #undef CONFIG_CMD_CHARGEN
+/* PrePVT: Remove pinmux command. */
+#undef CONFIG_CMD_PINMUX
 
 /* TOT branch config options. */
 #elif defined(BRANCH_TOT)
@@ -231,8 +235,7 @@
 #undef CONFIG_DCRYPTO
 
 /* Enable Strongbox for Cr50 */
-/* TODO: enable Strongbox for CR50_DEV too. */
-#if !defined(CR50_DEV) && !defined(CRYPTO_TEST_SETUP)
+#if !defined(CRYPTO_TEST_SETUP)
 #define CONFIG_STRONGBOX
 #endif
 
@@ -584,6 +587,7 @@ enum nvmem_users {
 #define CONFIG_RW_B
 
 #define CONFIG_AP_RO_VERIFICATION
+#define CONFIG_AP_RO_VERIFICATION_KEY_COMBO
 
 /* Firmware upgrade options. */
 #define CONFIG_NON_HC_FW_UPDATE
