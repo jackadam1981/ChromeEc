@@ -150,6 +150,48 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2351126e_01f01826",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2026-01-13T00:18:43Z",
+      "side": 1,
+      "message": "It needs to say \"TODO((b/442730096)\"",
+      "parentUuid": "0785268a_d0909b53",
+      "revId": "3919299a27f07b9e2a9bc3f7c252c66bd94205f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2412476_23274dc5",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2026-01-13T00:18:43Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "809c6683_598ba915",
+      "range": {
+        "startLine": 276,
+        "startChar": 7,
+        "endLine": 276,
+        "endChar": 59
+      },
+      "revId": "3919299a27f07b9e2a9bc3f7c252c66bd94205f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eefcafd4_58c7a71d",
         "filename": "zephyr/Kconfig.pd",
         "patchSetId": 3
