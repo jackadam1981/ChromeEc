@@ -511,6 +511,8 @@ def sb_test(tpm):
     )
     print(f"Key blob[{len(key_blob)}]={key_blob.hex()}")
     print(f"Key cert[{len(cert)}]={cert.hex()}")
+    with open("cert_self.der", "wb") as f:
+        f.write(cert)
 
     # Test with attestation key
     key_blob, key_tags, cert = sb_GenerateKey(
@@ -576,10 +578,11 @@ def sb_test(tpm):
 
     print("Begin signing")
     # Additional parameters for blob authentication for begin()
-    key_params = U32(6) + (
+    key_params = U32(8) + (
         Tag(KM_TAG_APPLICATION_ID, b"\xaa\xaa\xaa\xaa")
         + Tag(KM_TAG_APPLICATION_DATA, b"\xbb\xbb\xbb\xbb")
         + Tag(KM_TAG_DIGEST, KM_DIGEST_SHA_2_256)
+        + Tag(KM_TAG_ALGORITHM, KM_ALG_EC)
     )
     begin_cmd = U32(KM_PURPOSE_SIGN) + key_blob + key_params
     w_rsp = tpm.command(wrap_sb_command(SB_DeviceBegin, begin_cmd))
