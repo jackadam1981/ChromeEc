@@ -16,6 +16,46 @@
       "message": "wait, that\u0027s not what we want. the client gives us the entire sequence (e.g. for the issuer), which is equal to the issuer name. if we wrap it into SET and SEQ it will not be equal to the issuer cert subject anymore.\n\nmy understanding: the client gives us issuer and subject (not CNs of issue/subject, full issuer/subject), which we shall include as-is. what we do need to fix is the default_subject[] to have a SET in it.",
       "revId": "71a38d7cee8e90a5c15d84156338f9937e12a52f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5ae2434_af7e6487",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2026-01-13T20:21:42Z",
+      "side": 1,
+      "message": "I think that",
+      "revId": "71a38d7cee8e90a5c15d84156338f9937e12a52f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5e9a4ce_f4592aa0",
+        "filename": "common/strongbox.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2625,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2026-01-13T20:21:42Z",
+      "side": 1,
+      "message": "I don\u0027t think this is correct. I\u0027d expect that incoming issuer sequence internally contains SETs as needed. There may be several sets. \n\nThe real issue is in the default issuer which should have SET in the encoding.\n\n@apronin, could you please dump what you get as an issuer?\n\n\nIn my test I set issuer as \n```\n    issuer \u003d bytes.fromhex(\n        \"303331123010060355040a0c095374726f6e67426f78311d301b06035504\"\n        \"030c14416e64726f6964204b657973746f7265204b6579\"\n    )\n```\n\nNote 2 sets in it, and it seems to work as is, with the only missing thing is default value.",
+      "range": {
+        "startLine": 2613,
+        "startChar": 0,
+        "endLine": 2625,
+        "endChar": 15
+      },
+      "revId": "71a38d7cee8e90a5c15d84156338f9937e12a52f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
