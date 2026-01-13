@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e56a1c72_cbf48e26",
+        "filename": "common/usb_common.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2026-01-13T09:40:52Z",
+      "side": 1,
+      "message": "TCPMv2 also has many references to CONFIG_USB_PD_3A_PORTS, so we might potentially need this.\n\nI know we probably not going to have new TCPMv2 devices, so it\u0027s also fine to revert back to previous version (PS9?)",
+      "parentUuid": "fdddb834_13766e4d",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 6
+      },
+      "revId": "99979952cd064ef318bf4aeb16aa66ebd3c45001",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "100986eb_81699a72",
         "filename": "include/usb_pd.h",
         "patchSetId": 11
