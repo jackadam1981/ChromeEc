@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aeb9f1cb_182cedd3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2026-01-13T20:12:01Z",
+      "side": 1,
+      "message": "wait, that\u0027s not what we want. the client gives us the entire sequence (e.g. for the issuer), which is equal to the issuer name. if we wrap it into SET and SEQ it will not be equal to the issuer cert subject anymore.\n\nmy understanding: the client gives us issuer and subject (not CNs of issue/subject, full issuer/subject), which we shall include as-is. what we do need to fix is the default_subject[] to have a SET in it.",
+      "revId": "71a38d7cee8e90a5c15d84156338f9937e12a52f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
