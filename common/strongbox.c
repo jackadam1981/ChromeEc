@@ -2609,9 +2609,20 @@ static int verify_and_add_seq(struct asn1 *ctx, const struct slice *seq)
 			return 0;
 	}
 
-	/* 2. Add the verified sequence */
-	memcpy(ctx->p + ctx->n, seq->p, seq->n);
-	ctx->n += seq->n;
+	/* 2. Add the verified sequence
+	 * The provided AttributeTypeAndValue sequence must be wrapped in
+	 * an additional SET and SEQ to form a valid RDNSequence.
+	 */
+	SEQ_START(*ctx, V_SEQ, SEQ_SMALL)
+	{
+		SEQ_START(*ctx, V_SET, SEQ_SMALL)
+		{
+			memcpy(ctx->p + ctx->n, seq->p, seq->n);
+			ctx->n += seq->n;
+		}
+		SEQ_END(*ctx);
+	}
+	SEQ_END(*ctx);
 	return 1;
 }
 
