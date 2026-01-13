@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b1ebf27a_c8a02e8e",
+        "filename": "zephyr/shim/core/riscv/mpu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-13T21:28:03Z",
+      "side": 1,
+      "message": "I do not believe the build assert is necessary here. If it does not exist, for example, when I am referring to a non-existing node `rollback4`:\n\n```\n#define ROLLBACK_NODE DT_NODELABEL(rollback4)\n```\n\nI get an compilation error when I try to assign it:\n\n```\nconst char *rollback_node_name \u003d DT_NODE_FULL_NAME(ROLLBACK_NODE);\n\n```\n\nThe compiler error is as below:\n\n```\nFAILED: modules/ec/zephyr/CMakeFiles/ec_shim.dir/shim/core/riscv/mpu.c.obj \n/mnt/host/source/src/platform/ec/zephyr/shim/core/riscv/mpu.c:52:35: error: use of undeclared identifier \u0027DT_N_NODELABEL_rollback4_FULL_NAME\u0027\n   52 |         const char *rollback_node_name \u003d DT_NODE_FULL_NAME(ROLLBACK_NODE);\n      |                                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n/mnt/host/source/src/third_party/zephyr/main/include/zephyr/devicetree.h:573:36: note: expanded from macro \u0027DT_NODE_FULL_NAME\u0027\n  573 | #define DT_NODE_FULL_NAME(node_id) DT_CAT(node_id, _FULL_NAME)\n      |                                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~\n/mnt/host/source/src/third_party/zephyr/main/include/zephyr/devicetree.h:5569:24: note: expanded from macro \u0027DT_CAT\u0027\n 5569 | #define DT_CAT(a1, a2) a1 ## a2\n      |                        ^~~~~~~~\n\u003cscratch space\u003e:34:1: note: expanded from here\n   34 | DT_N_NODELABEL_rollback4_FULL_NAME\n      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n1 error generated.\n```\n\nI can still add the build assert if you prefer.",
+      "parentUuid": "5fb87c37_651de018",
+      "revId": "560213abcaa66ab8cfd9f7eab683813744526085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c79b310a_54a7aa62",
         "filename": "zephyr/shim/core/riscv/mpu.c",
         "patchSetId": 2
