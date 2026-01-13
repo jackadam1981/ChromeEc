@@ -19,3 +19,11 @@ config BOARD_IT8XXX2
 	select SOC_IT82302AX if BOARD_IT8XXX2_IT82302AX
 	select SOC_IT82202BW if BOARD_IT8XXX2_IT82202BW
 	select SOC_IT82302BW if BOARD_IT8XXX2_IT82302BW
+
+config SOC_IT8XXX2_PIGWEED_IN_RAM
+	bool "Put pigweed relative library code in RAM"
+	depends on PIGWEED_TOKENIZER && PIGWEED_LOG_TOKENIZED_LIB
+	select SOC_IT8XXX2_USE_ILM
+	select SOC_IT8XXX2_LIBRARY_TO_RAM
+	help
+	  Put pigweed relative library code in ILM. This can improve performance.
