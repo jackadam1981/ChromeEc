@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "974d2808_7790bab8",
+        "filename": "zephyr/program/ocelot/ocicat/led_policy.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 3957207
+      },
+      "writtenOn": "2026-01-13T03:01:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52a0d813_0369b9a3",
+      "range": {
+        "startLine": 13,
+        "startChar": 38,
+        "endLine": 13,
+        "endChar": 39
+      },
+      "revId": "546948f90c37f8a5b41b46d76d89b3613259a2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "004e744d_aec32ac1",
@@ -71,6 +95,30 @@
       "writtenOn": "2026-01-06T01:29:30Z",
       "side": 1,
       "message": "Nit: Format it as a multiline statement for readability, same applied to the following nodes.",
+      "range": {
+        "startLine": 17,
+        "startChar": 13,
+        "endLine": 17,
+        "endChar": 46
+      },
+      "revId": "546948f90c37f8a5b41b46d76d89b3613259a2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fee4513_56e2ec42",
+        "filename": "zephyr/program/ocelot/ocicat/led_policy.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 3957207
+      },
+      "writtenOn": "2026-01-13T03:01:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "004e744d_aec32ac1",
       "range": {
         "startLine": 17,
         "startChar": 13,
