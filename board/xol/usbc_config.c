@@ -222,3 +222,29 @@ __override bool board_is_dts_port(int port)
 {
 	return port == USBC_PORT_C0;
 }
+
+__override bool pd_check_vbus_level(int port, enum vbus_level level)
+{
+	int tcpc_vbus_voltage = 0;
+
+	/* Invalid argument guard */
+	if (level > VBUS_REMOVED)
+		return false;
+	/*
+	 * Attempt to read the VBUS voltage from the Type-C Port Controller
+	 * (TCPC). It helps in adjust thresholds to be more accurate during
+	 * VBUS Detection. Experimentally, xol requires an offset of at least
+	 * 150 mV to accurately detect VBUS disconnect in TD 4.6.3.
+	 */
+	tcpc_vbus_voltage = tcpc_get_vbus_voltage(port) + 150;
+	switch (level) {
+	case VBUS_PRESENT:
+		return tcpc_vbus_voltage >= PD_V_SAFE5V_MIN;
+	case VBUS_SAFE0V:
+		return tcpc_vbus_voltage <= PD_V_SAFE0V_MAX;
+	case VBUS_REMOVED:
+		return tcpc_vbus_voltage <= PD_V_SINK_DISCONNECT_MAX;
+	default:
+		return false;
+	}
+}
