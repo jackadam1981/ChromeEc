@@ -16,6 +16,29 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "800b3dfbc5928afb45c240b254e7082f942167cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4af6eefd_7af390be",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2045,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2026-01-13T13:25:05Z",
+      "side": 1,
+      "message": "To verify snk_policy vs src_policy",
+      "range": {
+        "startLine": 2045,
+        "startChar": 6,
+        "endLine": 2045,
+        "endChar": 68
+      },
+      "revId": "800b3dfbc5928afb45c240b254e7082f942167cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
