@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fdddb834_13766e4d",
+        "filename": "common/usb_common.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2026-01-13T08:12:59Z",
+      "side": 1,
+      "message": "What is the benefit of putting this function under usb_common.c? Should save a little compile time for non-zephyr builds if we put it in pdc_power_mgmt.",
+      "parentUuid": "1e17eed6_769067cb",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 6
+      },
+      "revId": "99979952cd064ef318bf4aeb16aa66ebd3c45001",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "100986eb_81699a72",
         "filename": "include/usb_pd.h",
         "patchSetId": 11
@@ -90,6 +114,29 @@
         "startChar": 18,
         "endLine": 3882,
         "endChar": 32
+      },
+      "revId": "99979952cd064ef318bf4aeb16aa66ebd3c45001",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a5bc510_503df44b",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 3882,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2026-01-13T08:12:59Z",
+      "side": 1,
+      "message": "For unknown reason, we are suppose to use __override_proto on function declarations. https://chromium.googlesource.com/chromiumos/platform/ec/+/4c42dfec0a3fec14a1b434a119bd1b3dd6334e7c/include/common.h#173",
+      "range": {
+        "startLine": 3882,
+        "startChar": 0,
+        "endLine": 3882,
+        "endChar": 13
       },
       "revId": "99979952cd064ef318bf4aeb16aa66ebd3c45001",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
