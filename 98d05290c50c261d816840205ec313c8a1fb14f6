@@ -16,6 +16,24 @@
       "message": "Could you please make this change for ALL brya boards?",
       "revId": "98d05290c50c261d816840205ec313c8a1fb14f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "925c63e9_f9e156d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3879739
+      },
+      "writtenOn": "2026-01-13T06:18:10Z",
+      "side": 1,
+      "message": "Checked in Chromium Code Search, and except for Redrix and XOL, no devices have a VIF file. There is no need to change anything for Redrix, as it is already set to true.",
+      "parentUuid": "e9fe5558_d9b5f5ec",
+      "revId": "98d05290c50c261d816840205ec313c8a1fb14f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
