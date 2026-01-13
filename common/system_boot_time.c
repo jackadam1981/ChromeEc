@@ -93,4 +93,30 @@ host_command_get_boot_time(struct host_cmd_handler_args *args)
 
 DECLARE_HOST_COMMAND(EC_CMD_GET_BOOT_TIME, host_command_get_boot_time,
 		     EC_VER_MASK(0));
-#endif
+
+#ifdef CONFIG_PLATFORM_EC_CONSOLE_CMD_BOOTTIME
+static int command_boot_time(int argc, const char **argv)
+{
+	if (argc > 1) {
+		return EC_ERROR_PARAM_COUNT;
+	}
+
+	ccprintf("arail: %" PRIu64 " ms\n",
+		 ap_boot_time.timestamp[ARAIL] / MSEC);
+	ccprintf("rsmrst: %" PRIu64 " ms\n",
+		 ap_boot_time.timestamp[RSMRST] / MSEC);
+	ccprintf("espirst: %" PRIu64 " ms\n",
+		 ap_boot_time.timestamp[ESPIRST] / MSEC);
+	ccprintf("pltrst_low: %" PRIu64 " ms\n",
+		 ap_boot_time.timestamp[PLTRST_LOW] / MSEC);
+	ccprintf("pltrst_high: %" PRIu64 " ms\n",
+		 ap_boot_time.timestamp[PLTRST_HIGH] / MSEC);
+	ccprintf("cnt: %" PRIu16 "\n", ap_boot_time.cnt);
+	ccprintf("ec_cur_time: %" PRIu64 " ms\n", get_time().val / MSEC);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(boottime, command_boot_time, NULL,
+			"Print timestamp of boot events.");
+#endif /* CONFIG_PLATFORM_EC_CONSOLE_CMD_BOOTTIME */
+#endif /* CONFIG_SYSTEM_BOOT_TIME_LOGGING */
