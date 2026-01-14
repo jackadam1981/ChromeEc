@@ -1,0 +1,6 @@
+config PLATFORM_EC_BTN_IGN_OUT
+	bool "Enable power button ignore output"
+	help
+	  Enables setting power button ignore state by GPIO.
+
+	  If enabled, the btn_ign node has to be defined in DT.
