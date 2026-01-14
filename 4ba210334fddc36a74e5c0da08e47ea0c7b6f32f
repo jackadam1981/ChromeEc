@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23bf011b_028af089",
+        "filename": "zephyr/shim/core/riscv/mpu.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-14T23:16:37Z",
+      "side": 1,
+      "message": "In a followup CL, can you document the return value of this function? (0 on success, negative value on error?)\n\nAlso, you mentioned that we don\u0027t actually check the return value of this function. Let\u0027s add that in a followup CL as well.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 31
+      },
+      "revId": "4ba210334fddc36a74e5c0da08e47ea0c7b6f32f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
