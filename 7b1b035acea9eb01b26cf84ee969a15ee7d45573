@@ -16,6 +16,24 @@
       "message": "From OOB conversation, the change here needs to be integrated with the existing code in `usb_pd_policy.c`. I\u0027m not sure why this didn\u0027t cause a failure on main. Whatever you need to fix, you\u0027ll need to fix it on main first and then cherry-pick it here.",
       "revId": "7b1b035acea9eb01b26cf84ee969a15ee7d45573",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc703415_39545e6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1381738
+      },
+      "writtenOn": "2026-01-14T01:19:10Z",
+      "side": 1,
+      "message": "Sheriff passing by. Somehow it passed CQ but breaks postsubmit...\nhttps://ci.chromium.org/ui/p/chromeos/builders/postsubmit/firmware-ec-public-postsubmit",
+      "parentUuid": "7af27d68_cad1111f",
+      "revId": "7b1b035acea9eb01b26cf84ee969a15ee7d45573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
