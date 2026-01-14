@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc24b1d7_ee5eddbf",
+        "filename": "zephyr/shim/core/riscv/mpu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-14T18:03:07Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "22773dac_fcc1f390",
+      "revId": "560213abcaa66ab8cfd9f7eab683813744526085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c79b310a_54a7aa62",
@@ -77,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "561d5450_b50f8bb4",
+        "filename": "zephyr/shim/core/riscv/mpu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-14T18:03:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c79b310a_54a7aa62",
+      "range": {
+        "startLine": 36,
+        "startChar": 46,
+        "endLine": 36,
+        "endChar": 48
+      },
+      "revId": "560213abcaa66ab8cfd9f7eab683813744526085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd9b8505_c83e8022",
@@ -90,6 +132,30 @@
       "writtenOn": "2026-01-09T19:09:25Z",
       "side": 1,
       "message": "Does this work if there are multiple regions with the same name? Is it possible?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 2
+      },
+      "revId": "560213abcaa66ab8cfd9f7eab683813744526085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38275e24_ed9e6763",
+        "filename": "zephyr/shim/core/riscv/mpu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-14T18:03:07Z",
+      "side": 1,
+      "message": "this function was upstreamed",
+      "parentUuid": "cd9b8505_c83e8022",
       "range": {
         "startLine": 45,
         "startChar": 0,
@@ -171,6 +237,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d62e43c8_705a5d4b",
+        "filename": "zephyr/shim/core/riscv/mpu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-14T18:03:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77d7160e_9d8d4506",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 1
+      },
+      "revId": "560213abcaa66ab8cfd9f7eab683813744526085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70e2317c_e98ae72e",
@@ -184,6 +274,30 @@
       "writtenOn": "2026-01-09T19:09:25Z",
       "side": 1,
       "message": "Asserts may be disabled in production builds. If `get_mem_region_index_by_name` returns `-ENOENT` in such cases, this negative value will be passed to `z_riscv_pmp_change_permissions`, potentially causing issues. It would be safer to explicitly check the return value and handle the error, for example by returning an error from `mpu_lock_rollback`.",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 0
+      },
+      "revId": "560213abcaa66ab8cfd9f7eab683813744526085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7226f6d3_64190fdf",
+        "filename": "zephyr/shim/core/riscv/mpu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-14T18:03:07Z",
+      "side": 1,
+      "message": "I modified the code. it will now log an error message and return the error.",
+      "parentUuid": "70e2317c_e98ae72e",
       "range": {
         "startLine": 61,
         "startChar": 0,
