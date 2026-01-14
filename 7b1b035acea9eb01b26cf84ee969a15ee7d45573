@@ -52,6 +52,24 @@
       "parentUuid": "bc703415_39545e6f",
       "revId": "7b1b035acea9eb01b26cf84ee969a15ee7d45573",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81a18557_d8c4719c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1381738
+      },
+      "writtenOn": "2026-01-14T04:50:24Z",
+      "side": 1,
+      "message": "The error is:\n```\n/home/chrome-bot/.cache/coreboot-sdk/arm-eabi/ea40ddd1d190c3b48435c474c0b545719371813a/bin/../lib/gcc/arm-eabi/14.2.0/../../../../arm-eabi/bin/ld: build/brya/RO/baseboard/brya/usb_pd_policy.o (symbol from plugin): in function `pd_check_vconn_swap\u0027:\n(.text+0x0): multiple definition of `svdm_rsp\u0027; build/brya/RO/baseboard/brya/baseboard.o (symbol from plugin):(.text+0x0): first defined here\n```\n\nNote that I just reverted this change in the main branch to fix the postsubmit builder.",
+      "parentUuid": "dada7a68_ea6faf1b",
+      "revId": "7b1b035acea9eb01b26cf84ee969a15ee7d45573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
