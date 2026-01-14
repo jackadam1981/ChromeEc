@@ -106,6 +106,32 @@ config PDC_RUNTIME_PORT_CONFIG
 	  is invoked to determine which USB-C ports to enable and with what
 	  driver instance.
 
+<<<<<<< HEAD   (13610a294a3568c4b1ce8d883a2238f7ee510d0e kaladin: Leave minimal ODR at 10Hz)
+||||||| BASE   (f712c60d472f85fe728be1f66adb28cd359c6697 led: Separate policy matching from pattern execution)
+config PDC_POWER_MGMT_POWER_STATE_DEBOUNCE_PERIOD_MS
+	int "Delay to wait for stable power state before running hooks"
+	default 2000 # milliseconds
+	help
+	  Used to set the delayable work handles in the power state hooks for
+	  different platform.
+
+=======
+config PDC_POWER_MGMT_POWER_STATE_DEBOUNCE_PERIOD_MS
+	int "Delay to wait for stable power state before running hooks"
+	default 2000 # milliseconds
+	help
+	  Used to set the delayable work handles in the power state hooks for
+	  different platform.
+
+config PDC_POWER_MGMT_LOG_SUBSTATES
+	bool "Print substate names in log"
+	depends on USB_PDC_POWER_MGMT
+	default y
+	help
+	  Print the names of active substates in print_current_pdc_state()
+	  Disable this to save some flash space.
+
+>>>>>>> CHANGE (9942355d9bd1b62fea03baf70b340f4e1da7e5ed pdc: Print pdc_power_mgmt substate names in log)
 if PDC_POWER_MGMT_USB_MUX
 config USB_MUX_SYS_INIT_PRIORITY
 	int "USB mux module init priority"
