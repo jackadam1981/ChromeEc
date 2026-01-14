@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1aefc2ef_b642444f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529538
+      },
+      "writtenOn": "2026-01-14T01:53:34Z",
+      "side": 1,
+      "message": "Actually the vif is not needed for firmware branch. It\u0027s a record for tracking the file used in PD CTS but won\u0027t be built into FW.",
+      "revId": "abc27a0c49ee57b7a9cb58347ad36a41a87593f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
