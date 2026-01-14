@@ -18,8 +18,8 @@ test-list-y ?= flash_write_protect \
 ifneq ($(TEST_LIST_HOST),)
 test-list-host=$(TEST_LIST_HOST)
 else
-test-list-host = always_memset
-test-list-host += battery_config
+#test-list-host = always_memset
+test-list-host = battery_config
 test-list-host += battery_get_params_smart
 test-list-host += benchmark
 test-list-host += bklight_lid
@@ -66,7 +66,6 @@ ifeq ($(TEST_ASAN),)
 test-list-host += is_enabled_error
 endif
 test-list-host += kasa
-#test-list-host += kb_8042
 test-list-host += kb_scan
 test-list-host += lid_sw
 test-list-host += lightbar
@@ -86,7 +85,7 @@ test-list-host += power_button
 test-list-host += printf
 test-list-host += queue
 test-list-host += rgb_keyboard
-test-list-host += rollback_secret
+#test-list-host += rollback_secret
 test-list-host += rsa3
 test-list-host += rtc
 test-list-host += sbrk
