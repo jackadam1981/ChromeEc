@@ -34,6 +34,29 @@
       "parentUuid": "c596fb5c_b2d69b6d",
       "revId": "e679f2b58b5b509dd58f526c2f86916f84fe836c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91ef1ea6_8a8ec2ec",
+        "filename": "zephyr/emul/emul_rt3645.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2026-01-14T18:57:38Z",
+      "side": 1,
+      "message": "This should be `RT3645_PAGE_REGS_MAX` instead, fixing this.",
+      "range": {
+        "startLine": 78,
+        "startChar": 11,
+        "endLine": 78,
+        "endChar": 26
+      },
+      "revId": "e679f2b58b5b509dd58f526c2f86916f84fe836c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
