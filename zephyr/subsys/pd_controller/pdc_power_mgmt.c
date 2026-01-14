@@ -2712,8 +2712,15 @@ static enum smf_state_result pdc_snk_attached_run(void *obj)
 static void pdc_send_cmd_start_entry(void *obj)
 {
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
+<<<<<<< HEAD   (13610a294a3568c4b1ce8d883a2238f7ee510d0e kaladin: Leave minimal ODR at 10Hz)
 
 	print_current_pdc_state(port);
+||||||| BASE   (9942355d9bd1b62fea03baf70b340f4e1da7e5ed pdc: Print pdc_power_mgmt substate names in log)
+	const struct pdc_config_t *const config = port->dev->config;
+
+	PRINT_STATE(config->connector_num, get_pdc_state(port));
+=======
+>>>>>>> CHANGE (45b217d1e327e157e243bda2795abf13795cd0ca pdc: Do not log SendCmdStart, SendCmdWait states)
 
 	port->send_cmd_return_state = port->last_state;
 	port->send_cmd.wait_counter = 0;
@@ -2977,7 +2984,14 @@ static void pdc_send_cmd_wait_entry(void *obj)
 {
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
 
+<<<<<<< HEAD   (13610a294a3568c4b1ce8d883a2238f7ee510d0e kaladin: Leave minimal ODR at 10Hz)
 	print_current_pdc_state(port);
+||||||| BASE   (9942355d9bd1b62fea03baf70b340f4e1da7e5ed pdc: Print pdc_power_mgmt substate names in log)
+
+	PRINT_STATE(config->connector_num, get_pdc_state(port));
+
+=======
+>>>>>>> CHANGE (45b217d1e327e157e243bda2795abf13795cd0ca pdc: Do not log SendCmdStart, SendCmdWait states)
 	port->send_cmd.wait_counter = 0;
 	port->send_cmd.resend_counter = 0;
 }
