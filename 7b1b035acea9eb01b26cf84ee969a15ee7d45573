@@ -70,6 +70,24 @@
       "parentUuid": "dada7a68_ea6faf1b",
       "revId": "7b1b035acea9eb01b26cf84ee969a15ee7d45573",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d5805e7_fd83d95b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2026-01-14T20:23:34Z",
+      "side": 1,
+      "message": "Thanks Pin-yen. I too am mystified that this did not break CQ on main. I think the path forward is clear.\n\n@abin.roy@7rays.corp-partner.google.com I think you can abandon this cherry-pick. The CL that ultimately gets cherry picked won\u0027t depend on this one.",
+      "parentUuid": "81a18557_d8c4719c",
+      "revId": "7b1b035acea9eb01b26cf84ee969a15ee7d45573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
