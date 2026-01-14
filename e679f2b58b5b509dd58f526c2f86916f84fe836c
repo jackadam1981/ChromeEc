@@ -38,6 +38,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e844e9b5_7678bdbc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2026-01-14T18:58:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f6e1ee5_af92ebff",
+      "revId": "e679f2b58b5b509dd58f526c2f86916f84fe836c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "91ef1ea6_8a8ec2ec",
         "filename": "zephyr/emul/emul_rt3645.c",
         "patchSetId": 22
