@@ -105,6 +105,13 @@ config PDC_RUNTIME_PORT_CONFIG
 	  in the devicetree so they do not automatically initialize. Board code
 	  is invoked to determine which USB-C ports to enable and with what
 	  driver instance.
+config PDC_POWER_MGMT_LOG_SUBSTATES
+	bool "Print substate names in log"
+	depends on USB_PDC_POWER_MGMT
+	default y
+	help
+	  Print the names of active substates in print_current_pdc_state()
+	  Disable this to save some flash space.
 
 if PDC_POWER_MGMT_USB_MUX
 config USB_MUX_SYS_INIT_PRIORITY
