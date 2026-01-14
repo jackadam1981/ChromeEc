@@ -287,6 +287,73 @@ def parse_keymint_extension(ext_data):
         return False
 
 
+OID_NAMES = {
+    "2.5.4.3": "commonName",
+    "2.5.4.6": "countryName",
+    "2.5.4.7": "localityName",
+    "2.5.4.8": "stateOrProvinceName",
+    "2.5.4.10": "organizationName",
+    "2.5.4.11": "organizationalUnitName",
+    "1.2.840.10045.2.1": "ecPublicKey",
+    "1.2.840.113549.1.1.1": "rsaEncryption",
+    "1.2.840.113549.1.1.11": "sha256WithRSAEncryption",
+    "1.2.840.10045.4.3.2": "ecdsa-with-SHA256",
+}
+
+
+def parse_distinguished_name(data, indent="    "):
+    """
+    Parses X.509 Name (Issuer/Subject).
+    Structure: SEQUENCE of SET of SEQUENCE { OID, String }
+    """
+    p = SimpleASN1Parser(data)
+
+    # Iterate over RDNSequence (SEQUENCE OF RelativeDistinguishedName)
+    # Note: data passed here is the *content* of the outer SEQUENCE
+
+    while not p.is_empty():
+        # Expect SET (Tag 17 / 0x11)
+        tag, constructed, set_val = p.read_tlv()
+        if tag != 17:
+            print(f"{indent}FAIL: Expected SET (17), got {tag}")
+            return
+
+        set_p = SimpleASN1Parser(set_val)
+        while not set_p.is_empty():
+            # Expect SEQUENCE (Tag 16 / 0x10)
+            seq_tag, seq_cons, seq_val = set_p.read_tlv()
+            if seq_tag != 16:
+                print(f"{indent}FAIL: Expected SEQUENCE (16), got {seq_tag}")
+                return
+
+            inner = SimpleASN1Parser(seq_val)
+
+            # 1. OID
+            oid_str = inner.read_oid()
+            oid_name = OID_NAMES.get(oid_str, oid_str)
+
+            # 2. String Value
+            str_tag, _, str_bytes = inner.read_tlv()
+
+            # Decode string based on tag (PrintableString=19, UTF8=12, IA5=22)
+            try:
+                str_val = str_bytes.decode("utf-8")
+            except:
+                str_val = f"<hex> {str_bytes.hex()}"
+
+            print(f"{indent}- {oid_name}: {str_val}")
+
+
+def parse_validity(data, indent="    "):
+    p = SimpleASN1Parser(data)
+    # NotBefore
+    _, _, nb_bytes = p.read_tlv()
+    # NotAfter
+    _, _, na_bytes = p.read_tlv()
+    print(f"{indent}Not Before: {nb_bytes.decode('ascii')}")
+    print(f"{indent}Not After:  {na_bytes.decode('ascii')}")
+
+
 # --- 3. Main X.509 Scanner ---
 
 
@@ -304,24 +371,60 @@ def verify_certificate(cert_input):
     p = SimpleASN1Parser(data)
 
     try:
-        # 1. Certificate is a SEQUENCE
-        cert_seq = p.read_sequence_content()
+        # Outer Certificate SEQUENCE
+        _, _, cert_body = p.read_tlv()
+        cert_p = SimpleASN1Parser(cert_body)
 
-        # 2. TBSCertificate is the first element (SEQUENCE)
-        tbs_seq_data = cert_seq.read_tlv()[2]  # Get raw bytes of TBS
-        tbs = SimpleASN1Parser(tbs_seq_data)
+        # TBS Certificate SEQUENCE
+        _, _, tbs_bytes = cert_p.read_tlv()
+        tbs = SimpleASN1Parser(tbs_bytes)
 
-        # Inside TBS:
-        # [0] Version (Explicit Tag 0) - Optional, but usually present
+        # [0] Version (Optional)
         if tbs.peek_tag() == 0xA0:
-            tbs.read_tlv()  # Skip Version
+            tbs.read_tlv()
+            print("  Version: Found")
 
-        tbs.read_tlv()  # Serial Number (INTEGER)
-        tbs.read_tlv()  # Signature Algo (SEQUENCE)
-        tbs.read_tlv()  # Issuer (SEQUENCE)
-        tbs.read_tlv()  # Validity (SEQUENCE)
-        tbs.read_tlv()  # Subject (SEQUENCE)
-        tbs.read_tlv()  # SubjectPublicKeyInfo (SEQUENCE)
+        # [1] Serial Number
+        _, _, serial_bytes = tbs.read_tlv()
+        print(f"  Serial Number: {serial_bytes.hex()}")
+
+        # [2] Signature Algorithm
+        _, _, sig_bytes = tbs.read_tlv()
+        # Parse Inner Algo OID for display
+        sig_p = SimpleASN1Parser(sig_bytes)
+        algo_oid = sig_p.read_oid()
+        print(f"  Signature Algo: {OID_NAMES.get(algo_oid, algo_oid)}")
+
+        # [3] Issuer
+        _, _, issuer_bytes = tbs.read_tlv()
+        print("  Issuer:")
+        parse_distinguished_name(issuer_bytes)
+
+        # [4] Validity
+        _, _, validity_bytes = tbs.read_tlv()
+        print("  Validity:")
+        parse_validity(validity_bytes)
+
+        # [5] Subject
+        _, _, subject_bytes = tbs.read_tlv()
+        print("  Subject:")
+        parse_distinguished_name(subject_bytes)
+
+        # [6] SubjectPublicKeyInfo
+        _, _, spki_bytes = tbs.read_tlv()
+        spki_p = SimpleASN1Parser(spki_bytes)
+        # AlgorithmIdentifier
+        _, _, spki_alg_bytes = spki_p.read_tlv()
+        spki_alg_p = SimpleASN1Parser(spki_alg_bytes)
+        pk_oid = spki_alg_p.read_oid()
+        # BitString (PublicKey)
+        _, _, pk_val = spki_p.read_tlv()
+        print(f"  SubjectPublicKeyInfo:")
+        print(f"    Algorithm: {OID_NAMES.get(pk_oid, pk_oid)}")
+        print(f"    Key Data Length: {len(pk_val)} bytes")
+
+        # --- Extensions Scanning (Existing Logic) ---
+        print("\n  Scanning Extensions...")
 
         # Skip optional [1] IssuerUniqueID or [2] SubjectUniqueID if present
         while True:
