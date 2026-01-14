@@ -260,3 +260,34 @@ ZTEST(isl9241_driver, test_prochot_dump)
 	 */
 	print_charger_prochot(CHARGER_SOLO);
 }
+
+#ifdef CONFIG_PLATFORM_EC_CHARGER_SET_ACOKREF
+static int pdo_mv_to_acokref_mv(int pdo_mv)
+{
+	if (pdo_mv == 5000) {
+		/* For 5V, the threshold is a fixed 3.6V, which is the default
+		 * used by the ISL9241 if ACOKREF is set to 0.
+		 */
+		return 0;
+	}
+	int vNew = (pdo_mv * 95) / 100;
+	int vValid = -500;
+	int vSinkPD_min1 = vNew - 750 + vValid;
+	int vSinkDisconnectPD_min = (vSinkPD_min1 * 9) / 10;
+	return vSinkDisconnectPD_min;
+}
+
+ZTEST_F(isl9241_driver, test_acokref)
+{
+	int pdo_mv = 15000;
+	int acokref_mv = pdo_mv_to_acokref_mv(pdo_mv);
+	uint16_t acokref_reg_val = ISL9241_MV_TO_ACOK_REFERENCE(acokref_mv);
+	uint16_t reg_val = 0;
+
+	zassert_ok(charger_set_acokref(CHARGER_SOLO, pdo_mv));
+	reg_val = isl9241_emul_peek(fixture->isl9241_emul,
+				    ISL9241_REG_ACOK_REFERENCE);
+
+	zassert_equal(acokref_reg_val, reg_val);
+}
+#endif /* CONFIG_PLATFORM_EC_CHARGER_SET_ACOKREF */
