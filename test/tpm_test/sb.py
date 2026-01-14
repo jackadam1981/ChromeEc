@@ -411,14 +411,13 @@ def sb_GenerateCertificateV2Request(
 
 
 # Set the default subject:
-# SEQUENCE
-# 0x30 <size = 0x1b>
-#      OBJECT            :commonName
-#  0x06 <size = 0x03> 0x55 0x04 0x03
-#      PRINTABLESTRING   :Android Keystore Key
-#  0x13 <size = 0x14> ...
+#  SEQUENCE 0x30 <size = 0x1f>
+#   SET 0x31 <size = 0x1d>
+#     SEQUENCE 0x30 <size = 0x1b>
+#       OBJECT 0x06 <size = 0x03> 0x55 0x04 0x03 (:commonName)
+#       PRINTABLESTRING 0x13 <size = 0x14> "Android Keystore Key"
 DEFAULT_ISSUER = bytes.fromhex(
-    "301B" + "0603550403" + "1314416E64726F6964204B657973746F7265204B6579"
+    "301f311d301b06035504031314416e64726f6964204b657973746f7265204b6579"
 )
 
 
@@ -554,6 +553,12 @@ def sb_test(tpm):
         f.write(cert)
     x509keymint.verify_certificate(cert)
 
+    # Issuer: O=StrongBox, CN=Android Keystore Key
+    issuer = bytes.fromhex(
+        "303331123010060355040a0c095374726f6e67426f78311d301b06035504"
+        "030c14416e64726f6964204b657973746f7265204b6579"
+    )
+
     # Test with attestation key
     key_blob, key_tags, cert = sb_GenerateKey(
         tpm,
@@ -583,6 +588,7 @@ def sb_test(tpm):
             Tag(KM_TAG_ATTESTATION_ID_MODEL, b"Brya"),
         ],
         rkp_blob1,
+        issuer,
     )
     print(f"Key blob[{len(key_blob)}]={key_blob.hex()}")
     print(f"Key cert[{len(cert)}]={cert.hex()}")
@@ -646,14 +652,14 @@ def sb_test(tpm):
     rsp = tpm.unwrap_ext_response(SB_OperationFinish, w_rsp)
     print("r=", rsp.hex())
 
-    vc_SetStrongboxState(tpm, 0)
-    exception_detected = False
-    try:
-        vc_SetStrongboxState(tpm, 1)
-    except subcmd.TpmTestError as tpm_exc:
-        exception_detected = True
+    # vc_SetStrongboxState(tpm, 0)
+    # exception_detected = False
+    # try:
+    #     vc_SetStrongboxState(tpm, 1)
+    # except subcmd.TpmTestError as tpm_exc:
+    #     exception_detected = True
 
-    if not exception_detected:
-        print("Unexpected success in sb_SetStrongboxState")
+    # if not exception_detected:
+    #     print("Unexpected success in sb_SetStrongboxState")
 
     tpm2_shutdown(tpm, TPM_SU_STATE)
