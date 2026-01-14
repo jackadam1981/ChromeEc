@@ -41,6 +41,15 @@ void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled)
 
 __override bool pd_check_vbus_level(int port, enum vbus_level level)
 {
+	/* Short circuit to cached vbus presence when checking for
+	 * simple present/removed level to improve performance.
+	 * pd_check_vbus_level is polled frequently by the
+	 * tc state machine.
+	 */
+	if (level == VBUS_PRESENT)
+		return sm5803_is_vbus_present(port);
+	if (level == VBUS_REMOVED)
+		return !sm5803_is_vbus_present(port);
 	return sm5803_check_vbus_level(port, level);
 }
 
