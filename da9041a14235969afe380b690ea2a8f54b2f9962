@@ -22,6 +22,30 @@
       },
       "revId": "da9041a14235969afe380b690ea2a8f54b2f9962",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd58a41a_07c122cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2026-01-14T21:52:07Z",
+      "side": 1,
+      "message": "YES! It takes forever before the FP team reviews cls. As an aside, gerrit doesn\u0027t show you as an OWNER even though you are in the file.\n\nExample: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7450787 will fix a CQ problem, and still not approved.",
+      "parentUuid": "c0f95ce7_725c8930",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 59
+      },
+      "revId": "da9041a14235969afe380b690ea2a8f54b2f9962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
