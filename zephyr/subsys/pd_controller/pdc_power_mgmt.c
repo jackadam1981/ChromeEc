@@ -1288,6 +1288,15 @@ static void print_current_pdc_state(struct pdc_port_t *port)
 	const struct pdc_config_t *const config = port->dev->config;
 	const char *substate = NULL;
 
+	/* Do not log temporary command send and wait states */
+	switch (get_pdc_state(port)) {
+	case PDC_SEND_CMD_START:
+	case PDC_SEND_CMD_WAIT:
+		return;
+	default:
+		break;
+	}
+
 #ifdef CONFIG_PDC_POWER_MGMT_LOG_SUBSTATES
 	switch (get_pdc_state(port)) {
 	case PDC_INIT:
