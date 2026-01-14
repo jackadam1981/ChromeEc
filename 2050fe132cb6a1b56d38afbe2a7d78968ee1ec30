@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f99cfa8_a38a0190",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 1844,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2026-01-14T22:03:42Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "14ba27ef_4f81b827",
+      "range": {
+        "startLine": 1844,
+        "startChar": 0,
+        "endLine": 1844,
+        "endChar": 66
+      },
+      "revId": "2050fe132cb6a1b56d38afbe2a7d78968ee1ec30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0ae15ea_4771cc77",
@@ -37,6 +61,30 @@
       "writtenOn": "2026-01-14T21:52:19Z",
       "side": 1,
       "message": "We aren\u0027t running more than one instance of Renode at a time right now. Renode is just running in a separate thread from the main thread.",
+      "range": {
+        "startLine": 1846,
+        "startChar": 0,
+        "endLine": 1846,
+        "endChar": 55
+      },
+      "revId": "2050fe132cb6a1b56d38afbe2a7d78968ee1ec30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa06511f_53cb3924",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 1846,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2026-01-14T22:03:42Z",
+      "side": 1,
+      "message": "Probably ~/.config doesn\u0027t exist. It\u0027s the right fix, even if the reason is incorrect.\n\nAnd if you change the max_workers, then you will need this.",
+      "parentUuid": "c0ae15ea_4771cc77",
       "range": {
         "startLine": 1846,
         "startChar": 0,
