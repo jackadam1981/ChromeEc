@@ -34,6 +34,24 @@
       "parentUuid": "7af27d68_cad1111f",
       "revId": "7b1b035acea9eb01b26cf84ee969a15ee7d45573",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dada7a68_ea6faf1b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2026-01-14T04:47:44Z",
+      "side": 1,
+      "message": "Access denied to the link mentioned above.\n`code: 7 (PERMISSION_DENIED) desc: no access to the project`",
+      "parentUuid": "bc703415_39545e6f",
+      "revId": "7b1b035acea9eb01b26cf84ee969a15ee7d45573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
