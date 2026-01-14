@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "22773dac_fcc1f390",
+        "filename": "zephyr/shim/core/riscv/mpu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-14T06:13:25Z",
+      "side": 1,
+      "message": "That\u0027s true. I\u0027m aware, that the build will fail, but you need to analyze the build logs - complicated DT_x macros. IMO if you provide a clear message in the build assert, it will be much easier for anyone to find a reason of the build error.",
+      "parentUuid": "b1ebf27a_c8a02e8e",
+      "revId": "560213abcaa66ab8cfd9f7eab683813744526085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c79b310a_54a7aa62",
         "filename": "zephyr/shim/core/riscv/mpu.c",
         "patchSetId": 2
