@@ -46,6 +46,30 @@
       },
       "revId": "da9041a14235969afe380b690ea2a8f54b2f9962",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99214a6e_4aad522f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-14T21:52:55Z",
+      "side": 1,
+      "message": "See comments in that CL. It won\u0027t fix anything. Good thing we reviewed it.",
+      "parentUuid": "cd58a41a_07c122cd",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 59
+      },
+      "revId": "da9041a14235969afe380b690ea2a8f54b2f9962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
