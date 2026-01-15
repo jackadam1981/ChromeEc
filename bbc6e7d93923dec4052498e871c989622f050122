@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5305e44d_17ab8350",
+        "filename": "common/rollback.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-15T18:01:35Z",
+      "side": 1,
+      "message": "We want to fatally terminate the system `k_panic` when this happens. As your commit message indicates we\u0027re in an unrecoverable state, so we should just reboot the system. Since we track reboots with metrics, this will also help us track whether this actually happens.",
+      "parentUuid": "84f03170_d9555d2f",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 11
+      },
+      "revId": "bbc6e7d93923dec4052498e871c989622f050122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7095bcc6_8fb73422",
         "filename": "common/rollback.c",
         "patchSetId": 3
