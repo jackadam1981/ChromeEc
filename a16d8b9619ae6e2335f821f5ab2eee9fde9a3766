@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0c147598_00a8bf3a",
+        "filename": "zephyr/shim/chip/egis/otp_key_et171.c",
+        "patchSetId": 75
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-15T23:34:34Z",
+      "side": 1,
+      "message": "I meant as I implemented it in the modified CL:\n\n```\nenum egis_et171_otp_config {\n\t/*\n\t * The base Word offset for the EGIS ET171 EGIS_KEY area in the OTP\n\t * memory map. This entire area is locked.\n\t */\n\tEGIS_ET171_OTP_EGIS_KEY_BASE_WORD_OFFSET \u003d 0x64,\n\n\t/* Index of the secret key (EGIS_KEY3) within the EGIS_KEY OTP region */\n\tEGIS_ET171_OTP_EGIS_KEY_INDEX \u003d 2,\n\n\t/*\n\t * The size of the EGIS ET171 OTP key sub-unit, expressed in words (0x8\n\t * words). For a 4-byte word, this corresponds to 32 bytes (8 words * 4\n\t * bytes/word).\n\t */\n\tEGIS_ET171_OTP_KEY_WORD_SIZE \u003d 0x8\n};\n```",
+      "parentUuid": "31eb4e61_4aefae4c",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 40
+      },
+      "revId": "a16d8b9619ae6e2335f821f5ab2eee9fde9a3766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "adf3013c_ed03d7d6",
         "filename": "zephyr/shim/chip/egis/otp_key_et171.c",
         "patchSetId": 75
