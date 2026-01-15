@@ -15,6 +15,7 @@
 #include "mpu.h"
 #endif
 #include "otp_key.h"
+#include "panic.h"
 #include "rollback.h"
 #include "rollback_private.h"
 #include "sha256.h"
@@ -71,7 +72,17 @@ static int get_rollback_offset(int region)
 static void lock_rollback(uint32_t key)
 {
 #ifdef CONFIG_ROLLBACK_MPU_PROTECT
-	mpu_lock_rollback(1);
+	int rv = mpu_lock_rollback(1);
+
+	if (rv != EC_SUCCESS) {
+		ccprints("ERROR! %s failed %d", __func__, rv);
+#if defined(CONFIG_ZEPHYR)
+		k_oops();
+#else
+		software_panic(PANIC_SW_ASSERT, task_get_current());
+#endif
+	}
+
 	irq_unlock(key);
 #endif
 }
@@ -82,7 +93,17 @@ static uint32_t unlock_rollback(void)
 	uint32_t key;
 
 	key = irq_lock();
-	mpu_lock_rollback(0);
+	int rv = mpu_lock_rollback(0);
+
+	if (rv != EC_SUCCESS) {
+		ccprints("ERROR! %s failed %d", __func__, rv);
+#if defined(CONFIG_ZEPHYR)
+		k_oops();
+#else
+		software_panic(PANIC_SW_ASSERT, task_get_current());
+#endif
+	}
+
 	return key;
 #else
 	return 0;
