@@ -307,7 +307,7 @@ int mpu_lock_ro_flash(void)
 	return mpu_config_region(
 		REGION_STORAGE, CONFIG_MAPPED_STORAGE_BASE + CONFIG_RO_MEM_OFF,
 		CONFIG_RO_SIZE,
-		MPU_ATTR_XN | MPU_ATTR_RW_RW | MPU_ATTR_FLASH_MEMORY, 1);
+		MPU_ATTR_XN | MPU_ATTR_RW_RW | MPU_ATTR_FLASH_MEMORY, true);
 }
 
 /* Represent RW with at most 2 MPU regions. */
@@ -341,18 +341,18 @@ int mpu_lock_rw_flash(void)
 	int rv;
 
 	rv = mpu_config_region(REGION_STORAGE, regions.addr[0], regions.size[0],
-			       mpu_attr, 1);
+			       mpu_attr, true);
 	if ((rv != EC_SUCCESS) || (regions.num_regions == 1))
 		return rv;
 
 	/* If this fails then it's impossible to represent with two regions. */
 	return mpu_config_region(REGION_STORAGE2, regions.addr[1],
-				 regions.size[1], mpu_attr, 1);
+				 regions.size[1], mpu_attr, true);
 }
 #endif /* !CONFIG_EXTERNAL_STORAGE */
 
 #ifdef CONFIG_ROLLBACK_MPU_PROTECT
-int mpu_lock_rollback(int lock)
+int mpu_lock_rollback(bool lock)
 {
 	int rv;
 	int num_mpu_regions = mpu_num_regions();
@@ -454,7 +454,7 @@ int mpu_pre_init(void)
 	}
 
 	if (IS_ENABLED(CONFIG_ROLLBACK_MPU_PROTECT)) {
-		rv = mpu_lock_rollback(1);
+		rv = mpu_lock_rollback(true);
 		if (rv != EC_SUCCESS)
 			return rv;
 	}
@@ -465,7 +465,7 @@ int mpu_pre_init(void)
 			REGION_UNCACHED_RAM,
 			CONCAT2(_region_start_, CONFIG_CHIP_UNCACHED_REGION),
 			CONCAT2(_region_size_, CONFIG_CHIP_UNCACHED_REGION),
-			MPU_ATTR_XN | MPU_ATTR_RW_RW, 1);
+			MPU_ATTR_XN | MPU_ATTR_RW_RW, true);
 		if (rv != EC_SUCCESS)
 			return rv;
 

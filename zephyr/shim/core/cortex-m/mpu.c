@@ -141,7 +141,7 @@ static int mpu_add_static_rollback_regions(void)
 }
 SYS_INIT(mpu_add_static_rollback_regions, PRE_KERNEL_1, 50);
 
-int mpu_lock_rollback(int lock)
+int mpu_lock_rollback(bool lock)
 {
 	if (mpu_static_rollback_region_id < 0)
 		return -EINVAL;
