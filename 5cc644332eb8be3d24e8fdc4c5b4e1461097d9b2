@@ -22,6 +22,30 @@
       },
       "revId": "5cc644332eb8be3d24e8fdc4c5b4e1461097d9b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e76e1500_b1866c69",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-15T21:38:53Z",
+      "side": 1,
+      "message": "The compare_builds verdict is failure:\n\n```\n sudo ./util/compare_build.sh --boards bloonchipper --ref1 HEAD --ref2 HEAD^\n```\n\n```\n# Comparing Files\n\nBinary files /tmp/compare_build.IrZA/build-699d0cffd849ace1b33ff03ad6b8c496af8190e5/bloonchipper-ec.bin and /tmp/compare_build.IrZA/build-4048b01181a2ea88a8dde8c50a186be40716accf/bloonchipper-ec.bin differ\n# Verdict: FAILURE\n```",
+      "parentUuid": "56969265_33f8e2b6",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 61
+      },
+      "revId": "5cc644332eb8be3d24e8fdc4c5b4e1461097d9b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
