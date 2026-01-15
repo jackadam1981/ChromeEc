@@ -22,6 +22,30 @@
       },
       "revId": "4ba210334fddc36a74e5c0da08e47ea0c7b6f32f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "215be473_20ab6f62",
+        "filename": "zephyr/shim/core/riscv/mpu.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-15T00:09:36Z",
+      "side": 1,
+      "message": "SG. will do this in a follow up CL.",
+      "parentUuid": "23bf011b_028af089",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 31
+      },
+      "revId": "4ba210334fddc36a74e5c0da08e47ea0c7b6f32f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
