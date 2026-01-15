@@ -34,6 +34,24 @@
       "parentUuid": "2b682f1c_78e63c42",
       "revId": "b8292512cd20158ebf499bbb32d388c2c3e99f2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45ccd6a9_147926a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3387694
+      },
+      "writtenOn": "2026-01-15T07:43:38Z",
+      "side": 1,
+      "message": "We need this change for not showing the precharge led behavior(LED_IDLE).",
+      "parentUuid": "b570985d_e7bbaa68",
+      "revId": "b8292512cd20158ebf499bbb32d388c2c3e99f2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
