@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63b5d6db_f8cd2336",
+        "filename": "common/rollback.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-15T19:09:55Z",
+      "side": 1,
+      "message": "nit: I think the EC code usually uses C style comments:\n\n\n\n```suggestion\n#endif /* CONFIG_ROLLBACK_MPU_PROTECT */\n```",
+      "range": {
+        "startLine": 89,
+        "startChar": 7,
+        "endLine": 89,
+        "endChar": 37
+      },
+      "revId": "1781551e5695aaf91ea9163bff9310ad65e71084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
