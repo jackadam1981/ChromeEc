@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56969265_33f8e2b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-15T21:18:50Z",
+      "side": 1,
+      "message": "Can you try the compare_builds script for `bloonchipper` or `helipilot`? I think it should match. However, I did see an issue earlier this week where the compare_builds script was failing to run. If you see that, can you file a bug and assign to Jon? It looked like it was related to some of the source reorg that he\u0027s doing.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 61
+      },
+      "revId": "5cc644332eb8be3d24e8fdc4c5b4e1461097d9b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
