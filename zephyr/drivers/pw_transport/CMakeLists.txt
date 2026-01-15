@@ -7,6 +7,8 @@ include(${ZEPHYR_PIGWEED_MODULE_DIR}/pw_protobuf_compiler/proto.cmake)
 
 set(PW_TRANSPORT_STATUS_FLAGS_SIZE 1 CACHE STRING "")
 
+set(pw_protobuf_compiler_GENERATE_PROTOS_ARGS "--no-experimental-editions" CACHE STRING "Args to generate_protos.py" FORCE)
+
 configure_file(proto/transport.options.in proto/transport.options @ONLY)
 file(
   COPY

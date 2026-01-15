@@ -162,7 +162,7 @@ register_ish_project(
         here / "ocelot-ish" / "motionsense.conf",
         here / "dsp_comms.conf",
     ],
-    modules=["ec", "cmsis", "cmsis_6", "hal_intel_public", "pigweed", "nanopb"],
+    modules=["ec", "cmsis", "cmsis_6", "hal_intel_public", "pigweed", "nanopb", "dsp_comms"],
 )
 
 # For realtek
@@ -215,7 +215,7 @@ register_ish_project(
         here / "ocicat-ish" / "motionsense.conf",
         here / "dsp_comms.conf",
     ],
-    modules=["ec", "cmsis", "cmsis_6", "hal_intel_public", "pigweed", "nanopb"],
+    modules=["ec", "cmsis", "cmsis_6", "hal_intel_public", "pigweed", "nanopb", "dsp_comms",],
 )
 
 # Note for reviews, do not let anyone edit these assertions, the addresses

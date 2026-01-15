@@ -150,6 +150,9 @@ class Project:
             A KeyError, if a required module is unavailable.
         """
         result = {}
+
+        logging.info(f"module_paths {module_paths}")
+
         for module in self.config.modules:
             try:
                 result[module] = module_paths[module]
