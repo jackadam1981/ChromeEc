@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "378ad029_cbd6cb4a",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 1844,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2026-01-15T00:07:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e0cc2b6_7f05cb7f",
+      "range": {
+        "startLine": 1844,
+        "startChar": 0,
+        "endLine": 1844,
+        "endChar": 66
+      },
+      "revId": "2050fe132cb6a1b56d38afbe2a7d78968ee1ec30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0ae15ea_4771cc77",
@@ -133,6 +157,30 @@
       "side": 1,
       "message": "There\u0027s no harm in trying it, but please fix the commit message and the comment to reflect the assumption about `~/.config` and include a link to the bug number in the comment so people reading the code have context.",
       "parentUuid": "fa06511f_53cb3924",
+      "range": {
+        "startLine": 1846,
+        "startChar": 0,
+        "endLine": 1846,
+        "endChar": 55
+      },
+      "revId": "2050fe132cb6a1b56d38afbe2a7d78968ee1ec30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59a187c9_ed2ea0f2",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 1846,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2026-01-15T00:07:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdd3eb95_ce08e2bc",
       "range": {
         "startLine": 1846,
         "startChar": 0,
