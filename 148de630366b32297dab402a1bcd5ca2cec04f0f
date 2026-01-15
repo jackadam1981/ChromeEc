@@ -40,6 +40,30 @@
       },
       "revId": "148de630366b32297dab402a1bcd5ca2cec04f0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f4fec09_3f3913af",
+        "filename": "zephyr/scripts/led_policy.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2026-01-15T21:32:06Z",
+      "side": 1,
+      "message": "Filed the bug b/476181505 to track this.",
+      "parentUuid": "ee5cf5e7_9ae19ed7",
+      "range": {
+        "startLine": 163,
+        "startChar": 37,
+        "endLine": 163,
+        "endChar": 38
+      },
+      "revId": "148de630366b32297dab402a1bcd5ca2cec04f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
