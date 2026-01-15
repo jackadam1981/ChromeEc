@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f839e537_52038dbb",
+        "filename": "zephyr/shim/chip/egis/otp_key_et171.c",
+        "patchSetId": 75
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-15T19:01:53Z",
+      "side": 1,
+      "message": "Does it compile if we make these `static const uint32_t` variables?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 40
+      },
+      "revId": "a16d8b9619ae6e2335f821f5ab2eee9fde9a3766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adf3013c_ed03d7d6",
+        "filename": "zephyr/shim/chip/egis/otp_key_et171.c",
+        "patchSetId": 75
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-15T19:01:53Z",
+      "side": 1,
+      "message": "`otp_key_read` appears to be reading 32 bits (4 bytes) at a time. If that\u0027s correct, then it\u0027s best to make sure that this buffer has the same alignment. You can add `__aligned(4)` to the buffer declaration.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 52
+      },
+      "revId": "a16d8b9619ae6e2335f821f5ab2eee9fde9a3766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69a59b96_19bbce18",
+        "filename": "zephyr/shim/core/CMakeLists.txt",
+        "patchSetId": 75
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-15T19:01:53Z",
+      "side": 1,
+      "message": "unrelated change?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 29
+      },
+      "revId": "a16d8b9619ae6e2335f821f5ab2eee9fde9a3766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d42a248_c2eb5299",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 75
+      },
+      "lineNbr": 2739,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-15T19:01:53Z",
+      "side": 1,
+      "message": "We don\u0027t need to fix in this CL, but is this something we could move to the Kconfig? e.g., automatically enable `CONFIG_OTP_KEY` if the platform-specific version is enabled?",
+      "range": {
+        "startLine": 2736,
+        "startChar": 0,
+        "endLine": 2739,
+        "endChar": 6
+      },
+      "revId": "a16d8b9619ae6e2335f821f5ab2eee9fde9a3766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
