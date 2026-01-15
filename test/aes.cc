@@ -16,8 +16,15 @@
 #include "util.h"
 #include "watchdog.h"
 
+#include <stdint.h>
+
+#include <array>
+#include <cstddef>
 #include <memory>
+#include <optional>
 #include <span>
+#include <string>
+#include <vector>
 
 /* Temporary buffer, to avoid using too much stack space. */
 static uint8_t tmp[512];
