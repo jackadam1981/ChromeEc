@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adfa5157_c5497af8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2026-01-15T22:05:24Z",
+      "side": 1,
+      "message": "This might be a moot point, but leaving some notes here in case we need to pick this up again. The intervals that you already have look reasonable, but I\u0027m assuming that they did not fully explain the latency.",
+      "revId": "fc215029e891f0e86273d21f0fb866adff53d7bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf942587_415aa303",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3498,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2026-01-15T22:05:24Z",
+      "side": 1,
+      "message": "It shouldn\u0027t make much difference compared to what you have now, but this is the earliest that the PE becomes aware that the Source Caps has been received.\n\nThe earliest that any code will have been aware that the Source Caps has been received is in the Rx clause of `chip_pd_irq` in `ite_pd_intc.c`. I would expect the time between that interrupt handling and the PE processing it to still be pretty low, i.e. not long enough to cause this failure by itself, but you could double check. You could make use of the existing `irq_ts` value for recording the timestamp.\n\nAssuming that the intervals you already have and the interval I just suggested do not fully account for the latency seen by the tester, that might indicate that there is latency between when the TCPC actually receives the Source Caps and asserts the interrupt signal and when we are handling that signal in `chip_pd_irq`. As near as I can tell, we enable TCPC Rx in `prl_tx_phy_layer_rset_entry`. I think we would have enabled everything else related to TCPC interrupts during `it8xxx2_init`, which should have happened before we started the TC SM. However, I\u0027m not totally familiar with this flow.",
+      "revId": "fc215029e891f0e86273d21f0fb866adff53d7bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
