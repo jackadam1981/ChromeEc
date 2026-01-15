@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b720717_8c5b8ba1",
+        "filename": "common/system_boot_time.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2026-01-15T23:43:15Z",
+      "side": 1,
+      "message": "wanted to double check that this doesn\u0027t end up conflicting with\nthe original implementation in `power/common.c`.\ndo we just need to be careful about when to enable\n`PLATFORM_EC_CONSOLE_CMD_BOOTTIME`?",
+      "range": {
+        "startLine": 97,
+        "startChar": 7,
+        "endLine": 97,
+        "endChar": 46
+      },
+      "revId": "513120e5674add378869464a95a6293efdcf4e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
