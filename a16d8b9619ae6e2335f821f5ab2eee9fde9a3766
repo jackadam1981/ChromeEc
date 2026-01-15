@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "31eb4e61_4aefae4c",
+        "filename": "zephyr/shim/chip/egis/otp_key_et171.c",
+        "patchSetId": 75
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-15T22:56:27Z",
+      "side": 1,
+      "message": "I\u0027m not sure what you mean. Example?",
+      "parentUuid": "9cc48c3c_a0e1f2f8",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 40
+      },
+      "revId": "a16d8b9619ae6e2335f821f5ab2eee9fde9a3766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "adf3013c_ed03d7d6",
         "filename": "zephyr/shim/chip/egis/otp_key_et171.c",
         "patchSetId": 75
