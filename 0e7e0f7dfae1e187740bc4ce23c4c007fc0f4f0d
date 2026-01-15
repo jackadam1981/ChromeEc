@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b9f6b57_1458d14c",
+        "filename": "zephyr/drivers/imvp/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2026-01-15T23:33:20Z",
+      "side": 1,
+      "message": "might as well spell out `IMVP_FACTORY_UPDATE`.\nalthough, i think features flags are better named after what they enable\nrather than where they\u0027re used.",
+      "range": {
+        "startLine": 18,
+        "startChar": 7,
+        "endLine": 18,
+        "endChar": 23
+      },
+      "revId": "0e7e0f7dfae1e187740bc4ce23c4c007fc0f4f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42739053_1770c862",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2026-01-15T23:33:20Z",
+      "side": 1,
+      "message": "please use the `LOG_*` functions.",
+      "range": {
+        "startLine": 269,
+        "startChar": 3,
+        "endLine": 269,
+        "endChar": 11
+      },
+      "revId": "0e7e0f7dfae1e187740bc4ce23c4c007fc0f4f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
