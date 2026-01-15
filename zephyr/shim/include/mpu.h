@@ -36,12 +36,12 @@ int mpu_lock_rw_flash(void);
 /**
  * @brief Protects or unprotects the rollback region readback.
  *
- * @param lock Non-zero to lock (protect), 0 to unlock (unprotect).
+ * @param lock true to lock (protect), false to unlock (unprotect).
  *
  * @retval 0 Success.
  * @retval <0 Error occurred.
  */
-int mpu_lock_rollback(int lock);
+int mpu_lock_rollback(bool lock);
 #endif
 
 #endif /* __CROS_EC_CPU_H */

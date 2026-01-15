@@ -352,7 +352,7 @@ int mpu_lock_rw_flash(void)
 #endif /* !CONFIG_EXTERNAL_STORAGE */
 
 #ifdef CONFIG_ROLLBACK_MPU_PROTECT
-int mpu_lock_rollback(int lock)
+int mpu_lock_rollback(bool lock)
 {
 	int rv;
 	int num_mpu_regions = mpu_num_regions();
@@ -454,7 +454,7 @@ int mpu_pre_init(void)
 	}
 
 	if (IS_ENABLED(CONFIG_ROLLBACK_MPU_PROTECT)) {
-		rv = mpu_lock_rollback(1);
+		rv = mpu_lock_rollback(true);
 		if (rv != EC_SUCCESS)
 			return rv;
 	}
