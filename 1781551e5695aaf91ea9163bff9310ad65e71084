@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6ba72422_5cb4fdcb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-15T19:10:43Z",
+      "side": 1,
+      "message": "Let\u0027s remove this, since it\u0027s obvious from the code (and no longer correct since it\u0027s now `k_panic`).",
+      "range": {
+        "startLine": 15,
+        "startChar": 58,
+        "endLine": 17,
+        "endChar": 10
+      },
+      "revId": "1781551e5695aaf91ea9163bff9310ad65e71084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "63b5d6db_f8cd2336",
         "filename": "common/rollback.c",
         "patchSetId": 7
