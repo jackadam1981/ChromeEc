@@ -110,6 +110,9 @@ known_modules = {
         / "hal"
         / "cmsis_6"
     ),
+    "dagwood": lambda name, checkout: (
+        checkout / "src" / "platform" / "dagwood"
+    ),
     "ec": lambda name, checkout: (checkout / "src" / "platform" / "ec"),
     "egis": lambda name, checkout: (
         checkout / "src" / "platform" / "fingerprint" / "egis"
