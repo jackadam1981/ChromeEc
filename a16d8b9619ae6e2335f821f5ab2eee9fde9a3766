@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84c2dab6_fb32cde1",
+        "filename": "zephyr/shim/chip/egis/otp_key_et171.c",
+        "patchSetId": 75
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-15T20:04:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adf3013c_ed03d7d6",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 52
+      },
+      "revId": "a16d8b9619ae6e2335f821f5ab2eee9fde9a3766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69a59b96_19bbce18",
@@ -60,6 +84,30 @@
       "writtenOn": "2026-01-15T19:01:53Z",
       "side": 1,
       "message": "unrelated change?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 29
+      },
+      "revId": "a16d8b9619ae6e2335f821f5ab2eee9fde9a3766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bb203fe_cfc1c546",
+        "filename": "zephyr/shim/core/CMakeLists.txt",
+        "patchSetId": 75
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-15T20:04:14Z",
+      "side": 1,
+      "message": "I created this separate CL: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7487809 \n to handle this issue. I will rebase on top of this change after it merges",
+      "parentUuid": "69a59b96_19bbce18",
       "range": {
         "startLine": 7,
         "startChar": 0,
