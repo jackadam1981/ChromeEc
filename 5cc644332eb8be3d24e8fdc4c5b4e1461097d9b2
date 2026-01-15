@@ -46,6 +46,30 @@
       },
       "revId": "5cc644332eb8be3d24e8fdc4c5b4e1461097d9b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "626e4e9d_b22bd260",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-15T22:28:01Z",
+      "side": 1,
+      "message": "What about the `zmake compare-builds`? Does that run correctly? (I think that was the one that was failing to build for me.)",
+      "parentUuid": "e76e1500_b1866c69",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 61
+      },
+      "revId": "5cc644332eb8be3d24e8fdc4c5b4e1461097d9b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
