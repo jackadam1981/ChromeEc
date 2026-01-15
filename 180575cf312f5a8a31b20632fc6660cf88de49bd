@@ -22,6 +22,30 @@
       },
       "revId": "180575cf312f5a8a31b20632fc6660cf88de49bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef2aa74e_0501e177",
+        "filename": "util/renode/firmware_builder.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2026-01-15T00:25:31Z",
+      "side": 1,
+      "message": "Fixing the top level dir is sufficient for renode\u0027s purposes. In my tests, the top level dir was the only one owned by root.",
+      "parentUuid": "ec0c164b_2a3f6365",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 24
+      },
+      "revId": "180575cf312f5a8a31b20632fc6660cf88de49bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
