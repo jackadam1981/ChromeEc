@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "434af375_e2c4e54f",
+        "filename": "common/rollback.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-15T17:58:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42d73245_8b1c3f8e",
+      "range": {
+        "startLine": 70,
+        "startChar": 70,
+        "endLine": 71,
+        "endChar": 11
+      },
+      "revId": "bbc6e7d93923dec4052498e871c989622f050122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5219e2cc_e911cdbd",
@@ -37,6 +61,30 @@
       "writtenOn": "2026-01-15T17:31:25Z",
       "side": 1,
       "message": "I think this part is obvious from the code. The `@brief` line above sufficiently describes the behavior.",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 42
+      },
+      "revId": "bbc6e7d93923dec4052498e871c989622f050122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f22730a_0b167ba3",
+        "filename": "common/rollback.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-15T17:58:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5219e2cc_e911cdbd",
       "range": {
         "startLine": 73,
         "startChar": 0,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "84f03170_d9555d2f",
+        "filename": "common/rollback.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-15T17:58:06Z",
+      "side": 1,
+      "message": "according to the zephyr documentation in [src/third_party/zephyr/main/include/zephyr/kernel.h](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/include/zephyr/kernel.h;l\u003d6666?q\u003dzephyr%2Fmain%20k_oops\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch#:~:text\u003d6665-,6666,-6667) both generate a fatal error with different context:\n\n- `k_oops()` is thread-focused. It signals that a specific thread has hit an unrecoverable condition. The system\u0027s fatal error handler usually interprets this as a request to abort just that single thread, allowing the rest of the OS to keep running.\n\n- `k_panic()` is system-focused. It signals that the Zephyr kernel itself has hit an unrecoverable condition. The fatal error handler interprets this as a critical failure where the system can no longer be trusted, requiring a full halt or reboot.\n\nI believe `k_oop` is relevant here. Please let me know if you have a different opinion.\n```\n/**\n * @brief Fatally terminate a thread\n *\n * This should be called when a thread has encountered an unrecoverable\n * runtime condition and needs to terminate. What this ultimately\n * means is determined by the _fatal_error_handler() implementation, which\n * will be called with reason code K_ERR_KERNEL_OOPS.\n *\n * If this is called from ISR context, the default system fatal error handler\n * will treat it as an unrecoverable system error, just like k_panic().\n */\n#define k_oops()\tz_except_reason(K_ERR_KERNEL_OOPS)\n\n/**\n * @brief Fatally terminate the system\n *\n * This should be called when the Zephyr kernel has encountered an\n * unrecoverable runtime condition and needs to terminate. What this ultimately\n * means is determined by the _fatal_error_handler() implementation, which\n * will be called with reason code K_ERR_KERNEL_PANIC.\n */\n#define k_panic()\tz_except_reason(K_ERR_KERNEL_PANIC)\n```",
+      "parentUuid": "7fd78200_16657b31",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 11
+      },
+      "revId": "bbc6e7d93923dec4052498e871c989622f050122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7095bcc6_8fb73422",
         "filename": "common/rollback.c",
         "patchSetId": 3
@@ -83,6 +155,30 @@
       "writtenOn": "2026-01-15T17:31:25Z",
       "side": 1,
       "message": "Thanks for the cleanup. While you\u0027re here, could you create a separate CL that changes the argument from `int` to `bool` to make it clearer what the intent is?",
+      "range": {
+        "startLine": 109,
+        "startChar": 10,
+        "endLine": 109,
+        "endChar": 31
+      },
+      "revId": "bbc6e7d93923dec4052498e871c989622f050122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3dfa8df_2dc5597c",
+        "filename": "common/rollback.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-15T17:58:06Z",
+      "side": 1,
+      "message": "ok. will do.",
+      "parentUuid": "7095bcc6_8fb73422",
       "range": {
         "startLine": 109,
         "startChar": 10,
