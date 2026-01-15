@@ -46,6 +46,30 @@
       },
       "revId": "434f39e915ae7e755fa399b63c3fabe29b75802a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8f7af7b_ccc0b986",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 22
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-15T18:45:07Z",
+      "side": 1,
+      "message": "yes, the otp_key test passes after I write the OTP key\n\n```\n(cr) fsammoura@fsammoura-glaptop /mnt/host/source/src/platform/ec $ sudo ./test/run_device_tests.py -b sanok -t otp_key --zephyr\n\n(cr) fsammoura@fsammoura-glaptop /mnt/host/source/src/platform/ec $ sudo ../fingerprint/egis/utils/egis_bootrom.py --image ./build/zephyr/sanok/output/ec.bin\n```\n\ntest results:\n```\nSTART - test_read\n[3.693100] \u003cinf\u003e otp_key: key buffer: 0x\n[3.696800] \u003cinf\u003e otp_key: 36\n[3.699400] \u003cinf\u003e otp_key: D7\n[3.702000] \u003cinf\u003e otp_key: DE\n[3.704600] \u003cinf\u003e otp_key: 7F\n[3.707200] \u003cinf\u003e otp_key: FC\n[3.709800] \u003cinf\u003e otp_key: 0C\n[3.712500] \u003cinf\u003e otp_key: 3C\n[3.715100] \u003cinf\u003e otp_key: 6C\n[3.717700] \u003cinf\u003e otp_key: 24\n[3.720300] \u003cinf\u003e otp_key: D2\n[3.722900] \u003cinf\u003e otp_key: F8\n[3.725500] \u003cinf\u003e otp_key: 2A\n[3.728100] \u003cinf\u003e otp_key: 71\n[3.730700] \u003cinf\u003e otp_key: 81\n[3.733400] \u003cinf\u003e otp_key: 49\n[3.736000] \u003cinf\u003e otp_key: FD\n[3.738600] \u003cinf\u003e otp_key: 5C\n[3.741200] \u003cinf\u003e otp_key: 75\n[3.743800] \u003cinf\u003e otp_key: 8E\n[3.746400] \u003cinf\u003e otp_key: B8\n[3.749000] \u003cinf\u003e otp_key: B4\n[3.751600] \u003cinf\u003e otp_key: 83\n[3.754300] \u003cinf\u003e otp_key: EE\n[3.756900] \u003cinf\u003e otp_key: A5\n[3.759500] \u003cinf\u003e otp_key: 5E\n[3.762100] \u003cinf\u003e otp_key: 3C\n[3.764700] \u003cinf\u003e otp_key: 2C\n[3.767300] \u003cinf\u003e otp_key: 6D\n[3.769900] \u003cinf\u003e otp_key: 18\n[3.772600] \u003cinf\u003e otp_key: CE\n[3.775200] \u003cinf\u003e otp_key: A4\n[3.777800] \u003cinf\u003e otp_key: 4A\n[3.780400] \u003cinf\u003e otp_key: \n\n PASS - test_read in 0.091 seconds\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nTESTSUITE otp_key succeeded\n\n------ TESTSUITE SUMMARY START ------\n\nSUITE PASS - 100.00% [otp_key]: pass \u003d 1, fail \u003d 0, skip \u003d 0, total \u003d 1 duration \u003d 0.091 seconds\n - PASS - [otp_key.test_read] duration \u003d 0.091 seconds\n\n------ TESTSUITE SUMMARY END ------\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nPROJECT EXECUTION SUCCESSFUL\n```",
+      "parentUuid": "071239f6_c8c47567",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 7
+      },
+      "revId": "434f39e915ae7e755fa399b63c3fabe29b75802a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
