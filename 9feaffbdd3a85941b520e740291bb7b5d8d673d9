@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0bfa6d0_33b5fd88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2026-01-15T09:06:59Z",
+      "side": 1,
+      "message": "CQ failed to compile non-zephyr ec.\n\n```\ncommon/usb_common.c: In function ‘pd_get_usb_pd_3a_ports’:\ncommon/usb_common.c:65:9: error: ‘CONFIG_PLATFORM_EC_USB_PD_3A_PORTS’ undeclared (first use in this function); did you mean ‘CONFIG_USB_PD_3A_PORTS’?\n   65 |  return CONFIG_PLATFORM_EC_USB_PD_3A_PORTS;\n      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n      |         CONFIG_USB_PD_3A_PORTS\ncommon/usb_common.c:65:9: note: each undeclared identifier is reported only once for each function it appears in\ncommon/usb_common.c:66:1: error: control reaches end of non-void function [-Werror\u003dreturn-type]\n   66 | }\n      | ^\ncc1: all warnings being treated as errors\n  CC      RO/common/inductive_charging.o\nmake[2]: *** [Makefile.rules:602: build/coverage/charge_manager/RO/common/usb_common.o] Error 1\nmake[1]: *** [Makefile.rules:376: host-coverage-charge_manager] Error 2\nmake[1]: *** Waiting for unfinished jobs....\n  CC      RO/core/host/timer.o\n  CC      RO/core/host/main.o\n  CC      RO/common/inductive_charging.o\n  CXX     RO/common/fpsensor/fpsensor_debug.o\n  EXE     battery_config.exe\n  CC      RO/common/usb_pd_console_cmd.o\n  CC      RO/test/charge_ramp.o\n  CXX     RO/common/fpsensor/fpsensor_debug.o\n  CC      RO/core/host/task.o\n  CC      RO/common/irq_locking.o\n  EXE     chipset.exe\n  CC      RO/common/irq_locking.o\n  CC      RO/core/host/timer.o\n  CC      RO/common/irq_locking.o\n  CXX     RO/common/fpsensor/fpsensor_detect_strings.o\n  CC      RO/core/host/task.o\nINFO    - Using Ninja..\n  CC      RO/common/usb_pd_dual_role.o\n  CC      RO/common/lid_switch.o\ncommon/usb_common.c: In function ‘pd_get_usb_pd_3a_ports’:\ncommon/usb_common.c:65:9: error: ‘CONFIG_PLATFORM_EC_USB_PD_3A_PORTS’ undeclared (first use in this function); did you mean ‘CONFIG_USB_PD_3A_PORTS’?\n   65 |  return CONFIG_PLATFORM_EC_USB_PD_3A_PORTS;\n      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n      |         CONFIG_USB_PD_3A_PORTS\ncommon/usb_common.c:65:9: note: each undeclared identifier is reported only once for each function it appears in\ncommon/usb_common.c:66:1: error: control reaches end of non-void function [-Werror\u003dreturn-type]\n   66 | }\n      | ^\n```",
+      "revId": "9feaffbdd3a85941b520e740291bb7b5d8d673d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
