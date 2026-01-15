@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11f4bb01_fc7dbd9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-01-15T18:13:28Z",
+      "side": 1,
+      "message": "An experiment to convert the dsp_comms library to a Zephyr module.\nThe hope is that I\u0027ll be able to include this module into the dagwood firmware and test the DSP comms path between the dagwood (dsp client) and the EC (dsp server).\n\nThis actually boots and runs on the ocelotrvp-ish.  But more work is needed to fix other boards.  I also need to get the protobuf generation working under dagwood.  This might mean moving the `pw_transport` driver into the DSP comms module.",
+      "revId": "d3154c6eedccc6ef382199b4d0c783aa048dbb30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
