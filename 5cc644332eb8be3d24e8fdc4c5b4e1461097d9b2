@@ -70,6 +70,30 @@
       },
       "revId": "5cc644332eb8be3d24e8fdc4c5b4e1461097d9b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dc0abc8_e460c4a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-15T22:54:01Z",
+      "side": 1,
+      "message": "I ran the `zmake compare-builds` for both `helipilot` and  `bloonchipper`. Both pass. I added that to the results.\n\n```\nTEST\u003dzmake compare-builds -b bloonchipper\nTEST\u003dzmake compare-builds -b helipilot\n```",
+      "parentUuid": "626e4e9d_b22bd260",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 61
+      },
+      "revId": "5cc644332eb8be3d24e8fdc4c5b4e1461097d9b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
