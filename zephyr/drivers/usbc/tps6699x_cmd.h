@@ -72,52 +72,30 @@ int tps_rw_customer_use(const struct i2c_dt_spec *i2c,
 			union reg_customer_use *buf, int flag);
 
 /**
- * @brief Read or Write Command for I2C1
+ * @brief Read or Write Command for a given port
  *
  * @param i2c device pointer to i2c device
  * @param buf pointer where data is stored
- * @param int flag set to I2C_MSG_READ for read and I2C_MSG_WRITE for write
+ * @param flag set to I2C_MSG_READ for read and I2C_MSG_WRITE for write
+ * @param port_index is the port on the chip (1 or 2)
  *
  * @return 0 on success, else -EIO
  */
-int tps_rw_command_for_i2c1(const struct i2c_dt_spec *i2c,
-			    union reg_command *buf, int flag);
+int tps_rw_command(const struct i2c_dt_spec *i2c, union reg_command *buf,
+		   int flag, int port_index);
 
 /**
- * @brief Read or Write Data for command 1
+ * @brief Read or Write Data for a given port's command
  *
  * @param i2c device pointer to i2c device
  * @param buf pointer where data is stored
- * @param int flag set to I2C_MSG_READ for read and I2C_MSG_WRITE for write
+ * @param flag set to I2C_MSG_READ for read and I2C_MSG_WRITE for write
+ * @param port_index is the port on the chip (1 or 2)
  *
  * @return 0 on success, else -EIO
  */
-int tps_rw_data_for_cmd1(const struct i2c_dt_spec *i2c, union reg_data *buf,
-			 int flag);
-
-/**
- * @brief Read or Write Command for I2C2
- *
- * @param i2c device pointer to i2c device
- * @param buf pointer where data is stored
- * @param int flag set to I2C_MSG_READ for read and I2C_MSG_WRITE for write
- *
- * @return 0 on success, else -EIO
- */
-int tps_rw_command_for_i2c2(const struct i2c_dt_spec *i2c,
-			    union reg_command *buf, int flag);
-
-/**
- * @brief Read or Write Data for command 2
- *
- * @param i2c device pointer to i2c device
- * @param buf pointer where data is stored
- * @param int flag set to I2C_MSG_READ for read and I2C_MSG_WRITE for write
- *
- * @return 0 on success, else -EIO
- */
-int tps_rw_data_for_cmd2(const struct i2c_dt_spec *i2c, union reg_data *buf,
-			 int flag);
+int tps_rw_data_for_cmd(const struct i2c_dt_spec *i2c, union reg_data *buf,
+			int flag, int port_index);
 
 /**
  * @brief Read Device Capabilities
@@ -149,7 +127,7 @@ int tps_rd_version(const struct i2c_dt_spec *i2c, union reg_version *buf);
  * @return 0 on success, else -EIO
  */
 int tps_rd_interrupt_event(const struct i2c_dt_spec *i2c,
-			   union reg_interrupt *buf);
+			   union reg_interrupt *buf, int port_index);
 
 /**
  * @brief Read or Write Interrupt Clear
@@ -161,7 +139,7 @@ int tps_rd_interrupt_event(const struct i2c_dt_spec *i2c,
  * @return 0 on success, else -EIO
  */
 int tps_rw_interrupt_clear(const struct i2c_dt_spec *i2c,
-			   union reg_interrupt *buf, int flag);
+			   union reg_interrupt *buf, int flag, int port_index);
 
 /**
  * @brief Read or Write Interrupt Mask
@@ -173,7 +151,7 @@ int tps_rw_interrupt_clear(const struct i2c_dt_spec *i2c,
  * @return 0 on success, else -EIO
  */
 int tps_rw_interrupt_mask(const struct i2c_dt_spec *i2c,
-			  union reg_interrupt *buf, int flag);
+			  union reg_interrupt *buf, int flag, int port_index);
 
 /**
  * @brief Read Status

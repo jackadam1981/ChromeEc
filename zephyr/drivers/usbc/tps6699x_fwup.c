@@ -23,6 +23,31 @@
 
 LOG_MODULE_DECLARE(tps6699x, CONFIG_USBC_LOG_LEVEL);
 
+/*
+ * NOTE: The pdc_config_t struct is defined in the pdc_tps6699x.c driver
+ * file. To avoid creating a new header file, the struct is duplicated here
+ * so that the firmware update code can access the port_index_on_chip field.
+ * If pdc_config_t changes, this definition must be updated.
+ */
+struct pdc_config_t {
+	/** I2C config */
+	struct i2c_dt_spec i2c;
+	/** pdc power path interrupt */
+	struct gpio_dt_spec irq_gpios;
+	/** connector number of this port */
+	uint8_t connector_number;
+	/** Notification enable bits */
+	union notification_enable_t bits;
+	/** Create thread function */
+	void (*create_thread)(const struct device *dev);
+	/** If true, do not apply PDC FW updates to this port */
+	bool no_fw_update;
+	/** Whether or not this port supports CCD */
+	bool ccd;
+	/** The index of the port on chip */
+	uint8_t port_index_on_chip;
+};
+
 #define TPS_4CC_MAX_DURATION K_MSEC(1200)
 #define TPS_4CC_POLL_DELAY K_USEC(200)
 #define TPS_RESET_DELAY K_MSEC(2000)
@@ -34,6 +59,7 @@ static struct {
 	const struct device *pdc_dev;
 	struct i2c_dt_spec pdc_i2c;
 	size_t bytes_streamed;
+	uint8_t port_index;
 } ctx;
 
 struct tfu_initiate {
@@ -118,8 +144,9 @@ static void command_task_to_string(enum command_task task, char str_out[5])
 	str_out[4] = '\0';
 }
 
-static int run_task_sync(const struct i2c_dt_spec *i2c, enum command_task task,
-			 union reg_data *cmd_data, uint8_t *user_buf)
+static int run_task_sync(const struct i2c_dt_spec *i2c, int port_index,
+			 enum command_task task, union reg_data *cmd_data,
+			 uint8_t *user_buf)
 {
 	k_timepoint_t timeout;
 	union reg_command cmd;
@@ -130,7 +157,8 @@ static int run_task_sync(const struct i2c_dt_spec *i2c, enum command_task task,
 
 	/* Set up self-contained synchronous command call */
 	if (cmd_data) {
-		rv = tps_rw_data_for_cmd1(i2c, cmd_data, I2C_MSG_WRITE);
+		rv = tps_rw_data_for_cmd(i2c, cmd_data, I2C_MSG_WRITE,
+					 port_index);
 		if (rv) {
 			LOG_ERR("Cannot set command data for '%s' (%d)",
 				task_str, rv);
@@ -140,7 +168,7 @@ static int run_task_sync(const struct i2c_dt_spec *i2c, enum command_task task,
 
 	cmd.command = task;
 
-	rv = tps_rw_command_for_i2c1(i2c, &cmd, I2C_MSG_WRITE);
+	rv = tps_rw_command(i2c, &cmd, I2C_MSG_WRITE, port_index);
 	if (rv) {
 		LOG_ERR("Cannot set command for '%s' (%d)", task_str, rv);
 		return rv;
@@ -152,7 +180,7 @@ static int run_task_sync(const struct i2c_dt_spec *i2c, enum command_task task,
 	while (1) {
 		k_sleep(TPS_4CC_POLL_DELAY);
 
-		rv = tps_rw_command_for_i2c1(i2c, &cmd, I2C_MSG_READ);
+		rv = tps_rw_command(i2c, &cmd, I2C_MSG_READ, port_index);
 		if (rv) {
 			LOG_ERR("Cannot poll command status for '%s' (%d)",
 				task_str, rv);
@@ -179,7 +207,8 @@ static int run_task_sync(const struct i2c_dt_spec *i2c, enum command_task task,
 	/* Read out success code */
 	union reg_data cmd_data_check;
 
-	rv = tps_rw_data_for_cmd1(i2c, &cmd_data_check, I2C_MSG_READ);
+	rv = tps_rw_data_for_cmd(i2c, &cmd_data_check, I2C_MSG_READ,
+				 port_index);
 	if (rv) {
 		LOG_ERR("Cannot get command result status for '%s' (%d)",
 			task_str, rv);
@@ -204,7 +233,7 @@ static int run_task_sync(const struct i2c_dt_spec *i2c, enum command_task task,
 	return 0;
 }
 
-static int do_reset_pdc(const struct i2c_dt_spec *i2c)
+static int do_reset_pdc(const struct i2c_dt_spec *i2c, int port_index)
 {
 	union reg_data cmd_data;
 	union gaid_params_t params;
@@ -216,7 +245,7 @@ static int do_reset_pdc(const struct i2c_dt_spec *i2c)
 
 	memcpy(cmd_data.data, &params, sizeof(params));
 
-	rv = run_task_sync(i2c, COMMAND_TASK_GAID, &cmd_data, NULL);
+	rv = run_task_sync(i2c, port_index, COMMAND_TASK_GAID, &cmd_data, NULL);
 
 	if (rv == 0) {
 		k_sleep(TPS_RESET_DELAY);
@@ -225,7 +254,7 @@ static int do_reset_pdc(const struct i2c_dt_spec *i2c)
 	return rv;
 }
 
-static int tfus_run(const struct i2c_dt_spec *i2c)
+static int tfus_run(const struct i2c_dt_spec *i2c, int port_index)
 {
 	int ret;
 
@@ -235,7 +264,7 @@ static int tfus_run(const struct i2c_dt_spec *i2c)
 
 	/* Make three attempts to run the TFUs command to start FW update. */
 	for (int attempts = 0; attempts < 3; attempts++) {
-		ret = tps_rw_command_for_i2c1(i2c, &cmd, I2C_MSG_WRITE);
+		ret = tps_rw_command(i2c, &cmd, I2C_MSG_WRITE, port_index);
 		if (ret == 0) {
 			break;
 		}
@@ -286,6 +315,7 @@ static int tfus_run(const struct i2c_dt_spec *i2c)
 static int pdc_tps6699x_fwup_start(const struct device *dev)
 {
 	struct pdc_hw_config_t hw_config;
+	const struct pdc_config_t *cfg = dev->config;
 	int rv;
 
 	if (ctx.pdc_dev) {
@@ -310,9 +340,10 @@ static int pdc_tps6699x_fwup_start(const struct device *dev)
 	}
 
 	ctx.pdc_i2c = hw_config.i2c;
+	ctx.port_index = cfg->port_index_on_chip;
 
 	/* Enter bootloader mode */
-	rv = tfus_run(&ctx.pdc_i2c);
+	rv = tfus_run(&ctx.pdc_i2c, ctx.port_index);
 	if (rv) {
 		LOG_ERR("Cannot enter bootloader mode (%d)", rv);
 		return rv;
@@ -342,8 +373,8 @@ static int pdc_tps6699x_fwup_send_initiate(uint8_t *buffer, size_t buffer_len)
 	}
 
 	memcpy(cmd_data.data, buffer, buffer_len);
-	rv = run_task_sync(&ctx.pdc_i2c, COMMAND_TASK_TFUI, &cmd_data,
-			   rbuf.raw_value);
+	rv = run_task_sync(&ctx.pdc_i2c, ctx.port_index, COMMAND_TASK_TFUI,
+			   &cmd_data, rbuf.raw_value);
 	if (rv < 0 || rbuf.data[0] != 0) {
 		LOG_ERR("Failed to run TFUi. rv=%d, rbuf[0]=%u", rv,
 			rbuf.data[0]);
@@ -373,8 +404,8 @@ static int pdc_tps6699x_fwup_send_block(uint8_t *buffer, size_t buffer_len)
 	}
 
 	memcpy(cmd_data.data, buffer, buffer_len);
-	rv = run_task_sync(&ctx.pdc_i2c, COMMAND_TASK_TFUD, &cmd_data,
-			   rbuf.raw_value);
+	rv = run_task_sync(&ctx.pdc_i2c, ctx.port_index, COMMAND_TASK_TFUD,
+			   &cmd_data, rbuf.raw_value);
 	if (rv < 0 || rbuf.data[0] != 0) {
 		LOG_ERR("Failed to run TFUd. rv=%d, rbuf[0]=%u", rv,
 			rbuf.data[0]);
@@ -421,8 +452,8 @@ static int pdc_tps6699x_tfuq(void)
 	tfuq->bank = 0;
 	tfuq->cmd = 0;
 
-	rv = run_task_sync(&ctx.pdc_i2c, COMMAND_TASK_TFUQ, &cmd_data,
-			   output.data);
+	rv = run_task_sync(&ctx.pdc_i2c, ctx.port_index, COMMAND_TASK_TFUQ,
+			   &cmd_data, output.data);
 	if (rv < 0) {
 		LOG_ERR("TFUq - Firmware update query failed (%d)", rv);
 		return rv;
@@ -442,12 +473,12 @@ static int pdc_tps6699x_fwup_abort(void)
 	if (ctx.pdc_dev) {
 		LOG_INF("TFU in progress - run TFUe to reset to normal firmware.");
 
-		rv = run_task_sync(&ctx.pdc_i2c, COMMAND_TASK_TFUE, NULL,
-				   data.raw_value);
+		rv = run_task_sync(&ctx.pdc_i2c, ctx.port_index,
+				   COMMAND_TASK_TFUE, NULL, data.raw_value);
 		LOG_INF("TFUe rv=%d, result data byte=0x%02x", rv,
 			data.data[0]);
 
-		rv = do_reset_pdc(&ctx.pdc_i2c);
+		rv = do_reset_pdc(&ctx.pdc_i2c, ctx.port_index);
 		if (rv) {
 			LOG_ERR("PDC reset failed: %d", rv);
 			LOG_ERR("Power cycle your board (battery cutoff and "
@@ -502,8 +533,8 @@ static int pdc_tps6699x_fwup_complete(void)
 	LOG_INF("Running TFUc [Switch: 0x%02x, Copy: 0x%02x]", tfuc.do_switch,
 		tfuc.do_copy);
 	memcpy(cmd_data.data, &tfuc, sizeof(tfuc));
-	rv = run_task_sync(&ctx.pdc_i2c, COMMAND_TASK_TFUC, &cmd_data,
-			   rbuf.data);
+	rv = run_task_sync(&ctx.pdc_i2c, ctx.port_index, COMMAND_TASK_TFUC,
+			   &cmd_data, rbuf.data);
 
 	if (rv < 0 || rbuf.data[0] != 0) {
 		LOG_ERR("Failed 4cc task with result %d, rbuf.data[0] = %d", rv,

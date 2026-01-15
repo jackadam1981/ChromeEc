@@ -542,7 +542,8 @@ static int pdc_interrupt_mask_init(struct pdc_data_t *data)
 		.patch_loaded = 1,
 	};
 
-	return tps_rw_interrupt_mask(&cfg->i2c, &irq_mask, I2C_MSG_WRITE);
+	return tps_rw_interrupt_mask(&cfg->i2c, &irq_mask, I2C_MSG_WRITE,
+				     cfg->port_index_on_chip);
 }
 
 static int pdc_port_control_init(struct pdc_data_t *data)
@@ -643,7 +644,8 @@ static int handle_irqs(struct pdc_data_t *data)
 	bool interrupt_pending = false;
 
 	/* Read the pending interrupt events */
-	rv = tps_rd_interrupt_event(&cfg->i2c, &pdc_interrupt);
+	rv = tps_rd_interrupt_event(&cfg->i2c, &pdc_interrupt,
+				    cfg->port_index_on_chip);
 	if (rv) {
 		LOG_ERR("TI%d: Read interrupt events failed (%d)",
 			cfg->connector_number, rv);
@@ -711,7 +713,8 @@ static int handle_irqs(struct pdc_data_t *data)
 	/* TODO(b/345783692): Handle other interrupt bits. */
 
 	/* Clear the pending interrupt events */
-	rv = tps_rw_interrupt_clear(&cfg->i2c, &pdc_interrupt, I2C_MSG_WRITE);
+	rv = tps_rw_interrupt_clear(&cfg->i2c, &pdc_interrupt, I2C_MSG_WRITE,
+				    cfg->port_index_on_chip);
 	if (rv) {
 		LOG_ERR("TI%d: Clear interrupt events failed (%d)",
 			cfg->connector_number, rv);
@@ -767,7 +770,8 @@ static enum smf_state_result st_init_run(void *o)
 
 	/* We won't see patch_loaded is asserted while handing the IRQ later on
 	 * if boot from dead battery as it is cleared here. */
-	rv = tps_rw_interrupt_clear(&cfg->i2c, &pdc_interrupt, I2C_MSG_WRITE);
+	rv = tps_rw_interrupt_clear(&cfg->i2c, &pdc_interrupt, I2C_MSG_WRITE,
+				    cfg->port_index_on_chip);
 	if (rv) {
 		LOG_ERR("TI%d: Clear patch_loaded bit failed (%d)",
 			cfg->connector_number, rv);
@@ -1895,13 +1899,15 @@ static int write_task_cmd(struct pdc_config_t const *cfg,
 	cmd.command = task;
 
 	if (cmd_data) {
-		rv = tps_rw_data_for_cmd1(&cfg->i2c, cmd_data, I2C_MSG_WRITE);
+		rv = tps_rw_data_for_cmd(&cfg->i2c, cmd_data, I2C_MSG_WRITE,
+					 cfg->port_index_on_chip);
 		if (rv) {
 			return rv;
 		}
 	}
 
-	rv = tps_rw_command_for_i2c1(&cfg->i2c, &cmd, I2C_MSG_WRITE);
+	rv = tps_rw_command(&cfg->i2c, &cmd, I2C_MSG_WRITE,
+			    cfg->port_index_on_chip);
 
 	return rv;
 }
@@ -2243,7 +2249,8 @@ static enum smf_state_result st_task_wait_run(void *o)
 	int rv;
 
 	/* Read command register for the particular port */
-	rv = tps_rw_command_for_i2c1(&cfg->i2c, &cmd, I2C_MSG_READ);
+	rv = tps_rw_command(&cfg->i2c, &cmd, I2C_MSG_READ,
+			    cfg->port_index_on_chip);
 	if (rv) {
 		/* I2C transaction failed */
 		LOG_ERR("TI%d: Failed to read command (%d)",
@@ -2269,7 +2276,8 @@ static enum smf_state_result st_task_wait_run(void *o)
 	 *  1) cmd_data is set to zero on success
 	 *  2) cmd_data is set to an error code on failure
 	 */
-	rv = tps_rw_data_for_cmd1(&cfg->i2c, &cmd_data, I2C_MSG_READ);
+	rv = tps_rw_data_for_cmd(&cfg->i2c, &cmd_data, I2C_MSG_READ,
+				 cfg->port_index_on_chip);
 	if (rv) {
 		/* I2C transaction failed */
 		LOG_ERR("TI%d: Failed to read command (%d)",
@@ -3167,7 +3175,8 @@ static void tps_check_and_notify_irq(void)
 		}
 
 		/* Read the pending interrupt events */
-		tps_rd_interrupt_event(&cfg->i2c, &pdc_interrupt);
+		tps_rd_interrupt_event(&cfg->i2c, &pdc_interrupt,
+				       cfg->port_index_on_chip);
 
 		for (int i = 0; i < sizeof(union reg_interrupt); i++) {
 			if (pdc_interrupt.raw_value[i]) {
