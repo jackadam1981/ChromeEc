@@ -119,18 +119,23 @@ int tps_rw_customer_use(const struct i2c_dt_spec *i2c,
 			    sizeof(union reg_customer_use), flag);
 }
 
-int tps_rw_command_for_i2c1(const struct i2c_dt_spec *i2c,
-			    union reg_command *buf, int flag)
+int tps_rw_command(const struct i2c_dt_spec *i2c, union reg_command *buf,
+		   int flag, int port_index)
 {
-	return tps_xfer_reg(i2c, REG_COMMAND_FOR_I2C1, buf->raw_value,
+	enum tps6699x_reg reg = (port_index == 1) ? REG_COMMAND_FOR_I2C1 :
+						    REG_COMMAND_FOR_I2C2;
+
+	return tps_xfer_reg(i2c, reg, buf->raw_value,
 			    sizeof(union reg_command), flag);
 }
 
-int tps_rw_data_for_cmd1(const struct i2c_dt_spec *i2c, union reg_data *buf,
-			 int flag)
+int tps_rw_data_for_cmd(const struct i2c_dt_spec *i2c, union reg_data *buf,
+			int flag, int port_index)
 {
-	return tps_xfer_reg(i2c, REG_DATA_FOR_CMD1, buf->raw_value,
-			    sizeof(union reg_data), flag);
+	enum tps6699x_reg reg =
+		(port_index == 1) ? REG_DATA_FOR_CMD1 : REG_DATA_FOR_CMD2;
+	return tps_xfer_reg(i2c, reg, buf->raw_value, sizeof(union reg_data),
+			    flag);
 }
 
 int tps_rd_version(const struct i2c_dt_spec *i2c, union reg_version *buf)
@@ -140,23 +145,33 @@ int tps_rd_version(const struct i2c_dt_spec *i2c, union reg_version *buf)
 }
 
 int tps_rd_interrupt_event(const struct i2c_dt_spec *i2c,
-			   union reg_interrupt *buf)
+			   union reg_interrupt *buf, int port_index)
 {
-	return tps_xfer_reg(i2c, REG_INTERRUPT_EVENT_FOR_I2C1, buf->raw_value,
+	enum tps6699x_reg reg = (port_index == 1) ?
+					       REG_INTERRUPT_EVENT_FOR_I2C1 :
+					       REG_INTERRUPT_EVENT_FOR_I2C2;
+
+	return tps_xfer_reg(i2c, reg, buf->raw_value,
 			    sizeof(union reg_interrupt), I2C_MSG_READ);
 }
 
 int tps_rw_interrupt_mask(const struct i2c_dt_spec *i2c,
-			  union reg_interrupt *buf, int flag)
+			  union reg_interrupt *buf, int flag, int port_index)
 {
-	return tps_xfer_reg(i2c, REG_INTERRUPT_MASK_FOR_I2C1, buf->raw_value,
+	enum tps6699x_reg reg = (port_index == 1) ?
+					       REG_INTERRUPT_MASK_FOR_I2C1 :
+					       REG_INTERRUPT_MASK_FOR_I2C2;
+	return tps_xfer_reg(i2c, reg, buf->raw_value,
 			    sizeof(union reg_interrupt), flag);
 }
 
 int tps_rw_interrupt_clear(const struct i2c_dt_spec *i2c,
-			   union reg_interrupt *buf, int flag)
+			   union reg_interrupt *buf, int flag, int port_index)
 {
-	return tps_xfer_reg(i2c, REG_INTERRUPT_CLEAR_FOR_I2C1, buf->raw_value,
+	enum tps6699x_reg reg = (port_index == 1) ?
+					       REG_INTERRUPT_CLEAR_FOR_I2C1 :
+					       REG_INTERRUPT_CLEAR_FOR_I2C2;
+	return tps_xfer_reg(i2c, reg, buf->raw_value,
 			    sizeof(union reg_interrupt), flag);
 }
 
