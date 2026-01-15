@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb602477_5b54fdf7",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 4412439
+      },
+      "writtenOn": "2026-01-15T06:57:10Z",
+      "side": 1,
+      "message": "Can you help to resolve the workaround to let cs pin high with not calling fp_sensor_unlock,it will auto changed to low whether call fp_sensor_unlock or not.",
+      "parentUuid": "22e382de_49acfa64",
+      "revId": "2f0c74bf3165492155d6c471fcef17ec208e8503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0e04bf61_f2bfbe5e",
         "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.c",
         "patchSetId": 20
@@ -65,6 +83,24 @@
       "writtenOn": "2026-01-09T10:34:51Z",
       "side": 1,
       "message": "This is a global buffer with no access control",
+      "revId": "2f0c74bf3165492155d6c471fcef17ec208e8503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba3db91d_d88ac13f",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 4412439
+      },
+      "writtenOn": "2026-01-15T06:57:10Z",
+      "side": 1,
+      "message": "should removed after resolved workaround",
+      "parentUuid": "0e04bf61_f2bfbe5e",
       "revId": "2f0c74bf3165492155d6c471fcef17ec208e8503",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -88,6 +124,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "501c5428_9007b984",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 4412439
+      },
+      "writtenOn": "2026-01-15T06:57:10Z",
+      "side": 1,
+      "message": "should removed after resolved workaround",
+      "parentUuid": "2365eba0_383db2a1",
+      "revId": "2f0c74bf3165492155d6c471fcef17ec208e8503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3b438f32_6153a096",
         "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.c",
         "patchSetId": 20
@@ -99,6 +153,24 @@
       "writtenOn": "2026-01-09T10:34:51Z",
       "side": 1,
       "message": "This logic is complicated with no explanation. Why are you overwriting the data buffer?",
+      "revId": "2f0c74bf3165492155d6c471fcef17ec208e8503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02071e5a_1308900f",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 4412439
+      },
+      "writtenOn": "2026-01-15T06:57:10Z",
+      "side": 1,
+      "message": "should removed after resolved workaround",
+      "parentUuid": "3b438f32_6153a096",
       "revId": "2f0c74bf3165492155d6c471fcef17ec208e8503",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -122,6 +194,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "77dce6bb_477ae9c3",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 4412439
+      },
+      "writtenOn": "2026-01-15T06:57:10Z",
+      "side": 1,
+      "message": "should removed after resolved workaround",
+      "parentUuid": "3058769b_4c814387",
+      "revId": "2f0c74bf3165492155d6c471fcef17ec208e8503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a536039c_0a4b593f",
         "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.c",
         "patchSetId": 20
@@ -139,6 +229,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f57262d2_06f33d57",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 4412439
+      },
+      "writtenOn": "2026-01-15T06:57:10Z",
+      "side": 1,
+      "message": "should removed after resolved workaround",
+      "parentUuid": "a536039c_0a4b593f",
+      "revId": "2f0c74bf3165492155d6c471fcef17ec208e8503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ddbcfbb7_2cbfb57c",
         "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.c",
         "patchSetId": 20
@@ -150,6 +258,24 @@
       "writtenOn": "2026-01-09T10:34:51Z",
       "side": 1,
       "message": "Just `return egis_sensor_spi_check_irq();`?",
+      "revId": "2f0c74bf3165492155d6c471fcef17ec208e8503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff1cea87_52837f7c",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 4412439
+      },
+      "writtenOn": "2026-01-15T06:57:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddbcfbb7_2cbfb57c",
       "revId": "2f0c74bf3165492155d6c471fcef17ec208e8503",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -173,6 +299,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "56afef94_5989c001",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 4412439
+      },
+      "writtenOn": "2026-01-15T06:57:10Z",
+      "side": 1,
+      "message": "library will handle NULL pointer, removed crashing",
+      "parentUuid": "c4ec96d6_d4217db7",
+      "revId": "2f0c74bf3165492155d6c471fcef17ec208e8503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "955b7117_95ea88e6",
         "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.h",
         "patchSetId": 20
@@ -184,6 +328,24 @@
       "writtenOn": "2026-01-09T10:34:51Z",
       "side": 1,
       "message": "Fix formatting of this file.",
+      "revId": "2f0c74bf3165492155d6c471fcef17ec208e8503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f29a476d_ebda43b5",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 4412439
+      },
+      "writtenOn": "2026-01-15T06:57:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "955b7117_95ea88e6",
       "revId": "2f0c74bf3165492155d6c471fcef17ec208e8503",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
