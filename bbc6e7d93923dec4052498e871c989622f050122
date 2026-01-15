@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42d73245_8b1c3f8e",
+        "filename": "common/rollback.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-15T17:31:25Z",
+      "side": 1,
+      "message": "```suggestion\n * @brief Checks the return value from MPU lock/unlock operations and panics if\n * that value is not success.\n```",
+      "range": {
+        "startLine": 70,
+        "startChar": 70,
+        "endLine": 71,
+        "endChar": 11
+      },
+      "revId": "bbc6e7d93923dec4052498e871c989622f050122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5219e2cc_e911cdbd",
+        "filename": "common/rollback.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-15T17:31:25Z",
+      "side": 1,
+      "message": "I think this part is obvious from the code. The `@brief` line above sufficiently describes the behavior.",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 42
+      },
+      "revId": "bbc6e7d93923dec4052498e871c989622f050122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fd78200_16657b31",
+        "filename": "common/rollback.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-15T17:31:25Z",
+      "side": 1,
+      "message": "Can you check the difference between `k_oops` and `k_panic`? I think `k_oops` may not necessarily be fatal, but I\u0027m not sure.",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 11
+      },
+      "revId": "bbc6e7d93923dec4052498e871c989622f050122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7095bcc6_8fb73422",
+        "filename": "common/rollback.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-15T17:31:25Z",
+      "side": 1,
+      "message": "Thanks for the cleanup. While you\u0027re here, could you create a separate CL that changes the argument from `int` to `bool` to make it clearer what the intent is?",
+      "range": {
+        "startLine": 109,
+        "startChar": 10,
+        "endLine": 109,
+        "endChar": 31
+      },
+      "revId": "bbc6e7d93923dec4052498e871c989622f050122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
