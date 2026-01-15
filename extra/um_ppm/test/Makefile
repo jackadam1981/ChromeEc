@@ -6,7 +6,7 @@ PARENT_DIR:=$(dir $(abspath $(firstword $(MAKEFILE_LIST))/..))
 
 # Make sure to compile with C++
 CXX=clang++
-CXXFLAGS=-std=c++17 -Wall -I/usr/include/gtest -I$(PARENT_DIR)
+CXXFLAGS=-Wall -I/usr/include/gtest -I$(PARENT_DIR)
 CFLAGS=-Wall -Werror -I$(PARENT_DIR)
 
 %.o: %.cc
