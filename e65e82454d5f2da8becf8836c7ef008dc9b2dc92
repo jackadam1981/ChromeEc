@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3cf0171_0ac43daa",
+        "filename": "common/battery_info.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2026-01-16T21:43:24Z",
+      "side": 1,
+      "message": "Does it need to zero out the `r-\u003emanuf_info` for the #else case?",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 6
+      },
+      "revId": "e65e82454d5f2da8becf8836c7ef008dc9b2dc92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
