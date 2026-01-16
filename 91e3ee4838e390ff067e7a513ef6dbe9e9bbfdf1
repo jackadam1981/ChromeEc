@@ -94,6 +94,30 @@
       },
       "revId": "91e3ee4838e390ff067e7a513ef6dbe9e9bbfdf1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d428c23_77a7d807",
+        "filename": "include/battery.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2026-01-16T19:41:00Z",
+      "side": 1,
+      "message": "ok, i\u0027ll adopt `manufacture` in this patch series.",
+      "parentUuid": "e30174e6_5473e446",
+      "range": {
+        "startLine": 382,
+        "startChar": 8,
+        "endLine": 382,
+        "endChar": 19
+      },
+      "revId": "91e3ee4838e390ff067e7a513ef6dbe9e9bbfdf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
