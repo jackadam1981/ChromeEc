@@ -4223,6 +4223,14 @@ int pdc_power_mgmt_set_active_charge_port(int charge_port)
 	return EC_SUCCESS;
 }
 
+void pd_xhci_init_check_pr_swap_needed(int port)
+{
+	if () {
+		atomic_set_bit(pdc_data[port]->port.snk_policy.flags,
+		       SNK_POLICY_EVAL_SWAP_TO_SRC);
+	}
+}
+
 int pdc_power_mgmt_set_new_power_request(int port)
 {
 	/* Make sure port is sink connected */
