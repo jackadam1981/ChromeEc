@@ -1,0 +1,9 @@
+/* Copyright 2026 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/* Reserve 64 KiB (0x10000) of RAM for crash data */
+&sram {
+	reg = < 0xff200000 0x90000 >;
+};
