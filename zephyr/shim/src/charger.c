@@ -9,6 +9,7 @@
 #include "charger/chg_isl9241.h"
 #include "charger/chg_isl95522.h"
 #include "charger/chg_rt9478.h"
+#include "charger/chg_rt9479.h"
 #include "charger/chg_rt9490.h"
 #include "charger/chg_sm5803.h"
 #include "usbc/utils.h"
