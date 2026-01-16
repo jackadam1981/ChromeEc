@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb167f13_1ad0ac77",
+        "filename": "zephyr/include/usbc/pdc_power_mgmt.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2026-01-16T06:19:36Z",
+      "side": 1,
+      "message": "add `@param port Port number to check`",
+      "revId": "9c4fa08451d477c4aab7925e72a69816686416d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "407585a7_6a5b767b",
+        "filename": "zephyr/program/skywalker/src/hooks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2026-01-16T06:19:36Z",
+      "side": 1,
+      "message": "put `pdc_power_mgmt_check_pr_swap_needed(i)` here",
+      "revId": "9c4fa08451d477c4aab7925e72a69816686416d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
