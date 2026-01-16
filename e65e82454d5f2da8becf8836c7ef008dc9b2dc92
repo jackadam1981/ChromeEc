@@ -22,6 +22,30 @@
       },
       "revId": "e65e82454d5f2da8becf8836c7ef008dc9b2dc92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6e6f3ad_9cb79c81",
+        "filename": "common/battery_info.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2026-01-16T22:14:45Z",
+      "side": 1,
+      "message": "the whole response buffer should already be zero\u0027d out at this point:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/host_command_task.c;l\u003d536",
+      "parentUuid": "a3cf0171_0ac43daa",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 6
+      },
+      "revId": "e65e82454d5f2da8becf8836c7ef008dc9b2dc92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
