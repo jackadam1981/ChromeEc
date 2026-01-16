@@ -46,6 +46,30 @@
       },
       "revId": "4b844dc16421404105e85149db37a942a7a93179",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed166f00_e38e7c1b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-16T22:27:37Z",
+      "side": 1,
+      "message": "I created a zephyr version of the test in the below CL:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7490177\n\nI can create a EC version after this CL is review to align the 2 tests.",
+      "parentUuid": "a081c143_b3aa08de",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 7
+      },
+      "revId": "4b844dc16421404105e85149db37a942a7a93179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
