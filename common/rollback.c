@@ -103,7 +103,7 @@ static void lock_rollback(uint32_t key)
 #endif
 }
 
-static uint32_t unlock_rollback(void)
+test_export_static uint32_t unlock_rollback(void)
 {
 #ifdef CONFIG_ROLLBACK_MPU_PROTECT
 	uint32_t key;

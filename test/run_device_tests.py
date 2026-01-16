@@ -669,6 +669,7 @@ class AllTests:
             # Handled by Zephyr - cpp.main.* tests
             TestConfig(test_name="global_initialization", skip_for_zephyr=True),
             TestConfig(test_name="libcxx"),
+            TestConfig(test_name="mpu_rollback_lock"),
             TestConfig(test_name="malloc", imagetype_to_use=ImageType.RO),
             # TODO(b/363277530): Add Zephyr MPU tests.
             TestConfig(
