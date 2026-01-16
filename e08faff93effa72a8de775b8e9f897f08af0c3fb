@@ -16,6 +16,23 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "e08faff93effa72a8de775b8e9f897f08af0c3fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90615a7a_942f23d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-01-16T00:23:52Z",
+      "side": 1,
+      "message": "Can you also add a test that verifies the EC requests the swap if the partner has set UP?\n\nThis can be added to [src_policy_3a_port](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/pdc/src/pdc_policy/src_policy_3a_port.c) or [sink_policy](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/test/pdc/src/pdc_policy/sink_policy.c)",
+      "revId": "e08faff93effa72a8de775b8e9f897f08af0c3fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
