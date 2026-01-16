@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af79f9bb_92d0c07b",
+        "filename": "zephyr/shim/chip/egis/otp_key_et171.c",
+        "patchSetId": 78
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-16T17:54:04Z",
+      "side": 1,
+      "message": "this is usually the style used:\n\n```suggestion\n\tuint8_t otp_key_buffer[OTP_KEY_SIZE_BYTES] __aligned(4) \u003d { 0 };\n```",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 65
+      },
+      "revId": "06d2c2f61e3e6288df405e09800eb8723d55ab6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
