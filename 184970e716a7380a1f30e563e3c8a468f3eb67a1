@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70eebd29_c6fc6587",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2026-01-16T17:42:34Z",
+      "side": 1,
+      "message": "This commit doesn\u0027t touch pujjoga or set any particular value. It should be called something like \"TCPMv2: Handle tSenderResponse override consistently\"",
+      "revId": "184970e716a7380a1f30e563e3c8a468f3eb67a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4499337a_534331be",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2026-01-16T17:42:34Z",
+      "side": 1,
+      "message": "`usb_pd.h` isn\u0027t de-shimmed. I think it should be using `CONFIG_USBC_PD3_T_SENDER_RESPONSE_MS` instead of `CONFIG_PLATFORM_EC_USBC_PD3_T_SENDER_RESPONSE_OVERRIDE`. Same for other configs.",
+      "revId": "184970e716a7380a1f30e563e3c8a468f3eb67a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
