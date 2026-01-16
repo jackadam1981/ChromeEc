@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f124af3_0afd8461",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 966,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2026-01-16T23:30:15Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "c5154ee0_5e7ebd89",
+      "revId": "5276de1416aff7e571e28defff67c1c351fd24dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49d216c5_c5aae787",
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "49d216c5_c5aae787",
+      "revId": "5276de1416aff7e571e28defff67c1c351fd24dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3efc8027_0da07727",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1439,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2026-01-16T23:30:15Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d7f354b1_d1a85ff5",
       "revId": "5276de1416aff7e571e28defff67c1c351fd24dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
