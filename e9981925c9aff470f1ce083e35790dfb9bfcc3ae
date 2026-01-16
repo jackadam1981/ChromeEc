@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7563537_ebd1ae46",
+        "filename": "zephyr/program/skywalker/grogu/project.overlay",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1293716
+      },
+      "writtenOn": "2026-01-16T02:43:28Z",
+      "side": 0,
+      "message": "Can you share more info why ToT has no such issue but firmware branch has problem?\n\nThis is to make sure ToT and firmware branch are aligned, and once we need to branch out another firmware, or use ToT firmware without any issue.\n\nToT snippet:\n\n164 \u0026usbc_port0 {                                                                   \n165         zephyr,deferred-init;                                                   \n166 };                                                                              \n167                                                                                 \n168 \u0026usbc_port1 {                                                                   \n169         zephyr,deferred-init;                                                   \n170 };                                                                              \n171                                                                                 \n172 \u0026pdc_power_p0 {                                                                 \n173         zephyr,deferred-init;                                                   \n174 };                                                                              \n175                                                                                 \n176 \u0026pdc_power_p1 {                                                                 \n177         zephyr,deferred-init;                                                   \n178 };",
+      "revId": "e9981925c9aff470f1ce083e35790dfb9bfcc3ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
