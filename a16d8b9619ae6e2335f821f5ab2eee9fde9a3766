@@ -122,6 +122,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "af9d436f_2eda4cc8",
+        "filename": "zephyr/shim/chip/egis/otp_key_et171.c",
+        "patchSetId": 75
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-16T20:07:03Z",
+      "side": 1,
+      "message": "I did. However, I can no longer do this build assert\n\n\n```\nBUILD_ASSERT(OTP_KEY_SIZE_BYTES / sizeof(uint32_t) \u003d\u003d\n\t     EGIS_ET171_OTP_KEY_WORD_SIZE);\n```",
+      "parentUuid": "a2062565_e17acfab",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 40
+      },
+      "revId": "a16d8b9619ae6e2335f821f5ab2eee9fde9a3766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "adf3013c_ed03d7d6",
         "filename": "zephyr/shim/chip/egis/otp_key_et171.c",
         "patchSetId": 75
