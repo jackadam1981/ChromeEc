@@ -44,6 +44,13 @@ DECLARE_HOOK(HOOK_INIT, skywalker_common_init, HOOK_PRIO_PRE_DEFAULT);
 void xhci_interrupt(enum gpio_signal signal)
 {
 	int xhci_stat = gpio_get_level(signal);
+	uint8_t port_count = pdc_power_mgmt_get_usb_pd_port_count();
+
+	if (gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_ap_xhci_init_done_r))) {
+		for (int j = 0; j < port_count; j++) {
+			pdc_power_mgmt_check_pr_swap_needed(j);
+		}
+	}
 
 #ifdef USB_PORT_ENABLE_COUNT
 	enum usb_charge_mode usba_mode = xhci_stat ? USB_CHARGE_MODE_ENABLED :
@@ -54,7 +61,7 @@ void xhci_interrupt(enum gpio_signal signal)
 	}
 #endif
 
-	for (int i = 0; i < pdc_power_mgmt_get_usb_pd_port_count(); i++) {
+	for (int i = 0; i < port_count; i++) {
 		if (xhci_stat) {
 			pdc_power_mgmt_set_dual_role(i, PD_DRP_TOGGLE_ON);
 		}
