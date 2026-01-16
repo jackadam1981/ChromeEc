@@ -22,6 +22,30 @@
       },
       "revId": "848616568ee981cda2db6c08c2d9dea5a8bfffdf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2b0da20_d26b1979",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1292,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2026-01-16T15:44:08Z",
+      "side": 1,
+      "message": "I\u0027m in favor of dropping the switch statement.  Each switch case has state specific behavior that a common function shouldn\u0027t be needing to know.  From my experience, I\u0027ve seen this design pattern get messy as more states are added over the years leading to a huge complex function that started as something simple.",
+      "parentUuid": "ea057078_bfc22749",
+      "range": {
+        "startLine": 1292,
+        "startChar": 0,
+        "endLine": 1292,
+        "endChar": 31
+      },
+      "revId": "848616568ee981cda2db6c08c2d9dea5a8bfffdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
