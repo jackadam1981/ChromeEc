@@ -70,6 +70,30 @@
       },
       "revId": "91e3ee4838e390ff067e7a513ef6dbe9e9bbfdf1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e30174e6_5473e446",
+        "filename": "include/battery.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2026-01-16T18:38:48Z",
+      "side": 1,
+      "message": "While `manufacturer` looks more natural, but `SB_MANUFACTURE_INFO` might be intentional. The data here is the CT (Commodity Tracking?) label. Since that refers to production tracking rather than the brand identity, the term `manufacture` is more accurate than `manufacturer` in my opinion.",
+      "parentUuid": "cb76682a_4445df2b",
+      "range": {
+        "startLine": 382,
+        "startChar": 8,
+        "endLine": 382,
+        "endChar": 19
+      },
+      "revId": "91e3ee4838e390ff067e7a513ef6dbe9e9bbfdf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
