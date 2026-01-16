@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a7bdade_84390d4e",
+        "filename": "common/usb_common.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2026-01-16T05:09:41Z",
+      "side": 1,
+      "message": "I checked the CQ error message. `make coverage` doesn\u0027t compile with CONFIG_USB_PD_TCPMV2 so there is no CONFIG_USB_PD_3A_PORTS by default. I think we can wrap this with `#ifdef CONFIG_USB_PD_3A_PORTS`.\n\n```\n#ifdef CONFIG_USB_PD_3A_PORTS\n#ifndef CONFIG_PLATFORM_EC_USB_PD_3A_PORTS_CUSTOM\n__overridable int pd_get_usb_pd_3a_ports(void)\n{\n\treturn CONFIG_USB_PD_3A_PORTS;\n}\n#endif\n#endif\n```",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 6
+      },
+      "revId": "ad6455ce94918fbef9d81c32afd69088da054fb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
