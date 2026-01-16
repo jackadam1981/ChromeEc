@@ -261,6 +261,17 @@ config PLATFORM_EC_CHARGER_RT9478
 	  wide range of input power sources are supported such as high
 	  voltage USB-C power delivery.
 
+config PLATFORM_EC_CHARGER_RT9479
+	bool "Use the RT9479 charger"
+	depends on PLATFORM_EC_I2C
+	select PLATFORM_EC_CHARGER_NARROW_VDC
+	help
+	  Enables the driver for the Richtek RT9479 battery charge
+	  controller. This is a synchronous narrow voltage DC buck-boost
+	  battery charger for two to four battery cell applications. A
+	  wide range of input power sources are supported such as high
+	  voltage USB-C power delivery.
+
 config PLATFORM_EC_CHARGER_RT9490
 	bool "Use the RT9490 charger"
 	default y

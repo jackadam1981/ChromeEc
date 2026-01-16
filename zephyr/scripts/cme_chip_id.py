@@ -621,6 +621,17 @@ DISAMBIGUATION_DICTIONARY = {
             },
         ),
     ],
+    # RT9479 did is TBD
+    "richtek,rt9479": [
+        CompatibleInfo(
+            "richtek,rt9479",
+            None,
+            None,
+            None,
+            None,
+            None,
+        ),
+    ],
     "richtek,rt9490": [
         CompatibleInfo(
             "richtek,rt9490",
