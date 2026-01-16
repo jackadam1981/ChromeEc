@@ -22,6 +22,30 @@
       },
       "revId": "513120e5674add378869464a95a6293efdcf4e33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1edbf9b_c72f613c",
+        "filename": "common/system_boot_time.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2026-01-16T00:49:36Z",
+      "side": 1,
+      "message": "`PLATFORM_EC_CONSOLE_CMD_BOOTTIME` in original implementation is added in `zephyr/Kconfig.powerseq` and depends on `PLATFORM_EC_POWERSEQ`.\n\n`PLATFORM_EC_POWERSEQ` and `AP_PWRSEQ` are mutually exclusive.\n\nConflict would be if we have `SYSTEM_BOOT_TIME_LOGGING` and `PLATFORM_EC_POWERSEQ`. I can do some further test on this.",
+      "parentUuid": "3b720717_8c5b8ba1",
+      "range": {
+        "startLine": 97,
+        "startChar": 7,
+        "endLine": 97,
+        "endChar": 46
+      },
+      "revId": "513120e5674add378869464a95a6293efdcf4e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
