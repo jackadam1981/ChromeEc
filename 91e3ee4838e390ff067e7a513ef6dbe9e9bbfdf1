@@ -46,6 +46,30 @@
       },
       "revId": "91e3ee4838e390ff067e7a513ef6dbe9e9bbfdf1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb76682a_4445df2b",
+        "filename": "include/battery.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2026-01-16T01:29:09Z",
+      "side": 1,
+      "message": "ya... sigh... i had `*manufacture_info` in earlier code.\ni switched to `*manufacturer_info` because i suspect `SB_MANUFACTURE_INFO` is\na typo.\n\nlet me know if we should fix the spelling in the comment or use `*manufacture_info`\nin the function names and related strings.",
+      "parentUuid": "253f0898_24e71997",
+      "range": {
+        "startLine": 382,
+        "startChar": 8,
+        "endLine": 382,
+        "endChar": 19
+      },
+      "revId": "91e3ee4838e390ff067e7a513ef6dbe9e9bbfdf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
