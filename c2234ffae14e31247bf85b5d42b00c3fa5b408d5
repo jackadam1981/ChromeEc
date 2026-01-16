@@ -764,6 +764,30 @@
       },
       "revId": "c2234ffae14e31247bf85b5d42b00c3fa5b408d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c5bc7e1_b33776be",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx_private.h",
+        "patchSetId": 31
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2026-01-16T08:42:59Z",
+      "side": 1,
+      "message": "OK, I have fixed it again.",
+      "parentUuid": "4dcf9745_e0020a61",
+      "range": {
+        "startLine": 341,
+        "startChar": 0,
+        "endLine": 351,
+        "endChar": 116
+      },
+      "revId": "c2234ffae14e31247bf85b5d42b00c3fa5b408d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
