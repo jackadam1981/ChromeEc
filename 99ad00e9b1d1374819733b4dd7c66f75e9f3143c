@@ -22,6 +22,30 @@
       },
       "revId": "99ad00e9b1d1374819733b4dd7c66f75e9f3143c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8e1dab5_f7d72bd1",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2026-01-16T01:22:50Z",
+      "side": 1,
+      "message": "if the battery doesn\u0027t respond when expected, the field will be treated\nas an empty string.\nif the battery responds with garbage, it\u0027ll show up as a very strange looking string.\n\nthe assumption here is that if an OEM/ODM chooses to enable this property,\nit\u0027ll be valid for every battery they choose to ship with that device.\n\nhistorically, this capability has been implemented using `ectool i2cxfer...` in some project private overlays as `oemdata.sh` scripts.\ni didn\u0027t see anything that would require configuration granularity beyond the board name.",
+      "parentUuid": "124216d1_82b25ebd",
+      "range": {
+        "startLine": 58,
+        "startChar": 7,
+        "endLine": 58,
+        "endChar": 37
+      },
+      "revId": "99ad00e9b1d1374819733b4dd7c66f75e9f3143c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
