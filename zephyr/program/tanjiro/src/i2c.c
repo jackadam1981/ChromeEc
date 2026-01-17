@@ -8,5 +8,9 @@
 __overridable int
 board_allow_i2c_passthru(const struct i2c_cmd_desc_t *cmd_desc)
 {
-	return cmd_desc->port == I2C_PORT_BATTERY;
+	return cmd_desc->port == I2C_PORT_BATTERY
+#ifdef CONFIG_PLATFORM_EC_BRINGUP
+	       || cmd_desc->port == I2C_PORT_CHARGER
+#endif
+		;
 }
