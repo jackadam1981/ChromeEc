@@ -16,6 +16,24 @@
       "message": "please rename the functions cros_flash_spi_nor_* to cros_flash_ft_*.",
       "revId": "9fd74641244684977e4d5862562720a3ac546726",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccc53f62_8d850dae",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_ft.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2026-01-17T03:11:41Z",
+      "side": 1,
+      "message": "OK, I have modified this.",
+      "parentUuid": "79d1e2ad_09f81635",
+      "revId": "9fd74641244684977e4d5862562720a3ac546726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
