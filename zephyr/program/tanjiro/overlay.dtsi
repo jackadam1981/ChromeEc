@@ -22,6 +22,9 @@
 	};
 
 	named-i2c-ports {
+		ec_i2c_misc_scl_3v3 {
+			remote-port = <8>;
+		};
 		ec_smb_batt_scl_3v3 {
 			remote-port = <7>;
 		};
