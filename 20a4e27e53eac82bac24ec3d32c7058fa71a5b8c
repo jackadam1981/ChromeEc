@@ -16,6 +16,24 @@
       "message": "I think we should make these two config names consistent (either both with or without the \u0027T\u0027), but that is out of scope for this CL.",
       "revId": "20a4e27e53eac82bac24ec3d32c7058fa71a5b8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68d65945_55423b16",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4253897
+      },
+      "writtenOn": "2026-01-19T07:33:45Z",
+      "side": 1,
+      "message": "I added these configs in Kconfig.pd. Let me correct that and raise a new patchset.",
+      "parentUuid": "eb71f2d1_a05e2cc7",
+      "revId": "20a4e27e53eac82bac24ec3d32c7058fa71a5b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
