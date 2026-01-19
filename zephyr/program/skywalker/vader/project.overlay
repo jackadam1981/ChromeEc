@@ -56,6 +56,7 @@
 	};
 
 	aliases {
+		gpio-kbd-kso2 = &gpio_ec_kso_02_inv;
 		gpio-wp = &gpio_ec_flash_wp_odl;
 	};
 
@@ -180,7 +181,6 @@
 		/delete-node/ ec_pmic_en_odl_r;
 		/delete-node/ ec_volup_btn_odl;
 		/delete-node/ ec_voldn_btn_odl;
-		/delete-node/ ec_kso_02_inv;
 
 		gpio_tchpad_lid_close: tchpad_lid_close {
 			gpios = <&gpiof 0 GPIO_OUTPUT>;
@@ -195,6 +195,9 @@
 		//CCD_MODE_L
 		gpio_ccd_mode_l: ccd_mode_l {
 			gpios = <&gpioe 5 (GPIO_INPUT)>;
+		};
+		gpio_ec_kso_02_inv: ec_kso_02_inv {
+			gpios = <&gpio1 7 (GPIO_OUTPUT | GPIO_ACTIVE_LOW | GPIO_OUTPUT_INIT_HIGH)>;
 		};
 	};
 
