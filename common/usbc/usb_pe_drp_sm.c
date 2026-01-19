@@ -928,6 +928,7 @@ void pe_message_received(int port)
 	/* This should only be called from the PD task */
 	assert(port == TASK_ID_TO_PD_PORT(task_get_current()));
 
+	CPRINTF("\npd msg rec set flag\n");
 	PE_SET_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 	task_wake(PD_PORT_TO_TASK_ID(port));
 }
@@ -5972,6 +5973,7 @@ static enum vdm_response_result parse_vdm_response_common(int port)
 			 * Unexpected VDM REQ received. Let Src.Ready or
 			 * Snk.Ready handle it.
 			 */
+			CPRINTF("\nvdm_response set rec flag 1\n");
 			PE_SET_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 			return VDM_RESULT_NO_ACTION;
 		}
@@ -5993,6 +5995,7 @@ static enum vdm_response_result parse_vdm_response_common(int port)
 	}
 
 	/* Unexpected Message Received. Src.Ready or Snk.Ready can handle it. */
+	CPRINTF("\nvdm_response set rec flag 2\n");
 	PE_SET_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 	return VDM_RESULT_NO_ACTION;
 }
@@ -7790,6 +7793,7 @@ __maybe_unused static void pe_get_revision_run(int port)
 			 * Setting PE_FLAGS_MSG_RECEIVED to handle unexpected
 			 * message.
 			 */
+			CPRINTF("\nget rev run set rec flag\n");
 			PE_SET_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 		}
 
@@ -8189,6 +8193,11 @@ static void pe_ddr_perform_data_reset_entry(int port)
 
 static void pe_ddr_perform_data_reset_run(int port)
 {
+	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
+		CPRINTF("\ndata_reset_run flag rec clear it\n");
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
+	}
+
 	/*
 	 * PE_FLAGS_VCONN_SWAP_COMPLETE may be set in 2 cases:
 	 * a) If the PE requested to turn VCONN off while entering this state,
@@ -8269,6 +8278,7 @@ static void pe_ddr_perform_data_reset_run(int port)
 	 */
 	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
 		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
+		CPRINTF("\ndata_reset_run flag err rec\n");
 		set_state_pe(port, PE_WAIT_FOR_ERROR_RECOVERY);
 	}
 }
