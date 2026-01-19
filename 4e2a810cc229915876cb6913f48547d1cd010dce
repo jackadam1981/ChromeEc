@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f6135be_ac1eec9d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 4253897
+      },
+      "writtenOn": "2026-01-19T08:19:44Z",
+      "side": 1,
+      "message": "Marked as resolved.",
+      "parentUuid": "bc1bd4ef_dac4d0e5",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 55
+      },
+      "revId": "4e2a810cc229915876cb6913f48547d1cd010dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98b71ef5_cbed340a",
@@ -108,6 +132,30 @@
       "writtenOn": "2026-01-19T06:45:44Z",
       "side": 1,
       "message": "CONFIG_USBC_PD3_T_SENDER_RESPONSE_MS\n```suggestion\n#define PD3_T_SENDER_RESPONSE CONFIG_USBC_PD3_T_SENDER_RESPONSE_MS\n```",
+      "range": {
+        "startLine": 279,
+        "startChar": 30,
+        "endLine": 279,
+        "endChar": 64
+      },
+      "revId": "4e2a810cc229915876cb6913f48547d1cd010dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cf4b2ca_c783851d",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 4253897
+      },
+      "writtenOn": "2026-01-19T08:19:44Z",
+      "side": 1,
+      "message": "Marked as resolved.",
+      "parentUuid": "8828e66e_eedca2f0",
       "range": {
         "startLine": 279,
         "startChar": 30,
