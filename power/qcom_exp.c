@@ -186,9 +186,6 @@ static int auto_power_on;
 /* 1 if long warm reset is going on */
 static char long_warm_reset;
 
-/* Cache the battery SoC during shutdown. Init to bad state. */
-static int shutdown_battery_soc = BATTERY_BAD_STATE_OF_CHARGE;
-
 /*
  *  Stores the power_state before performing long warm reset
  *  This variable is initialized to 0 i.e. POWER_G3
@@ -336,94 +333,6 @@ host_command_offmode_charing_active(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_ENABLE_OFFMODE_HEARTBEAT,
 		     host_command_offmode_charing_active, EC_VER_MASK(0));
 #endif
-
-static int get_battery_state_of_charge(void)
-{
-	struct batt_params batt;
-	battery_get_params(&batt);
-
-	if (batt.flags & BATT_FLAG_BAD_STATE_OF_CHARGE) {
-		return BATTERY_BAD_STATE_OF_CHARGE;
-	}
-
-	return batt.state_of_charge;
-}
-
-/*
- * On chipset shutdown complete, if we are in heartbeat mode, cache the battery
- * SoC.
- *
- * This will allow us to compare the battery SoC once it discharges by the
- * configured threshold.
- */
-void board_chipset_cache_soc_on_shutdown(void)
-{
-	if (heartbeat_mode) {
-		shutdown_battery_soc = get_battery_state_of_charge();
-		CPRINTS("Battery SoC cached!");
-		heartbeat_mode = 0;
-	}
-}
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN_COMPLETE,
-	     board_chipset_cache_soc_on_shutdown, HOOK_PRIO_DEFAULT);
-
-/*
- * Clear the cached shutdown SoC on power-on to prevent re-triggering
- * until the next shutdown. This ensures a clean state for battery SoC
- * monitoring upon system initialization.
- */
-void board_chipset_clear_cache_soc_on_poweron(void)
-{
-	CPRINTS("Battery SoC cache cleared!");
-	shutdown_battery_soc = BATTERY_BAD_STATE_OF_CHARGE;
-}
-DECLARE_HOOK(HOOK_CHIPSET_PRE_INIT, board_chipset_clear_cache_soc_on_poweron,
-	     HOOK_PRIO_DEFAULT);
-
-/*
- * Monitor battery SoC while on AC to implement the heartbeat wake-up.
- *
- * If discharging while on AC, ensure the chipset boots up once we hit
- * the allowed discharge threshold to continue charging.
- */
-void battery_soc_changed(void)
-{
-	int battery_soc;
-
-	/* Proceed only if AC is connected. */
-	if (!extpower_is_present())
-		return;
-
-	battery_soc = get_battery_state_of_charge();
-
-	if (BATTERY_BAD_STATE_OF_CHARGE == battery_soc)
-		return;
-
-	/* Ensure the cached SoC is valid before comparison. */
-	if (BATTERY_BAD_STATE_OF_CHARGE == shutdown_battery_soc)
-		return;
-
-	/* Check if the battery has discharged by the threshold amount since
-	 * shutdown. */
-	if (shutdown_battery_soc - battery_soc >=
-	    BATTERY_STATE_OF_CHARGE_DISCHARGE_THRESHOLD) {
-		CPRINTS("Battery discharged by %d%% Power-on to resume charging",
-			BATTERY_STATE_OF_CHARGE_DISCHARGE_THRESHOLD);
-
-		/* Reset cached SoC to prevent re-triggering until the next
-		 * shutdown.
-		 */
-		shutdown_battery_soc = BATTERY_BAD_STATE_OF_CHARGE;
-
-		/*
-		 * Explicitly set ac_on to signal the chipset task to boot up
-		 * and continue the charging process.
-		 */
-		ac_on = 1;
-		task_wake(TASK_ID_CHIPSET);
-	}
-}
-DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, battery_soc_changed, HOOK_PRIO_DEFAULT);
 
 /**
  * Wait the switchcap GPIO0 PVC_PG signal asserted.
