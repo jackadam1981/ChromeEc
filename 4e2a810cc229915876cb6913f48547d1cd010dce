@@ -71,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9bcce16_0192c457",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5518,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2026-01-19T07:15:53Z",
+      "side": 1,
+      "message": "Ah I see, it\u0027s already defined in Kconfig.pd without T",
+      "parentUuid": "1c8d3481_88a2590c",
+      "range": {
+        "startLine": 5518,
+        "startChar": 7,
+        "endLine": 5518,
+        "endChar": 41
+      },
+      "revId": "4e2a810cc229915876cb6913f48547d1cd010dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8828e66e_eedca2f0",
