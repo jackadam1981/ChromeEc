@@ -16,6 +16,52 @@
       "message": "Hi Jayvik and Derek,\n\ncould you help review the CL? Thanks.",
       "revId": "1cf08bd03e59e53c30573c376eccb45be8798968",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c95605da_2aa58e1a",
+        "filename": "zephyr/program/bluey/quartz/src/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2026-01-19T12:54:28Z",
+      "side": 1,
+      "message": "any reason for having different speeds for the two fans?",
+      "range": {
+        "startLine": 43,
+        "startChar": 31,
+        "endLine": 43,
+        "endChar": 35
+      },
+      "revId": "1cf08bd03e59e53c30573c376eccb45be8798968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1592ce0d_331807c4",
+        "filename": "zephyr/program/bluey/quartz/src/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2026-01-19T12:54:28Z",
+      "side": 1,
+      "message": "remove else from here ? common/fan.c:663 will take care of this.",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 34
+      },
+      "revId": "1cf08bd03e59e53c30573c376eccb45be8798968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
