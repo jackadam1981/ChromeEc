@@ -3740,9 +3740,6 @@
 /* Support one-wire interface */
 #undef CONFIG_ONEWIRE
 
-/* Support One Time Protection structure */
-#undef CONFIG_OTP
-
 /* Use OTP as a source of key material. */
 #undef CONFIG_OTP_KEY
 
