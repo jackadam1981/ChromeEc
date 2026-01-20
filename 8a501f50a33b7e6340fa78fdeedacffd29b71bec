@@ -16,6 +16,24 @@
       "message": "This looks substantially the same as the non-TBT UFP version of the code below. Can you combine them by\n1. Make the code below mostly build unconditionally, including the definition of `tbt_ufp_ack_allowed`.\n2. Make `board_set_tbt_ufp_reply` return an error if `CONFIG_USB_PD_TBT_COMPAT_MODE` isn\u0027t defined.",
       "revId": "8a501f50a33b7e6340fa78fdeedacffd29b71bec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7f2ec1f_9dd81077",
+        "filename": "baseboard/brya/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 3879739
+      },
+      "writtenOn": "2026-01-20T17:59:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26a1178a_8e6dcee1",
+      "revId": "8a501f50a33b7e6340fa78fdeedacffd29b71bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
