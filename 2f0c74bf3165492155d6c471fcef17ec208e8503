@@ -72,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3f8c147f_3e6586e9",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-20T10:03:43Z",
+      "side": 1,
+      "message": "So all this complexity is introduced to workaround the cs pin high problem? Please let me know first next time. I spent some time trying to understand this. We can just fix it in a proper way.\n\nThe `fp_sensor_unlock` is not directly related to CS pin. It blocks access to sensor for other tasks while some multiple SPI transfers is ongoing (`leave_cs_asserted` is true). `spi_release_dt` is used to release the CS pin. You missed one important configuration in the FPS driver, which is `SPI_HOLD_ON_CS`, as in [FPC1025](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/drivers/fingerprint/fingerprint_fpc1025.c;l\u003d538). That should cause in leaving the CS pin asserted after the SPI transaction, till `spi_release_dt` is called. The [description](https://github.com/zephyrproject-rtos/zephyr/blob/main/include/zephyr/drivers/spi.h#L181) says that is has to be supported by hardware + SPI driver, you can check with Jacob (author of SPI driver in ET171) if that\u0027s the case.",
+      "parentUuid": "eb602477_5b54fdf7",
+      "revId": "2f0c74bf3165492155d6c471fcef17ec208e8503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0e04bf61_f2bfbe5e",
         "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.c",
         "patchSetId": 20
@@ -311,6 +329,24 @@
       "side": 1,
       "message": "library will handle NULL pointer, removed crashing",
       "parentUuid": "c4ec96d6_d4217db7",
+      "revId": "2f0c74bf3165492155d6c471fcef17ec208e8503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ced0b9b_0de6acc1",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-20T10:03:43Z",
+      "side": 1,
+      "message": "Good.",
+      "parentUuid": "56afef94_5989c001",
       "revId": "2f0c74bf3165492155d6c471fcef17ec208e8503",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
