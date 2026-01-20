@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75d74108_a29a6848",
+        "filename": "zephyr/drivers/imvp/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2026-01-20T15:57:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b9f6b57_1458d14c",
+      "range": {
+        "startLine": 18,
+        "startChar": 7,
+        "endLine": 18,
+        "endChar": 23
+      },
+      "revId": "0e7e0f7dfae1e187740bc4ce23c4c007fc0f4f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42739053_1770c862",
@@ -37,6 +61,30 @@
       "writtenOn": "2026-01-15T23:33:20Z",
       "side": 1,
       "message": "please use the `LOG_*` functions.",
+      "range": {
+        "startLine": 269,
+        "startChar": 3,
+        "endLine": 269,
+        "endChar": 11
+      },
+      "revId": "0e7e0f7dfae1e187740bc4ce23c4c007fc0f4f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e201f0a_d269d149",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2026-01-20T15:57:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42739053_1770c862",
       "range": {
         "startLine": 269,
         "startChar": 3,
