@@ -1888,8 +1888,6 @@ __overridable const char *board_read_serial(void)
 	if (IS_ENABLED(CONFIG_FLASH_PSTATE) &&
 	    IS_ENABLED(CONFIG_FLASH_PSTATE_BANK))
 		return crec_flash_read_pstate_serial();
-	else if (IS_ENABLED(CONFIG_OTP))
-		return otp_read_serial();
 	else
 		return "";
 }
@@ -1899,8 +1897,6 @@ __overridable int board_write_serial(const char *serialno)
 	if (IS_ENABLED(CONFIG_FLASH_PSTATE) &&
 	    IS_ENABLED(CONFIG_FLASH_PSTATE_BANK))
 		return crec_flash_write_pstate_serial(serialno);
-	else if (IS_ENABLED(CONFIG_OTP))
-		return otp_write_serial(serialno);
 	else
 		return EC_ERROR_UNIMPLEMENTED;
 }
