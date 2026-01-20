@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b08237e0_a63b3017",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2026-01-20T15:31:15Z",
+      "side": 1,
+      "message": "Yes.correct.",
+      "parentUuid": "43c2635d_4e6795ef",
+      "revId": "821afaa83d201ee9fb95b82afee16c370742e2f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37f0bb37_b73af91e",
@@ -31,6 +49,30 @@
       "writtenOn": "2026-01-15T23:38:27Z",
       "side": 1,
       "message": "do these registers have more descriptive names?",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 7
+      },
+      "revId": "821afaa83d201ee9fb95b82afee16c370742e2f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea186e75_3cb78da6",
+        "filename": "zephyr/drivers/imvp/rt3645.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2026-01-20T15:31:15Z",
+      "side": 1,
+      "message": "For the ease of naming here -\u003e https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7461017/1/zephyr/program/ocelot/src/rvp_rt3645_update.c, I grouped the registers this way. Also, the register names are actually present here in this same file (zephyr/drivers/imvp/rt3645.h)  above too( eg : ICC_MAX_REG in line 28) and we have actually referenced  only few of them like control registers(ex: NVM_PRGRM_CTRL_REG, CONFIG_MODE_REG etc ) in c file. Do you think its better to use those Register names itself in the board file? I thought for future boards, the register numbers would be more easier for developers to refer to, without making any errors. But, I also agree that naming makes it more meaningful. Let me know your opinion.",
+      "parentUuid": "37f0bb37_b73af91e",
       "range": {
         "startLine": 114,
         "startChar": 1,
