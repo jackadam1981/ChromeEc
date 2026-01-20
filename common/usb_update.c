@@ -451,6 +451,7 @@ static int try_vendor_command(struct consumer const *consumer, size_t count)
 			return 1;
 		}
 		default:
+			ccprints("DBG21");
 			response = EC_RES_INVALID_COMMAND;
 		}
 

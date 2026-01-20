@@ -191,6 +191,7 @@ static enum ec_status keyscan_seq_ctrl(struct host_cmd_handler_args *args)
 			(struct ec_result_keyscan_seq_ctrl *)args->response);
 		break;
 	default:
+		ccprints("DBG19");
 		return EC_RES_INVALID_COMMAND;
 	}
 

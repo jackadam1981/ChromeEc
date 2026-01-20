@@ -125,6 +125,7 @@ static void handle_cmd_reboot_ec(const struct ec_params_reboot_ec *params,
 	int ret = EC_RES_SUCCESS;
 
 	if (data_len != sizeof(*params)) {
+		ccprints("DBG12");
 		ret = EC_RES_INVALID_COMMAND;
 		goto out;
 	}
@@ -153,6 +154,7 @@ handle_cmd_charger_control(const struct ec_params_charger_control *params,
 	int prev_charging_allowed = charging_allowed;
 
 	if (data_len != sizeof(*params)) {
+		ccprints("DBG13");
 		ret = EC_RES_INVALID_COMMAND;
 		goto out;
 	}
@@ -310,6 +312,7 @@ void ec_ec_comm_server_task(void *u)
 					     seq);
 			break;
 		default:
+			ccprints("DBG14");
 			write_response(EC_RES_INVALID_COMMAND, seq, NULL, 0);
 		}
 

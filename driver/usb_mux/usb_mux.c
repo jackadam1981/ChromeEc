@@ -926,8 +926,10 @@ static enum ec_status hc_usb_pd_mux_ack(struct host_cmd_handler_args *args)
 {
 	__maybe_unused const struct ec_params_usb_pd_mux_ack *p = args->params;
 
-	if (!IS_ENABLED(CONFIG_USB_MUX_AP_ACK_REQUEST))
+	if (!IS_ENABLED(CONFIG_USB_MUX_AP_ACK_REQUEST)){
+		ccprints("DBG23");
 		return EC_RES_INVALID_COMMAND;
+	}
 
 	if (p->port >= board_get_usb_pd_port_count())
 		return EC_RES_INVALID_PARAM;

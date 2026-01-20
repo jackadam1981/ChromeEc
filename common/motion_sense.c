@@ -1294,8 +1294,10 @@ static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 			return EC_RES_INVALID_PARAM;
 		/* Set new range if the data arg has a value. */
 		if (in->sensor_range.data != EC_MOTION_SENSE_NO_VALUE) {
-			if (!sensor->drv->set_range)
+			if (!sensor->drv->set_range){
+				CPRINTS("DBG1");
 				return EC_RES_INVALID_COMMAND;
+			}
 
 			if (sensor->drv->set_range(
 				    sensor, in->sensor_range.data,
@@ -1316,9 +1318,10 @@ static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 			return EC_RES_INVALID_PARAM;
 		/* Set new range if the data arg has a value. */
 		if (in->sensor_offset.flags & MOTION_SENSE_SET_OFFSET) {
-			if (!sensor->drv->set_offset)
+			if (!sensor->drv->set_offset){
+				CPRINTS("DBG2");
 				return EC_RES_INVALID_COMMAND;
-
+			}
 			in_offset = in->sensor_offset.offset;
 			ret = sensor->drv->set_offset(sensor, in_offset,
 						      in->sensor_offset.temp);
@@ -1326,9 +1329,10 @@ static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 				return ret;
 		}
 
-		if (!sensor->drv->get_offset)
+		if (!sensor->drv->get_offset){
+			CPRINTS("DBG3");
 			return EC_RES_INVALID_COMMAND;
-
+		}
 		out_offset = out->sensor_offset.offset;
 		ret = sensor->drv->get_offset(sensor, out_offset, &out_temp);
 		if (ret != EC_SUCCESS)
@@ -1346,9 +1350,10 @@ static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 			return EC_RES_INVALID_PARAM;
 		/* Set new range if the data arg has a value. */
 		if (in->sensor_scale.flags & MOTION_SENSE_SET_OFFSET) {
-			if (!sensor->drv->set_scale)
+			if (!sensor->drv->set_scale){
+				CPRINTS("DBG4");
 				return EC_RES_INVALID_COMMAND;
-
+			}
 			in_scale = in->sensor_scale.scale;
 			ret = sensor->drv->set_scale(sensor, in_scale,
 						     in->sensor_scale.temp);
@@ -1356,9 +1361,12 @@ static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 				return ret;
 		}
 
-		if (!sensor->drv->get_scale)
+		if (!sensor->drv->get_scale){
+			CPRINTS("DBG5 sensor=%s type=%d drv=%d",
+				sensor->name,
+				sensor->type);
 			return EC_RES_INVALID_COMMAND;
-
+		}
 		out_scale = out->sensor_scale.scale;
 		ret = sensor->drv->get_scale(sensor, out_scale, &out_temp);
 		if (ret != EC_SUCCESS)
@@ -1374,9 +1382,10 @@ static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 			in->perform_calib.sensor_num);
 		if (sensor == NULL)
 			return EC_RES_INVALID_PARAM;
-		if (!sensor->drv->perform_calib)
+		if (!sensor->drv->perform_calib){
+			CPRINTS("DBG6");
 			return EC_RES_INVALID_COMMAND;
-
+		}
 		ret = sensor->drv->perform_calib(sensor,
 						 in->perform_calib.enable);
 		if (ret != EC_SUCCESS)

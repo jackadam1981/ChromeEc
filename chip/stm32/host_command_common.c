@@ -20,6 +20,7 @@ static enum fp_transport_type curr_transport_type = FP_TRANSPORT_TYPE_UNKNOWN;
 static enum ec_status
 host_command_protocol_info(struct host_cmd_handler_args *args)
 {
+	ccprints("DBG11");
 	enum ec_status ret_status = EC_RES_INVALID_COMMAND;
 
 	/*

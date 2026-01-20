@@ -177,6 +177,7 @@ register_ish_project(
     kconfig_files=[
         here / "dsp_comms.conf",
         here / "ruby-ish" / "project.conf",
+        here / "ruby-ish" / "debug.conf",
     ],
     modules=["ec", "cmsis", "cmsis_6", "hal_intel_public", "pigweed", "nanopb"],
     inherited_from=["fatcat"],

@@ -352,6 +352,7 @@ i2c_command_passthru_protect(struct host_cmd_handler_args *args)
 	} else if (params->subcmd == EC_CMD_I2C_PASSTHRU_PROTECT_ENABLE) {
 		i2c_passthru_protect_port(port);
 	} else {
+		ccprints("DBG17");
 		return EC_RES_INVALID_COMMAND;
 	}
 

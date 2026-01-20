@@ -691,6 +691,7 @@ static int perform_calib(struct motion_sensor_t *s, int enable)
 
 	switch (s->type) {
 	case MOTIONSENSE_TYPE_ACCEL:
+		ccprints("DBG22");
 		ret = EC_RES_INVALID_COMMAND;
 		goto end_calib;
 	case MOTIONSENSE_TYPE_GYRO:

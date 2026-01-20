@@ -512,6 +512,7 @@ static void handle_host_write(int is_cmd)
 
 	} else {
 		/* Old style command, now unsupported */
+		ccprints("DBG10");
 		host_cmd_args.result = EC_RES_INVALID_COMMAND;
 	}
 

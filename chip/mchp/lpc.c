@@ -811,6 +811,7 @@ static void acpi_1_interrupt(void)
 
 	} else {
 		/* Old style command unsupported */
+		CPRINTS("DBG8");
 		host_cmd_args.result = EC_RES_INVALID_COMMAND;
 
 		/* Hand off to host command handler */

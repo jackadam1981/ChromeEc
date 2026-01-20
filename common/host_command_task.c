@@ -554,6 +554,7 @@ uint16_t host_command_process(struct host_cmd_handler_args *args)
 #endif
 	{
 		cmd = find_host_command(args->command);
+		CPRINTS("TEST4  argc->command0x%04x",args->command);
 		if (!cmd)
 			rv = EC_RES_INVALID_COMMAND;
 		else if (!(EC_VER_MASK(args->version) & cmd->version_mask))

@@ -953,6 +953,7 @@ static enum ec_status i2c_command_control(struct host_cmd_handler_args *args)
 		break;
 
 	default:
+		ccprints("DBG16");
 		return EC_RES_INVALID_COMMAND;
 	}
 

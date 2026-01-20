@@ -508,6 +508,7 @@ void pm2_ibf_interrupt(void)
 		return;
 	} else {
 		/* Old style command, now unsupported */
+		CPRINTS("DBG7");
 		host_cmd_args.result = EC_RES_INVALID_COMMAND;
 	}
 

@@ -1341,8 +1341,10 @@ static enum ec_status keyboard_factory_test(struct host_cmd_handler_args *args)
 	if (system_is_locked())
 		return EC_RES_ACCESS_DENIED;
 
-	if (keyboard_factory_scan_pins_used == 0)
+	if (keyboard_factory_scan_pins_used == 0){
+		ccprints("DBG18");
 		return EC_RES_INVALID_COMMAND;
+	}
 
 	r->shorted = keyboard_factory_test_scan();
 

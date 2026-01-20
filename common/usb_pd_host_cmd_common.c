@@ -525,6 +525,7 @@ static enum ec_status pd_control(struct host_cmd_handler_args *args)
 		board_set_tcpc_power_mode(cmd->chip, 1);
 		return EC_RES_SUCCESS;
 	} else {
+		ccprints("DBG20");
 		return EC_RES_INVALID_COMMAND;
 	}
 
