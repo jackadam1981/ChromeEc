@@ -81,6 +81,30 @@
       },
       "revId": "821afaa83d201ee9fb95b82afee16c370742e2f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "228e6474_c6396bc8",
+        "filename": "zephyr/drivers/imvp/rt3645.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2026-01-20T18:31:09Z",
+      "side": 1,
+      "message": "2 part answer. i\u0027m skeptical about using constants/enums that are\nbasically indistinguishable from a raw integer literal.\nyes, descriptive register names are a good idea - at least for the ones\nthat are actively used.",
+      "parentUuid": "ea186e75_3cb78da6",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 7
+      },
+      "revId": "821afaa83d201ee9fb95b82afee16c370742e2f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
