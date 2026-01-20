@@ -225,8 +225,8 @@ static int is_powered(int fan)
 	/* If we have an enable output, see if it's on or off. */
 	if (fans[fan].conf->enable_gpio >= 0)
 		is_pgood = gpio_get_level(fans[fan].conf->enable_gpio);
-	/* If we have a pgood input, it overrides any enable output. */
-	if (fans[fan].conf->pgood_gpio >= 0)
+	/* If we have a pgood input, it overrides enable output. */
+	if (is_pgood && (fans[fan].conf->pgood_gpio >= 0))
 		is_pgood = gpio_get_level(fans[fan].conf->pgood_gpio);
 
 	return is_pgood;
