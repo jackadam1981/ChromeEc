@@ -20,6 +20,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b99f878f_f59e2244",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-20T09:24:03Z",
+      "side": 1,
+      "message": "It is set for fp task, before the template is indeed encrypted. Maybe adjust description of the `template_encrypted` variable?",
+      "revId": "6a9eedbdc799103cd985b1d7aeb5198dd3b7f257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dee4e7b_7fc6ec38",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-20T09:24:03Z",
+      "side": 1,
+      "message": "Check the return code of fp_set_sensor_mode.",
+      "range": {
+        "startLine": 683,
+        "startChar": 2,
+        "endLine": 683,
+        "endChar": 20
+      },
+      "revId": "6a9eedbdc799103cd985b1d7aeb5198dd3b7f257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3a6cb62e_3d5f62dc",
         "filename": "common/fpsensor/fpsensor.cc",
         "patchSetId": 8
