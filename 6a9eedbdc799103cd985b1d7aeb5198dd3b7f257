@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25ce576b_c1931b85",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-20T09:09:02Z",
+      "side": 1,
+      "message": "The `fp_encryption_status` is a global variable modified by HC task here and `fp_task` in `encrypt_template`. My feeling is that this code highly depends on HC task having higher priority than other tasks. I\u0027m still thinking about this, but the high level question is if you analyzed this form the synchronization perspective? Maybe there will be another task in the future that also requests the template encryption.",
+      "revId": "6a9eedbdc799103cd985b1d7aeb5198dd3b7f257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a6cb62e_3d5f62dc",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-20T09:09:02Z",
+      "side": 1,
+      "message": "To check if the encryption is done, we use `FP_FRAME_GET_ENCRYPTED_TEMPLATE` and check the result? If `EC_RES_BUSY`, it means the encryption is still running. Is that right?\n\nHave you considered to use additional GET_RESULT/STATUS command?",
+      "revId": "6a9eedbdc799103cd985b1d7aeb5198dd3b7f257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ac1b76b_cf747c5d",
+        "filename": "include/fpsensor/fpsensor_state.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-20T09:09:02Z",
+      "side": 1,
+      "message": "I think the variable name can be improved to be more descriptive. It sounds like a bool that tells if template is encrypted or not. Something like `encrypted_template_id`?",
+      "revId": "6a9eedbdc799103cd985b1d7aeb5198dd3b7f257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
