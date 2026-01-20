@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73ed2837_5a7bcf5e",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2026-01-20T21:57:39Z",
+      "side": 1,
+      "message": "Maybe out of scope: This change leaves `pwm_set_brightness` as the only caller of `led_asynchronous_apply_color`. That function has a similar structure to `led_execute_patterns`, where it changes one LED and then calls this function across all of them. Maybe that function should be updated as well, and this function should go away.\n\nDefinitely out of scope: It seems like a lot of the LED interfaces have this same pattern. I wonder if this would benefit from a general refactor to 1) create a function to abstract the concept of finding the node for a particular LED ID and 2) change the LED functions to call that finder function and then only update that node.",
+      "revId": "5ad349593452ad8968e36ea84694df1582dc000d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
