@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "10268aed_cfb8ba21",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2026-01-20T16:09:36Z",
+      "side": 1,
+      "message": "It\u0027s a general problem in `fpsensor` architecture. The most notable example is `sensor_mode` which is changed both from `fpsensor` and `hostcmd` tasks, without even being atomic 😊\n\nThis works because:\n- Host commands have higher priority than `fpsensor` task.\n- Our MCUs are single-core.\n- There could be only one host command running at the time.\n- Host commands cannot be interrupted by other tasks.\n- We are checking only one bit in `global_context.sensor_mode`, so we are not prone to partial (non-atomic) writes/reads.\n\nIMHO this CL does not introduce any new risks. The best option would be to rework our codebase to use message passing.",
+      "parentUuid": "25ce576b_c1931b85",
+      "revId": "6a9eedbdc799103cd985b1d7aeb5198dd3b7f257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b99f878f_f59e2244",
         "filename": "common/fpsensor/fpsensor.cc",
         "patchSetId": 8
@@ -31,6 +49,24 @@
       "writtenOn": "2026-01-20T09:24:03Z",
       "side": 1,
       "message": "It is set for fp task, before the template is indeed encrypted. Maybe adjust description of the `template_encrypted` variable?",
+      "revId": "6a9eedbdc799103cd985b1d7aeb5198dd3b7f257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bdd2a58_b74a2ddb",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2026-01-20T16:09:36Z",
+      "side": 1,
+      "message": "Yeah, it depends on `FP_ENCRYPTED_TEMPLATE_READY` bit. If the bit is not set, it\u0027s the template that we are going to encrypt.",
+      "parentUuid": "b99f878f_f59e2244",
       "revId": "6a9eedbdc799103cd985b1d7aeb5198dd3b7f257",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9720cb0_d6619117",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2026-01-20T16:09:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9dee4e7b_7fc6ec38",
+      "range": {
+        "startLine": 683,
+        "startChar": 2,
+        "endLine": 683,
+        "endChar": 20
+      },
+      "revId": "6a9eedbdc799103cd985b1d7aeb5198dd3b7f257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a6cb62e_3d5f62dc",
@@ -75,6 +135,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d2fca3e_ef56608b",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2026-01-20T16:09:36Z",
+      "side": 1,
+      "message": "\u003e To check if the encryption is done, we use FP_FRAME_GET_ENCRYPTED_TEMPLATE and check the result? If EC_RES_BUSY, it means the encryption is still running. Is that right?\n\nYes. Caller expects to get `EC_RES_BUSY` if the encryption is running.\n\n\u003e Have you considered to use additional GET_RESULT/STATUS command?\n\nNo. That would complicate the process obtaining frame even more.",
+      "parentUuid": "3a6cb62e_3d5f62dc",
+      "revId": "6a9eedbdc799103cd985b1d7aeb5198dd3b7f257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ac1b76b_cf747c5d",
@@ -88,6 +166,24 @@
       "writtenOn": "2026-01-20T09:09:02Z",
       "side": 1,
       "message": "I think the variable name can be improved to be more descriptive. It sounds like a bool that tells if template is encrypted or not. Something like `encrypted_template_id`?",
+      "revId": "6a9eedbdc799103cd985b1d7aeb5198dd3b7f257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6d39b96_be51b4a7",
+        "filename": "include/fpsensor/fpsensor_state.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2026-01-20T16:09:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ac1b76b_cf747c5d",
       "revId": "6a9eedbdc799103cd985b1d7aeb5198dd3b7f257",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
