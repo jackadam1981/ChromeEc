@@ -16,6 +16,24 @@
       "message": "Should we set `has_transitions \u003d false` for each `policy_group`?",
       "revId": "978f49c8b7b2d0e1f4ed05ced58db73c1dff777e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbb3424a_135da752",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2026-01-20T20:05:10Z",
+      "side": 1,
+      "message": "Right. We should set it to false on every iteration. Thanks!",
+      "parentUuid": "0702f8b0_d013fb88",
+      "revId": "978f49c8b7b2d0e1f4ed05ced58db73c1dff777e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
