@@ -51,8 +51,9 @@ DT_INST_FOREACH_CHILD_STATUS_OKAY(0, GEN_PINS_DATA)
 
 DT_INST_FOREACH_CHILD_STATUS_OKAY_VARGS(0, DT_FOREACH_CHILD, GEN_PINS_ARRAY)
 
-static void pwm_set_color_with_pattern(void *p);
-static void pwm_asynchronous_apply_color(bool has_transitions);
+static void pwm_load_pattern(void *p);
+static bool pwm_refresh_state(void);
+static void pwm_apply_change(void);
 static void pwm_set_color(enum led_color color, enum ec_led_id led_id,
 			  uint8_t brightness);
 static void pwm_get_brightness_range(enum ec_led_id led_id,
@@ -60,8 +61,9 @@ static void pwm_get_brightness_range(enum ec_led_id led_id,
 static int pwm_set_brightness(enum ec_led_id led_id, const uint8_t *brightness);
 
 static const struct led_driver_api pwm_led_driver_api = {
-	.asynchronous_apply_color = pwm_asynchronous_apply_color,
-	.set_color_with_pattern = pwm_set_color_with_pattern,
+	.load_pattern = pwm_load_pattern,
+	.refresh_state = pwm_refresh_state,
+	.apply_change = pwm_apply_change,
 	.set_color = pwm_set_color,
 	.get_brightness_range = pwm_get_brightness_range,
 	.set_brightness = pwm_set_brightness,
@@ -130,7 +132,7 @@ static void pwm_set_color(enum led_color color, enum ec_led_id led_id,
 			break;
 		}
 	}
-	pwm_asynchronous_apply_color(false);
+	pwm_apply_change();
 }
 
 /*
@@ -154,16 +156,18 @@ static void pwm_set_color(enum led_color color, enum ec_led_id led_id,
 	DT_FOREACH_PROP_ELEM(id, led_pwms, PIN_PROGRESS_PULSE)
 
 /*
- * For every HOOK_TICK_INTERVAL_MS interval, we calculate the beginning and end
- * color based on the desired pattern, then linearly interpolate smoother
- * transition based on LED_STEP_TIME_MS.
+ * Calculates the target state and step size for a new pattern step.
+ *
+ * For linear transitions, this calculates the `pulse_step_ns` required
+ * to fade from the current value to the target value over the duration,
+ * based on the configured animation tick interval.
  *
  * Currently, the exponential transition approximates brightness to the closest
  * power of 2. A typical PWM LED will have pulse_ns at max brightness
  * approximately equal to 2^17. Because HOOK_TICK_INTERVAL_MS is on a 250ms
  * tick rate, this allows for 4s of transition without loss of accuracy.
  */
-static void pwm_set_color_with_pattern(void *p)
+static void pwm_load_pattern(void *p)
 {
 	struct led_pattern_node_t *pattern = (struct led_pattern_node_t *)p;
 	uint8_t pins_count = pattern->pattern_color[pattern->cur_color]
@@ -280,14 +284,21 @@ static int pwm_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 	if (!color_set)
 		led_set_color(LED_OFF, led_id, 0);
 
-	pwm_asynchronous_apply_color(false);
+	pwm_apply_change();
 	return EC_SUCCESS;
 }
 
-static void pwm_asynchronous_apply_color(bool has_transitions)
+static bool pwm_refresh_state(void)
 {
+	/* Apply linear interpolation steps */
+	DT_INST_FOREACH_CHILD_STATUS_OKAY(0, LED_PROGRESS_PULSE)
+
+	/* TODO: Set this dirty flag if any pulse_step_ns is non-zero. */
+	return true;
+}
+
+static void pwm_apply_change(void)
+{
+	/* Commit current state to hardware registers */
 	DT_INST_FOREACH_CHILD_STATUS_OKAY(0, LED_APPLY_COLOR)
-	if (has_transitions) {
-		DT_INST_FOREACH_CHILD_STATUS_OKAY(0, LED_PROGRESS_PULSE)
-	}
 }

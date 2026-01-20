@@ -32,8 +32,9 @@ BUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(DT_DRV_COMPAT) == 1,
 
 DT_INST_FOREACH_CHILD_STATUS_OKAY_VARGS(0, DT_FOREACH_CHILD, GEN_PINS_ARRAY)
 
-static void gpio_set_color_with_pattern(void *p);
-static void gpio_asynchronous_apply_color(bool tmp);
+static void gpio_load_pattern(void *p);
+static bool gpio_refresh_state(void);
+static void gpio_apply_change(void);
 static void gpio_set_color(enum led_color color, enum ec_led_id led_id,
 			   uint8_t brightness);
 static void gpio_get_brightness_range(enum ec_led_id led_id,
@@ -42,8 +43,9 @@ static int gpio_set_brightness(enum ec_led_id led_id,
 			       const uint8_t *brightness);
 
 static const struct led_driver_api gpio_led_driver_api = {
-	.asynchronous_apply_color = gpio_asynchronous_apply_color,
-	.set_color_with_pattern = gpio_set_color_with_pattern,
+	.load_pattern = gpio_load_pattern,
+	.refresh_state = gpio_refresh_state,
+	.apply_change = gpio_apply_change,
 	.set_color = gpio_set_color,
 	.get_brightness_range = gpio_get_brightness_range,
 	.set_brightness = gpio_set_brightness,
@@ -112,11 +114,13 @@ static void gpio_set_color(enum led_color color, enum ec_led_id led_id,
 	}
 }
 
-static void gpio_set_color_with_pattern(void *p)
+static void gpio_load_pattern(void *p)
 {
 	const struct led_pattern_node_t *led = (struct led_pattern_node_t *)p;
 	const struct led_pins_node_t *pins_node =
 		led->pattern_color[led->cur_color].led_color_node;
+
+	/* GPIO applies immediately on load to reduce buffer overhead. */
 	led_set_color_with_node(pins_node);
 }
 
@@ -185,12 +189,14 @@ const struct led_pins_node_t *led_get_node(enum led_color color,
 #endif /* TEST_BUILD */
 
 // LCOV_EXCL_START
-/* Called by hook task every HOOK_TICK_INTERVAL_MS */
-static void gpio_asynchronous_apply_color(bool tmp)
+static bool gpio_refresh_state(void)
 {
-	/*
-	 * GPIO LEDs can be applied when they are set and does not need to be
-	 * applied asynchronously. This function is left empty on purpose.
-	 */
+	/* GPIOs do not support interpolation/fading. */
+	return false;
+}
+
+static void gpio_apply_change(void)
+{
+	/* GPIO LEDs apply immediately in load. No deferred commit needed. */
 }
 // LCOV_EXCL_STOP

@@ -106,22 +106,33 @@ struct pwm_pin_t {
 /* Shared function table for LED driver implementations. */
 struct led_driver_api {
 	/**
-	 * Set LED color using pattern node.
+	 * Load pattern configuration into the driver.
+	 *
+	 * Called when the policy changes or a new pattern step begins.
+	 * The driver loads the configuration (target colors, step sizes)
+	 * into its internal state but does not write to hardware.
 	 */
-	void (*set_color_with_pattern)(void *pattern);
+	void (*load_pattern)(void *pattern);
 
 	/**
-	 * Commit the calculated LED color/duty cycles to the hardware.
+	 * Refresh the animation state.
 	 *
-	 * This decouples the pattern logic from the physical application,
-	 * allowing drivers to perform asynchronous updates or smooth
-	 * transitions without re-evaluating the policy.
+	 * Called periodically by the animation worker (e.g. every 30ms).
+	 * The driver advances its internal state (e.g., increases the step
+	 * value to interpolate colors). It does not write to hardware.
 	 *
-	 * @param has_transitions True if the active policy uses a transition
-	 * pattern.
+	 * Returns true if the visual state has changed (dirty).
 	 */
+	bool (*refresh_state)(void);
 
-	void (*asynchronous_apply_color)(bool has_transitions);
+	/**
+	 * Apply the current internal state to the physical hardware.
+	 *
+	 * Called to flush the internal state to physical hardware. It performs
+	 * the I/O transaction (PWM register sets, SPI writes) for all LEDs
+	 * at once.
+	 */
+	void (*apply_change)(void);
 
 	/**
 	 * Set LED color using color enum

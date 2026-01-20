@@ -302,7 +302,7 @@ static void update_led_pattern(const struct policy_group *grp,
 
 	/* Apply color calculated in the previous tick */
 	if (pattern->needs_update) {
-		grp->driver->api->set_color_with_pattern(pattern);
+		grp->driver->api->load_pattern(pattern);
 		pattern->needs_update = false;
 	}
 
@@ -503,6 +503,7 @@ static void led_execute_patterns(void)
 	for (int i = 0; i < ARRAY_SIZE(policy_groups); i++) {
 		const struct policy_group *grp = &policy_groups[i];
 		struct node_status group_status = { 0 };
+		bool dirty = false;
 
 		for (int j = 0; j < grp->num_nodes; j++) {
 			struct node_status status;
@@ -522,12 +523,15 @@ static void led_execute_patterns(void)
 			continue_animating = true;
 		}
 
-		if (group_status.needs_apply || group_status.has_transitions) {
+		if (group_status.has_transitions) {
+			dirty = grp->driver->api->refresh_state();
+		}
+
+		if (group_status.needs_apply || dirty) {
 #ifdef CONFIG_ZTEST
 			led_test_apply_count++;
 #endif
-			grp->driver->api->asynchronous_apply_color(
-				group_status.has_transitions);
+			grp->driver->api->apply_change();
 		}
 	}
 
