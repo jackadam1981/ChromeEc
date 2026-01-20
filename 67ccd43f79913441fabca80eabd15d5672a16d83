@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "901cc7ec_d67d7b76",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2026-01-20T18:21:32Z",
+      "side": 1,
+      "message": "Is this comment still consistent with the behavior below? `match_node` may need to be split up into smaller functions as well.",
+      "range": {
+        "startLine": 396,
+        "startChar": 2,
+        "endLine": 401,
+        "endChar": 25
+      },
+      "revId": "67ccd43f79913441fabca80eabd15d5672a16d83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb0ca9c6_c22cb098",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2026-01-20T18:21:32Z",
+      "side": 1,
+      "message": "Comment for this block?",
+      "revId": "67ccd43f79913441fabca80eabd15d5672a16d83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
