@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1362e208_b91700e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2026-01-21T13:33:02Z",
+      "side": 1,
+      "message": "if timing is an issue, could we try enabling this pin in a pre-init hook ?\n\n```\nvoid board_chipset_pre_init_quartz(void)\n{\n\tgpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_en_pp3300_s3), 1);\n}\nDECLARE_HOOK(HOOK_CHIPSET_PRE_INIT, board_chipset_pre_init_quartz,\n\t     HOOK_PRIO_DEFAULT);\n```",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 26
+      },
+      "revId": "2a5fd676d542605c9b5b877b1a095eb08a8d1844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "826fea26_5b945a1e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2026-01-21T13:33:02Z",
+      "side": 1,
+      "message": "Could you please explain why this particular signal needs to be followed for S3 rail ?\n\nI am not sure of the behavior of this signal and if following this pin for S3 power rail is safe.\n\n@klug@google.com, please share your thoughts on this as well.",
+      "range": {
+        "startLine": 12,
+        "startChar": 38,
+        "endLine": 12,
+        "endChar": 51
+      },
+      "revId": "2a5fd676d542605c9b5b877b1a095eb08a8d1844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10910fbf_119f8b30",
+        "filename": "zephyr/program/bluey/quartz/src/chipset.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2026-01-21T13:33:02Z",
+      "side": 1,
+      "message": "maybe have `gpio_ec_en_pp3300_s3` follow the output of `gpio_pp1800_l1i_s3_ec`. instead of if statement.\n\n```\ngpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_en_pp3300_s3),gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_pp1800_l1i_s3_ec)));\n```",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 2
+      },
+      "revId": "2a5fd676d542605c9b5b877b1a095eb08a8d1844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "199fea8c_41d328e1",
+        "filename": "zephyr/program/bluey/quartz/src/chipset.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2026-01-21T13:33:02Z",
+      "side": 1,
+      "message": "Maybe do something like this instead of if-else ?\n\n```\ngpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_ec_en_pp3300_s3),gpio_pin_get_dt(GPIO_DT_FROM_NODELABEL(gpio_pp1800_l1i_s3_ec)));\n```",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 1
+      },
+      "revId": "2a5fd676d542605c9b5b877b1a095eb08a8d1844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
