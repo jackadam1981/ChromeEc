@@ -26,6 +26,7 @@ import yaml  # pylint: disable=wrong-import-order
 
 # pylint: disable=wrong-import-order
 from chromite.api.gen_sdk.chromite.api import firmware_pb2
+from chromite.lib.chromeos_version import VersionInfo
 import scripts.firmware_builder_lib
 
 
@@ -285,32 +286,100 @@ def bundle_coverage(opts):
     write_metadata(opts, info)
 
 
+def get_version():
+    """Determine the current chroot version."""
+    ver = VersionInfo.from_repo(source_repo=find_checkout())
+    if ver:
+        return ver.VersionString()
+    return None
+
+
 def bundle_firmware(opts):
     """Bundles the artifacts from each target into its own tarball."""
     info = firmware_pb2.FirmwareArtifactInfo()  # pylint: disable=no-member
     info.bcs_version_info.version_string = opts.bcs_version
+    version = opts.bcs_version or get_version()
     bundle_dir = get_bundle_dir(opts)
     ec_dir = os.path.dirname(__file__)
+    cmd = ["make", "print-all-baseboards", f"-j{opts.cpus}"]
+    print(f"# Running {' '.join(cmd)}.")
+    baseboards = {}
+    env = os.environ.copy()
+    env.update(init_toolchain())
+    for line in subprocess.run(
+        cmd,
+        cwd=os.path.dirname(__file__),
+        check=True,
+        universal_newlines=True,
+        stdout=subprocess.PIPE,
+        env=env,
+    ).stdout.splitlines():
+        parts = line.split("=")
+        if len(parts) > 1:
+            baseboards[parts[0]] = parts[1]
+
     for build_target in sorted(os.listdir(os.path.join(ec_dir, "build"))):
         if build_target in ["host"]:
             continue
-        tarball_name = "".join([build_target, ".firmware.tbz2"])
+        artifacts_dir = pathlib.Path(
+            os.path.join(ec_dir, "build", build_target)
+        )
+        # karis.EC.15709.192.0.tar.bz2
+        if version:
+            tarball_name = f"{build_target}.EC.{version}.tar.bz2"
+            elf_tarball_name = f"{build_target}.EC_elf.{version}.tar.bz2"
+        else:
+            tarball_name = f"{build_target}.EC.tar.bz2"
+            elf_tarball_name = f"{build_target}.EC_elf.tar.bz2"
+
         tarball_path = os.path.join(bundle_dir, tarball_name)
+        cmd = [
+            "tar",
+            "cvfj",
+            tarball_path,
+        ]
+        cmd.extend(
+            [x.relative_to(artifacts_dir) for x in artifacts_dir.glob("*.bin")]
+        )
+        print(f"# Running {' '.join(cmd)}.")
+        subprocess.run(
+            cmd,
+            cwd=artifacts_dir,
+            check=True,
+            stdin=subprocess.DEVNULL,
+        )
+        meta = info.objects.add()
+        if build_target in baseboards and baseboards[build_target]:
+            meta.tarball_info.board.append(baseboards[build_target])
+        meta.file_name = tarball_name
+        meta.tarball_info.type = (
+            firmware_pb2.FirmwareArtifactInfo.TarballInfo.FirmwareType.EC  # pylint: disable=no-member
+        )
+        tarball_path = os.path.join(bundle_dir, elf_tarball_name)
         cmd = [
             "tar",
             "cvfj",
             tarball_path,
             "--exclude=*.d",
             "--exclude=*.o",
-            ".",
         ]
+        cmd.extend(
+            [
+                x.relative_to(artifacts_dir)
+                for x in artifacts_dir.glob("*/*.elf")
+            ]
+        )
+        print(f"# Running {' '.join(cmd)}.")
         subprocess.run(
             cmd,
-            cwd=os.path.join(ec_dir, "build", build_target),
+            cwd=artifacts_dir,
             check=True,
+            stdin=subprocess.DEVNULL,
         )
         meta = info.objects.add()
-        meta.file_name = tarball_name
+        if build_target in baseboards and baseboards[build_target]:
+            meta.tarball_info.board.append(baseboards[build_target])
+        meta.file_name = elf_tarball_name
         meta.tarball_info.type = (
             firmware_pb2.FirmwareArtifactInfo.TarballInfo.FirmwareType.EC  # pylint: disable=no-member
         )
