@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "847e6b32_445e7719",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2026-01-21T23:12:12Z",
+      "side": 1,
+      "message": "Focusing on zephyr support first. Will adapt to legacy as a follow up.",
+      "parentUuid": "b4b89963_4c1ed4f8",
+      "range": {
+        "startLine": 165,
+        "startChar": 8,
+        "endLine": 165,
+        "endChar": 16
+      },
+      "revId": "3526d04d18036c1aef9f81347731eff7c823cded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ebe0f40d_1f42dbb1",
@@ -37,6 +61,30 @@
       "writtenOn": "2026-01-21T06:03:39Z",
       "side": 1,
       "message": "nitpicking, welcome to disregard: the call to k_uptime_get() doesn\u0027t have to be inside this spinlock",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 33
+      },
+      "revId": "3526d04d18036c1aef9f81347731eff7c823cded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7373ad12_71b77c9d",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2026-01-21T23:12:12Z",
+      "side": 1,
+      "message": "It prevents a race condition where an interrupt updates watchdog_reload_last_ts_ms to be newer than now, causing integer underflow in the elapsed time calculation.",
+      "parentUuid": "ebe0f40d_1f42dbb1",
       "range": {
         "startLine": 171,
         "startChar": 0,
@@ -94,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7332e3aa_4bdb4868",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2026-01-21T23:12:12Z",
+      "side": 1,
+      "message": "`now` is 64-bits because `watchdog_reload_period_max_ts_ms` is 64-bits. `watchdog_reload_period_max_ts_ms` is 64-bits because it holds an absolute timestamp. Elapsed only needs to be 32 bit because it\u0027s just the elapsed time since the last reload. \n\n`watchdog_reload_last_ts_ms` has been updated to also be 64 bit.",
+      "parentUuid": "0b5991ab_4360d073",
+      "range": {
+        "startLine": 172,
+        "startChar": 22,
+        "endLine": 172,
+        "endChar": 25
+      },
+      "revId": "3526d04d18036c1aef9f81347731eff7c823cded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79cc307a_39615ac7",
@@ -107,6 +179,30 @@
       "writtenOn": "2026-01-21T06:03:39Z",
       "side": 1,
       "message": "Printing from inside the spinlock could take time, which might lead to `watchdog_reload()` to stall before \"feeding\" the WD. I propose to copy the values to local variables and then print outside of spinlock.",
+      "range": {
+        "startLine": 349,
+        "startChar": 2,
+        "endLine": 349,
+        "endChar": 8
+      },
+      "revId": "3526d04d18036c1aef9f81347731eff7c823cded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdd7a709_df75b1ab",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2026-01-21T23:12:12Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "79cc307a_39615ac7",
       "range": {
         "startLine": 349,
         "startChar": 2,
@@ -136,6 +232,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1d2d32d7_b2df3a56",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2026-01-21T23:12:12Z",
+      "side": 1,
+      "message": "The current implementation of `reset_stats` prints the stats and also resets the stats. I think your suggestion is to just reset the stats and not print. I guess it\u0027s a preference. I found I usually wanted both when I was testing. I\u0027ll switch it if you think the current pattern is confusing.",
+      "parentUuid": "a6b12a90_584a4d03",
+      "revId": "3526d04d18036c1aef9f81347731eff7c823cded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "feed1266_1c17d662",
         "filename": "zephyr/shim/src/watchdog.c",
         "patchSetId": 11
@@ -147,6 +261,30 @@
       "writtenOn": "2026-01-21T06:03:39Z",
       "side": 1,
       "message": "EC_RES_INVALID_COMMAND",
+      "range": {
+        "startLine": 372,
+        "startChar": 10,
+        "endLine": 372,
+        "endChar": 12
+      },
+      "revId": "3526d04d18036c1aef9f81347731eff7c823cded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "addd4f36_476494c2",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2026-01-21T23:12:12Z",
+      "side": 1,
+      "message": "Switched to -EINVAL since this is a Zephyr shell command.",
+      "parentUuid": "feed1266_1c17d662",
       "range": {
         "startLine": 372,
         "startChar": 10,
@@ -170,6 +308,30 @@
       "writtenOn": "2026-01-21T06:03:39Z",
       "side": 1,
       "message": "EC_RES_SUCCESS",
+      "range": {
+        "startLine": 382,
+        "startChar": 8,
+        "endLine": 382,
+        "endChar": 9
+      },
+      "revId": "3526d04d18036c1aef9f81347731eff7c823cded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "170ef468_37ead07e",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2026-01-21T23:12:12Z",
+      "side": 1,
+      "message": "Zephyr shell API says to just return 0 on success.",
+      "parentUuid": "e6b793f6_71412cc6",
       "range": {
         "startLine": 382,
         "startChar": 8,
