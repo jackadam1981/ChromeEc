@@ -8,6 +8,7 @@
 #include "usb_common.h"
 
 #include <stdint.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 #include <zephyr/logging/log.h>
@@ -809,6 +810,60 @@ static int cmd_set_ap_power_state(const struct shell *sh, size_t argc,
 	return pdc_power_mgmt_set_ap_power_state(state);
 }
 
+#define RUN_SUBCOMMAND(shell, handler, argc, argv)                           \
+	do {                                                                 \
+		shell_info(shell, "- " STRINGIFY(handler) ":");              \
+		int rv = handler(shell, argc, argv);                         \
+		if (rv) {                                                    \
+			shell_error(shell, STRINGIFY(handler) " failed: %d", \
+				    rv);                                     \
+		}                                                            \
+	} while (0);
+
+static int cmd_pdc_dump(const struct shell *sh, size_t argc, char **argv)
+{
+	char port_num[3] = { 0 };
+	char *command[] = { NULL, port_num };
+	int rv;
+
+	/* Iterate through all USB-C ports */
+	for (int i = 0; i < pdc_power_mgmt_get_usb_pd_port_count(); i++) {
+		shell_info(sh, "===== Port C%d =====", i);
+
+		rv = snprintf(port_num, sizeof(port_num), "%d", i);
+		if (rv < 0 || rv > sizeof(port_num)) {
+			shell_error(sh, "Cannot format port_num %d: %d", i, rv);
+			continue;
+		}
+
+		/* pdc status <port> */
+		command[0] = "status";
+		RUN_SUBCOMMAND(sh, cmd_pdc_get_status, 2, command);
+
+		/* pdc info <port> */
+		command[0] = "info";
+		RUN_SUBCOMMAND(sh, cmd_pdc_get_info, 2, command);
+
+		/* pdc connector_status <port> */
+		command[0] = "connector_status";
+		RUN_SUBCOMMAND(sh, cmd_pdc_get_connector_status, 2, command);
+
+		/* pdc srccaps <port> */
+		command[0] = "srccaps";
+		RUN_SUBCOMMAND(sh, cmd_pdc_srccaps, 2, command);
+	}
+
+	shell_info(sh, "===== General =====");
+
+#ifdef CONFIG_USBC_PDC_DRIVEN_CCD
+	/* pdc sbumux */
+	command[0] = "sbumux";
+	RUN_SUBCOMMAND(sh, cmd_pdc_sbu_mux_mode, 1, command);
+#endif /* CONFIG_USBC_PDC_DRIVEN_CCD */
+
+	return 0;
+}
+
 SHELL_STATIC_SUBCMD_SET_CREATE(
 	sub_pdc_cmds,
 	SHELL_CMD_ARG(status, NULL,
@@ -899,6 +954,10 @@ SHELL_STATIC_SUBCMD_SET_CREATE(
 		      "Notify the PDC of AP power state change\n"
 		      "Usage: pdc ap_state [s0|s5]",
 		      cmd_set_ap_power_state, 2, 0),
+	SHELL_CMD_ARG(dump, NULL,
+		      "Print diagnostic data for all ports\n"
+		      "Usage: pdc dump",
+		      cmd_pdc_dump, 1, 0),
 	SHELL_SUBCMD_SET_END);
 
 SHELL_CMD_REGISTER(pdc, &sub_pdc_cmds, "PDC console commands", NULL);
