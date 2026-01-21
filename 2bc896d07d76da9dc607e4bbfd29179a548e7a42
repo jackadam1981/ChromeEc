@@ -16,6 +16,24 @@
       "message": "What about https://source.corp.google.com/h/chrome-internal/chromeos/superproject/+/main:src/platform/ec/chip/stm32/config-stm32f4.h;l\u003d66;drc\u003d71b2ef709dcb14260f5fdaa3ab4ced005a29fb46 ?",
       "revId": "2bc896d07d76da9dc607e4bbfd29179a548e7a42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aeecac50_2a2b29cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-21T17:13:02Z",
+      "side": 1,
+      "message": "ec/chip code is not used on the `main` branch, right? Bloonchipper (FPMCU) is a STM32F4 project, but it fully migrated to Zephyr.",
+      "parentUuid": "a4ad1047_de9a8eb7",
+      "revId": "2bc896d07d76da9dc607e4bbfd29179a548e7a42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
