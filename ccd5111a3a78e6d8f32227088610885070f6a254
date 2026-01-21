@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "058be4ab_97b73701",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2026-01-21T02:34:01Z",
+      "side": 1,
+      "message": "The coverage failure is caused by the previously-not-covered exception handling:\n```\n\t\tif (!found_node) {\n\t\t\tLOG_ERR(\"Node with matching prop not found\");\n\t\t}\n```",
+      "revId": "ccd5111a3a78e6d8f32227088610885070f6a254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
