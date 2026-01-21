@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb51a115_fcf2a6a4",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 4
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2026-01-21T20:49:22Z",
+      "side": 1,
+      "message": "This should only be modifying the flags for clang, not for GCC.",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 266,
+        "endChar": 43
+      },
+      "revId": "0e0067952e1f943d6d78db8d943695fc48038777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
