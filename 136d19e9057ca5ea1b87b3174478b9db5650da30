@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d9a5802_e85367f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2026-01-21T21:36:18Z",
+      "side": 1,
+      "message": "This change bypasses the error handling on line 8279, but that error handling is required. In the situation we\u0027re dealing with here, the partner should not have sent a message, and the port is correct to enter Error Recovery. See the bug for details.",
+      "revId": "136d19e9057ca5ea1b87b3174478b9db5650da30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
