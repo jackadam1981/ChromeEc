@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de89c6f8_9b36b232",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2026-01-21T10:33:33Z",
+      "side": 1,
+      "message": "how about `delay_ms`",
+      "revId": "4d88cc9daed0976d4199ad5134a657a86babf239",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30c75a2b_bbf444de",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2026-01-21T10:33:33Z",
+      "side": 1,
+      "message": "use `max`, no risk of bugs in this case but that\u0027s the safe version, should save a couple cycles too",
+      "revId": "4d88cc9daed0976d4199ad5134a657a86babf239",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
