@@ -7438,6 +7438,10 @@ __maybe_unused static void pe_vcs_force_vconn_run(int port)
 		 * Not_Supported reply means the partner doesn't support
 		 * sourcing Vconn and did not communicate with the cable.
 		 */
+		/* If the PE got to this point, it won't be changing the VCONN
+		 * role again, so any pending DPM request to do so is moot.
+		 */
+		PE_CLR_DPM_REQUEST(port, DPM_REQUEST_VCONN_SWAP);
 		pe_set_ready_state(port);
 		return;
 	}
