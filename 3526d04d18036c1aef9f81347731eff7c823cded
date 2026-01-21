@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4b89963_4c1ed4f8",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2026-01-21T06:03:39Z",
+      "side": 1,
+      "message": "Spinlock is available only in zephyr. Just checking - do you plan to add this for older boards too?",
+      "range": {
+        "startLine": 165,
+        "startChar": 8,
+        "endLine": 165,
+        "endChar": 16
+      },
+      "revId": "3526d04d18036c1aef9f81347731eff7c823cded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebe0f40d_1f42dbb1",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2026-01-21T06:03:39Z",
+      "side": 1,
+      "message": "nitpicking, welcome to disregard: the call to k_uptime_get() doesn\u0027t have to be inside this spinlock",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 33
+      },
+      "revId": "3526d04d18036c1aef9f81347731eff7c823cded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af71bac5_8d8be214",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2026-01-21T06:03:39Z",
+      "side": 1,
+      "message": "`now` is 64-bit wide, other variables here are only 32 bits",
+      "range": {
+        "startLine": 172,
+        "startChar": 22,
+        "endLine": 172,
+        "endChar": 25
+      },
+      "revId": "3526d04d18036c1aef9f81347731eff7c823cded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79cc307a_39615ac7",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2026-01-21T06:03:39Z",
+      "side": 1,
+      "message": "Printing from inside the spinlock could take time, which might lead to `watchdog_reload()` to stall before \"feeding\" the WD. I propose to copy the values to local variables and then print outside of spinlock.",
+      "range": {
+        "startLine": 349,
+        "startChar": 2,
+        "endLine": 349,
+        "endChar": 8
+      },
+      "revId": "3526d04d18036c1aef9f81347731eff7c823cded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6b12a90_584a4d03",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2026-01-21T06:03:39Z",
+      "side": 1,
+      "message": "nit suggestion: simplify the logic by removing `reset_stats`: \n```\nstatic int cmd_watchdoginfo(...)\n{\n  if (argc \u003d\u003d 2) {\n    if (strcmp(argv[1], \"reset_stats\") \u003d\u003d 0) {\n      reset_watchdog_stats();\n      printk(\"Watchdog stats reset.\\n\");\n      return EC_RES_SUCCESS;\n    } else {\n      printk(\"Invalid argument: %s\\n\", argv[1]);\n      return EC_RES_INVALID_COMMAND;\n    }\n  }\n\n  print_watchdog_info();\n  return EC_RES_SUCCESS;\n}\n```",
+      "revId": "3526d04d18036c1aef9f81347731eff7c823cded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "feed1266_1c17d662",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2026-01-21T06:03:39Z",
+      "side": 1,
+      "message": "EC_RES_INVALID_COMMAND",
+      "range": {
+        "startLine": 372,
+        "startChar": 10,
+        "endLine": 372,
+        "endChar": 12
+      },
+      "revId": "3526d04d18036c1aef9f81347731eff7c823cded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6b793f6_71412cc6",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2026-01-21T06:03:39Z",
+      "side": 1,
+      "message": "EC_RES_SUCCESS",
+      "range": {
+        "startLine": 382,
+        "startChar": 8,
+        "endLine": 382,
+        "endChar": 9
+      },
+      "revId": "3526d04d18036c1aef9f81347731eff7c823cded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
