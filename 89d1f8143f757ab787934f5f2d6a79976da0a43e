@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8e46697_77fdca6a",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_elan80series.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2026-01-21T18:21:24Z",
+      "side": 1,
+      "message": "I think it should be `ft_info`.",
+      "range": {
+        "startLine": 476,
+        "startChar": 46,
+        "endLine": 476,
+        "endChar": 56
+      },
+      "revId": "89d1f8143f757ab787934f5f2d6a79976da0a43e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
