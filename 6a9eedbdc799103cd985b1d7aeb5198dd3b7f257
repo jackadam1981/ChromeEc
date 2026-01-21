@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "faec0649_7219c298",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-21T23:21:06Z",
+      "side": 1,
+      "message": "Yeah, the `fpsensor` code is definitely in need of some cleanup.\n\nI think Patryk\u0027s analysis is correct, but let\u0027s add a TODO above this function and include Patryk\u0027s description of why it works now so other people who look at the code have that context.\n\nIf there is low-hanging fruit where we can make improvements without much effort (e.g., make `sensor_mode` atomic), then it might be good to go ahead and do that in a followup CL.",
+      "parentUuid": "10268aed_cfb8ba21",
+      "revId": "6a9eedbdc799103cd985b1d7aeb5198dd3b7f257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b99f878f_f59e2244",
         "filename": "common/fpsensor/fpsensor.cc",
         "patchSetId": 8

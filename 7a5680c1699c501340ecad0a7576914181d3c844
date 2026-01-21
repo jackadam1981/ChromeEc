@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8ca3113_26e8a235",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-21T23:21:06Z",
+      "side": 1,
+      "message": "It looks like this function returns `enum ec_error_list`. Should we provide a way to return a failure from it?",
+      "range": {
+        "startLine": 335,
+        "startChar": 5,
+        "endLine": 337,
+        "endChar": 31
+      },
+      "revId": "7a5680c1699c501340ecad0a7576914181d3c844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "802e148c_e00df921",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-21T23:21:06Z",
+      "side": 1,
+      "message": "Can we add a TODO(bug) to remove this? I guess we\u0027ll have to add support in CrOS `libec` for the async frame command.\n\nOr could this synchronous version call the new v1 command and poll for it to be finished? If so, I would add that in a separate CL.",
+      "range": {
+        "startLine": 572,
+        "startChar": 0,
+        "endLine": 572,
+        "endChar": 77
+      },
+      "revId": "7a5680c1699c501340ecad0a7576914181d3c844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0bf6e52_2450d1e4",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-21T23:21:06Z",
+      "side": 1,
+      "message": "In CrOS `libec`, I tried to create a [standard \"async\" command pattern](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/libec/ec_command_async.h).\n\nExamples:\n\n* https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/libec/add_entropy_command.cc\n* https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/libec/fingerprint/fp_context_command.cc;l\u003d57;drc\u003daf8f850e622dc4ffded892bf5fbcd18fffddb5fd\n\nWould it work to use that same style here for consistency?",
+      "range": {
+        "startLine": 630,
+        "startChar": 0,
+        "endLine": 630,
+        "endChar": 77
+      },
+      "revId": "7a5680c1699c501340ecad0a7576914181d3c844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab043a7e_9485f6a2",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-21T23:21:06Z",
+      "side": 1,
+      "message": "Since we\u0027re adding a new version of the command, what if we just add an index variable to the `struct ec_params_fp_frame_v1` rather than overloading `offset`?",
+      "range": {
+        "startLine": 635,
+        "startChar": 0,
+        "endLine": 635,
+        "endChar": 58
+      },
+      "revId": "7a5680c1699c501340ecad0a7576914181d3c844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f874c2e_9de2c67e",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-21T23:21:06Z",
+      "side": 1,
+      "message": "nit: `now` and `mode_output` can be scoped to the `FP_FRAME_ENCRYPT_TEMPLATE` case block (wrapped in braces `{}`) since they\u0027re only used there.",
+      "range": {
+        "startLine": 638,
+        "startChar": 0,
+        "endLine": 641,
+        "endChar": 22
+      },
+      "revId": "7a5680c1699c501340ecad0a7576914181d3c844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4febc1dd_4b59b687",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 8605,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-21T23:21:06Z",
+      "side": 1,
+      "message": "If we continue with packing the index into `offset`, this is technically not correct.",
+      "range": {
+        "startLine": 8605,
+        "startChar": 44,
+        "endLine": 8605,
+        "endChar": 72
+      },
+      "revId": "7a5680c1699c501340ecad0a7576914181d3c844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
