@@ -16,6 +16,24 @@
       "message": "Was the memset unnecessary?",
       "revId": "a5563cc0a117ecb442fc3bca98963e2913ad0677",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e3b500b_975244fc",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2026-01-22T21:44:27Z",
+      "side": 1,
+      "message": "Found out the memeset was unnecessary. The caller has zeroed it out.\n```\nstatic enum ec_status led_command_control(struct host_cmd_handler_args *args)\n{\n        ...\n        memset(r-\u003ebrightness_range, 0, sizeof(r-\u003ebrightness_range));\n\n        if (!led_is_supported(p-\u003eled_id))\n                return EC_RES_INVALID_PARAM;\n\n        led_get_brightness_range(p-\u003eled_id, r-\u003ebrightness_range);\n```",
+      "parentUuid": "3ef439d6_af8a7951",
+      "revId": "a5563cc0a117ecb442fc3bca98963e2913ad0677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
