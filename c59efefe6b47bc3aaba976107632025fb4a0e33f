@@ -16,6 +16,24 @@
       "message": "does it pass presubmit?",
       "revId": "c59efefe6b47bc3aaba976107632025fb4a0e33f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e539f099_477bc511",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2026-01-22T19:19:11Z",
+      "side": 1,
+      "message": "it still complains in couple places - cros format still makes lines long, and another issue is with complex macro (see below), but at least doesn\u0027t reformat code constantly.\n\n\n```\n  WARNING: line over 80 characters\n    #738: FILE: boot_param/boot_param.c:910:\n    +\t\t\t\t\t   res_mem-\u003eblobs.auth_token_key_seed)) {\n    \n    ERROR: Macros with complex values should be enclosed in parentheses\n    #1593: FILE: boot_param/cbor_boot_param.h:225:\n    +#define COSE_PARAM_BSTR                                                      \\\n    +\t{                                                                    \\\n    +\t\t/* BSTR of size 3 - see the rest of the struct */            \\\n    +\t\tCBOR_HDR1(CBOR_MAJOR_BSTR, 3), /* Map header: 1 elem */      \\\n    +\t\tCBOR_HDR1(CBOR_MAJOR_MAP, 1), /* 1. Alg: uint(1) \u003d\u003e nint(-7) \\\n    \n    WARNING: Avoid unnecessary line continuations\n    #1598: FILE: boot_param/cbor_boot_param.h:230:\n    +\t\t\t\t\t       */                            \\\n    \n    WARNING: line over 80 characters\n    #1691: FILE: boot_param/res_mem.h:79:\n    +\t\tuint8_t versioned_seed_compat[sizeof(versioned_seed_compat_str)];\n    \n    total: 1 errors, 3 warnings, 1626 lines checked\n\n```",
+      "parentUuid": "b7d16d8c_b491412a",
+      "revId": "c59efefe6b47bc3aaba976107632025fb4a0e33f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
