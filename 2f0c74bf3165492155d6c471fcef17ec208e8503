@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0caae3de_64dcf194",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-22T06:11:13Z",
+      "side": 1,
+      "message": "I think you can check that with @jacob.kung@egistec.corp-partner.google.com, an author of the SPI driver.",
+      "parentUuid": "626962ca_f00ed3c4",
+      "revId": "2f0c74bf3165492155d6c471fcef17ec208e8503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0e04bf61_f2bfbe5e",
         "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.c",
         "patchSetId": 20
