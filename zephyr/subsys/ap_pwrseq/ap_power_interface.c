@@ -4,7 +4,13 @@
  */
 
 #include <ap_power/ap_power_interface.h>
+#ifdef CONFIG_X86_NON_DSX_PWRSEQ
 #include <x86_non_dsx_common_pwrseq_sm_handler.h>
+#else
+#include <ap_power/ap_pwrseq_sm.h>
+enum ap_pwrseq_state chipset_pwr_seq_get_state(void);
+void request_start_from_g3(void);
+#endif
 
 LOG_MODULE_DECLARE(ap_pwrseq, CONFIG_AP_PWRSEQ_LOG_LEVEL);
 
