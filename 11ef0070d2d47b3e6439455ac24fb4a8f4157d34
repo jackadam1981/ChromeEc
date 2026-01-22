@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48ab5928_bce34ba2",
+        "filename": "test/rollback_lock_panic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-22T18:37:09Z",
+      "side": 1,
+      "message": "@tomhughes@chromium.org\nFor the EC version, we might need to double check. The [mpu_config_region](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec-legacy/core/cortex-m/mpu.c;drc\u003d196fc3577f0bea64f72ab70ac5b45411d2b10d02;l\u003d195) states that it is returning a negative value on failure (-EC_ERROR_OVERFLOW if it is not possible to fully configure the given region, or -EC_ERROR_INVAL if a parameter is invalid). However, I do not believe this is correct. We might need to correct the documentation for [mpu_lock_rollback](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/core/cortex-m/include/mpu.h;l\u003d142?q\u003dplatform%2Fec%20mpu_lock_rollback\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch#:~:text\u003d141-,142,-143) in the EC side and mention that it returns \u003e0 when it fails.",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 16
+      },
+      "revId": "11ef0070d2d47b3e6439455ac24fb4a8f4157d34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
