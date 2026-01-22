@@ -269,8 +269,15 @@ static void uartn_config(uint8_t uart_num)
 		NPCX_UBAUD(uart_num) = 0x19;
 	}
 #elif defined(NPCX_CORE_ABP2_ABP3_CLOCK_40M)
+#if NPCX_FAMILY_VERSION >= NPCX_FAMILY_NPCX9
+	/* Baudrate setting for the source clock (APB4) = 20MHz on NPCX9 */
 	NPCX_UPSR(uart_num) = 0x08;
 	NPCX_UBAUD(uart_num) = 0x0A;
+#else
+	/* Baudrate setting for the source clock (APB2) = 40MHz on NPCX7/5 */
+	NPCX_UPSR(uart_num) = 0x08;
+	NPCX_UBAUD(uart_num) = 0x15;
+#endif
 #else
 	NPCX_UPSR(uart_num) = 0x38;
 	NPCX_UBAUD(uart_num) = 0x1;
