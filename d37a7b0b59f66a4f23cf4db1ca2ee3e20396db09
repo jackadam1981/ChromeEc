@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98fcd592_e510d390",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2026-01-22T17:44:40Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "d37a7b0b59f66a4f23cf4db1ca2ee3e20396db09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84595650_9e9b1804",
+        "filename": "zephyr/program/fatcat/moonstone/gpios.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2026-01-22T17:44:40Z",
+      "side": 1,
+      "message": "please also use `GPIO_INPUT` or `GPIO_OUTPUT` for clarity.\nlooks like you\u0027re switching from input to output here?",
+      "range": {
+        "startLine": 104,
+        "startChar": 22,
+        "endLine": 104,
+        "endChar": 37
+      },
+      "revId": "d37a7b0b59f66a4f23cf4db1ca2ee3e20396db09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
