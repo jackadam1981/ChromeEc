@@ -26,6 +26,11 @@ BUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(intel_ap_pwrseq) == 1,
 	     "Only one node for intel_ap_pwrseq is allowed");
 #endif
 
+#if DT_HAS_COMPAT_STATUS_OKAY(qcom_ap_pwrseq)
+BUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(qcom_ap_pwrseq) == 1,
+	     "Only one node for qcom_ap_pwrseq is allowed");
+#endif
+
 BUILD_ASSERT(POWER_SIGNAL_COUNT <= 32, "Too many power signals");
 
 /*
@@ -80,6 +85,10 @@ static const struct ps_config sig_config[] = {
 				     GEN_PS_ENTRY_NO_ENUM, PWR_SIG_SRC_EXT)
 	DT_FOREACH_STATUS_OKAY_VARGS(intel_ap_pwrseq_adc, GEN_PS_ENTRY,
 				     PWR_SIG_SRC_ADC, PWR_SIG_TAG_ADC)
+	DT_FOREACH_STATUS_OKAY_VARGS(qcom_ap_pwrseq_gpio, GEN_PS_ENTRY,
+				     PWR_SIG_SRC_GPIO, PWR_SIG_TAG_GPIO)
+	DT_FOREACH_STATUS_OKAY_VARGS(qcom_ap_pwrseq_external,
+				     GEN_PS_ENTRY_NO_ENUM, PWR_SIG_SRC_EXT)
 };
 /* clang-format on */
 
@@ -88,8 +97,11 @@ static const struct ps_config sig_config[] = {
 /*
  * List of power signals that need to be polled.
  */
-static const uint8_t polled_signals[] = { DT_FOREACH_STATUS_OKAY(
-	intel_ap_pwrseq_external, PWR_SIGNAL_POLLED) };
+static const uint8_t polled_signals[] = {
+	DT_FOREACH_STATUS_OKAY(intel_ap_pwrseq_external, PWR_SIGNAL_POLLED)
+		DT_FOREACH_STATUS_OKAY(qcom_ap_pwrseq_external,
+				       PWR_SIGNAL_POLLED)
+};
 
 /*
  * Bitmasks of power signals. A previous copy is held so that
