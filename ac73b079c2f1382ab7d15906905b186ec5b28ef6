@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35fa9c65_bab0a715",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2026-01-22T13:48:03Z",
+      "side": 1,
+      "message": "ideally this should use `shell_print`, with `shell` from `cmd_watchdoginfo` as an argument, that guarantees that the output is not going to be garbled with the shell prompt, would have to fix the printk above as well. May be a good chance to do it?",
+      "range": {
+        "startLine": 360,
+        "startChar": 0,
+        "endLine": 365,
+        "endChar": 73
+      },
+      "revId": "ac73b079c2f1382ab7d15906905b186ec5b28ef6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
