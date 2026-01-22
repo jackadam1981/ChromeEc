@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba2daae2_913b1907",
+        "filename": "zephyr/subsys/pd_controller/pdc_console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-01-22T17:36:49Z",
+      "side": 1,
+      "message": "I would have preferred to use something like [`shell_execute_cmd()`](https://docs.zephyrproject.org/latest/doxygen/html/group__shell__api.html#gabfb6a1f1f53f90365de349348015311e), but it is non re-entrant so you can\u0027t call that from shell context. Therefore I\u0027m calling the handlers and simulating argc/argv.\n\nThe other alternative would be to break out the status/info/srccaps logic from the command handlers into helper functions and calling those, thus bypassing the shell interface.",
+      "range": {
+        "startLine": 813,
+        "startChar": 8,
+        "endLine": 813,
+        "endChar": 22
+      },
+      "revId": "20c37d3b0e1da7730a82b601236bd77638f090e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
