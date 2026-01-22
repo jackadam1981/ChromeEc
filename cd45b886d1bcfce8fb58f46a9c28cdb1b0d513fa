@@ -33,6 +33,29 @@
       "message": "Please change all 2025 -\u003e 2026",
       "revId": "cd45b886d1bcfce8fb58f46a9c28cdb1b0d513fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ef68592_b44b46f6",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx.h",
+        "patchSetId": 44
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-22T19:01:24Z",
+      "side": 1,
+      "message": "All new files contain copyright notices for \"2025\". Please fix to 2026",
+      "range": {
+        "startLine": 1,
+        "startChar": 3,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "cd45b886d1bcfce8fb58f46a9c28cdb1b0d513fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
