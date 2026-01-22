@@ -8,7 +8,7 @@
 #include "gpio.h"
 #include "power/qcom.h"
 
-#define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ##args)
+LOG_MODULE_REGISTER(bluey_switchcap, LOG_LEVEL_INF);
 
 /*
  * Set the power good threshold for VPH_PWR(mV).
@@ -41,7 +41,7 @@ int board_is_switchcap_enabled(void)
 int board_is_switchcap_power_good(void)
 {
 	int adc_value = adc_read_channel(ADC_VPH_PWR);
-	CPRINTS("switchcap VPH power good ADC value=%d", adc_value);
+	LOG_INF("switchcap VPH power good ADC value=%d", adc_value);
 	return adc_value > VPH_PWR_THRESHOLD;
 }
 
@@ -53,6 +53,6 @@ int board_is_switchcap_power_good(void)
 int board_is_switchcap_power_reset(void)
 {
 	int adc_value = adc_read_channel(ADC_VPH_PWR);
-	CPRINTS("switchcap VPH reset ADC value=%d", adc_value);
+	LOG_INF("switchcap VPH reset ADC value=%d", adc_value);
 	return adc_value <= VPH_PWR_RESET_THRESHOLD;
 }

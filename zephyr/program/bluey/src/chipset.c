@@ -12,8 +12,6 @@
 #include "hooks.h"
 #include "power/qcom.h"
 
-#define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ##args)
-
 void board_chipset_startup(void)
 {
 	/* Update the AC event during boot */
