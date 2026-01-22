@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9886fc2_9bc92f8b",
+        "filename": "zephyr/boards/google/it8xxx2/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2026-01-22T05:12:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3f23100_dc10ef96",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "5e80d74245c160dcd8009937af4c8a4f6ce5db37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62d7b6db_82680156",
@@ -79,6 +103,24 @@
       "side": 1,
       "message": "The reason I used a kernel_lto_allow_list() function is because the additional allowlist comes from a separate .cmake file (ite_allow_lto.cmake) under platform/ec/zephyr/program/..., while the base DEFAULT_LTO_ALLOWLIST is created in kernel/kernel_no_lto.cmake (https://github.com/zephyrproject-rtos/zephyr/pull/99124).\n\nSince these are different CMake contexts, I cannot directly modify DEFAULT_LTO_ALLOWLIST from the program-level CMake file. Using a helper function was the way to pass the additional list back into kernel_no_lto.cmake via PARENT_SCOPE.\n\nTo simplify the implementation, I updated the function as patchset7",
       "parentUuid": "62d7b6db_82680156",
+      "revId": "5e80d74245c160dcd8009937af4c8a4f6ce5db37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f15e0f0d_72ea310f",
+        "filename": "zephyr/program/nissa/domika/ite_allow_lto.cmake",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2026-01-22T05:12:08Z",
+      "side": 1,
+      "message": "We now use set_source_files_properties() in project CMake to selectively enable LTO for specific files.",
+      "parentUuid": "047c5189_eba0f2a3",
       "revId": "5e80d74245c160dcd8009937af4c8a4f6ce5db37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
