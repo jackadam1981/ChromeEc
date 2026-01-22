@@ -52,6 +52,24 @@
       "parentUuid": "e539f099_477bc511",
       "revId": "c59efefe6b47bc3aaba976107632025fb4a0e33f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36989203_a7356ccd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2026-01-22T19:24:41Z",
+      "side": 1,
+      "message": "I can\u0027t - manual fix results in cros format making it bad again). Need more substantial thing. And with macro - it is issue in hooks - you can\u0027t add parenthesis in some cases.",
+      "parentUuid": "1e052075_92e20d35",
+      "revId": "c59efefe6b47bc3aaba976107632025fb4a0e33f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
