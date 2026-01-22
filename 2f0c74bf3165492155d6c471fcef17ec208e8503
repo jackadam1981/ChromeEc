@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "626962ca_f00ed3c4",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 4412439
+      },
+      "writtenOn": "2026-01-22T03:40:00Z",
+      "side": 1,
+      "message": "We also tried to add `SPI_HOLD_ON_CS` in FPS driver, but still can not keep CS high when `leave_cs_asserted` is true, so we adding this workaround for now. But we are working on removing the `leave_cs_asserted` parameter in private library.",
+      "parentUuid": "3f8c147f_3e6586e9",
+      "revId": "2f0c74bf3165492155d6c471fcef17ec208e8503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0e04bf61_f2bfbe5e",
         "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.c",
         "patchSetId": 20
