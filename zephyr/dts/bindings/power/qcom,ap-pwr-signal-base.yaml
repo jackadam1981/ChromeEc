@@ -1,0 +1,31 @@
+# Copyright 2026 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: |
+    Common base for Qualcomm AP power sequence signals.
+
+properties:
+  dbg-label:
+    type: string
+    required: true
+    description: Label of power signals used in debug messages
+
+  enum-name:
+    type: string
+    required: true
+    description: Enumeration values for power signals.
+    enum:
+    - PWR_AP_RST_L
+    - PWR_AP_SUSPEND
+    - PWR_PMIC_KPD_PWR_L
+    - PWR_PMIC_RESIN_L
+    - PWR_POWER_GOOD
+    - PWR_PS_HOLD
+
+  reset-val:
+    type: int
+    default: 0
+    description: |
+      Logical level (active/inactive) to set this signal to on power sequencing
+      reset.

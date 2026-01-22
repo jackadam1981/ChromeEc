@@ -22,3 +22,50 @@
 
 /* bluey overrides follow... */
 
+/ {
+	ap-pwrseq {
+		compatible = "qcom,ap-pwrseq";
+	};
+
+	qcom_ap_pwrseq_gpio {
+		compatible = "qcom,ap-pwrseq-gpio";
+
+		pwr-ap-rst-l {
+			enum-name = "PWR_AP_RST_L";
+			dbg-label = "AP_RST_L";
+			gpios = <&gpioa 7 GPIO_ACTIVE_LOW>;
+			interrupt-flags = <GPIO_INT_EDGE_BOTH>;
+		};
+		pwr-ap-suspend {
+			enum-name = "PWR_AP_SUSPEND";
+			dbg-label = "AP_SUSPEND";
+			gpios = <&gpioa 0 GPIO_ACTIVE_HIGH>;
+			interrupt-flags = <GPIO_INT_EDGE_BOTH>;
+		};
+		pwr-pmic-kpd-pwr-l {
+			enum-name = "PWR_PMIC_KPD_PWR_L";
+			dbg-label = "PMIC_KPD_PWR_L";
+			gpios = <&gpioc 1 GPIO_ACTIVE_LOW>;
+			output;
+		};
+		pwr-pmic-resin-l {
+			enum-name = "PWR_PMIC_RESIN_L";
+			dbg-label = "PMIC_RESIN_L";
+			gpios = <&gpio9 6 GPIO_ACTIVE_LOW>;
+			output;
+		};
+		pwr-power-good {
+			enum-name = "PWR_POWER_GOOD";
+			dbg-label = "POWER_GOOD";
+			gpios = <&gpioa 1 GPIO_ACTIVE_HIGH>;
+			interrupt-flags = <GPIO_INT_EDGE_BOTH>;
+		};
+		pwr-ps-hold {
+			enum-name = "PWR_PS_HOLD";
+			dbg-label = "PS_HOLD";
+			gpios = <&gpioa 4 GPIO_ACTIVE_HIGH>;
+			interrupt-flags = <GPIO_INT_EDGE_BOTH>;
+		};
+	};
+};
+
