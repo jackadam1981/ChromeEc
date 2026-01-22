@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4303ab48_47ec15fb",
+        "filename": "zephyr/test/hwtest/Kconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-22T00:17:44Z",
+      "side": 1,
+      "message": "```suggestion\n\t  The test verifies that panic occurs if function mpu_lock_rollback fails.\n```",
+      "range": {
+        "startLine": 199,
+        "startChar": 51,
+        "endLine": 199,
+        "endChar": 68
+      },
+      "revId": "adef9d3ae44a226d15a9da7576ed8a12729ad8de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68f812dc_f05c980f",
+        "filename": "zephyr/test/hwtest/src/rollback_lock_panic.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-22T00:17:44Z",
+      "side": 1,
+      "message": "Is there a reason you put the logic in a separate function rather than directly here?\n\nSame for `test_lock_crash`.\n\nIf not, I think it would make more sense to put it here. (The `send` part of the function name is also strange.)",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 21
+      },
+      "revId": "adef9d3ae44a226d15a9da7576ed8a12729ad8de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
