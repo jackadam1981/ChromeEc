@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4ce94d6_690b7c0a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2026-01-22T10:06:56Z",
+      "side": 1,
+      "message": "In my test, the new ectool doesn\u0027t accept w16. Need to remove w16 to run i2cxfer.",
+      "range": {
+        "startLine": 16,
+        "startChar": 19,
+        "endLine": 16,
+        "endChar": 23
+      },
+      "revId": "e727d6b449672545af12e428286b6286f9da348e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36f6fc40_421eba77",
