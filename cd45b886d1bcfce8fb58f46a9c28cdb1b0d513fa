@@ -37,6 +37,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "43c725c8_29e7a6c7",
+        "filename": "zephyr/drivers/fingerprint/Kconfig",
+        "patchSetId": 44
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-22T19:21:42Z",
+      "side": 1,
+      "message": "@dawidn@google.com Shall we change all instances of `XX` into `SERIES` to match the elan implementation? i.e. `FINGERPRINT_SENSOR_FT98XX` --\u003e `FINGERPRINT_SENSOR_FT98SERIES`?",
+      "range": {
+        "startLine": 46,
+        "startChar": 37,
+        "endLine": 46,
+        "endChar": 39
+      },
+      "revId": "cd45b886d1bcfce8fb58f46a9c28cdb1b0d513fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d867c43b_89beb86d",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx.c",
+        "patchSetId": 44
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-22T19:21:42Z",
+      "side": 1,
+      "message": "I believe this is deprecated and need to be removed.",
+      "range": {
+        "startLine": 336,
+        "startChar": 26,
+        "endLine": 337,
+        "endChar": 11
+      },
+      "revId": "cd45b886d1bcfce8fb58f46a9c28cdb1b0d513fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4ef68592_b44b46f6",
         "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx.h",
         "patchSetId": 44
@@ -53,6 +99,52 @@
         "startChar": 3,
         "endLine": 1,
         "endChar": 17
+      },
+      "revId": "cd45b886d1bcfce8fb58f46a9c28cdb1b0d513fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a98759d1_33adfbe1",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx_pal.h",
+        "patchSetId": 44
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-22T19:21:42Z",
+      "side": 1,
+      "message": "@brief\n\nsame for all functions below",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 30
+      },
+      "revId": "cd45b886d1bcfce8fb58f46a9c28cdb1b0d513fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "692eef86_eefb0445",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx_private.h",
+        "patchSetId": 44
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-22T19:21:42Z",
+      "side": 1,
+      "message": "add space line after @brief\n\nsame for all other instances.\n\n```\n@brief\nspace line\n@param\n@param\n.\n.\n.\nspace line\n@return\n@return\n.\n.\n.\n```",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 46
       },
       "revId": "cd45b886d1bcfce8fb58f46a9c28cdb1b0d513fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
