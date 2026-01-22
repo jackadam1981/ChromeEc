@@ -238,6 +238,11 @@ int cbi_set_ssfc(uint32_t ssfc);
 int cbi_set_model_id(uint32_t model_id);
 
 /**
+ * Update CBI info
+ */
+int cbi_update(void);
+
+/**
  * Initialize CBI cache
  */
 int cbi_create(void);

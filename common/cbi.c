@@ -720,6 +720,16 @@ int cbi_set_model_id(uint32_t model_id)
 	return EC_SUCCESS;
 }
 
+int cbi_update(void)
+{
+	/* Ensure that CBI has been configured */
+	if (cbi_read())
+		cbi_create();
+
+	/* Update CRC calculation and write to the storage */
+	head->crc = cbi_crc8(head);
+	return cbi_config->drv->store(cbi);
+}
 #ifndef CONFIG_AP_POWER_CONTROL
 int cbi_set_fw_config(uint32_t fw_config)
 {
