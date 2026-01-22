@@ -16,6 +16,23 @@
       "message": "Please reorganize the CL chain in a way that it doesn\u0027t rely on the `add FT9001 projects` CL. I mean:\n- algo driver\n- sensor tests\n- emulator\n- sensor driver",
       "revId": "cd45b886d1bcfce8fb58f46a9c28cdb1b0d513fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c635d21e_ae98c7ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 44
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-22T09:30:20Z",
+      "side": 1,
+      "message": "Please change all 2025 -\u003e 2026",
+      "revId": "cd45b886d1bcfce8fb58f46a9c28cdb1b0d513fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
