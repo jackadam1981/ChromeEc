@@ -128,6 +128,19 @@ class UsbCommunication:
             if ret[0] == HostCommandIRQType.RESPONSE_READY:
                 break
 
+    def wait_for_event(self, timeout: int) -> bool:
+        """Waits for an event from EC."""
+        # Wait for response ready signal from interrupt EP
+        try:
+            ret = self.ep_in_int.read(
+                self.ep_in_int.wMaxPacketSize, timeout=timeout
+            )
+        except usb.core.USBTimeoutError:
+            return False
+        if ret[0] == HostCommandIRQType.EVENT:
+            return True
+        return False
+
     def receive(self, size=-1) -> bytes:
         """Receives data from the EC."""
         if size < 0:
