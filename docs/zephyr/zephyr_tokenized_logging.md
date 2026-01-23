@@ -252,7 +252,7 @@ The historical token database is the database to support all boards and
 its entire history of log format strings used over time.  This database should
 handle all boards no matter when it was released.
 This lives at
-https://storage.googleapis.com/chromeos-localmirror/distfiles/cros_ec/tokens/chromeos-ec-token-historical.bin
+https://storage.googleapis.com/firmware-image-archive/distfiles/cros_ec/tokens/chromeos-ec-token-historical.bin
 
 Database management is handled in `recipes/build_firmware_historical_db.py`.  The
 [firmware-zephyr-token-db-uploader](https://ci.chromium.org/ui/p/chromeos/builders/informational/firmware-zephyr-token-db-uploader) builder will update the database on a daily basis.
