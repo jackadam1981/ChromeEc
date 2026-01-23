@@ -282,6 +282,7 @@ int icm_get_scale(const struct motion_sensor_t *s, uint16_t *scale,
 	scale[Y] = data->scale[Y];
 	scale[Z] = data->scale[Z];
 	*temp = EC_MOTION_SENSE_INVALID_CALIB_TEMP;
+	CPRINTS("BMI get_scale: %d %d %d", scale[X], scale[Y], scale[Z]);
 	return EC_SUCCESS;
 }
 

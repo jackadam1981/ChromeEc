@@ -811,7 +811,7 @@ static int get_scale(const struct motion_sensor_t *s, uint16_t *scale,
 	scale[Z] = saved_data->scale[Z];
 
 	*temp = (int16_t)EC_MOTION_SENSE_INVALID_CALIB_TEMP;
-
+	CPRINTS("BMI get_scale: %d %d %d", scale[X], scale[Y], scale[Z]);
 	return EC_SUCCESS;
 }
 

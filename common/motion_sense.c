@@ -1362,7 +1362,7 @@ static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		}
 
 		if (!sensor->drv->get_scale){
-			CPRINTS("DBG5 sensor=%s type=%d drv=%d",
+			CPRINTS("DBG5 sensor=%s type=%d",
 				sensor->name,
 				sensor->type);
 			return EC_RES_INVALID_COMMAND;
