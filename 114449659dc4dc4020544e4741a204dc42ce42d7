@@ -16,6 +16,24 @@
       "message": "this is becoming a very long CL to review. Can we split the test from the actual driver.",
       "revId": "114449659dc4dc4020544e4741a204dc42ce42d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8312f24c_2edfcd38",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4412439
+      },
+      "writtenOn": "2026-01-23T09:47:37Z",
+      "side": 1,
+      "message": "Dawid commented in patch 11 that it would be best to add the simulator and test at the moment.",
+      "parentUuid": "cdf2721e_9b35e6cb",
+      "revId": "114449659dc4dc4020544e4741a204dc42ce42d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

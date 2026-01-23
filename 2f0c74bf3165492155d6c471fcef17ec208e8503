@@ -126,6 +126,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0fc8e648_5183f93f",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 4412439
+      },
+      "writtenOn": "2026-01-23T09:47:37Z",
+      "side": 1,
+      "message": "I adjusted the private library to always set `leave_cs_asserted` false to remove the work around. Upload WIP private library: https://chrome-internal-review.googlesource.com/c/chromeos/vendor/fingerprint/egis/+/8943536. And I will check with Jacob the CS pin issue.",
+      "parentUuid": "0caae3de_64dcf194",
+      "revId": "2f0c74bf3165492155d6c471fcef17ec208e8503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0e04bf61_f2bfbe5e",
         "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.c",
         "patchSetId": 20
