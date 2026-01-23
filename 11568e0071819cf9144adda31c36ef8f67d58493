@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a89375ae_199eae2c",
+        "filename": "zephyr/shim/chip/ft90/enter_bootloader.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-23T12:07:06Z",
+      "side": 1,
+      "message": "@wangyong@focaltech.corp-partner.google.com does this implementation of `chip_enter_bootloader` work for you?",
+      "revId": "11568e0071819cf9144adda31c36ef8f67d58493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d3d7e4d_ee00976e",
+        "filename": "zephyr/shim/chip/ft90/include/flash_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-23T12:07:06Z",
+      "side": 1,
+      "message": "@wangyong@focaltech.corp-partner.google.com can you double-check values in this file?",
+      "revId": "11568e0071819cf9144adda31c36ef8f67d58493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
