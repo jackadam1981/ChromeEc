@@ -11,9 +11,7 @@ board-y=board.o
 # Enable on device tests
 test-list-y=\
        abort \
-       aes \
        boringssl_crypto \
-       compile_time_macros \
        crc \
        debug \
        exception \

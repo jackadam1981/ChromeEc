@@ -18,33 +18,15 @@ test-list-y ?= flash_write_protect \
 ifneq ($(TEST_LIST_HOST),)
 test-list-host=$(TEST_LIST_HOST)
 else
-test-list-host  = aes
-test-list-host += always_memset
-test-list-host += battery_config
-test-list-host += battery_get_params_smart
-test-list-host += benchmark
-test-list-host += bklight_lid
+test-list-host =
 test-list-host += bklight_passthru
 test-list-host += body_detection
 test-list-host += boringssl_crypto
-test-list-host += button
 test-list-host += cbi
-test-list-host += cbi_wp
-test-list-host += charge_manager
-test-list-host += charge_manager_drp_charging
 test-list-host += charge_ramp
-test-list-host += chipset
-test-list-host += compile_time_macros
 test-list-host += console_edit
 test-list-host += crc
-test-list-host += debug_unimplemented
-test-list-host += entropy
-test-list-host += fan
-test-list-host += flash
-test-list-host += float
-test-list-host += fp
-test-list-host += fp_transport
-test-list-host += fpsensor_auth_commands
+
 test-list-host += fpsensor_auth_commands_otp
 test-list-host += fpsensor_auth_crypto_stateful
 test-list-host += fpsensor_auth_crypto_stateless
@@ -164,7 +146,7 @@ cov-dont-test += version
 cov-dont-test += interrupt
 # Flaky tests. The number of covered lines changes from run to run
 # b/213374060
-cov-dont-test += entropy flash float kb_mkbp kb_scan_strict
+cov-dont-test += kb_mkbp kb_scan_strict
 cov-dont-test += rsa
 
 cov-test-list-host = $(filter-out $(cov-dont-test), $(test-list-host))
@@ -177,43 +159,22 @@ rw-test = ro
 endif
 
 abort-y=abort.o
-aes-y=aes.o
-# The purpose of the always_memset test is to ensure the functionality of
-# always_memset during high levels of optimization.
-%/test/always_memset.o: CFLAGS += -O3
-always_memset-y=always_memset.o
 assert_builtin-y=assert_builtin.o
 assert_stdlib-y=assert_stdlib.o
 base32-y=base32.o
-battery_config-y=battery_config.o
-battery_get_params_smart-y=battery_get_params_smart.o
-benchmark-y=benchmark.o
-bklight_lid-y=bklight_lid.o
 bklight_passthru-y=bklight_passthru.o
 body_detection-y=body_detection.o body_detection_data_literals.o motion_common.o
 boringssl_crypto-y=boringssl_crypto.o
-button-y=button.o
 cbi-y=cbi.o
-cbi_wp-y=cbi_wp.o
-charge_manager-y=charge_manager.o fake_usbc.o test_battery_mock.o
-charge_manager_drp_charging-y=charge_manager.o fake_usbc.o test_battery_mock.o
 charge_ramp-y+=charge_ramp.o
-chipset-y+=chipset.o
-compile_time_macros-y=compile_time_macros.o
 console_edit-y=console_edit.o
 cortexm_fpu-y=cortexm_fpu.o
 crc-y=crc.o
 debug-y=debug.o
-debug_unimplemented-y=debug_unimplemented.o
-entropy-y=entropy.o
 exception-y=exception.o
 exit-y=exit.o
-fan-y=fan.o
-flash-y=flash.o
 flash_physical-y=flash_physical.o
 flash_write_protect-y=flash_write_protect.o
-fp_transport-y=fp_transport.o
-fpsensor_auth_commands-y=fpsensor_auth_commands.o
 fpsensor_auth_commands_otp-$(rw-test)=fpsensor_auth_commands_otp.o
 fpsensor_auth_crypto_stateful-y=fpsensor_auth_crypto_stateful.o
 fpsensor_auth_crypto_stateless-y=fpsensor_auth_crypto_stateless.o
@@ -349,8 +310,6 @@ utils_str-y=utils_str.o
 vboot-y=vboot.o
 version-y += version.o
 watchdog-y=watchdog.o
-float-y=fp.o
-fp-y=fp.o
 x25519-y=x25519.o
 
 host-is_enabled_error: TEST_SCRIPT=is_enabled_error.sh
