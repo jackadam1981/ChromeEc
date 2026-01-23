@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74391c3c_0758b0a2",
+        "filename": "common/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2026-01-23T08:17:55Z",
+      "side": 1,
+      "message": "The comment says the pgood input if defined should override any \"enable output\". I think the current implementation is aligned with the code comments.",
+      "revId": "53ae87dd0fe1aeb30893e6558652357970f5f79e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
