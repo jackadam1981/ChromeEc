@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "173210c6_72411d65",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 44
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2026-01-23T09:09:42Z",
+      "side": 1,
+      "message": "Do you mean make them in chain, and the order is: algo driver base on sensor tests, sensor tests base on emulator, emulator base on sensor driver, then sensor driver base on the top of main.",
+      "parentUuid": "1ff393c3_54e30b1c",
+      "revId": "cd45b886d1bcfce8fb58f46a9c28cdb1b0d513fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43c725c8_29e7a6c7",
