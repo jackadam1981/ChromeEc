@@ -7,14 +7,50 @@ SRC_DIR="$(realpath "$( dirname "${BASH_SOURCE[0]}" )/../../..")"
 ZEPHYR_DIR="${SRC_DIR}/third_party/zephyr"
 echo "Zephyr root directory: ${ZEPHYR_DIR}"
 
-# Should match infra/config/misc_builders/copybot.star
+# This should include all the third_party modules that zmake can see.
+# And also any repos that copybot copies from indirectly, i.e.
+# zephyrproject-rtos/cmsis -> zephyr/cmsis -> zephyrproject/modules/hal/cmsis
 declare -A zephyr_repos=(
-  ['main']='https://github.com/zephyrproject-rtos/zephyr.git main'
-  ['cmsis']='https://github.com/zephyrproject-rtos/cmsis.git master'
-  ['hal_intel_public']='https://github.com/zephyrproject-rtos/hal_intel.git main'
-  ['hal_stm32']='https://github.com/zephyrproject-rtos/hal_stm32.git main'
-  ['nanopb']='https://github.com/zephyrproject-rtos/nanopb.git zephyr'
-  ['picolibc']='https://github.com/zephyrproject-rtos/picolibc.git main'
+  # config/chre/main-public.ini
+  ['android/platform/system/chre']='https://android.googlesource.com/platform/system/chre main'
+  # config/chre/main.ini
+  ['android/platform/system/chre_internal']='https://chrome-internal.googlesource.com/chromeos/third_party/chre upstream/main'
+  # config/pigweed/main.ini
+  ['pigweed']='https://pigweed.googlesource.com/pigweed/pigweed main'
+  # config/zephyr/main.ini
+  ['zephyrproject/zephyr']='https://github.com/zephyrproject-rtos/zephyr.git main'
+  # config/zephyr/project-cmsis.ini
+  ['zephyrproject/modules/hal/cmsis']='https://github.com/zephyrproject-rtos/cmsis.git master'
+  # config/zephyr/project-cmsis_6.ini
+  ['zephyrproject/modules/hal/cmsis_6']='https://github.com/zephyrproject-rtos/CMSIS_6.git main'
+  # config/zephyr/project-egis_module.ini
+  ['zephyrproject/modules/hal/egis_module']='https://github.com/EgisMCU/egis_module.git main'
+  # config/zephyr/project-hal_egis.ini
+  ['zephyrproject/modules/hal/egis']='https://github.com/EgisMCU/hal_egis.git main'
+  # config/zephyr/project-intel.ini
+  ['zephyrproject/modules/hal/intel']='https://github.com/zephyrproject-rtos/hal_intel.git main'
+  # config/zephyr/project-stm32.ini
+  ['zephyrproject/modules/hal/stm32']='https://github.com/zephyrproject-rtos/hal_stm32.git main'
+  # config/zephyr/project-chre.ini
+  ['zephyrproject/modules/lib/chre']='https://github.com/zephyrproject-rtos/chre.git zephyr'
+  # config/zephyr/project-nanopb.ini
+  ['zephyrproject/modules/lib/nanopb']='https://github.com/zephyrproject-rtos/nanopb.git zephyr'
+  # config/zephyr/project-picolibc.ini
+  ['zephyrproject/modules/lib/picolibc']='https://github.com/zephyrproject-rtos/picolibc.git main'
+)
+
+# All expected diffs (FROMPULLs)
+declare -A expected_diffs=(
+  # b/389761200 17452ff89d458b4201bc1ce2debbb30703f45c0d
+  #   Revert "drivers: watchdog: stm32 iwdg: explicit single channel"
+  # b/460502081 97b8c4eef6a738f22120cc99448317245151de45
+  #   FROMPULL: kernel: Add Kconfig option to disable LTO for kernel sources
+  # b/460504453 2bf08236a2a731e8a764d3b2265f0b533bf7ec95
+  #   FROMPULL: soc: it8xxx2: Select KERNEL_NO_LTO only when LTO is enabled
+  ['zephyrproject/zephyr']="\
+    17452ff89d458b4201bc1ce2debbb30703f45c0d \
+    97b8c4eef6a738f22120cc99448317245151de45 \
+    2bf08236a2a731e8a764d3b2265f0b533bf7ec95"
 )
 
 function die() {
