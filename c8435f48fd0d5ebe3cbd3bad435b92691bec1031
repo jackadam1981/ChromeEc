@@ -16,6 +16,24 @@
       "message": "chromeos-zephyr-4.2.0-r13060: [yoda:ro] /build/skywalker/tmp/portage/chromeos-base/chromeos-zephyr-4.2.0-r13060/work/chromeos-zephyr-4.2.0/modules/ec/zephyr/program/skywalker/yoda/src/keyboard_customization.c:18:10: fatal error: drivers/scancode_set2.h: No such file or directory\nchromeos-zephyr-4.2.0-r13060: [yoda:ro]    18 | #include \u003cdrivers/scancode_set2.h\u003e\nchromeos-zephyr-4.2.0-r13060: [yoda:ro]       |          ^~~~~~~~~~~~~~~~~~~~~~~~~\nchromeos-zephyr-4.2.0-r13060: [yoda:ro] compilation terminated.\nchromeos-zephyr-4.2.0-r13060: [yoda:ro] ninja: build stopped: subcommand failed.",
       "revId": "c8435f48fd0d5ebe3cbd3bad435b92691bec1031",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f3ff1e0_d30df06f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2026-01-23T05:03:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55e7a5be_1c993f03",
+      "revId": "c8435f48fd0d5ebe3cbd3bad435b92691bec1031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
