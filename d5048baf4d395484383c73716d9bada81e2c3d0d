@@ -39,6 +39,30 @@
       },
       "revId": "d5048baf4d395484383c73716d9bada81e2c3d0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0f211a1_7ae0e588",
+        "filename": "boot_param/boot_param.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2026-01-23T00:43:52Z",
+      "side": 1,
+      "message": "ok. I want to reduce code size, so the simpler logic the better. This is a \"niche\" optimization due to limited range of values. Should it be NOT_CONFIGURED or ERROR though?",
+      "parentUuid": "3d5032dc_a25608f2",
+      "range": {
+        "startLine": 500,
+        "startChar": 9,
+        "endLine": 500,
+        "endChar": 11
+      },
+      "revId": "d5048baf4d395484383c73716d9bada81e2c3d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
