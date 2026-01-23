@@ -17,6 +17,7 @@ extern "C" {
 /* Boot mode decisions.
  * Boot mode == "Not configured" is not allowed
  */
+#define BOOT_MODE_ERROR   0
 #define BOOT_MODE_NORMAL   1
 #define BOOT_MODE_DEBUG	   2
 #define BOOT_MODE_RECOVERY 3
