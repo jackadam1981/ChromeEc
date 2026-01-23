@@ -13,7 +13,7 @@
 # This is used to exclude build targets that depend on sanitizers such as
 # fuzzers on architectures that don't support sanitizers yet (e.g. arm).
 ARCH?=amd64
-BOARD ?= elm
+BOARD ?= host
 
 # Directory where the board is configured (includes /$(BOARD) at the end)
 BDIR:=$(wildcard board/$(BOARD))
@@ -175,6 +175,13 @@ endif
 endif
 endif
 
+ifeq ($(shell bazel --project fwsdk >/dev/null 2>&1; echo $$?),0)
+BAZEL_SUPPORTED=1
+HOST_CROSS_COMPILE:=$(shell bazel --project fwsdk run \
+	@ec-coreboot-sdk-$(CROSS_COMPILE_TARGET_x86)//:get_path)/bin/$(CROSS_COMPILE_TARGET_x86)-
+else
+HOST_CROSS_COMPILE:=/opt/coreboot-sdk/bin/$(CROSS_COMPILE_TARGET_x86)-
+endif
 # Create uppercase config variants, to avoid mixed case constants.
 # Also translate '-' to '_', so 'cortex-m' turns into 'CORTEX_M'.  This must
 # be done before evaluating config.h.
@@ -344,12 +351,10 @@ include $(BASEDIR)/build.mk
 ifneq ($(BASEDIR),$(BDIR))
 include $(BDIR)/build.mk
 endif
-ifneq ($(BOARD),host)
 ifeq ($(USE_BUILTIN_STDLIB), 1)
 include builtin/build.mk
 else
 include libc/build.mk
-endif
 endif
 include chip/$(CHIP)/build.mk
 include core/build.mk
@@ -431,6 +436,9 @@ endef
 $(eval $(call get_sources,y))
 $(eval $(call get_sources,ro))
 
+
+$(if $(filter $(BOARD),host), $(info After get_sources all-obj-y: $(all-obj-y)))
+
 # The following variables are meant to be initialized in the baseboard or
 # board's build.mk. They will later be appended to in util/build.mk with
 # utils that should be generated for all boards.
@@ -448,18 +456,10 @@ $(eval $(call get_sources,ro))
 #
 # See commit bc4c1b4 for more context.
 build-utils := $(call objs_from_dir,$(out)/util,build-util-bin)
-ifeq ($(BOARD),host)
-host-utils := $(call objs_from_dir,$(out)/util,host-util-bin)
-host-utils-cxx := $(call objs_from_dir,$(out)/util,host-util-bin-cxx)
-endif
 build-art := $(call objs_from_dir,$(out),build-util-art)
 # Use the util_name with an added .c AND the special <util_name>-objs variable.
 build-srcs := $(foreach u,$(build-util-bin-y),$(sort $($(u)-objs:%.o=util/%.c) \
                 $(wildcard util/$(u).c)))
-host-srcs := $(foreach u,$(host-util-bin-y),$(sort $($(u)-objs:%.o=util/%.c) \
-               $(wildcard util/$(u).c)))
-host-srcs-cxx := $(foreach u,$(host-util-bin-cxx-y), \
-	$(sort $($(u)-objs:%.o=util/%.cc) $(wildcard util/$(u).cc)))
 
 dirs=core/$(CORE) chip/$(CHIP) $(BASEDIR) $(BDIR) common fuzz power test \
 	$(out)/gen
@@ -487,10 +487,14 @@ endif
 
 # Add RW-only sources to build
 $(eval $(call get_sources,rw))
+$(info All rw: $(all-obj-rw))
 
 rw-common-objs := $(sort $(foreach obj, $(all-obj-y), $(out)/RW/$(obj)))
+$(if $(filter $(BOARD),host), $(info After foreach rw-common-objs: $(rw-common-objs)))
+
 rw-only-objs := $(sort $(foreach obj, $(all-obj-rw), $(out)/RW/$(obj)))
 rw-objs := $(sort $(rw-common-objs) $(rw-only-objs))
+$(if $(filter $(BOARD),host), $(info FINAL RW-OBJS for host: $(rw-objs)))
 
 # Don't include the shared objects in the RO/RW image if we're enabling
 # the shared objects library.
@@ -536,3 +540,5 @@ libsharedobjs: $(libsharedobjs-y)
 
 include Makefile.rules
 export CROSS_COMPILE CFLAGS CC CPP LD NM AR OBJCOPY OBJDUMP
+
+$(info USE_BUILTIN_STDLIB: $(USE_BUILTIN_STDLIB))

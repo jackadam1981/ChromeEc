@@ -11,7 +11,7 @@ FLATSIZE_FILE ?= .sizes.txt
 BUILD_DIR := $(firstword $(subst /, ,$(out)))
 
 # Don't do a build test on the following boards:
-skip_boards = OWNERS cr50 host
+skip_boards = OWNERS cr50
 boards := $(filter-out $(skip_boards), \
 	$(notdir $(wildcard board/* ../private*/board/*)))
 
@@ -317,22 +317,11 @@ hex: $(hex-y)
 .PHONY: utils-art
 utils-art: $(build-art)
 
-.PHONY: utils-host
-ifeq ($(BOARD),host)
-utils-host: $(host-utils) $(host-utils-cxx)
-else
-utils-host:
-	$(error Building utils-host not supported when BOARD is not "host")
-endif
-
 .PHONY: utils-build
 utils-build: $(build-utils)
 
 .PHONY: utils
 utils: utils-build utils-art
-ifeq ($(BOARD),host)
-utils: utils-host
-endif
 
 # On board test binaries
 test-targets=$(foreach t,$(test-list-y),test-$(t))
@@ -667,12 +656,6 @@ $(out)/ec_version.h:
 $(build-utils): $(out)/%:$(build-srcs)
 	$(call quiet,c_to_build,BUILDCC)
 
-$(host-utils): $(out)/%:$(host-srcs)
-	$(call quiet,c_to_host,HOSTCC )
-
-$(host-utils-cxx): $(out)/%:$(host-srcs-cxx)
-	$(call quiet,cxx_to_host,HOSTCXX )
-
 $(out)/cscope.files: $(out)/$(PROJECT).bin
 	$(call quiet,deps_to_list,SH     )
 
@@ -965,6 +948,7 @@ include Makefile.ide
 
 .SECONDARY:
 
+$(info deps: $(deps))
 -include $(deps)
 
 .PHONY: get_sdk
