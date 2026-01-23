@@ -22,6 +22,30 @@
       },
       "revId": "20c37d3b0e1da7730a82b601236bd77638f090e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5300ebd5_57be9de7",
+        "filename": "zephyr/subsys/pd_controller/pdc_console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2026-01-23T18:38:40Z",
+      "side": 1,
+      "message": "```\nbreak out the status/info/srccaps logic from the command handlers into helper functions and calling those,\n```\nI would prefer this method, as it avoids converting the `port` from `int` to `char []` back to `int`.  Let the shell handlers parse the strings to ints and pass those to the helper functions.",
+      "parentUuid": "ba2daae2_913b1907",
+      "range": {
+        "startLine": 813,
+        "startChar": 8,
+        "endLine": 813,
+        "endChar": 22
+      },
+      "revId": "20c37d3b0e1da7730a82b601236bd77638f090e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
