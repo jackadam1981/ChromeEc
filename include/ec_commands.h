@@ -5987,6 +5987,19 @@ struct ec_params_enter_bootloader {
 	uint8_t mode;
 } __ec_align1;
 
+#define EC_CMD_ISH_I2C_SCAN 0x00E3
+
+#define MAX_ISH_I2C_SCAN_ADRESSES 128
+#define ISH_I2C_SCAN_COLS 16
+#define ISH_I2C_SCAN_ROWS (MAX_ISH_I2C_SCAN_ADRESSES / ISH_I2C_SCAN_COLS)
+/*
+ * Performs an ISH I2C bus scan and returns an array where each bit that's set
+ * corresponds to the address of a device that was found during the scan
+ */
+struct ec_response_ish_i2c_scan {
+	uint16_t scan[ISH_I2C_SCAN_ROWS];
+} __ec_align4;
+
 /*****************************************************************************/
 /*
  * PD commands

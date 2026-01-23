@@ -428,4 +428,7 @@ config LINK_TEST_SUITE_WRITE_PROTECTION_CUSTOM
 	help
 	  Verifies functionality of custom write protection
 
+config LINK_TEST_SUITE_I2C_SCAN
+	bool "Link and test the ish host command i2c_scan file"
+
 source "Kconfig.zephyr"
