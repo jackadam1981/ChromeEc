@@ -8,6 +8,6 @@ CHIP_FAMILY:=stm32f0
 CHIP_VARIANT:=stm32f07x
 
 # Build tests that we care about for Prism.
-test-list-y=entropy rsa3 sha256 sha256_unrolled x25519
+test-list-y=rsa3 x25519
 
 board-y=board.o

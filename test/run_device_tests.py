@@ -447,6 +447,26 @@ class Renode(Platform):
         ]:
             return True
 
+        # Tests that are zephyr only.
+        if not zephyr and test_name in [
+            "aes",
+            "benchmark",
+            "fp_transport",
+            "fpsensor_auth_crypto_stateful",
+            "fpsensor_auth_crypto_stateless",
+            "fpsensor_debug",
+            "fpsensor_utils",
+            "malloc",
+            "otp_key",
+            "printf",
+            "queue",
+            "sbrk",
+            "sha256",
+            "sha256_unrolled",
+            "static_if",
+        ]:
+            return True
+
         if board_config.name in [BLOONCHIPPER, DARTMONKEY]:
             if board_config.name == BLOONCHIPPER:
                 # bloonchipper Zephyr tests to skip on Renode.
@@ -588,7 +608,6 @@ class AllTests:
             TestConfig(test_name="aes"),
             # Cryptoc is not supported with Zephyr.
             # TODO(b/333039464) A new test for OPENSSL_cleanse has to be implemented.
-            TestConfig(test_name="always_memset", skip_for_zephyr=True),
             TestConfig(
                 test_name="assert_builtin",
                 fail_regexes=[
@@ -684,10 +703,6 @@ class AllTests:
                 finish_regexes=[board_config.mpu_regex],
                 skip_for_zephyr=True,
             ),
-            # Handled by Zephyr - kernel.mutex test
-            TestConfig(test_name="mutex", skip_for_zephyr=True),
-            TestConfig(test_name="mutex_trylock", skip_for_zephyr=True),
-            TestConfig(test_name="mutex_recursive", skip_for_zephyr=True),
             TestConfig(test_name="null_pointer"),
             TestConfig(
                 test_name="otp_key",
@@ -702,10 +717,6 @@ class AllTests:
                     ALL_TESTS_FAILED_REGEX,
                 ],
             ),
-            # Task synchronization covered by Zephyr tests and shim layer by unit tests.
-            # task_wait_event is implemented based on k_poll_event and it is verified by
-            # the kernel.poll test.
-            TestConfig(test_name="pingpong", skip_for_zephyr=True),
             TestConfig(
                 config_name="pmp_entries_ro",
                 test_name="pmp_entries",
