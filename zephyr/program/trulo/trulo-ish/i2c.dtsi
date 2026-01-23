@@ -4,6 +4,10 @@
  */
 
 / {
+	chosen {
+		hc_i2c = &i2c0;
+	};
+
 	aliases {
 		i2c-0 = &i2c0;
 	};
