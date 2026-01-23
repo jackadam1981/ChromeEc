@@ -27,11 +27,7 @@
 #undef CONFIG_USB_PD_LOGGING
 #endif
 
-#ifdef TEST_ALWAYS_MEMSET
-#define CONFIG_LIBCRYPTOC
-#endif
-
-#if defined(TEST_AES) || defined(TEST_CRYPTO_BENCHMARK)
+#if defined(TEST_CRYPTO_BENCHMARK)
 #define CONFIG_BORINGSSL_CRYPTO
 #endif
 
@@ -39,28 +35,13 @@
 #define CONFIG_BASE32
 #endif
 
-#ifdef TEST_BATTERY_CONFIG
-#define CONFIG_BATTERY_FUEL_GAUGE
-#define CONFIG_BATTERY_CONFIG_IN_CBI
-#define CONFIG_HOSTCMD_BATTERY_INFO
-enum battery_type {
-	BATTERY_C214,
-	BATTERY_TYPE_COUNT,
-};
-#define CONFIG_FUEL_GAUGE
-#endif
-
-#ifdef TEST_BKLIGHT_LID
-#define CONFIG_BACKLIGHT_LID
-#endif
-
 #ifdef TEST_BKLIGHT_PASSTHRU
 #define CONFIG_BACKLIGHT_LID
 #define CONFIG_BACKLIGHT_REQ_GPIO GPIO_PCH_BKLTEN
 #endif
 
-#ifdef TEST_CBI_WP
-#define CONFIG_EEPROM_CBI_WP
+#ifdef TEST_CBI
+#define CONFIG_CBI_EEPROM
 #endif
 
 #ifdef TEST_KB_8042
@@ -92,24 +73,13 @@ enum battery_type {
 #define CONFIG_MAG_CALIBRATE
 #endif
 
-#ifdef TEST_FLOAT
-#define CONFIG_FPU
-#define CONFIG_MAG_CALIBRATE
-#endif
-
-#ifdef TEST_FP
-#undef CONFIG_FPU
-#define CONFIG_MAG_CALIBRATE
-#endif
-
-#if defined(TEST_FP_TRANSPORT) || defined(TEST_FPSENSOR_STATE) ||       \
+#if defined(TEST_FPSENSOR_STATE) ||       \
 	defined(TEST_FPSENSOR_CRYPTO) ||                                \
 	defined(TEST_FPSENSOR_CRYPTO_WITH_MOCK) ||                      \
 	defined(TEST_FPSENSOR_CRYPTO_WITH_MOCK_OTP) ||                  \
 	defined(TEST_FPSENSOR_DEBUG) || defined(TEST_FPSENSOR_UTILS) || \
 	defined(TEST_FPSENSOR_AUTH_CRYPTO_STATELESS) ||                 \
 	defined(TEST_FPSENSOR_AUTH_CRYPTO_STATEFUL) ||                  \
-	defined(TEST_FPSENSOR_AUTH_COMMANDS) ||                         \
 	defined(TEST_FPSENSOR_AUTH_COMMANDS_OTP) ||                     \
 	defined(TEST_HOST_COMMAND_FUZZ)
 #define CONFIG_FINGERPRINT_MCU
@@ -283,28 +253,6 @@ int board_discharge_on_ac(int enabled);
 #define CONFIG_THERMISTOR_NCP15WB
 #define I2C_PORT_THERMAL 0
 int ncp15wb_calculate_temp(uint16_t adc);
-#endif
-
-#ifdef TEST_FAN
-#define CONFIG_FANS 1
-#endif
-
-#ifdef TEST_BUTTON
-#define CONFIG_KEYBOARD_PROTOCOL_8042
-#undef CONFIG_KEYBOARD_VIVALDI
-#define CONFIG_VOLUME_BUTTONS
-#define CONFIG_HOSTCMD_BUTTON
-#endif
-
-#ifdef TEST_BATTERY_GET_PARAMS_SMART
-#define CONFIG_BATTERY_MOCK
-#define CONFIG_BATTERY_SMART
-#define CONFIG_CHARGER_DEFAULT_CURRENT_LIMIT 4032
-#define CONFIG_I2C
-#define CONFIG_I2C_CONTROLLER
-#define I2C_PORT_MASTER 0
-#define I2C_PORT_BATTERY 0
-#define I2C_PORT_CHARGER 0
 #endif
 
 #ifdef TEST_LIGHTBAR
@@ -580,26 +528,7 @@ int ncp15wb_calculate_temp(uint16_t adc);
 #undef CONFIG_USB_DPM_SM
 #endif
 
-#if defined(TEST_CHARGE_MANAGER) || defined(TEST_CHARGE_MANAGER_DRP_CHARGING)
-#define CONFIG_CHARGE_MANAGER
-#define CONFIG_USB_CHARGER
-#define CONFIG_USB_PD_3A_PORTS 0 /* Host does not define a 3.0 A PDO */
-#define CONFIG_USB_PD_DUAL_ROLE
-#define CONFIG_USB_PD_PORT_MAX_COUNT 2
-#define CONFIG_USB_POWER_DELIVERY
-#define CONFIG_BATTERY
-#define CONFIG_BATTERY_SMART
-#define CONFIG_I2C
-#define CONFIG_I2C_CONTROLLER
-#define I2C_PORT_BATTERY 0
-#undef CONFIG_USB_PD_HOST_CMD
-#endif /* TEST_CHARGE_MANAGER_* */
-
-#ifdef TEST_CHARGE_MANAGER_DRP_CHARGING
-#define CONFIG_CHARGE_MANAGER_DRP_CHARGING
-#else
 #undef CONFIG_CHARGE_MANAGER_DRP_CHARGING
-#endif /* TEST_CHARGE_MANAGER_DRP_CHARGING */
 
 #ifdef TEST_CHARGE_RAMP
 #define CONFIG_CHARGE_RAMP_SW
