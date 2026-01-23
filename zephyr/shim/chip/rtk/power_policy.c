@@ -30,5 +30,5 @@ const struct pm_state_info *pm_policy_next_state(uint8_t cpu, int32_t ticks)
 			ret = &cpu_state_list[i];
 		}
 	}
-	return ret;
+	return NULL;
 }
