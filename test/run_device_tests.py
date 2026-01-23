@@ -447,6 +447,26 @@ class Renode(Platform):
         ]:
             return True
 
+        # Tests that don't exist in "classic" ec, but might exist in zephyr.
+        if not zephyr and test_name in [
+            "aes",
+            "benchmark",
+            "fp_transport",
+            "fpsensor_debug",
+            "fpsensor_utils",
+            "malloc",
+            "otp_key",
+            "sbrk",
+            "static_if",
+            "std_vector",
+            "always_memset",
+            "mutex",
+            "mutex_trylock",
+            "mutex_recursive",
+            "pingpong",
+        ]:
+            return True
+
         if board_config.name in [BLOONCHIPPER, DARTMONKEY]:
             if board_config.name == BLOONCHIPPER:
                 # bloonchipper Zephyr tests to skip on Renode.

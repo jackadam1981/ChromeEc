@@ -11,9 +11,7 @@ board-y=board.o
 # Enable on device tests
 test-list-y=\
        abort \
-       aes \
        boringssl_crypto \
-       compile_time_macros \
        crc \
        debug \
        exception \
@@ -21,9 +19,7 @@ test-list-y=\
        flash_write_protect \
        libc_printf \
        mpu \
-       mutex \
        null_pointer \
-       pingpong \
        printf \
        queue \
        rng_benchmark \
@@ -31,11 +27,9 @@ test-list-y=\
        rollback_entropy \
        rsa3 \
        rtc \
-       sbrk \
        scratchpad \
        sha256 \
        sha256_unrolled \
-       static_if \
        stdlib \
        stm32f_rtc \
        timer_dos \
