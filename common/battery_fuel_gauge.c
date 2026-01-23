@@ -342,7 +342,6 @@ int board_cut_off_battery(void)
 }
 #endif /* !CONFIG_FUEL_GAUGE */
 
-#ifndef TEST_BATTERY_CONFIG
 enum ec_error_list battery_sleep_fuel_gauge(void)
 {
 	const struct board_batt_params *params = get_batt_params();
@@ -448,7 +447,6 @@ enum battery_disconnect_state battery_get_disconnect_state(void)
 
 	return BATTERY_NOT_DISCONNECTED;
 }
-#endif /* TEST_BATTERY_CONFIG */
 
 __overridable int
 board_battery_imbalance_mv(const struct board_batt_params *info)
