@@ -34,6 +34,24 @@
       "parentUuid": "069a8154_bf5d1ede",
       "revId": "ff3aa7df61c030ae13d8f7d2986d9d17e73f450a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84e8ccaf_955b51f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2026-01-23T10:50:49Z",
+      "side": 1,
+      "message": "After building yavilla, it also requires CMakeLists changes.",
+      "parentUuid": "16d5d1f7_e394bd34",
+      "revId": "ff3aa7df61c030ae13d8f7d2986d9d17e73f450a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
