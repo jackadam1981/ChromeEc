@@ -198,9 +198,15 @@ def find_paths():
             zephyr_base = Path(os.environ["ZEPHYR_BASE"]).resolve()
         except KeyError:
             zephyr_base = (
-                cros_checkout / "src" / "third_party" / "zephyr" / "main"
+                cros_checkout
+                / "src"
+                / "third_party"
+                / "zephyrproject"
+                / "zephyr"
             )
-        zephyr_modules_dir = cros_checkout / "src" / "third_party" / "zephyr"
+        zephyr_modules_dir = (
+            cros_checkout / "src" / "third_party" / "zephyrproject" / "modules"
+        )
         pigweed_dir = cros_checkout / "src" / "third_party" / "pigweed"
     else:
         try:
