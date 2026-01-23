@@ -475,19 +475,32 @@ static inline bool calc_cdi_seal(
  * - Debug - in all other cases
  */
 static inline uint8_t calc_mode(
-	/* [IN] dice context */ const struct dice_ctx_s *ctx)
+	/* [IN] dice context */ const struct dice_config_s *cfg)
 {
-	if (__platform_aprov_status_allows_normal(ctx->cfg.aprov_status)) {
-		if (__platform_memcmp(ctx->cfg.pcr0, kPcr0NormalMode,
-			    DIGEST_BYTES) == 0) {
+	if (__platform_aprov_status_allows_normal(cfg->aprov_status)) {
+		if (__platform_memcmp(
+			    cfg->pcr0, kPcr0NormalMode, DIGEST_BYTES) == 0) {
 			return BOOT_MODE_NORMAL;
 		}
-		if (__platform_memcmp(ctx->cfg.pcr0, kPcr0RecoveryNormalMode,
+		if (__platform_memcmp(cfg->pcr0, kPcr0RecoveryNormalMode,
 			    DIGEST_BYTES) == 0) {
 			return BOOT_MODE_RECOVERY;
 		}
 	}
 	return BOOT_MODE_DEBUG;
+}
+
+/* Get boot mode without providing context. */
+uint8_t get_boot_mode(void)
+{
+	struct dice_config_s cfg;
+
+	if (!__platform_get_dice_config(&cfg)) {
+		__platform_log_str("Failed to get DICE config");
+		return 0;
+	}
+
+	return calc_mode(&cfg);
 }
 
 /* Generates CDI cert signature for the initialized builder with pre-filled
@@ -832,7 +845,7 @@ static inline bool fill_config_details(
 		sizeof(cwt_claims->code_hash.value));
 
 	/* Calculate boot mode */
-	cwt_claims->mode.value = calc_mode(ctx);
+	cwt_claims->mode.value = calc_mode(&ctx->cfg);
 
 	return true;
 }

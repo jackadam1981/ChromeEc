@@ -82,6 +82,14 @@ size_t get_dice_chain_bytes_for_chain(
 #define get_dice_chain_bytes(d, o, s) \
 	get_dice_chain_bytes_for_chain(d, o, s, BOOT_PARAM_DICE_CHAIN_AP)
 
+/**
+ * @brief Get the boot mode
+ *
+ * @return 0 for error, or
+ * BOOT_MODE_NORMAL / BOOT_MODE_RECOVERY / BOOT_MODE_DEBUG
+ */
+uint8_t get_boot_mode(void);
+
 /* Sign data with attestation CDI key for the specific chain.
  */
 bool sign_with_cdi_key(
