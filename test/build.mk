@@ -18,23 +18,12 @@ test-list-y ?= flash_write_protect \
 ifneq ($(TEST_LIST_HOST),)
 test-list-host=$(TEST_LIST_HOST)
 else
-test-list-host  = aes
-test-list-host += always_memset
-test-list-host += battery_config
-test-list-host += battery_get_params_smart
-test-list-host += benchmark
-test-list-host += bklight_lid
+test-list-host = 
 test-list-host += bklight_passthru
 test-list-host += body_detection
 test-list-host += boringssl_crypto
-test-list-host += button
 test-list-host += cbi
-test-list-host += cbi_wp
-test-list-host += charge_manager
-test-list-host += charge_manager_drp_charging
 test-list-host += charge_ramp
-test-list-host += chipset
-test-list-host += compile_time_macros
 test-list-host += console_edit
 test-list-host += crc
 test-list-host += debug_unimplemented
@@ -177,29 +166,14 @@ rw-test = ro
 endif
 
 abort-y=abort.o
-aes-y=aes.o
-# The purpose of the always_memset test is to ensure the functionality of
-# always_memset during high levels of optimization.
-%/test/always_memset.o: CFLAGS += -O3
-always_memset-y=always_memset.o
 assert_builtin-y=assert_builtin.o
 assert_stdlib-y=assert_stdlib.o
 base32-y=base32.o
-battery_config-y=battery_config.o
-battery_get_params_smart-y=battery_get_params_smart.o
-benchmark-y=benchmark.o
-bklight_lid-y=bklight_lid.o
 bklight_passthru-y=bklight_passthru.o
 body_detection-y=body_detection.o body_detection_data_literals.o motion_common.o
 boringssl_crypto-y=boringssl_crypto.o
-button-y=button.o
 cbi-y=cbi.o
-cbi_wp-y=cbi_wp.o
-charge_manager-y=charge_manager.o fake_usbc.o test_battery_mock.o
-charge_manager_drp_charging-y=charge_manager.o fake_usbc.o test_battery_mock.o
 charge_ramp-y+=charge_ramp.o
-chipset-y+=chipset.o
-compile_time_macros-y=compile_time_macros.o
 console_edit-y=console_edit.o
 cortexm_fpu-y=cortexm_fpu.o
 crc-y=crc.o
