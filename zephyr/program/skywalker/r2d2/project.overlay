@@ -1,0 +1,118 @@
+/* Copyright 2026 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include <cros/cbi_flash.dtsi>
+#include <cros/thermistor/thermistor.dtsi>
+#include "../npcx_generated.dtsi"
+#include "../interrupts.dtsi"
+#include "../npcx_common.dtsi"
+#include "../npcx_default_gpio_pinctrl.dtsi"
+#include "../npcx_keyboard.dtsi"
+#include "../npcx_overlay.dtsi"
+#include "../power_signal.dtsi"
+#include "../npcx_usbc.dtsi"
+#include "../usba.dtsi"
+#include "cbi.dtsi"
+#include "led_pins.dtsi"
+#include "led_policy.dtsi"
+#include "motionsense.dtsi"
+
+/ {
+	gpio-interrupts {
+		compatible = "cros-ec,gpio-interrupts";
+		/delete-node/ int_base_imu;
+
+		int_base_imu: base_imu {
+			irq-pin = <&base_imu_int_l>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "lsm6dso_interrupt";
+		};
+		int_pen_fault: pen_fault {
+			irq-pin = <&pen_fault_od>;
+			flags = <GPIO_INT_EDGE_RISING>;
+			handler = "pen_fault_interrupt";
+		};
+	};
+
+	named-gpios {
+		compatible = "named-gpios";
+		/delete-node/ ec_entering_rw;
+		/delete-node/ lid_accel_int_l;
+		/delete-node/ charger_prochot_odl;
+
+		lid_accel_int_l: lid_accel_int_l {
+			gpios = <&gpiob 3 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
+		};
+		charger_prochot_odl {
+			gpios = <&gpiof 2 GPIO_INPUT>;
+		};
+		ec_pen_chg_dis_odl: ec_pen_chg_dis_odl {
+ 			gpios = <&gpioe 4 GPIO_ODR_HIGH>;
+		};
+		pen_fault_od: pen_fault_od {
+			gpios = <&gpiof 3 GPIO_INPUT>;
+		};
+		ec_batt_pres_odl: ec_batt_pres_odl {
+			gpios = <&gpioe 0 GPIO_INPUT>;
+			enum-name = "GPIO_BATT_PRES_ODL";
+		};
+	};
+
+	batteries {
+		default_battery: SIMPLO_CP856931 {
+			compatible = "SIMPLO,CP856931", "battery-smart";
+		};
+		SIMPLO_CP856932 {
+			compatible = "SIMPLO,CP856932", "battery-smart";
+		};
+	};
+
+	cros-keyscan {
+		compatible = "cros-ec,keyscan";
+		actual-key-mask = <
+			0x08	/* C0 */
+			0xff	/* C1 */
+			0xff	/* C2 */
+			0xff	/* C3 */
+			0xff	/* C4 */
+			0xff	/* C5 */
+			0xff	/* C6 */
+			0xa1	/* C7 */
+			0xff	/* C8 */
+			0xfa	/* C9 */
+			0x01	/* C10 */
+			0xf6	/* C11 */
+			0xca	/* C12 */
+			0x40	/* C13 */
+			0x0a	/* C14 */
+			0x40	/* C15 */
+			0x01	/* C16 */
+			0x44	/* C17 */
+		>;
+	};
+};
+
+&i2c2 {
+	/delete-node/ rts54-pdc@67;
+};
+
+	usbc {
+		#address-cells = <1>;
+		#size-cells = <0>;
+
+		/delete-node/ port1@1;
+		/delete-node/ port1-muxes;
+		usbc_port0: port0@0 {
+			compatible = "named-usbc-port";
+			reg = <0>;
+			chg = <&charger_rt9490>;
+			pdc = <&pdc_power_p0>;
+			policy = <&cros_policy>;
+		};
+
+		ppm-driver {
+			compatible = "ucsi-ppm";
+		};
+	};
