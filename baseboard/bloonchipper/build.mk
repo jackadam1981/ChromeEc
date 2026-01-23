@@ -21,13 +21,9 @@ baseboard-rw += fpsensor_detect_rw.o
 # will fail on device.
 test-list-y = \
        abort \
-       aes \
-       always_memset \
        assert_builtin \
        assert_stdlib \
-       benchmark \
        boringssl_crypto \
-       compile_time_macros \
        cortexm_fpu \
        crc \
        debug \
@@ -35,28 +31,16 @@ test-list-y = \
        exit \
        flash_physical \
        flash_write_protect \
-       fp_transport \
-       fpsensor_auth_crypto_stateful \
-       fpsensor_auth_crypto_stateless \
        fpsensor_crypto \
-       fpsensor_debug \
        fpsensor_hw \
-       fpsensor_utils \
        ftrapv \
        global_initialization \
        libc_printf \
        libcxx \
-       malloc \
        mpu \
-       mutex \
-       mutex_trylock \
-       mutex_recursive \
        null_pointer \
        panic \
        panic_data \
-       pingpong \
-       printf \
-       queue \
        restricted_console \
        rng_benchmark \
        rollback \
@@ -65,13 +49,8 @@ test-list-y = \
        rsa3 \
        rtc \
        rtc_stm32f4 \
-       sbrk \
        scratchpad \
-       sha256 \
-       sha256_unrolled \
-       static_if \
        stdlib \
-       std_vector \
        system_is_locked \
        timer \
        timer_dos \

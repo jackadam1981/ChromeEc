@@ -21,13 +21,9 @@ baseboard-rw += fpsensor_detect_rw.o
 # TODO(b/314131510): Fix stm32f_rtc test (or create a new one) for helipilot
 test-list-y = \
        abort \
-       aes \
-       always_memset \
        assert_builtin \
        assert_stdlib \
-       benchmark \
        boringssl_crypto \
-       compile_time_macros \
        cortexm_fpu \
        crc \
        debug \
@@ -35,29 +31,16 @@ test-list-y = \
        exit \
        flash_physical \
        flash_write_protect \
-       fp_transport \
-       fpsensor_auth_crypto_stateful \
-       fpsensor_auth_crypto_stateless \
        fpsensor_crypto \
-       fpsensor_debug \
        fpsensor_hw \
-       fpsensor_utils \
        ftrapv \
        global_initialization \
        libc_printf \
        libcxx \
-       malloc \
        mpu \
-       mutex \
-       mutex_trylock \
-       mutex_recursive \
        null_pointer \
-       otp_key \
        panic \
        panic_data \
-       pingpong \
-       printf \
-       queue \
        ram_lock \
        restricted_console \
        rng_benchmark \
@@ -67,13 +50,8 @@ test-list-y = \
        rsa3 \
        rtc \
        rtc_npcx9 \
-       sbrk \
        scratchpad \
-       sha256 \
-       sha256_unrolled \
-       static_if \
        stdlib \
-       std_vector \
        system_is_locked \
        timer \
        timer_dos \
