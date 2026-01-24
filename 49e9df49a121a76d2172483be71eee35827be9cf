@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e8aad53_5f77adff",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-01-24T00:58:42Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Spellchecker: \"recieved\" is a possible misspelling of \"received\".\n\nTo bypass Spellchecker, add...\n\n\"recieved\" is a possible misspelling of \"received\".\n\nTo bypass Spellchecker, add a footer with DISABLE_SPELLCHECKER",
+      "range": {
+        "startLine": 28,
+        "startChar": 27,
+        "endLine": 28,
+        "endChar": 35
+      },
+      "revId": "49e9df49a121a76d2172483be71eee35827be9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7437fef5_06ec9154",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-01-24T00:58:42Z",
+      "side": 1,
+      "message": "Why is this referencing a specific node label? This should probably be the new property you added in the binding.\n\n```\n.enable_gpio \u003d GPIO_DT_SPEC_GET(DT_DRV_INST(0), enable_gpios),\n```",
+      "range": {
+        "startLine": 48,
+        "startChar": 33,
+        "endLine": 48,
+        "endChar": 62
+      },
+      "revId": "49e9df49a121a76d2172483be71eee35827be9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "488e3ec4_3ec35e8c",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-01-24T00:58:42Z",
+      "side": 1,
+      "message": "Rephrase as\n```c\nif (rt3645_nvm_program_status(dev,NVM_RELOAD_STAT_BIT) !\u003d\n\t\t\tEC_SUCCESS)) {\n\treturn 0;\n}\n```\nto save indentation",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 175,
+        "endChar": 2
+      },
+      "revId": "49e9df49a121a76d2172483be71eee35827be9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20dc5b71_a8f80d81",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-01-24T00:58:42Z",
+      "side": 1,
+      "message": "Zephyr log macros automatically insert the newline",
+      "range": {
+        "startLine": 476,
+        "startChar": 47,
+        "endLine": 476,
+        "endChar": 49
+      },
+      "revId": "49e9df49a121a76d2172483be71eee35827be9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcac5066_9dfb5947",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-01-24T00:58:42Z",
+      "side": 1,
+      "message": "In what cases is this NULL? Can the GPIO property be made required?",
+      "range": {
+        "startLine": 481,
+        "startChar": 0,
+        "endLine": 481,
+        "endChar": 40
+      },
+      "revId": "49e9df49a121a76d2172483be71eee35827be9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "202c7ec9_2e194768",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-01-24T00:58:42Z",
+      "side": 1,
+      "message": "C comments  (/* ... */)",
+      "range": {
+        "startLine": 487,
+        "startChar": 2,
+        "endLine": 487,
+        "endChar": 4
+      },
+      "revId": "49e9df49a121a76d2172483be71eee35827be9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "486199ab_dca20884",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-01-24T00:58:42Z",
+      "side": 1,
+      "message": "Indentation is off here. Please run `cros format` or presubmit checks before uploading.",
+      "range": {
+        "startLine": 497,
+        "startChar": 3,
+        "endLine": 497,
+        "endChar": 4
+      },
+      "revId": "49e9df49a121a76d2172483be71eee35827be9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a82de350_4a229e35",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-01-24T00:58:42Z",
+      "side": 1,
+      "message": "Why not part of the `imvp` command set above?",
+      "range": {
+        "startLine": 506,
+        "startChar": 24,
+        "endLine": 506,
+        "endChar": 35
+      },
+      "revId": "49e9df49a121a76d2172483be71eee35827be9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a46d3006_9d28d2f9",
+        "filename": "zephyr/drivers/imvp/rt3645.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-01-24T00:58:42Z",
+      "side": 1,
+      "message": "Please don\u0027t use global variables for this.\n\nIdeally fixed configuration is read from the devicetree. You can use the `array` type to store a list of pages, addresses and values, define macros in the devicetree to help make the register names readable. See `#define KBD_RC(...)` as an example.",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 21
+      },
+      "revId": "49e9df49a121a76d2172483be71eee35827be9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7ac3a4a_1c01d8d5",
+        "filename": "zephyr/dts/bindings/imvp/richtek,rt3645.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-01-24T00:58:42Z",
+      "side": 1,
+      "message": "This should be of type `phandle-array` and be assigned a standard Zephyr GPIO spec (e.g. `\u003c\u0026gpioa 0 GPIO_ACTIVE_HIGH\u003e`). We don\u0027t want to reference named-gpio nodes in new Zephyr drivers. I think you might also be forced to rename it `enable-gpios`. Also YAML format is two space-indentation.",
+      "range": {
+        "startLine": 13,
+        "startChar": 16,
+        "endLine": 13,
+        "endChar": 29
+      },
+      "revId": "49e9df49a121a76d2172483be71eee35827be9cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
