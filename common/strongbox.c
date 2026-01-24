@@ -18,6 +18,7 @@
 #include "cbor_basic.h"
 #include "cbor_boot_param.h"
 #include "boot_param.h"
+#include "ccd_config.h"
 
 #define CPRINTS(format, args...) cprints(CC_EXTENSION, format, ##args)
 
@@ -244,10 +245,9 @@ static const uint8_t g_keymint_var_name[] = { 'K', 'M' };
  * PRINTABLESTRING 0x13 <size = 0x14> "Android Keystore Key"
  */
 static const char g_default_subject_data[] = {
-	0x30, 0x1f, 0x31, 0x1d, 0x30, 0x1b, 0x06, 0x03, 0x55, 0x04,
-	0x03, 0x13, 0x14, 0x41, 0x6e, 0x64, 0x72, 0x6f, 0x69, 0x64,
-	0x20, 0x4b, 0x65, 0x79, 0x73, 0x74, 0x6f, 0x72, 0x65, 0x20,
-	0x4b, 0x65, 0x79
+	0x30, 0x1f, 0x31, 0x1d, 0x30, 0x1b, 0x06, 0x03, 0x55, 0x04, 0x03,
+	0x13, 0x14, 0x41, 0x6e, 0x64, 0x72, 0x6f, 0x69, 0x64, 0x20, 0x4b,
+	0x65, 0x79, 0x73, 0x74, 0x6f, 0x72, 0x65, 0x20, 0x4b, 0x65, 0x79
 };
 static const struct slice g_default_subject =
 	SLICE(g_default_subject_data, sizeof(g_default_subject_data));
@@ -1399,8 +1399,8 @@ cleanup:
  * Output Buffer (`buf`):
  * A KeyCreationResult structure containing the key blob and an empty
  * certificate chain.
- * - [ 4 bytes ] uint32_t key_blob_total_words: Total size of the key blob
- * and characteristics that follow, in 32-bit words.
+ * - [ 4 bytes ] uint32_t key_struct cbor_blobotal_words: Total size of the key
+ * blob and characteristics that follow, in 32-bit words.
  * - [ n bytes ] Key blob, containing HW and SW enforced KeyCharacteristics.
  * Note: that key blob include KeyCharacteristics as its part, but in AIDL
  * KeyCharacteristics are returned separately as key blob format is opaque.
@@ -1940,6 +1940,285 @@ enum strongbox_error sb_GetDiceChain(struct km *km, uint32_t *buf,
 }
 DECLARE_STRONGBOX_COMMAND(SB_GetDiceChain, sb_GetDiceChain);
 
+#define DEVICE_INFO_MAX_FIELDS 14
+#define MAX_FIELD_SIZE	       2048
+
+struct cbor_blob {
+	uint8_t len;
+	uint8_t data[17]; /* Fits longest key/value in this schema */
+};
+
+/* Values: vb_state */
+static const struct cbor_blob VAL_VB[] = {
+	{ /* 0 - "green" */ 6,
+	  { CBOR_HDR1(CBOR_MAJOR_TSTR, 5), 'g', 'r', 'e', 'e', 'n' } },
+	{ /* 1 - "yellow" */ 7,
+	  { CBOR_HDR1(CBOR_MAJOR_TSTR, 6), 'y', 'e', 'l', 'l', 'o', 'w' } },
+	{ /* 2 - "orange" */ 7,
+	  { CBOR_HDR1(CBOR_MAJOR_TSTR, 6), 'o', 'r', 'a', 'n', 'g', 'e' } }
+};
+
+/* Values: bootloader_state */
+static const struct cbor_blob VAL_BOOT[] = {
+	{ /* 0 - "locked" */ 7,
+	  { CBOR_HDR1(CBOR_MAJOR_TSTR, 6), 'l', 'o', 'c', 'k', 'e', 'd' } },
+	{ /* 1 - "unlocked" */ 9,
+	  { CBOR_HDR1(CBOR_MAJOR_TSTR, 8), 'u', 'n', 'l', 'o', 'c', 'k', 'e',
+	    'd' } }
+};
+
+/* Values: security_level */
+static const struct cbor_blob VAL_SEC_SB = { 10,
+					     { CBOR_HDR1(CBOR_MAJOR_TSTR, 9),
+					       's', 't', 'r', 'o', 'n', 'g',
+					       'b', 'o', 'x' } };
+
+static const struct enforce_keys {
+	struct cbor_blob key;
+	size_t val_count;
+	const struct cbor_blob *vals;
+} ENFORCE_VALUES[] = {
+
+	{ /* 0 - `vb_state` key */ { 9,
+				     { CBOR_HDR1(CBOR_MAJOR_TSTR, 8), 'v', 'b',
+				       '_', 's', 't', 'a', 't', 'e' } },
+	  3, VAL_VB },
+
+	{ /* 1 - `bootloader_state` key */ {
+		  17,
+		  { CBOR_HDR1(CBOR_MAJOR_TSTR, 16), 'b', 'o', 'o', 't', 'l',
+		    'o', 'a', 'd', 'e', 'r', '_', 's', 't', 'a', 't', 'e' } },
+	  2, VAL_BOOT },
+
+	{ /* 2- `security_level` key */ { 15,
+					  { CBOR_HDR1(CBOR_MAJOR_TSTR, 14), 's',
+					    'e', 'c', 'u', 'r', 'i', 't', 'y',
+					    '_', 'l', 'e', 'v', 'e', 'l' } },
+	  1, &VAL_SEC_SB },
+};
+
+enum device_info_key {
+	DEVICE_INFO_KEY_OTHER = 0,
+	/* Values are indices in ENFORCE_VALUES[] + 1 */
+	DEVICE_INFO_KEY_VB_STATE = 1,
+	DEVICE_INFO_KEY_BOOTLOADER_STATE = 2,
+	DEVICE_INFO_KEY_SECURITY_LEVEL = 3,
+};
+
+/* Parse CBOR type and length/value */
+static size_t parse_head(const uint8_t *ptr, const uint8_t *end,
+			 size_t *payload_len)
+{
+	size_t head_sz = 0, payload_sz = 0;
+	uint8_t ai;
+
+	if (ptr >= end)
+		return head_sz;
+
+	ai = *ptr & 0x1F;
+
+	if (ai < 24) {
+		payload_sz = ai;
+		head_sz = 1;
+	} else if (ai == 24 && ptr + 1 < end) {
+		payload_sz = ptr[1];
+		head_sz = 2;
+	} else if (ai == 25 && ptr + 2 < end) {
+		payload_sz = ((size_t)ptr[1] << 8) | ptr[2];
+		head_sz = 3;
+	} else if (ai == 26 && ptr + 4 < end) {
+		/* For whatever reason we can get this encoding from AP... */
+		payload_sz = ((size_t)ptr[1] << 24) | ((size_t)ptr[2] << 16) |
+			     ((size_t)ptr[3] << 8) | ptr[4];
+		head_sz = 5;
+	}
+	*payload_len = payload_sz;
+	return head_sz;
+}
+
+/* Handles shifting tail and overwriting. Updates `len` and `end`. */
+static bool patch_blob(uint8_t *dest, size_t current_sz,
+		       const struct cbor_blob *new_blob, uint8_t *buf_start,
+		       size_t *total_len, size_t cap, const uint8_t **end_ptr)
+{
+	int32_t diff = (int32_t)new_blob->len - (int32_t)current_sz;
+
+	if (diff > 0 && (*total_len + diff) > cap)
+		return false;
+
+	if (diff != 0) {
+		/* dest + new_blob->len is where the tail SHOULD start
+		 * dest + current_sz is where the tail CURRENTLY starts
+		 * We move the tail from CURRENT to SHOULD.
+		 * Size of tail = (*end_ptr) - (dest + current_sz)
+		 */
+		memmove(dest + new_blob->len, dest + current_sz,
+			(size_t)(*end_ptr - (dest + current_sz)));
+		*total_len += diff;
+		*end_ptr += diff;
+	}
+	/* Insert new value in-place */
+	memcpy(dest, new_blob->data, new_blob->len);
+	return true;
+}
+
+/**
+ * @brief Validation of CBOR DeviceInfo struct
+ *
+ * @param buf [in/out] buffer with DeviceInfo
+ * @param len [in] length of DeviceInfo
+ * @param cap [in] max space in `buf` to edit
+ * @param new_len [out] resulting length of DeviceInfo
+ * @param hw_vb_idx [in] VB state (0 - green/1 -yellow/2-orange)
+ * @param hw_boot_idx [in] Bootloader state (0 - locked/1-unlocked)
+ * @return true on success, false if DeviceInfo is invalid
+ */
+static bool process_device_info(uint8_t *buf, size_t len, size_t cap,
+				size_t *new_len, uint8_t hw_vb_idx,
+				uint8_t hw_boot_idx)
+{
+	uint8_t *ptr = buf;
+	uint8_t *map_head_ptr = ptr; /* Save for updating count later */
+
+	const uint8_t *end = buf + len;
+	size_t sz, head_sz, map_count;
+	uint8_t found_keys = 0; /* Flags for found keys */
+
+	/* Prepare HW reported levels to match known keys for lookup */
+	uint8_t hw_lvls[ARRAY_SIZE(ENFORCE_VALUES)] = { hw_vb_idx, hw_boot_idx,
+							0 };
+
+	/* 1. Root Map Check
+	 * Strict: Must be map, max 14 fields.
+	 * We also check if adding 3 fields would overflow the 1-byte header
+	 * limit (23). 14 + 3 = 17 <= 23, so header size is constant (1 byte).
+	 */
+	if ((*ptr & 0xE0) != CBOR_MAJOR_MAP)
+		return false;
+	map_count = *ptr & 0x1f;
+	if (map_count > DEVICE_INFO_MAX_FIELDS)
+		return false;
+
+	ptr++;
+
+	/* 2. Iterate Existing Fields */
+	for (size_t i = 0; i < map_count; i++) {
+		/* --- Key --- */
+		uint8_t *key_start = ptr, *val_start, major;
+		enum device_info_key target;
+		size_t val_full_sz;
+
+		head_sz = parse_head(ptr, end, &sz);
+		if (head_sz == 0 || ptr + head_sz + sz > end)
+			return false;
+
+		/* Allowed Key Types: TSTR(3) or UINT(0) */
+		if ((*ptr & 0xE0) != CBOR_MAJOR_TSTR &&
+		    (*ptr & 0xE0) != CBOR_MAJOR_UINT)
+			return false;
+
+		ptr += head_sz + sz; /* Move to Value */
+
+		/* Identify Key */
+		target = DEVICE_INFO_KEY_OTHER;
+		for (size_t j = 0; j < ARRAY_SIZE(ENFORCE_VALUES); j++) {
+			const struct cbor_blob *key = &ENFORCE_VALUES[j].key;
+
+			if (memcmp(key_start, key->data, key->len) == 0) {
+				target = j + 1;
+				break;
+			}
+		}
+
+		/* --- Value --- */
+		val_start = ptr;
+		head_sz = parse_head(ptr, end, &sz);
+		if (head_sz == 0)
+			return false;
+
+		major = *val_start & 0xE0;
+		val_full_sz = head_sz;
+		if (major == CBOR_MAJOR_BSTR || major == CBOR_MAJOR_TSTR)
+			val_full_sz += sz;
+
+		if (val_start + val_full_sz > end)
+			return false;
+
+		/* --- Logic: Ratchet & Correction --- */
+		if (target != 0) {
+			const struct cbor_blob *new_blob = NULL;
+			int curr_idx = -1; /* unknown key */
+			int limit = ENFORCE_VALUES[target - 1].val_count;
+			const struct cbor_blob *table =
+				ENFORCE_VALUES[target - 1].vals;
+			int hw_lvl = hw_lvls[target - 1];
+
+			found_keys |= 1U << (target - 1);
+
+			/* Identify current level */
+			for (int k = 0; k < limit; k++) {
+				/* memcmp() will start with checking embedded
+				 * length first, so we don't need to check
+				 * length explicitly.
+				 */
+				if (memcmp(val_start, table[k].data,
+					   val_full_sz) == 0) {
+					curr_idx = k;
+					break;
+				}
+			}
+
+			/* Ratchet: If unknown, or claiming safer than HW ->
+			 * Patch to HW.
+			 */
+			if (curr_idx < hw_lvl)
+				new_blob = &table[hw_lvl];
+
+			/* Execute Patch if needed */
+			if (new_blob) {
+				if (!patch_blob(val_start, val_full_sz,
+						new_blob, buf, &len, cap, &end))
+					return false;
+				/* Update for pointer advancement */
+				val_full_sz = new_blob->len;
+			}
+		}
+
+		ptr = val_start + val_full_sz;
+	}
+
+	/* 3. Append Missing Fields. `ptr` is now at 'end'. */
+	for (size_t j = 0; j < ARRAY_SIZE(ENFORCE_VALUES); j++) {
+		const struct cbor_blob *key, *val;
+
+		if (found_keys & (1U << j))
+			continue;
+
+		key = &ENFORCE_VALUES[j].key;
+		val = &ENFORCE_VALUES[j].vals[hw_lvls[j]];
+
+		/* Check if we have enough space to add. */
+		if (len + key->len + val->len > cap)
+			return false;
+
+		memcpy(ptr, key->data, key->len);
+		ptr += key->len;
+		memcpy(ptr, val->data, val->len);
+		ptr += val->len;
+		len += (key->len + val->len);
+		map_count++;
+	}
+
+	/* 4. Update Header
+	 * Since map_count <= 14+3=17, it fits in low 5 bits.
+	 * Header byte remains (Major 5 | count).
+	 */
+	*map_head_ptr = CBOR_MAJOR_MAP | (uint8_t)map_count;
+
+	*new_len = len;
+	return true;
+}
+
 /**
  * Implementation for GenerateCertificateV2Request command.
  *
@@ -2104,6 +2383,15 @@ static enum strongbox_error sb_GenerateCertificateReq(struct km *km,
 
 	if (device_info_len / sizeof(uint32_t) + index > req_len_words)
 		return SBERR_InvalidArgument;
+
+	if (!process_device_info(
+		    (uint8_t *)(buf + index + 1), device_info_len,
+		    (buf_size_words - index - 1) * sizeof(uint32_t),
+		    &device_info_len,
+		    /* vb state */ get_boot_mode() == BOOT_MODE_NORMAL ? 0 : 2,
+		    /* bootloader */ ccd_get_state() == CCD_STATE_LOCKED ? 0 :
+									   1))
+		return SBERR_RKP_STATUS_FAILED;
 
 	/**
 	 * Csr = AuthenticatedRequest<CsrPayload>
