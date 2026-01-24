@@ -155,7 +155,7 @@ static int ppm_common_opm_notify(struct ucsi_ppm_device *dev)
 		return -1;
 	}
 
-	LOG_DBG("Notifying with CCI = 0x%08x", dev->ucsi_data.cci.raw_value);
+	LOG_ERR("Notifying with CCI = 0x%08x", dev->ucsi_data.cci.raw_value);
 	dev->opm_notify(dev->opm_context);
 	return 0;
 }
@@ -249,7 +249,7 @@ static void ppm_common_handle_async_event(struct ucsi_ppm_device *dev)
 			LOG_ERR("Failed to read port %d status. No recovery.",
 				port + 1);
 		} else {
-			LOG_DBG("Port status change on %d: 0x%x", port + 1,
+			LOG_ERR("Port status change on %d: 0x%x", port + 1,
 				port_status->raw_conn_status_change_bits);
 		}
 
@@ -646,7 +646,7 @@ static void ppm_common_taskloop(struct ucsi_ppm_device *dev)
 		k_condvar_wait(&dev->ppm_condvar, &dev->ppm_lock, K_FOREVER);
 	}
 
-	LOG_DBG("Handling next task at state %d (%s)", dev->ppm_state,
+	LOG_ERR("Handling next task at state %d (%s)", dev->ppm_state,
 		ppm_state_to_string(dev->ppm_state));
 
 	bool is_ppm_reset = match_pending_command(dev, UCSI_PPM_RESET);
@@ -706,11 +706,14 @@ static void ppm_common_taskloop(struct ucsi_ppm_device *dev)
 			if (!is_ppm_reset &&
 			    (!match_pending_command(dev, UCSI_ACK_CC_CI) ||
 			     is_invalid_ack(dev))) {
+				LOG_ERR("---invalid_ack_notify\n");
 				invalid_ack_notify(dev);
 				break;
 			}
+			LOG_ERR("---ppm_common_handle_pending_command\n");
 			ppm_common_handle_pending_command(dev);
 		}
+		LOG_ERR("---dev->pending.command : %d\n", dev->pending.command);
 		break;
 
 	/* Waiting for async event ack. */
