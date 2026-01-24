@@ -46,6 +46,30 @@
       },
       "revId": "20c37d3b0e1da7730a82b601236bd77638f090e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "769adedc_b52ffff9",
+        "filename": "zephyr/subsys/pd_controller/pdc_console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-01-24T01:50:26Z",
+      "side": 1,
+      "message": "This is better. The diff got messy, but the commands have been broken out into helper functions.",
+      "parentUuid": "5300ebd5_57be9de7",
+      "range": {
+        "startLine": 813,
+        "startChar": 8,
+        "endLine": 813,
+        "endChar": 22
+      },
+      "revId": "20c37d3b0e1da7730a82b601236bd77638f090e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
