@@ -1342,6 +1342,7 @@ static void handle_connector_status(struct pdc_port_t *port)
 		port->overlay_ppm_changes.raw_value |=
 			conn_status_change_bits.raw_value;
 		trigger_ppm_ci(port);
+		LOG_ERR("---handle_connector_status---\n");
 		k_event_post(&port->settle_event,
 			     PDC_PPM_CONNECTOR_STATUS_READY);
 	}
@@ -1495,6 +1496,7 @@ static void trigger_ppm_status_change(struct pdc_port_t *port)
 
 	port->overlay_ppm_changes.raw_value |= status.raw_value;
 	trigger_ppm_ci(port);
+	LOG_ERR("---trigger_ppm_status_change---\n");
 }
 
 /**
