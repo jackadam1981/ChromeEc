@@ -77,6 +77,12 @@ enum ec_error_list battery_sleep_fuel_gauge(void);
 __override_proto int
 board_battery_imbalance_mv(const struct board_batt_params *info);
 
+const struct board_batt_params *get_batt_params(void);
+
+int cut_off_battery_block_write(const struct ship_mode_info *ship_mode);
+
+int cut_off_battery_sb_write(const struct ship_mode_info *ship_mode);
+
 #ifdef __cplusplus
 }
 #endif
