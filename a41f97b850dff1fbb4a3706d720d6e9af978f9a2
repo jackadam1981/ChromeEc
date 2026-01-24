@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a12a911_5d6e8043",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-01-24T00:58:51Z",
+      "side": 1,
+      "message": "Will `ap_pwrseq_register_state_exit_callback()` be OK once `ap_pwrseq_imvp_cb` goes out of scope?",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 26
+      },
+      "revId": "a41f97b850dff1fbb4a3706d720d6e9af978f9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a0cc149_0a4f261b",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-01-24T00:58:51Z",
+      "side": 1,
+      "message": "`#if defined(...) \u0026\u0026 defined(...)`",
+      "range": {
+        "startLine": 257,
+        "startChar": 0,
+        "endLine": 258,
+        "endChar": 30
+      },
+      "revId": "a41f97b850dff1fbb4a3706d720d6e9af978f9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07bf6e3a_9e748031",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-01-24T00:58:51Z",
+      "side": 1,
+      "message": "This seems very similar to the console command implementation from previous CL. Can this be de-duplicated?",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 277,
+        "endChar": 38
+      },
+      "revId": "a41f97b850dff1fbb4a3706d720d6e9af978f9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
