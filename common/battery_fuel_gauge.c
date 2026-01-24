@@ -262,7 +262,7 @@ const struct batt_conf_embed *get_batt_conf(void)
 	return battery_conf;
 }
 
-test_export_static const struct board_batt_params *get_batt_params(void)
+const struct board_batt_params *get_batt_params(void)
 {
 	return get_batt_conf() ? &get_batt_conf()->config : NULL;
 }
@@ -279,7 +279,7 @@ const struct battery_info *battery_get_info(void)
  * @param ship_mode		Battery ship mode information
  * @return non-zero if error
  */
-static int cut_off_battery_block_write(const struct ship_mode_info *ship_mode)
+int cut_off_battery_block_write(const struct ship_mode_info *ship_mode)
 {
 	int rv;
 
@@ -312,7 +312,7 @@ static int cut_off_battery_block_write(const struct ship_mode_info *ship_mode)
  * @param ship_mode		Battery ship mode information
  * @return non-zero if error
  */
-static int cut_off_battery_sb_write(const struct ship_mode_info *ship_mode)
+int cut_off_battery_sb_write(const struct ship_mode_info *ship_mode)
 {
 	int rv;
 
@@ -324,7 +324,7 @@ static int cut_off_battery_sb_write(const struct ship_mode_info *ship_mode)
 	return sb_write(ship_mode->reg_addr, ship_mode->reg_data[1]);
 }
 
-int board_cut_off_battery(void)
+__overridable int board_cut_off_battery(void)
 {
 	const struct board_batt_params *params = get_batt_params();
 	int rv;
