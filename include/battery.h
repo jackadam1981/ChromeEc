@@ -425,7 +425,7 @@ int battery_bq4050_imbalance_mv(void);
  *
  * @return EC_RES_INVALID_COMMAND if the battery doesn't support.
  */
-int board_cut_off_battery(void);
+__override_proto int board_cut_off_battery(void);
 
 /**
  * Return if the battery start cut off.
