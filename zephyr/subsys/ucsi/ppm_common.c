@@ -155,7 +155,7 @@ static int ppm_common_opm_notify(struct ucsi_ppm_device *dev)
 		return -1;
 	}
 
-	LOG_DBG("Notifying with CCI = 0x%08x", dev->ucsi_data.cci.raw_value);
+	// LOG_ERR("Notifying with CCI = 0x%08x", dev->ucsi_data.cci.raw_value);
 	dev->opm_notify(dev->opm_context);
 	return 0;
 }
@@ -249,7 +249,7 @@ static void ppm_common_handle_async_event(struct ucsi_ppm_device *dev)
 			LOG_ERR("Failed to read port %d status. No recovery.",
 				port + 1);
 		} else {
-			LOG_DBG("Port status change on %d: 0x%x", port + 1,
+			LOG_ERR("Port status change on %d: 0x%x", port + 1,
 				port_status->raw_conn_status_change_bits);
 		}
 
@@ -303,6 +303,7 @@ static void ppm_common_handle_async_event(struct ucsi_ppm_device *dev)
 
 		/* Set PPM state to waiting for async event ack */
 		dev->ppm_state = PPM_STATE_WAITING_ASYNC_EV_ACK;
+		// LOG_ERR("---func=%s, line=%d---\n", __func__, __LINE__);
 	}
 
 	/* Clear the pending bit. */
@@ -536,7 +537,7 @@ static void ppm_common_handle_pending_command(struct ucsi_ppm_device *dev)
 	/* Check what command is currently pending. */
 	next_command = dev->ucsi_data.control.command;
 
-	LOG_DBG("PEND_CMD: Started command processing in "
+	LOG_ERR("PEND_CMD: Started command processing in "
 		"state %d (%s), cmd 0x%x (%s)",
 		dev->ppm_state, ppm_state_to_string(dev->ppm_state),
 		next_command, get_ucsi_command_name(next_command));
@@ -547,6 +548,7 @@ static void ppm_common_handle_pending_command(struct ucsi_ppm_device *dev)
 		 * notify OPM and then continue.
 		 */
 		dev->ppm_state = PPM_STATE_PROCESSING_COMMAND;
+		// LOG_ERR("---func=%s, line=%d---\n", __func__, __LINE__);
 		set_cci_busy(dev);
 		/* Intentional fallthrough since we are now processing.
 		 */
@@ -565,6 +567,8 @@ static void ppm_common_handle_pending_command(struct ucsi_ppm_device *dev)
 			 * need to be acked.
 			 */
 			dev->ppm_state = PPM_STATE_WAITING_CC_ACK;
+			// LOG_ERR("---func=%s, line=%d---\n", __func__,
+			// __LINE__);
 			ppm_common_opm_notify(dev);
 			break;
 		}
@@ -574,17 +578,23 @@ static void ppm_common_handle_pending_command(struct ucsi_ppm_device *dev)
 		 */
 		if (next_command == UCSI_PPM_RESET) {
 			dev->ppm_state = PPM_STATE_IDLE;
+			// LOG_ERR("---func=%s, line=%d---\n", __func__,
+			// __LINE__);
 			clear_last_error(dev);
 		} else if (next_command == UCSI_ACK_CC_CI) {
 			/* We've received a standalone CI ack after
 			 * completing command loop(s).
 			 */
 			dev->ppm_state = PPM_STATE_IDLE_NOTIFY;
+			// LOG_ERR("---func=%s, line=%d---\n", __func__,
+			// __LINE__);
 
 			clear_cci_except_connector(dev);
 			dev->ucsi_data.cci.acknowledge_command = 1;
 		} else {
 			dev->ppm_state = PPM_STATE_WAITING_CC_ACK;
+			// LOG_ERR("---func=%s, line=%d---\n", __func__,
+			// __LINE__);
 		}
 
 		/* Notify OPM to handle result and wait for ack if we're
@@ -603,9 +613,12 @@ static void ppm_common_handle_pending_command(struct ucsi_ppm_device *dev)
 		ret = ppm_common_execute_pending_cmd(dev);
 		if (ret >= 0 && next_command == UCSI_PPM_RESET) {
 			dev->ppm_state = PPM_STATE_IDLE;
+			// LOG_ERR("---func=%s, line=%d---\n", __func__,
+			// __LINE__);
 		} else if (ret >= 0) {
 			dev->ppm_state = PPM_STATE_IDLE_NOTIFY;
-
+			// LOG_ERR("---func=%s, line=%d---\n", __func__,
+			// __LINE__);
 			clear_cci_except_connector(dev);
 			dev->ucsi_data.cci.acknowledge_command = 1;
 		}
@@ -646,7 +659,7 @@ static void ppm_common_taskloop(struct ucsi_ppm_device *dev)
 		k_condvar_wait(&dev->ppm_condvar, &dev->ppm_lock, K_FOREVER);
 	}
 
-	LOG_DBG("Handling next task at state %d (%s)", dev->ppm_state,
+	LOG_ERR("Handling next task at state %d (%s)", dev->ppm_state,
 		ppm_state_to_string(dev->ppm_state));
 
 	bool is_ppm_reset = match_pending_command(dev, UCSI_PPM_RESET);
@@ -682,12 +695,18 @@ static void ppm_common_taskloop(struct ucsi_ppm_device *dev)
 		    match_pending_command(dev, UCSI_ACK_CC_CI) &&
 		    is_invalid_ack(dev)) {
 			invalid_ack_notify(dev);
+			// LOG_ERR("---func=%s, line=%d---\n", __func__,
+			// __LINE__);
 			break;
 		}
 
 		if (is_pending_command(dev)) {
+			// LOG_ERR("---func=%s, line=%d---\n", __func__,
+			// __LINE__);
 			ppm_common_handle_pending_command(dev);
 		} else if (is_pending_async_event(dev)) {
+			// LOG_ERR("---func=%s, line=%d---\n", __func__,
+			// __LINE__);
 			ppm_common_handle_async_event(dev);
 		}
 		break;
@@ -706,11 +725,15 @@ static void ppm_common_taskloop(struct ucsi_ppm_device *dev)
 			if (!is_ppm_reset &&
 			    (!match_pending_command(dev, UCSI_ACK_CC_CI) ||
 			     is_invalid_ack(dev))) {
+				LOG_ERR("---invalid_ack_notify\n");
 				invalid_ack_notify(dev);
 				break;
 			}
+			// LOG_ERR("---ppm_common_handle_pending_command\n");
 			ppm_common_handle_pending_command(dev);
 		}
+		// LOG_ERR("---dev->pending.command : %d\n",
+		// dev->pending.command);
 		break;
 
 	/* Waiting for async event ack. */
@@ -732,8 +755,10 @@ static void ppm_common_taskloop(struct ucsi_ppm_device *dev)
 			 * state.
 			 */
 			if (!is_ack) {
-				LOG_DBG("ASYNC EV ACK state turned into IDLE_NOTIFY state");
+				LOG_ERR("ASYNC EV ACK state turned into IDLE_NOTIFY state");
 				dev->ppm_state = PPM_STATE_IDLE_NOTIFY;
+				// LOG_ERR("---func=%s, line=%d---\n", __func__,
+				// __LINE__);
 			}
 			ppm_common_handle_pending_command(dev);
 		}
@@ -752,6 +777,7 @@ static void ppm_common_task(void *context)
 	k_mutex_lock(&dev->ppm_lock, K_FOREVER);
 
 	/* Initialize the system state. */
+	// LOG_ERR("---func=%s, line=%d---\n", __func__, __LINE__);
 	dev->ppm_state = PPM_STATE_NOT_READY;
 
 	/* Send PPM reset and set state to IDLE if successful. */
@@ -761,6 +787,7 @@ static void ppm_common_task(void *context)
 						dev->ucsi_data.message_in) >=
 	    0) {
 		dev->ppm_state = PPM_STATE_IDLE;
+		// LOG_ERR("---func=%s, line=%d---\n", __func__, __LINE__);
 		memset(&dev->ucsi_data.cci, 0, sizeof(union cci_event_t));
 	}
 
@@ -798,6 +825,7 @@ int ucsi_ppm_init_and_wait(struct ucsi_ppm_device *dev)
 	ucsi_data->version.lpm_address = 0x0;
 
 	/* Reset state. */
+	// LOG_ERR("---func=%s, line=%d---\n", __func__, __LINE__);
 	dev->ppm_state = PPM_STATE_NOT_READY;
 	memset(&dev->pending, 0, sizeof(dev->pending));
 
