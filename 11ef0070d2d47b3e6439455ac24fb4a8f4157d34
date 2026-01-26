@@ -260,6 +260,30 @@
       },
       "revId": "11ef0070d2d47b3e6439455ac24fb4a8f4157d34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6aec0b04_31942944",
+        "filename": "test/rollback_lock_panic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-26T23:02:22Z",
+      "side": 1,
+      "message": "ok. I fixed it.",
+      "parentUuid": "a9f8df75_0f09bb9b",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 23
+      },
+      "revId": "11ef0070d2d47b3e6439455ac24fb4a8f4157d34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
