@@ -335,13 +335,20 @@ def bundle_firmware(opts):
         tarball_path = os.path.join(bundle_dir, tarball_name)
         cmd = [
             "tar",
-            "cvfj",
+            r"--transform=s/\.config/ec.config/",
+            "-cvjf",
             tarball_path,
         ]
         cmd.extend(
             [
                 str(x.relative_to(artifacts_dir))
                 for x in artifacts_dir.glob("*.bin")
+            ]
+        )
+        cmd.extend(
+            [
+                str(x.relative_to(artifacts_dir))
+                for x in artifacts_dir.glob(".config")
             ]
         )
         print(f"# Running {' '.join(cmd)}.")
@@ -361,10 +368,9 @@ def bundle_firmware(opts):
         tarball_path = os.path.join(bundle_dir, elf_tarball_name)
         cmd = [
             "tar",
-            "cvfj",
+            r"--transform=s/.*\///",
+            "-cvjf",
             tarball_path,
-            "--exclude=*.d",
-            "--exclude=*.o",
         ]
         cmd.extend(
             [
