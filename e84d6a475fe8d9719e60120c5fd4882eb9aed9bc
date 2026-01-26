@@ -22,6 +22,30 @@
       },
       "revId": "e84d6a475fe8d9719e60120c5fd4882eb9aed9bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdab70eb_5ca05411",
+        "filename": "zephyr/test/hwtest/src/flash_physical.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-26T18:19:54Z",
+      "side": 1,
+      "message": "This mainly port one test from the existing EC test:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/flash_physical.c;l\u003d127?q\u003dplatform%2Fec%2Ftest%2Fflash_physical#:~:text\u003d126-,127,-128",
+      "parentUuid": "2f2670e8_681d62ae",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 66
+      },
+      "revId": "e84d6a475fe8d9719e60120c5fd4882eb9aed9bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
