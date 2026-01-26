@@ -31,7 +31,7 @@ static void update_backlight(void)
 #ifdef CONFIG_BACKLIGHT_REQ_GPIO
 	/* Enable the backlight if lid is open AND requested by AP */
 	enable_backlight(lid_is_open() &&
-			 gpio_get_level(CONFIG_BACKLIGHT_REQ_GPIO));
+			 gpio_get_level(GPIO_BACKLIGHT_REQ_GPIO));
 #else
 	/*
 	 * Enable backlight if lid is open; this is AND'd with the request from
@@ -50,7 +50,7 @@ static void backlight_init(void)
 	update_backlight();
 
 #ifdef CONFIG_BACKLIGHT_REQ_GPIO
-	gpio_enable_interrupt(CONFIG_BACKLIGHT_REQ_GPIO);
+	gpio_enable_interrupt(GPIO_BACKLIGHT_REQ_GPIO);
 #endif
 }
 DECLARE_HOOK(HOOK_INIT, backlight_init, HOOK_PRIO_DEFAULT);

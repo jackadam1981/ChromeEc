@@ -166,6 +166,16 @@ config PLATFORM_EC_BACKLIGHT_LID
 	  which allows the AP to override the backlight setting until the next
 	  change in the lid state.
 
+config PLATFORM_EC_BACKLIGHT_REQ_GPIO
+	bool "Enable the backlight if lid is open AND requested by AP"
+	depends on PLATFORM_EC_HOSTCMD
+	depends on PLATFORM_EC_LID_SWITCH
+	default n
+	help
+	  If defined, EC will enable the backlight signal only if this GPIO is
+	  asserted AND the lid is open.  This supports passing the backlight-enable
+	  signal from the AP through EC.
+
 config PLATFORM_EC_BACKLIGHT_LID_ACTIVE_LOW
 	bool "Control for the display backlight is active low"
 	depends on PLATFORM_EC_BACKLIGHT_LID
