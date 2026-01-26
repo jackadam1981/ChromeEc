@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "448c022b_c3193486",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2556,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2026-01-26T17:19:53Z",
+      "side": 1,
+      "message": "Is using `_v2` as suffix better to version the history? In future, we may have `_v3`, `_v4` and so on (better than `_ex2`, `_ex3`).",
+      "range": {
+        "startLine": 2556,
+        "startChar": 23,
+        "endLine": 2556,
+        "endChar": 26
+      },
+      "revId": "d90cab82408b1d4b978864c4f34dc8235eb4caef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f1a2a69_2ca8535d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2559,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2026-01-26T17:19:53Z",
+      "side": 1,
+      "message": "Some recent commands use `FLEXIBLE_ARRAY_MEMBER_SIZE` to have better toolchain compatibility.",
+      "range": {
+        "startLine": 2559,
+        "startChar": 14,
+        "endLine": 2559,
+        "endChar": 15
+      },
+      "revId": "d90cab82408b1d4b978864c4f34dc8235eb4caef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
