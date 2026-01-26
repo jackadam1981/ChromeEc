@@ -16,6 +16,23 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "1866ad3477031a2b2ca89ae36540386bf27d7655",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a6fdf8e_de11babb",
+        "filename": "zephyr/test/pdc/src/generic/pdc_console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1304,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2026-01-26T16:59:01Z",
+      "side": 1,
+      "message": "Nit: Move to top of file.",
+      "revId": "1866ad3477031a2b2ca89ae36540386bf27d7655",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
