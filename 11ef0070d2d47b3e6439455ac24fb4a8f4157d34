@@ -212,6 +212,30 @@
       },
       "revId": "11ef0070d2d47b3e6439455ac24fb4a8f4157d34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f240a44d_fdbe90db",
+        "filename": "test/rollback_lock_panic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-26T18:33:37Z",
+      "side": 1,
+      "message": "The only information I can find is the commit message for the first CL that introduced this test:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3555750",
+      "parentUuid": "f1828b89_a63947c3",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 23
+      },
+      "revId": "11ef0070d2d47b3e6439455ac24fb4a8f4157d34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
