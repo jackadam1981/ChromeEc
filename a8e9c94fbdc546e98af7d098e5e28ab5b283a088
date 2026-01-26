@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3002a9f8_a104c87e",
+        "filename": "zephyr/include/drivers/led.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2026-01-26T18:58:21Z",
+      "side": 1,
+      "message": "Should `led_id` be part of `led_patterns`? `led_pattern_node_t` already defines the patterns to display for a single led via the array `pattern_color`.\n\nIs `led_id` a physical index, or a virtual id exposed to the AP?\n\nWith this structure, we can define pattern for several LEDs (each in one `led_pattern_node_t`. Therefore the led_id should be there.",
+      "revId": "a8e9c94fbdc546e98af7d098e5e28ab5b283a088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b628ff88_6a4ee741",
+        "filename": "zephyr/include/drivers/led.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2026-01-26T18:58:21Z",
+      "side": 1,
+      "message": "I believe the patterns from AP are low priority: for instance, if you plug a charger while the pattern from the AP is displayed, should the power plug pattern shows up?\nIdeally, the EC should keep track of the time of the suppressed pattern:\n```\n             /power plugged\n             |\n0 -----------100--------------150----------------480\n| AP pattern | power pattern  | end of AP pattern|\n```",
+      "revId": "a8e9c94fbdc546e98af7d098e5e28ab5b283a088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d1b79c1_aa53f94b",
+        "filename": "zephyr/include/drivers/led.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2026-01-26T18:58:21Z",
+      "side": 1,
+      "message": "In the envisioned implementation, does it mean that if the lightbar has 4 exposed leds, `led_set_custom_patterns` should be call 4 times? or if the lightbar has 12 physical leds, then 12 calls?",
+      "revId": "a8e9c94fbdc546e98af7d098e5e28ab5b283a088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
