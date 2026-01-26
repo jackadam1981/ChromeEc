@@ -87,6 +87,24 @@
       "parentUuid": "63c3ec39_40c1ec3a",
       "revId": "688fcb67e39d63ff25c3f687a6bf7f923b59a880",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "413fe548_e22bd61e",
+        "filename": "zephyr/program/fpmcu/em32f967/soc.dtsi",
+        "patchSetId": 29
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1177449
+      },
+      "writtenOn": "2026-01-26T09:37:12Z",
+      "side": 1,
+      "message": "I mean the base address for sdcp should modify to 0x20043e00.",
+      "parentUuid": "0363b3be_7b750dda",
+      "revId": "688fcb67e39d63ff25c3f687a6bf7f923b59a880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
