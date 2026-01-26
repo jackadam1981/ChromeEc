@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4d23fb3_cfabe9bb",
+        "filename": "zephyr/include/drivers/led.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2026-01-26T20:00:30Z",
+      "side": 1,
+      "message": "This `led_id` is an existing enum. It is used to skip the build-in patterns, while other side LEDs with a different `led_id` (e.g., `EC_LED_ID_BATTERY_LED`) will continue. In the host command case, it is always `EC_LED_ID_LIGHTBAR_LED`.",
+      "parentUuid": "3002a9f8_a104c87e",
+      "revId": "a8e9c94fbdc546e98af7d098e5e28ab5b283a088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b628ff88_6a4ee741",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "951076f0_93505c78",
+        "filename": "zephyr/include/drivers/led.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2026-01-26T20:00:30Z",
+      "side": 1,
+      "message": "It should interrupt the custom patterns (i.e. reset the pointer). However, this initial CL hasn\u0027t handled the synchronization yet, for easier review. So you see this comment: `The data pointed to must remain valid until execution completes`.\n\nThe synchronization will be added later.",
+      "parentUuid": "b628ff88_6a4ee741",
+      "revId": "a8e9c94fbdc546e98af7d098e5e28ab5b283a088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d1b79c1_aa53f94b",
@@ -48,6 +84,24 @@
       "writtenOn": "2026-01-26T18:58:21Z",
       "side": 1,
       "message": "In the envisioned implementation, does it mean that if the lightbar has 4 exposed leds, `led_set_custom_patterns` should be call 4 times? or if the lightbar has 12 physical leds, then 12 calls?",
+      "revId": "a8e9c94fbdc546e98af7d098e5e28ab5b283a088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47acc041_0897130f",
+        "filename": "zephyr/include/drivers/led.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2026-01-26T20:00:30Z",
+      "side": 1,
+      "message": "No, the independent LED control is out-of-scope. I will share some drafted design to you later.",
+      "parentUuid": "6d1b79c1_aa53f94b",
       "revId": "a8e9c94fbdc546e98af7d098e5e28ab5b283a088",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
