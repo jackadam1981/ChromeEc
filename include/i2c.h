@@ -334,6 +334,8 @@ int i2c_read16(const int port, const uint16_t addr_flags, int offset,
 int i2c_write16(const int port, const uint16_t addr_flags, int offset,
 		int data);
 
+int i2c_write16_dma(const int port, const uint16_t addr_flags, int offset, int data);
+
 /**
  * Read an 8-bit register from the peripheral at 7-bit peripheral address
  * <addr_flags>, at the specified 8-bit <offset> in the peripheral's address
