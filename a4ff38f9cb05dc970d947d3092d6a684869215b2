@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f321f1dc_9bf943b8",
+        "filename": "zephyr/program/skywalker/grogu/src/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2026-01-26T06:35:13Z",
+      "side": 1,
+      "message": "Should this be \"grogu\"?",
+      "range": {
+        "startLine": 16,
+        "startChar": 20,
+        "endLine": 16,
+        "endChar": 31
+      },
+      "revId": "a4ff38f9cb05dc970d947d3092d6a684869215b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "827694d1_10136d09",
         "filename": "zephyr/program/skywalker/grogu/src/board.c",
         "patchSetId": 2
@@ -14,6 +37,29 @@
       "writtenOn": "2026-01-26T06:33:27Z",
       "side": 1,
       "message": "This only applies to board ID 2 which is DVT to workaround the issue.",
+      "revId": "a4ff38f9cb05dc970d947d3092d6a684869215b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f01d317c_68f0de4e",
+        "filename": "zephyr/program/skywalker/grogu/src/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2026-01-26T06:35:13Z",
+      "side": 1,
+      "message": "I think this won\u0027t work if the write-protection is on. Do we have those devices with wp off?",
+      "range": {
+        "startLine": 51,
+        "startChar": 3,
+        "endLine": 51,
+        "endChar": 21
+      },
       "revId": "a4ff38f9cb05dc970d947d3092d6a684869215b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
