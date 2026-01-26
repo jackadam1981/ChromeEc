@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f2670e8_681d62ae",
+        "filename": "zephyr/test/hwtest/src/flash_physical.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-26T17:07:46Z",
+      "side": 1,
+      "message": "Are the tests you added equivalent to these upstream Zephyr tests for STM32?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 66
+      },
+      "revId": "e84d6a475fe8d9719e60120c5fd4882eb9aed9bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
