@@ -105,6 +105,24 @@
       "parentUuid": "0363b3be_7b750dda",
       "revId": "688fcb67e39d63ff25c3f687a6bf7f923b59a880",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d03ec9e9_c07a8dc5",
+        "filename": "zephyr/program/fpmcu/em32f967/soc.dtsi",
+        "patchSetId": 29
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-26T09:45:44Z",
+      "side": 1,
+      "message": "Ah sorry, I was looking at the \"Suggested edit\" and thought it\u0027s already `20043e00`.",
+      "parentUuid": "413fe548_e22bd61e",
+      "revId": "688fcb67e39d63ff25c3f687a6bf7f923b59a880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
