@@ -22,6 +22,76 @@
       },
       "revId": "11ef0070d2d47b3e6439455ac24fb4a8f4157d34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa7d089b_8fee93f7",
+        "filename": "test/rollback_lock_panic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-26T17:06:54Z",
+      "side": 1,
+      "message": "Instead of changing the documentation, it\u0027s probably better to make it return a negative value on error to be consistent with the Zephyr version.",
+      "parentUuid": "48ab5928_bce34ba2",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 16
+      },
+      "revId": "11ef0070d2d47b3e6439455ac24fb4a8f4157d34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30a5e2fb_1b5d0b94",
+        "filename": "test/rollback_lock_panic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-26T17:06:54Z",
+      "side": 1,
+      "message": "usually or always? We don\u0027t want a non-deterministic test.",
+      "range": {
+        "startLine": 45,
+        "startChar": 16,
+        "endLine": 45,
+        "endChar": 23
+      },
+      "revId": "11ef0070d2d47b3e6439455ac24fb4a8f4157d34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1931371_56ec7d7d",
+        "filename": "test/rollback_lock_panic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-26T17:06:54Z",
+      "side": 1,
+      "message": "Why only in RW? Add a comment if there\u0027s some RW-specific reason for this.",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 23
+      },
+      "revId": "11ef0070d2d47b3e6439455ac24fb4a8f4157d34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
