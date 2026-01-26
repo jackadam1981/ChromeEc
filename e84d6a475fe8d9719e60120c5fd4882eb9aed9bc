@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7e888c8e_dcef53d3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-26T18:26:44Z",
+      "side": 1,
+      "message": "```suggestion\nzephyr: test: add flash_config flash physical test for helipilot\n```",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 51
+      },
+      "revId": "e84d6a475fe8d9719e60120c5fd4882eb9aed9bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f2670e8_681d62ae",
         "filename": "zephyr/test/hwtest/src/flash_physical.c",
         "patchSetId": 2
@@ -38,6 +61,30 @@
       "side": 1,
       "message": "This mainly port one test from the existing EC test:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/flash_physical.c;l\u003d127?q\u003dplatform%2Fec%2Ftest%2Fflash_physical#:~:text\u003d126-,127,-128",
       "parentUuid": "2f2670e8_681d62ae",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 66
+      },
+      "revId": "e84d6a475fe8d9719e60120c5fd4882eb9aed9bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3341de4_5e2ab905",
+        "filename": "zephyr/test/hwtest/src/flash_physical.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-26T18:26:44Z",
+      "side": 1,
+      "message": "Looks like you only ported the `test_flash_config` part.\n\nWe can submit this, but we still need to port the other tests in that file and the equivalent of the upstream Zephyr tests for STM32. Ideally, we should make the helipilot equivalent of the upstream Zephyr tests for STM32 upstream for helipilot as well and then we can run the upstream test in `run_device_tests.py`.\n\nDoes the upstream STM32 test have a flash_config equivalent? That\u0027s kind of what it looks like given that this test doesn\u0027t do anything. In that case, we should have all the helipilot tests for flash_physical upstream instead of having any here.",
+      "parentUuid": "bdab70eb_5ca05411",
       "range": {
         "startLine": 19,
         "startChar": 0,
