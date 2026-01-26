@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5b63125_ce2d9b36",
+        "filename": "common/cbi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2026-01-26T09:51:37Z",
+      "side": 1,
+      "message": "There is a if statement in cbi_write `cbi_config-\u003edrv-\u003eis_protected()` fails the write when is_protected()\u003d\u003dtrue. If the devices are shipped with is_protected()\u003d\u003dfalse, then we are fine.",
+      "range": {
+        "startLine": 731,
+        "startChar": 1,
+        "endLine": 731,
+        "endChar": 17
+      },
+      "revId": "e0967df0a219c3c4415f31c7e7e0b804526efb90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
