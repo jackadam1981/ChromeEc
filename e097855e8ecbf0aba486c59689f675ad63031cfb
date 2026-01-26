@@ -104,6 +104,24 @@
       "parentUuid": "95d2f280_880b0d4f",
       "revId": "e097855e8ecbf0aba486c59689f675ad63031cfb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3020a9a4_4780231f",
+        "filename": "zephyr/program/fpmcu/em32f967/niedzica.dts",
+        "patchSetId": 31
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1119700
+      },
+      "writtenOn": "2026-01-26T08:57:58Z",
+      "side": 1,
+      "message": "Yes, I\u0027ve already tested it on my end. The 8MHz setting works stably and the image transfer is faster.",
+      "parentUuid": "84f1506b_3dbda886",
+      "revId": "e097855e8ecbf0aba486c59689f675ad63031cfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
