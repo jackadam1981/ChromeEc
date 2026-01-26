@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "28b7f5c8_9777e0d3",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2556,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2026-01-26T17:22:36Z",
+      "side": 1,
+      "message": "v2 would be confusing with the existing (unsupported) v2 lightbar commands (line 2600). I don\u0027t expect lightbar_program_ex_v2.",
+      "parentUuid": "448c022b_c3193486",
+      "range": {
+        "startLine": 2556,
+        "startChar": 23,
+        "endLine": 2556,
+        "endChar": 26
+      },
+      "revId": "d90cab82408b1d4b978864c4f34dc8235eb4caef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f1a2a69_2ca8535d",
         "filename": "include/ec_commands.h",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2026-01-26T17:19:53Z",
       "side": 1,
       "message": "Some recent commands use `FLEXIBLE_ARRAY_MEMBER_SIZE` to have better toolchain compatibility.",
+      "range": {
+        "startLine": 2559,
+        "startChar": 14,
+        "endLine": 2559,
+        "endChar": 15
+      },
+      "revId": "d90cab82408b1d4b978864c4f34dc8235eb4caef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71097b08_4f96a344",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2559,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2026-01-26T17:22:36Z",
+      "side": 1,
+      "message": "FLEXIBLE_ARRAY_MEMBER_SIZE is not used throughout. It is only needed when the flexible array is alone in the structure.",
+      "parentUuid": "5f1a2a69_2ca8535d",
       "range": {
         "startLine": 2559,
         "startChar": 14,
