@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6427007e_a4d095bf",
+        "filename": "test/rollback_lock_panic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-26T18:11:52Z",
+      "side": 1,
+      "message": "ok, i will fix this in a separate CL",
+      "parentUuid": "fa7d089b_8fee93f7",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 16
+      },
+      "revId": "11ef0070d2d47b3e6439455ac24fb4a8f4157d34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30a5e2fb_1b5d0b94",
@@ -71,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b132340e_2e86959c",
+        "filename": "test/rollback_lock_panic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-26T18:11:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30a5e2fb_1b5d0b94",
+      "range": {
+        "startLine": 45,
+        "startChar": 16,
+        "endLine": 45,
+        "endChar": 23
+      },
+      "revId": "11ef0070d2d47b3e6439455ac24fb4a8f4157d34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1931371_56ec7d7d",
@@ -84,6 +132,30 @@
       "writtenOn": "2026-01-26T17:06:54Z",
       "side": 1,
       "message": "Why only in RW? Add a comment if there\u0027s some RW-specific reason for this.",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 23
+      },
+      "revId": "11ef0070d2d47b3e6439455ac24fb4a8f4157d34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "891e1875_9252fcbc",
+        "filename": "test/rollback_lock_panic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-26T18:11:52Z",
+      "side": 1,
+      "message": "I removed RW. It runs without it. I found this mainly in https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/test/panic_data.c;l\u003d146?q\u003dPANIC_DATA_FLAG_FRAME_VALID\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Fec%2Ftest%2F#:~:text\u003d145-,146,-147\n\nIs there a reason why the `panic_data` test only run in RW? I do not see a comment specifying any reason. When I ran the `panic_data` test with this if-statement, it ran properly.",
+      "parentUuid": "f1931371_56ec7d7d",
       "range": {
         "startLine": 97,
         "startChar": 0,
