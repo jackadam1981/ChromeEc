@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2539164_ac97a040",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2026-01-26T15:35:35Z",
+      "side": 1,
+      "message": "Does this depend on the zephyr changes? If so, CQ_DEPENDS should be added.",
+      "revId": "acbf316caf5fd47051c8bc73281017691814cb79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
