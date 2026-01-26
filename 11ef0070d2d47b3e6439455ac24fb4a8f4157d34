@@ -188,6 +188,30 @@
       },
       "revId": "11ef0070d2d47b3e6439455ac24fb4a8f4157d34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1828b89_a63947c3",
+        "filename": "test/rollback_lock_panic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-26T18:28:10Z",
+      "side": 1,
+      "message": "\u003e Is there a reason why the panic_data test only run in RW?\n\nI\u0027m not sure offhand. Take a look at the blame to see if there is more context.",
+      "parentUuid": "f1f9c602_f60504a6",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 23
+      },
+      "revId": "11ef0070d2d47b3e6439455ac24fb4a8f4157d34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
