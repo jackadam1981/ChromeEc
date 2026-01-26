@@ -186,6 +186,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1031b12e_92cc6aaa",
+        "filename": "zephyr/drivers/fingerprint/Kconfig",
+        "patchSetId": 44
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-26T13:20:33Z",
+      "side": 1,
+      "message": "IMO the best option is to match vendor\u0027s naming conventions. If the call it FT98XX internally, I would stick to FT98XX",
+      "parentUuid": "43c725c8_29e7a6c7",
+      "range": {
+        "startLine": 46,
+        "startChar": 37,
+        "endLine": 46,
+        "endChar": 39
+      },
+      "revId": "cd45b886d1bcfce8fb58f46a9c28cdb1b0d513fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d867c43b_89beb86d",
         "filename": "zephyr/drivers/fingerprint/fingerprint_ft98xx.c",
         "patchSetId": 44
