@@ -66,6 +66,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "79baedd1_e24acafa",
+        "filename": "zephyr/program/skywalker/grogu/src/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1293716
+      },
+      "writtenOn": "2026-01-26T08:03:35Z",
+      "side": 1,
+      "message": "WP should be enabled at finalized stage, and all device should have WP enabled.\n\nThe approach that this CL tries to achieve should not work for the real device.",
+      "parentUuid": "f01d317c_68f0de4e",
+      "range": {
+        "startLine": 51,
+        "startChar": 3,
+        "endLine": 51,
+        "endChar": 21
+      },
+      "revId": "a4ff38f9cb05dc970d947d3092d6a684869215b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "119c353d_b86a2737",
         "filename": "zephyr/program/skywalker/grogu/src/board.c",
         "patchSetId": 2
