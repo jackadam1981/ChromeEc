@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16bb06a2_0726a481",
+        "filename": "common/charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-01-26T16:40:43Z",
+      "side": 1,
+      "message": "Unrelated to this change, but is there any code size benefit to creating a helper function for the chnum bounds check?  At a minimum there is a lot of duplicate logic across the APIs.",
+      "range": {
+        "startLine": 513,
+        "startChar": 0,
+        "endLine": 513,
+        "endChar": 48
+      },
+      "revId": "fddeb3cbd961cfb51ee082059222354d75110c43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4efe6afb_c98fb4c5",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1088,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-01-26T16:40:43Z",
+      "side": 1,
+      "message": "Reference b/462138011 here which is the source of the calculation below.",
+      "range": {
+        "startLine": 1088,
+        "startChar": 4,
+        "endLine": 1088,
+        "endChar": 5
+      },
+      "revId": "fddeb3cbd961cfb51ee082059222354d75110c43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
