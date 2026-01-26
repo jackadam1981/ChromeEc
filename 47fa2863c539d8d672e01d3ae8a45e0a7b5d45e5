@@ -22,6 +22,30 @@
       },
       "revId": "47fa2863c539d8d672e01d3ae8a45e0a7b5d45e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe29bb17_86e2a1cb",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1102,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2026-01-26T17:21:35Z",
+      "side": 1,
+      "message": "I did check with Charlie last Friday on this.  He said that it would be okay.  I also confirmed that no delay is needed between each successive register write, as we expect an I2C NACK if the peripheral is busy.",
+      "parentUuid": "2dd3091d_bf99423b",
+      "range": {
+        "startLine": 1102,
+        "startChar": 0,
+        "endLine": 1102,
+        "endChar": 21
+      },
+      "revId": "47fa2863c539d8d672e01d3ae8a45e0a7b5d45e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
