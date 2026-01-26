@@ -338,6 +338,52 @@ static void process_pattern_update(const struct policy_group *grp,
 	}
 }
 
+/* Pointer to runtime-assigned patterns from host commands */
+static struct custom_led_patterns_t *g_custom_patterns;
+
+void led_set_custom_patterns(struct custom_led_patterns_t *p)
+{
+	if (p) {
+		/* Initialize state for new custom patterns */
+		for (int i = 0; i < p->num_patterns; i++) {
+			led_init_pattern_state(&p->led_patterns[i]);
+		}
+	}
+
+	g_custom_patterns = p;
+
+	/* Schedule animation worker to execute patterns */
+	k_work_schedule(&led_worker_data, K_NO_WAIT);
+}
+
+static struct node_status update_custom_node(const struct policy_group *grp,
+					     uint32_t increment)
+{
+	struct node_status status = { 0 };
+
+	if (!g_custom_patterns) {
+		return status;
+	}
+
+	/* Only process if the LED is managed by this driver */
+	if (!(grp->driver->led_id_mask & (1 << g_custom_patterns->led_id))) {
+		return status;
+	}
+
+	/* Check if auto control is enabled */
+	if (!led_auto_control_is_enabled(g_custom_patterns->led_id)) {
+		return status;
+	}
+
+	for (int i = 0; i < g_custom_patterns->num_patterns; i++) {
+		struct led_pattern_node_t *pattern =
+			&g_custom_patterns->led_patterns[i];
+
+		process_pattern_update(grp, pattern, increment, &status);
+	}
+	return status;
+}
+
 static struct node_status update_policy_node(const struct policy_group *grp,
 					     const struct node_prop_t *node,
 					     uint32_t increment)
@@ -347,10 +393,16 @@ static struct node_status update_policy_node(const struct policy_group *grp,
 
 	for (int i = 0; i < node->num_patterns; i++) {
 		struct led_pattern_node_t *pattern = &patterns[i];
+		enum ec_led_id led_id =
+			pattern->pattern_color[0].led_color_node->led_id;
+
+		/* If a custom pattern is active, skip default policy. */
+		if (g_custom_patterns && g_custom_patterns->led_id == led_id) {
+			continue;
+		}
 
 		/* Check if auto control is enabled */
-		if (!led_auto_control_is_enabled(
-			    pattern->pattern_color[0].led_color_node->led_id)) {
+		if (!led_auto_control_is_enabled(led_id)) {
 			continue;
 		}
 
@@ -496,6 +548,7 @@ uint32_t led_test_apply_count;
 static void led_execute_patterns(void)
 {
 	bool continue_animating = false;
+	bool custom_patterns_active = false;
 	int64_t start_time = k_uptime_get();
 	int64_t elapsed_ms;
 	int64_t delay_ms;
@@ -504,10 +557,20 @@ static void led_execute_patterns(void)
 	for (int i = 0; i < ARRAY_SIZE(policy_groups); i++) {
 		const struct policy_group *grp = &policy_groups[i];
 		struct node_status group_status = { 0 };
+		struct node_status status;
 
+		/* 1. Process custom patterns (high priority) */
+		status = update_custom_node(grp, LED_ANIMATION_TICK_MS);
+		group_status.needs_apply |= status.needs_apply;
+		group_status.is_animating |= status.is_animating;
+		group_status.has_transitions |= status.has_transitions;
+
+		if (status.is_animating) {
+			custom_patterns_active = true;
+		}
+
+		/* 2. Process DT-defined policy patterns */
 		for (int j = 0; j < grp->num_nodes; j++) {
-			struct node_status status;
-
 			if (!grp->active[j]) {
 				continue;
 			}
@@ -530,6 +593,14 @@ static void led_execute_patterns(void)
 			grp->driver->api->asynchronous_apply_color(
 				group_status.has_transitions);
 		}
+	}
+
+	/*
+	 * If we have a custom pattern but it is no longer animating (completed
+	 * its cycles), clear it so the next tick resumes normal policy.
+	 */
+	if (g_custom_patterns && !custom_patterns_active) {
+		g_custom_patterns = NULL;
 	}
 
 	if (continue_animating) {
