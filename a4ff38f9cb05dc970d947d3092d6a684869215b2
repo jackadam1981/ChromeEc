@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "827694d1_10136d09",
+        "filename": "zephyr/program/skywalker/grogu/src/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1293716
+      },
+      "writtenOn": "2026-01-26T06:33:27Z",
+      "side": 1,
+      "message": "This only applies to board ID 2 which is DVT to workaround the issue.",
+      "revId": "a4ff38f9cb05dc970d947d3092d6a684869215b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "119c353d_b86a2737",
+        "filename": "zephyr/program/skywalker/grogu/src/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1293716
+      },
+      "writtenOn": "2026-01-26T06:33:27Z",
+      "side": 1,
+      "message": "Do we need ec reset to make sure all changes take effect?",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 3
+      },
+      "revId": "a4ff38f9cb05dc970d947d3092d6a684869215b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
