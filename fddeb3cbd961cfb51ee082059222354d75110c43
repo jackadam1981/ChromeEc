@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d4b78e8f_8111db7b",
+        "filename": "common/charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2026-01-26T17:20:36Z",
+      "side": 1,
+      "message": "I\u0027ll run an analysis on this and let you know my findings. My initial thoughts is we should see some reduction in code size.",
+      "parentUuid": "16bb06a2_0726a481",
+      "range": {
+        "startLine": 513,
+        "startChar": 0,
+        "endLine": 513,
+        "endChar": 48
+      },
+      "revId": "fddeb3cbd961cfb51ee082059222354d75110c43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4efe6afb_c98fb4c5",
         "filename": "driver/charger/isl9241.c",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2026-01-26T16:40:43Z",
       "side": 1,
       "message": "Reference b/462138011 here which is the source of the calculation below.",
+      "range": {
+        "startLine": 1088,
+        "startChar": 4,
+        "endLine": 1088,
+        "endChar": 5
+      },
+      "revId": "fddeb3cbd961cfb51ee082059222354d75110c43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f89bf36_5cdf48ff",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1088,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2026-01-26T17:20:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4efe6afb_c98fb4c5",
       "range": {
         "startLine": 1088,
         "startChar": 4,
