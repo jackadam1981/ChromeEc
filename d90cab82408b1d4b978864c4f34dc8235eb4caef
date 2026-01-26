@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9c101ec_75aeb88f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2556,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2026-01-26T17:22:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28b7f5c8_9777e0d3",
+      "range": {
+        "startLine": 2556,
+        "startChar": 23,
+        "endLine": 2556,
+        "endChar": 26
+      },
+      "revId": "d90cab82408b1d4b978864c4f34dc8235eb4caef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f1a2a69_2ca8535d",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "FLEXIBLE_ARRAY_MEMBER_SIZE is not used throughout. It is only needed when the flexible array is alone in the structure.",
       "parentUuid": "5f1a2a69_2ca8535d",
+      "range": {
+        "startLine": 2559,
+        "startChar": 14,
+        "endLine": 2559,
+        "endChar": 15
+      },
+      "revId": "d90cab82408b1d4b978864c4f34dc8235eb4caef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42494703_d82736a5",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2559,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2026-01-26T17:22:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71097b08_4f96a344",
       "range": {
         "startLine": 2559,
         "startChar": 14,
