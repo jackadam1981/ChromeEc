@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e54de43c_c7153025",
+        "filename": "zephyr/program/fpmcu/em32f967/soc.dtsi",
+        "patchSetId": 29
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1177449
+      },
+      "writtenOn": "2026-01-26T08:57:56Z",
+      "side": 1,
+      "message": "```suggestion\n * Make also 512B space for SDCP.\n```",
+      "revId": "688fcb67e39d63ff25c3f687a6bf7f923b59a880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b354af59_aebc57a4",
         "filename": "zephyr/program/fpmcu/em32f967/soc.dtsi",
         "patchSetId": 29
@@ -14,6 +31,24 @@
       "writtenOn": "2026-01-23T10:08:27Z",
       "side": 1,
       "message": "@johnny.chuang@elan.corp-partner.google.com please help to review this changes. Does it look correct?",
+      "revId": "688fcb67e39d63ff25c3f687a6bf7f923b59a880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63c3ec39_40c1ec3a",
+        "filename": "zephyr/program/fpmcu/em32f967/soc.dtsi",
+        "patchSetId": 29
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1177449
+      },
+      "writtenOn": "2026-01-26T08:57:56Z",
+      "side": 1,
+      "message": "Please refer to https://partnerissuetracker.corp.google.com/issues/435131067#comment15 for reduce SRAM size of SDCP from 2KB to 512B.\n\n```suggestion\n\tsdcp: memory@20043e00 {\n\t\tcompatible \u003d \"mmio-sram\";\n\t\treg \u003d \u003c0x20043e00 512\u003e;\n\t};\n```",
+      "parentUuid": "b354af59_aebc57a4",
       "revId": "688fcb67e39d63ff25c3f687a6bf7f923b59a880",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
