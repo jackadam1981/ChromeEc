@@ -46,6 +46,30 @@
       },
       "revId": "e0967df0a219c3c4415f31c7e7e0b804526efb90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d259034_e160222c",
+        "filename": "common/cbi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1293716
+      },
+      "writtenOn": "2026-01-27T01:36:33Z",
+      "side": 1,
+      "message": "I might be wrong, but the last step at factory is to enable write protect before finalize.\nThat implies `is_protected()\u003d\u003dtrue`, isn\u0027t it?",
+      "parentUuid": "4bec25a1_ef04e539",
+      "range": {
+        "startLine": 731,
+        "startChar": 1,
+        "endLine": 731,
+        "endChar": 17
+      },
+      "revId": "e0967df0a219c3c4415f31c7e7e0b804526efb90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
