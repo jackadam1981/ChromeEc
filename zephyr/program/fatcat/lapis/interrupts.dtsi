@@ -22,5 +22,13 @@
 			flags = <GPIO_INT_EDGE_BOTH>;
 			handler = "lid_interrupt";
 		};
+		int_rst_pin: rst_pin {
+			irq-pin = <&gpio_ec_rst_pin_tri>;
+			flags = <GPIO_INT_EDGE_FALLING>;
+			handler = "lid_interrupt";
+			/* The handler of int_rst_pin should be dummy,
+			 * but for experiment we just use other handler.
+			 */
+		};
 	};
 };

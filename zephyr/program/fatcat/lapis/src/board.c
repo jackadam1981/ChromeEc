@@ -7,6 +7,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "lid_switch.h"
+#include "gpio/gpio_int.h"
 
 static void set_chg_reg_custom(void)
 {
@@ -23,3 +24,9 @@ static void tp_enable(void)
 	}
 }
 DECLARE_HOOK(HOOK_LID_CHANGE, tp_enable, HOOK_PRIO_DEFAULT);
+
+static void rst_tri_init(void)
+{
+	gpio_enable_dt_interrupt(GPIO_INT_FROM_NODELABEL(int_rst_pin));
+}
+DECLARE_HOOK(HOOK_INIT, rst_tri_init, HOOK_PRIO_DEFAULT);

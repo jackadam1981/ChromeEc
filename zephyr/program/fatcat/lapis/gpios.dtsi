@@ -45,6 +45,17 @@
 			enum-name = "GPIO_LID_OPEN";
 		};
 
+		/* RST_PIN */
+		gpio_ec_rst_pin: ec_rst_pin {
+			gpios = <&gpioa 12 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
+			// enum-name = "GPIO_RST_PIN";
+		};
+		/* RST_GPIO_TRIGGER */
+		gpio_ec_rst_pin_tri: ec_rst_pin_tri {
+			gpios = <&gpioh 10 (GPIO_INPUT | GPIO_PULL_UP)>;
+			// enum-name = "GPIO_RST_GPIO_TRIGGER";
+		};
+
 		/* PS_ON_EC slp_z */
 		gpio_en_slp_z: en_slp_z {
 			gpios = <&gpioi 3 GPIO_OUTPUT_HIGH>;
