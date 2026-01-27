@@ -40,6 +40,30 @@
       },
       "revId": "74c4e36d97b232e28fb3fd5c4f3ac75fc9383320",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b226a0cb_76c1b291",
+        "filename": "zephyr/test/drivers/default/src/virtual_battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2026-01-27T02:08:34Z",
+      "side": 1,
+      "message": "Yes, you\u0027re right; the inversion got missed here. Fix in https://crrev.com/c/7519125",
+      "parentUuid": "692ab8c2_0960bcd4",
+      "range": {
+        "startLine": 315,
+        "startChar": 41,
+        "endLine": 315,
+        "endChar": 68
+      },
+      "revId": "74c4e36d97b232e28fb3fd5c4f3ac75fc9383320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
