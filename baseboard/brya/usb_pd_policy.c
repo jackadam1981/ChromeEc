@@ -152,13 +152,16 @@ static int svdm_tbt_compat_response_identity(int port, uint32_t *payload)
 			if (tbt_ufp_ack_allowed[port]) {
 				payload[VDO_I(IDH)] = vdo_idh_rev30_tbt;
 				payload[VDO_I(PTYPE_UFP1_VDO)] = vdo_ufp1;
+				payload[VDO_I(PTYPE_UFP2_VDO)] = 0;
+				payload[VDO_I(PTYPE_DFP_VDO)] = vdo_dfp;
+				return VDO_I(PTYPE_DFP_VDO) + 1;
 			} else {
 				payload[VDO_I(IDH)] = vdo_idh_rev30_no_ufp;
 				payload[VDO_I(PTYPE_UFP1_VDO)] = 0;
+				payload[VDO_I(PTYPE_UFP2_VDO)] = 0;
+				payload[VDO_I(PTYPE_DFP_VDO)] = vdo_dfp;
+				return VDO_I(PTYPE_UFP1_VDO) + 1;
 			}
-			payload[VDO_I(PTYPE_UFP2_VDO)] = 0;
-			payload[VDO_I(PTYPE_DFP_VDO)] = vdo_dfp;
-			return VDO_I(PTYPE_DFP_VDO) + 1;
 		}
 
 		/* PD Revision 2.0 */
