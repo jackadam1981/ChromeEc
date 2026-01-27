@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51b0c255_d7aa22a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2026-01-27T03:20:06Z",
+      "side": 1,
+      "message": "```\n[ruby-ish:singleimage] /mnt/host/source/src/platform/ec/zephyr/drivers/dsp_comms/client/remote_lid_angle.c:17:(.text.lid_angle_remote_peripheral_enable+0xa): undefined reference to `tablet_get_mode\u0027\n[ruby-ish:singleimage] collect2: error: ld returned 1 exit status\n[ruby-ish:singleimage] ninja: build stopped: subcommand failed.\n```",
+      "revId": "4b90b511ea43258b84b34f31c1aa3a5d820727cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
