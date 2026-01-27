@@ -22,6 +22,30 @@
       },
       "revId": "b6eebbe5a4082e960e779f9eef45a46b76dc7803",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4022ac14_180565f7",
+        "filename": "zephyr/program/skywalker/grogu/src/usbc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2026-01-27T03:33:54Z",
+      "side": 1,
+      "message": "If there is an errer reading fw_config, we want to keep default setting.",
+      "parentUuid": "b93fd6ef_041cea10",
+      "range": {
+        "startLine": 83,
+        "startChar": 9,
+        "endLine": 83,
+        "endChar": 31
+      },
+      "revId": "b6eebbe5a4082e960e779f9eef45a46b76dc7803",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
