@@ -157,6 +157,8 @@ int watchdog_init(void)
 	return err;
 }
 
+void runtime_trace_window_end(void);
+
 void watchdog_reload(void)
 {
 	if (!watchdog_initialized)
@@ -179,6 +181,8 @@ void watchdog_reload(void)
 			watchdog_reload_last_ts_ms = now_ms;
 		}
 	}
+
+	runtime_trace_window_end();
 
 	for (int i = 0; i < ARRAY_SIZE(wdt_info); i++) {
 		if (wdt_chan[i] < 0)

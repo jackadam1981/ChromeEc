@@ -90,7 +90,7 @@ static struct task_ctx_base_data *task_get_base_data(task_id_t cros_task_id)
 	return &shimmed_tasks_data[cros_task_id];
 }
 
-test_export_static k_tid_t get_idle_thread(void)
+k_tid_t get_idle_thread(void)
 {
 	extern struct k_thread z_idle_threads[];
 

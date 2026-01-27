@@ -106,6 +106,8 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_HOST_COMMAND_MEMORY_DUMP
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC_STUB   usbc_stub.c)
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_PERIPHERAL_CHARGER   pchg.c)
 
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_RUNTIME_STATS runtime_trace.c)
+
 if (DEFINED CONFIG_HOST_SERVICE)
 zephyr_library_sources_ifdef(CONFIG_HECI
                                                             host_command_heci.c)

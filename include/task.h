@@ -172,6 +172,7 @@ static inline void task_wake(task_id_t tskid)
 task_id_t task_get_current(void);
 
 #ifdef CONFIG_ZEPHYR
+k_tid_t get_idle_thread(void);
 /**
  * Check if this current task is running in deferred context
  */

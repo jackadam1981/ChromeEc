@@ -132,4 +132,18 @@ config PLATFORM_EC_HOST_COMMAND_ENTER_BOOTLOADER
 	  If the config is enabled, the chip_enter_bootloader function
 	  has to be implemented.
 
+config PLATFORM_EC_RUNTIME_STATS
+	bool "Enable runtime stats"
+	depends on TRACING_ISR && TRACING_USER
+	select THREAD_LOCAL_STORAGE
+	select THREAD_CUSTOM_DATA
+	help
+	  Enables runtime stats.
+
+config PLATFORM_EC_CONSOLE_CMD_RUNTIME_STATS
+	bool "Enable runtime stats console command"
+	depends on PLATFORM_EC_RUNTIME_STATS
+	help
+	  Enables runtime stats console command.
+
 endif # PLATFORM_EC
