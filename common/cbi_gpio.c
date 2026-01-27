@@ -53,13 +53,13 @@ static int cbi_gpio_read(uint8_t offset, uint8_t *data, int len)
 	return EC_SUCCESS;
 }
 
-static int cbi_gpio_is_write_protected(void)
+static bool cbi_gpio_is_write_protected(void)
 {
 	/*
 	 * When CBI comes from strapping pins, any attempts for updating CBI
 	 * storage should be rejected.
 	 */
-	return 1;
+	return true;
 }
 
 const struct cbi_storage_driver gpio_drv = {

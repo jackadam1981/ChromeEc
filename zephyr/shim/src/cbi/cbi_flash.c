@@ -46,7 +46,7 @@ test_mockable_static int flash_load(uint8_t offset, uint8_t *data, int len)
 					   (char *)data);
 }
 
-static int flash_is_write_protected(void)
+static bool flash_is_write_protected(void)
 {
 	return system_is_locked() ||
 	       (crec_flash_get_protect() & EC_FLASH_PROTECT_RO_NOW);

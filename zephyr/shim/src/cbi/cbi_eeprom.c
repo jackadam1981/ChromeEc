@@ -40,10 +40,10 @@ test_mockable_static int eeprom_load(uint8_t offset, uint8_t *data, int len)
 	return eeprom_read(dev, offset, data, len);
 }
 
-static int eeprom_is_write_protected(void)
+static bool eeprom_is_write_protected(void)
 {
 	if (IS_ENABLED(CONFIG_PLATFORM_EC_BYPASS_CBI_EEPROM_WP_CHECK)) {
-		return 0;
+		return false;
 	}
 
 #ifdef CONFIG_PLATFORM_EC_EEPROM_CBI_WP

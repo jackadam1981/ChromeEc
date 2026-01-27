@@ -10,6 +10,8 @@
 #include "common.h"
 #include "ec_commands.h"
 
+#include <stdbool.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -87,7 +89,7 @@ struct cbi_storage_driver {
 	 */
 	int (*load)(uint8_t offset, uint8_t *data, int len);
 	/* Return write protect status for the storage media */
-	int (*is_protected)(void);
+	bool (*is_protected)(void);
 };
 
 struct cbi_storage_config_t {
