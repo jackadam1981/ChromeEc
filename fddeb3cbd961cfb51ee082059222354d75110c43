@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f1c1aab_f9569b9f",
+        "filename": "common/charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2026-01-27T17:27:56Z",
+      "side": 1,
+      "message": "Results of my findings can be found here https://crrev.com/c/7521450",
+      "parentUuid": "d4b78e8f_8111db7b",
+      "range": {
+        "startLine": 513,
+        "startChar": 0,
+        "endLine": 513,
+        "endChar": 48
+      },
+      "revId": "fddeb3cbd961cfb51ee082059222354d75110c43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4efe6afb_c98fb4c5",
