@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07f6fdda_593f806b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2026-01-27T22:58:46Z",
+      "side": 1,
+      "message": "NOTE: These are legacy tests in platform/ec, they still exist and run in\nplatform/ec-legacy, so nothing is being lost.  They are just testing code that\neither isn\u0027t used by zephyr builds, or has duplicate test coverage, and\ntherefore makes them unnecessary.\n\nHere is the list of files where the coverage was decreased by this change. Files\nwhere coverage improved were not included on this list.\n\n# Files that don\u0027t matter because they are not used by zephyr\n* board/host/battery.c: 11/13 -\u003e N/A\n* board/host/charger.c: 50/58 -\u003e N/A\n* board/hyperdebug/board_util.c: 14/14 -\u003e 0/14 (-14/+0)\n* chip/host/i2c.c: 34/51 -\u003e 16/51 (-18/+0)\n* common/console.c: 224/283 -\u003e 217/283 (-7/+0)\n* common/debug.c: 4/4 -\u003e 0/4 (-4/+0)\n* common/gettimeofday.c: 7/7 -\u003e 0/7 (-7/+0)\n* common/i2c_bitbang.c: 79/178 -\u003e N/A\n* common/inductive_charging.c: 34/34 -\u003e 33/34 (-1/+0)\n* common/kasa.c: 46/46 -\u003e N/A\n* common/lb_common.c: 76/99 -\u003e N/A\n* common/lightbar.c: 288/797 -\u003e N/A\n* common/mag_cal.c: 45/45 -\u003e N/A\n* common/main.c: 0/33 -\u003e 0/28 (+0/-5)\n* common/mat33.c: 97/97 -\u003e N/A\n* common/mat44.c: 46/47 -\u003e N/A\n* common/recursive_mutex.c: 43/50 -\u003e 23/50 (-20/+0)\n* common/shmalloc.c: 163/185 -\u003e N/A\n* common/vec3.c: 11/29 -\u003e N/A\n* core/host/task.c: 183/222 -\u003e 182/222 (-1/+0)\n* driver/nvidia_gpu.c: 58/61 -\u003e N/A\n* include/benchmark.h: 63/63 -\u003e 43/47 (-20/-16)\n\n# Files that do get used by zephyr:  \n* common/battery.c: 280/353 -\u003e 275/352 (-5/-1)\n  * charge_manager: 2/197 -\u003e N/A\n  * charge_manager_drp_charging: 2/197 -\u003e N/A\n  * sbs_charging: 23/208 -\u003e N/A\n* common/charge_state.c: 910/1098 -\u003e 687/1047 (-223/-51)\n  * sbs_charging: 689/801 -\u003e N/A\n* common/extpower_common.c: 21/23 -\u003e 20/23 (-1/+0)\n  * aes: 11/20 -\u003e N/A\n  * nvidia_gpu: 11/20 -\u003e N/A\n  * inductive_charging: 11/20 -\u003e N/A\n  * ...\n* common/sha256.c: 115/120 -\u003e 111/120 (-4/+0)\n  * sha256: 97/97 -\u003e N/A\n  * sha256_unrolled: 101/101 -\u003e N/A\n* common/fpsensor/fpsensor_auth_crypto_stateful.cc: 46/71 -\u003e 34/71 (-12/+0)\n  * fpsensor_auth_crypto_stateful: 46/56 -\u003e N/A\n* common/fpsensor/fpsensor_auth_crypto_stateless.cc: 57/94 -\u003e 45/94 (-12/+0)\n  * fpsensor_auth_crypto_stateless: 56/64 -\u003e N/A\n\nOk, it looks like I should not delete sbs_charging, sha256, sha256_unrolled, fpsensor_auth_crypto_stateful, \u0026 fpsensor_auth_crypto_stateless. Let me put those back and run CQ+1 again.",
+      "revId": "fd114bc441f078efc0bede35513f0ae5a5fe1978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
