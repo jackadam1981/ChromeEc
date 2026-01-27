@@ -46,6 +46,30 @@
       },
       "revId": "7232f1d6d6bc6d7e69a9790fc7fe77cf3efc5623",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb768a4f_46916a69",
+        "filename": "util/diff_upstream.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2026-01-27T18:51:24Z",
+      "side": 1,
+      "message": "Not done.\n\n```suggestion\n  [\u0027zephyrproject/zephyr\u0027]\u003d\u0027https://github.com/zephyrproject-rtos/zephyr.git main\u0027\n```",
+      "parentUuid": "adaece9b_70c17606",
+      "range": {
+        "startLine": 21,
+        "startChar": 4,
+        "endLine": 21,
+        "endChar": 15
+      },
+      "revId": "7232f1d6d6bc6d7e69a9790fc7fe77cf3efc5623",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
