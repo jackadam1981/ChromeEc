@@ -52,6 +52,24 @@
       "parentUuid": "39da3523_e7b6f9a1",
       "revId": "53ae87dd0fe1aeb30893e6558652357970f5f79e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dc033dd_65536d22",
+        "filename": "common/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2026-01-27T15:54:02Z",
+      "side": 1,
+      "message": "Hi @keithshort@chromium.org/ @deepti.deshatty@intel.corp-partner.google.com\n\nI made this change considering that \"faninfo\" should show power as \"no\" if enable_output is low. \"enable_output\" is the one which EC controls to enable and disable fan power. \nI have observed in previous logic that \"faninfo\" dumps the power as \"yes\" when rpm is set to zero.\n\n26-01-27 20:53:16.866 ec:\u003e faninfo\n26-01-27 20:53:19.082 Actual:    0 rpm\n26-01-27 20:53:19.085 Target:    0 rpm\n26-01-27 20:53:19.087 Duty:   0%\n26-01-27 20:53:19.089 Status: 0 (not spinning)\n26-01-27 20:53:19.092 Mode:   rpm\n26-01-27 20:53:19.093 Auto:   yes\n26-01-27 20:53:19.093 Enable: no\n26-01-27 20:53:19.094 Power:  yes      \u003c\u003d\u003d here it shows power yes\n26-01-27 20:53:19.094 ec:\u003e\n\n26-01-27 20:53:54.209 ec:\u003e gpioget en_pp5000_fan\n26-01-27 20:53:58.248   0  en_pp5000_fan\n\nAs per my understanding, here power should be updated as no because EC is disabling fan by setting enable_gpio as low.\n\nAlso in previous patch \"https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/175151/4/common/fan.c#131 , I have found that this logic was modified from the same logic, I have updated in this patch.\n\nLet me know what are your thoughts on that.",
+      "parentUuid": "7e4bd853_2bca054d",
+      "revId": "53ae87dd0fe1aeb30893e6558652357970f5f79e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
