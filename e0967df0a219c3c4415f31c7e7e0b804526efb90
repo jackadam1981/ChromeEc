@@ -94,6 +94,30 @@
       },
       "revId": "e0967df0a219c3c4415f31c7e7e0b804526efb90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ff4edbc_2fc25448",
+        "filename": "common/cbi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2026-01-27T03:01:18Z",
+      "side": 1,
+      "message": "We udpate factory report to issuue.\nDVT phase not enable force_write_protect.\nDo you have any suggestions on which patchset to import?",
+      "parentUuid": "1e7c8b92_30c35832",
+      "range": {
+        "startLine": 731,
+        "startChar": 1,
+        "endLine": 731,
+        "endChar": 17
+      },
+      "revId": "e0967df0a219c3c4415f31c7e7e0b804526efb90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
