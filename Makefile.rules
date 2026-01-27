@@ -493,6 +493,8 @@ test-coverage: TEST_FLAG=TEST_COVERAGE=y
 test-coverage: $(cov-test-targets)
 	$(call quiet,merge_cov,MERGE  )
 	$(call quiet,report_cov,REPORT )
+host-coverage: TEST_FLAG=TEST_COVERAGE=y
+host-coverage: $(host-coverage-targets)
 
 $(out)/libec.a: $(ro-objs)
 	$(call quiet,libec,BUILD )
