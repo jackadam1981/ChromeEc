@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b940896c_75bc5f5d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2026-01-27T03:18:28Z",
+      "side": 1,
+      "message": "I added the TEST field. the bugid I have\u0027t find it, Does it necessary?",
+      "parentUuid": "8092fec7_7d29e605",
+      "revId": "bb032daf9b107a95d3acdab643ce4f91d242a9b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1529addb_c25d9fac",
         "filename": "zephyr/emul/emul_ft98xx.c",
         "patchSetId": 5
