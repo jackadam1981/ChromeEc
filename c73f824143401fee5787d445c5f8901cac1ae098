@@ -46,6 +46,30 @@
       },
       "revId": "c73f824143401fee5787d445c5f8901cac1ae098",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a8d252f_5fb360df",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-27T17:57:23Z",
+      "side": 1,
+      "message": "\u003e Do you mean the hardware unit test using development boards?\n\nYes. For each new change we add, I\u0027ve been trying to add a hardware unit test so that we can make sure the code continues to work in the future as we make changes and make sure any new boards we bring up pass the tests.\n\n\u003e Such test would require setting WP to 1, which is not possible in such setup and potentially setting the RO protection. \n\nIs there a way to mock it for the test? Since this is security-related, I don\u0027t love making methods like `write_protect_is_asserted` weak, but we\u0027ve [already done that for `system_is_locked`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/system.c;l\u003d190;drc\u003df3d890a76be2121e7e7cd31b01bc2a225cb37e94), so it\u0027s probably not any worse to do it for `write_protect_is_asserted`.\n\n\u003e Such changes couldn\u0027t be reverted. \n\nIf we override `write_protect_is_asserted` for the test would that cause anything from permanent that we can\u0027t revert?\n\n\u003e Or you would like to perform such test if WP\u003d1 and RO protection are already set?\n\nIf the above doesn\u0027t work, then I think this is better than nothing. Although it still requires some manual setup, it would be easier to test again in the future than a completely manual test.",
+      "parentUuid": "62c675bf_4dd06ad8",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 67
+      },
+      "revId": "c73f824143401fee5787d445c5f8901cac1ae098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
