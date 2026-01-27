@@ -759,9 +759,9 @@ arg in the chroot.
 (inside chroot) $ ls /opt/google/ti50/firmware/
 ```
 
-1.  Connect a debug cable ([Suzy-Q] or [Type-C Servo v4]).
+2.  Connect a debug cable ([Suzy-Q] or [Type-C Servo v4]).
 
-1.  Find the GSC serial number. Gsctool will need the device serial number if
+3.  Find the GSC serial number. Gsctool will need the device serial number if
     you have multiple CCD devices connected.
 ```
 # Find with servo
@@ -777,7 +777,7 @@ lsusb -vd 18d1: | grep iSer > /tmp/gsc.devices.end
 diff /tmp/gsc.devices*
 ```
 
-1.  Check the running GSC version and chip type with `gsctool`. You can drop the
+4.  Check the running GSC version and chip type with `gsctool`. You can drop the
     `-n $SER` if you only have one CCD device connected.
 
 ```bash
@@ -790,7 +790,7 @@ device: [H1, DT, NT] <-- The "device" is the GSC chip type.
 ...
 RW 0.4.26  <-- The "RW" version is the one to check
 ```
-1.  Update GSC using the firmware in the chroot:
+5.  Update GSC using the firmware in the chroot:
     Select the correct image based on your dut.
 
 *Production (MP) image*:
@@ -809,7 +809,7 @@ RW 0.4.26  <-- The "RW" version is the one to check
 (inside chroot) $ sudo gsctool -n $SER /opt/google/*/firmware/*prepvt
 ```
 
-1.  Check the GSC version again. gsctool prints the chip type after `device:` \
+6.  Check the GSC version again. gsctool prints the chip type after `device:` \
     Cr50 -  make sure it's either `0.5.X` or `0.6.X`, or \
     Ti50 DT version - make sure it's either `0.23.X` or `0.24.X`. \
     Ti50 NT version - make sure it's either `0.33.X` or `0.34.X`.
