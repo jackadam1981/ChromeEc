@@ -235,6 +235,22 @@ enum vendor_cmd_cc {
 	/* Enables/disables strongbox commands. */
 	VENDOR_CC_SET_STRONGBOX_STATE = 80,
 
+<<<<<<< HEAD   (1e399c1e783312a087f76cb736cfacdcd0e13eb1 cr50/strongbox: add validation and enforcement for DeviceInf)
+||||||| BASE   (4ac2886ea0fc8b52495da6156e1384ee765b9040 boot_param: add `get_boot_mode` to return current boot mode)
+	/* Read slice of Owner Configuration space */
+	VENDOR_CC_READ_OWNERS_CONFIG = 81,
+
+=======
+	/* Read or read and increment DRM counter. */
+	VENDOR_CC_HW_DRM_COUNTER = 81,
+
+	/* Get/Set SPI drive setting. */
+	VENDOR_CC_SPI_DRIVE = 82,
+
+	/* Read slice of Owner Configuration space */
+	VENDOR_CC_READ_OWNERS_CONFIG = 83,
+
+>>>>>>> CHANGE (b1408be67f05d96966147cb1eee18861c153337f gsctool: add missing ti50 vendor commands)
 	LAST_VENDOR_COMMAND = 65535,
 };
 
