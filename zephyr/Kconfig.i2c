@@ -78,6 +78,41 @@ config PLATFORM_EC_SMBUS_PEC
 
 	  This option also enables error checking function on smart batteries.
 
+config PLATFORM_EC_SMB_PEC_CONTIGUOUS_BUFFER
+	bool "Use a single contiguous buffer for I2C DMA transfers"
+	depends on PLATFORM_EC_SMBUS_PEC
+	help
+	  Enable this option to combine I2C write or read data, and PEC into a
+	  single contiguous buffer and send it as one transfer.
+
+	  This avoids splitting PEC writes into multiple I2C transactions,
+	  which may result excessive clock stretching or prevent DMA-based
+	  I2C implementations from being used.
+
+config SMBUS_WRITE_BLOCK_DATA_MAX
+	int "Maximum SMBus write data size for single buffer transfers"
+	range 1 32 if PLATFORM_EC_SMB_PEC_CONTIGUOUS_BUFFER
+	default 32 if PLATFORM_EC_SMB_PEC_CONTIGUOUS_BUFFER
+	default 0
+	help
+	  Specify the maximum SMBus write data size for single buffer transfers.
+	  This limits temporary buffer size to prevent stack overflow.
+
+	  The upper bound is the SMBus write block data size (32 bytes).
+	  A value of 0 disables single-buffer PEC transfers.
+
+config SMBUS_READ_BLOCK_DATA_MAX
+	int "Maximum SMBus read data size for single buffer transfers"
+	range 1 32 if PLATFORM_EC_SMB_PEC_CONTIGUOUS_BUFFER
+	default 32 if PLATFORM_EC_SMB_PEC_CONTIGUOUS_BUFFER
+	default 0
+	help
+	  Specify the maximum SMBus read data size for single buffer transfers.
+	  This limits temporary buffer size to prevent stack overflow.
+
+	  The upper bound is the SMBus read block data size (32 bytes).
+	  A value of 0 disables single-buffer PEC transfers.
+
 config PLATFORM_EC_I2C_NACK_RETRY_COUNT
 	int "I2C operation retry count when transaction error"
 	default 0
