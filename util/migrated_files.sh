@@ -38,7 +38,6 @@ test/rollback_entropy.c
 test/sha256.c
 test/stdlib.c
 test/system_is_locked.c
-test/timer.cc
 test/tpm_seed_clear.cc
 test/unaligned_access.cc
 test/utils_str.c

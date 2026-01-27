@@ -459,6 +459,7 @@ class Renode(Platform):
             "sbrk",
             "static_if",
             "std_vector",
+            "timer",
         ]:
             return True
 
@@ -800,14 +801,7 @@ class AllTests:
                 enable_hw_write_protect=False,
             ),
             TestConfig(test_name="timer"),
-            # task_wait_event works only with the shimmed task list, which is
-            # hardcoded. The task synchronization functions are covered by
-            # Zephyr tests. task_wait_event is implemented based on k_poll_event
-            # and it is verified by the kernel.poll test.
-            TestConfig(test_name="timer_dos", skip_for_zephyr=True),
             TestConfig(test_name="tpm_seed_clear"),
-            # UART buffering is not used with Zephyr.
-            TestConfig(test_name="uart", skip_for_zephyr=True),
             TestConfig(test_name="unaligned_access"),
             TestConfig(test_name="unaligned_access_benchmark"),
             TestConfig(test_name="utils"),
