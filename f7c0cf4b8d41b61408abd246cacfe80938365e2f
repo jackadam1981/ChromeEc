@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27a9d226_8af53641",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2026-01-27T17:27:04Z",
+      "side": 1,
+      "message": "I realized k_uptime_get() returns int64_t. Went ahead and switched all timestamps to int64_t and elapsed time to int32_t. This is more robust to overflow bugs, and the extra bit is not needed.",
+      "revId": "f7c0cf4b8d41b61408abd246cacfe80938365e2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -22,6 +22,30 @@
       },
       "revId": "ac73b079c2f1382ab7d15906905b186ec5b28ef6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e8f32b1_c6de37b0",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2026-01-27T17:27:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35fa9c65_bab0a715",
+      "range": {
+        "startLine": 360,
+        "startChar": 0,
+        "endLine": 365,
+        "endChar": 73
+      },
+      "revId": "ac73b079c2f1382ab7d15906905b186ec5b28ef6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
