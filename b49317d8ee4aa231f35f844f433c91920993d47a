@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b982cfc3_aad8d46d",
+        "filename": "common/charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2026-01-27T17:27:45Z",
+      "side": 1,
+      "message": "Compared the output of `zmake build kinmen --clobber`.\n\nStrangely, capturing the calling function increases the image size by 16 bytes. This may be from the additional function names captured, that did not have a `CPRINT` before.\n\nKeeping the print statement without calling function reduces the image size by 268 bytes.",
+      "range": {
+        "startLine": 201,
+        "startChar": 1,
+        "endLine": 202,
+        "endChar": 2
+      },
+      "revId": "b49317d8ee4aa231f35f844f433c91920993d47a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
