@@ -499,35 +499,35 @@ Steps to change the Ti50 WP settings
 1. [CCD Open]
 
 1. Set AllowUnverifiedRo to Always
-```bash
-(dut) $ gsctool -a -I AllowUnverifiedRo:Always
-Tap the power button when prompted
-or
-(ti50 console) $ ccd set AllowUnverifiedRo Always
-```
+    ```bash
+    (dut) $ gsctool -a -I AllowUnverifiedRo:Always
+    Tap the power button when prompted
+    or
+    (ti50 console) $ ccd set AllowUnverifiedRo Always
+    ```
 
 1. Check WP. Ti50 will start using `follow_batt_pres` atboot. WP will still
    be enabled until Ti50 resets.
-```bash
-(dut) $ gsctool -a -w
-Getting WP
-WP: 00000006
-Flash WP: forced enabled
- at boot: follow_batt_pres
-or
-(ti50 console) $ wp
-wp
-Flash WP: forced enabled
- at boot: follow_batt_pres
-```
+    ```bash
+    (dut) $ gsctool -a -w
+    Getting WP
+    WP: 00000006
+    Flash WP: forced enabled
+     at boot: follow_batt_pres
+    or
+    (ti50 console) $ wp
+    wp
+    Flash WP: forced enabled
+     at boot: follow_batt_pres
+    ```
 
 1. If you need it to immediately start following battery presence, you can set
    it with:
-```bash
-(dut) $ gsctool -a -w follow_batt_pres
-or
-(ti50 console) $ ccd wp follow_batt_pres
-```
+    ```bash
+    (dut) $ gsctool -a -w follow_batt_pres
+    or
+    (ti50 console) $ ccd wp follow_batt_pres
+    ```
 
 #### Bob
 
@@ -714,32 +714,32 @@ the MP image.
 
 1.  Check the running GSC version with `gsctool`:
 
-```bash
-(dut) $ sudo gsctool -a -f
+    ```bash
+    (dut) $ sudo gsctool -a -f
 
-...
-device: [H1, DT, NT] <-- The "device" is the GSC chip type.
-                         H1 is a cr50 chip.
-                         DT and NT are ti50 chips.
-...
-RW 0.4.26  <-- The "RW" version is the one to check
-```
+    ...
+    device: [H1, DT, NT] <-- The "device" is the GSC chip type.
+                             H1 is a cr50 chip.
+                             DT and NT are ti50 chips.
+    ...
+    RW 0.4.26  <-- The "RW" version is the one to check
+    ```
 
 1.  Update GSC using the firmware in the OS image:
 
-*Production (MP) image*:
+    *Production (MP) image*:
 
-```bash
-# Run with all MP images. Gsctool will pick the correct image.
-(dut) $ sudo gsctool -a /opt/google/*50/firmware/*.prod
-```
+    ```bash
+    # Run with all MP images. Gsctool will pick the correct image.
+    (dut) $ sudo gsctool -a /opt/google/*50/firmware/*.prod
+    ```
 
-*Development (PrePVT) image*:
+    *Development (PrePVT) image*:
 
-```bash
-# Run with all PrePVT images. Gsctool will pick the correct image.
-(dut) $ sudo gsctool -a /opt/google/*50/firmware/*.prepvt
-```
+    ```bash
+    # Run with all PrePVT images. Gsctool will pick the correct image.
+    (dut) $ sudo gsctool -a /opt/google/*50/firmware/*.prepvt
+    ```
 
 1.  Check the GSC version again. gsctool prints the chip type after `device:` \
     Cr50 -  make sure it's either `0.5.X` or `0.6.X`, or \
@@ -753,61 +753,61 @@ arg in the chroot.
 
 1.  Install necessary GSC tools and images. This installs the most recent
     GSC images in /opt/google/{cr50,ti50}/firmware/
-```bash
-(inside chroot) $ sudo emerge chromeos-ti50 chromeos-cr50
-(inside chroot) $ ls /opt/google/cr50/firmware/
-(inside chroot) $ ls /opt/google/ti50/firmware/
-```
+    ```bash
+    (inside chroot) $ sudo emerge chromeos-ti50 chromeos-cr50
+    (inside chroot) $ ls /opt/google/cr50/firmware/
+    (inside chroot) $ ls /opt/google/ti50/firmware/
+    ```
 
 1.  Connect a debug cable ([Suzy-Q] or [Type-C Servo v4]).
 
 1.  Find the GSC serial number. Gsctool will need the device serial number if
     you have multiple CCD devices connected.
-```
-# Find with servo
-SER=$(dut-control -p $PORT ccd_serialname | cut -d : -f 2)
+    ```
+    # Find with servo
+    SER=$(dut-control -p $PORT ccd_serialname | cut -d : -f 2)
 
-# Example of how to find the serial with lsusb
-# Disconnect the CCD device
-# List connected devices
-lsusb -vd 18d1: | grep iSer > /tmp/gsc.devices.start
-# Connect the CCD device
-lsusb -vd 18d1: | grep iSer > /tmp/gsc.devices.end
-# Find the serial of new device
-diff /tmp/gsc.devices*
-```
+    # Example of how to find the serial with lsusb
+    # Disconnect the CCD device
+    # List connected devices
+    lsusb -vd 18d1: | grep iSer > /tmp/gsc.devices.start
+    # Connect the CCD device
+    lsusb -vd 18d1: | grep iSer > /tmp/gsc.devices.end
+    # Find the serial of new device
+    diff /tmp/gsc.devices*
+    ```
 
 1.  Check the running GSC version and chip type with `gsctool`. You can drop the
     `-n $SER` if you only have one CCD device connected.
 
-```bash
-(inside chroot) $ sudo gsctool -f -n $SER
+    ```bash
+    (inside chroot) $ sudo gsctool -f -n $SER
 
-...
-device: [H1, DT, NT] <-- The "device" is the GSC chip type.
-                         H1 is a cr50 chip.
-                         DT and NT are ti50 chips.
-...
-RW 0.4.26  <-- The "RW" version is the one to check
-```
+    ...
+    device: [H1, DT, NT] <-- The "device" is the GSC chip type.
+                             H1 is a cr50 chip.
+                             DT and NT are ti50 chips.
+    ...
+    RW 0.4.26  <-- The "RW" version is the one to check
+    ```
 1.  Update GSC using the firmware in the chroot:
     Select the correct image based on your dut.
 
-*Production (MP) image*:
+    *Production (MP) image*:
 
-```bash
-# Supply all of the MP images. gsctool will select the correct one for the
-# chip
-(inside chroot) $ sudo gsctool -n $SER /opt/google/*50/firmware/*prod
-```
+    ```bash
+    # Supply all of the MP images. gsctool will select the correct one for the
+    # chip
+    (inside chroot) $ sudo gsctool -n $SER /opt/google/*50/firmware/*prod
+    ```
 
-*Development (PrePVT) image*:
+    *Development (PrePVT) image*:
 
-```bash
-# Supply all of the PrePVT images. gsctool will select the correct one for the
-# chip
-(inside chroot) $ sudo gsctool -n $SER /opt/google/*/firmware/*prepvt
-```
+    ```bash
+    # Supply all of the PrePVT images. gsctool will select the correct one for the
+    # chip
+    (inside chroot) $ sudo gsctool -n $SER /opt/google/*/firmware/*prepvt
+    ```
 
 1.  Check the GSC version again. gsctool prints the chip type after `device:` \
     Cr50 -  make sure it's either `0.5.X` or `0.6.X`, or \
