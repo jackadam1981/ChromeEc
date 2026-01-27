@@ -2700,7 +2700,7 @@ pdc_snk_attached_evaluate_pdos(struct pdc_port_t *port)
 
 	pdc_print_pdo_info(config->connector_num, &port->snk_policy.src);
 
-	pdo_index = pd_select_best_pdo(PDO_MAX_OBJECTS,
+	pdo_index = pd_select_best_pdo(port->snk_policy.src.pdo_count,
 				       port->snk_policy.src.pdos,
 				       pdc_max_request_mv, &selected_pdo);
 
@@ -2757,8 +2757,10 @@ pdc_snk_attached_evaluate_pdos(struct pdc_port_t *port)
 
 static bool pdc_is_rdo_valid(const union connector_status_t *cs)
 {
+	uint8_t rdo_pos = RDO_POS(cs->rdo);
+
 	LOG_INF("%s: status=%d, power_op_mode=%d, RDO_POS=%d", __func__,
-		cs->connect_status, cs->power_operation_mode, RDO_POS(cs->rdo));
+		cs->connect_status, cs->power_operation_mode, rdo_pos);
 
 	return (cs->connect_status == 1 &&
 		cs->power_operation_mode == PD_OPERATION);
@@ -3485,12 +3487,18 @@ static void pdc_send_cmd_wait_exit(void *obj)
 		 * pdo_count. */
 		/* TODO This is temporary until APDOs can be handled  */
 		for (int i = 0; i < PDO_MAX_OBJECTS; i++) {
+			if (pdc_pdos->pdos[i] == 0) {
+				/* End of PDO list */
+				break;
+			}
+
 			if ((pdc_pdos->pdos[i] & PDO_TYPE_MASK) ==
 			    PDO_TYPE_AUGMENTED) {
 				pdc_pdos->pdos[i] = 0;
-			} else {
-				pdc_pdos->pdo_count++;
+				/* Stop at first APDO. */
+				break;
 			}
+			pdc_pdos->pdo_count++;
 		}
 		break;
 	case CMD_PDC_SET_PDR:
