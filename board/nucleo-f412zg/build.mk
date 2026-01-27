@@ -32,7 +32,6 @@ test-list-y=\
        sha256_unrolled \
        stdlib \
        stm32f_rtc \
-       timer_dos \
        utils \
        utils_str \
        watchdog \

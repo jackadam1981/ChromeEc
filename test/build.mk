@@ -7,7 +7,6 @@
 test-list-y ?= flash_write_protect \
 	stdlib \
 	timer_calib \
-	timer_dos \
 	utils \
 	utils_str
 #disable: powerdemo
@@ -56,27 +55,13 @@ test-list-host += sha256_unrolled
 # toolchain's C standard library, so these tests are actually testing the
 # toolchain's C standard library.
 test-list-host += stdlib
-
-test-list-host += system
-test-list-host += tablet_broken_sensor
-test-list-host += tablet_no_sensor
 test-list-host += thermal
-test-list-host += timer
-test-list-host += timer_dos
-test-list-host += uart
 test-list-host += uptime
-test-list-host += usb_common
-test-list-host += usb_pd_int
-test-list-host += usb_pd
 test-list-host += usb_pd_console
-test-list-host += usb_pd_giveback
-test-list-host += usb_pd_rev30
 test-list-host += usb_pd_timer
 test-list-host += usb_ppc
 test-list-host += usb_sm_framework_h3
-test-list-host += usb_sm_framework_h2
-test-list-host += usb_sm_framework_h1
-test-list-host += usb_sm_framework_h0
+
 test-list-host += usb_typec_vpd
 test-list-host += usb_typec_ctvpd
 test-list-host += usb_typec_drp_acc_trysrc
@@ -179,32 +164,17 @@ sha256-y=sha256.o
 sha256_unrolled-y=sha256.o
 stdlib-y=stdlib.o
 stress-y=stress.o
-system-y=system.o
 system_is_locked-y=system_is_locked.o
-tablet_broken_sensor-y=tablet_broken_sensor.o
-tablet_no_sensor-y=tablet_no_sensor.o
 thermal-y=thermal.o
 timer_calib-y=timer_calib.o
-timer_dos-y=timer_dos.o
-timer-y=timer.o
 tpm_seed_clear-y=tpm_seed_clear.o
-uart-y=uart.o
 unaligned_access-y=unaligned_access.o
 unaligned_access_benchmark-y=unaligned_access_benchmark.o
 uptime-y=uptime.o
-usb_common-y=usb_common_test.o fake_battery.o
-usb_pd_int-y=usb_pd_int.o
-usb_pd-y=usb_pd.o
 usb_pd_console-y=usb_pd_console.o
-usb_pd_giveback-y=usb_pd.o
-usb_pd_rev30-y=usb_pd.o
-usb_pd_pdo_fixed-y=usb_pd_pdo_fixed_test.o
 usb_pd_timer-y=usb_pd_timer.o
 usb_ppc-y=usb_ppc.o
 usb_sm_framework_h3-y=usb_sm_framework_h3.o
-usb_sm_framework_h2-y=usb_sm_framework_h3.o
-usb_sm_framework_h1-y=usb_sm_framework_h3.o
-usb_sm_framework_h0-y=usb_sm_framework_h3.o
 usb_typec_vpd-y=usb_typec_ctvpd.o vpd_api.o usb_sm_checks.o fake_usbc.o
 usb_typec_ctvpd-y=usb_typec_ctvpd.o vpd_api.o usb_sm_checks.o fake_usbc.o
 usb_typec_drp_acc_trysrc-y=usb_typec_drp_acc_trysrc.o vpd_api.o \

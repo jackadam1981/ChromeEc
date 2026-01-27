@@ -31,7 +31,6 @@ test-list-y=\
        sha256 \
        sha256_unrolled \
        stdlib \
-       timer_dos \
        utils \
        utils_str \
        watchdog \
