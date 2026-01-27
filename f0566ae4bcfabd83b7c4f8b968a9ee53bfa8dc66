@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "585cc63b_b01fb5a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 47
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-27T06:31:29Z",
+      "side": 1,
+      "message": "Please add:\n```\nBUG\u003d\nTEST\u003d\nLOW_COVERAGE_REASON\u003d\n```",
+      "revId": "f0566ae4bcfabd83b7c4f8b968a9ee53bfa8dc66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fe6d5038_5e00b924",
@@ -50,6 +67,24 @@
       "side": 1,
       "message": "mainly the heap size would be bigger.",
       "parentUuid": "c633feba_0d82da26",
+      "revId": "f0566ae4bcfabd83b7c4f8b968a9ee53bfa8dc66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2c46595_14d52872",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 47
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-27T06:31:29Z",
+      "side": 1,
+      "message": "Can we just use a bigger heap in advance or there will be other changes?",
+      "parentUuid": "28012199_560beaf8",
       "revId": "f0566ae4bcfabd83b7c4f8b968a9ee53bfa8dc66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
