@@ -142,6 +142,30 @@
       },
       "revId": "e0967df0a219c3c4415f31c7e7e0b804526efb90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36f9db51_734b5169",
+        "filename": "common/cbi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1293716
+      },
+      "writtenOn": "2026-01-27T03:26:49Z",
+      "side": 1,
+      "message": "Just grab a Starros DVT device and get the status.\n\n```\nstarros-rev2 ~ # flashrom --wp-status\nflashrom v1.6.0-devel on Linux 6.6.99-09051-gaedae7538633 (aarch64)\nflashrom is free software, get the source code at https://flashrom.org\n\nUsing default programmer \"internal\" with arguments \"\".\nOpened /dev/mtd0 successfully\nFound Programmer flash chip \"Opaque flash chip\" (8192 kB, Programmer-specific) on internal.\nProtection range: start\u003d0x00000000 length\u003d0x00000000 (none)\nProtection mode: disabled\nSUCCESS\n```",
+      "parentUuid": "fe085a38_6a9fe6ee",
+      "range": {
+        "startLine": 731,
+        "startChar": 1,
+        "endLine": 731,
+        "endChar": 17
+      },
+      "revId": "e0967df0a219c3c4415f31c7e7e0b804526efb90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
