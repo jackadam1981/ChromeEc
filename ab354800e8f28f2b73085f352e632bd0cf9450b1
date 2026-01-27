@@ -441,6 +441,30 @@
       },
       "revId": "ab354800e8f28f2b73085f352e632bd0cf9450b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2a5a2b3_2896b814",
+        "filename": "zephyr/program/fpmcu/em32f967/src/platform.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-27T18:24:25Z",
+      "side": 1,
+      "message": "Untested: https://crrev.com/c/7520473",
+      "parentUuid": "4befaceb_10a69e4b",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 3
+      },
+      "revId": "ab354800e8f28f2b73085f352e632bd0cf9450b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
