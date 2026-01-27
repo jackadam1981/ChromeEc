@@ -101,6 +101,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e94ef0d5_c2c4074c",
+        "filename": "zephyr/program/fpmcu/em32f967/prj.conf",
+        "patchSetId": 36
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-27T18:19:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac520ab1_da997c18",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 28
+      },
+      "revId": "ab354800e8f28f2b73085f352e632bd0cf9450b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4a78d86_3ce05fba",
@@ -242,6 +266,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98372197_646ca617",
+        "filename": "zephyr/program/fpmcu/em32f967/prj.conf",
+        "patchSetId": 36
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-27T18:19:46Z",
+      "side": 1,
+      "message": "It\u0027s also easy to grep for and there is [some tooling](http://shortn/_iPgAEqaoJ2) that helps you track it.",
+      "parentUuid": "b84c5bf6_1759800c",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 19
+      },
+      "revId": "ab354800e8f28f2b73085f352e632bd0cf9450b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d69c867_bc63013b",
@@ -367,6 +415,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "1d8b9463_b09ef9d6",
+      "revId": "ab354800e8f28f2b73085f352e632bd0cf9450b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4befaceb_10a69e4b",
+        "filename": "zephyr/program/fpmcu/em32f967/src/platform.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-27T18:19:46Z",
+      "side": 1,
+      "message": "How about we change the Zephyr version to return `bool`, like the [EC version](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/write_protect.h;l\u003d18;drc\u003d7cb3b90642586116bdeec7fa84e5e3eef3055eb7) does?\n\n(Not in this CL.)",
+      "parentUuid": "17f825aa_6e129ea0",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 3
+      },
       "revId": "ab354800e8f28f2b73085f352e632bd0cf9450b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
