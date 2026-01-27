@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b05f8f7_d812bb57",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-27T21:53:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e888c8e_dcef53d3",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 51
+      },
+      "revId": "e84d6a475fe8d9719e60120c5fd4882eb9aed9bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f2670e8_681d62ae",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Looks like you only ported the `test_flash_config` part.\n\nWe can submit this, but we still need to port the other tests in that file and the equivalent of the upstream Zephyr tests for STM32. Ideally, we should make the helipilot equivalent of the upstream Zephyr tests for STM32 upstream for helipilot as well and then we can run the upstream test in `run_device_tests.py`.\n\nDoes the upstream STM32 test have a flash_config equivalent? That\u0027s kind of what it looks like given that this test doesn\u0027t do anything. In that case, we should have all the helipilot tests for flash_physical upstream instead of having any here.",
       "parentUuid": "bdab70eb_5ca05411",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 66
+      },
+      "revId": "e84d6a475fe8d9719e60120c5fd4882eb9aed9bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83669961_be6e798c",
+        "filename": "zephyr/test/hwtest/src/flash_physical.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1541085
+      },
+      "writtenOn": "2026-01-27T21:53:07Z",
+      "side": 1,
+      "message": "I do not believe the upstream STM32 have an equivalent `test_flash_config`. I add add this for STM32 in a follow up CL. This is the upstream zephyr test:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/tests/drivers/flash/stm32/src/main.c\n\nI am working on an equivalent version for NPCX:\n\nhttps://github.com/zephyrproject-rtos/zephyr/pull/103008/changes/25011917639bbc09300d774ac3d8575e85f359ce\n\nI is still WIP and I need some input from Nuvoton.",
+      "parentUuid": "d3341de4_5e2ab905",
       "range": {
         "startLine": 19,
         "startChar": 0,
