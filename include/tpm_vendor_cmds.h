@@ -237,6 +237,12 @@ enum vendor_cmd_cc {
 	/* Read slice of Owner Configuration space */
 	VENDOR_CC_READ_OWNERS_CONFIG = 81,
 
+	/* Read or read and increment DRM counter. */
+	VENDOR_CC_HW_DRM_COUNTER = 82,
+
+	/* Get/Set SPI drive setting. */
+	VENDOR_CC_SPI_DRIVE = 83,
+
 	LAST_VENDOR_COMMAND = 65535,
 };
 
