@@ -86,5 +86,9 @@
 				};
 			};
 		};
+		instance_data {
+			type = "null";
+			size = <0x0>;
+		};
 	};
 };
