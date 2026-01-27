@@ -449,6 +449,7 @@ class Renode(Platform):
 
         # Tests that don't exist in "classic" ec, but might exist in zephyr.
         if not zephyr and test_name in [
+            # Tests that have zephyr counterparts
             "aes",
             "benchmark",
             "fp_transport",
@@ -459,11 +460,17 @@ class Renode(Platform):
             "sbrk",
             "static_if",
             "std_vector",
+            "timer",
+            "utils_str",
+            "utils",
+            # Tests that have skip_for_zephyr
             "always_memset",
-            "mutex",
-            "mutex_trylock",
             "mutex_recursive",
+            "mutex_trylock",
+            "mutex",
             "pingpong",
+            "timer_dos",
+            "uart",
         ]:
             return True
 
