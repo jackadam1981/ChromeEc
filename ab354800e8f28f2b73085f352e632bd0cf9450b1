@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "17e5ef02_81fb986a",
+        "filename": "zephyr/cmake/toolchain/llvm/target.cmake",
+        "patchSetId": 36
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-27T11:25:37Z",
+      "side": 1,
+      "message": "Generally, I agree 100%. I\u0027m still thinking how we can handle this in a better way. \n\nI\u0027m not fully familiar with the toolchain ebuilds, but I\u0027m thinking of something like this: add a new ebuild to build the second version libraries, with floating point operations disabled. Then, in the project files/here force the linker to use those libraries instead of the current ones?",
+      "parentUuid": "05f163a0_eac68a07",
+      "revId": "ab354800e8f28f2b73085f352e632bd0cf9450b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f3933f3b_7b06460a",
         "filename": "zephyr/program/fpmcu/em32f967/prj.conf",
         "patchSetId": 36
@@ -49,6 +67,30 @@
       "writtenOn": "2026-01-26T17:40:03Z",
       "side": 1,
       "message": "Should we put these in the base fpmcu conf file, since we\u0027ll want it for all FPMCUs? I guess we will need to split it the base config into RISCV and ARM, unless there is a way to have conditionals based on architecture in the conf files. (I\u0027m not very familiar with them.) You don\u0027t need to make any changes to this CL; we can change it in a followup CL.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 28
+      },
+      "revId": "ab354800e8f28f2b73085f352e632bd0cf9450b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac520ab1_da997c18",
+        "filename": "zephyr/program/fpmcu/em32f967/prj.conf",
+        "patchSetId": 36
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-27T11:25:37Z",
+      "side": 1,
+      "message": "The arch specific config selects the CONFIG_MPU (I removed the redundancy). What we can do in the general fpmcu config file is to set `HW_STACK_PROTECTION`. However, we assumed till now that it is set by [the board files](https://github.com/zephyrproject-rtos/zephyr/blob/main/boards/google/dragonclaw/google_dragonclaw_defconfig#L17). I would stick to this approach, because we are not sure if all FPMCU chips supports the protection.",
+      "parentUuid": "f3933f3b_7b06460a",
       "range": {
         "startLine": 25,
         "startChar": 0,
@@ -82,6 +124,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67f96fc5_400a6720",
+        "filename": "zephyr/program/fpmcu/em32f967/prj.conf",
+        "patchSetId": 36
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-27T11:25:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4a78d86_3ce05fba",
+      "range": {
+        "startLine": 61,
+        "startChar": 36,
+        "endLine": 61,
+        "endChar": 43
+      },
+      "revId": "ab354800e8f28f2b73085f352e632bd0cf9450b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "124c19fe_11365094",
@@ -95,6 +161,30 @@
       "writtenOn": "2026-01-26T17:40:03Z",
       "side": 1,
       "message": "```suggestion\n# Leave printk until firmware is fully developed.\n```",
+      "range": {
+        "startLine": 64,
+        "startChar": 15,
+        "endLine": 64,
+        "endChar": 21
+      },
+      "revId": "ab354800e8f28f2b73085f352e632bd0cf9450b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75a823bd_3016bd66",
+        "filename": "zephyr/program/fpmcu/em32f967/prj.conf",
+        "patchSetId": 36
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-27T11:25:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "124c19fe_11365094",
       "range": {
         "startLine": 64,
         "startChar": 15,
@@ -128,6 +218,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b84c5bf6_1759800c",
+        "filename": "zephyr/program/fpmcu/em32f967/prj.conf",
+        "patchSetId": 36
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-27T11:25:37Z",
+      "side": 1,
+      "message": "Makes sense. TODO catches the eye.",
+      "parentUuid": "d33ca683_aafc383b",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 19
+      },
+      "revId": "ab354800e8f28f2b73085f352e632bd0cf9450b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d69c867_bc63013b",
@@ -141,6 +255,30 @@
       "writtenOn": "2026-01-26T17:40:03Z",
       "side": 1,
       "message": "nit: missing newline at end of file\n\n```suggestion\n};\n\n```",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 2
+      },
+      "revId": "ab354800e8f28f2b73085f352e632bd0cf9450b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22ac044d_df64fdf8",
+        "filename": "zephyr/program/fpmcu/em32f967/rwsig.dtsi",
+        "patchSetId": 36
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-27T11:25:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d69c867_bc63013b",
       "range": {
         "startLine": 39,
         "startChar": 0,
@@ -187,6 +325,48 @@
       "writtenOn": "2026-01-26T17:40:03Z",
       "side": 1,
       "message": "How about adding a TODO so we don\u0027t forget to implement this?",
+      "revId": "ab354800e8f28f2b73085f352e632bd0cf9450b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17f825aa_6e129ea0",
+        "filename": "zephyr/program/fpmcu/em32f967/src/platform.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-27T11:25:37Z",
+      "side": 1,
+      "message": "The `write_protect_is_asserted_custom` returns `int`, because the [write_protect_is_asserted](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/shim/include/zephyr_write_protect.h;l\u003d26) returns int.",
+      "parentUuid": "5ad659e1_54e3cc7f",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 3
+      },
+      "revId": "ab354800e8f28f2b73085f352e632bd0cf9450b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cf723b6_cafca891",
+        "filename": "zephyr/program/fpmcu/em32f967/src/platform.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-27T11:25:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d8b9463_b09ef9d6",
       "revId": "ab354800e8f28f2b73085f352e632bd0cf9450b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
