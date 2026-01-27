@@ -22,6 +22,30 @@
       },
       "revId": "c73f824143401fee5787d445c5f8901cac1ae098",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62c675bf_4dd06ad8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-27T08:51:42Z",
+      "side": 1,
+      "message": "Do you mean the hardware unit test using development boards?\n\nSuch test would require setting WP to 1, which is not possible in such setup and potentially setting the RO protection. Such changes couldn\u0027t be reverted. Or you would like to perform such test if WP\u003d1 and RO protection are already set?",
+      "parentUuid": "90ef7d3f_457699df",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 67
+      },
+      "revId": "c73f824143401fee5787d445c5f8901cac1ae098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
