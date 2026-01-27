@@ -181,6 +181,11 @@ static inline int ReadCbiValue(cros_dsp_comms_GetCbiFlagsResponse& response,
 
 static void mode_handling_delayed(struct k_work* work) {
   ARG_UNUSED(work);
+  // while(1){
+  // LOG_INF("[DSP] Tablet mode change delayed handler fired (10s elapsed)");
+  // dsp_service_hook_lid_change();
+  // }
+  
   int mode_val = cros::dsp::service::driver.get_mode_val();
   if (IS_ENABLED(CONFIG_PLATFORM_EC_TABLET_MODE)) {
     tablet_set_mode(mode_val, TABLET_TRIGGER_LID);
@@ -351,10 +356,18 @@ pw::Status cros::dsp::service::Driver::Init() {
     if (IS_ENABLED(CONFIG_PLATFORM_EC_DSP_REMOTE_LID_ANGLE)) {
       SetNotebookMode(cros_dsp_comms_NotebookMode_NOTEBOOK_MODE_NOTEBOOK);
     }
+    LOG_INF("[DSP] Delay 10s before tablet mode change");
+    // for (int i = 10; i > 0; i--) {
+    //   LOG_INF("[DSP] Sleeping... %d sec remaining", i);
+    //   k_sleep(K_SECONDS(1));
+    // }
+
     /* Poll the GMR states */
     dsp_service_hook_lid_change();
     if (IS_ENABLED(CONFIG_PLATFORM_EC_TABLET_MODE)) {
       dsp_service_hook_tablet_mode_change();
+      // LOG_INF("[DSP] Scheduling tablet mode change after 100 seconds");
+      // k_work_schedule(&mode_handling_work_, K_SECONDS(100));
     }
   }
 
@@ -363,12 +376,41 @@ pw::Status cros::dsp::service::Driver::Init() {
 
 void dsp_service_hook_lid_change() {
   bool is_lid_open = lid_is_open() != 0;
-  LOG_DBG("is_lid_open=%d", is_lid_open);
+  LOG_INF("is_lid_open=%d", is_lid_open);
   cros::dsp::service::driver.transport_.SetStatusBit(
       cros_dsp_comms_StatusFlag_STATUS_FLAG_LID_OPEN, is_lid_open);
 }
 DECLARE_HOOK(HOOK_LID_CHANGE, dsp_service_hook_lid_change, HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_INIT, dsp_service_hook_lid_change, HOOK_PRIO_DEFAULT);
+
+
+static struct k_work_delayable lid_init_delay_work;
+
+static void lid_init_delayed(struct k_work *work)
+{
+  ARG_UNUSED(work);
+
+  LOG_INF("[DSP] HOOK_INIT delayed 60s, calling lid change hook");
+  dsp_service_hook_lid_change();
+}
+
+static void dsp_service_hook_lid_init(void)
+{
+  LOG_INF("[DSP] HOOK_INIT: scheduling lid change after 60s");
+  k_work_schedule(&lid_init_delay_work, K_SECONDS(60));
+}
+
+static void dsp_service_init_lid_work(void)
+{
+  k_work_init_delayable(&lid_init_delay_work, lid_init_delayed);
+}
+
+DECLARE_HOOK(HOOK_INIT, dsp_service_init_lid_work, HOOK_PRIO_FIRST);
+DECLARE_HOOK(HOOK_INIT, dsp_service_hook_lid_init, HOOK_PRIO_DEFAULT);
+
+
+
+
 
 #ifdef CONFIG_PLATFORM_EC_TABLET_MODE
 void dsp_service_hook_tablet_mode_change() {
