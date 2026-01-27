@@ -388,13 +388,35 @@ static int platform_ec_i2c_write(const int port, const uint16_t addr_flags,
 
 		i2c_lock(port, 1);
 		for (i = 0; i <= CONFIG_I2C_NACK_RETRY_COUNT; i++) {
-			rv = i2c_xfer_unlocked(port, addr_flags, out, out_size,
-					       NULL, 0, I2C_XFER_START);
-			if (rv)
-				continue;
+			/*
+			 * Limit the transfer size to a single SMBus write
+			 * block. This ensures the temporary buffer used to
+			 * combine data and PEC fits within the thread stack
+			 * and avoids potential stack overflow.
+			 */
+			if (IS_ENABLED(CONFIG_SMB_PEC_CONTIGUOUS_BUFFER) &&
+			    out_size <= CONFIG_SMBUS_WRITE_BLOCK_DATA_MAX) {
+				uint8_t tx_buf[out_size + 1];
+				int tx_len = sizeof(tx_buf);
 
-			rv = i2c_xfer_unlocked(port, addr_flags, &pec, 1, NULL,
-					       0, I2C_XFER_STOP);
+				memcpy(tx_buf, out, out_size);
+				tx_buf[out_size] = pec;
+
+				rv = i2c_xfer_unlocked(
+					port, addr_flags, tx_buf, tx_len, NULL,
+					0, I2C_XFER_START | I2C_XFER_STOP);
+
+			} else {
+				rv = i2c_xfer_unlocked(port, addr_flags, out,
+						       out_size, NULL, 0,
+						       I2C_XFER_START);
+				if (rv)
+					continue;
+
+				rv = i2c_xfer_unlocked(port, addr_flags, &pec,
+						       1, NULL, 0,
+						       I2C_XFER_STOP);
+			}
 			if (!rv)
 				break;
 		}

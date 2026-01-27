@@ -78,6 +78,25 @@ config PLATFORM_EC_SMBUS_PEC
 
 	  This option also enables error checking function on smart batteries.
 
+if PLATFORM_EC_SMBUS_PEC
+config PLATFORM_EC_SMB_PEC_CONTIGUOUS_BUFFER
+	bool "Use a single buffer for I2C PEC transfers"
+	help
+	  Enable this option to combine I2C write data and PEC into a
+	  single contiguous buffer and send it as one transfer.
+
+	  This avoids splitting PEC writes into multiple I2C transactions,
+	  which may otherwise result in excessive clock stretching between
+	  transfers on some controllers, especially when using DMA mode
+	  based I2C implementations.
+
+config SMBUS_WRITE_BLOCK_DATA_MAX
+	int
+	default 32 if PLATFORM_EC_SMB_PEC_CONTIGUOUS_BUFFER
+	default 0
+
+endif # PLATFORM_EC_SMBUS_PEC
+
 config PLATFORM_EC_I2C_NACK_RETRY_COUNT
 	int "I2C operation retry count when transaction error"
 	default 0
