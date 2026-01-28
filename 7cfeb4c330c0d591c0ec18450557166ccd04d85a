@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b334e702_3b9abc6d",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1678,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-01-28T20:32:46Z",
+      "side": 1,
+      "message": "How about a check for an invalid `pdo_mv`.  For instance don\u0027t allow 0mV and don\u0027t allow greater that CONFIG_USB_PD_MAX_VOLTAGE_MV",
+      "range": {
+        "startLine": 1678,
+        "startChar": 35,
+        "endLine": 1678,
+        "endChar": 41
+      },
+      "revId": "7cfeb4c330c0d591c0ec18450557166ccd04d85a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc47a5b8_00dfc9d6",
+        "filename": "zephyr/test/drivers/isl9241/src/isl9241.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-01-28T20:32:46Z",
+      "side": 1,
+      "message": "This duplicates the logic from the driver.  A lookup table is better way to check for desired outputs.",
+      "range": {
+        "startLine": 265,
+        "startChar": 11,
+        "endLine": 265,
+        "endChar": 31
+      },
+      "revId": "7cfeb4c330c0d591c0ec18450557166ccd04d85a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
