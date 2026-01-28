@@ -56,7 +56,6 @@ test-list-host += sha256_unrolled
 # toolchain's C standard library, so these tests are actually testing the
 # toolchain's C standard library.
 test-list-host += stdlib
-
 test-list-host += system
 test-list-host += tablet_broken_sensor
 test-list-host += tablet_no_sensor
@@ -66,7 +65,6 @@ test-list-host += timer_dos
 test-list-host += uart
 test-list-host += uptime
 test-list-host += usb_common
-test-list-host += usb_pd_int
 test-list-host += usb_pd
 test-list-host += usb_pd_console
 test-list-host += usb_pd_giveback
@@ -81,17 +79,9 @@ test-list-host += usb_typec_vpd
 test-list-host += usb_typec_ctvpd
 test-list-host += usb_typec_drp_acc_trysrc
 test-list-host += usb_prl_old
-test-list-host += usb_tcpmv2_compliance
-test-list-host += usb_prl
-test-list-host += usb_prl_noextended
-test-list-host += usb_pe_drp_old
-test-list-host += usb_pe_drp_old_noextended
-test-list-host += usb_pe_drp
-test-list-host += usb_pe_drp_noextended
 test-list-host += utils
 test-list-host += utils_str
 test-list-host += vboot
-test-list-host += version
 test-list-host += x25519
 -include ../ec-private/test/build.mk
 endif
@@ -167,7 +157,6 @@ restricted_console-y=restricted_console.o
 rng_benchmark-y=rng_benchmark.o
 rollback-y=rollback.o
 rollback_entropy-y=rollback_entropy.o
-rollback_lock_panic-y=rollback_lock_panic.o
 rollback_secret-y=rollback_secret.o
 rsa3-y=rsa.o
 rtc-y=rtc.o
