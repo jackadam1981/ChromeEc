@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6230a5c_ff9ee378",
+        "filename": "zephyr/shim/chip/ft90/enter_bootloader.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-28T06:44:27Z",
+      "side": 1,
+      "message": "Thanks.",
+      "parentUuid": "63a11a6d_2fa84bef",
+      "revId": "11568e0071819cf9144adda31c36ef8f67d58493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d62c587_06069ac5",
@@ -49,6 +67,30 @@
       "writtenOn": "2026-01-26T14:14:56Z",
       "side": 1,
       "message": "I think, this unusual method of entering the bootloader needs description.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 34
+      },
+      "revId": "11568e0071819cf9144adda31c36ef8f67d58493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d474fe5f_cf78abd2",
+        "filename": "zephyr/shim/chip/ft90/enter_bootloader.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-28T06:44:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d62c587_06069ac5",
       "range": {
         "startLine": 18,
         "startChar": 0,
@@ -90,6 +132,24 @@
       "side": 1,
       "message": "The values are OK.",
       "parentUuid": "5d3d7e4d_ee00976e",
+      "revId": "11568e0071819cf9144adda31c36ef8f67d58493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19c0a27d_d71b435d",
+        "filename": "zephyr/shim/chip/ft90/include/flash_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-28T06:44:27Z",
+      "side": 1,
+      "message": "Thanks",
+      "parentUuid": "2b4637d5_6ed2a5d6",
       "revId": "11568e0071819cf9144adda31c36ef8f67d58493",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
