@@ -94,9 +94,9 @@
  * Enable support for battery hostcmd, supporting longer strings.
  * support for EC_CMD_BATTERY_GET_STATIC version 1.
  */
-#define CONFIG_BATTERY_V2
+#define CONFIG_BATTERY_INFO
 #define CONFIG_BATTERY_COUNT 1
-#define CONFIG_HOSTCMD_BATTERY_V2
+#define CONFIG_HOSTCMD_BATTERY_INFO
 
 /* Chipset config */
 #define CONFIG_CHIPSET_ALDERLAKE_SLG4BD44540
@@ -147,6 +147,11 @@
 /* Enable I2C Support */
 #define CONFIG_I2C
 #define CONFIG_I2C_CONTROLLER
+
+/* Configure the APB2 and APB3 CLK to 40MHz.
+ * Improves I/O performance.
+ */
+#define NPCX_CORE_ABP2_ABP3_CLOCK_40M
 
 /* EDP back-light control defines */
 #define CONFIG_BACKLIGHT_LID

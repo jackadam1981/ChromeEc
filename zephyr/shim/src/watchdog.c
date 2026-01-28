@@ -7,6 +7,7 @@
 #include "ec_tasks.h"
 #include "hooks.h"
 #include "panic.h"
+#include "panic_utils.h"
 #include "task.h"
 #include "watchdog.h"
 
@@ -18,6 +19,11 @@
 #include <zephyr/logging/log.h>
 
 LOG_MODULE_REGISTER(watchdog_shim, LOG_LEVEL_ERR);
+
+#ifdef CONFIG_PLATFORM_EC_WATCHDOG_DUMP_THREADS_CALL_STACK
+BUILD_ASSERT(CONFIG_AUX_TIMER_PERIOD_MS >= 500,
+	     "Make sure we have enough lead time to dump call stacks");
+#endif
 
 struct watchdog_info {
 	const struct device *wdt_dev;
@@ -155,40 +161,15 @@ void watchdog_reload(void)
 		wdt_feed(wdt_info[i].wdt_dev, wdt_chan[i]);
 	}
 }
-DECLARE_HOOK(HOOK_TICK, watchdog_reload, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_TICK, watchdog_reload, HOOK_PRIO_LAST);
 
-static uint32_t get_stack_ptr(const struct k_thread *thread)
-{
-#if defined(CONFIG_ARM64)
-	/* We are assuming that the SP of interest is SP_EL1 */
-	return thread->callee_saved.sp_elx;
-#elif defined(CONFIG_ARM)
-	return thread->callee_saved.psp;
-#elif defined(CONFIG_X86)
-#if defined(CONFIG_X86_64)
-	return thread->callee_saved.rsp;
-#else
-	return thread->callee_saved.esp;
-#endif
-#elif defined(CONFIG_RISCV)
-	return thread->callee_saved.sp;
-#elif defined(CONFIG_ARCH_POSIX)
-	return (uint32_t)thread->callee_saved.thread_status;
-#endif
-}
-
-static void log_thread_info(const struct k_thread *thread, void *user_data)
+static void print_sp_pc(const struct k_thread *thread)
 {
 	uint32_t sp = get_stack_ptr(thread);
 	struct arch_esf *esf = (struct arch_esf *)sp;
 	char thread_name[16];
 
-#ifdef CONFIG_THREAD_NAME
-	snprintf(thread_name, sizeof(thread_name), "%s", thread->name);
-#else
-	snprintf(thread_name, sizeof(thread_name), "TASK_ID: %d",
-		 thread_id_to_task_id((k_tid_t)thread));
-#endif
+	get_thread_name(thread, thread_name, sizeof(thread_name));
 
 #if defined(CONFIG_ARM)
 	printk("%s [SP=%p, PC=%p, LR=%p]\n", thread_name, (void *)sp,
@@ -208,6 +189,14 @@ static void log_thread_info(const struct k_thread *thread, void *user_data)
 	/* Nothing useful within esf to be printed here */
 	ARG_UNUSED(esf);
 #endif
+}
+
+static void log_thread_info(const struct k_thread *thread, void *user_data)
+{
+	print_sp_pc(thread);
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_WATCHDOG_DUMP_THREADS_CALL_STACK)) {
+		print_stack_trace(thread);
+	}
 }
 
 __maybe_unused static void wdt_warning_handler(const struct device *wdt_dev,
@@ -252,7 +241,7 @@ __maybe_unused static void wdt_warning_handler(const struct device *wdt_dev,
 #endif
 
 	if (IS_ENABLED(CONFIG_THREAD_MONITOR)) {
-		k_thread_foreach(log_thread_info, NULL);
+		k_thread_foreach_unlocked(log_thread_info, NULL);
 	}
 
 	/* Save the current task id in panic info.

@@ -50,6 +50,40 @@ def chre_module(name, checkout):
     )
 
 
+module_name_overrides = {
+    "hal_stm32": "stm32",
+    "hal_intel_public": "intel",
+    "hal_egis": "egis",
+}
+
+
+def legacy_repo_from_zephyrproject(zephyrproject_module):
+    """Given a flattened zephyr module name, return the legacy repository
+    name.
+
+    Flattened zephyr module names are specified as a directory found under
+       third_party/zephyrproject/modules/hal
+       third_party/zephyrproject/modules/lib
+
+    Example: flattened zephyr module zephyrproject/modules/hal/stm32, pass
+    in "stm32" as the module name, this routine returns "hal_stm32".
+
+    Args:
+        zephyrproject_module: The module name found under
+            third_party/zephyrproject/modules/hal or
+            third_party/zephyrproject/modules/lib
+    Return:
+        Returns the legacy repository under third_party/zephyr/ that maps
+        to the specified zephyrproject_module.
+        If there is no valid mapping, returns zephyrproject_module unchanged.
+    """
+    for key, value in module_name_overrides.items():
+        if value == zephyrproject_module:
+            return key
+
+    return zephyrproject_module
+
+
 known_modules = {
     # TODO(b/384581513): boringssl is not officially recognized by Zephyr,
     # since it doesn't have a zephyr/module.yaml. That doesn't prevent us from
@@ -57,25 +91,95 @@ known_modules = {
     "boringssl": lambda name, checkout: (
         checkout / "src" / "third_party" / name
     ),
-    "hal_stm32": third_party_module,
     "chre": chre_module,
-    "cmsis": third_party_module,
-    "cmsis_6": third_party_module,
+    "cmsis": lambda name, checkout: (
+        checkout
+        / "src"
+        / "third_party"
+        / "zephyrproject"
+        / "modules"
+        / "hal"
+        / "cmsis"
+    ),
+    "cmsis_6": lambda name, checkout: (
+        checkout
+        / "src"
+        / "third_party"
+        / "zephyrproject"
+        / "modules"
+        / "hal"
+        / "cmsis_6"
+    ),
     "ec": lambda name, checkout: (checkout / "src" / "platform" / "ec"),
     "egis": lambda name, checkout: (
         checkout / "src" / "platform" / "fingerprint" / "egis"
     ),
+    "egis_module": lambda name, checkout: (
+        checkout
+        / "src"
+        / "third_party"
+        / "zephyrproject"
+        / "modules"
+        / "hal"
+        / "egis_module"
+    ),
     "elan": lambda name, checkout: (
         checkout / "src" / "platform" / "fingerprint" / "elan"
+    ),
+    "focaltech_fp": lambda name, checkout: (
+        checkout / "src" / "platform" / "fingerprint" / "focaltech"
     ),
     "fpc": lambda name, checkout: (
         checkout / "src" / "platform" / "fingerprint" / "fpc"
     ),
-    "nanopb": third_party_module,
-    "pigweed": lambda name, checkout: (checkout / "src" / "third_party" / name),
-    "hal_intel_public": third_party_module,
-    "picolibc": third_party_module,
+    "google-private": third_party_module,
+    "hal_egis": lambda name, checkout: (
+        checkout
+        / "src"
+        / "third_party"
+        / "zephyrproject"
+        / "modules"
+        / "hal"
+        / "egis"
+    ),
+    "hal_intel_public": lambda name, checkout: (
+        checkout
+        / "src"
+        / "third_party"
+        / "zephyrproject"
+        / "modules"
+        / "hal"
+        / "intel"
+    ),
+    "hal_stm32": lambda name, checkout: (
+        checkout
+        / "src"
+        / "third_party"
+        / "zephyrproject"
+        / "modules"
+        / "hal"
+        / "stm32"
+    ),
     "intel_module_private": third_party_module,
+    "nanopb": lambda name, checkout: (
+        checkout
+        / "src"
+        / "third_party"
+        / "zephyrproject"
+        / "modules"
+        / "lib"
+        / "nanopb"
+    ),
+    "pigweed": lambda name, checkout: (checkout / "src" / "third_party" / name),
+    "picolibc": lambda name, checkout: (
+        checkout
+        / "src"
+        / "third_party"
+        / "zephyrproject"
+        / "modules"
+        / "lib"
+        / "picolibc"
+    ),
 }
 
 
@@ -117,6 +221,14 @@ def locate_from_directory(directory):
 
     for name in known_modules:
         modpath = (directory / name).resolve()
+        if (modpath / "zephyr" / "module.yml").is_file():
+            result[name] = modpath
+            continue
+        module_name = module_name_overrides.get(name, name)
+        modpath = (directory / "hal" / module_name).resolve()
+        if (modpath / "zephyr" / "module.yml").is_file():
+            result[name] = modpath
+        modpath = (directory / "lib" / module_name).resolve()
         if (modpath / "zephyr" / "module.yml").is_file():
             result[name] = modpath
 

@@ -7,10 +7,10 @@
 #include "crc8.h"
 #include "emul/emul_common_i2c.h"
 #include "emul/emul_smart_battery.h"
-#include "emul/emul_stub_device.h"
 
 #include <zephyr/device.h>
 #include <zephyr/drivers/emul.h>
+#include <zephyr/drivers/emul_stub_device.h>
 #include <zephyr/drivers/i2c.h>
 #include <zephyr/drivers/i2c_emul.h>
 #include <zephyr/logging/log.h>
@@ -533,7 +533,7 @@ void sbat_emul_set_response(const struct emul *emul, int cmd, uint8_t *buf,
 		return;
 	}
 
-	data->num_to_read = MIN(len, MSG_BUF_LEN - 1);
+	data->num_to_read = min(len, MSG_BUF_LEN - 1);
 	memcpy(data->msg_buf, buf, data->num_to_read);
 	data->bat.error_code = STATUS_CODE_OK;
 	sbat_emul_append_pec(emul, cmd);

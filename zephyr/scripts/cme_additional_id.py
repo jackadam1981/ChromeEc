@@ -26,7 +26,7 @@ AdditionalInfo = collections.namedtuple(
 ADDITIONAL_DICTIONARY = {
     "realtek,rts54": [
         AdditionalInfo(
-            "realtek,jhl8040",
+            "intel,jhl8040",
             "mux",
             None,
             {
@@ -44,7 +44,7 @@ ADDITIONAL_DICTIONARY = {
             },
         ),
         AdditionalInfo(
-            "realtek,jhl9040",
+            "intel,jhl9040",
             "mux",
             None,
             {
@@ -62,7 +62,7 @@ ADDITIONAL_DICTIONARY = {
             },
         ),
         AdditionalInfo(
-            "realtek,jhl9040",
+            "intel,jhl9040",
             "mux",
             None,
             {
@@ -116,7 +116,7 @@ ADDITIONAL_DICTIONARY = {
             },
         ),
         AdditionalInfo(
-            "realtek,jhl9040",
+            "intel,jhl9040",
             "mux",
             None,
             {
@@ -134,7 +134,7 @@ ADDITIONAL_DICTIONARY = {
             },
         ),
         AdditionalInfo(
-            "realtek,tusb1044",
+            "ti,tusb1044",
             "mux",
             None,
             {
@@ -152,7 +152,7 @@ ADDITIONAL_DICTIONARY = {
             },
         ),
         AdditionalInfo(
-            "realtek,tusb1044",
+            "ti,tusb1044",
             "mux",
             None,
             {
@@ -166,6 +166,114 @@ ADDITIONAL_DICTIONARY = {
                 # the ascii characters "GOOG0O" on the 27-32 bytes
                 "multi_byte_mask": "0x000000000000000000000000000000000000000000000000000000ffffffffffff0000000000",
                 "multi_byte_value": "0x000000000000000000000000000000000000000000000000000000474f4f47304F0000000000",
+                "bytes": 38,
+            },
+        ),
+        AdditionalInfo(
+            "intel,jhl9040",
+            "mux",
+            None,
+            {
+                # the combined command string is 0x3A 0x3 0x0 0x0 0x26
+                "reg": "0x3A",
+                "write_data": "0x03000026",
+                "bytes": 0,
+            },
+            {
+                "reg": "0x80",
+                # the ascii characters "GOOG0P" on the 27-32 bytes
+                "multi_byte_mask": "0x000000000000000000000000000000000000000000000000000000ffffffffffff0000000000",
+                "multi_byte_value": "0x000000000000000000000000000000000000000000000000000000474f4f4730500000000000",
+                "bytes": 38,
+            },
+        ),
+        AdditionalInfo(
+            "parade,ps8762",
+            "mux",
+            None,
+            {
+                # the combined command string is 0x3A 0x3 0x0 0x0 0x26
+                "reg": "0x3A",
+                "write_data": "0x03000026",
+                "bytes": 0,
+            },
+            {
+                "reg": "0x80",
+                # the ascii characters "GOOG0R" on the 27-32 bytes
+                "multi_byte_mask": "0x000000000000000000000000000000000000000000000000000000ffffffffffff0000000000",
+                "multi_byte_value": "0x000000000000000000000000000000000000000000000000000000474f4f4730520000000000",
+                "bytes": 38,
+            },
+        ),
+        AdditionalInfo(
+            "intel,jhl9040",
+            "mux",
+            None,
+            {
+                # the combined command string is 0x3A 0x3 0x0 0x0 0x26
+                "reg": "0x3A",
+                "write_data": "0x03000026",
+                "bytes": 0,
+            },
+            {
+                "reg": "0x80",
+                # the ascii characters "GOOG0S" on the 27-32 bytes
+                "multi_byte_mask": "0x000000000000000000000000000000000000000000000000000000ffffffffffff0000000000",
+                "multi_byte_value": "0x000000000000000000000000000000000000000000000000000000474f4f4730530000000000",
+                "bytes": 38,
+            },
+        ),
+        AdditionalInfo(
+            "realtek,rts5460z",
+            "mux",
+            None,
+            {
+                # the combined command string is 0x3A 0x3 0x0 0x0 0x26
+                "reg": "0x3A",
+                "write_data": "0x03000026",
+                "bytes": 0,
+            },
+            {
+                "reg": "0x80",
+                # the ascii characters "GOOG0T" on the 27-32 bytes
+                "multi_byte_mask": "0x000000000000000000000000000000000000000000000000000000ffffffffffff0000000000",
+                "multi_byte_value": "0x000000000000000000000000000000000000000000000000000000474f4f4730540000000000",
+                "bytes": 38,
+            },
+        ),
+        AdditionalInfo(
+            "parade,ps8747",
+            "mux",
+            None,
+            {
+                # the combined command string is 0x3A 0x3 0x0 0x0 0x26
+                "reg": "0x3A",
+                "write_data": "0x03000026",
+                "bytes": 0,
+            },
+            {
+                "reg": "0x80",
+                # the ascii characters "GOOG0U" on the 27-32 bytes
+                "multi_byte_mask": "0x000000000000000000000000000000000000000000000000000000ffffffffffff0000000000",
+                "multi_byte_value": "0x000000000000000000000000000000000000000000000000000000474f4f4730550000000000",
+                "bytes": 38,
+            },
+        ),
+        AdditionalInfo(
+            "ite,it5205",
+            "mux",
+            None,
+            {
+                # the combined command string is 0x3A 0x3 0x0 0x0 0x26
+                "reg": "0x3A",
+                "write_data": "0x03000026",
+                "bytes": 0,
+            },
+            {
+                "reg": "0x80",
+                # the ascii characters "GOOG0W" on the 27-32 bytes
+                "multi_byte_mask": "0x000000000000000000000000000000000000000000000000000000ffffffffffff0000000000",
+                "multi_byte_value": "0x000000000000000000000000000000000000000000000000000000474f4f4730570000000000",
                 "bytes": 38,
             },
         ),

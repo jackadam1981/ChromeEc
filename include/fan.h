@@ -19,9 +19,15 @@
 #include <zephyr/devicetree.h>
 #include <zephyr/drivers/pwm.h>
 
+#endif
+#endif
+
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+#ifdef CONFIG_ZEPHYR
+#ifdef CONFIG_PLATFORM_EC_FAN
 
 #define NODE_ID_AND_COMMA(node_id) node_id,
 enum fan_channel {
@@ -262,6 +268,16 @@ extern struct fan_data fan_data[];
  * Return       Fan status (see fan_status enum definition)
  */
 enum fan_status board_override_fan_control_duty(int ch);
+
+/**
+ * Smart fan control function.
+ *
+ * The function sets the pwm duty to reach the target rpm
+ *
+ * @param ch    Fan number (index into fan_data[] and fans[])
+ * Return       Fan status (see fan_status enum definition)
+ */
+enum fan_status fan_smart_control(int ch);
 #endif
 
 #ifdef __cplusplus
