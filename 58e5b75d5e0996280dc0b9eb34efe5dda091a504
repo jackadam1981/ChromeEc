@@ -16,6 +16,24 @@
       "message": "Change LGTM.\n\nI would suggest to modify the common implementation and add a CONFIG_PLATFORM_EC_BATTERY_CUTOFF_RETRY_COUNT like CONFIG_PLATFORM_EC_I2C_NACK_RETRY_COUNT to let each board config the retry count.",
       "revId": "58e5b75d5e0996280dc0b9eb34efe5dda091a504",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "def049f8_a52ffae1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1558277
+      },
+      "writtenOn": "2026-01-28T04:36:26Z",
+      "side": 1,
+      "message": "Thank you for your suggestion. We are trying to move it to common.",
+      "parentUuid": "ee12a412_c56e831f",
+      "revId": "58e5b75d5e0996280dc0b9eb34efe5dda091a504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
