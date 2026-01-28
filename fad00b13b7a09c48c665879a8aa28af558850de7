@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a36565ae_ecd1e438",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1369019
+      },
+      "writtenOn": "2026-01-28T17:45:41Z",
+      "side": 1,
+      "message": "Matsu changed the h/w circuit from the Ocelot reference schematic, so changing their EC GPIO to open drain is correct to match their implementation.",
+      "revId": "fad00b13b7a09c48c665879a8aa28af558850de7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
