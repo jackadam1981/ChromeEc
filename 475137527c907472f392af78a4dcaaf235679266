@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "476e7a1d_746905b2",
+        "filename": "common/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2026-01-28T10:56:48Z",
+      "side": 1,
+      "message": "Return EC_RES_SUCCESS otherwise ectool returns non-zero and the caller may think the command fails.",
+      "range": {
+        "startLine": 410,
+        "startChar": 10,
+        "endLine": 410,
+        "endChar": 12
+      },
+      "revId": "475137527c907472f392af78a4dcaaf235679266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
