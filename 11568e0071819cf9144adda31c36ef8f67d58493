@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "63a11a6d_2fa84bef",
+        "filename": "zephyr/shim/chip/ft90/enter_bootloader.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2026-01-28T06:18:34Z",
+      "side": 1,
+      "message": "Yes, this implementation is OK.",
+      "parentUuid": "a89375ae_199eae2c",
+      "revId": "11568e0071819cf9144adda31c36ef8f67d58493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7d62c587_06069ac5",
         "filename": "zephyr/shim/chip/ft90/enter_bootloader.c",
         "patchSetId": 2
@@ -54,6 +72,24 @@
       "writtenOn": "2026-01-23T12:07:06Z",
       "side": 1,
       "message": "@wangyong@focaltech.corp-partner.google.com can you double-check values in this file?",
+      "revId": "11568e0071819cf9144adda31c36ef8f67d58493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b4637d5_6ed2a5d6",
+        "filename": "zephyr/shim/chip/ft90/include/flash_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 4219742
+      },
+      "writtenOn": "2026-01-28T06:18:34Z",
+      "side": 1,
+      "message": "The values are OK.",
+      "parentUuid": "5d3d7e4d_ee00976e",
       "revId": "11568e0071819cf9144adda31c36ef8f67d58493",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
