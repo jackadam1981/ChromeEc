@@ -15,6 +15,7 @@
 #include "mpu.h"
 #endif
 #include "otp_key.h"
+#include "panic.h"
 #include "rollback.h"
 #include "rollback_private.h"
 #include "sha256.h"
@@ -22,6 +23,8 @@
 #include "task.h"
 #include "trng.h"
 #include "util.h"
+
+#include <stdbool.h>
 
 #ifdef CONFIG_ROLLBACK_SECRET_SIZE
 #ifdef CONFIG_BORINGSSL_CRYPTO
@@ -64,25 +67,50 @@ static int get_rollback_offset(int region)
 #endif
 }
 
+#ifdef CONFIG_ROLLBACK_MPU_PROTECT
+/**
+ * @brief Checks the return value from MPU lock/unlock operations and panics if
+ * that value is not success.
+ *
+ * @param rv The return value from the mpu_lock_rollback() function.
+ *           Expected to be EC_SUCCESS on success.
+ * @param func_name The name of the function that called mpu_lock_rollback()
+ */
+static void check_mpu_rv(int rv, const char *func_name)
+{
+	if (rv != EC_SUCCESS) {
+		ccprints("ERROR! %s failed to lock/unlock MPU, rv=%d",
+			 func_name, rv);
+#if defined(CONFIG_ZEPHYR)
+		k_panic();
+#else
+		software_panic(PANIC_SW_ASSERT, task_get_current());
+#endif
+	}
+}
+#endif /* CONFIG_ROLLBACK_MPU_PROTECT */
+
 /*
  * When MPU is available, read rollback with interrupts disabled, to minimize
  * time protection is left open.
  */
-static void lock_rollback(uint32_t key)
+test_export_static void lock_rollback(uint32_t key)
 {
 #ifdef CONFIG_ROLLBACK_MPU_PROTECT
-	mpu_lock_rollback(1);
+	int rv = mpu_lock_rollback(true);
+	check_mpu_rv(rv, __func__);
 	irq_unlock(key);
 #endif
 }
 
-static uint32_t unlock_rollback(void)
+test_export_static uint32_t unlock_rollback(void)
 {
 #ifdef CONFIG_ROLLBACK_MPU_PROTECT
 	uint32_t key;
 
 	key = irq_lock();
-	mpu_lock_rollback(0);
+	int rv = mpu_lock_rollback(false);
+	check_mpu_rv(rv, __func__);
 	return key;
 #else
 	return 0;

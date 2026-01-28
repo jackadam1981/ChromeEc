@@ -124,6 +124,9 @@ struct battery_static_info {
 #ifdef CONFIG_BATTERY_VENDOR_PARAM
 	uint8_t vendor_param[SBS_MAX_STR_OBJ_SIZE];
 #endif
+#ifdef CONFIG_PLATFORM_EC_BATTERY_MANUF_INFO
+	char manuf_info[SBS_MAX_STR_OBJ_SIZE]; /* SB_MANUFACTURE_INFO */
+#endif /* CONFIG_PLATFORM_EC_BATTERY_MANUF_INFO */
 };
 
 extern struct battery_static_info battery_static[];
@@ -379,6 +382,26 @@ int battery_manufacturer_name(char *dest, int size);
 int get_battery_manufacturer_name(char *dest, int size);
 
 /**
+ * Read manufacture info string.
+ *
+ * @param dest		Destination buffer.
+ * @param size		Length of destination buffer in chars.
+ * @return non-zero if error.
+ */
+int battery_manufacture_info(char *dest, int size);
+
+/**
+ * Read manufacture info string.
+ *
+ * This can be overridden to return a chip or board custom string.
+ *
+ * @param dest		Destination buffer.
+ * @param size		Length of destination buffer in chars.
+ * @return non-zero if error.
+ */
+int get_battery_manufacture_info(char *dest, int size);
+
+/**
  * Read device name.
  *
  * @param dest		Destination buffer.
@@ -582,6 +605,14 @@ void battery_set_dynamic_info(const struct batt_params *params, bool ac_present,
  * @return true if battery is full, false otherwise.
  */
 int battery_is_full(struct batt_params *batt);
+
+/**
+ * Determine if the battery is outside of allowable temperature range.
+ *
+ * @param batt Battery parameters.
+ * @return true if battery is outside charging temperature range.
+ */
+int battery_outside_charging_temperature(struct batt_params *batt);
 
 #ifdef CONFIG_BATTERY_ACCESS_LIMIT
 enum battery_access_type battery_check_access_limit(void);

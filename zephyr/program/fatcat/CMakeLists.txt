@@ -35,14 +35,10 @@ if(DEFINED CONFIG_BOARD_FELINO)
 		project(felino4es)
 		add_subdirectory(felino4es)
 		zephyr_include_directories("felino4es/include")
-		zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
-						"felino4es/src/keyboard_customization.c")
 	else()
 		project(felino)
 		add_subdirectory(felino)
 		zephyr_include_directories("felino/include")
-		zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
-						"felino/src/keyboard_customization.c")
 	endif()
 endif()
 
@@ -62,8 +58,6 @@ if(DEFINED CONFIG_BOARD_LAPIS)
 	project(lapis)
 	add_subdirectory(lapis)
 	zephyr_include_directories("lapis/include")
-	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
-					"lapis/src/keyboard_customization.c")
 endif()
 
 if(DEFINED CONFIG_BOARD_MOONSTONE)
@@ -85,6 +79,7 @@ if(DEFINED CONFIG_BOARD_RUBY)
 	zephyr_include_directories("ruby/include")
 	zephyr_library_sources("ruby/src/touch_panel.c")
 	zephyr_library_sources("ruby/src/board_power.c")
+	zephyr_library_sources("ruby/src/forcepad.c")
 	zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_CUSTOMIZATION
 					"ruby/src/keyboard_customization.c")
 endif()

@@ -134,6 +134,13 @@ static void print_battery_strings(void)
 	if (check_print_error(battery_manufacturer_name(text, sizeof(text))))
 		ccprintf("%s\n", text);
 
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_BATTERY_MANUF_INFO)) {
+		print_item_name("ManufInfo:");
+		if (check_print_error(
+			    battery_manufacture_info(text, sizeof(text))))
+			ccprintf("%s\n", text);
+	}
+
 	print_item_name("Device:");
 	if (check_print_error(battery_device_name(text, sizeof(text))))
 		ccprintf("%s\n", text);
@@ -745,6 +752,13 @@ test_mockable int battery_manufacturer_name(char *dest, int size)
 	return get_battery_manufacturer_name(dest, size);
 }
 
+#ifdef CONFIG_PLATFORM_EC_BATTERY_MANUF_INFO
+test_mockable int battery_manufacture_info(char *dest, int size)
+{
+	return get_battery_manufacture_info(dest, size);
+}
+#endif /* CONFIG_PLATFORM_EC_BATTERY_MANUF_INFO */
+
 __overridable enum battery_disconnect_state battery_get_disconnect_state(void)
 {
 	return BATTERY_NOT_DISCONNECTED;
@@ -872,4 +886,28 @@ test_mockable int battery_is_full(struct batt_params *batt)
 	 */
 	ret = (batt->state_of_charge >= 90 && batt->desired_current == 0);
 	return ret;
+}
+
+/* Determine if the battery is outside of allowable temperature range */
+int battery_outside_charging_temperature(struct batt_params *batt)
+{
+	const struct battery_info *batt_info = battery_get_info();
+	int batt_temp_c = DECI_KELVIN_TO_CELSIUS(batt->temperature);
+	int max_c, min_c;
+
+	if (batt->flags & BATT_FLAG_BAD_TEMPERATURE)
+		return 0;
+
+	if ((batt->desired_voltage == 0) && (batt->desired_current == 0)) {
+		max_c = batt_info->start_charging_max_c;
+		min_c = batt_info->start_charging_min_c;
+	} else {
+		max_c = batt_info->charging_max_c;
+		min_c = batt_info->charging_min_c;
+	}
+
+	if ((batt_temp_c >= max_c) || (batt_temp_c <= min_c)) {
+		return 1;
+	}
+	return 0;
 }

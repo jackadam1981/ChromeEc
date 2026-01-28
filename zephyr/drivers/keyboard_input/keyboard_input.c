@@ -136,8 +136,6 @@ static void keyboard_input_cb(struct input_event *evt, void *user_data)
 		mkbp_data[col] &= ~BIT(row);
 	}
 
-	LOG_HEXDUMP_INF(mkbp_data, sizeof(mkbp_data), "mkbp_data");
-
 	mkbp_keyboard_add(mkbp_data);
 #endif
 }
@@ -223,7 +221,8 @@ static int cmd_kbpress(const struct shell *sh, size_t argc, char **argv)
 }
 
 SHELL_CMD_ARG_REGISTER(kbpress, NULL,
-		       "Simulate keypress: kbpress [clear | col row [0 | 1]]",
+		       SHELL_HELP("Simulate keypress",
+				  "[clear | col row [0 | 1]]"),
 		       cmd_kbpress, 1, 3);
 
 static enum ec_status
