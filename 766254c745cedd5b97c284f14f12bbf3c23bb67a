@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d38a2af5_bb89c0a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2026-01-28T18:24:24Z",
+      "side": 1,
+      "message": "Is there a design doc to explain this change? Please ensure the stakeholders, like Yu-Ping, have signed off on the design.",
+      "revId": "766254c745cedd5b97c284f14f12bbf3c23bb67a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "735499f2_8974cca4",
         "filename": "zephyr/CMakeLists.txt",
         "patchSetId": 2
