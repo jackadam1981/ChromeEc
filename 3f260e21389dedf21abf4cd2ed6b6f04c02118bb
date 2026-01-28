@@ -16,6 +16,24 @@
       "message": "Shouldn\u0027t this CL have been generated with the copybot (or copybara) tool?\n\nWe want the syncing to be automated.",
       "revId": "3f260e21389dedf21abf4cd2ed6b6f04c02118bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5556070_75954998",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-28T00:03:26Z",
+      "side": 1,
+      "message": "@jpmurphy@google.com copybot is set up, right? Should this be abandoned?",
+      "parentUuid": "89c9dc1a_67b13a43",
+      "revId": "3f260e21389dedf21abf4cd2ed6b6f04c02118bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
