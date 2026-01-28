@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "331baf9f_5307986a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2026-01-28T18:56:50Z",
+      "side": 1,
+      "message": "You should diff them, there is no automatic copying from ec to ec-legacy.\n\nI added a Cq-Depend to make sure the other change gets merged. (the doc change is already merged)\n\nTherefore you should CR+1 this change, so that it can be merged as soon as the dependent cl is submitted.",
+      "parentUuid": "5081be91_5411a8dc",
+      "revId": "b818e80d68dde24fed3d10f046a94f02bb1f3561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d17312f_1db43938",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5c2c49b_f31cedf6",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2026-01-28T18:56:50Z",
+      "side": 1,
+      "message": "No I do not. The legacy version of the test is being deleted, but these also have zephyr hwtest equivalents that are still in place.",
+      "parentUuid": "8d17312f_1db43938",
+      "range": {
+        "startLine": 450,
+        "startChar": 25,
+        "endLine": 450,
+        "endChar": 31
+      },
+      "revId": "b818e80d68dde24fed3d10f046a94f02bb1f3561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb2b3dba_c7ebab35",
@@ -54,6 +96,30 @@
       "writtenOn": "2026-01-28T00:16:26Z",
       "side": 1,
       "message": "@jpmurphy@google.com Does this file get synced by copybot to the `ec-legacy` branch? \n\nWhen everything was in a single branch, making a change to the `run_device_tests.py` script that breaks something for Zephyr or EC will be caught by the CQ.\n\nHow does that work with separate branches? e.g., this change will be tested in the CQ against the Zephyr Renode builder, but will the change also be propagated to the `firmware-ec-legacy-renode-cq` builder so that it\u0027s tested for the EC code?\n\n(Same kind of question when we make changes to the code in `common/fpsensor` that is shared.)",
+      "range": {
+        "startLine": 451,
+        "startChar": 1,
+        "endLine": 463,
+        "endChar": 23
+      },
+      "revId": "b818e80d68dde24fed3d10f046a94f02bb1f3561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bc50ffa_3385df4b",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2026-01-28T18:56:50Z",
+      "side": 1,
+      "message": "Nothing gets synced automatically. Ideally, you won\u0027t have shared code for very long. That is why it is important to get the unused files deleted soon, so people will stop updating them.",
+      "parentUuid": "cb2b3dba_c7ebab35",
       "range": {
         "startLine": 451,
         "startChar": 1,

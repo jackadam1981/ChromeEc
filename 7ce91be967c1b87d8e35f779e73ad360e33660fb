@@ -22,6 +22,30 @@
       },
       "revId": "7ce91be967c1b87d8e35f779e73ad360e33660fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a0a7fb2_169bb419",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2026-01-28T18:56:50Z",
+      "side": 0,
+      "message": "I\u0027m deleting the tests, I\u0027ll have to add these to the \"skip if we are not in zephyr\" list at line 450, even though they don\u0027t exist in zephyr.",
+      "parentUuid": "eec875a9_c70b4296",
+      "range": {
+        "startLine": 591,
+        "startChar": 0,
+        "endLine": 591,
+        "endChar": 72
+      },
+      "revId": "7ce91be967c1b87d8e35f779e73ad360e33660fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
