@@ -273,7 +273,13 @@ enum pdo_augmented_pps {
  * This value was experimentally determined to pass TEST.PD.PROT.SNK.5 and
  * TEST.PD.PROT.SRC.3 on various boards.
  */
+/* TODO(b/442730096):Debug pujjoga ErrorRecovery latency and remove this config
+ */
+#ifdef CONFIG_USBC_PD3_T_SENDER_RESPONSE_OVERRIDE
+#define PD3_T_SENDER_RESPONSE CONFIG_USBC_PD3_T_SENDER_RESPONSE_MS
+#else
 #define PD3_T_SENDER_RESPONSE (29 * MSEC)
+#endif
 #endif
 #define PD_T_PS_TRANSITION (500 * MSEC) /* between 450ms and 550ms */
 /*
@@ -3873,6 +3879,13 @@ int typec_update_cc(int port);
  */
 __override_proto enum pd_sdb_power_indicator
 board_get_pd_sdb_power_indicator(enum pd_sdb_power_state power_state);
+
+/*
+ * Return the number of USB Type-C ports that are allowed to source 3.0A
+ * simultaneously. Boards may override this to provide a custom or
+ * dynamic policy.
+ */
+__override_proto int pd_get_usb_pd_3a_ports(void);
 
 /****************************************************************************/
 

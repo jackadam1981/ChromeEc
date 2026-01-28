@@ -2533,11 +2533,30 @@ struct lightbar_params_v2_colors {
 	struct rgb_s color[8]; /* 0-3 are Google colors */
 } __ec_todo_packed;
 
+struct lightbar_params_v3 {
+	/*
+	 *  Number of LEDs reported by the EC.
+	 *  May be less than the actual number of LEDs in the lightbar.
+	 */
+	uint8_t reported_led_num;
+} __ec_todo_packed;
+
 /* Lightbar program. */
 #define EC_LB_PROG_LEN 192
 struct lightbar_program {
 	uint8_t size;
 	uint8_t data[EC_LB_PROG_LEN];
+} __ec_todo_unpacked;
+
+/*
+ * Lightbar program for large sequences. Sequences are sent in pieces, with
+ * increasing offset. The sequences are still limited by the amount reserved in
+ * EC RAM.
+ */
+struct lightbar_program_ex {
+	uint16_t offset;
+	uint8_t size;
+	uint8_t data[0];
 } __ec_todo_unpacked;
 
 struct ec_params_lightbar {
@@ -2586,6 +2605,7 @@ struct ec_params_lightbar {
 		struct lightbar_params_v2_colors set_v2par_colors;
 
 		struct lightbar_program set_program;
+		struct lightbar_program_ex set_program_ex;
 	};
 } __ec_todo_packed;
 
@@ -2612,6 +2632,8 @@ struct ec_response_lightbar {
 		struct lightbar_params_v2_brightness get_params_v2_bright;
 		struct lightbar_params_v2_thresholds get_params_v2_thlds;
 		struct lightbar_params_v2_colors get_params_v2_colors;
+
+		struct lightbar_params_v3 get_params_v3;
 
 		struct __ec_todo_unpacked {
 			uint32_t num;
@@ -2670,6 +2692,8 @@ enum lightbar_command {
 	LIGHTBAR_CMD_SET_PARAMS_V2_THRESHOLDS = 31,
 	LIGHTBAR_CMD_GET_PARAMS_V2_COLORS = 32,
 	LIGHTBAR_CMD_SET_PARAMS_V2_COLORS = 33,
+	LIGHTBAR_CMD_GET_PARAMS_V3 = 34,
+	LIGHTBAR_CMD_SET_PROGRAM_EX = 35,
 	LIGHTBAR_NUM_CMDS,
 };
 
@@ -8403,6 +8427,7 @@ struct ec_params_fp_passthru {
  * @note This enum must remain ordered, if you add new values you must ensure
  * that FP_CAPTURE_TYPE_MAX is still the last one.
  */
+/* LINT.IfChange */
 enum fp_capture_type {
 	FP_CAPTURE_TYPE_INVALID = -1,
 	FP_CAPTURE_VENDOR_FORMAT = 0,
@@ -8416,6 +8441,9 @@ enum fp_capture_type {
 	FP_CAPTURE_RESET_TEST = 20,
 	FP_CAPTURE_TYPE_MAX,
 };
+/* LINT.ThenChange(/test/fpsensor_utils.cc,
+ * /zephyr/test/fingerprint/task/src/fpsensor_debug.cc)
+ */
 
 /* The maximum number of capture types in enum fp_capture_type */
 #define FP_MAX_CAPTURE_TYPES 9
@@ -8908,6 +8936,32 @@ struct ec_response_battery_static_info_v2 {
 	char device_name[SBS_MAX_STR_OBJ_SIZE];
 	char serial[SBS_MAX_STR_OBJ_SIZE];
 	char chemistry[SBS_MAX_STR_OBJ_SIZE];
+} __ec_align4;
+
+/**
+ * struct ec_response_battery_static_info_v3 - hostcmd v3 battery static info
+ *
+ * Extends struct ec_response_battery_static_info_v2 with
+ * manuf_info.
+ *
+ * @design_capacity: battery design capacity (in mAh)
+ * @design_voltage: battery design voltage (in mV)
+ * @cycle_count: battery cycle count
+ * @manufacturer: battery manufacturer string
+ * @device_name: battery model string
+ * @serial: battery serial number string
+ * @chemistry: battery type string
+ * @manuf_info: battery manufacture info string (vendor specific)
+ */
+struct ec_response_battery_static_info_v3 {
+	uint16_t design_capacity;
+	uint16_t design_voltage;
+	uint32_t cycle_count;
+	char manufacturer[SBS_MAX_STR_OBJ_SIZE];
+	char device_name[SBS_MAX_STR_OBJ_SIZE];
+	char serial[SBS_MAX_STR_OBJ_SIZE];
+	char chemistry[SBS_MAX_STR_OBJ_SIZE];
+	char manuf_info[SBS_MAX_STR_OBJ_SIZE];
 } __ec_align4;
 
 /*

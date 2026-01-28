@@ -171,6 +171,11 @@
 			flags = <GPIO_INT_EDGE_FALLING>;
 			handler = "bma4xx_interrupt";
 		};
+		int_pmic_ec_resetb: pmic-ec-resetb {
+			irq-pin = <&gpio_pmic_ec_resetb>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "pmic_ec_resetb_interrupt";
+		};
 	};
 
 	named-gpios {
@@ -208,7 +213,6 @@
 			<&gpio9 7 0>,
 			<&gpioc 3 0>,
 			<&gpiod 5 0>,
-			<&gpiod 6 0>,
 			<&gpiod 7 0>,
 			<&gpioe 2 0>,
 			<&gpioe 4 0>;
@@ -227,6 +231,7 @@
 		&ksi7_gp22
 		&kso00_gp21
 		&kso01_gp20
+		&kso02_gp17
 		&kso03_gp16
 		&kso04_gp15
 		&kso05_gp14
@@ -275,21 +280,12 @@
 	zephyr,deferred-init;
 };
 
-&i2c1_0 {
-	pdc_power_p0: rts54-pdc@66 {
-		compatible = "realtek,rts54-pdc";
-		reg = <0x66>;
-		irq-gpios = <&gpioe 1 GPIO_ACTIVE_LOW>;
-		zephyr,deferred-init;
-		ccd;
-	};
-	pdc_power_p1: rts54-pdc@67 {
-		compatible = "realtek,rts54-pdc";
-		reg = <0x67>;
-		irq-gpios = <&gpio6 2 GPIO_ACTIVE_LOW>;
-		zephyr,deferred-init;
-	};
-	/* TODO(b:380121396): enable PDC I2C_S port if we need it */
+&pdc_power_p0 {
+	zephyr,deferred-init;
+};
+
+&pdc_power_p1 {
+	zephyr,deferred-init;
 };
 
 &thermistor_3V3_51K1_47K_4050B {

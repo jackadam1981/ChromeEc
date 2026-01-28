@@ -154,9 +154,6 @@
 		gpio_ec_soc_rtcrst: ec_soc_rtcrst {
 			gpios = <&gpioh 5 (GPIO_OUTPUT | GPIO_ACTIVE_LOW)>;
 		};
-		gpio_ec_ish_int_odl: ec_ish_int_odl {
-			gpios = <&gpioh 6 (GPIO_ODR_HIGH | GPIO_VOLTAGE_1P8)>;
-		};
 
             /*********** Port I *****************/
 		gpio_ec_forcepr_odl: ec_forcepr_odl {
@@ -237,31 +234,3 @@
 
 /* The eSPI shim requires this GPIO nodelabel */
 gpio_ec_pch_wake_odl: &gpio_ec_soc_wake_odl {};
-
-&i2c1 {
-	status = "okay";
-	pinctrl-0 = <&i2c1_clk_gpc1_default
-		&i2c1_data_gpc2_default>;
-	pinctrl-names = "default";
-};
-
-&i2c2 {
-	status = "okay";
-	pinctrl-0 = <&i2c2_clk_gpc7_default
-		&i2c2_data_gpd0_default>;
-	pinctrl-names = "default";
-};
-
-&i2c4 {
-	status = "okay";
-	pinctrl-0 = <&i2c4_clk_gpe0_default
-		&i2c4_data_gpe7_default>;
-	pinctrl-names = "default";
-};
-
-&i2c5 {
-	status = "okay";
-	pinctrl-0 = <&i2c5_clk_gpe1_default
-		     &i2c5_data_gpe2_default>;
-	pinctrl-names = "default";
-};

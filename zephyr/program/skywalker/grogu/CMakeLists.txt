@@ -4,3 +4,7 @@
 
 # Skywalker Makeifile
 zephyr_include_directories("include")
+zephyr_library_sources("src/touch_panel.c")
+zephyr_library_sources("src/board.c")
+zephyr_library_sources_ifdef(
+    CONFIG_PDC_RUNTIME_PORT_CONFIG "src/usbc.c")

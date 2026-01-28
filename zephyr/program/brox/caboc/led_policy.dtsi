@@ -8,6 +8,7 @@
 / {
 	led-colors {
 		compatible = "cros-ec,led-policy";
+		led-pins = <&led_pins>;
 
 		power-state-charge {
 			charge-state = "LED_PWRS_CHARGE";
@@ -35,7 +36,7 @@
 
 		power-state-discharge {
 			charge-state = "LED_PWRS_DISCHARGE";
-			batt-lvl = <BATTERY_LEVEL_LOW BATTERY_LEVEL_FULL>;
+			batt-lvl = <5 BATTERY_LEVEL_FULL>;
 
 			battery-led {
 				led-id = "EC_LED_ID_BATTERY_LED";
@@ -48,20 +49,25 @@
 
 		power-state-discharge-batt-low {
 			charge-state = "LED_PWRS_DISCHARGE";
-			batt-lvl = <BATTERY_LEVEL_EMPTY
-				    (BATTERY_LEVEL_LOW - 1)>;
+			batt-lvl = <BATTERY_LEVEL_EMPTY 4>;
 
 			battery-led {
 				led-id = "EC_LED_ID_BATTERY_LED";
 
-				/* Amber 1 sec, off 1 sec */
+				transition = "LED_TRANSITION_LINEAR";
+
+				/* Amber slow flashing */
 				color-0 {
 					led-color = <&battery_led_amber>;
-					period-ms = <1000>;
+					period-ms = <0>;
 				};
 				color-1 {
+					led-color = <&battery_led_amber>;
+					period-ms = <125>;
+				};
+				color-2 {
 					led-color = <&battery_led_off>;
-					period-ms = <1000>;
+					period-ms = <875>;
 				};
 			};
 		};
@@ -89,15 +95,20 @@
 
 			battery-led {
 				led-id = "EC_LED_ID_BATTERY_LED";
+				transition = "LED_TRANSITION_LINEAR";
 
-				/* Amber 0.5 sec, off 0.5 sec */
+				/* Amber fast flashing */
 				color-0 {
 					led-color = <&battery_led_amber>;
-					period-ms = <500>;
+					period-ms = <0>;
 				};
 				color-1 {
+					led-color = <&battery_led_amber>;
+					period-ms = <125>;
+				};
+				color-2 {
 					led-color = <&battery_led_off>;
-					period-ms = <500>;
+					period-ms = <375>;
 				};
 			};
 		};

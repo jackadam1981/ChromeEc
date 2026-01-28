@@ -11,8 +11,10 @@
 #include "../ite_overlay.dtsi"
 #include "../power_signal.dtsi"
 #include "../usba.dtsi"
+#include "cbi.dtsi"
 #include "led_pins.dtsi"
 #include "led_policy.dtsi"
+#include "temp_sensor.dtsi"
 #include "usbc.dtsi"
 
 / {
@@ -44,6 +46,12 @@
 			flags = <GPIO_INT_EDGE_BOTH>;
 			handler = "pmic_ec_resetb_interrupt";
 		};
+
+		int_tchscr_rst: tchscr-rst {
+			irq-pin = <&gpio_ec_tchscr_rst_3v3_odl>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "touch_screen_rst_interrupt";
+		};
 	};
 
 	named-gpios {
@@ -57,6 +65,14 @@
 
 		gpio_en_pwr_s3: en_pwr_s3 {
 			gpios = <&gpiob 6 (GPIO_OUTPUT_LOW)>;
+		};
+
+		gpio_ec_tchscr_en_3v3: ec_tchscr_en_3v3 {
+			gpios = <&gpiof 0 (GPIO_ODR_LOW)>;
+		};
+
+		gpio_ec_tchscr_rst_3v3_odl: ec_tchscr_rst_3v3_odl {
+			gpios = <&gpiof 1 (GPIO_INPUT)>;
 		};
 	};
 
@@ -143,6 +159,22 @@
 
 &sha0 {
 	status = "okay";
+};
+
+&usbc_port0 {
+        zephyr,deferred-init;
+};
+
+&usbc_port1 {
+        zephyr,deferred-init;
+};
+
+&pdc_power_p0 {
+        zephyr,deferred-init;
+};
+
+&pdc_power_p1 {
+        zephyr,deferred-init;
 };
 
 /*
