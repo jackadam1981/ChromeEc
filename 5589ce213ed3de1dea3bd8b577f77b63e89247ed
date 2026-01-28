@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94730974_1aa582fc",
+        "filename": "common/fpsensor/fpsensor_ascp_establish.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-28T09:57:46Z",
+      "side": 1,
+      "message": "This can be probably added in a separate CL.",
+      "revId": "5589ce213ed3de1dea3bd8b577f77b63e89247ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "078c311e_2c3c6beb",
+        "filename": "zephyr/include/ascp/ascp.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-28T09:57:46Z",
+      "side": 1,
+      "message": "I don\u0027t think the API should rely on the Host Command format. Please try to adjust the subsystem to be more independent",
+      "range": {
+        "startLine": 18,
+        "startChar": 24,
+        "endLine": 18,
+        "endChar": 51
+      },
+      "revId": "5589ce213ed3de1dea3bd8b577f77b63e89247ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9450438d_36b47eeb",
+        "filename": "zephyr/linker/iterables-rom.ld",
+        "patchSetId": 16
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-28T09:57:46Z",
+      "side": 1,
+      "message": "I don\u0027t think we need iterable section, since there will be always only one instance of ascp_api. Please check how ec_host_cmd (shell and logging are also good examples) subsystem is constructed and adjust it to the ascp needs.",
+      "revId": "5589ce213ed3de1dea3bd8b577f77b63e89247ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
