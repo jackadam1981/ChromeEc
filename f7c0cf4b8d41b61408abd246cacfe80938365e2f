@@ -33,6 +33,24 @@
       "message": "Can we use `k_uptime_delta()` here?",
       "revId": "f7c0cf4b8d41b61408abd246cacfe80938365e2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae6d2ccd_adae39fd",
+        "filename": "zephyr/shim/src/watchdog.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2026-01-28T18:48:07Z",
+      "side": 1,
+      "message": "Yes, that simplifies this some.",
+      "parentUuid": "240f7813_058c1278",
+      "revId": "f7c0cf4b8d41b61408abd246cacfe80938365e2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
