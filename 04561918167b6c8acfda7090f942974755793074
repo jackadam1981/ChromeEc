@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0b6dc41_54107085",
+        "filename": "zephyr/program/fatcat/lapis/project.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-01-28T20:33:46Z",
+      "side": 1,
+      "message": "Keep board specific changes in a separate CL from common code changes.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 40
+      },
+      "revId": "04561918167b6c8acfda7090f942974755793074",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
