@@ -11,6 +11,7 @@
 	common-pwrseq {
 		compatible = "intel,ap-pwrseq";
 
+		s5-inactivity-timeout = <600>;
 		sys-pwrok-delay = <3>;
 		all-sys-pwrgd-timeout = <20>;
 		sys-reset-delay = <60>;
