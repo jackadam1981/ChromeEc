@@ -47,12 +47,27 @@ if(DEFINED CONFIG_PLATFORM_EC AND EXISTS "${EDT_PICKLE}")
   if(NOT DEFINED CONFIG_FINGERPRINT_SENSOR AND
     DEFINED CONFIG_PLATFORM_EC_I2C)
 
-    message(STATUS "Generating component manifest file")
+    message(STATUS "Generating verions 1 of the component manifest file")
     set(CME_SCRIPT ${PLATFORM_EC}/zephyr/scripts/cme.py)
     set(CMD_CME ${PYTHON_EXECUTABLE} ${CME_SCRIPT}
       --zephyr-base ${ZEPHYR_BASE}
       --edt-pickle ${EDT_PICKLE}
       --manifest-file "${CMAKE_BINARY_DIR}/zephyr/component_manifest.json"
+      --version 1
+      ${EXTRA_EC_VERSION_FLAGS_LIST}
+    )
+    execute_process(COMMAND ${CMD_CME} RESULT_VARIABLE ret)
+    if(NOT "${ret}" STREQUAL "0")
+      message(FATAL_ERROR "cme.py failed with return code: ${ret}")
+    endif()
+
+    message(STATUS "Generating version 2 of the component manifest file")
+    set(CME_SCRIPT ${PLATFORM_EC}/zephyr/scripts/cme.py)
+    set(CMD_CME ${PYTHON_EXECUTABLE} ${CME_SCRIPT}
+      --zephyr-base ${ZEPHYR_BASE}
+      --edt-pickle ${EDT_PICKLE}
+      --manifest-file "${CMAKE_BINARY_DIR}/zephyr/component_manifest_v2.json"
+      --version 2
       ${EXTRA_EC_VERSION_FLAGS_LIST}
     )
     execute_process(COMMAND ${CMD_CME} RESULT_VARIABLE ret)
