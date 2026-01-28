@@ -33,6 +33,24 @@
       "message": "Does this patch change the `component_manifest.json` output path (or file name) of `emerge-xxx chromeos-zephyr`. Right now it\u0027s `SYSROOT/firmware/MODEL/component_manifest.json`.",
       "revId": "766254c745cedd5b97c284f14f12bbf3c23bb67a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bcdbd84_ff6bc445",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1548775
+      },
+      "writtenOn": "2026-01-28T23:17:14Z",
+      "side": 1,
+      "message": "it will output both v1 and v2 under the name of \"component_manifest.json\" and \"component_manifest_v2.json\" respectively.",
+      "parentUuid": "735499f2_8974cca4",
+      "revId": "766254c745cedd5b97c284f14f12bbf3c23bb67a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
