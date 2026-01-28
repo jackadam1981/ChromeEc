@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5081be91_5411a8dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-28T00:16:26Z",
+      "side": 1,
+      "message": "Let\u0027s merge https://crrev.com/c/7133683 and http://cl/845309142 before nuking any of these tests so that fingerprint boards that are still using EC are definitely created from the `ec-legacy` branch. (Running these tests are part of the release process, so if someone creates a release from the `main` branch before https://crrev.com/c/7133683, the tests won\u0027t be run.)\n\nAlso, @jpmurphy@google.com can you confirm that there are no differences between `main` and `ec-legacy` for all of these tests?\n\nWe\u0027ve been making changes recently: https://crrev.com/c/7512023.",
+      "revId": "b818e80d68dde24fed3d10f046a94f02bb1f3561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d17312f_1db43938",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-28T00:16:26Z",
+      "side": 1,
+      "message": "Do you mean EC?",
+      "range": {
+        "startLine": 450,
+        "startChar": 25,
+        "endLine": 450,
+        "endChar": 31
+      },
+      "revId": "b818e80d68dde24fed3d10f046a94f02bb1f3561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb2b3dba_c7ebab35",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-28T00:16:26Z",
+      "side": 1,
+      "message": "@jpmurphy@google.com Does this file get synced by copybot to the `ec-legacy` branch? \n\nWhen everything was in a single branch, making a change to the `run_device_tests.py` script that breaks something for Zephyr or EC will be caught by the CQ.\n\nHow does that work with separate branches? e.g., this change will be tested in the CQ against the Zephyr Renode builder, but will the change also be propagated to the `firmware-ec-legacy-renode-cq` builder so that it\u0027s tested for the EC code?\n\n(Same kind of question when we make changes to the code in `common/fpsensor` that is shared.)",
+      "range": {
+        "startLine": 451,
+        "startChar": 1,
+        "endLine": 463,
+        "endChar": 23
+      },
+      "revId": "b818e80d68dde24fed3d10f046a94f02bb1f3561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
