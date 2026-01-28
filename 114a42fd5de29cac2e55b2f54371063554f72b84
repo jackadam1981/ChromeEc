@@ -40,37 +40,6 @@
     },
     {
       "submitRequirement": {
-        "name": "BCID-Exit-Gate-Verified",
-        "description": {
-          "value": "BCID Exit Gate verification must be provided by the Exit Gate service."
-        },
-        "applicabilityExpression": {
-          "value": {
-            "expressionString": "is:bcid-exit-gate-applicable_gerrit"
-          }
-        },
-        "submittabilityExpression": {
-          "expressionString": "label:BCID-Exit-Gate-Verified\u003dMAX\u0026user\u003ddevtools-gerritcodereview-exitgate"
-        },
-        "overrideExpression": {},
-        "allowOverrideInChildProjects": false
-      },
-      "applicabilityExpressionResult": {
-        "value": {"expression":{"expressionString":"is:bcid-exit-gate-applicable_gerrit"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["is:bcid-exit-gate-applicable_gerrit"],"atomExplanations":{"value":{"is:bcid-exit-gate-applicable_gerrit":""}}}
-      },
-      "submittabilityExpressionResult": {
-        "value": {"expression":{"expressionString":"label:BCID-Exit-Gate-Verified=MAX&user=devtools-gerritcodereview-exitgate"},"status":"NOT_EVALUATED","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":[],"atomExplanations":{"value":null}}
-      },
-      "overrideExpressionResult": {},
-      "patchSetCommitId": "114a42fd5de29cac2e55b2f54371063554f72b84",
-      "legacy": {
-        "value": false
-      },
-      "forced": {},
-      "hidden": {}
-    },
-    {
-      "submitRequirement": {
         "name": "Code-Coverage",
         "description": {
           "value": "Submit requirement for the \u0027Code-Coverage\u0027 label"
@@ -267,7 +236,7 @@
         "value": {"expression":{"expressionString":"-branch:refs/meta/config"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["branch:refs/meta/config"],"atomExplanations":{"value":{"branch:refs/meta/config":""}}}
       },
       "submittabilityExpressionResult": {
-        "value": {"expression":{"expressionString":"label:Verified=MAX AND -label:Verified=MIN"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["label:Verified=MAX","label:Verified=MIN"],"atomExplanations":{"value":{"label:Verified=MAX":"","label:Verified=MIN":""}}}
+        "value": {"expression":{"expressionString":"label:Verified=MAX AND -label:Verified=MIN"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":["label:Verified=MAX"],"failingAtoms":["label:Verified=MIN"],"atomExplanations":{"value":{"label:Verified=MAX":"","label:Verified=MIN":""}}}
       },
       "overrideExpressionResult": {
         "value": {"expression":{"expressionString":"label:Bot-Commit=+1"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["label:Bot-Commit=+1"],"atomExplanations":{"value":{"label:Bot-Commit=+1":""}}}
