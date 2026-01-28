@@ -16,6 +16,24 @@
       "message": "See b:473512823#comment6",
       "revId": "44f0594622eb0db517a3ff841a92e0a8ba0d0039",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18776bad_3b4603df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2026-01-28T19:29:02Z",
+      "side": 1,
+      "message": "Restoring this change due to boot issue when increasing clock.",
+      "parentUuid": "ec06a219_64d0f1a7",
+      "revId": "44f0594622eb0db517a3ff841a92e0a8ba0d0039",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
