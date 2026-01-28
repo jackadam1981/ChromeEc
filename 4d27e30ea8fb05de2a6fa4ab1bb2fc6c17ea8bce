@@ -93,6 +93,30 @@
       },
       "revId": "4d27e30ea8fb05de2a6fa4ab1bb2fc6c17ea8bce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d0eaa1f_b621ca30",
+        "filename": "util/update_release_branch.py",
+        "patchSetId": 17
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2026-01-28T15:45:21Z",
+      "side": 1,
+      "message": "Thinking about this more, the reason I added it there and to have it on the legacy branch is because if you merge from the legacy branch to your target release branch, and there\u0027s a conflict that you want to continue to use the script, it needs to be present on the target branch, in which case it needs to be maintained in both places.",
+      "parentUuid": "7868cb1c_ae531a03",
+      "range": {
+        "startLine": 502,
+        "startChar": 0,
+        "endLine": 504,
+        "endChar": 5
+      },
+      "revId": "4d27e30ea8fb05de2a6fa4ab1bb2fc6c17ea8bce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
