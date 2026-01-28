@@ -70,6 +70,30 @@
       },
       "revId": "c73f824143401fee5787d445c5f8901cac1ae098",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e29bcb3_d055dfdf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-28T09:30:21Z",
+      "side": 1,
+      "message": "\u003e If we override write_protect_is_asserted for the test would that cause anything from permanent that we can\u0027t revert?\n\nProbably true if we can mock the WP state. We will need to perform some test clean-up. Let me try to prepare something.",
+      "parentUuid": "0a8d252f_5fb360df",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 67
+      },
+      "revId": "c73f824143401fee5787d445c5f8901cac1ae098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
