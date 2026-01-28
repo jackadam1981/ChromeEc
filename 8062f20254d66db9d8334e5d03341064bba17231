@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "160d3d8e_f0b896bb",
+        "filename": "zephyr/include/drivers/led.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2026-01-28T20:53:59Z",
+      "side": 1,
+      "message": "I don\u0027t understand how we can have more than 1 entry in led_patterns if we only support one LED.",
+      "revId": "8062f20254d66db9d8334e5d03341064bba17231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
