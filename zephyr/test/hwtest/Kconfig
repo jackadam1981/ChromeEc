@@ -121,6 +121,7 @@ config HW_TEST_OTP_KEY
 	select MOCK_OTP
 	help
 		The test verifies basic OTP key functionality
+
 config HW_TEST_NULL_POINTER
 	bool "null pointer test"
 	select ZTEST
@@ -141,6 +142,13 @@ config HW_TEST_PANIC_DATA
 	select PLATFORM_EC_DEBUG_ASSERT
 	help
 	  It verifies panic data across different reboots.
+
+config HW_TEST_PMP_ENTRIES
+	bool "pmp entries test"
+	select ZTEST
+	depends on RISCV_PMP
+	help
+	  The test verifies the pmp entries in both RO and RW.
 
 config HW_TEST_PRINTF
 	bool "printf test"
@@ -182,6 +190,13 @@ config HW_TEST_ROLLBACK
 	depends on BOARD_FINGERPRINT
 	help
 	  The test verifies rollback regions functionality.
+
+config HW_TEST_ROLLBACK_LOCK_PANIC
+	bool "Rollback lock panic test"
+	select ZTEST
+	depends on BOARD_FINGERPRINT
+	help
+	  The test verifies that panic occurs if function mpu_lock_rollback fails.
 
 config HW_TEST_ROLLBACK_ENTROPY
 	bool "Rollback entropy test"

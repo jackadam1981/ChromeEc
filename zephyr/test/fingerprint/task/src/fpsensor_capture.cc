@@ -16,6 +16,7 @@
 #include <drivers/fingerprint_sim.h>
 #include <ec_commands.h>
 #include <ec_tasks.h>
+#include <fpsensor/fpsensor_frame_size.h>
 #include <fpsensor/fpsensor_state.h>
 #include <host_command.h>
 
@@ -24,9 +25,10 @@ DEFINE_FFF_GLOBALS;
 FAKE_VALUE_FUNC(int, mkbp_send_event, uint8_t);
 
 #define fp_sim DEVICE_DT_GET(DT_CHOSEN(cros_fp_fingerprint_sensor))
-#define IMAGE_SIZE                          \
-	FINGERPRINT_SENSOR_REAL_IMAGE_SIZE( \
-		DT_CHOSEN(cros_fp_fingerprint_sensor))
+#define IMAGE_SIZE                                                 \
+	MAX_FROM_LIST(LISTIFY(NUM_IMAGE_CAPTURE_TYPES,             \
+			      FINGERPRINT_SENSOR_FRAME_SIZE, (, ), \
+			      DT_CHOSEN(cros_fp_fingerprint_sensor)))
 static uint8_t image_buffer[IMAGE_SIZE];
 static uint8_t frame_buffer[IMAGE_SIZE];
 
@@ -281,21 +283,26 @@ ZTEST_USER(fpsensor_capture,
 ZTEST_USER(fpsensor_capture,
 	   test_finger_capture_simple_image_scan_success_get_frame)
 {
+	FpFrameSizeCache frame_size_cache;
+	frame_size_cache.populate_cache(IMAGE_SIZE);
+	constexpr enum fp_capture_type kCaptureType = FP_CAPTURE_SIMPLE_IMAGE;
+	const uint32_t image_size =
+		frame_size_cache.get_frame_size(kCaptureType);
 	struct ec_params_fp_mode params = {
 		.mode = FP_MODE_CAPTURE |
-			(FP_CAPTURE_SIMPLE_IMAGE << FP_MODE_CAPTURE_TYPE_SHIFT),
+			(kCaptureType << FP_MODE_CAPTURE_TYPE_SHIFT),
 	};
 	struct ec_response_fp_mode response;
 	struct fingerprint_sensor_state state;
 	struct ec_params_fp_frame frame_request = {
 		.offset = FP_FRAME_INDEX_RAW_IMAGE << FP_FRAME_INDEX_SHIFT,
-		.size = IMAGE_SIZE,
+		.size = image_size,
 	};
 
 	/* Switch mode to capture. */
 	zassert_ok(ec_cmd_fp_mode(NULL, &params, &response));
 	zassert_true(response.mode & FP_MODE_CAPTURE);
-	zassert_equal(FP_CAPTURE_TYPE(response.mode), FP_CAPTURE_SIMPLE_IMAGE);
+	zassert_equal(FP_CAPTURE_TYPE(response.mode), kCaptureType);
 
 	/* Give opportunity for fpsensor task to change mode. */
 	k_msleep(1);
@@ -309,7 +316,7 @@ ZTEST_USER(fpsensor_capture,
 	memset(image_buffer, 1, IMAGE_SIZE);
 
 	/* Load image to simulator. */
-	fingerprint_load_image(fp_sim, image_buffer, IMAGE_SIZE);
+	fingerprint_load_image(fp_sim, image_buffer, image_size);
 
 	/* Ping fpsensor task. */
 	fingerprint_run_callback(fp_sim);
@@ -319,7 +326,7 @@ ZTEST_USER(fpsensor_capture,
 
 	/* Get fingerprint raw image and compare buffers. */
 	zassert_ok(ec_cmd_fp_frame(NULL, &frame_request, frame_buffer));
-	zassert_mem_equal(frame_buffer, image_buffer, IMAGE_SIZE);
+	zassert_mem_equal(frame_buffer, image_buffer, image_size);
 }
 
 static void *fpsensor_setup(void)

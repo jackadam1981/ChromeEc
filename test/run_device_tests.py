@@ -146,11 +146,14 @@ to HELIPILOT_DATA_RAM_SIZE_BYTES being increased from 156KiB to 252KiB.
 # \r is added twice by Zephyr code.
 PRINTF_CALLED_REGEX = re.compile(r"printf called(\r){1,2}\n")
 
+NEVER_MATCH_REGEX = re.compile(r"(?!)")
+
 BLOONCHIPPER = "bloonchipper"
 BUCCANEER = "buccaneer"
 DARTMONKEY = "dartmonkey"
 GWENDOLIN = "gwendolin"
 HELIPILOT = "helipilot"
+SANOK = "sanok"
 
 JTRACE = "jtrace"
 SERVO_MICRO = "servo_micro"
@@ -190,6 +193,10 @@ HELIPILOT_V27609_IMAGE_PATH = os.path.join(
 
 RangedValue = namedtuple("RangedValue", "nominal range")
 PowerUtilization = namedtuple("PowerUtilization", "idle sleep")
+
+INVALID_POWER_UTILIZATION = PowerUtilization(
+    idle=RangedValue(0, 0), sleep=RangedValue(0, 0)
+)
 
 
 class ImageType(Enum):
@@ -602,7 +609,11 @@ class AllTests:
             ),
             TestConfig(test_name="benchmark", timeout_secs=120),
             TestConfig(test_name="boringssl_crypto"),
-            TestConfig(test_name="cortexm_fpu"),
+            TestConfig(
+                test_name="cortexm_fpu",
+                # TODO(b/468409589): Add RISC-V FPU test.
+                exclude_boards=[SANOK],
+            ),
             TestConfig(test_name="crc"),
             TestConfig(test_name="exception"),
             TestConfig(test_name="exit"),
@@ -695,6 +706,29 @@ class AllTests:
             # task_wait_event is implemented based on k_poll_event and it is verified by
             # the kernel.poll test.
             TestConfig(test_name="pingpong", skip_for_zephyr=True),
+            TestConfig(
+                config_name="pmp_entries_ro",
+                test_name="pmp_entries",
+                exclude_boards=[
+                    BLOONCHIPPER,
+                    DARTMONKEY,
+                    HELIPILOT,
+                    BUCCANEER,
+                    GWENDOLIN,
+                ],
+                imagetype_to_use=ImageType.RO,
+            ),
+            TestConfig(
+                config_name="pmp_entries_rw",
+                test_name="pmp_entries",
+                exclude_boards=[
+                    BLOONCHIPPER,
+                    DARTMONKEY,
+                    HELIPILOT,
+                    BUCCANEER,
+                    GWENDOLIN,
+                ],
+            ),
             TestConfig(test_name="printf"),
             TestConfig(test_name="queue"),
             TestConfig(
@@ -718,17 +752,25 @@ class AllTests:
             TestConfig(
                 test_name="rollback_entropy", imagetype_to_use=ImageType.RO
             ),
+            TestConfig(test_name="rollback_lock_panic"),
             # RTC is handled by Zephyr drivers, covered by Zephyr tests. Time
             # translation is covered by the utilities.time test.
             TestConfig(test_name="rtc", skip_for_zephyr=True),
+            # TODO(b/468409316): Add RTC test for ET171.
             TestConfig(
                 test_name="rtc_npcx9",
-                exclude_boards=[BLOONCHIPPER, DARTMONKEY],
+                exclude_boards=[BLOONCHIPPER, DARTMONKEY, SANOK],
             ),
             # Covered by Zephyr drivers.counter.basic_api.stm32_subsec test
             TestConfig(
                 test_name="rtc_stm32f4",
-                exclude_boards=[DARTMONKEY, HELIPILOT, BUCCANEER, GWENDOLIN],
+                exclude_boards=[
+                    DARTMONKEY,
+                    HELIPILOT,
+                    BUCCANEER,
+                    GWENDOLIN,
+                    SANOK,
+                ],
                 skip_for_zephyr=True,
             ),
             TestConfig(test_name="sbrk", imagetype_to_use=ImageType.RO),
@@ -797,7 +839,7 @@ class AllTests:
         for variant_name, variant_info in board_config.variants.items():
             tests.append(
                 TestConfig(
-                    config_name="unaligned_access_" + variant_name,
+                    config_name=f"unaligned_access_{variant_name}",
                     test_name="unaligned_access",
                     fail_regexes=[
                         SINGLE_CHECK_FAILED_REGEX,
@@ -812,12 +854,26 @@ class AllTests:
         for variant_name, variant_info in board_config.variants.items():
             tests.append(
                 TestConfig(
-                    config_name="panic_data_" + variant_name,
+                    config_name=f"panic_data_{variant_name}",
                     test_name="panic_data",
                     fail_regexes=[
                         SINGLE_CHECK_FAILED_REGEX,
                         ALL_TESTS_FAILED_REGEX,
                     ],
+                    ro_image=variant_info.get("ro_image_path"),
+                    build_board=variant_info.get("build_board"),
+                )
+            )
+
+        # Run system_is_locked test with wp_on for all boards and RO versions.
+        for variant_name, variant_info in board_config.variants.items():
+            tests.append(
+                TestConfig(
+                    config_name=f"system_is_locked_wp_on_{variant_name}",
+                    test_name="system_is_locked",
+                    test_args=["wp_on"],
+                    toggle_power=True,
+                    enable_hw_write_protect=True,
                     ro_image=variant_info.get("ro_image_path"),
                     build_board=variant_info.get("build_board"),
                 )
@@ -869,20 +925,22 @@ class AllTests:
                 zephyr_name="drivers.entropy",
                 test_name="zephyr_drivers_entropy",
             ),
+            # TODO(b/468410778): Add Zephyr flash tests for sanok.
             TestConfig(
                 zephyr_name="drivers.flash.stm32.f4",
                 test_name="zephyr_flash_stm32f4",
-                exclude_boards=[DARTMONKEY, HELIPILOT],
+                exclude_boards=[DARTMONKEY, HELIPILOT, SANOK],
             ),
             TestConfig(
                 zephyr_name="drivers.flash.stm32.f4.block_registers",
                 test_name="zephyr_flash_stm32f4_block_registers",
-                exclude_boards=[DARTMONKEY, HELIPILOT],
+                exclude_boards=[DARTMONKEY, HELIPILOT, SANOK],
             ),
+            # TODO(b/468410217): Add Zephyr counter tests for sanok.
             TestConfig(
                 zephyr_name="drivers.counter.basic_api.stm32_subsec",
                 test_name="zephyr_counter_basic_api_stm32_subsec",
-                exclude_boards=[DARTMONKEY, HELIPILOT],
+                exclude_boards=[DARTMONKEY, HELIPILOT, SANOK],
                 timeout_secs=60,
             ),
             TestConfig(
@@ -1026,12 +1084,36 @@ GWENDOLIN_CONFIG.name = GWENDOLIN
 GWENDOLIN_CONFIG.sensor_type = FPSensorType.EGIS
 GWENDOLIN_CONFIG.mpu_regex = DATA_ACCESS_VIOLATION_20098000_REGEX
 
+SANOK_CONFIG = BoardConfig(
+    name=SANOK,
+    sensor_type=FPSensorType.EGIS,
+    servo_uart_name="raw_fpmcu_console_uart_pty",
+    servo_power_enable="fpmcu_pp3300",
+    reboot_timeout=1.0,
+    # TODO(b/468406461): configure rollback regex.
+    rollback_region0_regex=NEVER_MATCH_REGEX,
+    rollback_region1_regex=NEVER_MATCH_REGEX,
+    # TODO(b/363277530): create Zephyr MPU tests.
+    mpu_regex=NEVER_MATCH_REGEX,
+    fp_power_supply="pp3300_fp_mw",
+    mcu_power_supply="pp3300_mcu_mw",
+    # TODO(b/468406665): configure power utilization.
+    expected_fp_power=INVALID_POWER_UTILIZATION,
+    expected_mcu_power=INVALID_POWER_UTILIZATION,
+    expected_fp_power_zephyr=INVALID_POWER_UTILIZATION,
+    expected_mcu_power_zephyr=INVALID_POWER_UTILIZATION,
+    # TODO(b/468407068): configure variants.
+    variants={},
+    zephyr_board_name="egis_et171",
+)
+
 BOARD_CONFIGS = {
     "bloonchipper": BLOONCHIPPER_CONFIG,
     "buccaneer": BUCCANEER_CONFIG,
     "dartmonkey": DARTMONKEY_CONFIG,
     "gwendolin": GWENDOLIN_CONFIG,
     "helipilot": HELIPILOT_CONFIG,
+    "sanok": SANOK_CONFIG,
 }
 
 

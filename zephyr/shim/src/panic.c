@@ -6,7 +6,8 @@
 #include "builtin/assert.h"
 #include "common.h"
 #include "panic.h"
-#include "system_safe_mode.h"
+#include "panic_utils.h"
+#include "task.h"
 
 #include <zephyr/arch/cpu.h>
 #include <zephyr/fatal.h>
@@ -190,20 +191,6 @@ void k_sys_fatal_error_handler(unsigned int reason, const struct arch_esf *esf)
 	if (IS_ENABLED(CONFIG_PLATFORM_EC_CONSOLE_CMD_CRASH_NESTED))
 		command_crash_nested_handler();
 
-	/* Start system safe mode if possible */
-	if (IS_ENABLED(CONFIG_PLATFORM_EC_SYSTEM_SAFE_MODE)) {
-		if (reason != K_ERR_KERNEL_PANIC &&
-		    start_system_safe_mode() == EC_SUCCESS) {
-			/* Returning from k_sys_fatal_error_handler will cause
-			 * the faulting thread to be aborted and resume the
-			 * kernel
-			 */
-			pdata->flags |= PANIC_DATA_FLAG_SAFE_MODE_STARTED;
-			return;
-		}
-		pdata->flags |= PANIC_DATA_FLAG_SAFE_MODE_FAIL_PRECONDITIONS;
-	}
-
 	/*
 	 * Reboot immediately, don't wait for watchdog, otherwise
 	 * the watchdog will overwrite this panic.
@@ -228,6 +215,8 @@ __override void assert_post_action(void)
 #else
 __override void assert_post_action(const char *path, unsigned int line)
 {
+	const k_tid_t thread = k_current_get();
+
 	/* Extract filename from path */
 	const char *last_slash = strrchr(path, '/');
 	const char *filename = last_slash ? last_slash + 1 : path;
@@ -241,6 +230,10 @@ __override void assert_post_action(const char *path, unsigned int line)
 
 	if (IS_ENABLED(CONFIG_PLATFORM_EC_CONSOLE_CMD_CRASH_NESTED))
 		command_crash_nested_handler();
+
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_PANIC_PRINT_STACK_ON_ASSERT)) {
+		print_stack_trace(thread);
+	}
 
 	panic_reboot();
 	__ASSERT_UNREACHABLE;

@@ -26,14 +26,14 @@ LOG_MODULE_REGISTER(pdc_power_mgmt_api, LOG_LEVEL_INF);
 #define TYPEC_ONLY_SINK_DEBOUNCE_TIME_MS 1000
 
 #if DT_NODE_EXISTS(ZEPHYR_USER_NODE)
-#define PDC_TEST_TIMEOUT DT_PROP_OR(ZEPHYR_USER_NODE, test_timeout, 2000)
+#define PDC_TEST_TIMEOUT DT_PROP_OR(ZEPHYR_USER_NODE, test_timeout, 2500)
 #else
-#define PDC_TEST_TIMEOUT 2000
+#define PDC_TEST_TIMEOUT 2500
 #endif
 /* Time needed for chipset power to stabilize
  * (PDC_POWER_STATE_DEBOUNCE_S * 2) defined in pdc_power_mgmt.c
  */
-#define PDC_POWER_STABLE_TIMEOUT (4000)
+#define PDC_POWER_STABLE_TIMEOUT (4500)
 #define RTS5453P_NODE DT_NODELABEL(pdc_emul1)
 
 #define USBC0_NODE DT_NODELABEL(usbc0)
@@ -56,9 +56,9 @@ FAKE_VALUE_FUNC(int, system_jumped_late);
 FAKE_VALUE_FUNC(int, chipset_in_state, int);
 FAKE_VOID_FUNC(board_unattached_cb_stub, int);
 FAKE_VOID_FUNC(board_dp_attention_cb_stub, int, uint32_t);
+FAKE_VOID_FUNC(pdc_power_mgmt_simulate_power_button_press, int);
 
 static enum chipset_state_mask fake_chipset_state = CHIPSET_STATE_ON;
-
 static int custom_fake_chipset_in_state(int mask)
 {
 	LOG_DBG("MOCK: chipset_in_state");
@@ -69,6 +69,7 @@ static void reset_fakes(void)
 {
 	RESET_FAKE(system_jumped_late);
 	RESET_FAKE(chipset_in_state);
+	RESET_FAKE(pdc_power_mgmt_simulate_power_button_press);
 
 	fake_chipset_state = CHIPSET_STATE_ON;
 	chipset_in_state_fake.custom_fake = custom_fake_chipset_in_state;
@@ -687,6 +688,19 @@ ZTEST_USER(pdc_power_mgmt_api, test_get_partner_data_swap_capable)
 					   SOURCE_PDO :
 					   SINK_PDO),
 				  PDO_OFFSET_0, 1, PARTNER_PDO, &test[i].pdo);
+
+		/* If the partner is a DRP, set PDO for the opposite role with
+		 * same flags
+		 */
+		if (test[i].pdo & PDO_FIXED_DUAL_ROLE) {
+			emul_pdc_set_pdos(emul,
+					  (test[i].power_role == PD_ROLE_SINK ?
+						   SINK_PDO :
+						   SOURCE_PDO),
+					  PDO_OFFSET_0, 1, PARTNER_PDO,
+					  &test[i].pdo);
+		}
+
 		emul_pdc_connect_partner(emul, &connector_status);
 
 		zassert_ok(pdc_power_mgmt_wait_for_sync(TEST_PORT, -1));
@@ -1716,7 +1730,10 @@ ZTEST_USER(pdc_power_mgmt_api, test_get_connector_status)
 	in.conn_partner_flags = 1;
 	in.conn_partner_type = UFP_ATTACHED;
 
-	emul_pdc_configure_snk(emul, &in);
+	/* Run this test as a source because the sink entry flow calls
+	 * GET_CONNECTOR_STATUS and thus can ack/clear the expected bits before
+	 * we check them. The source entry flow does not do this. */
+	emul_pdc_configure_src(emul, &in);
 	emul_pdc_connect_partner(emul, &in);
 	zassert_ok(pdc_power_mgmt_wait_for_sync(TEST_PORT, -1));
 
@@ -2660,6 +2677,144 @@ ZTEST_USER(pdc_power_mgmt_api, test_pdc_power_mgmt_pd_get_polarity)
 	zassert_ok(pdc_power_mgmt_wait_for_sync(TEST_PORT, -1));
 
 	zassert_equal(POLARITY_CC2, pdc_power_mgmt_pd_get_polarity(TEST_PORT));
+}
+
+ZTEST_USER(pdc_power_mgmt_api, test_pd_power_button)
+{
+	union connector_status_t in_conn_status = {};
+	union conn_status_change_bits_t in_conn_status_change_bits = { 0 };
+
+	/* Clear alert in PDC emulator */
+	if (emul_pdc_set_alert(emul, 0x0) == -ENOSYS) {
+		ztest_test_skip();
+	}
+
+	/* Verify power button press has not been called */
+	zassert_equal(
+		0, pdc_power_mgmt_simulate_power_button_press_fake.call_count,
+		"Unexpected PD power button press.");
+
+	/* Connect partner. */
+	in_conn_status_change_bits.connect_change = 1;
+	in_conn_status.raw_conn_status_change_bits =
+		in_conn_status_change_bits.raw_value;
+	in_conn_status.power_operation_mode = PD_OPERATION;
+	emul_pdc_configure_src(emul, &in_conn_status);
+	emul_pdc_connect_partner(emul, &in_conn_status);
+	zassert_true(TEST_WAIT_FOR(pdc_power_mgmt_is_connected(TEST_PORT),
+				   PDC_TEST_TIMEOUT));
+
+	emul_pdc_set_connector_status(emul, &in_conn_status);
+	emul_pdc_pulse_irq(emul);
+	TEST_WORKING_DELAY(PDC_TEST_TIMEOUT);
+
+	/* Set power button press alert in PDC emulator */
+	emul_pdc_set_alert(emul, 0x80000002);
+
+	/* Pulse IRQ for the EC to check received alert message */
+	in_conn_status_change_bits.connect_change = 0;
+	in_conn_status.raw_conn_status_change_bits =
+		in_conn_status_change_bits.raw_value;
+	emul_pdc_set_connector_status(emul, &in_conn_status);
+	emul_pdc_pulse_irq(emul);
+	TEST_WORKING_DELAY(PDC_TEST_TIMEOUT);
+
+	/* Check no simulated press until release alert is received */
+	zassert_equal(
+		0, pdc_power_mgmt_simulate_power_button_press_fake.call_count,
+		"Power button press not simulated.");
+
+	/* Set power button release alert in PDC emulator, then pulse IRQ */
+	emul_pdc_set_alert(emul, 0x80000003);
+	emul_pdc_pulse_irq(emul);
+	TEST_WORKING_DELAY(PDC_TEST_TIMEOUT);
+
+	/* Check simulated press on release ADO following a press */
+	zassert_equal(
+		1, pdc_power_mgmt_simulate_power_button_press_fake.call_count,
+		"Unexpected PD power button press.");
+
+	/* Clear emulated ADO, then pulse IRQ. */
+	emul_pdc_set_alert(emul, 0x0);
+	emul_pdc_pulse_irq(emul);
+	TEST_WORKING_DELAY(PDC_TEST_TIMEOUT);
+
+	/* Check no simulated press on empty ADO */
+	zassert_equal(
+		1, pdc_power_mgmt_simulate_power_button_press_fake.call_count,
+		"Unexpected PD power button press.");
+
+	/* Set power button release alert in PDC emulator, then pulse IRQ */
+	emul_pdc_set_alert(emul, 0x80000003);
+	emul_pdc_pulse_irq(emul);
+	TEST_WORKING_DELAY(PDC_TEST_TIMEOUT);
+
+	/* Check for simulated press on release ADO without preceding press ADO
+	 */
+	zassert_equal(
+		2, pdc_power_mgmt_simulate_power_button_press_fake.call_count,
+		"Power button press not simulated.");
+}
+
+ZTEST_USER(pdc_power_mgmt_api, test_swap_to_sink)
+{
+	int i;
+	union pdr_t pdr;
+	union connector_status_t connector_status = {};
+	struct {
+		enum pd_power_role power_role;
+		uint32_t pdo;
+		bool expected;
+	} test[] = {
+		{ .power_role = PD_ROLE_SOURCE,
+		  .pdo = PDO_FIXED(5000, 3000, PDO_FIXED_DATA_SWAP),
+		  .expected = false },
+		{ .power_role = PD_ROLE_SOURCE,
+		  .pdo = PDO_FIXED(5000, 3000, PDO_FIXED_DUAL_ROLE),
+		  .expected = false },
+		{ .power_role = PD_ROLE_SOURCE,
+		  .pdo = PDO_FIXED(5000, 3000,
+				   PDO_FIXED_DUAL_ROLE |
+					   PDO_FIXED_UNCONSTRAINED),
+		  .expected = true },
+	};
+
+	for (i = 0; i < ARRAY_SIZE(test); i++) {
+		emul_pdc_configure_src(emul, &connector_status);
+		clear_partner_pdos(emul, SINK_PDO);
+
+		/* Set Partner PDOs for initial power role */
+		emul_pdc_set_pdos(emul, SINK_PDO, PDO_OFFSET_0, 1, PARTNER_PDO,
+				  &test[i].pdo);
+
+		/* If the partner is a DRP, set PDO for the opposite role with
+		 * same flags
+		 */
+		if (test[i].pdo & PDO_FIXED_DUAL_ROLE) {
+			emul_pdc_set_pdos(emul, SOURCE_PDO, PDO_OFFSET_0, 1,
+					  PARTNER_PDO, &test[i].pdo);
+		}
+
+		emul_pdc_connect_partner(emul, &connector_status);
+
+		zassert_ok(pdc_power_mgmt_wait_for_sync(TEST_PORT, -1));
+		LOG_INF("[%d] connection settled", i);
+
+		/* Verify swap_to_snk bit is set in SET_PDR when expected */
+		if (test[i].expected) {
+			zassert_ok(emul_pdc_get_pdr(emul, &pdr));
+			zassert_equal(pdr.swap_to_snk, 1);
+		} else {
+			zassert_ok(emul_pdc_get_pdr(emul, &pdr));
+			zassert_equal(pdr.swap_to_snk, 0);
+		}
+
+		emul_pdc_disconnect(emul);
+		zassert_true(TEST_WAIT_FOR(!pd_is_connected(TEST_PORT),
+					   PDC_TEST_TIMEOUT));
+		zassert_ok(pdc_power_mgmt_wait_for_sync(TEST_PORT, -1));
+		LOG_INF("[%d] disconnection settled", i);
+	}
 }
 
 /*

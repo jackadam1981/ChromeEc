@@ -11,6 +11,7 @@
 #include "fpsensor/fpsensor_auth_commands.h"
 #include "fpsensor/fpsensor_console.h"
 #include "fpsensor/fpsensor_crypto.h"
+#include "fpsensor/fpsensor_frame_size.h"
 #include "fpsensor/fpsensor_state.h"
 #include "fpsensor_driver.h"
 #include "fpsensor_matcher.h"
@@ -54,6 +55,8 @@ struct fpsensor_context global_context = {
 	.templ_dirty = 0,
 	.fp_events = 0,
 	.sensor_mode = 0,
+	.current_capture_type = FP_CAPTURE_TYPE_INVALID,
+	.fp_frame_size_cache = {},
 	.tpm_seed = { 0 },
 	.user_id = { 0 },
 	.positive_match_secret_state = {
@@ -111,6 +114,8 @@ static void _fp_clear_context(void)
 {
 	fp_reset_context();
 	OPENSSL_cleanse(fp_buffer, sizeof(fp_buffer));
+	/* Reset capture type, as it is correlated with fp_buffer. */
+	global_context.current_capture_type = FP_CAPTURE_TYPE_INVALID;
 	for (uint16_t idx = 0; idx < FP_MAX_FINGER_COUNT; idx++)
 		fp_clear_finger_context(idx);
 }

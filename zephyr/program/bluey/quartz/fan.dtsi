@@ -8,19 +8,19 @@
 		compatible = "cros-ec,fans";
 
 		fan1: fan_1 {
-			pwms = <&pwm5 0 PWM_KHZ(1) PWM_POLARITY_NORMAL>;
-			rpm-min = <3850>;
-			rpm-start = <3850>;
-			rpm-max = <7700>;
-			tach = <&tach1>;
+			pwms = <&pwm5 0 PWM_KHZ(25) PWM_POLARITY_NORMAL>;
+			rpm-min = <2700>;
+			rpm-start = <2700>;
+			rpm-max = <7800>;
+			tach = <&tach2>;
 			enable-gpio = <&gpio_ec_en_pp5000_fan>;
 		};
 		fan2: fan_2 {
-			pwms = <&pwm4 0 PWM_KHZ(1) PWM_POLARITY_NORMAL>;
-			rpm-min = <3850>;
-			rpm-start = <3850>;
-			rpm-max = <7700>;
-			tach = <&tach2>;
+			pwms = <&pwm4 0 PWM_KHZ(25) PWM_POLARITY_NORMAL>;
+			rpm-min = <1800>;
+			rpm-start = <1800>;
+			rpm-max = <5500>;
+			tach = <&tach1>;
 			enable-gpio = <&gpio_ec_en_pp5000_fan>;
 		};
 
@@ -39,7 +39,7 @@
 	pinctrl-names = "default";
 };
 
-&tach1 {
+&tach2 {
 	status = "okay";
 	pinctrl-0 = <&ta2_1_in_gp73>;
 	pinctrl-names = "default";
@@ -48,7 +48,7 @@
 	pulses-per-round = <2>;
 };
 
-&tach2 {
+&tach1 {
 	status = "okay";
 	pinctrl-0 = <&tb1_2_in_gpd3>;
 	pinctrl-names = "default";

@@ -121,6 +121,14 @@ static inline int ec_cmd_fp_template(CROS_EC_COMMAND_INFO *h,
 {
 	return CROS_EC_COMMAND(h, EC_CMD_FP_TEMPLATE, 0, p, size, NULL, 0);
 }
+
+static inline int ec_cmd_fp_info_v2(CROS_EC_COMMAND_INFO *h,
+				    struct ec_response_fp_info_v2 *r,
+				    size_t resp_size)
+{
+	return CROS_EC_COMMAND(h, EC_CMD_FP_INFO, 2, NULL, 0, r, resp_size);
+}
+
 /*
  * Section 2: EC interface functions that can be generated with the help
  * of template macros.
@@ -260,6 +268,7 @@ _CROS_EC_C0_F_PF_RF(EC_CMD_ADC_READ, adc_read);
 _CROS_EC_CV_F_P(EC_CMD_ADD_ENTROPY, 0, add_entropy, rollback_add_entropy);
 _CROS_EC_C0_F_PF(EC_CMD_AP_FW_STATE, ap_fw_state);
 _CROS_EC_C0_F(EC_CMD_AP_RESET, ap_reset);
+_CROS_EC_C0_F(EC_CMD_AP_SHUTDOWN, ap_shutdown);
 _CROS_EC_CV_F_P(EC_CMD_BATTERY_CUT_OFF, 1, battery_cut_off_v1, battery_cutoff);
 _CROS_EC_C0_F(EC_CMD_BATTERY_CUT_OFF, battery_cut_off);
 _CROS_EC_CV_F_P_R(EC_CMD_BATTERY_GET_DYNAMIC, 0, battery_get_dynamic,
@@ -452,6 +461,8 @@ _CROS_EC_C0_F_PF_RF(EC_CMD_VSTORE_READ, vstore_read);
 _CROS_EC_C0_F_PF(EC_CMD_VSTORE_WRITE, vstore_write);
 _CROS_EC_C0_F_PF(EC_CMD_UCSI_PPM_SET, ucsi_ppm_set);
 _CROS_EC_C0_F_PF(EC_CMD_UCSI_PPM_GET, ucsi_ppm_get);
+_CROS_EC_C0_F_PF(EC_CMD_FP_VENDOR, fp_vendor);
+_CROS_EC_C0_F_PF(EC_CMD_ENTER_BOOTLOADER, enter_bootloader);
 
 #ifdef __cplusplus
 }

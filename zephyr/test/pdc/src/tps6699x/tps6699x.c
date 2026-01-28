@@ -367,7 +367,7 @@ ZTEST_USER(tps6699x, test_set_rdo)
 	emul_pdc_get_autoneg_sink(emul, &max_voltage, &max_current);
 	zassert_equal(max_voltage, 20000 / 50);
 	zassert_equal(max_current,
-		      MIN(CONFIG_PLATFORM_EC_USB_PD_MAX_CURRENT_MA, 5000) / 10);
+		      min(CONFIG_PLATFORM_EC_USB_PD_MAX_CURRENT_MA, 5000) / 10);
 
 	/* Test Battery PDO selection */
 	pdos[PDO_OFFSET_0] = PDO_BATT(5000, 20000, 45000);
@@ -433,4 +433,118 @@ ZTEST_USER(tps6699x, test_get_attention_vdo)
 	zassert_ok(pdc_get_attention_vdo(dev, &get_attention_vdo));
 	k_sleep(K_MSEC(SLEEP_MS));
 	zassert_equal(get_attention_vdo.num_vdos, 2);
+}
+
+/* Cover the tps6699x driver returning revision with GET_PD_MESSAGE */
+ZTEST_USER(tps6699x, test_get_pd_message_revision)
+{
+	struct ucsi_memory_region ucsi_data;
+	struct ucsi_control_t *control = &ucsi_data.control;
+	union get_pd_message_t get_pd_message_cmd = { 0 };
+	uint32_t rmdo_in, rmdo_out;
+
+	access = ACCESS_OK;
+	RESET_FAKE(tps_rw_port_control);
+	tps_rw_port_control_fake.custom_fake = custom_fake_tps_rw_port_control;
+
+	/* Set revision in PDC emulator */
+	rmdo_in = 0x31110000;
+	emul_pdc_set_revision(emul, rmdo_in);
+	k_sleep(K_MSEC(SLEEP_MS));
+
+	/* GET_PD_MESSAGE command to request RMDO */
+	get_pd_message_cmd.connector_number = 0;
+	get_pd_message_cmd.recipient = 1;
+	get_pd_message_cmd.response_message_type = GET_PD_MESSAGE_REVISION;
+
+	/* Send GET_PD_MESSAGE */
+	memcpy(&control->command_specific, &get_pd_message_cmd.raw_value,
+	       sizeof(union get_pd_message_t));
+	zassert_ok(pdc_execute_ucsi_cmd(
+		dev, UCSI_GET_PD_MESSAGE, sizeof(union get_pd_message_t),
+		control->command_specific, ucsi_data.message_in, NULL));
+	k_sleep(K_MSEC(SLEEP_MS));
+
+	/* Verify returned RMDO matches the emulator's RMDO */
+	memcpy(&rmdo_out, &ucsi_data.message_in, sizeof(uint32_t));
+	zassert_equal(rmdo_in, rmdo_out);
+}
+
+/* Cover the tps6699x driver returning discover identity with GET_PD_MESSAGE */
+ZTEST_USER(tps6699x, test_get_pd_message_identity)
+{
+	struct ucsi_memory_region ucsi_data;
+	struct ucsi_control_t *control = &ucsi_data.control;
+	union get_pd_message_t get_pd_message_cmd = { 0 };
+	uint32_t disc_in[PDC_DISC_IDENTITY_VDO_COUNT] = { 0x1, 0x2, 0x3, 0x4,
+							  0x5, 0x6, 0x7 };
+	uint32_t disc_out[PDC_DISC_IDENTITY_VDO_COUNT] = { 0 };
+
+	access = ACCESS_OK;
+	RESET_FAKE(tps_rw_port_control);
+	tps_rw_port_control_fake.custom_fake = custom_fake_tps_rw_port_control;
+
+	/* Set fake Disc ID response in PDC emulator */
+	emul_pdc_set_identity(emul, disc_in);
+	k_sleep(K_MSEC(SLEEP_MS));
+
+	/* GET_PD_MESSAGE command to request Disc ID */
+	get_pd_message_cmd.connector_number = 0;
+	get_pd_message_cmd.recipient = 1;
+	get_pd_message_cmd.response_message_type = GET_PD_MESSAGE_DISC_ID;
+
+	/* Send GET_PD_MESSAGE */
+	memcpy(&control->command_specific, &get_pd_message_cmd.raw_value,
+	       sizeof(union get_pd_message_t));
+	zassert_ok(pdc_execute_ucsi_cmd(
+		dev, UCSI_GET_PD_MESSAGE, sizeof(union get_pd_message_t),
+		control->command_specific, ucsi_data.message_in, NULL));
+	k_sleep(K_MSEC(SLEEP_MS));
+
+	/* Verify returned RMDO matches the emulator's RMDO */
+	memcpy(disc_out, &ucsi_data.message_in,
+	       sizeof(uint32_t) * PDC_DISC_IDENTITY_VDO_COUNT);
+	for (int i = 0; i < PDC_DISC_IDENTITY_VDO_COUNT; i++) {
+		zassert_equal(disc_in[i], disc_out[i]);
+	}
+}
+
+/* Cover the tps6699x driver returning discover identity with GET_CURRENT_CAM */
+ZTEST_USER(tps6699x, test_get_current_cam)
+{
+	struct ucsi_memory_region ucsi_data;
+	struct ucsi_control_t *control = &ucsi_data.control;
+	uint32_t current_cam = 0;
+
+	access = ACCESS_OK;
+	RESET_FAKE(tps_rw_port_control);
+	tps_rw_port_control_fake.custom_fake = custom_fake_tps_rw_port_control;
+
+	/* Set fake CAM in PDC emulator */
+	emul_pdc_set_current_cam(emul, 0);
+	k_sleep(K_MSEC(SLEEP_MS));
+
+	/* Send GET_CURRENT_CAM */
+	zassert_ok(pdc_execute_ucsi_cmd(
+		dev, UCSI_GET_CURRENT_CAM, sizeof(uint32_t),
+		control->command_specific, ucsi_data.message_in, NULL));
+	k_sleep(K_MSEC(SLEEP_MS));
+
+	/* Verify returned CAM matches emulator. */
+	memcpy(&current_cam, &ucsi_data.message_in, sizeof(uint32_t));
+	zassert_equal(current_cam, 0);
+
+	/* Set fake CAM in PDC emulator */
+	emul_pdc_set_current_cam(emul, 0x1);
+	k_sleep(K_MSEC(SLEEP_MS));
+
+	/* Send GET_CURRENT_CAM */
+	zassert_ok(pdc_execute_ucsi_cmd(
+		dev, UCSI_GET_CURRENT_CAM, sizeof(uint32_t),
+		control->command_specific, ucsi_data.message_in, NULL));
+	k_sleep(K_MSEC(SLEEP_MS));
+
+	/* Verify returned CAM matches emulator. */
+	memcpy(&current_cam, &ucsi_data.message_in, sizeof(uint32_t));
+	zassert_equal(current_cam, 0x1);
 }

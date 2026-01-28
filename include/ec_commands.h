@@ -274,7 +274,8 @@ extern "C" {
  * EC_MEMMAP_BATT_LFCC if the actual value is unknown.
  *
  * This corresponds with the unknown value specified by ACPI release 6.5
- * §10.2.2 (and earlier versions), to match expectations of ACPI firmware.
+ * Section 10.2.2 (and earlier versions), to match expectations of ACPI
+ * firmware.
  */
 #define EC_MEMMAP_BATT_UNKNOWN_VALUE (-1)
 
@@ -534,7 +535,7 @@ extern "C" {
 	(((x) & 0xf0) >> USB_RETIMER_FW_UPDATE_OP_SHIFT)
 
 /*
- * Offset 0x15 is reserved for PBOK, added to Coreboot in
+ * Offset 0x15 is reserved for PBOK, added to coreboot in
  * https://crrev.com/c/3840943 and proposed for inclusion here
  * in https://crrev.com/c/3547317.
  */
@@ -1775,6 +1776,10 @@ enum ec_feature_code {
 	 * The EC supports PoE.
 	 */
 	EC_FEATURE_POE = 56,
+	/*
+	 * The EC supports a hybrid boost charger
+	 */
+	EC_FEATURE_CHARGER_HYBRID_POWER_BOOST = 57,
 };
 
 #define EC_FEATURE_MASK_0(event_code) BIT(event_code % 32)
@@ -2528,11 +2533,30 @@ struct lightbar_params_v2_colors {
 	struct rgb_s color[8]; /* 0-3 are Google colors */
 } __ec_todo_packed;
 
+struct lightbar_params_v3 {
+	/*
+	 *  Number of LEDs reported by the EC.
+	 *  May be less than the actual number of LEDs in the lightbar.
+	 */
+	uint8_t reported_led_num;
+} __ec_todo_packed;
+
 /* Lightbar program. */
 #define EC_LB_PROG_LEN 192
 struct lightbar_program {
 	uint8_t size;
 	uint8_t data[EC_LB_PROG_LEN];
+} __ec_todo_unpacked;
+
+/*
+ * Lightbar program for large sequences. Sequences are sent in pieces, with
+ * increasing offset. The sequences are still limited by the amount reserved in
+ * EC RAM.
+ */
+struct lightbar_program_ex {
+	uint16_t offset;
+	uint8_t size;
+	uint8_t data[0];
 } __ec_todo_unpacked;
 
 struct ec_params_lightbar {
@@ -2581,6 +2605,7 @@ struct ec_params_lightbar {
 		struct lightbar_params_v2_colors set_v2par_colors;
 
 		struct lightbar_program set_program;
+		struct lightbar_program_ex set_program_ex;
 	};
 } __ec_todo_packed;
 
@@ -2607,6 +2632,8 @@ struct ec_response_lightbar {
 		struct lightbar_params_v2_brightness get_params_v2_bright;
 		struct lightbar_params_v2_thresholds get_params_v2_thlds;
 		struct lightbar_params_v2_colors get_params_v2_colors;
+
+		struct lightbar_params_v3 get_params_v3;
 
 		struct __ec_todo_unpacked {
 			uint32_t num;
@@ -2665,6 +2692,8 @@ enum lightbar_command {
 	LIGHTBAR_CMD_SET_PARAMS_V2_THRESHOLDS = 31,
 	LIGHTBAR_CMD_GET_PARAMS_V2_COLORS = 32,
 	LIGHTBAR_CMD_SET_PARAMS_V2_COLORS = 33,
+	LIGHTBAR_CMD_GET_PARAMS_V3 = 34,
+	LIGHTBAR_CMD_SET_PROGRAM_EX = 35,
 	LIGHTBAR_NUM_CMDS,
 };
 
@@ -5013,6 +5042,14 @@ enum charge_state_params {
 	/* step value of charger input current limit (READ ONLY) */
 	CS_PARAM_CHG_INPUT_CURRENT_STEP,
 
+	/* Minimum required voltage for hybrid boost chargers (READ ONLY) */
+	CS_PARAM_CHG_MIN_REQUIRED_MV,
+
+	/* For hybrid boost chargers returns !=0 when attached charger is
+	 * capable of charging the battery
+	 */
+	CS_PARAM_CHG_IS_ADAPTER_SUFFICIENT,
+
 	/* How many so far? */
 	CS_NUM_BASE_PARAMS,
 
@@ -5812,6 +5849,7 @@ enum ec_reboot_cmd {
 };
 
 /* Flags for ec_params_reboot_ec.reboot_flags */
+#define EC_REBOOT_FLAG_IMMEDIATE 0 /* Trigger Cold Reset */
 #define EC_REBOOT_FLAG_RESERVED0 BIT(0) /* Was recovery request */
 #define EC_REBOOT_FLAG_ON_AP_SHUTDOWN BIT(1) /* Reboot after AP shutdown */
 #define EC_REBOOT_FLAG_SWITCH_RW_SLOT BIT(2) /* Switch RW slot */
@@ -5960,6 +5998,18 @@ struct ec_params_panic_log_read {
  * EC_CMD_MEMORY_DUMP_READ_MEMORY response buffer is written directly into
  * host_cmd_handler_args.response and host_cmd_handler_args.response_size.
  */
+
+/*
+ * Enter bootloader mode
+ *
+ * This command requests EC to enter bootloader mode.
+ */
+#define EC_CMD_ENTER_BOOTLOADER 0x00E2
+
+struct ec_params_enter_bootloader {
+	/* Mode to enter bootloader. Chip specific value. Can be unused. */
+	uint8_t mode;
+} __ec_align1;
 
 /*****************************************************************************/
 /*
@@ -6643,8 +6693,20 @@ enum cbi_data_tag {
 	 */
 	CBI_TAG_PROVISION_MATRIX_VERSION = 28, /* uint32_t bit field */
 
+	/* Unified Firmware and Second-source Config:
+	 * A fixed-size array of 4 uint32_t values.
+	 */
+	CBI_TAG_UFSC = 29,
+
 	/* Last entry */
 	CBI_TAG_COUNT,
+};
+
+#define CBI_UFSC_DATA_COUNT 4
+
+/* Unified Firmware and Second-source Config (UFSC) data structure */
+struct cbi_ufsc {
+	uint32_t data[CBI_UFSC_DATA_COUNT];
 };
 
 /*
@@ -7117,6 +7179,7 @@ enum action_key {
 	TK_DICTATE = 21,
 	TK_ACCESSIBILITY = 22,
 	TK_DONOTDISTURB = 23,
+	TK_HOME = 24,
 
 	TK_COUNT
 };
@@ -8347,6 +8410,7 @@ struct ec_params_fp_passthru {
 /**
  * enum fp_capture_type - Specifies the "mode" when capturing images.
  *
+ * @FP_CAPTURE_TYPE_INVALID: an invalid capture type
  * @FP_CAPTURE_VENDOR_FORMAT: Capture 1-3 images and choose the best quality
  * image (produces 'frame_size' bytes)
  * @FP_CAPTURE_SIMPLE_IMAGE: Simple raw image capture (produces width x height x
@@ -8363,7 +8427,9 @@ struct ec_params_fp_passthru {
  * @note This enum must remain ordered, if you add new values you must ensure
  * that FP_CAPTURE_TYPE_MAX is still the last one.
  */
+/* LINT.IfChange */
 enum fp_capture_type {
+	FP_CAPTURE_TYPE_INVALID = -1,
 	FP_CAPTURE_VENDOR_FORMAT = 0,
 	FP_CAPTURE_DEFECT_PXL_TEST = 1,
 	FP_CAPTURE_ABNORMAL_TEST = 2,
@@ -8375,6 +8441,9 @@ enum fp_capture_type {
 	FP_CAPTURE_RESET_TEST = 20,
 	FP_CAPTURE_TYPE_MAX,
 };
+/* LINT.ThenChange(/test/fpsensor_utils.cc,
+ * /zephyr/test/fingerprint/task/src/fpsensor_debug.cc)
+ */
 
 /* The maximum number of capture types in enum fp_capture_type */
 #define FP_MAX_CAPTURE_TYPES 9
@@ -8637,6 +8706,20 @@ struct ec_params_fp_read_match_secret {
 	uint16_t fgr;
 } __ec_align4;
 
+/*
+ * Fingerprint vendor defined command.
+ *
+ * A custom per fingerprint vendor host command. It can be used to fetch some
+ * custom data during testing, manufacturing etc.
+ *
+ * This command should be handled only if the system is unlocked.
+ */
+#define EC_CMD_FP_VENDOR 0x040B
+struct ec_params_fp_vendor {
+	/* Parameter to be used by FP vendors. */
+	uint32_t param1;
+} __ec_align4;
+
 /* The positive match secret has the length of the SHA256 digest. */
 #define FP_POSITIVE_MATCH_SECRET_BYTES 32
 struct ec_response_fp_read_match_secret {
@@ -8855,6 +8938,32 @@ struct ec_response_battery_static_info_v2 {
 	char chemistry[SBS_MAX_STR_OBJ_SIZE];
 } __ec_align4;
 
+/**
+ * struct ec_response_battery_static_info_v3 - hostcmd v3 battery static info
+ *
+ * Extends struct ec_response_battery_static_info_v2 with
+ * manuf_info.
+ *
+ * @design_capacity: battery design capacity (in mAh)
+ * @design_voltage: battery design voltage (in mV)
+ * @cycle_count: battery cycle count
+ * @manufacturer: battery manufacturer string
+ * @device_name: battery model string
+ * @serial: battery serial number string
+ * @chemistry: battery type string
+ * @manuf_info: battery manufacture info string (vendor specific)
+ */
+struct ec_response_battery_static_info_v3 {
+	uint16_t design_capacity;
+	uint16_t design_voltage;
+	uint32_t cycle_count;
+	char manufacturer[SBS_MAX_STR_OBJ_SIZE];
+	char device_name[SBS_MAX_STR_OBJ_SIZE];
+	char serial[SBS_MAX_STR_OBJ_SIZE];
+	char chemistry[SBS_MAX_STR_OBJ_SIZE];
+	char manuf_info[SBS_MAX_STR_OBJ_SIZE];
+} __ec_align4;
+
 /*
  * Get battery dynamic information, i.e. information that is likely to change
  * every time it is read.
@@ -8937,6 +9046,14 @@ struct ec_response_get_boot_time {
 
 /* Issue AP shutdown */
 #define EC_CMD_AP_SHUTDOWN 0x0605
+
+/**
+ * Issue AP shutdown using heartbeat wake.
+ * The AP calls this to enter the low-power G3 state for off-mode charging.
+ * The EC then monitors battery SoC and wakes the AP when discharged by a
+ * configured threshold.
+ */
+#define EC_CMD_ENABLE_OFFMODE_HEARTBEAT 0x0606
 
 /*****************************************************************************/
 /*

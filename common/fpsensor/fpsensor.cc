@@ -195,38 +195,43 @@ static uint32_t fp_process_match(void)
 static void fp_process_finger(void)
 {
 	timestamp_t t0 = get_time();
+	enum fp_capture_type capture_type =
+		FP_CAPTURE_TYPE(global_context.sensor_mode);
+	global_context.current_capture_type = FP_CAPTURE_TYPE_INVALID;
 
 	CPRINTS("Capturing ...");
-	int res = fp_acquire_image(fp_buffer,
-				   FP_CAPTURE_TYPE(global_context.sensor_mode));
+	int res = fp_acquire_image(fp_buffer, capture_type);
 	capture_time_us = time_since32(t0);
-	if (!res) {
-		uint32_t evt = EC_MKBP_FP_IMAGE_READY;
+	if (res) {
+		timestamps_invalid |= FPSTATS_CAPTURE_INV;
+		return;
+	}
+
+	global_context.current_capture_type = capture_type;
+	uint32_t evt = EC_MKBP_FP_IMAGE_READY;
 
 #ifndef CONFIG_ZEPHYR
-		/* Clean up SPI before clocking up to avoid hang on the dsb
-		 * in dma_go. Ignore the return value to let the WDT reboot
-		 * the MCU (and avoid getting trapped in the loop).
-		 * b/112781659 */
-		res = spi_transaction_flush(&spi_devices[0]);
-		if (res)
-			CPRINTS("Failed to flush SPI: 0x%x", res);
+	/* Clean up SPI before clocking up to avoid hang on the dsb
+	 * in dma_go. Ignore the return value to let the WDT reboot
+	 * the MCU (and avoid getting trapped in the loop).
+	 * b/112781659 */
+	res = spi_transaction_flush(&spi_devices[0]);
+	if (res)
+		CPRINTS("Failed to flush SPI: 0x%x", res);
 #endif
 
-		/* we need CPU power to do the computations */
-		ScopedFastCpu fast_cpu;
+	/* we need CPU power to do the computations */
+	ScopedFastCpu fast_cpu;
 
-		if (global_context.sensor_mode & FP_MODE_ENROLL_IMAGE)
-			evt = fp_process_enroll();
-		else if (global_context.sensor_mode & FP_MODE_MATCH)
-			evt = fp_process_match();
+	if (global_context.sensor_mode & FP_MODE_ENROLL_IMAGE)
+		evt = fp_process_enroll();
+	else if (global_context.sensor_mode & FP_MODE_MATCH)
+		evt = fp_process_match();
 
-		global_context.sensor_mode &= ~FP_MODE_ANY_CAPTURE;
-		overall_time_us = time_since32(overall_t0);
-		send_mkbp_event(evt);
-	} else {
-		timestamps_invalid |= FPSTATS_CAPTURE_INV;
-	}
+	global_context.sensor_mode &=
+		~(FP_MODE_ANY_CAPTURE | FP_MODE_CAPTURE_TYPE_MASK);
+	overall_time_us = time_since32(overall_t0);
+	send_mkbp_event(evt);
 }
 #endif /* HAVE_FP_PRIVATE_DRIVER */
 
@@ -240,6 +245,8 @@ extern "C" void fp_task(void)
 #ifdef HAVE_FP_PRIVATE_DRIVER
 	/* Reset and initialize the sensor IC */
 	fp_sensor_init();
+
+	global_context.fp_frame_size_cache.populate_cache(sizeof(fp_buffer));
 
 	while (1) {
 		enum finger_state st = FINGER_NONE;
@@ -274,8 +281,15 @@ extern "C" void fp_task(void)
 						 FP_MODE_ENROLL_SESSION;
 			}
 			if (!is_finger_needed(mode)) {
-				fp_acquire_image(fp_buffer,
-						 FP_CAPTURE_TYPE(mode));
+				enum fp_capture_type capture_type =
+					FP_CAPTURE_TYPE(mode);
+				global_context.current_capture_type =
+					FP_CAPTURE_TYPE_INVALID;
+				if (!fp_acquire_image(fp_buffer,
+						      capture_type)) {
+					global_context.current_capture_type =
+						capture_type;
+				}
 				global_context.sensor_mode &= ~FP_MODE_CAPTURE;
 				send_mkbp_event(EC_MKBP_FP_IMAGE_READY);
 				continue;
@@ -387,13 +401,27 @@ extern "C" void fp_task(void)
 #endif /* !HAVE_FP_PRIVATE_DRIVER */
 }
 
-static enum ec_status fp_command_info_v2(struct host_cmd_handler_args *args)
+static enum ec_status fp_command_info(struct host_cmd_handler_args *args)
 {
 	struct ec_response_fp_info_v2 *r =
 		static_cast<ec_response_fp_info_v2 *>(args->response);
+	const size_t response_size =
+		sizeof(struct ec_response_fp_info_v2) +
+		FP_MAX_CAPTURE_TYPES * sizeof(struct fp_image_frame_params);
+
+	if (response_size > args->response_max) {
+		return EC_RES_OVERFLOW;
+	}
+
+	/*
+	 * The sensor may have fewer than FP_MAX_CAPTURE_TYPES number of
+	 * captures, in which case the buffer will only be partially written. We
+	 * want to make sure the rest of the buffer does not leak any data.
+	 */
+	memset(r, 0, response_size);
 
 #ifdef HAVE_FP_PRIVATE_DRIVER
-	if (fp_sensor_get_info_v2(r, args->response_max) < 0)
+	if (fp_sensor_get_info(r, response_size) < 0)
 #endif
 		return EC_RES_UNAVAILABLE;
 
@@ -403,53 +431,11 @@ static enum ec_status fp_command_info_v2(struct host_cmd_handler_args *args)
 	r->template_info.template_dirty = global_context.templ_dirty;
 	r->template_info.template_version = FP_TEMPLATE_FORMAT_VERSION;
 
-	args->response_size = sizeof(struct ec_response_fp_info_v2) +
-			      (r->sensor_info.num_capture_types) *
-				      sizeof(struct fp_image_frame_params);
+	args->response_size = response_size;
 
 	return EC_RES_SUCCESS;
 }
-
-__overridable int fp_sensor_get_info_v2(struct ec_response_fp_info_v2 *resp,
-					size_t resp_size)
-{
-	*resp = {
-		.sensor_info = { .vendor_id = 0,
-				 .product_id = 0,
-				 .model_id = 0,
-				 .version = 0,
-				 .num_capture_types = 0,
-				 .errors = 0 },
-	};
-	return EC_SUCCESS;
-}
-
-static enum ec_status fp_command_info(struct host_cmd_handler_args *args)
-{
-	if (args->version == 2) {
-		return fp_command_info_v2(args);
-	}
-	auto *r = static_cast<ec_response_fp_info *>(args->response);
-
-#ifdef HAVE_FP_PRIVATE_DRIVER
-	if (fp_sensor_get_info(r) < 0)
-#endif
-		return EC_RES_UNAVAILABLE;
-
-	r->template_size = FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE;
-	r->template_max = FP_MAX_FINGER_COUNT;
-	r->template_valid = global_context.templ_valid;
-	r->template_dirty = global_context.templ_dirty;
-	r->template_version = FP_TEMPLATE_FORMAT_VERSION;
-
-	/* V1 is identical to V0 with more information appended */
-	args->response_size = args->version ?
-				      sizeof(*r) :
-				      sizeof(struct ec_response_fp_info_v0);
-	return EC_RES_SUCCESS;
-}
-DECLARE_HOST_COMMAND(EC_CMD_FP_INFO, fp_command_info,
-		     EC_VER_MASK(0) | EC_VER_MASK(1));
+DECLARE_HOST_COMMAND(EC_CMD_FP_INFO, fp_command_info, EC_VER_MASK(2));
 
 BUILD_ASSERT(FP_CONTEXT_NONCE_BYTES == 12);
 
@@ -470,15 +456,29 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 		/* The host requested a frame. */
 		if (system_is_locked())
 			return EC_RES_ACCESS_DENIED;
+
+		if (global_context.current_capture_type ==
+		    FP_CAPTURE_TYPE_INVALID) {
+			return EC_RES_INVALID_PARAM;
+		}
+
 		/*
-		 * Checks if the capture mode is one where we only care about
+		 * Checks if the capture type is one where we only care about
 		 * the embedded/offset image bytes, like simple, pattern0,
 		 * pattern1, and reset_test.
 		 */
-		if (skip_image_offset(global_context.sensor_mode))
+		if (skip_image_offset(global_context.current_capture_type))
 			offset += FP_SENSOR_IMAGE_OFFSET;
 
-		ret = validate_fp_buffer_offset(sizeof(fp_buffer), offset,
+		uint32_t current_frame_size =
+			global_context.fp_frame_size_cache.get_frame_size(
+				global_context.current_capture_type);
+
+		if (current_frame_size > sizeof(fp_buffer)) {
+			return EC_RES_INVALID_PARAM;
+		}
+
+		ret = validate_fp_buffer_offset(current_frame_size, offset,
 						size);
 		if (ret != EC_SUCCESS)
 			return EC_RES_INVALID_PARAM;

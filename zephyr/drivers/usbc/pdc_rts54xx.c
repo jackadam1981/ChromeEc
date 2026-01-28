@@ -121,6 +121,14 @@ LOG_MODULE_REGISTER(pdc_rts54, CONFIG_USBC_LOG_LEVEL);
 #define NUM_PDC_RTS54XX_PORTS DT_NUM_INST_STATUS_OKAY(DT_DRV_COMPAT)
 
 /**
+ * @brief Extra bits supported by the Realtek SET_NOTIFICATION_ENABLE command.
+ *
+ * In ealier versions of the RTK command bit 27 was "Data Message Received".
+ */
+#define RTS54XX_NOTIFY_ALERT_RECEIVED BIT(27)
+#define RTS54XX_NOTIFY_EXT_BIT_OFFSET 16
+
+/**
  * @brief SMbus Command struct for Realtek commands
  */
 struct smbus_cmd_t {
@@ -187,6 +195,7 @@ static const struct smbus_cmd_t RTS_UCSI_GET_ATTENTION_VDO = { 0x0E, 0x03,
 __maybe_unused static const struct smbus_cmd_t RTS_SET_SBU_MUX_MODE = { 0x30,
 									0x01 };
 static const struct smbus_cmd_t SET_BBR_CTS = { 0x08, 0x03, 0x27 };
+static const struct smbus_cmd_t GET_ALERT = { 0x08, 0x02, 0xB5 };
 
 /**
  * @brief States of the main state machine
@@ -321,6 +330,10 @@ enum cmd_t {
 	CMD_SET_BBR_CTS,
 	/** CMD_SET_SYS_PWR_STATE */
 	CMD_SET_SYS_PWR_STATE,
+	/** CMD_GET_VENDOR_STATUS */
+	CMD_GET_VENDOR_STATUS,
+	/** CMD_GET_ALERT */
+	CMD_GET_ALERT,
 };
 
 /**
@@ -464,6 +477,8 @@ static const char *const cmd_names[] = {
 	[CMD_SET_BATTERY_STATUS] = "SET_BATTERY_STATUS",
 	[CMD_SET_BBR_CTS] = "CMD_SET_BBR_CTS",
 	[CMD_SET_SYS_PWR_STATE] = "CMD_SET_SYS_PWR_STATE",
+	[CMD_GET_VENDOR_STATUS] = "CMD_GET_VENDOR_STATUS",
+	[CMD_GET_ALERT] = "CMD_GET_ALERT",
 };
 
 /**
@@ -554,8 +569,12 @@ static void print_current_state(struct pdc_data_t *data)
 		LOG_INF("RTK%d: %s %s %d", cfg->connector_number,
 			state_names[st], cmd_names[data->cmd],
 			data->error_recovery_counter);
-	} else {
+	} else if (st == ST_DISABLE || st == ST_SUSPENDED || st == ST_INIT) {
 		LOG_INF("RTK%d: %s", cfg->connector_number,
+			state_names[get_state(data)]);
+	} else {
+		/* IDLE, PING_STATUS, READ */
+		LOG_DBG("RTK%d: %s", cfg->connector_number,
 			state_names[get_state(data)]);
 	}
 }
@@ -800,7 +819,10 @@ static enum smf_state_result st_init_run(void *o)
 			data, INIT_PDC_SET_NOTIFICATION_ENABLE);
 		return SMF_EVENT_HANDLED;
 	case INIT_PDC_SET_NOTIFICATION_ENABLE:
-		rv = rts54_set_notification_enable(data->dev, cfg->bits, 0x0);
+		rv = rts54_set_notification_enable(
+			data->dev, cfg->bits,
+			RTS54XX_NOTIFY_ALERT_RECEIVED >>
+				RTS54XX_NOTIFY_EXT_BIT_OFFSET);
 		if (rv) {
 			LOG_ERR("RTK%d:, Internal(INIT_PDC_SET_NOTIFICATION_ENABLE)",
 				cnum);
@@ -895,6 +917,24 @@ static enum smf_state_result st_init_run(void *o)
 }
 
 /**
+ * @brief Check if any interrupt GPIO is currently asserted
+ */
+static bool any_irq_gpio_asserted(void)
+{
+	for (int i = 0; i < ARRAY_SIZE(rts54xx_irq_list); i++) {
+		if (rts54xx_irq_list[i].port == NULL &&
+		    rts54xx_irq_list[i].pin == 0) {
+			/* This GPIO entry is blank, ignore it */
+			continue;
+		}
+		if (gpio_pin_get_dt(&rts54xx_irq_list[i])) {
+			return true;
+		}
+	}
+	return false;
+}
+
+/**
  * @brief Called from the main thread to handle interrupts
  */
 static void handle_irqs(struct pdc_data_t *data)
@@ -911,7 +951,7 @@ static void handle_irqs(struct pdc_data_t *data)
 	 * This assumes that this driver is valid for all PD controllers on the
 	 * system.
 	 */
-	for (int i = 0; i < pdc_power_mgmt_get_usb_pd_port_count(); i++) {
+	do {
 		/*
 		 * Read the Alert Response Address to determine
 		 * which port generated the interrupt.
@@ -955,7 +995,7 @@ static void handle_irqs(struct pdc_data_t *data)
 				break;
 			}
 		}
-	}
+	} while (any_irq_gpio_asserted());
 }
 
 static void st_idle_entry(void *o)
@@ -1376,6 +1416,17 @@ static enum smf_state_result st_read_run(void *o)
 		case 0x2:
 			*drp_mode = DRP_TRY_SNK;
 			break;
+		}
+		break;
+	}
+	case CMD_GET_VENDOR_STATUS: {
+		union vendor_status_change_bits_t *vendor_status =
+			(union vendor_status_change_bits_t *)data->user_buf;
+		vendor_status->raw_value = 0;
+
+		/* Realtek alert received is Byte 4, bit 3*/
+		if (data->rd_buf[4] & BIT(3)) {
+			vendor_status->alert_received = 1;
 		}
 		break;
 	}
@@ -2156,7 +2207,11 @@ static int rts54_get_info(const struct device *dev, struct pdc_info_t *info,
 
 	/* Post a command and perform a chip operation */
 	uint8_t payload[] = {
-		GET_IC_STATUS.cmd, GET_IC_STATUS.len, 0, 0x00, 38,
+		GET_IC_STATUS.cmd,
+		GET_IC_STATUS.len,
+		0,
+		0x00,
+		RTS54XX_GET_IC_STATUS_FULL_READ_LEN,
 	};
 
 	LOG_DBG("RTK%d: Get live chip info", cfg->connector_number);
@@ -2846,6 +2901,47 @@ static int rts54_set_bbr_cts(const struct device *dev, bool enable)
 				  ARRAY_SIZE(payload), NULL);
 }
 
+static int
+rts54_get_vendor_status(const struct device *dev,
+			union vendor_status_change_bits_t *vendor_status_change)
+{
+	struct pdc_data_t *data = dev->data;
+
+	if (get_state(data) != ST_IDLE) {
+		return -EBUSY;
+	}
+
+	if (vendor_status_change == NULL) {
+		return -EINVAL;
+	}
+
+	return rts54_get_rtk_status(dev, 0, 4, CMD_GET_VENDOR_STATUS,
+				    (uint8_t *)vendor_status_change);
+}
+
+static int rts54_get_alert(const struct device *dev, uint32_t *ado)
+{
+	struct pdc_data_t *data = dev->data;
+
+	if (get_state(data) != ST_IDLE) {
+		return -EBUSY;
+	}
+
+	if (ado == NULL) {
+		return -EINVAL;
+	}
+
+	uint8_t payload[] = {
+		GET_ALERT.cmd,
+		GET_ALERT.len,
+		GET_ALERT.sub,
+		0x00,
+	};
+
+	return rts54_post_command(dev, CMD_GET_ALERT, payload,
+				  ARRAY_SIZE(payload), (uint8_t *)ado);
+}
+
 static DEVICE_API(pdc, pdc_driver_api) = {
 	.start_thread = rts54_start_thread,
 	.is_init_done = rts54_is_init_done,
@@ -2895,6 +2991,8 @@ static DEVICE_API(pdc, pdc_driver_api) = {
 #endif /* define(CONFIG_USBC_PDC_DRIVEN_CCD) */
 	.set_bbr_cts = rts54_set_bbr_cts,
 	.set_ap_power_state = rts54_set_ap_power_state,
+	.get_vendor_status = rts54_get_vendor_status,
+	.get_alert = rts54_get_alert,
 };
 
 static int pdc_init(const struct device *dev)
@@ -3017,6 +3115,11 @@ static void rts54xx_thread(void *dev, void *unused1, void *unused2)
 }
 
 #define PDC_DATA_STRUCT_NAME(inst) pdc_data_##inst
+
+BUILD_ASSERT(
+	EC_TASK_PRIORITY(EC_TASK_USBC_PDC_PRIO) ==
+		CONFIG_USBC_PDC_RTS54XX_THREAD_PRIORITY,
+	"EC_TASK_USBC_PDC_PRIO does not match USBC_PDC_RTS54XX_THREAD_PRIORITY.");
 
 #define RTS54xx_PDC_DEFINE(inst)                                              \
 	K_THREAD_STACK_DEFINE(rts54xx_thread_stack_area_##inst,               \
