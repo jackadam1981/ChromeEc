@@ -16,6 +16,74 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "f3049937ce0f7f592c5ed37aa57fc6e1625c29e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2e23a3c_14d8d87b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-28T08:20:42Z",
+      "side": 1,
+      "message": "Please split into smaller CLs.",
+      "revId": "f3049937ce0f7f592c5ed37aa57fc6e1625c29e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f40a871_e82e4856",
+        "filename": "util/ectool_usb/command.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-28T08:20:42Z",
+      "side": 1,
+      "message": "Why is this change needed? We are checking the result in the header before even checking the checksum.",
+      "revId": "f3049937ce0f7f592c5ed37aa57fc6e1625c29e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a656d668_257d0eb7",
+        "filename": "util/ectool_usb/communication.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-28T08:20:42Z",
+      "side": 1,
+      "message": "Maybe merge this function with `wait_for_event`?",
+      "revId": "f3049937ce0f7f592c5ed37aa57fc6e1625c29e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff2d3958_bd4889a6",
+        "filename": "util/ectool_usb/communication.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-28T08:20:42Z",
+      "side": 1,
+      "message": "Isn\u0027t it possible to miss the event this way? E.g. if a tool waits for the response_ready IRQ_type here, and the host command handler triggers the event, before host command response is ready.",
+      "revId": "f3049937ce0f7f592c5ed37aa57fc6e1625c29e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
