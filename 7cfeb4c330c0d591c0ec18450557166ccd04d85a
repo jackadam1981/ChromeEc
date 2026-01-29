@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d935e9d8_031852bb",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1678,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2026-01-29T03:36:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b334e702_3b9abc6d",
+      "range": {
+        "startLine": 1678,
+        "startChar": 35,
+        "endLine": 1678,
+        "endChar": 41
+      },
+      "revId": "7cfeb4c330c0d591c0ec18450557166ccd04d85a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc47a5b8_00dfc9d6",
@@ -37,6 +61,30 @@
       "writtenOn": "2026-01-28T20:32:46Z",
       "side": 1,
       "message": "This duplicates the logic from the driver.  A lookup table is better way to check for desired outputs.",
+      "range": {
+        "startLine": 265,
+        "startChar": 11,
+        "endLine": 265,
+        "endChar": 31
+      },
+      "revId": "7cfeb4c330c0d591c0ec18450557166ccd04d85a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c4327ba_bc80a6af",
+        "filename": "zephyr/test/drivers/isl9241/src/isl9241.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2026-01-29T03:36:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc47a5b8_00dfc9d6",
       "range": {
         "startLine": 265,
         "startChar": 11,
