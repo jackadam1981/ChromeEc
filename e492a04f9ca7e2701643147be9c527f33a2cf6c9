@@ -24,6 +24,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa3f5ede_44217f06",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2026-01-29T00:32:44Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "168c5d11_4f97d9ce",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "e492a04f9ca7e2701643147be9c527f33a2cf6c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f51219d0_f1969d26",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2026-01-29T00:32:44Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "168c5d11_4f97d9ce",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "e492a04f9ca7e2701643147be9c527f33a2cf6c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa3cc081_2a85c564",
@@ -37,6 +85,24 @@
       "writtenOn": "2026-01-29T00:30:55Z",
       "side": 1,
       "message": "It would probably also be good to delete the `bloonchipper` board from the `ec-legacy` branch to avoid confusion.",
+      "revId": "e492a04f9ca7e2701643147be9c527f33a2cf6c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea76ba2c_79fec01d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2026-01-29T00:32:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa3cc081_2a85c564",
       "revId": "e492a04f9ca7e2701643147be9c527f33a2cf6c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
