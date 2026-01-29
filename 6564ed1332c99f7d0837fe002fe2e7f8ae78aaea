@@ -26,6 +26,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "95d19282_828df40d",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2026-01-29T19:35:59Z",
+      "side": 1,
+      "message": "can we use `BIT(...` here?",
+      "range": {
+        "startLine": 419,
+        "startChar": 35,
+        "endLine": 419,
+        "endChar": 39
+      },
+      "revId": "6564ed1332c99f7d0837fe002fe2e7f8ae78aaea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddf5063f_96297f0c",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2026-01-29T19:35:59Z",
+      "side": 1,
+      "message": "in `led_set_custom_patterns` above, you have\n```\nif (old_pattern) {\n\t\treset_policy_patterns(old_pattern-\u003eled_id);\n\t}\n```\nis that needed here as well?\n\nyou could almost use `led_set_custom_patterns(0)` if it weren\u0027t for the\nrecursive locking...",
+      "range": {
+        "startLine": 451,
+        "startChar": 4,
+        "endLine": 451,
+        "endChar": 9
+      },
+      "revId": "6564ed1332c99f7d0837fe002fe2e7f8ae78aaea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "72b1c28b_e2d0c5b0",
         "filename": "zephyr/test/drivers/led_driver/src/led_custom.c",
         "patchSetId": 1
