@@ -88,6 +88,24 @@
       "parentUuid": "3dc033dd_65536d22",
       "revId": "53ae87dd0fe1aeb30893e6558652357970f5f79e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e71c4eb_a661b3b0",
+        "filename": "common/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2026-01-29T12:03:41Z",
+      "side": 1,
+      "message": "Hi @keithshort@chromium.org , I have discussed internally with Deepti for this change and aligned with thoughts you both shared. Hence I am abandoning this change.",
+      "parentUuid": "746c8b14_7dad6b60",
+      "revId": "53ae87dd0fe1aeb30893e6558652357970f5f79e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
