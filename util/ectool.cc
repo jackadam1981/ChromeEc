@@ -61,6 +61,7 @@
 #include <map>
 #include <memory>
 #include <optional>
+#include <ranges>
 #include <string>
 #include <unistd.h>
 #include <vector>
