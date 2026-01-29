@@ -151,7 +151,7 @@ Build and install `servod` in the chroot:
 <!-- mdformat off(b/139308852) -->
 *** note
 In all of the following commands, replace `<BOARD>` in the command with
-`bloonchipper` or `dartmonkey` depending on the development board you are using.
+`dartmonkey` depending on the development board you are using.
 ***
 <!-- mdformat on -->
 
@@ -525,7 +525,7 @@ Alternatively, you can access a shell via the UI on device by pressing
 Copy the firmware to the DUT:
 
 ```bash
-(chroot) $ scp ./build/bloonchipper/ec.bin <DUT_IP>:/tmp/ec.bin
+(chroot) $ scp ./build/dartmonkey/ec.bin <DUT_IP>:/tmp/ec.bin
 ```
 
 From the DUT, flash the firmware you copied:
@@ -563,7 +563,7 @@ If you get the following message, make sure that
 restarting your machine (or VM).
 
 ```bash
-(chroot) $ sudo servod --board=bloonchipper
+(chroot) $ sudo servod --board=dartmonkey
 2019-04-12 14:53:42,236 - servod - INFO - Start
 2019-04-12 14:53:42,270 - servod - ERROR - No servos found
 ```
