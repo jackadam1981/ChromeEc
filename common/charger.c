@@ -198,24 +198,18 @@ void print_charger_debug(int chgnum)
 			 info->input_current_step);
 }
 
-// #define is_valid_charger_num(chgnum) _is_valid_charger_num(chgnum, __func__)
-// static bool _is_valid_charger_num(int chgnum, const char *fn)
-static bool is_valid_charger_num(int chgnum)
+#define ASSERT_CHARGER_NUM(chgnum) assert_charger_num(chgnum, __func__)
+static void assert_charger_num(const int chgnum, const char *fn)
 {
 	if ((chgnum < 0) || (chgnum >= board_get_charger_chip_count())) {
-		// CPRINTS("%s(%d) Invalid charger!", fn, chgnum);
-		CPRINTS("(%d) Invalid charger!", chgnum);
-		return false;
+		CPRINTS("%s(%d) Invalid charger!", fn, chgnum);
+		ASSERT(chgnum >= 0 && chgnum < board_get_charger_chip_count());
 	}
-
-	return true;
 }
 
 void print_charger_prochot(int chgnum)
 {
-	if (!is_valid_charger_num(chgnum)) {
-		return;
-	}
+	ASSERT_CHARGER_NUM(chgnum);
 
 	if (chg_chips[chgnum].drv->dump_prochot)
 		chg_chips[chgnum].drv->dump_prochot(chgnum);
@@ -236,9 +230,8 @@ static int command_charger(int argc, const char **argv)
 	idx_provided = isdigit((unsigned char)argv[1][0]);
 	if (idx_provided) {
 		chgnum = atoi(argv[1]);
-		if (!is_valid_charger_num(chgnum)) {
+		if ((chgnum < 0) || (chgnum >= board_get_charger_chip_count()))
 			return EC_ERROR_PARAM1;
-		}
 	} else {
 		chgnum = 0;
 	}
@@ -317,9 +310,7 @@ enum ec_error_list charger_post_init(void)
 {
 	int chgnum = 0;
 
-	if (!is_valid_charger_num(chgnum)) {
-		return EC_ERROR_INVAL;
-	}
+	ASSERT_CHARGER_NUM(chgnum);
 
 	if (!chg_chips[chgnum].drv->post_init)
 		return EC_ERROR_UNIMPLEMENTED;
@@ -331,9 +322,7 @@ const struct charger_info *charger_get_info(void)
 {
 	int chgnum = 0;
 
-	if (!is_valid_charger_num(chgnum)) {
-		return NULL;
-	}
+	ASSERT_CHARGER_NUM(chgnum);
 
 	if (!chg_chips[chgnum].drv->get_info)
 		return NULL;
@@ -360,9 +349,7 @@ enum ec_error_list charger_set_mode(int mode)
 {
 	int chgnum = 0;
 
-	if (!is_valid_charger_num(chgnum)) {
-		return EC_ERROR_INVAL;
-	}
+	ASSERT_CHARGER_NUM(chgnum);
 
 	if (!chg_chips[chgnum].drv->set_mode)
 		return EC_ERROR_UNIMPLEMENTED;
@@ -372,9 +359,7 @@ enum ec_error_list charger_set_mode(int mode)
 
 enum ec_error_list charger_enable_otg_power(int chgnum, int enabled)
 {
-	if (!is_valid_charger_num(chgnum)) {
-		return EC_ERROR_INVAL;
-	}
+	ASSERT_CHARGER_NUM(chgnum);
 
 	if (!chg_chips[chgnum].drv->enable_otg_power)
 		return EC_ERROR_UNIMPLEMENTED;
@@ -386,9 +371,7 @@ enum ec_error_list charger_set_otg_current_voltage(int chgnum,
 						   int output_current,
 						   int output_voltage)
 {
-	if (!is_valid_charger_num(chgnum)) {
-		return EC_ERROR_INVAL;
-	}
+	ASSERT_CHARGER_NUM(chgnum);
 
 	if (!chg_chips[chgnum].drv->set_otg_current_voltage)
 		return EC_ERROR_UNIMPLEMENTED;
@@ -404,9 +387,7 @@ int charger_is_sourcing_otg_power(int port)
 	if (IS_ENABLED(CONFIG_OCPC))
 		chgnum = port;
 
-	if (!is_valid_charger_num(chgnum)) {
-		return 0;
-	}
+	ASSERT_CHARGER_NUM(chgnum);
 
 	if (!chg_chips[chgnum].drv->is_sourcing_otg_power)
 		return 0;
@@ -420,9 +401,7 @@ enum ec_error_list charger_get_actual_current(int chgnum, int *current)
 	if (chgnum < 0)
 		return EC_ERROR_INVAL;
 
-	if (!is_valid_charger_num(chgnum)) {
-		return EC_ERROR_INVAL;
-	}
+	ASSERT_CHARGER_NUM(chgnum);
 
 	if (!chg_chips[chgnum].drv->get_actual_current)
 		return EC_ERROR_UNIMPLEMENTED;
@@ -436,9 +415,7 @@ enum ec_error_list charger_get_current(int chgnum, int *current)
 	if (chgnum < 0)
 		return EC_ERROR_INVAL;
 
-	if (!is_valid_charger_num(chgnum)) {
-		return EC_ERROR_INVAL;
-	}
+	ASSERT_CHARGER_NUM(chgnum);
 
 	if (!chg_chips[chgnum].drv->get_current)
 		return EC_ERROR_UNIMPLEMENTED;
@@ -448,9 +425,7 @@ enum ec_error_list charger_get_current(int chgnum, int *current)
 
 enum ec_error_list charger_set_current(int chgnum, int current)
 {
-	if (!is_valid_charger_num(chgnum)) {
-		return EC_ERROR_INVAL;
-	}
+	ASSERT_CHARGER_NUM(chgnum);
 
 	if (!chg_chips[chgnum].drv->set_current)
 		return EC_ERROR_UNIMPLEMENTED;
@@ -460,9 +435,7 @@ enum ec_error_list charger_set_current(int chgnum, int current)
 
 enum ec_error_list charger_get_actual_voltage(int chgnum, int *voltage)
 {
-	if (!is_valid_charger_num(chgnum)) {
-		return EC_ERROR_INVAL;
-	}
+	ASSERT_CHARGER_NUM(chgnum);
 
 	if (!chg_chips[chgnum].drv->get_actual_voltage)
 		return EC_ERROR_UNIMPLEMENTED;
@@ -472,9 +445,7 @@ enum ec_error_list charger_get_actual_voltage(int chgnum, int *voltage)
 
 enum ec_error_list charger_get_voltage(int chgnum, int *voltage)
 {
-	if (!is_valid_charger_num(chgnum)) {
-		return EC_ERROR_INVAL;
-	}
+	ASSERT_CHARGER_NUM(chgnum);
 
 	if (!chg_chips[chgnum].drv->get_voltage)
 		return EC_ERROR_UNIMPLEMENTED;
@@ -486,9 +457,7 @@ enum ec_error_list charger_get_voltage(int chgnum, int *voltage)
 test_mockable enum ec_error_list charger_get_minimum_charging_mv(int chgnum,
 								 uint32_t *mv)
 {
-	if (!is_valid_charger_num(chgnum)) {
-		return EC_ERROR_INVAL;
-	}
+	ASSERT_CHARGER_NUM(chgnum);
 
 	if (chg_chips[chgnum].minimum_charging_mv ==
 	    CHARGER_NO_MINIMUM_CHARGING_MV)
@@ -501,9 +470,7 @@ test_mockable enum ec_error_list charger_get_minimum_charging_mv(int chgnum,
 
 enum ec_error_list charger_set_voltage(int chgnum, int voltage)
 {
-	if (!is_valid_charger_num(chgnum)) {
-		return EC_ERROR_INVAL;
-	}
+	ASSERT_CHARGER_NUM(chgnum);
 
 	if (!chg_chips[chgnum].drv->set_voltage)
 		return EC_ERROR_UNIMPLEMENTED;
@@ -534,7 +501,7 @@ test_mockable enum ec_error_list charger_discharge_on_ac(int enable)
 
 enum ec_error_list charger_enable_bypass_mode(int chgnum, bool enable)
 {
-	ASSERT(chgnum >= 0 && chgnum < board_get_charger_chip_count());
+	ASSERT_CHARGER_NUM(chgnum);
 
 	if (!chg_chips[chgnum].drv->enable_bypass_mode)
 		return EC_ERROR_UNIMPLEMENTED;
@@ -549,9 +516,7 @@ static int charger_get_valid_chgnum(int port)
 	if (!IS_ENABLED(CONFIG_CHARGER_SINGLE_CHIP))
 		chgnum = port;
 
-	if (!is_valid_charger_num(chgnum)) {
-		return -1;
-	}
+	ASSERT_CHARGER_NUM(chgnum);
 
 	return chgnum;
 }
@@ -560,9 +525,7 @@ enum ec_error_list charger_get_vbus_voltage(int port, int *voltage)
 {
 	int chgnum = charger_get_valid_chgnum(port);
 
-	if (!is_valid_charger_num(chgnum)) {
-		return EC_ERROR_INVAL;
-	}
+	ASSERT_CHARGER_NUM(chgnum);
 
 	if (!chg_chips[chgnum].drv->get_vbus_voltage)
 		return EC_ERROR_UNIMPLEMENTED;
@@ -574,9 +537,7 @@ enum ec_error_list charger_get_vsys_voltage(int port, int *voltage)
 {
 	int chgnum = charger_get_valid_chgnum(port);
 
-	if (!is_valid_charger_num(chgnum)) {
-		return EC_ERROR_INVAL;
-	}
+	ASSERT_CHARGER_NUM(chgnum);
 
 	if (!chg_chips[chgnum].drv->get_vsys_voltage)
 		return EC_ERROR_UNIMPLEMENTED;
@@ -587,9 +548,7 @@ enum ec_error_list charger_get_vsys_voltage(int port, int *voltage)
 enum ec_error_list charger_set_input_current_limit(int chgnum,
 						   int input_current)
 {
-	if (!is_valid_charger_num(chgnum)) {
-		return EC_ERROR_INVAL;
-	}
+	ASSERT_CHARGER_NUM(chgnum);
 
 	if (!chg_chips[chgnum].drv->set_input_current_limit)
 		return EC_ERROR_UNIMPLEMENTED;
@@ -601,9 +560,7 @@ enum ec_error_list charger_set_input_current_limit(int chgnum,
 enum ec_error_list charger_get_input_current_limit(int chgnum,
 						   int *input_current)
 {
-	if (!is_valid_charger_num(chgnum)) {
-		return EC_ERROR_INVAL;
-	}
+	ASSERT_CHARGER_NUM(chgnum);
 
 	if (!chg_chips[chgnum].drv->get_input_current_limit)
 		return EC_ERROR_UNIMPLEMENTED;
@@ -614,9 +571,7 @@ enum ec_error_list charger_get_input_current_limit(int chgnum,
 
 enum ec_error_list charger_get_input_current(int chgnum, int *input_current)
 {
-	if (!is_valid_charger_num(chgnum)) {
-		return EC_ERROR_INVAL;
-	}
+	ASSERT_CHARGER_NUM(chgnum);
 
 	if (!chg_chips[chgnum].drv->get_input_current)
 		return EC_ERROR_UNIMPLEMENTED;
@@ -628,9 +583,7 @@ enum ec_error_list charger_manufacturer_id(int *id)
 {
 	int chgnum = 0;
 
-	if (!is_valid_charger_num(chgnum)) {
-		return EC_ERROR_INVAL;
-	}
+	ASSERT_CHARGER_NUM(chgnum);
 
 	if (!chg_chips[chgnum].drv->manufacturer_id)
 		return EC_ERROR_UNIMPLEMENTED;
@@ -642,9 +595,7 @@ enum ec_error_list charger_device_id(int *id)
 {
 	int chgnum = 0;
 
-	if (!is_valid_charger_num(chgnum)) {
-		return EC_ERROR_INVAL;
-	}
+	ASSERT_CHARGER_NUM(chgnum);
 
 	if (!chg_chips[chgnum].drv->device_id)
 		return EC_ERROR_UNIMPLEMENTED;
@@ -656,9 +607,7 @@ test_mockable enum ec_error_list charger_set_frequency(int freq_khz)
 {
 	int chgnum = 0;
 
-	if (!is_valid_charger_num(chgnum)) {
-		return EC_ERROR_INVAL;
-	}
+	ASSERT_CHARGER_NUM(chgnum);
 
 	if (!chg_chips[chgnum].drv->set_frequency)
 		return EC_ERROR_UNIMPLEMENTED;
@@ -670,9 +619,7 @@ enum ec_error_list charger_get_option(int *option)
 {
 	int chgnum = 0;
 
-	if (!is_valid_charger_num(chgnum)) {
-		return EC_ERROR_INVAL;
-	}
+	ASSERT_CHARGER_NUM(chgnum);
 
 	if (!chg_chips[chgnum].drv->get_option)
 		return EC_ERROR_UNIMPLEMENTED;
@@ -684,9 +631,7 @@ enum ec_error_list charger_set_option(int option)
 {
 	int chgnum = 0;
 
-	if (!is_valid_charger_num(chgnum)) {
-		return EC_ERROR_INVAL;
-	}
+	ASSERT_CHARGER_NUM(chgnum);
 
 	if (!chg_chips[chgnum].drv->set_option)
 		return EC_ERROR_UNIMPLEMENTED;
@@ -726,9 +671,7 @@ int chg_ramp_is_stable(void)
 {
 	int chgnum = 0;
 
-	if (!is_valid_charger_num(chgnum)) {
-		return 0;
-	}
+	ASSERT_CHARGER_NUM(chgnum);
 
 	if (!chg_chips[chgnum].drv->ramp_is_stable)
 		return 0;
@@ -740,9 +683,7 @@ int chg_ramp_is_detected(void)
 {
 	int chgnum = 0;
 
-	if (!is_valid_charger_num(chgnum)) {
-		return 0;
-	}
+	ASSERT_CHARGER_NUM(chgnum);
 
 	if (!chg_chips[chgnum].drv->ramp_is_detected)
 		return 0;
@@ -754,9 +695,7 @@ int chg_ramp_get_current_limit(void)
 {
 	int chgnum = 0;
 
-	if (!is_valid_charger_num(chgnum)) {
-		return 0;
-	}
+	ASSERT_CHARGER_NUM(chgnum);
 
 	if (!chg_chips[chgnum].drv->ramp_get_current_limit)
 		return 0;
@@ -787,9 +726,7 @@ charger_set_vsys_compensation(int chgnum, struct ocpc_data *ocpc,
 
 enum ec_error_list charger_is_icl_reached(int chgnum, bool *reached)
 {
-	if (!is_valid_charger_num(chgnum)) {
-		return EC_ERROR_INVAL;
-	}
+	ASSERT_CHARGER_NUM(chgnum);
 
 	if (chg_chips[chgnum].drv->is_icl_reached)
 		return chg_chips[chgnum].drv->is_icl_reached(chgnum, reached);
@@ -799,9 +736,7 @@ enum ec_error_list charger_is_icl_reached(int chgnum, bool *reached)
 
 enum ec_error_list charger_enable_linear_charge(int chgnum, bool enable)
 {
-	if (!is_valid_charger_num(chgnum)) {
-		return EC_ERROR_INVAL;
-	}
+	ASSERT_CHARGER_NUM(chgnum);
 
 	if (chg_chips[chgnum].drv->enable_linear_charge)
 		return chg_chips[chgnum].drv->enable_linear_charge(chgnum,
@@ -819,9 +754,7 @@ inline int charger_get_min_bat_pct_for_power_on(void)
 
 enum ec_error_list charger_get_battery_cells(int chgnum, int *cells)
 {
-	if (!is_valid_charger_num(chgnum)) {
-		return EC_ERROR_INVAL;
-	}
+	ASSERT_CHARGER_NUM(chgnum);
 
 	if (chg_chips[chgnum].drv->get_battery_cells)
 		return chg_chips[chgnum].drv->get_battery_cells(chgnum, cells);
