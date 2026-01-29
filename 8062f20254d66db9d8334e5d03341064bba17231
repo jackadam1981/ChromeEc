@@ -85,6 +85,29 @@
       "parentUuid": "160d3d8e_f0b896bb",
       "revId": "8062f20254d66db9d8334e5d03341064bba17231",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b57a2a1_1e4f7814",
+        "filename": "zephyr/test/drivers/led_driver/src/led_custom.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2026-01-29T21:00:53Z",
+      "side": 1,
+      "message": "Can we have a test where `led_set_custom_patterns` is called within a helper function that defines the pattern?",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 34
+      },
+      "revId": "8062f20254d66db9d8334e5d03341064bba17231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
