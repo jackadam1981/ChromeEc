@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc1c091e_f7480197",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2026-01-29T21:55:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ea04ec3_05a0c5e8",
+      "range": {
+        "startLine": 16,
+        "startChar": 61,
+        "endLine": 16,
+        "endChar": 71
+      },
+      "revId": "6564ed1332c99f7d0837fe002fe2e7f8ae78aaea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95d19282_828df40d",
@@ -37,6 +61,30 @@
       "writtenOn": "2026-01-29T19:35:59Z",
       "side": 1,
       "message": "can we use `BIT(...` here?",
+      "range": {
+        "startLine": 419,
+        "startChar": 35,
+        "endLine": 419,
+        "endChar": 39
+      },
+      "revId": "6564ed1332c99f7d0837fe002fe2e7f8ae78aaea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ce2b35d_c712d2fe",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2026-01-29T21:55:22Z",
+      "side": 1,
+      "message": "Done in the previous CL.",
+      "parentUuid": "95d19282_828df40d",
       "range": {
         "startLine": 419,
         "startChar": 35,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23c3adfa_164e609b",
+        "filename": "zephyr/shim/src/led_driver/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2026-01-29T21:55:22Z",
+      "side": 1,
+      "message": "This is redundant as the `match_node` then calls `led_init_pattern_state()` (the purpose of `reset_policy_patterns()`), but this is structurally better, having a single entry point to reset `g_custom_patterns`.\n\nI made it call `led_set_custom_patterns(NULL)`.",
+      "parentUuid": "ddf5063f_96297f0c",
+      "range": {
+        "startLine": 451,
+        "startChar": 4,
+        "endLine": 451,
+        "endChar": 9
+      },
+      "revId": "6564ed1332c99f7d0837fe002fe2e7f8ae78aaea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72b1c28b_e2d0c5b0",
@@ -83,6 +155,24 @@
       "writtenOn": "2026-01-29T17:31:48Z",
       "side": 1,
       "message": "Nit: Does this need to be constructed in every test where it\u0027s used, or could it be constructed in a setup function?",
+      "revId": "6564ed1332c99f7d0837fe002fe2e7f8ae78aaea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afa27117_f386b76a",
+        "filename": "zephyr/test/drivers/led_driver/src/led_custom.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2026-01-29T21:55:22Z",
+      "side": 1,
+      "message": "The above steps and the pattern have slightly different values for different testing scenarios. They are placed in the stack.\n\nIt is straight forward to also create this instance in the stack. And its value may change too, e.g. the above `test_custom_unsupported_led` with a different `led_id` value.",
+      "parentUuid": "72b1c28b_e2d0c5b0",
       "revId": "6564ed1332c99f7d0837fe002fe2e7f8ae78aaea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
