@@ -5835,6 +5835,12 @@
 /* The leading time of watchdog warning timer. */
 #define CONFIG_WATCHDOG_WARNING_LEADING_TIME_MS 500
 
+/* Watchdog info host command */
+#define CONFIG_HOSTCMD_WATCHDOG_INFO
+
+/* Watchdog info console command */
+#undef CONFIG_CONSOLE_CMD_WATCHDOG_INFO
+
 /*
  * Fire auxiliary timer before watchdog timer expires. This leaves some time for
  * debug trace to be printed.
