@@ -128,6 +128,30 @@
       },
       "revId": "b818e80d68dde24fed3d10f046a94f02bb1f3561",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6604aea6_6ae4c851",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-29T17:01:32Z",
+      "side": 1,
+      "message": "\u003e Ideally, you won\u0027t have shared code for very long.\n\nUnfortunately, this is not the case for fingerprint and we need to keep the test runner, tests and common code in sync between the EC and Zephyr branches. We\u0027ve had many discussions about this with Keith and Jon, which you can read [here](https://docs.google.com/document/d/1rIhoAcJiXReZDtMV5dOAxJPY4RBupXdHh2s6g9M5gbg/edit?tab\u003dt.0#heading\u003dh.j9x57bev3u9t) (see notes about what was not supposed to be deleted) and [here](https://docs.google.com/document/d/1_D5864NCK2y90NMxHdvCwwsE6X92iKIwqdFD9mfzI_Y/edit?resourcekey\u003d0-SUtXU8eeQ9XlLpTQqEQZ5g\u0026tab\u003dt.0#heading\u003dh.9zxnvvirticy). You are welcome to join the biweekly discussion we\u0027re having about this.\n\nJon and I discussed this yesterday and he\u0027s going to submit his change that deletes all the EC code (keeping `elm`) instead.",
+      "parentUuid": "6bc50ffa_3385df4b",
+      "range": {
+        "startLine": 451,
+        "startChar": 1,
+        "endLine": 463,
+        "endChar": 23
+      },
+      "revId": "b818e80d68dde24fed3d10f046a94f02bb1f3561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
