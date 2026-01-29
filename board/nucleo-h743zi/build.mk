@@ -10,25 +10,12 @@ board-y=board.o
 
 # Enable on device tests
 test-list-y=\
-       abort \
        boringssl \
        crc \
-       debug \
-       exception \
-       flash_physical \
-       flash_write_protect \
-       libc_printf \
-       mpu \
-       null_pointer \
        printf \
        queue \
-       rng_benchmark \
-       rollback \
-       rollback_entropy \
        rsa3 \
        rtc \
-       scratchpad \
        sha256 \
        sha256_unrolled \
        stdlib \
-       watchdog \

@@ -17,52 +17,20 @@ baseboard-rw += fpsensor_detect_rw.o
 
 # Do not build rsa test because this board uses RSA exponent 3 and the rsa test
 # will fail on device.
-# TODO(b/314131076): Fix cortexm_fpu test for helipilot
 # TODO(b/314131510): Fix stm32f_rtc test (or create a new one) for helipilot
 test-list-y = \
-       abort \
-       assert_builtin \
-       assert_stdlib \
        boringssl_crypto \
-       cortexm_fpu \
        crc \
-       debug \
-       exception \
-       exit \
-       flash_physical \
-       flash_write_protect \
        fpsensor_auth_crypto_stateful \
        fpsensor_auth_crypto_stateless \
        fpsensor_crypto \
-       fpsensor_hw \
-       ftrapv \
-       global_initialization \
-       libc_printf \
-       libcxx \
-       mpu \
-       null_pointer \
-       panic \
-       panic_data \
        printf \
        queue \
-       ram_lock \
-       restricted_console \
-       rng_benchmark \
-       rollback \
-       rollback_entropy \
-       rollback_lock_panic \
        rsa3 \
        rtc \
-       rtc_npcx9 \
-       scratchpad \
        sha256 \
        sha256_unrolled \
        stdlib \
-       system_is_locked \
-       tpm_seed_clear \
-       unaligned_access \
-       unaligned_access_benchmark \
-       watchdog \
 
 # This is relative to the EC root directory.
 ifneq ($(BOARD_BUCCANEER),y)

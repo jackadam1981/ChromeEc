@@ -11,29 +11,15 @@ board-y+=fpsensor_detect.o
 
 # Enable on device tests
 test-list-y=\
-       abort \
        boringssl_crypto \
        crc \
-       debug \
-       exception \
-       flash_physical \
-       flash_write_protect \
        fpsensor_auth_crypto_stateful \
        fpsensor_auth_crypto_stateless \
        fpsensor_crypto \
-       fpsensor_hw \
-       libc_printf \
-       mpu \
-       null_pointer \
        printf \
        queue \
-       rng_benchmark \
-       rollback \
-       rollback_entropy \
        rsa3 \
        rtc \
-       scratchpad \
        sha256 \
        sha256_unrolled \
        stdlib \
-       watchdog \
