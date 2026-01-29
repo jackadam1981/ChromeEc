@@ -30,7 +30,7 @@
 
 volatile int starve_dog = 0;
 
-void watchdog_reload(void)
+void chip_watchdog_reload(void)
 {
 	if (!starve_dog) {
 		/* Reset the watchdog */

@@ -11,7 +11,7 @@
 #include "scp_watchdog.h"
 #include "watchdog.h"
 
-void watchdog_reload(void)
+void chip_watchdog_reload(void)
 {
 	SCP_CORE_WDT_KICK = BIT(0);
 }
