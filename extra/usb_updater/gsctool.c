@@ -104,6 +104,7 @@ static const struct ccd_capability_info ti50_cap_info[] = {
 };
 
 #define CR50_CCD_CAP_COUNT CCD_CAP_COUNT
+#define FLASH_PAGE_SIZE	   2048
 
 /*
  * One of the basic assumptions of the code handling multiple ccd_info layouts
@@ -582,7 +583,7 @@ static const struct option_container cmd_line_options[] = {
 	{ { "boot_trace", optional_argument, NULL, 'J' },
 	  "[erase]%Retrieve boot trace from the chip, optionally erasing "
 	  "the trace buffer" },
-	{ { "owner_config", no_argument, NULL, 'j' },
+	{ { "upload_owner_config", no_argument, NULL, 'j' },
 	  "<binary image> is a 2kB blob containing new owners configuration,"
 	  " OpenTitan only" },
 	{ { "get_value", required_argument, NULL, 'K' },
@@ -599,9 +600,6 @@ static const struct option_container cmd_line_options[] = {
 	  "Effective with -b, -f, -i, -J, -r, and -O." },
 	{ { "tpm_mode", optional_argument, NULL, 'm' },
 	  "[enable|disable]%Change or query tpm_mode" },
-	{ { "device_ids", required_argument, NULL, 2 },
-	  "Get the device IDs "
-	  "[get_scratch|get_info|commit|delete_scratch|[id_type:value]" },
 	{ { "serial", required_argument, NULL, 'n' }, "GSC USB serial number" },
 	{ { "openbox_rma", required_argument, NULL, 'O' },
 	  "<desc_file>%Verify other device's RO integrity using information "
@@ -645,6 +643,15 @@ static const struct option_container cmd_line_options[] = {
 	  "in milliseconds" },
 	{ { "skip_bid_check", no_argument, &skip_bid_check, 1 },
 	  "Skips board id check and sends image to device." },
+	{ { "device_ids", required_argument, NULL, 2 },
+	  "Get the device IDs "
+	  "[get_scratch|get_info|commit|delete_scratch|[id_type:value]" },
+	{ { "strongbox", required_argument, NULL, 3 },
+	  "[enable|disable]%Control strongbox" },
+	{ { "download_owner_config", no_argument, NULL, 4 },
+	  "Read RW owner config into a file, Opentitan only" },
+	{ { "spi_drive", optional_argument, NULL, 5 },
+	  "[spi_drive_setting]%Gets/sets spi_drive" },
 };
 
 /* Helper to print debug messages when verbose flag is specified. */
@@ -934,6 +941,42 @@ static void shut_down(struct usb_endpoint *uep)
 	exit(update_error);
 }
 
+static void print_indented(const char *text, int indent)
+{
+	/* At this point the line is printed up to the indent column. */
+	const char *cursor = text;
+	const char *previous_space = text;
+	const char *line_start = text;
+	int help_string_cols = 90 - indent;
+	int last_index = 0;
+	int i;
+
+	while ((cursor = strchr(cursor, ' ')) != NULL) {
+		last_index = cursor - line_start;
+		if (last_index < help_string_cols) {
+			while (previous_space != cursor)
+				printf("%c", *previous_space++);
+			cursor++;
+			continue;
+		}
+		printf("\n");
+		for (i = 0; i < indent; i++)
+			printf(" ");
+		previous_space++;
+		cursor = previous_space;
+		line_start = previous_space;
+	}
+	if ((last_index + strlen(previous_space)) > (unsigned)help_string_cols) {
+		/* The last word would not fit in the current line. */
+		printf("\n");
+		for (i = 0; i < indent; i++)
+			printf(" ");
+		previous_space++;
+	}
+
+	printf("%s\n", previous_space);
+}
+
 static void usage(int errs)
 {
 	size_t i;
@@ -998,7 +1041,7 @@ static void usage(int errs)
 
 		while (printed_length++ < indent)
 			printf(" ");
-		printf("%s\n", help_text);
+		print_indented(help_text, indent);
 	}
 	printf("\n");
 	exit(errs ? update_error : noop);
@@ -1894,7 +1937,7 @@ static void send_owner_config(struct transfer_descriptor *td,
 			      const char *file_name)
 {
 	struct stat st;
-	const size_t config_size = 2048;
+	const size_t config_size = FLASH_PAGE_SIZE;
 	uint8_t config[config_size];
 	FILE *f;
 	uint32_t fake_addr;
@@ -1905,7 +1948,7 @@ static void send_owner_config(struct transfer_descriptor *td,
 		exit(1);
 	}
 
-	if (st.st_size != config_size) {
+	if (st.st_size != (long)config_size) {
 		fprintf(stderr, "Unexpected size %zd of %s\n", st.st_size,
 			file_name);
 		exit(1);
@@ -1941,6 +1984,64 @@ static void send_owner_config(struct transfer_descriptor *td,
 	 */
 	fake_addr = (1 << 31) + (1 << 30) + (3 << 26);
 	transfer_section(td, config, fake_addr, config_size);
+	exit(0);
+}
+
+/*
+ * This function retrieves the owners config from an Opentitan chip.
+ *
+ * The owners config occupies a certain INFO page on the chip, this function
+ * sends requests to the chip to read slices of bytes from the page, each
+ * request containing offset and size of the slice to read.
+ *
+ * To make sure that this could be used over both TPM and USB interfaces the
+ * sizes of slices are limited by 48 bytes, which guarantees that each return
+ * message would fit into a singe 64 byte USB packet.
+ *
+ * Received data is saved in a binary file.
+ */
+static void get_owner_config(struct transfer_descriptor *td,
+			     const char *file_name)
+{
+	size_t index;
+
+	FILE *fp;
+
+	fp = fopen(file_name, "wb");
+	if (fp == NULL) {
+		fprintf(stderr, "Error opening %s\n", file_name);
+		exit(1);
+	}
+
+	for (index = 0; index < FLASH_PAGE_SIZE;) {
+		uint8_t buf[48]; /* Max size of one slice read from the chip. */
+		/* Do not try reading more than one page. */
+		size_t chunk_size = MIN(sizeof(buf), FLASH_PAGE_SIZE - index);
+		struct vendor_cc_get_owners_config get_conf = { index,
+								chunk_size };
+		uint32_t rv;
+		size_t byte_count = chunk_size;
+
+		rv = send_vendor_command(td, VENDOR_CC_READ_OWNERS_CONFIG,
+					 &get_conf, sizeof(get_conf), buf,
+					 &byte_count);
+		if (rv || byte_count != chunk_size) {
+			fprintf(stderr, "%s: Error %#x\n", __func__, rv);
+			break;
+		}
+		if (fwrite(buf, 1, chunk_size, fp) != chunk_size) {
+			fprintf(stderr, "Failed to save config at offset %zd\n",
+				index);
+			break;
+		}
+		index += chunk_size;
+	}
+
+	fclose(fp);
+	if (index != FLASH_PAGE_SIZE) {
+		remove(file_name);
+		exit(1);
+	}
 	exit(0);
 }
 
@@ -3489,7 +3590,7 @@ static int process_get_apro_hash(struct transfer_descriptor *td)
 	}
 	printf("digest: ");
 	for (i = 0; i < SHA256_DIGEST_SIZE; i++)
-		printf("%x", response[i]);
+		printf("%02x", response[i]);
 	printf("\n");
 	return 0;
 }
@@ -4046,6 +4147,49 @@ static void process_sn_inc_rma(struct transfer_descriptor *td, uint8_t arg)
 	}
 }
 
+/* Get/Set the SPI drive value. */
+static int process_spi_drive(struct transfer_descriptor *td, char *arg)
+{
+	char *e;
+	uint8_t drive = 0;
+	size_t expected_response_size = 0;
+	int message_size = 0;
+	int rv;
+	uint8_t spi_drive_response;
+	size_t response_size = sizeof(spi_drive_response);
+
+	if (arg) {
+		drive = strtoul(arg, &e, 10);
+		if (*e) {
+			fprintf(stderr, "invalid spi drive value \"%s\"\n",
+				arg);
+			return update_error;
+		}
+		expected_response_size = 0;
+		message_size = sizeof(drive);
+	} else {
+		expected_response_size = 1;
+		message_size = 0;
+	}
+
+	rv = send_vendor_command(td, VENDOR_CC_SPI_DRIVE, &drive, message_size,
+				 &spi_drive_response, &response_size);
+	if (rv) {
+		fprintf(stderr, "Error %d while sending vendor command\n", rv);
+		return update_error;
+	}
+
+	if (response_size != expected_response_size) {
+		fprintf(stderr, "Unexpected spi drive response");
+		exit(update_error);
+	}
+	if (response_size == 0)
+		return 0;
+	print_machine_output("SPI_DRIVE", "%u", spi_drive_response);
+	return 0;
+}
+
+
 /* Get/Set the primary seed of the info1 manufacture state. */
 static int process_endorsement_seed(struct transfer_descriptor *td,
 				    const char *endorsement_seed_str)
@@ -4196,6 +4340,41 @@ static void process_rma(struct transfer_descriptor *td, const char *authcode,
 		exit(update_error);
 	}
 	printf("RMA unlock succeeded.\n");
+}
+
+/* Enable or disable strongbox. */
+static int process_set_strongbox(struct transfer_descriptor *td, uint8_t arg)
+{
+	char *cmd_str;
+	int rv;
+	/*
+	 * Set strongbox state support was added in 0.{5,6}.322. Don't run the
+	 * command if the Cr50 image does not support it.
+	 * TODO(b/466410556): Remove this check after Q2 2026 when the cr50
+	 * support has been out for a while.
+	 */
+	if (targ.shv[1].major < 5 ||
+	    (targ.shv[1].major < 7 && targ.shv[1].minor < 320)) {
+		printf("%s: skip command\n", __func__);
+		return 0;
+	}
+	if (arg)
+		cmd_str = "en";
+	else
+		cmd_str = "dis";
+
+	printf("%sabling strongbox\n", cmd_str);
+	rv = send_vendor_command(td, VENDOR_CC_SET_STRONGBOX_STATE, &arg,
+				 sizeof(arg), NULL, 0);
+	if (rv) {
+		fprintf(stderr,
+			"Failed %sabling strongbox\nvc error "
+			"%d\n",
+			cmd_str, rv);
+		return update_error;
+	}
+	printf("Strongbox %sable succeeded.\n", cmd_str);
+	return 0;
 }
 
 /*
@@ -4648,7 +4827,7 @@ static int getopt_all(int argc, char *argv[])
 static int get_crashlog(struct transfer_descriptor *td)
 {
 	uint32_t rv;
-	uint8_t response[2048] = { 0 };
+	uint8_t response[FLASH_PAGE_SIZE] = { 0 };
 	size_t response_size = sizeof(response);
 
 	rv = send_vendor_command(td, VENDOR_CC_GET_CRASHLOG, NULL, 0, response,
@@ -4670,7 +4849,7 @@ static int get_crashlog(struct transfer_descriptor *td)
 static int get_console_logs(struct transfer_descriptor *td, bool *empty)
 {
 	uint32_t rv;
-	uint8_t response[2048] = { 0 };
+	uint8_t response[FLASH_PAGE_SIZE] = { 0 };
 	size_t response_size = sizeof(response);
 
 	rv = send_vendor_command(td, VENDOR_CC_GET_CONSOLE_LOGS, NULL, 0,
@@ -5167,6 +5346,14 @@ static int process_cr50_get_metrics(struct transfer_descriptor *td,
 	       (stats.misc_status >> CR50_METRICSV_CCD_MODE_EN_SHIFT) & 1);
 	printf("   ambigous straps:   %7d\n",
 	       (stats.misc_status >> CR50_METRICSV_AMBIGUOUS_STRAP_SHIFT) & 1);
+	/*
+	 * SB status bits were added in metrics version 2. Before that they were
+	 * unset, so the status is accurate.
+	 */
+	printf("   sb disable: %14d\n",
+	       (stats.misc_status >> CR50_METRICSV_SB_DISABLE_SHIFT) & 1);
+	printf("   sb enable: %15d\n",
+	       (stats.misc_status >> CR50_METRICSV_SB_ENABLE_SHIFT) & 1);
 
 	return 0;
 }
@@ -5376,6 +5563,8 @@ int main(int argc, char *argv[])
 	uint8_t sn_bits_arg[SN_BITS_SIZE];
 	int sn_inc_rma = 0;
 	uint8_t sn_inc_rma_arg = 0;
+	char *spi_drive_arg = NULL;
+	bool spi_drive = false;
 	int erase_ap_ro_hash = 0;
 	int set_capability = 0;
 	const char *capability_parameter = "";
@@ -5395,20 +5584,31 @@ int main(int argc, char *argv[])
 	bool get_chassis_open = false;
 	bool get_dev_ids = false;
 	bool get_aprov_reset_counts = false;
+	bool set_strongbox = false;
+	uint8_t set_strongbox_arg = 0;
 	int upload_owner_config = 0;
+	int download_owner_config = 0;
 
 	/*
 	 * All options which result in setting a Boolean flag to True, along
 	 * with addresses of the flags. Terminated by a zeroed entry.
 	 */
 	const struct options_map omap[] = {
-		{ 'b', &binary_vers },	    { 'c', &corrupt_inactive_rw },
-		{ 'f', &show_fw_ver },	    { 'g', &get_boot_mode },
-		{ 'H', &erase_ap_ro_hash }, { 'j', &upload_owner_config },
-		{ 'k', &ccd_lock },	    { 'o', &ccd_open },
-		{ 'P', &password },	    { 'p', &td.post_reset },
-		{ 'U', &ccd_unlock },	    { 'u', &td.upstart_mode },
-		{ 'V', &verbose_mode },	    {},
+		{ 'b', &binary_vers },
+		{ 'c', &corrupt_inactive_rw },
+		{ 'f', &show_fw_ver },
+		{ 'g', &get_boot_mode },
+		{ 'H', &erase_ap_ro_hash },
+		{ 'j', &upload_owner_config },
+		{ 'k', &ccd_lock },
+		{ 'o', &ccd_open },
+		{ 'P', &password },
+		{ 'p', &td.post_reset },
+		{ 4, &download_owner_config },
+		{ 'U', &ccd_unlock },
+		{ 'u', &td.upstart_mode },
+		{ 'V', &verbose_mode },
+		{},
 	};
 
 	/*
@@ -5440,6 +5640,23 @@ int main(int argc, char *argv[])
 		case 2:
 			parse_device_ids = true;
 			device_ids_arg = optarg;
+			break;
+		case 3:
+			set_strongbox = true;
+			if (!strcasecmp(optarg, "enable")) {
+				set_strongbox_arg = 1;
+			} else if (!strcasecmp(optarg, "disable")) {
+				set_strongbox_arg = 0;
+			} else {
+				fprintf(stderr,
+					"Invalid strongbox argument: \"%s\"\n",
+					optarg);
+				errorcnt++;
+			}
+			break;
+		case 5:
+			spi_drive_arg = optarg;
+			spi_drive = true;
 			break;
 		case 'A':
 			get_apro_hash = 1;
@@ -5738,7 +5955,8 @@ int main(int argc, char *argv[])
 	    !show_fw_ver && !sn_bits && !sn_inc_rma && !start_apro_verify &&
 	    !openbox_desc_file && !tstamp && !tpm_mode && (wp == WP_NONE) &&
 	    !get_chassis_open && !get_dev_ids && !get_aprov_reset_counts &&
-	    !upload_owner_config && !parse_device_ids) {
+	    !upload_owner_config && !parse_device_ids && !set_strongbox &&
+	    !download_owner_config && !spi_drive) {
 		num_images = argc - optind;
 		if (num_images <= 0) {
 			fprintf(stderr,
@@ -5783,11 +6001,11 @@ int main(int argc, char *argv[])
 	     !!get_boot_mode + !!openbox_desc_file + !!factory_mode +
 	     (wp != WP_NONE) + !!get_endorsement_seed + !!erase_ap_ro_hash +
 	     !!set_capability + !!get_clog + !!get_console +
-	     !!upload_owner_config) > 1) {
+	     !!upload_owner_config + !!download_owner_config) > 1) {
 		fprintf(stderr,
 			"Error: options "
-			"-e, -F, -g, -H, -I, -i, -j -k, -L, -l, -O, -o, -P, -r,"
-			"-U, -x and -w are mutually exclusive\n");
+			"-e, -F, -g, -H, -I, -i, -j -k, -L, -l, -O, -o, -P, -Q,"
+			"-r, -U, -x and -w are mutually exclusive\n");
 		exit(update_error);
 	}
 
@@ -5829,20 +6047,23 @@ int main(int argc, char *argv[])
 	/* Perform run selection of GSC device now that we have a connection */
 	gsc_dev = determine_gsc_type(&td);
 
-	if (upload_owner_config) {
+	if (upload_owner_config || download_owner_config) {
 		if (gsc_dev != GSC_DEVICE_NT) {
-			fprintf(stderr, "Owner's config can be uploaded only "
+			fprintf(stderr, "Owner's config exists only "
 					"on opentitan devices\n");
 			exit(1);
 		}
 
 		if ((argc - optind) != 1) {
 			fprintf(stderr,
-				"A single owner's config file is required\n");
+				"Owner's config file name is required\n");
 			exit(1);
 		}
 
-		send_owner_config(&td, argv[optind]);
+		if (download_owner_config)
+			get_owner_config(&td, argv[optind]);
+		else
+			send_owner_config(&td, argv[optind]);
 	}
 
 	if (openbox_desc_file)
@@ -5915,6 +6136,22 @@ int main(int argc, char *argv[])
 
 	if (sn_inc_rma)
 		process_sn_inc_rma(&td, sn_inc_rma_arg);
+
+	if (spi_drive) {
+		if (!is_ti50_device()) {
+			printf("spi_drive not supported on Cr50\n");
+			exit(1);
+		}
+		exit(process_spi_drive(&td, spi_drive_arg));
+	}
+
+	if (set_strongbox) {
+		if (is_ti50_device()) {
+			printf("set strongbox not supported on Ti50\n");
+			exit(1);
+		}
+		exit(process_set_strongbox(&td, set_strongbox_arg));
+	}
 
 	if (get_apro_hash)
 		exit(process_get_apro_hash(&td));
