@@ -51,6 +51,24 @@
       "parentUuid": "735499f2_8974cca4",
       "revId": "766254c745cedd5b97c284f14f12bbf3c23bb67a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b6c0978_241c8deb",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2026-01-29T04:53:46Z",
+      "side": 1,
+      "message": "Let\u0027s move the discussion to b/477468333.",
+      "parentUuid": "6bcdbd84_ff6bc445",
+      "revId": "766254c745cedd5b97c284f14f12bbf3c23bb67a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
