@@ -161,10 +161,6 @@ SERVO_MICRO = "servo_micro"
 GCC = "gcc"
 CLANG = "clang"
 
-PRIVATE_YES = "yes"
-PRIVATE_NO = "no"
-PRIVATE_ONLY = "only"
-
 TEST_ASSETS_BUCKET = "gs://chromiumos-test-assets-public/fpmcu/RO"
 DARTMONKEY_IMAGE_PATH = os.path.join(
     TEST_ASSETS_BUCKET, "dartmonkey_v2.0.2887-311310808.bin"
@@ -545,26 +541,16 @@ class AllTests:
     def get(
         platform: Platform,
         board_config: BoardConfig,
-        with_private: str,
         zephyr: bool,
     ) -> list[TestConfig]:
-        """Return public and private test configs for the specified board."""
-        public_tests = (
-            []
-            if with_private == PRIVATE_ONLY
-            else AllTests.get_public_tests(platform, board_config)
-        )
-        private_tests = (
-            [] if with_private == PRIVATE_NO else AllTests.get_private_tests()
-        )
+        """Return public test configs for the specified board."""
+        public_tests = AllTests.get_public_tests(platform, board_config)
 
         zephyr_upstream_tests = (
-            []
-            if with_private == PRIVATE_ONLY or not zephyr
-            else AllTests.get_zephyr_tests()
+            [] if not zephyr else AllTests.get_zephyr_tests()
         )
 
-        all_tests = public_tests + private_tests + zephyr_upstream_tests
+        all_tests = public_tests + zephyr_upstream_tests
         board_tests = list(
             filter(
                 lambda e: (board_config.name not in e.exclude_boards), all_tests
@@ -879,32 +865,6 @@ class AllTests:
                 )
             )
 
-        return tests
-
-    @staticmethod
-    def get_private_tests() -> list[TestConfig]:
-        """Return private test configs for the specified board, if available."""
-        tests = []
-        try:
-            current_dir = os.path.dirname(__file__)
-            private_dir = os.path.join(
-                current_dir, os.pardir, os.pardir, "ec-private/test"
-            )
-            have_private = os.path.isdir(private_dir)
-            if not have_private:
-                return []
-            sys.path.append(private_dir)
-            import private_tests  # pylint: disable=import-error,import-outside-toplevel
-
-            for test_args in private_tests.tests:
-                tests.append(TestConfig(**test_args))
-        # Catch all exceptions to avoid disruptions in public repo
-        except BaseException as exception:  # pylint: disable=broad-except
-            logging.debug(
-                "Failed to get list of private tests: %s", str(exception)
-            )
-            logging.debug("Ignore error and continue.")
-            return []
         return tests
 
     @staticmethod
@@ -1535,12 +1495,11 @@ def get_test_list(
     platform: Platform,
     config: BoardConfig,
     test_args,
-    with_private: str,
     zephyr: bool,
 ) -> list[TestConfig]:
     """Get a list of tests to run."""
     if test_args == "all":
-        return AllTests.get(platform, config, with_private, zephyr)
+        return AllTests.get(platform, config, zephyr)
 
     test_list = []
     for test in test_args:
@@ -1548,7 +1507,7 @@ def get_test_list(
         test_regex = re.compile(test)
         tests = [
             test
-            for test in AllTests.get(platform, config, with_private, zephyr)
+            for test in AllTests.get(platform, config, zephyr)
             if test_regex.fullmatch(test.config_name)
         ]
         if not tests:
@@ -1806,11 +1765,6 @@ def main():
         help="The port connected to the FPMCU console.",
     )
 
-    with_private_choices = [PRIVATE_YES, PRIVATE_NO, PRIVATE_ONLY]
-    parser.add_argument(
-        "--with_private", choices=with_private_choices, default=PRIVATE_YES
-    )
-
     parser.add_argument(
         "--zephyr", help="Use Zephyr build", action="store_true"
     )
@@ -1836,9 +1790,7 @@ def main():
     else:
         platform = Hardware()
 
-    test_list = get_test_list(
-        platform, board_config, args.tests, args.with_private, args.zephyr
-    )
+    test_list = get_test_list(platform, board_config, args.tests, args.zephyr)
     logging.debug("Running tests: %s", [test.config_name for test in test_list])
 
     with ThreadPoolExecutor(max_workers=1) as executor:
