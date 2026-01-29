@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "68f328e6_20493350",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2026-01-29T17:59:13Z",
+      "side": 1,
+      "message": "Calling this HC with `FP_FRAME_GET_ENCRYPTED_TEMPLATE` command results in `EC_RES_UNAVAILABLE` if the `FP_ENCRYPTED_TEMPLATE_READY` is not set. The bit is not set if `encrypt_template()` fails.\n\nDoes that sound good to you?",
+      "parentUuid": "b8ca3113_26e8a235",
+      "range": {
+        "startLine": 335,
+        "startChar": 5,
+        "endLine": 337,
+        "endChar": 31
+      },
+      "revId": "7a5680c1699c501340ecad0a7576914181d3c844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "802e148c_e00df921",
         "filename": "common/fpsensor/fpsensor.cc",
         "patchSetId": 9
@@ -37,6 +61,30 @@
       "writtenOn": "2026-01-21T23:21:06Z",
       "side": 1,
       "message": "Can we add a TODO(bug) to remove this? I guess we\u0027ll have to add support in CrOS `libec` for the async frame command.\n\nOr could this synchronous version call the new v1 command and poll for it to be finished? If so, I would add that in a separate CL.",
+      "range": {
+        "startLine": 572,
+        "startChar": 0,
+        "endLine": 572,
+        "endChar": 77
+      },
+      "revId": "7a5680c1699c501340ecad0a7576914181d3c844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7118dd2c_62b3575f",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2026-01-29T17:59:13Z",
+      "side": 1,
+      "message": "\u003e Or could this synchronous version call the new v1 command and poll for it to be finished?\n\nThis sounds really cool, because we could remove duplicated code. I\u0027m afraid about one thing - the HOSTCMD task will wait for result in FP_FRAME host command context. It means that we need to:\n- Sleep in the host command to give CPU to FPSENSOR task\n- Or use semaphores (in Zephyr).\n- Or wakeup HOSTCMD when the work is done (I don\u0027t think EC supports semaphores).\n\nSleeping does not sound that bad, but I would like to hear your opinion about that.",
+      "parentUuid": "802e148c_e00df921",
       "range": {
         "startLine": 572,
         "startChar": 0,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "40cfe165_66808235",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2026-01-29T17:59:13Z",
+      "side": 1,
+      "message": "How do you think the FP_FRAME could fit in the \"async\" pattern? Do you want me to split FP_FRAME into more separate host commands?\n\nWe are calling \"GET_RESULT\" multiple times. There is also command to get raw image which returns immediately.",
+      "parentUuid": "b0bf6e52_2450d1e4",
+      "range": {
+        "startLine": 630,
+        "startChar": 0,
+        "endLine": 630,
+        "endChar": 77
+      },
+      "revId": "7a5680c1699c501340ecad0a7576914181d3c844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab043a7e_9485f6a2",
         "filename": "common/fpsensor/fpsensor.cc",
         "patchSetId": 9
@@ -83,6 +155,30 @@
       "writtenOn": "2026-01-21T23:21:06Z",
       "side": 1,
       "message": "Since we\u0027re adding a new version of the command, what if we just add an index variable to the `struct ec_params_fp_frame_v1` rather than overloading `offset`?",
+      "range": {
+        "startLine": 635,
+        "startChar": 0,
+        "endLine": 635,
+        "endChar": 58
+      },
+      "revId": "7a5680c1699c501340ecad0a7576914181d3c844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c789c07c_55880a66",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2026-01-29T17:59:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab043a7e_9485f6a2",
       "range": {
         "startLine": 635,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d698576_69e94173",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2026-01-29T17:59:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f874c2e_9de2c67e",
+      "range": {
+        "startLine": 638,
+        "startChar": 0,
+        "endLine": 641,
+        "endChar": 22
+      },
+      "revId": "7a5680c1699c501340ecad0a7576914181d3c844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4febc1dd_4b59b687",
@@ -129,6 +249,30 @@
       "writtenOn": "2026-01-21T23:21:06Z",
       "side": 1,
       "message": "If we continue with packing the index into `offset`, this is technically not correct.",
+      "range": {
+        "startLine": 8605,
+        "startChar": 44,
+        "endLine": 8605,
+        "endChar": 72
+      },
+      "revId": "7a5680c1699c501340ecad0a7576914181d3c844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7526e61_b5d41f66",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 8605,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2026-01-29T17:59:13Z",
+      "side": 1,
+      "message": "Added separate `index` variable.",
+      "parentUuid": "4febc1dd_4b59b687",
       "range": {
         "startLine": 8605,
         "startChar": 44,
