@@ -16,6 +16,24 @@
       "message": "This is just a copy of ec_commands.h so my dependent CLs build. I\u0027ll abandon when the copybot is ready.",
       "revId": "a4b34e3a8c37ff74768964fb096da51e4ad5acd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3b9a01d_02a3e111",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2026-01-29T23:09:07Z",
+      "side": 1,
+      "message": "https://luci-scheduler.appspot.com/jobs/chromeos/ec-ec-legacy-copybot-downstream",
+      "parentUuid": "a50efe69_bee93235",
+      "revId": "a4b34e3a8c37ff74768964fb096da51e4ad5acd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
