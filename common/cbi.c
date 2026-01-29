@@ -609,8 +609,8 @@ static int cc_cbi(int argc, const char **argv)
 	}
 
 	if (strcasecmp(argv[1], "set") == 0) {
-		if (argc < 5) {
-			ccprintf("Set requires: <tag> <value> <size>\n");
+		if (argc < 4) {
+			ccprintf("Set requires: <tag> <value> [size]\n");
 			return EC_ERROR_PARAM_COUNT;
 		}
 
@@ -619,15 +619,59 @@ static int cc_cbi(int argc, const char **argv)
 			return EC_ERROR_PARAM2;
 
 		if (setter->tag == CBI_TAG_DRAM_PART_NUM ||
-		    setter->tag == CBI_TAG_OEM_NAME) {
-			setter->size = strlen(argv[3]) + 1;
-			memcpy(setter->data, argv[3], setter->size);
-		} else if (setter->tag == CBI_TAG_UFSC) {
-			/* TODO(b/463750635): Implement UFSC set command */
-			return EC_ERROR_UNIMPLEMENTED;
-		} else {
-			uint64_t val = strtoull(argv[3], &e, 0);
+		    setter->tag == CBI_TAG_OEM_NAME ||
+		    setter->tag == 29 /* CBI_TAG_UFSC */) {
+			const char *val_str = argv[3];
 
+			if (setter->tag == 29) {
+				int len = strlen(val_str);
+				if (len % 2 != 0) {
+					ccprintf("Hex length must be even\n");
+					return EC_ERROR_PARAM3;
+				}
+
+				setter->size = len / 2;
+
+				if (setter->size > 64) {
+					ccprintf(
+						"Data too long (max 64 bytes)\n");
+					return EC_ERROR_PARAM3;
+				}
+
+				for (int i = 0; i < setter->size; i++) {
+					char tmp[3] = { val_str[i * 2],
+							val_str[i * 2 + 1],
+							'\0' };
+					char *err;
+					setter->data[i] =
+						(uint8_t)strtoi(tmp, &err, 16);
+
+					if (*err) {
+						ccprintf(
+							"Invalid hex char: %s\n",
+							tmp);
+						return EC_ERROR_PARAM3;
+					}
+				}
+			} else {
+				setter->size = strlen(val_str) + 1;
+				if (setter->size > 64) {
+					ccprintf("String too long\n");
+					return EC_ERROR_PARAM3;
+				}
+				memcpy(setter->data, val_str, setter->size);
+			}
+
+			last_arg = 4;
+
+		} else {
+			if (argc < 5) {
+				ccprintf(
+					"Set requires: <tag> <value> <size>\n");
+				return EC_ERROR_PARAM_COUNT;
+			}
+
+			uint64_t val = strtoull(argv[3], &e, 0);
 			if (*e)
 				return EC_ERROR_PARAM3;
 
@@ -646,15 +690,14 @@ static int cc_cbi(int argc, const char **argv)
 			}
 
 			memcpy(setter->data, &val, setter->size);
+			last_arg = 5;
 		}
 
-		last_arg = 5;
 	} else if (strcasecmp(argv[1], "remove") == 0) {
 		if (argc < 3) {
 			ccprintf("Remove requires: <tag>\n");
 			return EC_ERROR_PARAM_COUNT;
 		}
-
 		setter->tag = strtoi(argv[2], &e, 0);
 		if (*e)
 			return EC_ERROR_PARAM2;
@@ -666,17 +709,15 @@ static int cc_cbi(int argc, const char **argv)
 	}
 
 	setter->flag = 0;
-
 	if (argc > last_arg) {
 		int i;
-
 		for (i = last_arg; i < argc; i++) {
 			if (strcasecmp(argv[i], "init") == 0) {
 				setter->flag |= CBI_SET_INIT;
 			} else if (strcasecmp(argv[i], "skip_write") == 0) {
 				setter->flag |= CBI_SET_NO_SYNC;
 			} else {
-				ccprintf("Invalid additional option\n");
+				ccprintf("Invalid option: %s\n", argv[i]);
 				return EC_ERROR_PARAM1 + i - 1;
 			}
 		}
@@ -693,8 +734,9 @@ static int cc_cbi(int argc, const char **argv)
 		return EC_ERROR_UNKNOWN;
 	}
 }
+
 DECLARE_CONSOLE_COMMAND(cbi, cc_cbi,
-			"[set <tag> <value> <size> | "
+			"[set <tag> <value> [size] | "
 			"remove <tag>] [init | skip_write]",
 			"Print or change Cros Board Info from flash");
 #endif /* CONFIG_CMD_CBI */
