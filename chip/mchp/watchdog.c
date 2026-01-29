@@ -11,7 +11,7 @@
 #include "tfdp_chip.h"
 #include "watchdog.h"
 
-void watchdog_reload(void)
+void chip_watchdog_reload(void)
 {
 	MCHP_WDG_KICK = 1;
 
