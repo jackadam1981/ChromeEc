@@ -20,7 +20,7 @@ used for the encryption key that protects the fingerprint templates.
 *** note
 The amount of RAM and flash used is specific to the sensor and matching
 algorithm used. After building the FPMCU firmware (e.g.,
-[`make BOARD=bloonchipper`]), the amount of flash and RAM *remaining* will be
+[`make BOARD=dartmonkey`]), the amount of flash and RAM *remaining* will be
 printed out.
 ***
 <!-- mdformat on -->
