@@ -54,8 +54,6 @@ def run_device_tests(board: str, working_dir: Path, zephyr: bool):
         "-b",
         board,
         "--renode",
-        "--with_private",
-        "no",
     ]
 
     if zephyr:
