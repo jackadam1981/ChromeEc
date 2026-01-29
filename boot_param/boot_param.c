@@ -13,11 +13,9 @@
 #include "res_mem.h"
 #endif /* BOOT_PARAM_VERSION */
 
-/* Common structure to build Sig_structure or DICE Handover structure
- */
+/* Common structure to build Sig_structure or DICE Handover structure */
 
-/* Combined headers before cert payload (CWT claims) in DICE handover
- */
+/* Combined headers before cert payload (CWT claims) in DICE handover */
 struct combined_hdr_s {
 	struct dice_cert_chain_hdr_s cert_chain;
 	struct cdi_cert_hdr_s cert;
@@ -34,8 +32,7 @@ union header_options_s {
  */
 _Static_assert(
 	sizeof(struct combined_hdr_s) >= sizeof(struct cdi_sig_struct_hdr_s),
-	"combined_hdr_s < cdi_sig_struct_hdr_s"
-);
+	"combined_hdr_s < cdi_sig_struct_hdr_s");
 
 struct dice_handover_s {
 	struct dice_handover_hdr_s hdr;
@@ -45,9 +42,8 @@ struct dice_handover_s {
 };
 _Static_assert(
 	sizeof(struct dice_handover_s) - sizeof(struct dice_handover_hdr_s) ==
-	DICE_CHAIN_SIZE,
-	"dice_handover_s != dice_handover_hdr_s + DICE_CHAIN_SIZE"
-);
+		DICE_CHAIN_SIZE,
+	"dice_handover_s != dice_handover_hdr_s + DICE_CHAIN_SIZE");
 
 #if BOOT_PARAM_VERSION == 1
 /* BootParam = {
@@ -91,10 +87,8 @@ struct boot_param_s {
 #endif /* BOOT_PARAM_VERSION */
 };
 
-_Static_assert(
-	sizeof(struct boot_param_s) == BOOT_PARAM_SIZE,
-	"boot_param_s != BOOT_PARAM_SIZE"
-);
+_Static_assert(sizeof(struct boot_param_s) == BOOT_PARAM_SIZE,
+	"boot_param_s != BOOT_PARAM_SIZE");
 
 /* Context to pass between functions that build the DICE handover structure
  */
@@ -104,40 +98,28 @@ struct dice_ctx_s {
 };
 
 /* PCR0 values for various modes - see go/pcr0-tpm2 */
-static const uint8_t kPcr0NormalMode[DIGEST_BYTES] = {
-	0x89, 0xEA, 0xF3, 0x51, 0x34, 0xB4, 0xB3, 0xC6,
-	0x49, 0xF4, 0x4C, 0x0C, 0x76, 0x5B, 0x96, 0xAE,
-	0xAB, 0x8B, 0xB3, 0x4E, 0xE8, 0x3C, 0xC7, 0xA6,
-	0x83, 0xC4, 0xE5, 0x3D, 0x15, 0x81, 0xC8, 0xC7
-};
-static const uint8_t kPcr0RecoveryNormalMode[DIGEST_BYTES] = {
-	0x9F, 0x9E, 0xA8, 0x66, 0xD3, 0xF3, 0x4F, 0xE3,
-	0xA3, 0x11, 0x2A, 0xE9, 0xCB, 0x1F, 0xBA, 0xBC,
-	0x6F, 0xFE, 0x8C, 0xD2, 0x61, 0xD4, 0x24, 0x93,
-	0xBC, 0x68, 0x42, 0xA9, 0xE4, 0xF9, 0x3B, 0x3D
-};
+static const uint8_t kPcr0NormalMode[DIGEST_BYTES] = { 0x89, 0xEA, 0xF3, 0x51,
+	0x34, 0xB4, 0xB3, 0xC6, 0x49, 0xF4, 0x4C, 0x0C, 0x76, 0x5B, 0x96, 0xAE,
+	0xAB, 0x8B, 0xB3, 0x4E, 0xE8, 0x3C, 0xC7, 0xA6, 0x83, 0xC4, 0xE5, 0x3D,
+	0x15, 0x81, 0xC8, 0xC7 };
+static const uint8_t kPcr0RecoveryNormalMode[DIGEST_BYTES] = { 0x9F, 0x9E, 0xA8,
+	0x66, 0xD3, 0xF3, 0x4F, 0xE3, 0xA3, 0x11, 0x2A, 0xE9, 0xCB, 0x1F, 0xBA,
+	0xBC, 0x6F, 0xFE, 0x8C, 0xD2, 0x61, 0xD4, 0x24, 0x93, 0xBC, 0x68, 0x42,
+	0xA9, 0xE4, 0xF9, 0x3B, 0x3D };
 
 /* Const salts - see go/gsc-dice */
-static const uint8_t kIdSalt[64] = {
-	0xDB, 0xDB, 0xAE, 0xBC, 0x80, 0x20, 0xDA, 0x9F,
-	0xF0, 0xDD, 0x5A, 0x24, 0xC8, 0x3A, 0xA5, 0xA5,
-	0x42, 0x86, 0xDF, 0xC2, 0x63, 0x03, 0x1E, 0x32,
-	0x9B, 0x4D, 0xA1, 0x48, 0x43, 0x06, 0x59, 0xFE,
-	0x62, 0xCD, 0xB5, 0xB7, 0xE1, 0xE0, 0x0F, 0xC6,
-	0x80, 0x30, 0x67, 0x11, 0xEB, 0x44, 0x4A, 0xF7,
-	0x72, 0x09, 0x35, 0x94, 0x96, 0xFC, 0xFF, 0x1D,
-	0xB9, 0x52, 0x0B, 0xA5, 0x1C, 0x7B, 0x29, 0xEA
-};
-static const uint8_t kAsymSalt[64] = {
-	0x63, 0xB6, 0xA0, 0x4D, 0x2C, 0x07, 0x7F, 0xC1,
-	0x0F, 0x63, 0x9F, 0x21, 0xDA, 0x79, 0x38, 0x44,
-	0x35, 0x6C, 0xC2, 0xB0, 0xB4, 0x41, 0xB3, 0xA7,
-	0x71, 0x24, 0x03, 0x5C, 0x03, 0xF8, 0xE1, 0xBE,
-	0x60, 0x35, 0xD3, 0x1F, 0x28, 0x28, 0x21, 0xA7,
-	0x45, 0x0A, 0x02, 0x22, 0x2A, 0xB1, 0xB3, 0xCF,
-	0xF1, 0x67, 0x9B, 0x05, 0xAB, 0x1C, 0xA5, 0xD1,
-	0xAF, 0xFB, 0x78, 0x9C, 0xCD, 0x2B, 0x0B, 0x3B
-};
+static const uint8_t kIdSalt[64] = { 0xDB, 0xDB, 0xAE, 0xBC, 0x80, 0x20, 0xDA,
+	0x9F, 0xF0, 0xDD, 0x5A, 0x24, 0xC8, 0x3A, 0xA5, 0xA5, 0x42, 0x86, 0xDF,
+	0xC2, 0x63, 0x03, 0x1E, 0x32, 0x9B, 0x4D, 0xA1, 0x48, 0x43, 0x06, 0x59,
+	0xFE, 0x62, 0xCD, 0xB5, 0xB7, 0xE1, 0xE0, 0x0F, 0xC6, 0x80, 0x30, 0x67,
+	0x11, 0xEB, 0x44, 0x4A, 0xF7, 0x72, 0x09, 0x35, 0x94, 0x96, 0xFC, 0xFF,
+	0x1D, 0xB9, 0x52, 0x0B, 0xA5, 0x1C, 0x7B, 0x29, 0xEA };
+static const uint8_t kAsymSalt[64] = { 0x63, 0xB6, 0xA0, 0x4D, 0x2C, 0x07, 0x7F,
+	0xC1, 0x0F, 0x63, 0x9F, 0x21, 0xDA, 0x79, 0x38, 0x44, 0x35, 0x6C, 0xC2,
+	0xB0, 0xB4, 0x41, 0xB3, 0xA7, 0x71, 0x24, 0x03, 0x5C, 0x03, 0xF8, 0xE1,
+	0xBE, 0x60, 0x35, 0xD3, 0x1F, 0x28, 0x28, 0x21, 0xA7, 0x45, 0x0A, 0x02,
+	0x22, 0x2A, 0xB1, 0xB3, 0xCF, 0xF1, 0x67, 0x9B, 0x05, 0xAB, 0x1C, 0xA5,
+	0xD1, 0xAF, 0xFB, 0x78, 0x9C, 0xCD, 0x2B, 0x0B, 0x3B };
 static const uint8_t kSigHdr[2] = CBOR_BSTR64_HDR;
 
 static const struct cwt_claims_bstr_s kCwtClaimsTemplate = {
@@ -179,17 +161,16 @@ static const struct cwt_claims_bstr_s kCwtClaimsTemplate = {
 				/* 1. Comp name: nint(-70002, 4bytes) =>
 				 * tstr("CrOS AP FW")
 				 */
-				CFG_DESCR_LABEL_COMP_NAME,
-				CFG_DESCR_COMP_NAME,
+				CFG_DESCR_LABEL_COMP_NAME, CFG_DESCR_COMP_NAME,
 				/* 2. Resettable: nint(-70004, 4bytes) => null
 				 */
-				CFG_DESCR_LABEL_RESETTABLE,
-				CBOR_NULL,
+				CFG_DESCR_LABEL_RESETTABLE, CBOR_NULL,
 				/* 3. Sec ver: nint(-70005, 4bytes) =>
 				 *    uint(Security ver, 4bytes)
 				 */
-				CFG_DESCR_LABEL_SEC_VER,
-				CBOR_UINT32_ZERO, /* VARIABLE */
+
+				CFG_DESCR_LABEL_SEC_VER, /* VARIABLE */
+				CBOR_UINT32_ZERO,
 				/* 4. APROV status:
 				 *    nint(-71000, 4bytes) =>
 				 *    uint(APROV status, 4bytes)
@@ -216,7 +197,8 @@ static const struct cwt_claims_bstr_s kCwtClaimsTemplate = {
 				/* nint(-71004, 4bytes) => */
 				/* uint(gsc_type, 0byte) */
 				CFG_DESCR_LABEL_GSC_TYPE,
-				CBOR_UINT8_ZERO, /* VARIABLE */
+				/* VARIABLE */ CBOR_UINT8_ZERO,
+
 				/* 9. BoardID flags: */
 				/* nint(-71005, 4bytes) => */
 				/* uint(bid_flags, 4bytes) */
@@ -254,7 +236,9 @@ static const struct cwt_claims_bstr_s kCwtClaimsTemplate = {
 				 *    nint(-1, 0bytes)
 				 */
 				COSE_KEY_LABEL_ALG,
+
 				CBOR_NINT0(-7), /* ECDSA w/SHA-256 */
+
 				/* 3. Key ops: uint(4, 0bytes) =>
 				 *    array(1) { uint(2, 0bytes) }
 				 */
@@ -269,19 +253,18 @@ static const struct cwt_claims_bstr_s kCwtClaimsTemplate = {
 				 *    bstr(X, 32bytes)
 				 */
 				COSE_KEY_LABEL_X,
-				CBOR_BSTR32_EMPTY, /* VARIABLE */
+				/* VARIABLE */ CBOR_BSTR32_EMPTY,
 				/* 6. X: nint(-3, 0bytes) =>
 				 *    bstr(Y, 32bytes)
 				 */
 				COSE_KEY_LABEL_Y,
-				CBOR_BSTR32_EMPTY, /* VARIABLE */
+				/* VARIABLE */ CBOR_BSTR32_EMPTY,
 			},
 		},
 		/* 9. Key Usage: nint(-4670553, 4bytes) => bstr(1byte) */
 		CWT_LABEL_KEY_USAGE,
 		{
-			CBOR_HDR1(CBOR_MAJOR_BSTR, 1),
-			0x20, /* keyCertSign */
+			CBOR_HDR1(CBOR_MAJOR_BSTR, 1), 0x20, /* keyCertSign */
 		},
 		/* 10. Profile name: nint(-4670554, 4bytes) => */
 		/* tstr("android.16") */
@@ -295,10 +278,9 @@ static const struct dice_handover_hdr_s kDiceHandoverHdrTemplate = {
 	CBOR_HDR1(CBOR_MAJOR_MAP, 3),
 	/* 1. CDI_Attest: uint(1, 0bytes) => bstr(32bytes) */
 	DICE_HANDOVER_LABEL_CDI_ATTEST,
-	CBOR_BSTR32_EMPTY, /* CALC - CDI_attest */
+	/* CALC - CDI_attest */ CBOR_BSTR32_EMPTY,
 	/* 2. CDI_Seal: uint(2, 0bytes) => bstr(32bytes) */
-	DICE_HANDOVER_LABEL_CDI_SEAL,
-	CBOR_BSTR32_EMPTY, /* CALC - CDI_seal */
+	DICE_HANDOVER_LABEL_CDI_SEAL, /* CALC - CDI_seal */ CBOR_BSTR32_EMPTY,
 	/* 3. DICE chain: uint(3, 0bytes) => DICE cert chain */
 	DICE_HANDOVER_LABEL_DICE_CHAIN
 	/* DICE cert chain is not included */
@@ -332,7 +314,7 @@ static const struct combined_hdr_s kCombinedHdrTemplate = {
 			CBOR_UINT0(2), /* EC2 */
 			/* 2. Algorithm: uint(3, 0bytes) => nint(-1, 0bytes) */
 			COSE_KEY_LABEL_ALG,
-			CBOR_NINT0(-7), /* ECDSA w/ SHA-256 */
+			/* ECDSA w/ SHA-256 */ CBOR_NINT0(-7),
 			/* 3. Key ops: uint(4, 0bytes) =>
 			 *    array(1) { uint(2, 0bytes) }
 			 */
@@ -344,10 +326,10 @@ static const struct combined_hdr_s kCombinedHdrTemplate = {
 			CBOR_UINT0(1), /* P-256 */
 			/* 5. X: nint(-2, 0bytes) => bstr(X, 32bytes) */
 			COSE_KEY_LABEL_X,
-			CBOR_BSTR32_EMPTY, /* VARIABLE */
+			/* VARIABLE */ CBOR_BSTR32_EMPTY,
 			/* 6. X: nint(-3, 0bytes) => bstr(Y, 32bytes) */
 			COSE_KEY_LABEL_Y,
-			CBOR_BSTR32_EMPTY, /* VARIABLE */
+			/* VARIABLE */ CBOR_BSTR32_EMPTY,
 		},
 		/* 2. CDI DICE cert: - not included, */
 		/* consists of hdr=cdi_cert_hdr_s, payload=cwt_claims_bstr_s, */
@@ -369,64 +351,42 @@ static const struct combined_hdr_s kCombinedHdrTemplate = {
 };
 
 static const struct slice_ref_s kCdiAttestLabel = {
-	10 /* strlen("CDI_Attest") */,
-	(const uint8_t *)"CDI_Attest"
+	10 /* strlen("CDI_Attest") */, (const uint8_t *)"CDI_Attest"
 };
-static const struct slice_ref_s kCdiSealLabel = {
-	8 /* strlen("CDI_Seal") */,
-	(const uint8_t *)"CDI_Seal"
-};
-static const struct slice_ref_s kIdSaltSlice = {
-	64,
-	(const uint8_t *)kIdSalt
-};
-static const struct slice_ref_s kAsymSaltSlice = {
-	64,
-	(const uint8_t *)kAsymSalt
-};
-static const struct slice_ref_s kIdLabel = {
-	2, /* streln("ID") */
-	(const uint8_t *)"ID"
-};
-static const struct slice_ref_s kKeyPairLabel = {
-	8, /* strelen("Key Pair") */
-	(const uint8_t *)"Key Pair"
-};
+static const struct slice_ref_s kCdiSealLabel = { 8 /* strlen("CDI_Seal") */,
+	(const uint8_t *)"CDI_Seal" };
+static const struct slice_ref_s kIdSaltSlice = { 64, (const uint8_t *)kIdSalt };
+static const struct slice_ref_s kAsymSaltSlice = { 64,
+	(const uint8_t *)kAsymSalt };
+static const struct slice_ref_s kIdLabel = { 2, /* strlen("ID") */
+	(const uint8_t *)"ID" };
+static const struct slice_ref_s kKeyPairLabel = { 8, /* strlen("Key Pair") */
+	(const uint8_t *)"Key Pair" };
 
 /* Calculates CDI from {UDS, inputs_digest, label}
  */
 static inline bool calc_cdi_from_digest(
-	/* [IN] UDS */
-	const uint8_t uds[DIGEST_BYTES],
-	/* [IN] digest of inputs */
-	const uint8_t inputs_digest[DIGEST_BYTES],
-	/* [IN] label */
-	const struct slice_ref_s label,
-	/* [OUT] CDI */
-	uint8_t cdi[DIGEST_BYTES]
-)
+	/* [IN] UDS */ const uint8_t uds[DIGEST_BYTES],
+	/* [IN] digest of inputs */ const uint8_t inputs_digest[DIGEST_BYTES],
+	/* [IN] label */ const struct slice_ref_s label,
+	/* [OUT] CDI */ uint8_t cdi[DIGEST_BYTES])
 {
 	const struct slice_ref_s uds_slice = digest_as_slice(uds);
 	const struct slice_ref_s inputs_digest_slice =
 		digest_as_slice(inputs_digest);
 	const struct slice_mut_s cdi_slice = digest_as_slice_mut(cdi);
 
-	return __platform_hkdf_sha256(uds_slice, inputs_digest_slice, label,
-				      cdi_slice);
+	return __platform_hkdf_sha256(
+		uds_slice, inputs_digest_slice, label, cdi_slice);
 }
 
 /* Calculates CDI from {UDS, inputs, label}
  */
 static bool calc_cdi(
-	/* [IN] UDS */
-	const uint8_t uds[DIGEST_BYTES],
-	/* [IN] inputs */
-	const struct slice_ref_s inputs,
-	/* [IN] label */
-	const struct slice_ref_s label,
-	/* [OUT] CDI */
-	uint8_t cdi[DIGEST_BYTES]
-)
+	/* [IN] UDS */ const uint8_t uds[DIGEST_BYTES],
+	/* [IN] inputs */ const struct slice_ref_s inputs,
+	/* [IN] label */ const struct slice_ref_s label,
+	/* [OUT] CDI */ uint8_t cdi[DIGEST_BYTES])
 {
 	uint8_t inputs_digest[DIGEST_BYTES];
 
@@ -441,15 +401,12 @@ static bool calc_cdi(
  * Assumes that ctx->cfg and CfgDescr in ctx->output are already filled.
  */
 static inline void fill_inputs_seal(
-	/* [IN] dice context */
-	const struct dice_ctx_s *ctx,
-	/* [OUT] inputs */
-	struct cdi_seal_inputs_s *inputs
-)
+	/* [IN] dice context */ const struct dice_ctx_s *ctx,
+	/* [OUT] inputs */ struct cdi_seal_inputs_s *inputs)
 {
 	__platform_memset(inputs->auth_data_digest, 0, DIGEST_BYTES);
-	__platform_memcpy(inputs->hidden_digest, ctx->cfg.hidden_digest,
-			  DIGEST_BYTES);
+	__platform_memcpy(
+		inputs->hidden_digest, ctx->cfg.hidden_digest, DIGEST_BYTES);
 	inputs->mode = ctx->output.dice_handover.payload.data.mode.value;
 }
 
@@ -457,21 +414,16 @@ static inline void fill_inputs_seal(
  * Assumes that ctx->cfg and CfgDescr in ctx->output are already filled.
  */
 static inline void fill_inputs_attest(
-	/* [IN] dice context */
-	const struct dice_ctx_s *ctx,
-	/* [OUT] inputs */
-	struct cdi_attest_inputs_s *inputs
-)
+	/* [IN] dice context */ const struct dice_ctx_s *ctx,
+	/* [OUT] inputs */ struct cdi_attest_inputs_s *inputs)
 {
 	const struct cwt_claims_s *cwt_claims =
 		&ctx->output.dice_handover.payload.data;
 
-	__platform_memcpy(inputs->code_digest,
-			  cwt_claims->code_hash.value,
-			  DIGEST_BYTES);
-	__platform_memcpy(inputs->cfg_desr_digest,
-			  cwt_claims->cfg_hash.value,
-			  DIGEST_BYTES);
+	__platform_memcpy(
+		inputs->code_digest, cwt_claims->code_hash.value, DIGEST_BYTES);
+	__platform_memcpy(inputs->cfg_desr_digest, cwt_claims->cfg_hash.value,
+		DIGEST_BYTES);
 	fill_inputs_seal(ctx, &inputs->seal_inputs);
 }
 
@@ -479,16 +431,12 @@ static inline void fill_inputs_attest(
  * Assumes that ctx->cfg and CfgDescr in ctx->output are already filled.
  */
 static inline bool calc_cdi_attest(
-	/* [IN] dice context */
-	const struct dice_ctx_s *ctx,
-	/* [OUT] CDI */
-	uint8_t cdi[DIGEST_BYTES]
-)
+	/* [IN] dice context */ const struct dice_ctx_s *ctx,
+	/* [OUT] CDI */ uint8_t cdi[DIGEST_BYTES])
 {
 	struct cdi_attest_inputs_s inputs;
-	const struct slice_ref_s inputs_slice = {
-		sizeof(inputs), (uint8_t *)&inputs
-	};
+	const struct slice_ref_s inputs_slice = { sizeof(inputs),
+		(uint8_t *)&inputs };
 
 	fill_inputs_attest(ctx, &inputs);
 	return calc_cdi(ctx->cfg.uds, inputs_slice, kCdiAttestLabel, cdi);
@@ -498,16 +446,12 @@ static inline bool calc_cdi_attest(
  * Assumes that ctx->cfg and CfgDescr in ctx->output are already filled.
  */
 static inline bool calc_cdi_seal(
-	/* [IN] dice context */
-	const struct dice_ctx_s *ctx,
-	/* [OUT] CDI */
-	uint8_t cdi[DIGEST_BYTES]
-)
+	/* [IN] dice context */ const struct dice_ctx_s *ctx,
+	/* [OUT] CDI */ uint8_t cdi[DIGEST_BYTES])
 {
 	struct cdi_seal_inputs_s inputs;
-	const struct slice_ref_s inputs_slice = {
-		sizeof(inputs), (uint8_t *)&inputs
-	};
+	const struct slice_ref_s inputs_slice = { sizeof(inputs),
+		(uint8_t *)&inputs };
 
 	fill_inputs_seal(ctx, &inputs);
 	return calc_cdi(ctx->cfg.uds, inputs_slice, kCdiSealLabel, cdi);
@@ -531,64 +475,66 @@ static inline bool calc_cdi_seal(
  * - Debug - in all other cases
  */
 static inline uint8_t calc_mode(
-	/* [IN] dice context */
-	const struct dice_ctx_s *ctx
-)
+	/* [IN] dice context */ const struct dice_config_s *cfg)
 {
-	if (__platform_aprov_status_allows_normal(ctx->cfg.aprov_status)) {
-		if (__platform_memcmp(ctx->cfg.pcr0, kPcr0NormalMode,
-				      DIGEST_BYTES) == 0) {
+	if (__platform_aprov_status_allows_normal(cfg->aprov_status)) {
+		if (__platform_memcmp(
+			    cfg->pcr0, kPcr0NormalMode, DIGEST_BYTES) == 0) {
 			return BOOT_MODE_NORMAL;
 		}
-		if (__platform_memcmp(ctx->cfg.pcr0, kPcr0RecoveryNormalMode,
-				      DIGEST_BYTES) == 0) {
+		if (__platform_memcmp(cfg->pcr0, kPcr0RecoveryNormalMode,
+			    DIGEST_BYTES) == 0) {
 			return BOOT_MODE_RECOVERY;
 		}
 	}
 	return BOOT_MODE_DEBUG;
 }
 
+/* Get boot mode without providing context. */
+uint8_t get_boot_mode(void)
+{
+	struct dice_config_s cfg;
+
+	if (!__platform_get_dice_config(&cfg)) {
+		__platform_log_str("Failed to get DICE config");
+		return BOOT_MODE_ERROR;
+	}
+
+	return calc_mode(&cfg);
+}
+
 /* Generates CDI cert signature for the initialized builder with pre-filled
  * CWT claims.
  */
 static inline bool fill_cdi_cert_signature(
-	/* [IN/OUT] dice context */
-	struct dice_ctx_s *ctx,
-	/* [IN] key handle to sign */
-	const void *key
-)
+	/* [IN/OUT] dice context */ struct dice_ctx_s *ctx,
+	/* [IN] key handle to sign */ const void *key)
 {
 	uint8_t *sig_struct = ((uint8_t *)&ctx->output.dice_handover.payload) -
 			      sizeof(struct cdi_sig_struct_hdr_s);
-	const struct slice_ref_s data_to_sign = {
-		CDI_SIG_STRUCT_LEN, sig_struct
-	};
-	struct cbor_bstr64_s *sig_bstr64 =
-		&ctx->output.dice_handover.signature;
+	const struct slice_ref_s data_to_sign = { CDI_SIG_STRUCT_LEN,
+		sig_struct };
+	struct cbor_bstr64_s *sig_bstr64 = &ctx->output.dice_handover.signature;
 
 	__platform_memcpy(sig_struct, &kSigStructFixedHdr,
-			  sizeof(struct cdi_sig_struct_hdr_s));
+		sizeof(struct cdi_sig_struct_hdr_s));
 	__platform_memcpy(sig_bstr64->cbor_hdr, kSigHdr, 2);
-	return __platform_ecdsa_p256_sign(key, data_to_sign,
-					  sig_bstr64->value);
+	return __platform_ecdsa_p256_sign(key, data_to_sign, sig_bstr64->value);
 }
 
 /* Generates UDS key from UDS value.
  */
 static bool generate_uds_key(
-	/* [IN] UDS */
-	const uint8_t input[DIGEST_BYTES],
-	/* [OUT] key handle */
-	const void **key
-)
+	/* [IN] UDS */ const uint8_t input[DIGEST_BYTES],
+	/* [OUT] key handle */ const void **key)
 {
 	uint8_t drbg_seed[DIGEST_BYTES];
 	const struct slice_ref_s input_slice = digest_as_slice(input);
 	const struct slice_mut_s drbg_seed_slice =
 		digest_as_slice_mut(drbg_seed);
 
-	if (!__platform_hkdf_sha256(input_slice, kAsymSaltSlice,
-				    kKeyPairLabel, drbg_seed_slice)) {
+	if (!__platform_hkdf_sha256(input_slice, kAsymSaltSlice, kKeyPairLabel,
+		    drbg_seed_slice)) {
 		__platform_log_str("ASYM_KDF failed");
 		return false;
 	}
@@ -598,19 +544,16 @@ static bool generate_uds_key(
 /* Generates CDI key from CDI_Attest value.
  */
 static bool generate_cdi_key(
-	/* [IN] CDI_attest */
-	const uint8_t input[DIGEST_BYTES],
-	/* [OUT] key handle */
-	const void **key
-)
+	/* [IN] CDI_attest */ const uint8_t input[DIGEST_BYTES],
+	/* [OUT] key handle */ const void **key)
 {
 	uint8_t drbg_seed[DIGEST_BYTES];
 	const struct slice_ref_s input_slice = digest_as_slice(input);
 	const struct slice_mut_s drbg_seed_slice =
 		digest_as_slice_mut(drbg_seed);
 
-	if (!__platform_hkdf_sha512(input_slice, kAsymSaltSlice,
-				    kKeyPairLabel, drbg_seed_slice)) {
+	if (!__platform_hkdf_sha512(input_slice, kAsymSaltSlice, kKeyPairLabel,
+		    drbg_seed_slice)) {
 		__platform_log_str("ASYM_KDF failed");
 		return false;
 	}
@@ -621,49 +564,40 @@ static bool generate_cdi_key(
 /* Generates UDS_ID from UDS public key.
  */
 static bool generate_uds_id_from_pub_key(
-	/* [IN] public key */
-	const struct ecdsa_public_s *pub_key,
-	/* [OUT] generated id */
-	uint8_t dice_id[DICE_ID_BYTES]
-)
+	/* [IN] public key */ const struct ecdsa_public_s *pub_key,
+	/* [OUT] generated id */ uint8_t dice_id[DICE_ID_BYTES])
 {
 	const struct slice_ref_s pub_key_slice = {
 		sizeof(struct ecdsa_public_s), (const uint8_t *)pub_key
 	};
-	const struct slice_mut_s dice_id_slice = {
-		DICE_ID_BYTES, (uint8_t *)dice_id
-	};
+	const struct slice_mut_s dice_id_slice = { DICE_ID_BYTES,
+		(uint8_t *)dice_id };
 
-	return __platform_hkdf_sha256(pub_key_slice, kIdSaltSlice, kIdLabel,
-				      dice_id_slice);
+	return __platform_hkdf_sha256(
+		pub_key_slice, kIdSaltSlice, kIdLabel, dice_id_slice);
 }
 
 /* Generates CDI_ID from CDI public key.
  */
 static bool generate_cdi_id_from_pub_key(
-	/* [IN] public key */
-	const struct ecdsa_public_s *pub_key,
-	/* [OUT] generated id */
-	uint8_t dice_id[DICE_ID_BYTES]
-)
+	/* [IN] public key */ const struct ecdsa_public_s *pub_key,
+	/* [OUT] generated id */ uint8_t dice_id[DICE_ID_BYTES])
 {
 	const struct slice_ref_s pub_key_slice = {
 		sizeof(struct ecdsa_public_s), (const uint8_t *)pub_key
 	};
-	const struct slice_mut_s dice_id_slice = {
-		DICE_ID_BYTES, (uint8_t *)dice_id
-	};
+	const struct slice_mut_s dice_id_slice = { DICE_ID_BYTES,
+		(uint8_t *)dice_id };
 
-	if (!__platform_hkdf_sha512(pub_key_slice, kIdSaltSlice, kIdLabel,
-				    dice_id_slice)) {
+	if (!__platform_hkdf_sha512(
+		    pub_key_slice, kIdSaltSlice, kIdLabel, dice_id_slice)) {
 		return false;
 	}
 	dice_id[0] &= ~0x80;
 	return true;
 }
 
-/* Returns hexdump character for the half-byte.
- */
+/* Returns hexdump character for the half-byte. */
 static inline uint8_t hexdump_halfbyte(uint8_t half_byte)
 {
 	if (half_byte < 10)
@@ -672,27 +606,19 @@ static inline uint8_t hexdump_halfbyte(uint8_t half_byte)
 		return 'a' + half_byte - 10;
 }
 
-/* Fills hexdump of the byte (lowercase).
- */
+/* Fills hexdump of the byte (lowercase). */
 static inline void hexdump_byte(
-	/* [IN] byte to hexdump */
-	uint8_t byte,
-	/* [OUT] str (always 2 bytes) with hexdump */
-	uint8_t *str
-)
+	/* [IN] byte to hexdump */ uint8_t byte,
+	/* [OUT] str (always 2 bytes) with hexdump */ uint8_t *str)
 {
 	str[0] = hexdump_halfbyte((byte & 0xF0) >> 4);
 	str[1] = hexdump_halfbyte(byte & 0x0F);
 }
 
-/* Fills {CDI, UDS} ID string from ID bytes.
- */
+/* Fills {CDI, UDS} ID string from ID bytes. */
 static void fill_dice_id_string(
-	/* [IN] IDS_ID or CDI_ID */
-	const uint8_t dice_id[DICE_ID_BYTES],
-	/* [OUT] hexdump of this ID */
-	uint8_t dice_id_str[DICE_ID_HEX_BYTES]
-)
+	/* [IN] IDS_ID or CDI_ID */ const uint8_t dice_id[DICE_ID_BYTES],
+	/* [OUT] hexdump of this ID */ uint8_t dice_id_str[DICE_ID_HEX_BYTES])
 {
 	size_t idx;
 
@@ -705,11 +631,8 @@ static void fill_dice_id_string(
  * from template.
  */
 static inline void fill_cose_pubkey(
-	/* [IN] pub key */
-	const struct ecdsa_public_s *pub_key,
-	/* [IN/OUT] COSE key structure */
-	struct cose_key_ecdsa_s *cose_key
-)
+	/* [IN] pub key */ const struct ecdsa_public_s *pub_key,
+	/* [IN/OUT] COSE key structure */ struct cose_key_ecdsa_s *cose_key)
 {
 	__platform_memcpy(cose_key->x.value, pub_key->x, ECDSA_POINT_BYTES);
 	__platform_memcpy(cose_key->y.value, pub_key->y, ECDSA_POINT_BYTES);
@@ -719,11 +642,8 @@ static inline void fill_cose_pubkey(
  * CDI_attest key.
  */
 static inline bool fill_cdi_details_with_key(
-	/* [IN/OUT] dice context */
-	struct dice_ctx_s *ctx,
-	/* [IN] CDI_attest key handle */
-	const void *cdi_key
-)
+	/* [IN/OUT] dice context */ struct dice_ctx_s *ctx,
+	/* [IN] CDI_attest key handle */ const void *cdi_key)
 {
 	struct ecdsa_public_s cdi_pub_key;
 	uint8_t cdi_id[DICE_ID_BYTES];
@@ -749,11 +669,8 @@ static inline bool fill_cdi_details_with_key(
  * Assumes that ctx->cfg is already filled.
  */
 static inline bool set_hidden_digest_for_chain(
-	/* [IN/OUT] dice context */
-	struct dice_ctx_s *ctx,
-	/* [IN] chain id */
-	uint8_t chain_id
-)
+	/* [IN/OUT] dice context */ struct dice_ctx_s *ctx,
+	/* [IN] chain id */ uint8_t chain_id)
 {
 	uint8_t bytes[DIGEST_BYTES + 1];
 	const struct slice_ref_s slice = { DIGEST_BYTES + 1, bytes };
@@ -777,18 +694,15 @@ static inline bool set_hidden_digest_for_chain(
  * Assumes that ctx->cfg and CfgDescr in ctx->output are already filled.
  */
 static inline bool fill_cdi_details(
-	/* [IN/OUT] dice context */
-	struct dice_ctx_s *ctx,
-	/* [IN] chain id */
-	uint8_t chain_id
-)
+	/* [IN/OUT] dice context */ struct dice_ctx_s *ctx,
+	/* [IN] chain id */ uint8_t chain_id)
 {
 	const void *cdi_key;
 	bool result;
 	struct dice_handover_hdr_s *hdr = &ctx->output.dice_handover.hdr;
 
 	__platform_memcpy(hdr, &kDiceHandoverHdrTemplate,
-			  sizeof(struct dice_handover_hdr_s));
+		sizeof(struct dice_handover_hdr_s));
 	if (!set_hidden_digest_for_chain(ctx, chain_id)) {
 		__platform_log_str("Failed to set chain digest");
 		return false;
@@ -815,11 +729,8 @@ static inline bool fill_cdi_details(
  * Assumes that all other fields of CDI certificate are filled already.
  */
 static inline bool fill_uds_details_with_key(
-	/* [IN/OUT] dice context */
-	struct dice_ctx_s *ctx,
-	/* [IN] UDS key handle */
-	const void *uds_key
-)
+	/* [IN/OUT] dice context */ struct dice_ctx_s *ctx,
+	/* [IN] UDS key handle */ const void *uds_key)
 {
 	struct ecdsa_public_s uds_pub_key;
 	uint8_t uds_id[DICE_ID_BYTES];
@@ -846,12 +757,9 @@ static inline bool fill_uds_details_with_key(
 	/* We can do the rest only after we generated the signature because */
 	/* signature generation uses ctx->output.hdr temporarily to build */
 	/* Sig_struct for signing. */
-	__platform_memcpy(combined_hdr,
-			  &kCombinedHdrTemplate,
-			  sizeof(struct combined_hdr_s));
-	fill_cose_pubkey(
-		&uds_pub_key,
-		&combined_hdr->cert_chain.uds_pub_key);
+	__platform_memcpy(combined_hdr, &kCombinedHdrTemplate,
+		sizeof(struct combined_hdr_s));
+	fill_cose_pubkey(&uds_pub_key, &combined_hdr->cert_chain.uds_pub_key);
 
 	return true;
 }
@@ -859,8 +767,7 @@ static inline bool fill_uds_details_with_key(
 /* Fills UDS_ID, signature into the certificate. */
 /* Assumes that all other fields of CDI certificate were filled already. */
 static inline bool fill_uds_details(
-	struct dice_ctx_s *ctx /* [IN/OUT] dice context */
-)
+	/* [IN/OUT] dice context */ struct dice_ctx_s *ctx)
 {
 	const void *uds_key;
 	bool result;
@@ -878,9 +785,8 @@ static inline bool fill_uds_details(
 /* Fills value in struct cbor_uint32_s */
 /* Assumes that `cbor_var->cbor_hdr` is already pre-set */
 static inline void set_cbor_u32(
-	uint32_t value, /* [IN] value to set */
-	struct cbor_uint32_s *cbor_var /* [OUT] CBOR UINT32 variable to fill */
-)
+	/* [IN] value to set */ uint32_t value,
+	/* [OUT] CBOR UINT32 variable to fill */ struct cbor_uint32_s *cbor_var)
 {
 	cbor_var->value[0] = (uint8_t)(((value) & 0xFF000000) >> 24);
 	cbor_var->value[1] = (uint8_t)(((value) & 0x00FF0000) >> 16);
@@ -890,29 +796,36 @@ static inline void set_cbor_u32(
 
 /* Fills CfgDescr, CfgDescr digest and boot mode in CDI certificate */
 static inline bool fill_config_details(
-	/* [IN/OUT] dice context */
-	struct dice_ctx_s *ctx,
-	/* [IN] chain id */
-	uint8_t chain_id
-)
+	/* [IN/OUT] dice context */ struct dice_ctx_s *ctx,
+	/* [IN] chain id */ uint8_t chain_id)
 {
 	struct cwt_claims_bstr_s *payload = &ctx->output.dice_handover.payload;
 	struct cwt_claims_s *cwt_claims = &payload->data;
 	struct cfg_descr_s *cfg_descr = &payload->data.cfg_descr.data;
 	const struct slice_ref_s cfg_descr_slice = { sizeof(struct cfg_descr_s),
-					(uint8_t *)cfg_descr };
+		(uint8_t *)cfg_descr };
 
 	/* Copy fixed data from the template */
-	__platform_memcpy(payload, &kCwtClaimsTemplate,
-			  sizeof(struct cwt_claims_bstr_s));
+	__platform_memcpy(
+		payload, &kCwtClaimsTemplate, sizeof(struct cwt_claims_bstr_s));
 
 	/* Fill Cfg Descriptor variables based on ctx->cfg */
+	if (chain_id == BOOT_PARAM_DICE_CHAIN_GSC) {
+		/* TODO(b/456603629): rework, use a better name */
+		const uint8_t gsc_comp_name[CFG_DESCR_COMP_NAME_LEN] = {
+			CBOR_HDR1(
+				CBOR_MAJOR_TSTR, CFG_DESCR_COMP_NAME_VALUE_LEN),
+			'T', 'i', '5', '0', ' ', 'S', 'B', ' ', 'F', 'W'
+		};
+		__platform_memcpy(cfg_descr->comp_name, gsc_comp_name,
+			CFG_DESCR_COMP_NAME_LEN);
+	}
 	set_cbor_u32(ctx->cfg.aprov_status, &cfg_descr->aprov_status);
 	set_cbor_u32(ctx->cfg.sec_ver, &cfg_descr->sec_ver);
-	__platform_memcpy(cfg_descr->vboot_status.value, ctx->cfg.pcr0,
-			  DIGEST_BYTES);
-	__platform_memcpy(cfg_descr->ap_fw_version.value, ctx->cfg.pcr10,
-			  DIGEST_BYTES);
+	__platform_memcpy(
+		cfg_descr->vboot_status.value, ctx->cfg.pcr0, DIGEST_BYTES);
+	__platform_memcpy(
+		cfg_descr->ap_fw_version.value, ctx->cfg.pcr10, DIGEST_BYTES);
 #if BOOT_PARAM_CFG_DESCR_STAGE == 2
 	cfg_descr->dice_chain_id.value = chain_id;
 	cfg_descr->gsc_type.value = ctx->cfg.gsc_type;
@@ -928,12 +841,11 @@ static inline bool fill_config_details(
 
 	/* code hash value, could be all zeros in case the device does not */
 	/* support AP RO verification or verification is not provisioned. */
-	__platform_memcpy(cwt_claims->code_hash.value,
-			  ctx->cfg.code_digest,
-			  sizeof(cwt_claims->code_hash.value));
+	__platform_memcpy(cwt_claims->code_hash.value, ctx->cfg.code_digest,
+		sizeof(cwt_claims->code_hash.value));
 
 	/* Calculate boot mode */
-	cwt_claims->mode.value = calc_mode(ctx);
+	cwt_claims->mode.value = calc_mode(&ctx->cfg);
 
 	return true;
 }
@@ -941,11 +853,8 @@ static inline bool fill_config_details(
 /* Fills DICE handover structure in struct dice_ctx_s. */
 /* Assumes ctx.cfg is already filled */
 static inline bool generate_dice_handover(
-	/* [IN/OUT] dice context */
-	struct dice_ctx_s *ctx,
-	/* [IN] chain id */
-	uint8_t chain_id
-)
+	/* [IN/OUT] dice context */ struct dice_ctx_s *ctx,
+	/* [IN] chain id */ uint8_t chain_id)
 {
 	/* 1. Fill device configuration details in CDI certificate: CfgDescr and
 	 * its digest, boot mode.
@@ -957,16 +866,12 @@ static inline bool generate_dice_handover(
 	 */
 
 	return fill_config_details(ctx, chain_id) &&
-		fill_cdi_details(ctx, chain_id) &&
-		fill_uds_details(ctx);
+	       fill_cdi_details(ctx, chain_id) && fill_uds_details(ctx);
 }
 
 #if BOOT_PARAM_VERSION == 1
 /* Fills buffer with LE32 value. */
-static inline void le32_set(
-	uint8_t buffer[4],
-	uint32_t value
-)
+static inline void le32_set(uint8_t buffer[4], uint32_t value)
 {
 	buffer[0] = (uint8_t)((value) & 0x000000FF);
 	buffer[1] = (uint8_t)(((value) & 0x0000FF00) >> 8);
@@ -976,32 +881,27 @@ static inline void le32_set(
 
 /* Fills ReservedMem. */
 static inline bool fill_res_mem(
-	/* [IN/OUT] ReservedMem */
-	struct res_mem_s *res_mem,
-	/* [IN] chain id */
-	uint8_t chain_id
-)
+	/* [IN/OUT] ReservedMem */ struct res_mem_s *res_mem,
+	/* [IN] chain id */ uint8_t chain_id)
 {
 	uint32_t seed_version;
 
-	__platform_memcpy(&res_mem->hdrs, &res_mem_hdrs,
-			  sizeof(struct res_mem_hdrs_s));
+	__platform_memcpy(
+		&res_mem->hdrs, &res_mem_hdrs, sizeof(struct res_mem_hdrs_s));
 	set_res_mem_string(res_mem, desktop_trusty_name);
 	set_res_mem_string(res_mem, early_entropy_compat);
 	set_res_mem_string(res_mem, session_key_seed_compat);
 	set_res_mem_string(res_mem, auth_token_key_seed_compat);
 	set_res_mem_string(res_mem, versioned_seed_compat);
 
-	if (!__platform_get_gsc_boot_param(
-			res_mem->blobs.early_entropy,
-			res_mem->blobs.session_key_seed,
-			res_mem->blobs.auth_token_key_seed)) {
+	if (!__platform_get_gsc_boot_param(res_mem->blobs.early_entropy,
+		    res_mem->blobs.session_key_seed,
+		    res_mem->blobs.auth_token_key_seed)) {
 		__platform_log_str("Failed to get GSC boot param");
 		return false;
 	}
 	if (!__platform_get_cur_versioned_seed(
-			res_mem->blobs.versioned_seed.seed,
-			&seed_version)) {
+		    res_mem->blobs.versioned_seed.seed, &seed_version)) {
 		__platform_log_str("Failed to get versioned seed");
 		return false;
 	}
@@ -1014,8 +914,7 @@ static inline void set_cbor_bstr_hdr16(
 	/* [OUT] header to be filled */
 	uint8_t hdr[3],
 	/* [IN] size of bstr value */
-	uint16_t size
-)
+	uint16_t size)
 {
 	hdr[0] = CBOR_HDR1(CBOR_MAJOR_BSTR, CBOR_BYTES2);
 	hdr[1] = (uint8_t)(((size) & 0xFF00) >> 8);
@@ -1026,11 +925,8 @@ static inline void set_cbor_bstr_hdr16(
 
 /* Fills GSCBootParam. */
 static inline bool fill_gsc_boot_param(
-	/* [IN/OUT] GSCBootParam */
-	struct gsc_boot_param_s *gsc_boot_param,
-	/* [IN] chain id */
-	uint8_t chain_id
-)
+	/* [IN/OUT] GSCBootParam */ struct gsc_boot_param_s *gsc_boot_param,
+	/* [IN] chain id */ uint8_t chain_id)
 {
 	/* GSCBootParam: Map header: 3 entries */
 	gsc_boot_param->map_hdr = CBOR_HDR1(CBOR_MAJOR_MAP, 3);
@@ -1059,10 +955,9 @@ static inline bool fill_gsc_boot_param(
 		CBOR_HDR1(CBOR_MAJOR_BSTR, CBOR_BYTES1);
 	gsc_boot_param->auth_token_key_seed.cbor_hdr[1] = KEY_SEED_BYTES;
 
-	if (!__platform_get_gsc_boot_param(
-			gsc_boot_param->early_entropy.value,
-			gsc_boot_param->session_key_seed.value,
-			gsc_boot_param->auth_token_key_seed.value)) {
+	if (!__platform_get_gsc_boot_param(gsc_boot_param->early_entropy.value,
+		    gsc_boot_param->session_key_seed.value,
+		    gsc_boot_param->auth_token_key_seed.value)) {
 		__platform_log_str("Failed to get GSC boot param");
 		return false;
 	}
@@ -1074,11 +969,8 @@ static inline bool fill_gsc_boot_param(
 /* Fills GSCBootParam and BootParam header in struct dice_ctx_s. */
 /* Doesn't touch DICE handover structure */
 static inline bool fill_boot_param(
-	/* [IN/OUT] dice context */
-	struct dice_ctx_s *ctx,
-	/* [IN] chain id */
-	uint8_t chain_id
-)
+	/* [IN/OUT] dice context */ struct dice_ctx_s *ctx,
+	/* [IN] chain id */ uint8_t chain_id)
 {
 	/* BootParam: Map header: 3 entries */
 	ctx->output.map_hdr = CBOR_HDR1(CBOR_MAJOR_MAP, 3);
@@ -1096,16 +988,15 @@ static inline bool fill_boot_param(
 	 */
 	ctx->output.dice_handover_bstr_label = CBOR_UINT0(4);
 	set_cbor_bstr_hdr16(ctx->output.dice_handover_bstr_hdr,
-			    sizeof(struct dice_handover_s));
-
+		sizeof(struct dice_handover_s));
 
 	/* BootParam entry 3: ReservedMem:
 	 * uint(5, 0bytes) => ReservedMemBstr
 	 * (value filled below in this func)
 	 */
 	ctx->output.res_mem_bstr_label = CBOR_UINT0(5);
-	set_cbor_bstr_hdr16(ctx->output.res_mem_bstr_hdr,
-			    sizeof(struct res_mem_s));
+	set_cbor_bstr_hdr16(
+		ctx->output.res_mem_bstr_hdr, sizeof(struct res_mem_s));
 
 	return fill_res_mem(&ctx->output.res_mem, chain_id);
 #else /* BOOT_PARAM_VERSION == 0 */
@@ -1128,15 +1019,10 @@ static inline bool fill_boot_param(
  * [offset .. offset + size).
  */
 size_t get_boot_param_bytes_for_chain(
-	/* [OUT] destination buffer to fill */
-	uint8_t *dest,
-	/* [IN] starting offset in the BootParam struct */
-	size_t offset,
-	/* [IN] size of the BootParam struct to copy */
-	size_t size,
-	/* [IN] chain ID */
-	uint8_t chain_id
-)
+	/* [OUT] destination buffer to fill */ uint8_t *dest,
+	/* [IN] starting offset in the BootParam struct */ size_t offset,
+	/* [IN] size of the BootParam struct to copy */ size_t size,
+	/* [IN] chain ID */ uint8_t chain_id)
 {
 	struct dice_ctx_s ctx;
 	uint8_t *src = (uint8_t *)&ctx.output;
@@ -1165,15 +1051,10 @@ size_t get_boot_param_bytes_for_chain(
  * [offset .. offset + size).
  */
 size_t get_dice_chain_bytes_for_chain(
-	/* [OUT] destination buffer to fill */
-	uint8_t *dest,
-	/* [IN] starting offset in the DiceChain struct */
-	size_t offset,
-	/* [IN] size of the data to copy */
-	size_t size,
-	/* [IN] chain ID */
-	uint8_t chain_id
-)
+	/* [OUT] destination buffer to fill */ uint8_t *dest,
+	/* [IN] starting offset in the DiceChain struct */ size_t offset,
+	/* [IN] size of the data to copy */ size_t size,
+	/* [IN] chain ID */ uint8_t chain_id)
 {
 	struct dice_ctx_s ctx;
 	uint8_t *src = (uint8_t *)&ctx.output.dice_handover.options;
@@ -1198,13 +1079,9 @@ size_t get_dice_chain_bytes_for_chain(
 /* Sign data with attestation CDI key for the specific chain.
  */
 bool sign_with_cdi_key(
-	/* [IN] chain ID */
-	uint8_t chain_id,
-	/* [IN] data to sign */
-	const struct slice_ref_s data_to_sign,
-	/* [OUT] resulting signature */
-	uint8_t signature[ECDSA_SIG_BYTES]
-)
+	/* [IN] chain ID */ uint8_t chain_id,
+	/* [IN] data to sign */ const struct slice_ref_s data_to_sign,
+	/* [OUT] resulting signature */ uint8_t signature[ECDSA_SIG_BYTES])
 {
 	struct dice_ctx_s ctx;
 	uint8_t cdi[DIGEST_BYTES];
@@ -1233,8 +1110,7 @@ bool sign_with_cdi_key(
 		return false;
 	}
 
-	result = __platform_ecdsa_p256_sign(cdi_key, data_to_sign,
-					    signature);
+	result = __platform_ecdsa_p256_sign(cdi_key, data_to_sign, signature);
 	if (!result) {
 		__platform_log_str("Failed to sign with CDI key");
 		return false;
