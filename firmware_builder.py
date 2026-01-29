@@ -37,7 +37,6 @@ DEFAULT_BUNDLE_METADATA_FILE = "/tmp/artifact_bundle_metadata"
 # TODO(b/172501728) On-device unit tests should build for all boards, but
 # they've bit rotted, so we only build the ones that compile.
 BOARDS_UNIT_TEST = [
-    "bloonchipper",
     "dartmonkey",
     "helipilot",
 ]
