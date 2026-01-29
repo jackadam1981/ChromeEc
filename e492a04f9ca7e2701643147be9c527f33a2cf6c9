@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "168c5d11_4f97d9ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-29T00:30:55Z",
+      "side": 1,
+      "message": "```suggestion\nec-legacy: Default to dartmonkey\n\nbloonchipper has migrated to Zephyr, so we no longer need to build\nthe EC version.\n```",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "e492a04f9ca7e2701643147be9c527f33a2cf6c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa3cc081_2a85c564",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-29T00:30:55Z",
+      "side": 1,
+      "message": "It would probably also be good to delete the `bloonchipper` board from the `ec-legacy` branch to avoid confusion.",
+      "revId": "e492a04f9ca7e2701643147be9c527f33a2cf6c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
