@@ -23,9 +23,18 @@ main() {
 
     # If we force rebuild or the binary isn't present, build it now
     if [[ -n "${FORCE_REBUILD}" || ! -f "${bin}" ]]; then
-        # Execute in sub shell so we don't change working directories
-        ( "${opentitan_root}/bazelisk.sh" build //sw/host/opentitantool \
-            >/dev/null 2>&1 )
+      local status=0
+      local log
+
+      echo "Rebuilding opentitantool..."
+      log=$( "${opentitan_root}/bazelisk.sh" build \
+             //sw/host/opentitantool:opentitantool  2>&1 ) || status=$?
+
+      if [[ $status -ne 0 ]]; then
+        echo "${script_path} failed to build opentitantool:" >&2
+        echo "${log}" >&2
+        exit 1
+      fi
     fi
 
     # Call opentitantool from original working directory
