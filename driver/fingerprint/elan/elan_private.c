@@ -241,8 +241,10 @@ int fp_finger_match(void *templ, uint32_t templ_count, uint8_t *image,
 	int res;
 	CPRINTF("========%s=======\n", __func__);
 	res = elan_match(templ, templ_count, image, match_index, update_bitmap);
+#if 0
 	if (res == EC_MKBP_FP_ERR_MATCH_YES)
 		res = elan_template_update(templ, *match_index);
+#endif
 
 	return res;
 }
