@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2b17d8d6_b1b9dc69",
+        "filename": "zephyr/include/drivers/led.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2026-01-29T20:56:52Z",
+      "side": 1,
+      "message": "I\u0027m a little concerned with the `led_pattern` pointer being defined in a function and falling out of the stack. So when the scheduled work occurs, this pointer is invalid.",
+      "revId": "8062f20254d66db9d8334e5d03341064bba17231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "160d3d8e_f0b896bb",
         "filename": "zephyr/include/drivers/led.h",
         "patchSetId": 2
