@@ -16,6 +16,23 @@
       "message": "Update for MOC algorithm.",
       "revId": "9a24b0af2ca35f47e555e0eaaa5f1a7b19f2e4b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "277bc0f0_b23f52c3",
+        "filename": "zephyr/subsys/fingerprint/alg/Kconfig",
+        "patchSetId": 38
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-29T13:19:13Z",
+      "side": 1,
+      "message": "Please add a default value.",
+      "revId": "9a24b0af2ca35f47e555e0eaaa5f1a7b19f2e4b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
