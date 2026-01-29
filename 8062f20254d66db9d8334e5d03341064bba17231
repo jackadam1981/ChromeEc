@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7fa416a_55cdf82b",
+        "filename": "zephyr/include/drivers/led.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2026-01-29T21:46:30Z",
+      "side": 1,
+      "message": "Not directly from the host, the host command handler needs to translate the data from another format into this structure.",
+      "parentUuid": "381e4b0a_bdca04b6",
+      "revId": "8062f20254d66db9d8334e5d03341064bba17231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b17d8d6_b1b9dc69",
@@ -48,6 +66,24 @@
       "writtenOn": "2026-01-29T20:56:52Z",
       "side": 1,
       "message": "I\u0027m a little concerned with the `led_pattern` pointer being defined in a function and falling out of the stack. So when the scheduled work occurs, this pointer is invalid.",
+      "revId": "8062f20254d66db9d8334e5d03341064bba17231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6f8b31b_a8fa6676",
+        "filename": "zephyr/include/drivers/led.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2026-01-29T21:46:30Z",
+      "side": 1,
+      "message": "This is the caller\u0027s responsibility to ensure the data remains valid. The below comment for the API states: `The data pointed to must remain valid until execution completes`.\n\nIn the implementation, a static array is pre-allocated to store these patterns.",
+      "parentUuid": "2b17d8d6_b1b9dc69",
       "revId": "8062f20254d66db9d8334e5d03341064bba17231",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -100,6 +136,30 @@
       "writtenOn": "2026-01-29T21:00:53Z",
       "side": 1,
       "message": "Can we have a test where `led_set_custom_patterns` is called within a helper function that defines the pattern?",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 34
+      },
+      "revId": "8062f20254d66db9d8334e5d03341064bba17231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de58112a_122fc41c",
+        "filename": "zephyr/test/drivers/led_driver/src/led_custom.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2026-01-29T21:46:30Z",
+      "side": 1,
+      "message": "The API requires that the data remains valid until execution completes. This test simply allocates the data on the stack, which is safe as the test waits for the execution to finish within this function scope. Defining this data in a helper function would not, as the stack frame would be invalidated upon return.",
+      "parentUuid": "5b57a2a1_1e4f7814",
       "range": {
         "startLine": 204,
         "startChar": 0,
