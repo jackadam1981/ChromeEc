@@ -343,6 +343,7 @@
 /* Exclude PD state names from RO image to save space */
 #undef CONFIG_USB_PD_TCPMV1_DEBUG
 #undef CONFIG_TASK_PROFILING
+#undef CONFIG_HOSTCMD_WATCHDOG_INFO
 #endif /* SECTION_IS_RO */
 
 #elif defined(VARIANT_KUKUI_EC_IT81202)
