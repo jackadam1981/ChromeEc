@@ -645,6 +645,16 @@ int ncp15wb_calculate_temp(uint16_t adc);
 #undef CONFIG_PANIC_STRIP_GPR
 #endif
 
+#ifdef TEST_WATCHDOG
+#define CONFIG_WATCHDOG
+#endif
+
+#ifdef TEST_WATCHDOG_INFO
+#define CONFIG_WATCHDOG
+#define CONFIG_HOSTCMD_WATCHDOG_INFO
+#define CONFIG_CONSOLE_CMD_WATCHDOG_INFO
+#endif
+
 #ifdef HAVE_PRIVATE
 #include "private_test_config.h"
 #endif /* HAVE_PRIVATE */
