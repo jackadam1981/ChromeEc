@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b01321a_5aa8abd9",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2026-01-29T23:41:06Z",
+      "side": 1,
+      "message": "Yes this is fine.",
+      "parentUuid": "9a12a911_5d6e8043",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 26
+      },
+      "revId": "a41f97b850dff1fbb4a3706d720d6e9af978f9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a0cc149_0a4f261b",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a10a43b_3bb8d9ac",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2026-01-29T23:41:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a0cc149_0a4f261b",
+      "range": {
+        "startLine": 257,
+        "startChar": 0,
+        "endLine": 258,
+        "endChar": 30
+      },
+      "revId": "a41f97b850dff1fbb4a3706d720d6e9af978f9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07bf6e3a_9e748031",
@@ -60,6 +108,30 @@
       "writtenOn": "2026-01-24T00:58:51Z",
       "side": 1,
       "message": "This seems very similar to the console command implementation from previous CL. Can this be de-duplicated?",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 277,
+        "endChar": 38
+      },
+      "revId": "a41f97b850dff1fbb4a3706d720d6e9af978f9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19d5b101_6f242377",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2026-01-29T23:41:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07bf6e3a_9e748031",
       "range": {
         "startLine": 268,
         "startChar": 0,
