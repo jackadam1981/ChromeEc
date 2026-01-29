@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9824a171_4df1d2af",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-29T21:44:24Z",
+      "side": 1,
+      "message": "Sounds good. Maybe add a comment here since to explain why it\u0027s safe to ignore the return value.",
+      "parentUuid": "68f328e6_20493350",
+      "range": {
+        "startLine": 335,
+        "startChar": 5,
+        "endLine": 337,
+        "endChar": 31
+      },
+      "revId": "7a5680c1699c501340ecad0a7576914181d3c844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "802e148c_e00df921",
         "filename": "common/fpsensor/fpsensor.cc",
         "patchSetId": 9
@@ -97,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0713da92_e53cc4ba",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-29T21:44:24Z",
+      "side": 1,
+      "message": "I think sleeping is ok as long as it doesn\u0027t break any of the assumptions we made about concurrency.",
+      "parentUuid": "7118dd2c_62b3575f",
+      "range": {
+        "startLine": 572,
+        "startChar": 0,
+        "endLine": 572,
+        "endChar": 77
+      },
+      "revId": "7a5680c1699c501340ecad0a7576914181d3c844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b0bf6e52_2450d1e4",
         "filename": "common/fpsensor/fpsensor.cc",
         "patchSetId": 9
@@ -132,6 +180,30 @@
       "side": 1,
       "message": "How do you think the FP_FRAME could fit in the \"async\" pattern? Do you want me to split FP_FRAME into more separate host commands?\n\nWe are calling \"GET_RESULT\" multiple times. There is also command to get raw image which returns immediately.",
       "parentUuid": "b0bf6e52_2450d1e4",
+      "range": {
+        "startLine": 630,
+        "startChar": 0,
+        "endLine": 630,
+        "endChar": 77
+      },
+      "revId": "7a5680c1699c501340ecad0a7576914181d3c844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e404817_26483f4f",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-29T21:44:24Z",
+      "side": 1,
+      "message": "Would it work if we split the command into `FP_FRAME` and `FP_FRAME_RAW`, each of which are using the \"async\" pattern?\n\nI don\u0027t want to make this unnecessarily complicated just to fit the \"async\" pattern though, so let me know your thoughts, especially if it will cause more side effects. On the other hand, it doesn\u0027t seem too bad to keep the \"dangerous\" command (`FP_FRAME_RAW`) separate from the normal \"safe\" command. What do you think?",
+      "parentUuid": "40cfe165_66808235",
       "range": {
         "startLine": 630,
         "startChar": 0,
