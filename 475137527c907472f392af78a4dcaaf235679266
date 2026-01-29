@@ -46,6 +46,30 @@
       },
       "revId": "475137527c907472f392af78a4dcaaf235679266",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d33df15d_752717ed",
+        "filename": "common/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2026-01-29T06:14:11Z",
+      "side": 1,
+      "message": "Yes, we only use `ectool batterycutoff at-shutdown` in factory but FAFT FlagsPreservation calls `ectool batterycutoff` [link](https://source.chromium.org/chromiumos/_/chromium/chromiumos/platform/tast-tests/+/152639728c1e31fecca650f38aaaa56b82ee2c63:src/go.chromium.org/tast-tests/cros/remote/bundles/cros/firmware/flags_preservation.go;l\u003d282;drc\u003d6929dd81a3a18326e96a709a0062fc97d8aced14;bpv\u003d0;bpt\u003d0).",
+      "parentUuid": "770807b9_04121058",
+      "range": {
+        "startLine": 410,
+        "startChar": 10,
+        "endLine": 410,
+        "endChar": 12
+      },
+      "revId": "475137527c907472f392af78a4dcaaf235679266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
