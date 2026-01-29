@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ea04ec3_05a0c5e8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2026-01-29T17:31:48Z",
+      "side": 1,
+      "message": "spelling",
+      "range": {
+        "startLine": 16,
+        "startChar": 61,
+        "endLine": 16,
+        "endChar": 71
+      },
+      "revId": "6564ed1332c99f7d0837fe002fe2e7f8ae78aaea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72b1c28b_e2d0c5b0",
+        "filename": "zephyr/test/drivers/led_driver/src/led_custom.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2026-01-29T17:31:48Z",
+      "side": 1,
+      "message": "Nit: Does this need to be constructed in every test where it\u0027s used, or could it be constructed in a setup function?",
+      "revId": "6564ed1332c99f7d0837fe002fe2e7f8ae78aaea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
