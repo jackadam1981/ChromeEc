@@ -5,6 +5,9 @@
  * USB-C board functions for the Grogu reference board only
  */
 
+#include "charge_manager.h"
+#include "charge_state.h"
+#include "charger.h"
 #include "cros_board_info.h"
 #include "cros_cbi.h"
 #include "hooks.h"
@@ -61,3 +64,17 @@ static void board_init(void)
 	}
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_INIT_I2C + 1);
+
+__override void board_set_charge_limit(int port, int supplier, int charge_ma,
+				       int max_ma, int charge_mv)
+{
+	if (charge_mv > 0) {
+		max_ma = 45000 / (charge_mv / 1000);
+		if (charge_ma > max_ma)
+			charge_ma = max_ma;
+	}
+
+	LOG_INF("Charger: MAX_mA: %d, charge_mA: %d, charger_mV: %d", max_ma,
+		charge_ma, charge_mv);
+	charge_set_input_current_limit(charge_ma, charge_mv);
+}
