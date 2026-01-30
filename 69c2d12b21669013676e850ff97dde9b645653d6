@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6301210b_bf5bf55c",
+        "filename": "common/cbi.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2026-01-30T18:11:14Z",
+      "side": 1,
+      "message": "You must check `argc \u003e\u003d 3` before accessing `argv[2]`.",
+      "range": {
+        "startLine": 611,
+        "startChar": 23,
+        "endLine": 611,
+        "endChar": 30
+      },
+      "revId": "69c2d12b21669013676e850ff97dde9b645653d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "334b4ca6_68408e7d",
+        "filename": "common/cbi.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2026-01-30T18:11:14Z",
+      "side": 1,
+      "message": "Nit: better to use `\u003chex_string\u003e`.",
+      "range": {
+        "startLine": 617,
+        "startChar": 34,
+        "endLine": 617,
+        "endChar": 41
+      },
+      "revId": "69c2d12b21669013676e850ff97dde9b645653d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63db8b0e_846bd003",
+        "filename": "common/cbi.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2026-01-30T18:11:14Z",
+      "side": 1,
+      "message": "Replace this to a constant, or use `sizeof(struct cbi_ufsc)`.",
+      "range": {
+        "startLine": 646,
+        "startChar": 22,
+        "endLine": 646,
+        "endChar": 24
+      },
+      "revId": "69c2d12b21669013676e850ff97dde9b645653d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b466967_642edad0",
+        "filename": "common/cbi.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2026-01-30T18:11:14Z",
+      "side": 1,
+      "message": "Enforce exact size matching.",
+      "range": {
+        "startLine": 646,
+        "startChar": 20,
+        "endLine": 646,
+        "endChar": 21
+      },
+      "revId": "69c2d12b21669013676e850ff97dde9b645653d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
