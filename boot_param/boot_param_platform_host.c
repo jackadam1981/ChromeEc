@@ -38,8 +38,7 @@ bool __platform_hkdf_sha256(
 	/* [IN/OUT] .size sets length for hkdf,
 	 * .data is where the digest will be placed
 	 */
-	const struct slice_mut_s result
-)
+	const struct slice_mut_s result)
 {
 	EVP_KDF *kdf;
 	EVP_KDF_CTX *kctx;
@@ -58,14 +57,14 @@ bool __platform_hkdf_sha256(
 		return false;
 	}
 
-	*p++ = OSSL_PARAM_construct_utf8_string(OSSL_KDF_PARAM_DIGEST,
-						SN_sha256, strlen(SN_sha256));
-	*p++ = OSSL_PARAM_construct_octet_string(OSSL_KDF_PARAM_KEY,
-						 (void *)ikm.data, ikm.size);
-	*p++ = OSSL_PARAM_construct_octet_string(OSSL_KDF_PARAM_INFO,
-						 (void *)info.data, info.size);
-	*p++ = OSSL_PARAM_construct_octet_string(OSSL_KDF_PARAM_SALT,
-						 (void *)salt.data, salt.size);
+	*p++ = OSSL_PARAM_construct_utf8_string(
+		OSSL_KDF_PARAM_DIGEST, SN_sha256, strlen(SN_sha256));
+	*p++ = OSSL_PARAM_construct_octet_string(
+		OSSL_KDF_PARAM_KEY, (void *)ikm.data, ikm.size);
+	*p++ = OSSL_PARAM_construct_octet_string(
+		OSSL_KDF_PARAM_INFO, (void *)info.data, info.size);
+	*p++ = OSSL_PARAM_construct_octet_string(
+		OSSL_KDF_PARAM_SALT, (void *)salt.data, salt.size);
 	*p = OSSL_PARAM_construct_end();
 
 	res = EVP_KDF_derive(kctx, result.data, result.size, params);
@@ -87,8 +86,7 @@ bool __platform_hkdf_sha512(
 	/* [IN/OUT] .size sets length for hkdf,
 	 * .data is where the digest will be placed
 	 */
-	const struct slice_mut_s result
-)
+	const struct slice_mut_s result)
 {
 	EVP_KDF *kdf;
 	EVP_KDF_CTX *kctx;
@@ -107,14 +105,14 @@ bool __platform_hkdf_sha512(
 		return false;
 	}
 
-	*p++ = OSSL_PARAM_construct_utf8_string(OSSL_KDF_PARAM_DIGEST,
-						SN_sha512, strlen(SN_sha512));
-	*p++ = OSSL_PARAM_construct_octet_string(OSSL_KDF_PARAM_KEY,
-						 (void *)ikm.data, ikm.size);
-	*p++ = OSSL_PARAM_construct_octet_string(OSSL_KDF_PARAM_INFO,
-						 (void *)info.data, info.size);
-	*p++ = OSSL_PARAM_construct_octet_string(OSSL_KDF_PARAM_SALT,
-						 (void *)salt.data, salt.size);
+	*p++ = OSSL_PARAM_construct_utf8_string(
+		OSSL_KDF_PARAM_DIGEST, SN_sha512, strlen(SN_sha512));
+	*p++ = OSSL_PARAM_construct_octet_string(
+		OSSL_KDF_PARAM_KEY, (void *)ikm.data, ikm.size);
+	*p++ = OSSL_PARAM_construct_octet_string(
+		OSSL_KDF_PARAM_INFO, (void *)info.data, info.size);
+	*p++ = OSSL_PARAM_construct_octet_string(
+		OSSL_KDF_PARAM_SALT, (void *)salt.data, salt.size);
 	*p = OSSL_PARAM_construct_end();
 
 	res = EVP_KDF_derive(kctx, result.data, result.size, params);
@@ -130,8 +128,7 @@ bool __platform_sha256(
 	/* [IN] data to hash */
 	const struct slice_ref_s data,
 	/* [OUT] resulting digest */
-	uint8_t digest[DIGEST_BYTES]
-)
+	uint8_t digest[DIGEST_BYTES])
 {
 	return SHA256(data.data, data.size, digest) == digest;
 }
@@ -174,36 +171,147 @@ struct dice_config_s g_dice_config = {
 /* Get DICE config */
 bool __platform_get_dice_config(
 	/* [OUT] DICE config */
-	struct dice_config_s *cfg
-)
+	struct dice_config_s *cfg)
 {
 	memcpy(cfg, &g_dice_config, sizeof(struct dice_config_s));
 	return true;
 }
 
 uint8_t g_early_entropy[EARLY_ENTROPY_BYTES] = {
-	0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
-	0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f,
-	0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17,
-	0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f,
-	0x20, 0x21, 0x22, 0x23, 0x24, 0x25, 0x26, 0x27,
-	0x28, 0x29, 0x2a, 0x2b, 0x2c, 0x2d, 0x2e, 0x2f,
-	0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37,
-	0x38, 0x39, 0x3a, 0x3b, 0x3c, 0x3d, 0x3e, 0x3f,
+	0x00,
+	0x01,
+	0x02,
+	0x03,
+	0x04,
+	0x05,
+	0x06,
+	0x07,
+	0x08,
+	0x09,
+	0x0a,
+	0x0b,
+	0x0c,
+	0x0d,
+	0x0e,
+	0x0f,
+	0x10,
+	0x11,
+	0x12,
+	0x13,
+	0x14,
+	0x15,
+	0x16,
+	0x17,
+	0x18,
+	0x19,
+	0x1a,
+	0x1b,
+	0x1c,
+	0x1d,
+	0x1e,
+	0x1f,
+	0x20,
+	0x21,
+	0x22,
+	0x23,
+	0x24,
+	0x25,
+	0x26,
+	0x27,
+	0x28,
+	0x29,
+	0x2a,
+	0x2b,
+	0x2c,
+	0x2d,
+	0x2e,
+	0x2f,
+	0x30,
+	0x31,
+	0x32,
+	0x33,
+	0x34,
+	0x35,
+	0x36,
+	0x37,
+	0x38,
+	0x39,
+	0x3a,
+	0x3b,
+	0x3c,
+	0x3d,
+	0x3e,
+	0x3f,
 };
 
 uint8_t g_session_key_seed[KEY_SEED_BYTES] = {
-	0x40, 0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x47,
-	0x48, 0x49, 0x4a, 0x4b, 0x4c, 0x4d, 0x4e, 0x4f,
-	0x50, 0x51, 0x52, 0x53, 0x54, 0x55, 0x56, 0x57,
-	0x58, 0x59, 0x5a, 0x5b, 0x5c, 0x5d, 0x5e, 0x5f,
+	0x40,
+	0x41,
+	0x42,
+	0x43,
+	0x44,
+	0x45,
+	0x46,
+	0x47,
+	0x48,
+	0x49,
+	0x4a,
+	0x4b,
+	0x4c,
+	0x4d,
+	0x4e,
+	0x4f,
+	0x50,
+	0x51,
+	0x52,
+	0x53,
+	0x54,
+	0x55,
+	0x56,
+	0x57,
+	0x58,
+	0x59,
+	0x5a,
+	0x5b,
+	0x5c,
+	0x5d,
+	0x5e,
+	0x5f,
 };
 
 uint8_t g_auth_token_key_seed[KEY_SEED_BYTES] = {
-	0x60, 0x61, 0x62, 0x63, 0x64, 0x65, 0x66, 0x67,
-	0x68, 0x69, 0x6a, 0x6b, 0x6c, 0x6d, 0x6e, 0x6f,
-	0x70, 0x71, 0x72, 0x73, 0x74, 0x75, 0x76, 0x77,
-	0x78, 0x79, 0x7a, 0x7b, 0x7c, 0x7d, 0x7e, 0x7f,
+	0x60,
+	0x61,
+	0x62,
+	0x63,
+	0x64,
+	0x65,
+	0x66,
+	0x67,
+	0x68,
+	0x69,
+	0x6a,
+	0x6b,
+	0x6c,
+	0x6d,
+	0x6e,
+	0x6f,
+	0x70,
+	0x71,
+	0x72,
+	0x73,
+	0x74,
+	0x75,
+	0x76,
+	0x77,
+	0x78,
+	0x79,
+	0x7a,
+	0x7b,
+	0x7c,
+	0x7d,
+	0x7e,
+	0x7f,
 };
 
 /* Get GSC boot parameters */
@@ -213,8 +321,7 @@ bool __platform_get_gsc_boot_param(
 	/* [OUT] SessionKeySeed */
 	uint8_t session_key_seed[KEY_SEED_BYTES],
 	/* [OUT] AuthTokenKeySeed */
-	uint8_t auth_token_key_seed[KEY_SEED_BYTES]
-)
+	uint8_t auth_token_key_seed[KEY_SEED_BYTES])
 {
 	memcpy(early_entropy, g_early_entropy, EARLY_ENTROPY_BYTES);
 	memcpy(session_key_seed, g_session_key_seed, KEY_SEED_BYTES);
@@ -227,8 +334,7 @@ bool __platform_ecdsa_p256_keygen_hmac_drbg(
 	/* [IN] key seed */
 	const uint8_t seed[DIGEST_BYTES],
 	/* [OUT] ECDSA key handle */
-	const void **key
-)
+	const void **key)
 {
 	/* NOTE: for testing we don't do the actual KDF based on HMAC_DRBG.
 	 * We could use EVP_KDF-HMAC-DRBG or EVP_RAND-HMAC-DRBG, but there's
@@ -252,8 +358,7 @@ bool __platform_ecdsa_p256_keygen_hmac_sha512_opendice_drbg(
 	/* [IN] key seed */
 	const uint8_t seed[DIGEST_BYTES],
 	/* [OUT] ECDSA key handle */
-	const void **key
-)
+	const void **key)
 {
 	/* NOTE: for testing we don't do the actual KDF based on HMAC_DRBG.
 	 * We could use EVP_KDF-HMAC-DRBG or EVP_RAND-HMAC-DRBG, but there's
@@ -276,8 +381,7 @@ bool __platform_ecdsa_p256_sign(
 	/* [IN] data to sign */
 	const struct slice_ref_s data,
 	/* [OUT] resulting signature */
-	uint8_t signature[ECDSA_SIG_BYTES]
-)
+	uint8_t signature[ECDSA_SIG_BYTES])
 {
 	const BIGNUM *r;
 	const BIGNUM *s;
@@ -322,8 +426,8 @@ bool __platform_ecdsa_p256_sign(
 		if (res <= 0)
 			print_openssl_error(__func__, "Can't sign");
 	} else {
-		printf("%s: unexpected sigsize %zu > %zu\n",
-		       __func__, siglen, sizeof(output));
+		printf("%s: unexpected sigsize %zu > %zu\n", __func__, siglen,
+			sizeof(output));
 		res = 0;
 	}
 
@@ -343,14 +447,14 @@ bool __platform_ecdsa_p256_sign(
 	s = ECDSA_SIG_get0_s(sig_obj);
 
 	if (BN_num_bytes(r) > ECDSA_POINT_BYTES) {
-		printf("%s: unexpected r size %d > %u\n",
-		       __func__, BN_num_bytes(r), ECDSA_POINT_BYTES);
+		printf("%s: unexpected r size %d > %u\n", __func__,
+			BN_num_bytes(r), ECDSA_POINT_BYTES);
 		ECDSA_SIG_free(sig_obj);
 		return false;
 	}
 	if (BN_num_bytes(s) > ECDSA_POINT_BYTES) {
-		printf("%s: unexpected s size %d > %u\n",
-		       __func__, BN_num_bytes(s), ECDSA_POINT_BYTES);
+		printf("%s: unexpected s size %d > %u\n", __func__,
+			BN_num_bytes(s), ECDSA_POINT_BYTES);
 		ECDSA_SIG_free(sig_obj);
 		return false;
 	}
@@ -367,8 +471,7 @@ bool __platform_ecdsa_p256_get_pub_key(
 	/* [IN] ECDSA key handle */
 	const void *key,
 	/* [OUT] public key structure */
-	struct ecdsa_public_s *pub_key
-)
+	struct ecdsa_public_s *pub_key)
 {
 	BIGNUM *x = NULL;
 	BIGNUM *y = NULL;
@@ -385,23 +488,23 @@ bool __platform_ecdsa_p256_get_pub_key(
 	}
 
 	if (res && (BN_num_bytes(x) > ECDSA_POINT_BYTES)) {
-		printf("%s: unexpected X size %d > %u\n",
-		       __func__, BN_num_bytes(x), ECDSA_POINT_BYTES);
+		printf("%s: unexpected X size %d > %u\n", __func__,
+			BN_num_bytes(x), ECDSA_POINT_BYTES);
 		res = false;
 	}
 	if (res && (BN_num_bytes(y) > ECDSA_POINT_BYTES)) {
-		printf("%s: unexpected Y size %d > %u\n",
-		       __func__, BN_num_bytes(y), ECDSA_POINT_BYTES);
+		printf("%s: unexpected Y size %d > %u\n", __func__,
+			BN_num_bytes(y), ECDSA_POINT_BYTES);
 		res = false;
 	}
 
 	if (res) {
 		memset(pub_key->x, 0, ECDSA_POINT_BYTES);
-		BN_bn2bin(x,
-			pub_key->x + (ECDSA_POINT_BYTES - BN_num_bytes(x)));
+		BN_bn2bin(
+			x, pub_key->x + (ECDSA_POINT_BYTES - BN_num_bytes(x)));
 		memset(pub_key->y, 0, ECDSA_POINT_BYTES);
-		BN_bn2bin(y,
-			pub_key->y + (ECDSA_POINT_BYTES - BN_num_bytes(y)));
+		BN_bn2bin(
+			y, pub_key->y + (ECDSA_POINT_BYTES - BN_num_bytes(y)));
 	}
 
 	BN_free(x);
@@ -412,8 +515,7 @@ bool __platform_ecdsa_p256_get_pub_key(
 /* Free ECDSA key handle */
 void __platform_ecdsa_p256_free(
 	/* [IN] ECDSA key handle */
-	const void *key
-)
+	const void *key)
 {
 	EVP_PKEY_free((EVP_PKEY *)key);
 }
@@ -421,8 +523,7 @@ void __platform_ecdsa_p256_free(
 /* Check if APROV status allows making 'normal' boot mode decision */
 bool __platform_aprov_status_allows_normal(
 	/* [IN] APROV status */
-	uint32_t aprov_status
-)
+	uint32_t aprov_status)
 {
 	return true;
 }
@@ -430,8 +531,7 @@ bool __platform_aprov_status_allows_normal(
 /* Print error string to log */
 void __platform_log_str(
 	/* [IN] string to print */
-	const char *str
-)
+	const char *str)
 {
 	puts(str);
 }
