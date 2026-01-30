@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4390ce7_e576dde1",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1096,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-01-30T00:04:15Z",
+      "side": 1,
+      "message": "We should confirm with the vendor that this is safe to do in case ACOK is active (one or more sink paths enabled).",
+      "range": {
+        "startLine": 1096,
+        "startChar": 0,
+        "endLine": 1096,
+        "endChar": 58
+      },
+      "revId": "5e87add2c102aa46a9044a75322a679398356ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
