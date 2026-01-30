@@ -33,6 +33,24 @@
       "message": "nit: Looks like you always return an into, could drop Optional\n```suggestion\ndef main(argv: Optional[List[str]] \u003d None) -\u003e int:\n```",
       "revId": "cc522ce9711d30b617cdb7a5ec324a00b8c5152d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b87aa73_efd589e5",
+        "filename": "util/check_symlinks.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2026-01-30T19:39:49Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "25b26b84_a13832c8",
+      "revId": "cc522ce9711d30b617cdb7a5ec324a00b8c5152d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
