@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c392bba8_1001b386",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1678,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2026-01-30T23:31:28Z",
+      "side": 1,
+      "message": "I think this can work, but it may require polling `charger_get_status` to capture when this happens, just thinking off the top my head, which may not be ideal.\nI can work on expanding some of my [sequence diagrams](https://chromium.googlesource.com/chromiumos/platform/ec/+/main/docs/zephyr/pdc_diagrams/pdc_dead_battery_two_ports.md) to include interactions with the charger IC.",
+      "parentUuid": "678ada19_7a08d457",
+      "range": {
+        "startLine": 1678,
+        "startChar": 4,
+        "endLine": 1678,
+        "endChar": 30
+      },
+      "revId": "6030a303ad27533ce48a3f5c57369c4c891c9557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "333863f5_13038d54",
         "filename": "common/charger.c",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2026-01-30T00:01:56Z",
       "side": 1,
       "message": "Nit - use braces on all conditionals.",
+      "range": {
+        "startLine": 510,
+        "startChar": 0,
+        "endLine": 510,
+        "endChar": 16
+      },
+      "revId": "6030a303ad27533ce48a3f5c57369c4c891c9557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b27e434_a5d58ef9",
+        "filename": "common/charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2026-01-30T23:31:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "333863f5_13038d54",
       "range": {
         "startLine": 510,
         "startChar": 0,
