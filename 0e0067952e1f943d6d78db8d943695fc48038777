@@ -46,6 +46,30 @@
       },
       "revId": "0e0067952e1f943d6d78db8d943695fc48038777",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a9a4fec_79daca11",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 4
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-01-30T17:24:10Z",
+      "side": 1,
+      "message": "\u003e This should only be modifying the flags for clang, not for GCC.\n\n@jbettis@chromium.org Why should the `gcc` and `clang` be different? It looks like Brett is trying to match the flag change in Chromium / Chromium OS: http://b/467924549. When possible, we should keep in sync. If it conflicts with Zephyr, then obviously that would be an issue, though it looks like there are at least [Zephyr configs for C++23](https://github.com/zephyrproject-rtos/zephyr/blob/96d9db95de80ece9ae434cab1336fb5c07863cf5/lib/cpp/Kconfig#L79-L82).\n\nThat said, @bbrotherton@google.com, I think the flags you are looking to change are [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/Makefile.rules;l\u003d113;drc\u003dedb6191ff9cb08b8164df32695c10d4e0701d144) and [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/Makefile.rules;l\u003d123;drc\u003dedb6191ff9cb08b8164df32695c10d4e0701d144).\n\nBrett, in case the flags change requires any more discussion, can you split the include changes into a separate commit from the flags change? I\u0027ll go ahead and +2 those since they look fine.\n\n@jpmurphy@google.com We\u0027ll want to keep this in sync with `ec-legacy` branch too. Is this file synced with copybot? From the earlier patch, it looks like there are changes that will be needed to the `test/aes.cc` file in that branch too.",
+      "parentUuid": "3a7e1fb5_f1d2e29f",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 266,
+        "endChar": 43
+      },
+      "revId": "0e0067952e1f943d6d78db8d943695fc48038777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
