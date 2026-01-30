@@ -94,6 +94,30 @@
       },
       "revId": "0e0067952e1f943d6d78db8d943695fc48038777",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6b60b0e_fd5f7c23",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 4
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2026-01-30T17:45:52Z",
+      "side": 1,
+      "message": "FWIW, all of the ec targets use the coreboot toolchain which is a lightly patched version of a GCC distro built from source.  We currently are on GCC 14.2, Zephyr is on 13.1 or 13.2 IIRC, coreboot upstream is not using C23, but they are experimenting with it.  It may be worth filing a bug and having the EC team experiment with it as well to be aligned, but it really needs to be tested on device before we can merge that.",
+      "parentUuid": "a375bff8_5a1ac7ac",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 266,
+        "endChar": 43
+      },
+      "revId": "0e0067952e1f943d6d78db8d943695fc48038777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
