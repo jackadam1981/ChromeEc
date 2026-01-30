@@ -94,6 +94,30 @@
       },
       "revId": "c73f824143401fee5787d445c5f8901cac1ae098",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7ac660f_15a879b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-01-30T11:46:58Z",
+      "side": 1,
+      "message": "I started working on the test. Unfortunately, it requires the multi-step testing feature, which relies on BBRAM or any method to store a test step across reboots.\n\nI\u0027ll focus first on the BBRAM problem for sanok now, since it is needed anyway.",
+      "parentUuid": "1e29bcb3_d055dfdf",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 67
+      },
+      "revId": "c73f824143401fee5787d445c5f8901cac1ae098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
