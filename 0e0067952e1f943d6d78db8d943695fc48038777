@@ -70,6 +70,30 @@
       },
       "revId": "0e0067952e1f943d6d78db8d943695fc48038777",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a375bff8_5a1ac7ac",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 4
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2026-01-30T17:41:47Z",
+      "side": 1,
+      "message": "b/480127970\n\nI\u0027m in the process of merging deleted code back, once I finish that I\u0027ll look at the copybot jobs.  The path is listed in the bug, you\u0027re also welcome to add a config, the bot sets up everything else automatically.",
+      "parentUuid": "4a9a4fec_79daca11",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 266,
+        "endChar": 43
+      },
+      "revId": "0e0067952e1f943d6d78db8d943695fc48038777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
