@@ -34,6 +34,24 @@
       "parentUuid": "a50efe69_bee93235",
       "revId": "a4b34e3a8c37ff74768964fb096da51e4ad5acd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8bae10f_cdf83246",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2026-01-30T02:48:10Z",
+      "side": 1,
+      "message": "The cherry-pick beneath this was problematic for copybot since it also picked it up.  Having the commit hash in the commit message will cause copybot to skip the change.\n\neac5390bd8e66c1485c14525a84055394a6ec606\n\nThe job has been failing for the CL beneath this.  https://luci-scheduler.appspot.com/jobs/chromeos/ec-ec-legacy-copybot-downstream",
+      "parentUuid": "f3b9a01d_02a3e111",
+      "revId": "a4b34e3a8c37ff74768964fb096da51e4ad5acd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
