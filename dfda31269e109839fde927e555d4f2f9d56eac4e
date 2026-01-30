@@ -22,6 +22,30 @@
       },
       "revId": "dfda31269e109839fde927e555d4f2f9d56eac4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69e0a8f3_411444dd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2026-01-30T06:51:44Z",
+      "side": 1,
+      "message": "Hi @keithshort@chromium.org, \n\nI have seen this behavior on ocelot as well as on ptlrvp platform and based on that observation, I have uploaded this patch. I have seen that major platforms are using different path defined using \"CONFIG_PLATFORM_EC_CUSTOM_FAN_CONTROL\" config and similar handling is taken care there. But I have found this gap in generic implementation for fan handling.",
+      "parentUuid": "e634066e_ca53f6b9",
+      "range": {
+        "startLine": 10,
+        "startChar": 51,
+        "endLine": 13,
+        "endChar": 15
+      },
+      "revId": "dfda31269e109839fde927e555d4f2f9d56eac4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
