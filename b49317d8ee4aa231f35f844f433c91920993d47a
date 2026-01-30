@@ -46,6 +46,30 @@
       },
       "revId": "b49317d8ee4aa231f35f844f433c91920993d47a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6fc71ba_c1d51ec9",
+        "filename": "common/charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2026-01-30T15:11:24Z",
+      "side": 1,
+      "message": "Many tests start to fail with this as an assert (next CL in stack), which might improve stability if I have time to fix all the failures.",
+      "parentUuid": "91606aaf_05a78b43",
+      "range": {
+        "startLine": 201,
+        "startChar": 1,
+        "endLine": 202,
+        "endChar": 2
+      },
+      "revId": "b49317d8ee4aa231f35f844f433c91920993d47a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
