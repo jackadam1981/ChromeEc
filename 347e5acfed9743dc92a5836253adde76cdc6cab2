@@ -16,6 +16,24 @@
       "message": "Do you want to squash this into the \"Remove legacy code\" commit?",
       "revId": "347e5acfed9743dc92a5836253adde76cdc6cab2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e995152_5065d74e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2026-01-30T20:01:17Z",
+      "side": 1,
+      "message": "While I know it\u0027s broken, I had left it this way intentionally to make code review a little easier.  Remove legacy code is just deleting files, and then the deltas are stacked on top.\n\nCan squash if you like, but CQ has already passed without requiring changes, so we incur the cost of a CQ run",
+      "parentUuid": "c829971e_7b948ac7",
+      "revId": "347e5acfed9743dc92a5836253adde76cdc6cab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
