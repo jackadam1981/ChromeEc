@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "678ada19_7a08d457",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1678,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-01-30T00:01:56Z",
+      "side": 1,
+      "message": "Could the charge manager query the charger IC to verify the sink paths are disabled before setting ACOKREF?  The `CHARGER_AC_PRESENT` status is a reliable indication as to whether any sink paths are on.\n\nThis might allow you to contain the logic within the charge manager.  Probably still too big a change to land as part of the ACOKREF changes, but something to consider for the future cleanup.",
+      "range": {
+        "startLine": 1678,
+        "startChar": 4,
+        "endLine": 1678,
+        "endChar": 30
+      },
+      "revId": "6030a303ad27533ce48a3f5c57369c4c891c9557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "333863f5_13038d54",
+        "filename": "common/charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-01-30T00:01:56Z",
+      "side": 1,
+      "message": "Nit - use braces on all conditionals.",
+      "range": {
+        "startLine": 510,
+        "startChar": 0,
+        "endLine": 510,
+        "endChar": 16
+      },
+      "revId": "6030a303ad27533ce48a3f5c57369c4c891c9557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
