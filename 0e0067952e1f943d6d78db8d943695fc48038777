@@ -142,6 +142,30 @@
       },
       "revId": "0e0067952e1f943d6d78db8d943695fc48038777",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec50c4f7_07946977",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 4
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2026-01-30T18:22:47Z",
+      "side": 1,
+      "message": "https://ci.chromium.org/ui/p/chromeos/builders/cq/firmware-zephyr-cov-cq/b8692614507619241313/overview\n\n```\nx86_64-pc-linux-gnu-g++.real: error: unrecognized command-line option ‘-std\u003dgnu++23’; did you mean ‘-std\u003dgnu++03’?\n```",
+      "parentUuid": "f28ba9a0_84b11ec9",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 266,
+        "endChar": 43
+      },
+      "revId": "0e0067952e1f943d6d78db8d943695fc48038777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
