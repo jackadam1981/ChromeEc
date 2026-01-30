@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e634066e_ca53f6b9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-01-30T00:14:58Z",
+      "side": 1,
+      "message": "Is this change just masking an underlying issue with the ocelot fan?\n\nI\u0027m not aware of other platforms needing to cut power to the fan to ensure the fan is not spinning.",
+      "range": {
+        "startLine": 10,
+        "startChar": 51,
+        "endLine": 13,
+        "endChar": 15
+      },
+      "revId": "dfda31269e109839fde927e555d4f2f9d56eac4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
