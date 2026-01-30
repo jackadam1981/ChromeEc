@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32c54473_4c2fb44a",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2026-01-30T15:19:56Z",
+      "side": 1,
+      "message": "I changed code to check the return value and set `FP_ENCRYPTED_TEMPLATE_READY` on success.",
+      "parentUuid": "9824a171_4df1d2af",
+      "range": {
+        "startLine": 335,
+        "startChar": 5,
+        "endLine": 337,
+        "endChar": 31
+      },
+      "revId": "7a5680c1699c501340ecad0a7576914181d3c844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "802e148c_e00df921",
@@ -143,6 +167,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26cab913_c6b51406",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2026-01-30T15:19:56Z",
+      "side": 1,
+      "message": "I tried to implement it and found that FP_FRAME_V0 calling FP_FRAME_V1 is very similar to what we have now. We still need to prepare `struct ec_params_fp_frame_v1` which means that we have to check index + it introduces risks mentioned earlier. I think `get_frame()` and `encrypt_template()` functions introduced in parent CL deduplicate code in a reasonable way.\n\nThe code would look more/less like this\n```\nstatic enum ec_status fp_command_frame_v0(struct host_cmd_handler_args *args)\n{\n        /* Copy params */\n        const struct ec_params_fp_frame params_v0 \u003d\n                *static_cast\u003cconst struct ec_params_fp_frame *\u003e(args-\u003eparams);\n\n        auto *params \u003d\n                static_cast\u003cstruct ec_params_fp_frame_v1 *\u003e(args-\u003eparams);\n        params-\u003eoffset \u003d params_v0.offset \u0026 FP_FRAME_OFFSET_MASK;\n        params-\u003esize \u003d params_v0.size;\n        uint16_t idx \u003d FP_FRAME_GET_BUFFER_INDEX(params_v0.offset);\n        enum ec_status status \u003d EC_RES_SUCCESS;\n\n        if (idx \u003d\u003d FP_FRAME_INDEX_RAW_IMAGE) {\n                /* The host requested a frame. */\n                params-\u003ecmd \u003d FP_FRAME_GET_RAW_IMAGE;\n                return fp_command_frame_v1(args);\n        }\n\n        /* The host requested a template. */\n\n        /* Templates are numbered from 1 in this host request. */\n        params-\u003eindex \u003d idx - FP_FRAME_INDEX_TEMPLATE;\n\n        if (!params-\u003eoffset) {\n                /* Host has requested the first chunk, do the encryption. */\n                params-\u003ecmd \u003d FP_FRAME_ENCRYPT_TEMPLATE;\n                status \u003d fp_command_frame_v1(args);\n                if (status !\u003d EC_RES_SUCCESS) {\n                        return status;\n                }\n\n                crec_msleep(10);\n        }\n        params-\u003ecmd \u003d FP_FRAME_GET_ENCRYPTED_TEMPLATE;\n        for (int i \u003d 0; i \u003c 20; i++) {\n                status \u003d fp_command_frame_v1(args);\n                if (status !\u003d EC_RES_BUSY) {\n                        break;\n                }\n                crec_msleep(10);\n        }\n\n        return status;\n}\n```\n\nAdded TODO to remove this after migration is completed.",
+      "parentUuid": "0713da92_e53cc4ba",
+      "range": {
+        "startLine": 572,
+        "startChar": 0,
+        "endLine": 572,
+        "endChar": 77
+      },
+      "revId": "7a5680c1699c501340ecad0a7576914181d3c844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0bf6e52_2450d1e4",
@@ -204,6 +252,30 @@
       "side": 1,
       "message": "Would it work if we split the command into `FP_FRAME` and `FP_FRAME_RAW`, each of which are using the \"async\" pattern?\n\nI don\u0027t want to make this unnecessarily complicated just to fit the \"async\" pattern though, so let me know your thoughts, especially if it will cause more side effects. On the other hand, it doesn\u0027t seem too bad to keep the \"dangerous\" command (`FP_FRAME_RAW`) separate from the normal \"safe\" command. What do you think?",
       "parentUuid": "40cfe165_66808235",
+      "range": {
+        "startLine": 630,
+        "startChar": 0,
+        "endLine": 630,
+        "endChar": 77
+      },
+      "revId": "7a5680c1699c501340ecad0a7576914181d3c844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b42b52ed_f10ab43d",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2026-01-30T15:19:56Z",
+      "side": 1,
+      "message": "\u003e Would it work if we split the command into FP_FRAME and FP_FRAME_RAW, each of which are using the \"async\" pattern?\n\nNo. The problem is not in supporting raw frame and template in one command (we would just need to set `action` appropriately), but in downloading the result.\n\nThe \"async\" pattern calls \"GET_RESULT\" action only once, while we need to call it multiple times to download the template.\n\nWe would need to have command for starting encryption and command for downloading result, but in this case neither command would need to be \"async\".",
+      "parentUuid": "5e404817_26483f4f",
       "range": {
         "startLine": 630,
         "startChar": 0,
