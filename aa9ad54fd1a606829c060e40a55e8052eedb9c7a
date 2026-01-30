@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "806c8024_0749b134",
+        "filename": "zephyr/shim/src/panic.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-01-30T17:32:45Z",
+      "side": 1,
+      "message": "Note - no guard is needed as the underlying implementation already verifies that the SoC has data cache enabled.",
+      "range": {
+        "startLine": 195,
+        "startChar": 1,
+        "endLine": 195,
+        "endChar": 34
+      },
+      "revId": "aa9ad54fd1a606829c060e40a55e8052eedb9c7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
