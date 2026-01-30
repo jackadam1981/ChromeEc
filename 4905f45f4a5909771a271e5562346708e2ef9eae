@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "061a79cd_80012683",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2026-01-30T06:21:43Z",
+      "side": 1,
+      "message": "```\n[kyogre:rw] /home/chrome-bot/.cache/coreboot-sdk/arm-eabi/ea40ddd1d190c3b48435c474c0b545719371813a/bin/../lib/gcc/arm-eabi/14.2.0/../../../../arm-eabi/bin/ld.bfd: region `FLASH\u0027 overflowed by 44 byte\n```\nNot this CL\u0027s fault",
+      "revId": "4905f45f4a5909771a271e5562346708e2ef9eae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
