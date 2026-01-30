@@ -34,6 +34,24 @@
       "message": "@jacky.lee@egistec.corp-partner.google.com is it the only way to include HAL headers? You probably don\u0027t want to use `zephyr_include_directories` in the HAL CMake files, right?",
       "revId": "62281d941ddea226eec0df6dc77fbb674d01dd4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38be6fc5_058db00e",
+        "filename": "zephyr/shim/chip/egis/CMakeLists.txt",
+        "patchSetId": 85
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 3698372
+      },
+      "writtenOn": "2026-01-30T02:45:01Z",
+      "side": 1,
+      "message": "Yes, that\u0027s correct.\nHAL was designed as an external module, built using standard CMake, so the `zephyr_include_directories()` function is not applicable.\nIf users need HAL header files, they should link to the corresponding HAL library.\nI believe this is a concise and safe approach; only targets that link to the HAL will obtain its include path, thus avoiding global include pollution.",
+      "parentUuid": "57303d52_b0402541",
+      "revId": "62281d941ddea226eec0df6dc77fbb674d01dd4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
