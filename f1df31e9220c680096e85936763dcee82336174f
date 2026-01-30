@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae0cf658_87f2b849",
+        "filename": "zephyr/program/ocelot/ocelotrvp-ite/project.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2026-01-30T09:04:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3030eac_6745bd46",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 28
+      },
+      "revId": "f1df31e9220c680096e85936763dcee82336174f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62a52140_5a63b53b",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "127069c5_5b6d01b9",
+        "filename": "zephyr/program/ocelot/rvp_i2c.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2026-01-30T09:04:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62a52140_5a63b53b",
+      "range": {
+        "startLine": 22,
+        "startChar": 4,
+        "endLine": 22,
+        "endChar": 20
+      },
+      "revId": "f1df31e9220c680096e85936763dcee82336174f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "064f34b8_29d80a2d",
@@ -60,6 +108,30 @@
       "writtenOn": "2026-01-24T01:04:51Z",
       "side": 1,
       "message": "As mentioned in one of the other CLs, this ought to go into the devictree.\n\n 1. #define macros for these constants.\n 2. Create a helper macro like `#define RT3645_UPDATE_ENTRY(page, reg, val) ((page) \u003c\u003c 16 | (reg) \u003c\u003c 8 | (val))` to pack them into an array of ints, so it is concise and readable.\n```\nivmp-config \u003d \u003cRT3645_UPDATE_ENTRY(...), RT3645_UPDATE_ENTRY(...), ...\u003e;\n```\n 3. In the driver, loop the array property and unpack the page/address/value.",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "f1df31e9220c680096e85936763dcee82336174f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8f13b2e_a753cb51",
+        "filename": "zephyr/program/ocelot/src/rvp_rt3645_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2026-01-30T09:04:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "064f34b8_29d80a2d",
       "range": {
         "startLine": 10,
         "startChar": 1,
