@@ -182,6 +182,11 @@ static const struct policy_group policy_groups[] = {
 	DT_INST_FOREACH_STATUS_OKAY(INIT_POLICY_GROUP)
 };
 
+static void led_execute_patterns(void);
+
+static void led_animation_worker(struct k_work *work);
+static K_WORK_DELAYABLE_DEFINE(led_worker_data, led_animation_worker);
+
 test_export_static enum power_state get_chipset_state(void)
 {
 	enum power_state chipset_state = 0;
@@ -203,11 +208,37 @@ test_export_static enum power_state get_chipset_state(void)
 	return chipset_state;
 }
 
+static bool is_pattern_done(struct led_pattern_node_t *pattern)
+{
+	uint8_t last;
+
+	/* 0 means infinite cycles */
+	if (pattern->cycle_limit == 0) {
+		return false;
+	}
+
+	pattern->cycle_curr++;
+	if (pattern->cycle_curr < pattern->cycle_limit) {
+		return false;
+	}
+
+	/* Limit reached. Hold final state. */
+	last = pattern->pattern_len - 1;
+	if (pattern->cur_color != last) {
+		pattern->cur_color = last;
+		pattern->elapsed_ms = get_step_duration(pattern, last);
+		pattern->needs_update = true;
+	}
+
+	return true;
+}
+
 static void advance_led_pattern(struct led_pattern_node_t *pattern,
 				uint32_t increment)
 {
 	uint32_t duration;
 	int steps = 0;
+	uint8_t prev_color = pattern->cur_color;
 
 	/* If we have finished the requested number of cycles, hold state. */
 	if (pattern->cycle_limit > 0 &&
@@ -231,20 +262,10 @@ static void advance_led_pattern(struct led_pattern_node_t *pattern,
 
 		/* Wrap around if we reached the end of the pattern */
 		if (pattern->cur_color >= pattern->pattern_len) {
-			/* Handle cycle counting if a limit is configured */
-			if (pattern->cycle_limit > 0) {
-				pattern->cycle_curr++;
-				if (pattern->cycle_curr >=
-				    pattern->cycle_limit) {
-					/* Limit reached. Hold final state. */
-					pattern->cur_color =
-						pattern->pattern_len - 1;
-					pattern->elapsed_ms = get_step_duration(
-						pattern, pattern->cur_color);
-					return;
-				}
+			if (is_pattern_done(pattern)) {
+				return;
 			}
-
+			/* Cycle continues, wrap to start */
 			pattern->cur_color = 0;
 		}
 
@@ -255,10 +276,23 @@ static void advance_led_pattern(struct led_pattern_node_t *pattern,
 	if (steps >= pattern->pattern_len) {
 		pattern->elapsed_ms = 0;
 	}
+
+	/*
+	 * Mark for update if color changed. Exponential transitions also
+	 * require updates because they use absolute value recalculation.
+	 *
+	 * TODO: Support relative calculation for exponential transitions
+	 * so the update flag is not required.
+	 */
+	if (pattern->cur_color != prev_color ||
+	    pattern->transition == LED_TRANSITION_EXPONENTIAL) {
+		pattern->needs_update = true;
+	}
 }
 
 static void update_led_pattern(const struct policy_group *grp,
-			       struct led_pattern_node_t *pattern)
+			       struct led_pattern_node_t *pattern,
+			       uint32_t increment)
 {
 	/* Check if auto control is enabled */
 	if (!led_auto_control_is_enabled(
@@ -267,20 +301,56 @@ static void update_led_pattern(const struct policy_group *grp,
 	}
 
 	/* Apply color calculated in the previous tick */
-	grp->driver->api->set_color_with_pattern(pattern);
+	if (pattern->needs_update) {
+		grp->driver->api->set_color_with_pattern(pattern);
+		pattern->needs_update = false;
+	}
 
 	/* Advance state machine for the next tick */
-	advance_led_pattern(pattern, HOOK_TICK_INTERVAL_MS);
+	advance_led_pattern(pattern, increment);
 }
 
-static void update_node_patterns(const struct policy_group *grp,
-				 const struct node_prop_t *node)
+struct node_status {
+	bool needs_apply;
+	bool is_animating;
+	bool has_transitions;
+};
+
+static struct node_status update_and_check_node(const struct policy_group *grp,
+						const struct node_prop_t *node,
+						uint32_t increment)
 {
 	struct led_pattern_node_t *patterns = node->led_patterns;
+	struct node_status status = { 0 };
 
 	for (int i = 0; i < node->num_patterns; i++) {
-		update_led_pattern(grp, &patterns[i]);
+		struct led_pattern_node_t *pattern = &patterns[i];
+		bool pattern_is_done;
+
+		/* Cache dirty flag before it's cleared in update_led_pattern */
+		if (pattern->needs_update) {
+			status.needs_apply = true;
+		}
+		/* Similar reason, cache the pattern_is_done status. */
+		pattern_is_done = (pattern->cycle_limit > 0 &&
+				   pattern->cycle_curr >= pattern->cycle_limit);
+
+		update_led_pattern(grp, pattern, increment);
+
+		if (pattern_is_done) {
+			continue;
+		}
+
+		if (pattern->transition != LED_TRANSITION_STEP ||
+		    pattern->pattern_len > 1) {
+			status.is_animating = true;
+		}
+
+		if (pattern->transition != LED_TRANSITION_STEP) {
+			status.has_transitions = true;
+		}
 	}
+	return status;
 }
 
 /* LCOV_EXCL_START */
@@ -381,22 +451,23 @@ static int match_node(const struct policy_group *grp, int node_idx)
 			pattern->cur_color = 0;
 			pattern->elapsed_ms = 0;
 			pattern->cycle_curr = 0;
+			pattern->needs_update = true;
 			/* Skip initial 0-duration colors before first render */
 			advance_led_pattern(pattern, 0);
 		}
+		/* Schedule animation worker to execute patterns */
+		k_work_schedule(&led_worker_data, K_NO_WAIT);
 	}
 
 	/* We found the node that matches the current system state */
 	return node_idx;
 }
 
-static bool led_set_all_colors(void)
+static void led_update_policy_state(void)
 {
-	bool has_transitions = false;
-
 	/*
 	 * Find all the nodes that match the current state of the system and
-	 * set color for these nodes. Depending on the policy defined in
+	 * mark them as active. Depending on the policy defined in
 	 * led.dts, a node could depend on power-state, chipset-state, extra
 	 * flags like battery percentage etc.
 	 * We must find at least one node that indicates the LED Behavior for
@@ -409,39 +480,75 @@ static bool led_set_all_colors(void)
 		for (int j = 0; j < grp->num_nodes; j++) {
 			if (match_node(grp, j) != -1) {
 				found_node = true;
-
-				// TODO: has_transitions should support all
-				// non-step patterns
-				if (grp->nodes[j].led_patterns->transition ==
-				    LED_TRANSITION_LINEAR)
-					has_transitions = true;
-
-				update_node_patterns(grp, &grp->nodes[j]);
 			}
 		}
 		if (!found_node) {
 			LOG_ERR("Node with matching prop not found");
 		}
 	}
-
-	return has_transitions;
 }
 
-void led_asynchronous_apply_color(bool has_transitions)
+#ifdef CONFIG_ZTEST
+uint32_t led_test_apply_count;
+#endif
+
+static void led_execute_patterns(void)
 {
+	bool continue_animating = false;
+	int64_t start_time = k_uptime_get();
+	int64_t elapsed_ms;
+	int64_t delay_ms;
+
+	/* Iterate through all policy groups to process active patterns */
 	for (int i = 0; i < ARRAY_SIZE(policy_groups); i++) {
-		policy_groups[i].driver->api->asynchronous_apply_color(
-			has_transitions);
+		const struct policy_group *grp = &policy_groups[i];
+		struct node_status group_status = { 0 };
+
+		for (int j = 0; j < grp->num_nodes; j++) {
+			struct node_status status;
+
+			if (!grp->active[j]) {
+				continue;
+			}
+
+			status = update_and_check_node(grp, &grp->nodes[j],
+						       LED_ANIMATION_TICK_MS);
+			group_status.needs_apply |= status.needs_apply;
+			group_status.is_animating |= status.is_animating;
+			group_status.has_transitions |= status.has_transitions;
+		}
+
+		if (group_status.is_animating) {
+			continue_animating = true;
+		}
+
+		if (group_status.needs_apply || group_status.has_transitions) {
+#ifdef CONFIG_ZTEST
+			led_test_apply_count++;
+#endif
+			grp->driver->api->asynchronous_apply_color(
+				group_status.has_transitions);
+		}
 	}
+
+	if (continue_animating) {
+		elapsed_ms = k_uptime_delta(&start_time);
+		delay_ms = max(0, (int64_t)LED_ANIMATION_TICK_MS - elapsed_ms);
+		k_work_schedule(&led_worker_data, K_MSEC(delay_ms));
+	} else {
+		k_work_cancel_delayable(&led_worker_data);
+	}
+}
+
+static void led_animation_worker(struct k_work *work)
+{
+	led_execute_patterns();
 }
 
 /* Called by hook task every HOOK_TICK_INTERVAL_MS */
 static void led_tick(void)
 {
-	bool has_transitions = led_set_all_colors();
-	if (IS_ENABLED(CONFIG_PLATFORM_EC_LED_DT_PWM)) {
-		led_asynchronous_apply_color(has_transitions);
-	}
+	led_update_policy_state();
 }
 DECLARE_HOOK(HOOK_TICK, led_tick, HOOK_PRIO_DEFAULT);
 
@@ -469,7 +576,6 @@ void led_control(enum ec_led_id led_id, enum ec_led_state state)
 
 	if (state == LED_STATE_RESET) {
 		led_auto_control(led_id, 1);
-		led_set_all_colors();
 		return;
 	}
 
@@ -491,48 +597,53 @@ __override int led_is_supported(enum ec_led_id led_id)
 	return ((1 << (int)led_id) & supported_leds);
 }
 
-/*
- * Iterate through LED pins nodes to find the color matching node.
- */
-void led_set_color(enum led_color color, enum ec_led_id led_id,
-		   uint8_t brightness)
+static const struct led_driver_t *led_find_driver(enum ec_led_id led_id)
 {
 	uint32_t mask = (1 << led_id);
 
 	for (int i = 0; i < ARRAY_SIZE(policy_groups); i++) {
 		if (policy_groups[i].driver->led_id_mask & mask) {
-			policy_groups[i].driver->api->set_color(color, led_id,
-								brightness);
+			return policy_groups[i].driver;
 		}
+	}
+
+	/* LCOV_EXCL_START - Unreachable as led_is_supported() is called first
+	 * to filter out this case.
+	 */
+	return NULL;
+	/* LCOV_EXCL_STOP */
+}
+
+void led_set_color(enum led_color color, enum ec_led_id led_id,
+		   uint8_t brightness)
+{
+	const struct led_driver_t *drv = led_find_driver(led_id);
+
+	if (drv) {
+		drv->api->set_color(color, led_id, brightness);
 	}
 }
 
 void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 {
-	uint32_t mask = (1 << led_id);
+	const struct led_driver_t *drv = led_find_driver(led_id);
 
-	memset(brightness_range, 0, EC_LED_COLOR_COUNT);
-
-	for (int i = 0; i < ARRAY_SIZE(policy_groups); i++) {
-		if (policy_groups[i].driver->led_id_mask & mask) {
-			policy_groups[i].driver->api->get_brightness_range(
-				led_id, brightness_range);
-			return;
-		}
+	if (drv) {
+		drv->api->get_brightness_range(led_id, brightness_range);
 	}
 }
 
 int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 {
-	uint32_t mask = (1 << led_id);
+	const struct led_driver_t *drv = led_find_driver(led_id);
 
-	for (int i = 0; i < ARRAY_SIZE(policy_groups); i++) {
-		if (policy_groups[i].driver->led_id_mask & mask) {
-			int rv = policy_groups[i].driver->api->set_brightness(
-				led_id, brightness);
-			return rv;
-		}
+	if (drv) {
+		return drv->api->set_brightness(led_id, brightness);
 	}
 
+	/* LCOV_EXCL_START - Unreachable as led_is_supported() is called first
+	 * to filter out this case.
+	 */
 	return EC_ERROR_INVAL;
+	/* LCOV_EXCL_STOP */
 }

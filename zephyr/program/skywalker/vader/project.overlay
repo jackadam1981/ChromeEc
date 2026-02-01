@@ -171,6 +171,11 @@
 			flags = <GPIO_INT_EDGE_FALLING>;
 			handler = "bma4xx_interrupt";
 		};
+		int_pmic_ec_resetb: pmic-ec-resetb {
+			irq-pin = <&gpio_pmic_ec_resetb>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "pmic_ec_resetb_interrupt";
+		};
 	};
 
 	named-gpios {
@@ -208,7 +213,6 @@
 			<&gpio9 7 0>,
 			<&gpioc 3 0>,
 			<&gpiod 5 0>,
-			<&gpiod 6 0>,
 			<&gpiod 7 0>,
 			<&gpioe 2 0>,
 			<&gpioe 4 0>;
@@ -227,6 +231,7 @@
 		&ksi7_gp22
 		&kso00_gp21
 		&kso01_gp20
+		&kso02_gp17
 		&kso03_gp16
 		&kso04_gp15
 		&kso05_gp14

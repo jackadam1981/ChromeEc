@@ -180,6 +180,16 @@ config EMUL_EGIS630
 	  mode) that can be issued by the public driver (without EGIS private
 	  library)
 
+config EMUL_EGIS660
+	bool "EGIS660 fingerprint sensor emulator"
+	depends on ZTEST && DT_HAS_EGIS_EGIS660_ENABLED && ARCH_POSIX
+	default y
+	help
+	  This option enables the EGIS660 fingerprint sensor emulator.
+	  It supports only basic commands (get hardware id, enter low power
+	  mode) that can be issued by the public driver (without EGIS private
+	  library)
+
 config EMUL_ELAN80SERIES
 	bool "ELAN80SERIES fingerprint sensor emulator"
 	depends on ZTEST && ARCH_POSIX
@@ -375,6 +385,14 @@ config EMUL_PPM_DRIVER
 	depends on ZTEST && DT_HAS_UCSI_PPM_ENABLED
 	help
 	  Enable the UCSI PPM emulator.
+
+config EMUL_RT3645
+	bool "RT3645 IMVP emulator"
+	default y
+	depends on DT_HAS_RICHTEK_RT3645_ENABLED
+	help
+	  Enable the RT3645 IMVP emulator. This driver use emulated I2C bus.
+	  Emulator API is available in zephyr/include/emul/emul_rt1739.h.
 
 rsource "Kconfig.ln9310"
 rsource "Kconfig.lis2dw12"

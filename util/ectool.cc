@@ -3804,6 +3804,8 @@ static const struct {
 	{ ST_PRM_SIZE(set_v2par_thlds), 0 },
 	{ ST_CMD_SIZE, ST_RSP_SIZE(get_params_v2_colors) },
 	{ ST_PRM_SIZE(set_v2par_colors), 0 },
+	{ ST_CMD_SIZE, ST_RSP_SIZE(get_params_v3) },
+	{ ST_PRM_SIZE(set_program_ex), 0 },
 };
 BUILD_ASSERT(ARRAY_SIZE(lb_command_paramcount) == LIGHTBAR_NUM_CMDS);
 
@@ -13367,5 +13369,8 @@ out:
 	if (interfaces == COMM_USB)
 		comm_usb_exit();
 
-	return !!rv;
+	/* Negative values from the command handler should be treated as errors
+	 * return an exit code of 1. Some command handlers return 0 or the
+	 * number of bytes received upon success. */
+	return (rv < 0) ? 1 : 0;
 }

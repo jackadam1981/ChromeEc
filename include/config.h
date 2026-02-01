@@ -3273,6 +3273,9 @@
  */
 #define CONFIG_WPC_HALL_DEBOUNCE_US (30 * MSEC)
 
+/* Add AC S5 charge feature for the WPC */
+#undef CONFIG_WPC_AC_S5_CHARGE
+
 /*
  * Minimum CPU clocks between scans.  This ensures that keyboard scanning
  * doesn't starve the other EC tasks of CPU when running at a decreased system
@@ -3774,9 +3777,6 @@
 
 /* Support one-wire interface */
 #undef CONFIG_ONEWIRE
-
-/* Support One Time Protection structure */
-#undef CONFIG_OTP
 
 /* Use OTP as a source of key material. */
 #undef CONFIG_OTP_KEY
@@ -5514,7 +5514,7 @@
 /* Support VCONN swap */
 #undef CONFIG_USBC_VCONN_SWAP
 
-#undef CONFIG_USBC_PD3_SENDER_RESPONSE_OVERRIDE
+#undef CONFIG_USBC_PD3_T_SENDER_RESPONSE_OVERRIDE
 #undef CONFIG_USBC_PD3_T_SENDER_RESPONSE_MS
 
 /*

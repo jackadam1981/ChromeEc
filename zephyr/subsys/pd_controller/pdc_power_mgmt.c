@@ -330,7 +330,33 @@ enum snk_attached_local_state_t {
 	SNK_ATTACHED_READ_POWER_LEVEL,
 	/** SNK_ATTACHED_RUN */
 	SNK_ATTACHED_RUN,
+	/* Mark end of enum */
+	SNK_ATTACHED_INVALID,
 };
+
+#ifdef CONFIG_PDC_POWER_MGMT_LOG_SUBSTATES
+/* Names of the Sink-attached substates. */
+const static char *snk_attached_local_state_names[] = {
+	[SNK_ATTACHED_GET_CONNECTOR_CAPABILITY] = "GET_CONN_CAP",
+	[SNK_ATTACHED_ADD_PD_SRC] = "ADD_PD_SRC",
+	[SNK_ATTACHED_SET_DR_SWAP_POLICY] = "SET_DR_SWAP_POLICY",
+	[SNK_ATTACHED_SET_PR_SWAP_POLICY] = "SET_PR_SWAP_POLICY",
+	[SNK_ATTACHED_SET_FRS] = "SET_FRS",
+	[SNK_ATTACHED_GET_PDOS] = "GET_PDOS",
+	[SNK_ATTACHED_GET_VDO] = "GET_VDO",
+	[SNK_ATTACHED_WAIT_FOR_CONTRACT] = "WAIT_FOR_CNRCT",
+	[SNK_ATTACHED_SYNC_CHARGE_MGR] = "SYNC_CHARGE_MGR",
+	[SNK_ATTACHED_SET_SINK_PATH] = "SET_SINK_PATH",
+	[SNK_ATTACHED_EVALUATE_PDOS] = "EVAL_PDOS",
+	[SNK_ATTACHED_GET_SINK_PDO] = "GET_SINK_PDO",
+	[SNK_ATTACHED_GET_CABLE_PROPERTY] = "GET_CABLE_PROP",
+	[SNK_ATTACHED_READ_POWER_LEVEL] = "RD_PWR_LVL",
+	[SNK_ATTACHED_RUN] = "RUN",
+};
+
+BUILD_ASSERT(ARRAY_SIZE(snk_attached_local_state_names) == SNK_ATTACHED_INVALID,
+	     "Please update substate names array");
+#endif /* CONFIG_PDC_POWER_MGMT_LOG_SUBSTATES */
 
 /**
  * @brief SRC Attached Local States
@@ -352,7 +378,26 @@ enum src_attached_local_state_t {
 	SRC_ATTACHED_GET_CABLE_PROPERTY,
 	/** SRC_ATTACHED_RUN */
 	SRC_ATTACHED_RUN,
+	/* Mark end of enum */
+	SRC_ATTACHED_INVALID,
 };
+
+#ifdef CONFIG_PDC_POWER_MGMT_LOG_SUBSTATES
+/* Names of the Source-attached substates. */
+const static char *src_attached_local_state_names[] = {
+	[SRC_ATTACHED_SET_SINK_PATH_OFF] = "SET_SINK_PATH_OFF",
+	[SRC_ATTACHED_GET_CONNECTOR_CAPABILITY] = "GET_CONN_CAP",
+	[SRC_ATTACHED_SET_DR_SWAP_POLICY] = "SET_DR_SWAP_POLICY",
+	[SRC_ATTACHED_SET_PR_SWAP_POLICY] = "SET_PR_SWAP_POLICY",
+	[SRC_ATTACHED_READ_POWER_LEVEL] = "RD_PWR_LVL",
+	[SRC_ATTACHED_GET_VDO] = "GET_VDO",
+	[SRC_ATTACHED_GET_CABLE_PROPERTY] = "GET_CABLE_PROP",
+	[SRC_ATTACHED_RUN] = "RUN",
+};
+
+BUILD_ASSERT(ARRAY_SIZE(src_attached_local_state_names) == SRC_ATTACHED_INVALID,
+	     "Please update substate names array");
+#endif /* CONFIG_PDC_POWER_MGMT_LOG_SUBSTATES */
 
 /**
  * @brief TypeC SNK Attached Local States
@@ -366,7 +411,24 @@ enum snk_typec_attached_local_state_t {
 	SNK_TYPEC_READ_POWER_LEVEL,
 	/** SNK_TYPEC_ATTACHED_RUN */
 	SNK_TYPEC_ATTACHED_RUN,
+	/* Mark end of enum */
+	SNK_TYPEC_ATTACHED_INVALID,
 };
+
+#ifdef CONFIG_PDC_POWER_MGMT_LOG_SUBSTATES
+/* Names of the Type-C only Sink-attached substates. */
+const static char *snk_typec_attached_local_state_names[] = {
+	[SNK_TYPEC_ATTACHED_SET_CHARGE_CURRENT] = "SET_CHRG_CUR",
+	[SNK_TYPEC_ATTACHED_DEBOUNCE] = "DEBOUNCE",
+	[SNK_TYPEC_READ_POWER_LEVEL] = "RD_PWR_LVL",
+	[SNK_TYPEC_ATTACHED_RUN] = "RUN",
+
+};
+
+BUILD_ASSERT(ARRAY_SIZE(snk_typec_attached_local_state_names) ==
+		     SNK_TYPEC_ATTACHED_INVALID,
+	     "Please update substate names array");
+#endif /* CONFIG_PDC_POWER_MGMT_LOG_SUBSTATES */
 
 /**
  * @brief TypeC SRC Attached Local States
@@ -382,7 +444,24 @@ enum src_typec_attached_local_state_t {
 	SRC_TYPEC_READ_POWER_LEVEL,
 	/** SRC_TYPEC_ATTACHED_RUN */
 	SRC_TYPEC_ATTACHED_RUN,
+	/* Mark end of enum */
+	SRC_TYPEC_ATTACHED_INVALID,
 };
+
+#ifdef CONFIG_PDC_POWER_MGMT_LOG_SUBSTATES
+/* Names of the Type-C only Source-attached substates. */
+const static char *src_typec_attached_local_state_names[] = {
+	[SRC_TYPEC_ATTACHED_SET_SINK_PATH_OFF] = "SET_SINK_PATH_OFF",
+	[SRC_TYPEC_ATTACHED_DEBOUNCE] = "DEBOUNCE",
+	[SRC_TYPEC_ATTACHED_ADD_SINK] = "ADD_SINK",
+	[SRC_TYPEC_READ_POWER_LEVEL] = "RD_PWR_LVL",
+	[SRC_TYPEC_ATTACHED_RUN] = "RUN",
+};
+
+BUILD_ASSERT(ARRAY_SIZE(src_typec_attached_local_state_names) ==
+		     SRC_TYPEC_ATTACHED_INVALID,
+	     "Please update substate names array");
+#endif /* CONFIG_PDC_POWER_MGMT_LOG_SUBSTATES */
 
 /**
  * @brief Unattached Local States
@@ -392,7 +471,20 @@ enum unattached_local_state_t {
 	UNATTACHED_SET_SINK_PATH_OFF,
 	/** UNATTACHED_RUN */
 	UNATTACHED_RUN,
+	/* Mark end of enum */
+	UNATTACHED_INVALID,
 };
+
+#ifdef CONFIG_PDC_POWER_MGMT_LOG_SUBSTATES
+/* Names of the Source-attached substates. */
+const static char *unattached_local_state_names[] = {
+	[UNATTACHED_SET_SINK_PATH_OFF] = "SET_SINK_PATH_OFF",
+	[UNATTACHED_RUN] = "RUN",
+};
+
+BUILD_ASSERT(ARRAY_SIZE(unattached_local_state_names) == UNATTACHED_INVALID,
+	     "Please update substate names array");
+#endif /* CONFIG_PDC_POWER_MGMT_LOG_SUBSTATES */
 
 /**
  * @brief Initialization local states. Carry out these steps upon subsystem
@@ -418,7 +510,22 @@ enum init_local_state_t {
 	 *  of the attached run states after handling the response.
 	 */
 	INIT_GET_CONNECTOR_STATUS,
+	/* Mark end of enum */
+	INIT_INVALID,
 };
+
+#ifdef CONFIG_PDC_POWER_MGMT_LOG_SUBSTATES
+/* Names of the init substates. */
+const static char *init_local_state_names[] = {
+	[INIT_WAIT_FOR_READY] = "WAIT_FOR_READY",
+	[INIT_SET_SINK_PDOS] = "SET_SINK_PDOS",
+	[INIT_SET_SRC_PDOS] = "SET_SRC_PDOS",
+	[INIT_GET_CONNECTOR_STATUS] = "GET_CONN_STATUS",
+};
+
+BUILD_ASSERT(ARRAY_SIZE(init_local_state_names) == INIT_INVALID,
+	     "Please update substate names array");
+#endif /* CONFIG_PDC_POWER_MGMT_LOG_SUBSTATES */
 
 /**
  * @brief CCI Event Flags
@@ -691,6 +798,10 @@ enum policy_src_attached_t {
 	 * balancing policy.
 	 */
 	SRC_POLICY_GET_RDO,
+	/** Get source caps from DRP sink partner */
+	SRC_POLICY_GET_SRC_CAPS,
+	/** Evaluate source PDOs from DRP sink partner */
+	SRC_POLICY_EVAL_SRC_PDOS,
 	/** Triggers an update of the allow_pr_swap bit in CMD_SET_DRP */
 	SRC_POLICY_UPDATE_ALLOW_PR_SWAP,
 	/** Update battery status */
@@ -1176,13 +1287,23 @@ static void set_pdc_state(struct pdc_port_t *port, enum pdc_state_t next_state)
 	}
 }
 
-static void print_current_pdc_state(struct pdc_port_t *port)
-{
-	const struct pdc_config_t *const config = port->dev->config;
+#define SAFE_SUBSTATE_NAME(substate_idx, str_array)                   \
+	(IN_RANGE((substate_idx), 0, (ARRAY_SIZE((str_array)) - 1)) ? \
+		 (str_array)[(substate_idx)] :                        \
+		 "Invalid")
 
-	LOG_INF("C%d: %s", config->connector_num,
-		pdc_state_names[get_pdc_state(port)]);
-}
+#define PRINT_STATE_WITH_SUBSTATE(port_num, state_idx, substate_idx, \
+				  substate_strs)                     \
+	COND_CODE_1(IS_ENABLED(CONFIG_PDC_POWER_MGMT_LOG_SUBSTATES), \
+		    (LOG_INF("C%d State: %s.%s", (port_num),         \
+			     pdc_state_names[(state_idx)],           \
+			     SAFE_SUBSTATE_NAME((substate_idx),      \
+						(substate_strs)))),  \
+		    (LOG_INF("C%d State: %s (%d)", (port_num),       \
+			     pdc_state_names[(state_idx)], (substate_idx))))
+
+#define PRINT_STATE(port_num, state_idx) \
+	LOG_INF("C%d State: %s", (port_num), pdc_state_names[(state_idx)])
 
 static void set_attached_pdc_state(struct pdc_port_t *port,
 				   enum attached_state_t attached_state)
@@ -1272,7 +1393,7 @@ static void invalidate_charger_settings(struct pdc_port_t *port,
 
 	/* Invalidate PDOS */
 	port->snk_policy.pdo = 0;
-	memset(port->snk_policy.src.pdos, 0, sizeof(port->snk_policy.snk.pdos));
+	memset(port->snk_policy.src.pdos, 0, sizeof(port->snk_policy.src.pdos));
 	port->snk_policy.src.pdo_count = 0;
 	memset(port->src_policy.snk.pdos, 0, sizeof(port->src_policy.snk.pdos));
 	port->src_policy.snk.pdo_count = 0;
@@ -1952,6 +2073,13 @@ static void run_src_policies(struct pdc_port_t *port)
 		/* Adjust source current limits if necessary */
 		pdc_dpm_eval_sink_fixed_pdo(port_num,
 					    port->src_policy.snk.pdos[0]);
+
+		/* If the partner is DRP capable, request source caps */
+		if (port->src_policy.snk.pdos[0] & PDO_FIXED_GET_DRP) {
+			atomic_set_bit(port->src_policy.flags,
+				       SRC_POLICY_GET_SRC_CAPS);
+		}
+
 		return;
 	} else if (atomic_test_and_clear_bit(port->src_policy.flags,
 					     SRC_POLICY_GET_SINK_CAPS)) {
@@ -2001,6 +2129,33 @@ static void run_src_policies(struct pdc_port_t *port)
 					     SRC_POLICY_GET_RDO)) {
 		/* Get the RDO from the port partner */
 		queue_internal_cmd(port, CMD_PDC_GET_RDO);
+		return;
+	} else if (atomic_test_and_clear_bit(port->src_policy.flags,
+					     SRC_POLICY_GET_SRC_CAPS)) {
+		/*
+		 * For evaluating swap to sink, we only request the partner's
+		 * first SRC PDO.
+		 */
+		port->get_pdo.num_pdos = 1;
+		port->get_pdo.pdo_offset = PDO_OFFSET_0;
+		port->get_pdo.pdo_type = SOURCE_PDO;
+		port->get_pdo.pdo_source = PARTNER_PDO;
+		port->get_pdo.updating = false;
+
+		atomic_set_bit(port->src_policy.flags,
+			       SRC_POLICY_EVAL_SRC_PDOS);
+		queue_internal_cmd(port, CMD_PDC_GET_PDOS);
+		return;
+	} else if (atomic_test_and_clear_bit(port->src_policy.flags,
+					     SRC_POLICY_EVAL_SRC_PDOS)) {
+		/* Request a swap to sink if the partner has unconstained power
+		 */
+		if (port->snk_policy.src.pdos[0] &
+		    PDO_FIXED_GET_UNCONSTRAINED_PWR) {
+			atomic_set_bit(port->src_policy.flags,
+				       SRC_POLICY_SWAP_TO_SNK);
+		}
+
 		return;
 	} else if (atomic_test_and_clear_bit(port->src_policy.flags,
 					     SRC_POLICY_UPDATE_ALLOW_PR_SWAP)) {
@@ -2064,7 +2219,9 @@ static void pdc_unattached_entry(void *obj)
 	const struct pdc_config_t *config = port->dev->config;
 	int port_number = config->connector_num;
 
-	print_current_pdc_state(port);
+	PRINT_STATE_WITH_SUBSTATE(port_number, get_pdc_state(port),
+				  port->unattached_local_state,
+				  unattached_local_state_names);
 
 	set_attached_pdc_state(port, UNATTACHED_STATE);
 	port->send_cmd.intern.pending = false;
@@ -2139,6 +2296,8 @@ static enum smf_state_result pdc_unattached_run(void *obj)
 	case UNATTACHED_RUN:
 		run_unattached_policies(port);
 		break;
+	case UNATTACHED_INVALID:
+		__builtin_unreachable();
 	}
 	return SMF_EVENT_HANDLED;
 }
@@ -2152,7 +2311,10 @@ static void pdc_src_attached_entry(void *obj)
 	const struct pdc_config_t *config = port->dev->config;
 	int port_number = config->connector_num;
 
-	print_current_pdc_state(port);
+	PRINT_STATE_WITH_SUBSTATE(port_number, get_pdc_state(port),
+				  port->src_attached_local_state,
+				  src_attached_local_state_names);
+
 	set_attached_pdc_state(port, SRC_ATTACHED_STATE);
 
 	port->send_cmd.intern.pending = false;
@@ -2267,6 +2429,8 @@ static enum smf_state_result pdc_src_attached_run(void *obj)
 	case SRC_ATTACHED_RUN:
 		run_src_policies(port);
 		break;
+	case SRC_ATTACHED_INVALID:
+		__builtin_unreachable();
 	}
 	return SMF_EVENT_HANDLED;
 }
@@ -2277,15 +2441,17 @@ static enum smf_state_result pdc_src_attached_run(void *obj)
 static void pdc_snk_attached_entry(void *obj)
 {
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
+	const struct pdc_config_t *config = port->dev->config;
+	int port_number = config->connector_num;
 
-	print_current_pdc_state(port);
+	PRINT_STATE_WITH_SUBSTATE(port_number, get_pdc_state(port),
+				  port->snk_attached_local_state,
+				  snk_attached_local_state_names);
+
 	set_attached_pdc_state(port, SNK_ATTACHED_STATE);
 
 	port->send_cmd.intern.pending = false;
 	if (get_pdc_state(port) != port->send_cmd_return_state) {
-		const struct pdc_config_t *config = port->dev->config;
-		int port_number = config->connector_num;
-
 		/* Reset local state */
 		port->snk_attached_local_state =
 			SNK_ATTACHED_GET_CONNECTOR_CAPABILITY;
@@ -2906,6 +3072,8 @@ static enum smf_state_result pdc_snk_attached_run(void *obj)
 			run_snk_policies(port);
 		}
 		break;
+	case SNK_ATTACHED_INVALID:
+		__builtin_unreachable();
 	}
 	return SMF_EVENT_HANDLED;
 }
@@ -2913,8 +3081,6 @@ static enum smf_state_result pdc_snk_attached_run(void *obj)
 static void pdc_send_cmd_start_entry(void *obj)
 {
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
-
-	print_current_pdc_state(port);
 
 	port->send_cmd_return_state = port->last_state;
 	port->send_cmd.wait_counter = 0;
@@ -3185,7 +3351,6 @@ static void pdc_send_cmd_wait_entry(void *obj)
 {
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
 
-	print_current_pdc_state(port);
 	port->send_cmd.wait_counter = 0;
 	port->send_cmd.resend_counter = 0;
 }
@@ -3346,7 +3511,10 @@ static void pdc_src_typec_only_entry(void *obj)
 	const struct pdc_config_t *config = port->dev->config;
 	int port_number = config->connector_num;
 
-	print_current_pdc_state(port);
+	PRINT_STATE_WITH_SUBSTATE(port_number, get_pdc_state(port),
+				  port->src_typec_attached_local_state,
+				  src_typec_attached_local_state_names);
+
 	set_attached_pdc_state(port, SRC_ATTACHED_TYPEC_ONLY_STATE);
 
 	if (get_pdc_state(port) != port->send_cmd_return_state) {
@@ -3421,6 +3589,8 @@ static enum smf_state_result pdc_src_typec_only_run(void *obj)
 	case SRC_TYPEC_ATTACHED_RUN:
 		run_typec_src_policies(port);
 		break;
+	case SRC_TYPEC_ATTACHED_INVALID:
+		__builtin_unreachable();
 	}
 	return SMF_EVENT_HANDLED;
 }
@@ -3454,7 +3624,10 @@ static void pdc_snk_typec_only_entry(void *obj)
 		}
 	}
 
-	print_current_pdc_state(port);
+	PRINT_STATE_WITH_SUBSTATE(port_number, get_pdc_state(port),
+				  port->snk_typec_attached_local_state,
+				  snk_typec_attached_local_state_names);
+
 	set_attached_pdc_state(port, SNK_ATTACHED_TYPEC_ONLY_STATE);
 }
 
@@ -3516,6 +3689,8 @@ static enum smf_state_result pdc_snk_typec_only_run(void *obj)
 	case SNK_TYPEC_ATTACHED_RUN:
 		run_typec_snk_policies(port);
 		break;
+	case SNK_TYPEC_ATTACHED_INVALID:
+		__builtin_unreachable();
 	}
 	return SMF_EVENT_HANDLED;
 }
@@ -3526,7 +3701,9 @@ static void pdc_init_entry(void *obj)
 	const struct pdc_config_t *config = port->dev->config;
 	int port_number = config->connector_num;
 
-	print_current_pdc_state(port);
+	PRINT_STATE_WITH_SUBSTATE(port_number, get_pdc_state(port),
+				  port->init_local_state,
+				  init_local_state_names);
 
 	if (get_pdc_state(port) != port->send_cmd_return_state) {
 		/* True if entering the init state for the first time, as
@@ -3770,6 +3947,8 @@ static enum smf_state_result pdc_init_run(void *obj)
 		 */
 		queue_internal_cmd(port, CMD_PDC_GET_CONNECTOR_STATUS);
 		break;
+	case INIT_INVALID:
+		__builtin_unreachable();
 	}
 	return SMF_EVENT_HANDLED;
 }
@@ -3777,8 +3956,9 @@ static enum smf_state_result pdc_init_run(void *obj)
 static void pdc_suspended_entry(void *obj)
 {
 	struct pdc_port_t *port = (struct pdc_port_t *)obj;
+	const struct pdc_config_t *const config = port->dev->config;
 
-	print_current_pdc_state(port);
+	PRINT_STATE(config->connector_num, get_pdc_state(port));
 }
 
 static enum smf_state_result pdc_suspended_run(void *obj)
@@ -4221,6 +4401,12 @@ int pdc_power_mgmt_set_active_charge_port(int charge_port)
 	}
 
 	return EC_SUCCESS;
+}
+
+void pdc_power_mgmt_check_pr_swap_needed(int port)
+{
+	atomic_set_bit(pdc_data[port]->port.snk_policy.flags,
+		       SNK_POLICY_EVAL_SWAP_TO_SRC);
 }
 
 int pdc_power_mgmt_set_new_power_request(int port)

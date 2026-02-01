@@ -28,6 +28,8 @@
 #define GET_DRIVER_ID_MASK(inst) \
 	(0 DT_FOREACH_CHILD(DT_DRV_INST(inst), LED_ID_BIT))
 
+#define LED_ANIMATION_TICK_MS CONFIG_PLATFORM_EC_LED_ANIMATION_TICK_MS
+
 enum led_color {
 	LED_OFF,
 	LED_RED,
@@ -204,6 +206,7 @@ struct led_pattern_node_t {
 	uint8_t cycle_limit;
 	uint8_t cycle_curr;
 	enum led_transition transition;
+	bool needs_update;
 };
 
 static inline int32_t get_step_duration(const struct led_pattern_node_t *cfg,
@@ -221,13 +224,6 @@ static inline int32_t get_step_duration(const struct led_pattern_node_t *cfg,
  */
 void led_set_color(enum led_color color, enum ec_led_id led_id,
 		   uint8_t brightness);
-
-/**
- * Wrapper function to apply the calculated color to hardware
- *
- * @param has_transitions	Whether the policy has a transition pattern
- */
-void led_asynchronous_apply_color(bool has_transitions);
 
 #ifdef TEST_BUILD
 const struct led_pins_node_t *led_get_node(enum led_color color,

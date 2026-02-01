@@ -130,6 +130,7 @@ static void pwm_set_color(enum led_color color, enum ec_led_id led_id,
 			break;
 		}
 	}
+	pwm_asynchronous_apply_color(false);
 }
 
 /*
@@ -151,24 +152,6 @@ static void pwm_set_color(enum led_color color, enum ec_led_id led_id,
 		DATA_NODE(DT_PHANDLE_BY_IDX(node_id, prop, idx)))
 #define LED_PROGRESS_PULSE(id) \
 	DT_FOREACH_PROP_ELEM(id, led_pwms, PIN_PROGRESS_PULSE)
-
-static void led_tick_control(struct k_work *work);
-static K_WORK_DELAYABLE_DEFINE(led_tick_control_data, led_tick_control);
-
-#define LED_STEP_TIME_MS 30
-
-static void led_tick_control(struct k_work *work)
-{
-	uint64_t elapsed;
-	uint64_t delay = 0;
-	uint64_t start = k_uptime_get();
-
-	DT_INST_FOREACH_CHILD_STATUS_OKAY(0, LED_APPLY_COLOR)
-	DT_INST_FOREACH_CHILD_STATUS_OKAY(0, LED_PROGRESS_PULSE)
-	elapsed = k_uptime_delta(&start);
-	delay = (LED_STEP_TIME_MS > elapsed) ? (LED_STEP_TIME_MS - elapsed) : 0;
-	k_work_schedule(&led_tick_control_data, K_MSEC(delay));
-}
 
 /*
  * For every HOOK_TICK_INTERVAL_MS interval, we calculate the beginning and end
@@ -211,7 +194,7 @@ static void pwm_set_color_with_pattern(void *p)
 			cur_color[i].pulse_step_ns = (next_color[i].pulse_ns -
 						      prev_color[i].pulse_ns) /
 						     duration_ms *
-						     LED_STEP_TIME_MS;
+						     LED_ANIMATION_TICK_MS;
 		}
 		/*
 		 * This algorithm first finds the ratio of the starting and end
@@ -297,17 +280,14 @@ static int pwm_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 	if (!color_set)
 		led_set_color(LED_OFF, led_id, 0);
 
-	led_asynchronous_apply_color(false);
+	pwm_asynchronous_apply_color(false);
 	return EC_SUCCESS;
 }
 
-/* Called by hook task every HOOK_TICK_INTERVAL_MS */
 static void pwm_asynchronous_apply_color(bool has_transitions)
 {
+	DT_INST_FOREACH_CHILD_STATUS_OKAY(0, LED_APPLY_COLOR)
 	if (has_transitions) {
-		k_work_schedule(&led_tick_control_data, K_NO_WAIT);
-	} else {
-		k_work_cancel_delayable(&led_tick_control_data);
-		DT_INST_FOREACH_CHILD_STATUS_OKAY(0, LED_APPLY_COLOR)
+		DT_INST_FOREACH_CHILD_STATUS_OKAY(0, LED_PROGRESS_PULSE)
 	}
 }
