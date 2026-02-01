@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e20e0d0a_1d0c6fdc",
+        "filename": "test/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2026-02-01T17:03:59Z",
+      "side": 0,
+      "message": "Acknowledged",
+      "parentUuid": "f845686f_027e7e7a",
+      "range": {
+        "startLine": 38,
+        "startChar": 18,
+        "endLine": 38,
+        "endChar": 25
+      },
+      "revId": "4c62ac51dfcb6f73060f02013346913c32c262ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12fb91e6_48e96324",
@@ -37,6 +61,30 @@
       "writtenOn": "2026-01-30T20:00:04Z",
       "side": 0,
       "message": "I didn\u0027t check that all of these are necessary, but at least some of them appear to be.",
+      "range": {
+        "startLine": 84,
+        "startChar": 19,
+        "endLine": 90,
+        "endChar": 30
+      },
+      "revId": "4c62ac51dfcb6f73060f02013346913c32c262ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6731f59e_cfdd3372",
+        "filename": "test/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2026-02-01T17:03:59Z",
+      "side": 0,
+      "message": "Acknowledged",
+      "parentUuid": "12fb91e6_48e96324",
       "range": {
         "startLine": 84,
         "startChar": 19,
