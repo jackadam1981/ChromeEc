@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7ebeb65_a7b268ca",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3776,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2026-02-02T19:02:37Z",
+      "side": 1,
+      "message": "BTW, this is just there to keep this enum building when you\u0027re not using the feature. You can remove it when you add your own intervals.",
+      "revId": "48e85770b2c3f70c086f928268773dd829d6e1c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
