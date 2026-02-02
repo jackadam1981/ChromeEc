@@ -40,6 +40,37 @@
     },
     {
       "submitRequirement": {
+        "name": "BCID-Exit-Gate-Verified",
+        "description": {
+          "value": "BCID Exit Gate verification must be provided by the Exit Gate service."
+        },
+        "applicabilityExpression": {
+          "value": {
+            "expressionString": "is:bcid-exit-gate-applicable_gerrit"
+          }
+        },
+        "submittabilityExpression": {
+          "expressionString": "label:BCID-Exit-Gate-Verified\u003dMAX\u0026user\u003ddevtools-gerritcodereview-exitgate"
+        },
+        "overrideExpression": {},
+        "allowOverrideInChildProjects": false
+      },
+      "applicabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"is:bcid-exit-gate-applicable_gerrit"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["is:bcid-exit-gate-applicable_gerrit"],"atomExplanations":{"value":{"is:bcid-exit-gate-applicable_gerrit":""}}}
+      },
+      "submittabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"label:BCID-Exit-Gate-Verified=MAX&user=devtools-gerritcodereview-exitgate"},"status":"NOT_EVALUATED","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":[],"atomExplanations":{"value":null}}
+      },
+      "overrideExpressionResult": {},
+      "patchSetCommitId": "76ba50ba1eabc84723f72fb6196e337462d456a7",
+      "legacy": {
+        "value": false
+      },
+      "forced": {},
+      "hidden": {}
+    },
+    {
+      "submitRequirement": {
         "name": "Code-Coverage",
         "description": {
           "value": "Submit requirement for the \u0027Code-Coverage\u0027 label"
