@@ -117,3 +117,7 @@
 		};
 	};
 };
+
+&usb {
+	maximum-speed = "full-speed";
+};
