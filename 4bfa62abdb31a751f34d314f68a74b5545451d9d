@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ffd56a3_6d51760e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-02-02T21:15:27Z",
+      "side": 1,
+      "message": "The fingerprint team does need to review changes that touch fingerprint. We have caught mistakes in the past, and have a [process for responding to the review requests](http://go/cros-fp-sheriff-docs). Even when the change is perfectly fine, this process allows the sheriff to update the rest of the team with changes that are happening so that everyone knows what is changing.\n\nIf there are issues with the latency of this process, let\u0027s chat with @dabros@google.com.",
+      "revId": "4bfa62abdb31a751f34d314f68a74b5545451d9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
