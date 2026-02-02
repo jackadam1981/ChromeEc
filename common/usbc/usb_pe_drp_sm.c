@@ -5473,6 +5473,8 @@ static void pe_prs_snk_src_transition_to_off_run(int port)
 	int cnt;
 	int ext;
 
+	pd_record_timestamp_start(port, PS_RDY);
+
 	/*
 	 * Transition to ErrorRecovery state when:
 	 *   1) The PSSourceOffTimer times out.
@@ -5553,6 +5555,7 @@ static void pe_prs_snk_src_source_on_entry(int port)
 	 * PD_POWER_SUPPLY_TURN_ON_DELAY. A 0-tick timer ensures PS_RDY is sent
 	 * immediately.
 	 */
+	pd_record_timestamp_start(port, TS_PE_TIMER_PS_SOURCE);
 	pd_timer_enable(port, PE_TIMER_PS_SOURCE,
 			(pe_in_frs_mode(port) ? 0 :
 						PD_POWER_SUPPLY_TURN_ON_DELAY));
@@ -5568,8 +5571,10 @@ static void pe_prs_snk_src_source_on_run(int port)
 		/* update pe power role */
 		pe[port].power_role = pd_get_power_role(port);
 		send_ctrl_msg(port, TCPCI_MSG_SOP, PD_CTRL_PS_RDY);
+		pd_record_timestamp_end(port, PS_RDY);
 		/* reset timer so PD_CTRL_PS_RDY isn't sent again */
 		pd_timer_disable(port, PE_TIMER_PS_SOURCE);
+		pd_record_timestamp_end(port, TS_PE_TIMER_PS_SOURCE);
 	}
 
 	/*
@@ -5594,6 +5599,8 @@ static void pe_prs_snk_src_source_on_exit(int port)
 {
 	pd_timer_disable(port, PE_TIMER_PS_SOURCE);
 	tc_pr_swap_complete(port, PE_CHK_FLAG(port, PE_FLAGS_PR_SWAP_COMPLETE));
+	pd_record_timestamp_end(port, TC_SRC_POWER_ON);
+	pd_print_timestamps(port);
 }
 
 /**

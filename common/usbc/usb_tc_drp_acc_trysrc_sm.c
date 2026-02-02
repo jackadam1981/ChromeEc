@@ -3126,7 +3126,10 @@ static void tc_attached_src_entry(const int port)
 	 *
 	 * Set selected current limit in the hardware.
 	 */
+	pd_record_timestamp_start(port, TS_TYPEC_CC_RP);
 	typec_select_pull(port, TYPEC_CC_RP);
+	pd_record_timestamp_end(port, TS_TYPEC_CC_RP);
+
 	typec_set_source_current_limit(port, tc[port].select_current_limit_rp);
 
 	if (IS_ENABLED(CONFIG_USB_PE_SM)) {
@@ -3137,6 +3140,7 @@ static void tc_attached_src_entry(const int port)
 					    tc[port].data_role);
 
 			/* Enable VBUS */
+			pd_record_timestamp_start(port, TC_SRC_POWER_ON);
 			tc_src_power_on(port);
 
 			/* Apply Rp */
