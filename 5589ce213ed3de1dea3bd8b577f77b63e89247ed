@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e28a76f4_9481116f",
+        "filename": "common/fpsensor/fpsensor_ascp_establish.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2026-02-02T12:24:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94730974_1aa582fc",
+      "revId": "5589ce213ed3de1dea3bd8b577f77b63e89247ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "078c311e_2c3c6beb",
@@ -43,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f5b40beb_849416b5",
+        "filename": "zephyr/include/ascp/ascp.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2026-02-02T12:24:44Z",
+      "side": 1,
+      "message": "API changed to return pointers to data",
+      "parentUuid": "078c311e_2c3c6beb",
+      "range": {
+        "startLine": 18,
+        "startChar": 24,
+        "endLine": 18,
+        "endChar": 51
+      },
+      "revId": "5589ce213ed3de1dea3bd8b577f77b63e89247ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9450438d_36b47eeb",
         "filename": "zephyr/linker/iterables-rom.ld",
         "patchSetId": 16
@@ -54,6 +96,24 @@
       "writtenOn": "2026-01-28T09:57:46Z",
       "side": 1,
       "message": "I don\u0027t think we need iterable section, since there will be always only one instance of ascp_api. Please check how ec_host_cmd (shell and logging are also good examples) subsystem is constructed and adjust it to the ascp needs.",
+      "revId": "5589ce213ed3de1dea3bd8b577f77b63e89247ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3222d90_20472e40",
+        "filename": "zephyr/linker/iterables-rom.ld",
+        "patchSetId": 16
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2026-02-02T12:24:44Z",
+      "side": 1,
+      "message": "We do not need iterable sections for ascp_api. Neither do we need multiple backends so I simplified it just to extern struct. Currently it is only one backend that is used and the other one for test. In the future there could be more, but only one per build anyway.",
+      "parentUuid": "9450438d_36b47eeb",
       "revId": "5589ce213ed3de1dea3bd8b577f77b63e89247ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
