@@ -5462,6 +5462,9 @@ static void pe_prs_snk_src_transition_to_off_run(int port)
 		ext = PD_HEADER_EXT(rx_emsg[port].header);
 
 		if ((ext == 0) && (cnt == 0) && (type == PD_CTRL_PS_RDY)) {
+			/* TODO: Get timestamp for TCPC interrupt. */
+			pd_record_timestamp(port, PD_INTERVAL_PS_RDY_TO_PS_RDY,
+					    PD_START, get_time());
 			/*
 			 * FRS: We are always ready to drive vSafe5v, so just
 			 * skip PE_FRS_SNK_SRC_Vbus_Applied and go direct to
@@ -5526,6 +5529,8 @@ static void pe_prs_snk_src_source_on_entry(int port)
 	pd_timer_enable(port, PE_TIMER_PS_SOURCE,
 			(pe_in_frs_mode(port) ? 0 :
 						PD_POWER_SUPPLY_TURN_ON_DELAY));
+	pd_record_timestamp_end(port, PD_INTERVAL_VBUS_ENABLE_TO_TIMER_START);
+	pd_record_timestamp_start(port, PD_INTERVAL_PS_SOURCE_ON_TIMER);
 }
 
 static void pe_prs_snk_src_source_on_run(int port)
@@ -5534,10 +5539,12 @@ static void pe_prs_snk_src_source_on_run(int port)
 	if (!pd_timer_is_disabled(port, PE_TIMER_PS_SOURCE)) {
 		if (!pd_timer_is_expired(port, PE_TIMER_PS_SOURCE))
 			return;
+		pd_record_timestamp_end(port, PD_INTERVAL_PS_SOURCE_ON_TIMER);
 
 		/* update pe power role */
 		pe[port].power_role = pd_get_power_role(port);
 		send_ctrl_msg(port, TCPCI_MSG_SOP, PD_CTRL_PS_RDY);
+		pd_record_timestamp_end(port, PD_INTERVAL_PS_RDY_TO_PS_RDY);
 		/* reset timer so PD_CTRL_PS_RDY isn't sent again */
 		pd_timer_disable(port, PE_TIMER_PS_SOURCE);
 	}
@@ -5564,6 +5571,7 @@ static void pe_prs_snk_src_source_on_exit(int port)
 {
 	pd_timer_disable(port, PE_TIMER_PS_SOURCE);
 	tc_pr_swap_complete(port, PE_CHK_FLAG(port, PE_FLAGS_PR_SWAP_COMPLETE));
+	pd_print_timestamps(port);
 }
 
 /**

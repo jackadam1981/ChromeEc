@@ -857,7 +857,12 @@ __overridable void pd_notify_dp_alt_mode_entry(int port)
 struct pd_debug_timestamps pd_ts[CONFIG_USB_PD_PORT_MAX_COUNT]
 				[PD_INTERVAL_COUNT] = { 0 };
 const char *pd_ts_name[] = {
-	"Invalid interval",
+	[PD_INTERVAL_PS_RDY_TO_PS_RDY] = "Sink PS_RDY to Source PS_RDY",
+	[PD_INTERVAL_VBUS_ENABLE] = "tc_src_power_on",
+	[PD_INTERVAL_NX20P348_DRIVER_LOOP] = "NX20P348x VBUS enable loop",
+	[PD_INTERVAL_VBUS_ENABLE_TO_TIMER_START] =
+		"tc_src_power_on to timer start",
+	[PD_INTERVAL_PS_SOURCE_ON_TIMER] = "PS Source On timer",
 };
 BUILD_ASSERT(ARRAY_SIZE(pd_ts_name) == PD_INTERVAL_COUNT);
 

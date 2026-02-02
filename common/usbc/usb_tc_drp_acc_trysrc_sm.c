@@ -3129,13 +3129,24 @@ static void tc_attached_src_entry(const int port)
 
 	if (IS_ENABLED(CONFIG_USB_PE_SM)) {
 		if (TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS)) {
+			int r;
+
 			/* Change role to source */
 			tc_set_power_role(port, PD_ROLE_SOURCE);
 			tcpm_set_msg_header(port, tc[port].power_role,
 					    tc[port].data_role);
 
 			/* Enable VBUS */
-			tc_src_power_on(port);
+			pd_record_timestamp_start(port,
+						  PD_INTERVAL_VBUS_ENABLE);
+			r = tc_src_power_on(port);
+			if (r != EC_SUCCESS) {
+				CPRINTS("C%d: tc_src_power_on returned %d",
+					port, r);
+			}
+			pd_record_timestamp_end(port, PD_INTERVAL_VBUS_ENABLE);
+			pd_record_timestamp_start(
+				port, PD_INTERVAL_VBUS_ENABLE_TO_TIMER_START);
 
 			/* Apply Rp */
 			typec_update_cc(port);

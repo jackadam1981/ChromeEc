@@ -268,6 +268,7 @@ __maybe_unused static int nx20p3483_vbus_source_enable(int port, int enable)
 	 * to reflect the control command.
 	 */
 
+	pd_record_timestamp_start(port, PD_INTERVAL_NX20P348_DRIVER_LOOP);
 	for (int i = 0; i < NX20P348X_SWITCH_STATUS_DEBOUNCE_MSEC; ++i) {
 		int s;
 
@@ -281,10 +282,13 @@ __maybe_unused static int nx20p3483_vbus_source_enable(int port, int enable)
 				flags[port] |= NX20P348X_FLAGS_SOURCE_ENABLED;
 			else
 				flags[port] &= ~NX20P348X_FLAGS_SOURCE_ENABLED;
+			pd_record_timestamp_end(
+				port, PD_INTERVAL_NX20P348_DRIVER_LOOP);
 			return EC_SUCCESS;
 		}
 		crec_msleep(1);
 	}
+	pd_record_timestamp_end(port, PD_INTERVAL_NX20P348_DRIVER_LOOP);
 
 	return EC_ERROR_TIMEOUT;
 }

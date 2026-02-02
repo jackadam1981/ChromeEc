@@ -3768,10 +3768,11 @@ uint8_t get_pd_control_flags(int port);
  * corresponding string in pd_ts_name.
  */
 enum pd_debug_interval {
-	/* This interval is unused, but it keeps the size assertion on
-	 * pd_ts_name valid.
-	 */
-	PD_INTERVAL_INVALID,
+	PD_INTERVAL_PS_RDY_TO_PS_RDY,
+	PD_INTERVAL_VBUS_ENABLE,
+	PD_INTERVAL_NX20P348_DRIVER_LOOP,
+	PD_INTERVAL_VBUS_ENABLE_TO_TIMER_START,
+	PD_INTERVAL_PS_SOURCE_ON_TIMER,
 	PD_INTERVAL_COUNT,
 };
 
