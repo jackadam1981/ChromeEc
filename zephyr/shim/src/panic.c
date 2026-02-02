@@ -10,6 +10,7 @@
 #include "task.h"
 
 #include <zephyr/arch/cpu.h>
+#include <zephyr/cache.h>
 #include <zephyr/fatal.h>
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
@@ -175,6 +176,8 @@ void k_sys_fatal_error_handler(unsigned int reason, const struct arch_esf *esf)
 		if (!IS_ENABLED(CONFIG_LOG)) {
 			panic_data_print(panic_get_data());
 		}
+		/* Flush the panic data to RAM before coming reboot. */
+		sys_cache_data_flush_range(pdata, sizeof(*pdata));
 	} else {
 		/* If a esf structure is empty, store just the reason provided
 		 * by Zephyr. It can be caused e.g. by a spurious interrupt.
@@ -256,6 +259,9 @@ void panic_set_reason(uint32_t reason, uint32_t info, uint8_t exception)
 	PANIC_REG_EXCEPTION(pdata) = exception;
 	PANIC_REG_REASON(pdata) = reason;
 	PANIC_REG_INFO(pdata) = info;
+
+	/* Flush the panic data to RAM before potential reboot. */
+	sys_cache_data_flush_range(pdata, sizeof(*pdata));
 
 	/* Allow architecture specific logic */
 	arch_panic_set_reason(reason, info, exception);
