@@ -877,6 +877,10 @@ struct pd_debug_timestamps pd_ts[CONFIG_USB_PD_PORT_MAX_COUNT]
 				[PD_INTERVAL_COUNT] = { 0 };
 const char *pd_ts_name[] = {
 	"Invalid interval",
+	"pe_prs_snk_src_transition_to_off to PS_RDY",
+	"typec_select_pull",
+	"tc_src_power_on funtion in tc_attached_src to pe_prs_snk_src_source_on_exit",
+	"TS_PE_TIMER_PS_SOURCE timer",
 };
 BUILD_ASSERT(ARRAY_SIZE(pd_ts_name) == PD_INTERVAL_COUNT);
 

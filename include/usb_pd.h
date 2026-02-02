@@ -3774,6 +3774,10 @@ enum pd_debug_interval {
 	 * pd_ts_name valid.
 	 */
 	PD_INTERVAL_INVALID,
+	PS_RDY,
+	TS_TYPEC_CC_RP,
+	TC_SRC_POWER_ON,
+	TS_PE_TIMER_PS_SOURCE,
 	PD_INTERVAL_COUNT,
 };
 
