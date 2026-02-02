@@ -1,0 +1,35 @@
+# Copyright 2026 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+config PLATFORM_EC_FINGERPRINT_ASCP
+	bool "Enable fingerprint ASCP support"
+	help
+	  Enables support for FP ASCP.
+
+config PLATFORM_EC_FINGERPRINT_ASCP_PLATFORM
+	bool "Enable fingerprint ASCP HW platform"
+	help
+	  Enables support for FP ASCP HW platforms.
+	select PLATFORM_EC_FINGERPRINT_ASCP
+
+choice
+	prompt "Select fingerprint ASCP HW platform"
+	optional
+	depends on PLATFORM_EC_FINGERPRINT
+	help
+	  Selects the FP ASCP HW platform.
+
+config PLATFORM_EC_FINGERPRINT_ASCP_EN171
+	bool "Enable fingerprint ASCP EN171"
+	help
+	  Enables support for FP ASCP EN171.
+	select PLATFORM_EC_FINGERPRINT_ASCP_PLATFORM
+
+config PLATFORM_EC_FINGERPRINT_ASCP_FT9001
+	bool "Enable fingerprint ASCP FT9001"
+	help
+	  Enables support for FP ASCP FT9001.
+	select PLATFORM_EC_FINGERPRINT_ASCP_PLATFORM
+
+endchoice
