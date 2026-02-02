@@ -22,6 +22,30 @@
       },
       "revId": "0fbeac796f852e305887bbd2a067d21841ec69cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b849553_6b2b8ce5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 240
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2026-02-02T21:40:49Z",
+      "side": 1,
+      "message": "Yes.  If you would prefer a different subject, or no subject, you can modify:\n\nhttps://source.corp.google.com/h/chrome-internal/chromeos/superproject/+/main:infra/copybot/config/fingerprint/ec-legacy.ini;l\u003d5",
+      "parentUuid": "a916672b_f9dbfd8c",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 9
+      },
+      "revId": "0fbeac796f852e305887bbd2a067d21841ec69cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
