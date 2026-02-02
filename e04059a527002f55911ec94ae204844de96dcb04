@@ -34,6 +34,41 @@
       "parentUuid": "2b398537_914358bf",
       "revId": "e04059a527002f55911ec94ae204844de96dcb04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eead7c32_cdebed25",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-02-02T22:10:35Z",
+      "side": 1,
+      "message": "\u003e override when things are broken and blocking or when something similar comes up\n\nI think we just need to make sure that all non-EC consumers have a [process](http://shortn/_D2dX8bqx1O) in place to respond to the urgent reviews. If we really need to, we can define SLOs to define various types of failures and response time. In general, when there are failures, we should be following the [revert first](http://shortn/_ndxTwqoWUW) policy. Most of the time that probably won\u0027t involve the non-EC teams. (e.g., changes in the EC code that break some downstream teams should be reverted first to fix ToT rather than forward fixed in the non-EC code.)",
+      "parentUuid": "9ff49cbc_8e2349eb",
+      "revId": "e04059a527002f55911ec94ae204844de96dcb04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2774e9c_8dac509b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-02-02T22:10:35Z",
+      "side": 1,
+      "message": "Same comment as [in the other branch](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7539372/comments/7ffd56a3_6d51760e).",
+      "revId": "e04059a527002f55911ec94ae204844de96dcb04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
