@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f904434_97c8a0ca",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1678,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2026-02-02T16:44:32Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "c392bba8_1001b386",
+      "range": {
+        "startLine": 1678,
+        "startChar": 4,
+        "endLine": 1678,
+        "endChar": 30
+      },
+      "revId": "6030a303ad27533ce48a3f5c57369c4c891c9557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "333863f5_13038d54",
