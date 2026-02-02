@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a817ba50_6835c1a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-02-02T17:40:36Z",
+      "side": 1,
+      "message": "I know it\u0027s kind of a pain, but is it possible to create one commit that restores the `migrated_tests.sh` file as it previously existed (e.g, \"restore migrated_tests.sh from commit XYZ\") and a second commit that makes the changes? That makes it easier for me to double-check the changes to make sure we didn\u0027t miss anything and also makes it easier for others to follow the history if they want to do the same in the future.",
+      "range": {
+        "startLine": 10,
+        "startChar": 32,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "eec504f77dcc91ce5186a117ed1f316d0294bdd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
