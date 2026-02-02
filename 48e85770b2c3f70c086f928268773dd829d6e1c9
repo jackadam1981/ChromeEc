@@ -1,6 +1,40 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6994616_17545fdd",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 5476,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2026-02-02T19:08:42Z",
+      "side": 1,
+      "message": "This is a little clunky, in that it gets updated every time this state runs, as opposed to only once when we receive the PS_RDY. It\u0027s possible that this start point is minutely too early. Conversely, the real start point should be when we receive the interrupt from the TCPC that a message has come in, which we later decode to a PS_RDY. So this start point may actually be too late.",
+      "revId": "48e85770b2c3f70c086f928268773dd829d6e1c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d222dd2_7d80ca47",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 5503,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2026-02-02T19:08:42Z",
+      "side": 1,
+      "message": "This is unrelated to the issue we\u0027re debugging, but I think technically this state and the following PRS states should have a check for an unexpected message. If we get one, we should go to Error Recovery. In this state, if we received only an unexpected message, we\u0027d go to Error Recovery after the timeout, which is potentially way too long to wait. If we received an unexpected message and then later a PS_RDY, I think we\u0027d just ignore the first message, which is also wrong. I think we\u0027d ignore any unexpected messages in the following states.",
+      "revId": "48e85770b2c3f70c086f928268773dd829d6e1c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a7ebeb65_a7b268ca",
