@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7ba7707_39c776c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-02-03T14:00:39Z",
+      "side": 1,
+      "message": "Run\n```\ncros format zephyr/subsys/fingerprint/alg/egis_bep_bio_alg.h zephyr/subsys/fingerprint/alg/egis_egis660_bio_alg.c\n```",
+      "revId": "3de9b9850679b6158f1b0639fdf61f63a97930ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38ce250b_2530edf7",
