@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "846bdc38_b15f6026",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2026-02-03T01:03:20Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "ef439e13_0b704948",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "e95cbf32698ca8a476de347b5fff28760417cc39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69d8d024_aecdaadb",
@@ -37,6 +61,30 @@
       "writtenOn": "2026-02-03T00:12:50Z",
       "side": 1,
       "message": "```suggestion\n# Copyright 2022 The ChromiumOS Authors\n```",
+      "range": {
+        "startLine": 3,
+        "startChar": 12,
+        "endLine": 3,
+        "endChar": 16
+      },
+      "revId": "e95cbf32698ca8a476de347b5fff28760417cc39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f11f25d5_0eb3440f",
+        "filename": "util/migrated_tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2026-02-03T01:03:20Z",
+      "side": 1,
+      "message": "I had change this because the repo upload hook complains about it",
+      "parentUuid": "69d8d024_aecdaadb",
       "range": {
         "startLine": 3,
         "startChar": 12,
