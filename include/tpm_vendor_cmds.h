@@ -231,6 +231,18 @@ enum vendor_cmd_cc {
 	/* Get device IDs */
 	VENDOR_CC_GET_DEVICE_IDS = 79,
 
+	/* Enable/disable strongbox commands */
+	VENDOR_CC_SET_STRONGBOX_STATE = 80,
+
+	/* Read or read and increment DRM counter. */
+	VENDOR_CC_HW_DRM_COUNTER = 81,
+
+	/* Get/Set SPI drive setting. */
+	VENDOR_CC_SPI_DRIVE = 82,
+
+	/* Read slice of Owner Configuration space */
+	VENDOR_CC_READ_OWNERS_CONFIG = 83,
+
 	LAST_VENDOR_COMMAND = 65535,
 };
 
@@ -498,8 +510,10 @@ struct ti50_device_ids_request {
 #define CR50_METRICSV_CCD_MODE_EN_SHIFT			2
 #define CR50_METRICSV_RDD_KEEPALIVE_EN_ATBOOT_SHIFT	3
 #define CR50_METRICSV_AMBIGUOUS_STRAP_SHIFT		4
+#define CR50_METRICSV_SB_DISABLE_SHIFT			5
+#define CR50_METRICSV_SB_ENABLE_SHIFT			6
 
-#define CR50_METRICSV_STATS_VERSION	1
+#define CR50_METRICSV_STATS_VERSION	2
 
 struct cr50_stats_response {
 	/* struct version number */
@@ -556,6 +570,11 @@ struct vendor_cc_spi_hash_request {
 	uint32_t size; /* Size in bytes to hash/read */
 } __packed;
 
+/* Structure for VENDOR_CC_GET_OWNERS_CONFIG */
+struct vendor_cc_get_owners_config {
+	uint16_t offset;
+	uint16_t size;
+};
 
 /* End Cr50 Specific Structs */
 
