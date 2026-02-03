@@ -316,6 +316,14 @@ void __hw_early_init_hwtimer(uint32_t start_t)
 	clock_enable_peripheral(CGC_OFFSET_TIMER, CGC_TIMER_MASK,
 				CGC_MODE_RUN | CGC_MODE_SLEEP);
 
+	/*
+	 * Some registers can be changed only when ITIM modules is disabled.
+	 * This is needed especially when we come from a sysjump and the ITIM's
+	 * setting is different between RO and RW.
+	 */
+	CLEAR_BIT(NPCX_ITCTS(ITIM_SYSTEM_NO), NPCX_ITCTS_ITEN);
+	CLEAR_BIT(NPCX_ITCTS(ITIM_SYSTEM_NO), NPCX_ITCTS_CKSEL);
+
 	/* init tick & event timer first */
 	init_hw_timer(ITIM_SYSTEM_NO, ITIM_SOURCE_CLOCK_APB2);
 	init_hw_timer(ITIM_EVENT_NO, ITIM_SOURCE_CLOCK_32K);
