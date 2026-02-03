@@ -17,30 +17,29 @@ extern "C" {
 /* Boot mode decisions.
  * Boot mode == "Not configured" is not allowed
  */
+#define BOOT_MODE_ERROR   0
 #define BOOT_MODE_NORMAL   1
 #define BOOT_MODE_DEBUG	   2
 #define BOOT_MODE_RECOVERY 3
 
 /* Configuration descriptor - see go/gsc-dice
  */
-#define CFG_DESCR_LABEL_COMP_NAME       CBOR_NINT32(-70002)
-#define CFG_DESCR_LABEL_RESETTABLE      CBOR_NINT32(-70004)
-#define CFG_DESCR_LABEL_SEC_VER	        CBOR_NINT32(-70005)
-#define CFG_DESCR_LABEL_APROV_STATUS    CBOR_NINT32(-71000)
-#define CFG_DESCR_LABEL_VBOOT_STATUS    CBOR_NINT32(-71001)
-#define CFG_DESCR_LABEL_AP_FW_VERSION   CBOR_NINT32(-71002)
-#define CFG_DESCR_LABEL_DICE_CHAIN_ID   CBOR_NINT32(-71003)
-#define CFG_DESCR_LABEL_GSC_TYPE        CBOR_NINT32(-71004)
-#define CFG_DESCR_LABEL_BOARD_ID_FLAGS  CBOR_NINT32(-71005)
-#define CFG_DESCR_LABEL_BOARD_ID_TYPE   CBOR_NINT32(-71006)
+#define CFG_DESCR_LABEL_COMP_NAME      CBOR_NINT32(-70002)
+#define CFG_DESCR_LABEL_RESETTABLE     CBOR_NINT32(-70004)
+#define CFG_DESCR_LABEL_SEC_VER	       CBOR_NINT32(-70005)
+#define CFG_DESCR_LABEL_APROV_STATUS   CBOR_NINT32(-71000)
+#define CFG_DESCR_LABEL_VBOOT_STATUS   CBOR_NINT32(-71001)
+#define CFG_DESCR_LABEL_AP_FW_VERSION  CBOR_NINT32(-71002)
+#define CFG_DESCR_LABEL_DICE_CHAIN_ID  CBOR_NINT32(-71003)
+#define CFG_DESCR_LABEL_GSC_TYPE       CBOR_NINT32(-71004)
+#define CFG_DESCR_LABEL_BOARD_ID_FLAGS CBOR_NINT32(-71005)
+#define CFG_DESCR_LABEL_BOARD_ID_TYPE  CBOR_NINT32(-71006)
 
 #define CFG_DESCR_COMP_NAME_VALUE_LEN 10 /* "CrOS AP FW" */
 #define CFG_DESCR_COMP_NAME_LEN	      (1 + CFG_DESCR_COMP_NAME_VALUE_LEN)
-#define CFG_DESCR_COMP_NAME                                                \
-	{                                                                  \
-		CBOR_HDR1(CBOR_MAJOR_TSTR, CFG_DESCR_COMP_NAME_VALUE_LEN), \
-			'C', 'r', 'O', 'S', ' ', 'A', 'P', ' ', 'F', 'W'   \
-	}
+#define CFG_DESCR_COMP_NAME                                                    \
+	{ CBOR_HDR1(CBOR_MAJOR_TSTR, CFG_DESCR_COMP_NAME_VALUE_LEN), 'C', 'r', \
+		'O', 'S', ' ', 'A', 'P', ' ', 'F', 'W' }
 
 struct cfg_descr_s {
 	/* Map header: 6 (stage1) or 10 (stage2) entries */
@@ -147,11 +146,9 @@ struct cose_key_ecdsa_bstr_s {
 
 #define CWT_PROFILE_NAME_VALUE_LEN 10 /* "android.16" */
 #define CWT_PROFILE_NAME_LEN	   (1 + CWT_PROFILE_NAME_VALUE_LEN)
-#define CWT_PROFILE_NAME                                                 \
-	{                                                                \
-		CBOR_HDR1(CBOR_MAJOR_TSTR, CWT_PROFILE_NAME_VALUE_LEN),  \
-			'a', 'n', 'd', 'r', 'o', 'i', 'd', '.', '1', '6' \
-	}
+#define CWT_PROFILE_NAME                                                    \
+	{ CBOR_HDR1(CBOR_MAJOR_TSTR, CWT_PROFILE_NAME_VALUE_LEN), 'a', 'n', \
+		'd', 'r', 'o', 'i', 'd', '.', '1', '6' }
 
 struct cwt_claims_s {
 	/* Map header: 10 entries */
@@ -195,9 +192,9 @@ struct cwt_claims_bstr_s {
 };
 #define CWT_CLAIMS_BSTR_HDR CBOR_BSTR_HDR16(CWT_CLAIMS_LEN)
 
-/* Protected COSE header parameters - see go/gsc-dice
- */
+/* Protected COSE header parameters - see go/gsc-dice */
 #define COSE_PARAM_LABEL_ALG CBOR_UINT0(1)
+
 struct cose_param_bstr_s {
 	/* BSTR of size 3 - see the rest of the struct */
 	uint8_t bstr_hdr;
@@ -208,26 +205,20 @@ struct cose_param_bstr_s {
 	uint8_t alg;
 };
 
-#define COSE_PARAM_BSTR                                                       \
-	{                                                                     \
-		/* BSTR of size 3 - see the rest of the struct */             \
-		CBOR_HDR1(CBOR_MAJOR_BSTR, 3),                                \
-		/* Map header: 1 elem */                                      \
-		CBOR_HDR1(CBOR_MAJOR_MAP, 1),                                 \
-		/* 1. Alg: uint(1) => nint(-7) */                             \
-		COSE_PARAM_LABEL_ALG,                                         \
-		CBOR_NINT0(-7) /* ECDSA w/ SHA-256 */                         \
+#define COSE_PARAM_BSTR                                                 \
+	{ /* BSTR of size 3 - see the rest of the struct */             \
+		CBOR_HDR1(CBOR_MAJOR_BSTR, 3),                          \
+		/* Map header: 1 elem */ CBOR_HDR1(CBOR_MAJOR_MAP, 1),  \
+		/* 1. Alg: uint(1) => nint(-7) */ COSE_PARAM_LABEL_ALG, \
+		/* ECDSA w/SHA-256 */ CBOR_NINT0(-7)                    \
 	}
 
-/* Sig structure for CDI certificate - see go/gsc-dice
- */
+/* Sig structure for CDI certificate - see go/gsc-dice */
 #define CDI_SIG_STRUCT_CONTEXT_VALUE_LEN 10 /* "Signature1" */
 #define CDI_SIG_STRUCT_CONTEXT_LEN	 (1 + CDI_SIG_STRUCT_CONTEXT_VALUE_LEN)
-#define CDI_SIG_STRUCT_CONTEXT                                                \
-	{                                                                     \
-		CBOR_HDR1(CBOR_MAJOR_TSTR, CDI_SIG_STRUCT_CONTEXT_VALUE_LEN), \
-			'S', 'i', 'g', 'n', 'a', 't', 'u', 'r', 'e', '1'      \
-	}
+#define CDI_SIG_STRUCT_CONTEXT                                               \
+	{ CBOR_HDR1(CBOR_MAJOR_TSTR, CDI_SIG_STRUCT_CONTEXT_VALUE_LEN), 'S', \
+		'i', 'g', 'n', 'a', 't', 'u', 'r', 'e', '1' }
 
 struct cdi_sig_struct_hdr_s {
 	/* Array header: 4 elements */
@@ -265,10 +256,9 @@ struct cdi_cert_hdr_s {
 	/* 4. Signature: bstr(64 bytes) - not fixed, struct cbor_bstr64_s */
 };
 
-#define CDI_CERT_LEN                        \
-	(sizeof(struct cdi_cert_hdr_s) +    \
-	 sizeof(struct cwt_claims_bstr_s) + \
-	 sizeof(struct cbor_bstr64_s))
+#define CDI_CERT_LEN                                                        \
+	(sizeof(struct cdi_cert_hdr_s) + sizeof(struct cwt_claims_bstr_s) + \
+		sizeof(struct cbor_bstr64_s))
 
 /* DICE cert chain. In our case, CBOR array consisting of exactly 2 entries
  * DiceCertChain = [
