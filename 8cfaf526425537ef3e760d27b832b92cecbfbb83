@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ad6169af_673e0611",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-02-03T00:14:58Z",
+      "side": 1,
+      "message": "```suggestion\nec-legacy: util: update migrated_tests\n\nUpdate the util/migrated_tests.sh script tests which are applicable to\nboth the legacy ec and zephyr.  Modify the logic for what is still\napplicable and add to presubmit.\n\nBUG\u003db:456553702\nTEST\u003d$ ./util/migrated_tests.sh test/fpsensor_debug.cc\n```",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 49
+      },
+      "revId": "8cfaf526425537ef3e760d27b832b92cecbfbb83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "79d4de96_0a4e6a76",
         "filename": "util/migrated_tests.sh",
         "patchSetId": 6
