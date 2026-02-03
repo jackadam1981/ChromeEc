@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef439e13_0b704948",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-02-03T00:12:50Z",
+      "side": 1,
+      "message": "Let\u0027s add some breadcrumbs to make the history easier to follow:\n\n```suggestion\nec-legacy: util: Add migrated_files.sh back to repo\n\nAdd util/migrated_files.sh back as util/migrated_tests.sh to be\nused in ensuring that fingerprint tests remain in sync.\n\nThis was originally removed in https://crrev.com/c/7101789.\n\nBUG\u003db:456553702\n```",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "e95cbf32698ca8a476de347b5fff28760417cc39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69d8d024_aecdaadb",
+        "filename": "util/migrated_tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-02-03T00:12:50Z",
+      "side": 1,
+      "message": "```suggestion\n# Copyright 2022 The ChromiumOS Authors\n```",
+      "range": {
+        "startLine": 3,
+        "startChar": 12,
+        "endLine": 3,
+        "endChar": 16
+      },
+      "revId": "e95cbf32698ca8a476de347b5fff28760417cc39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
