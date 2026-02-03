@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "334899b2_9ce28ad7",
+        "filename": "common/cbi.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 3594165
+      },
+      "writtenOn": "2026-02-03T02:15:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bce7cadb_84cc8c01",
+      "range": {
+        "startLine": 653,
+        "startChar": 14,
+        "endLine": 653,
+        "endChar": 36
+      },
+      "revId": "87473f95d540903ce3421bda5afbbfd5de6b7520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d99e27ea_e35995a5",
@@ -54,6 +78,30 @@
       "writtenOn": "2026-02-02T17:18:06Z",
       "side": 1,
       "message": "The `;` is unnecessary.",
+      "range": {
+        "startLine": 692,
+        "startChar": 3,
+        "endLine": 692,
+        "endChar": 4
+      },
+      "revId": "87473f95d540903ce3421bda5afbbfd5de6b7520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89da3c0d_a24d3ea6",
+        "filename": "common/cbi.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 3594165
+      },
+      "writtenOn": "2026-02-03T02:15:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d99e27ea_e35995a5",
       "range": {
         "startLine": 692,
         "startChar": 3,
