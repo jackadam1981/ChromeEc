@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59bcf9dc_88efaad0",
+        "filename": "zephyr/shim/src/panic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2026-02-03T15:38:09Z",
+      "side": 1,
+      "message": "Consider moving this to inside copy_esf_to_panic_data to be consistent with the panic_set_reason pattern.",
+      "revId": "b8b396925d33e492674cca09ab24f998fddff458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
