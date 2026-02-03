@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eace69bc_e57c9256",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2026-02-03T15:29:07Z",
+      "side": 1,
+      "message": "```\nmake -C .. test-coverage\n/mnt/host/source/chromite/sdk/bin/vpython3\n+++ realpath -e zmake/run_tests.sh\n++ dirname /mnt/host/source/src/platform/ec/zephyr/zmake/run_tests.sh\n+ cd /mnt/host/source/src/platform/ec/zephyr/zmake\n+ export PYTHONPATH\u003d/mnt/host/source/src/platform/ec/zephyr/zmake\n+ PYTHONPATH\u003d/mnt/host/source/src/platform/ec/zephyr/zmake\n+ true\n+ vpython3 -m coverage erase\nmake[1]: Entering directory \u0027/mnt/host/source/src/platform/ec\u0027\ninclude/config.h:6206:10: fatal error: config_chip.h: No such file or directory\n 6206 | #include \"config_chip.h\"\n      |          ^~~~~~~~~~~~~~~\ncompilation terminated.\ninclude/config.h:6206:10: fatal error: config_chip.h: No such file or directory\n 6206 | #include \"config_chip.h\"\n      |          ^~~~~~~~~~~~~~~\ncompilation terminated.\n/bin/sh: line 1: board/elm/ec.irqlist: No such file or directory\nIn file included from \u003ccommand-line\u003e:\n./include/config.h:6206:10: fatal error: config_chip.h: No such file or directory\n 6206 | #include \"config_chip.h\"\n      |          ^~~~~~~~~~~~~~~\ncompilation terminated.\nIn file included from \u003ccommand-line\u003e:\n./include/config.h:6206:10: fatal error: config_chip.h: No such file or directory\n 6206 | #include \"config_chip.h\"\n      |          ^~~~~~~~~~~~~~~\ncompilation terminated.\nIn file included from \u003ccommand-line\u003e:\n./include/config.h:6206:10: fatal error: config_chip.h: No such file or directory\n 6206 | #include \"config_chip.h\"\n      |          ^~~~~~~~~~~~~~~\ncompilation terminated.\ncore//build.mk:12: warning: overriding recipe for target \u0027build/elm/RO/core//asm_offsets.h\u0027\ncore/build.mk:12: warning: ignoring old recipe for target \u0027build/elm/RO/core//asm_offsets.h\u0027\ncore//build.mk:14: warning: overriding recipe for target \u0027build/elm/RW/core//asm_offsets.h\u0027\ncore/build.mk:14: warning: ignoring old recipe for target \u0027build/elm/RW/core//asm_offsets.h\u0027\nMakefile:356: chip/stm32/build.mk: No such file or directory\nmake[1]: *** No rule to make target \u0027chip/stm32/build.mk\u0027.  Stop.\n```",
+      "revId": "4dfe1f1048309b94f9addbc75dfad454b77e3c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
