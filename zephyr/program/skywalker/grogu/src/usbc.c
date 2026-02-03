@@ -7,6 +7,7 @@
 
 #include "cros_board_info.h"
 #include "cros_cbi.h"
+#include "timer.h"
 #include "usbc/pdc_runtime_port_config.h"
 
 #include <stdint.h>
@@ -25,6 +26,8 @@ int board_get_pdc_for_port(int port, const struct device **dev)
 		LOG_ERR("%s: Bad pointer", __func__);
 		return -EINVAL;
 	}
+
+	k_busy_wait(100);
 
 	rv = cros_cbi_get_fw_config(USBC_PORTS, &usb_ports);
 
