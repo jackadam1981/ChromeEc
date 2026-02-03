@@ -24,6 +24,9 @@ static void board_init(void)
 	uint8_t size = sizeof(dram_buf);
 	bool change_flag = true;
 
+	k_busy_wait(200);
+	LOG_INF("Delay 200us wait system stable");
+
 	cbi_get_board_version(&board_id);
 
 	if (board_id == 2) {

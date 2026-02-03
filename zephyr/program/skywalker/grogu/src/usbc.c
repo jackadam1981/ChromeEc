@@ -7,6 +7,7 @@
 
 #include "cros_board_info.h"
 #include "cros_cbi.h"
+#include "timer.h"
 #include "usbc/pdc_runtime_port_config.h"
 
 #include <stdint.h>
