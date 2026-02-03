@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed6311c5_857b6bff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-02-03T00:20:34Z",
+      "side": 1,
+      "message": "We should have a bug tracking this work so that there are breadcrumbs for people to follow to get more context.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 8
+      },
+      "revId": "f1d934afd278b7b7ce2b36a28373edaf0e563e4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2ba0989_7281b822",
+        "filename": "common/fpsensor/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-02-03T00:20:34Z",
+      "side": 1,
+      "message": "Please only include the bot, for the same reasons as mentioned [here](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7539372/comments/7ffd56a3_6d51760e).\n\n```suggestion\ninclude chromiumos/owners:v1:/bots/OWNERS.copybot\n```",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 49
+      },
+      "revId": "f1d934afd278b7b7ce2b36a28373edaf0e563e4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
