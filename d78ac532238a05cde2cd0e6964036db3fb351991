@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1085ddaa_c947b2cc",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-02-03T23:35:39Z",
+      "side": 1,
+      "message": "Actually, you could just make `CONFIG_IMVP_FACTORY_UPDATE` depend on `CONFIG_AP_PWRSEQ_DRIVER` in `imvp/Kconfig`. Sorry I didn\u0027t think of that earlier.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 75
+      },
+      "revId": "d78ac532238a05cde2cd0e6964036db3fb351991",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
