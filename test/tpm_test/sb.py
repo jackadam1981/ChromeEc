@@ -5,11 +5,10 @@
 """Module for testing TPM2 commands."""
 
 import struct
-import time
 
+import cbor
 import subcmd
-
-import utils
+import x509keymint
 
 
 TPM_SU_CLEAR = 0x0000
@@ -411,13 +410,25 @@ def sb_GenerateCertificateV2Request(
     return csr
 
 
-def sb_GenerateKey(tpm, key_params, attest_key):
+# Set the default subject:
+#  SEQUENCE 0x30 <size = 0x1f>
+#   SET 0x31 <size = 0x1d>
+#     SEQUENCE 0x30 <size = 0x1b>
+#       OBJECT 0x06 <size = 0x03> 0x55 0x04 0x03 (:commonName)
+#       PRINTABLESTRING 0x13 <size = 0x14> "Android Keystore Key"
+DEFAULT_ISSUER = bytes.fromhex(
+    "301f311d301b06035504031314416e64726f6964204b657973746f7265204b6579"
+)
+
+
+def sb_GenerateKey(tpm, key_params, attest_key, issuer_asn1=None):
     print("Calling GenerateKey")
     if not isinstance(key_params, list) or len(key_params) == 0:
         print("Expected list of key parameters")
         return None
     params = b"".join(key_params)
-    g = U32(len(params) // 4) + params + attest_key
+    issuer = DEFAULT_ISSUER if not issuer_asn1 else issuer_asn1
+    g = U32(len(params) // 4) + params + attest_key + wrap_bytes(issuer)
     # attest key is currently ignored
     w_rsp = tpm.command(wrap_sb_command(SB_DeviceGenerateKey, g))
     rsp = tpm.unwrap_ext_response(SB_DeviceGenerateKey, w_rsp)
@@ -469,7 +480,21 @@ def sb_test(tpm):
     # save without length prefix and alignment
     with open("maced_key.cbor", "wb") as f:
         f.write(maced_key1)
+    cbor.verify_maced_key(maced_key1)
 
+    rkp_blob2, maced_key2 = sb_GenerateEcdsaP256KeyPair(tpm)
+    print(f"RKP key blob[{len(rkp_blob2)}]={rkp_blob2.hex()}")
+
+    # save without length prefix and alignment
+    with open("maced_key2.cbor", "wb") as f:
+        f.write(maced_key2)
+    cbor.verify_maced_key(maced_key2)
+
+    # {"brand": "Google", "fused": 1, "model": "model", "device": "device",
+    # "product": "Brya",  "os_version": "17", "manufacturer": "Google",
+    # "vbmeta_digest": h'112233445566778899AABBCCDDEEFF',  "boot_patch_level": 20251026,
+    # "system_patch_level": 20251025, "vendor_patch_level": 20251027,
+    # "security_level": "strongbox", "vb_state": "green", "bootloader_state": "locked" }
     device_info = bytes.fromhex(
         "AE656272616E6466476F6F676C6565667573656401656D6F64656C656D6F64656C"
         "66646576696365666465766963656770726F647563746442727961"
@@ -482,16 +507,29 @@ def sb_test(tpm):
         "6876625F737461746565677265656E"  # "vb_state":"green"
         "70626F6F746C6F616465725F7374617465666C6F636B6564"  # "bootloader_state":"locked"
     )
-    # {"brand": "Google", "fused": 1, "model": "model", "device": "device",
-    # "product": "Brya",  "os_version": "17", "manufacturer": "Google",
-    # "vbmeta_digest": h'112233445566778899AABBCCDDEEFF',  "boot_patch_level": 20251026,
-    # "system_patch_level": 20251025, "vendor_patch_level": 20251027,
-    # "security_level": "strongbox", "vb_state": "green", "bootloader_state": "locked" }
+    csr = sb_GenerateCertificateV2Request(
+        tpm, [], b"1234567890abcdefghijklmnopqrstuv", device_info
+    )
+    with open("csr0.cbor", "wb") as f:
+        f.write(csr)
+    cbor.verify_signed_data(csr)
+
     csr = sb_GenerateCertificateV2Request(
         tpm, [maced_key1], b"1234567890abcdefghijklmnopqrstuv", device_info
     )
-    with open("csr.cbor", "wb") as f:
+    with open("csr1.cbor", "wb") as f:
         f.write(csr)
+    cbor.verify_signed_data(csr)
+
+    csr = sb_GenerateCertificateV2Request(
+        tpm,
+        [maced_key1, maced_key2],
+        b"1234567890abcdefghijklmnopqrstuv",
+        device_info,
+    )
+    with open("csr2.cbor", "wb") as f:
+        f.write(csr)
+    cbor.verify_signed_data(csr)
 
     # Test without attestation key
     key_blob, key_tags, cert = sb_GenerateKey(
@@ -507,12 +545,19 @@ def sb_test(tpm):
             Tag(KM_TAG_APPLICATION_ID, b"\xaa\xaa\xaa\xaa"),
             Tag(KM_TAG_APPLICATION_DATA, b"\xbb\xbb\xbb\xbb"),
         ],
-        b"\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00",
+        b"\x00\x00\x00\x00",
     )
     print(f"Key blob[{len(key_blob)}]={key_blob.hex()}")
     print(f"Key cert[{len(cert)}]={cert.hex()}")
     with open("cert_self.der", "wb") as f:
         f.write(cert)
+    x509keymint.verify_certificate(cert)
+
+    # Issuer: O=StrongBox, CN=Android Keystore Key
+    issuer = bytes.fromhex(
+        "303331123010060355040a0c095374726f6e67426f78311d301b06035504"
+        "030c14416e64726f6964204b657973746f7265204b6579"
+    )
 
     # Test with attestation key
     key_blob, key_tags, cert = sb_GenerateKey(
@@ -525,7 +570,7 @@ def sb_test(tpm):
             Tag(KM_TAG_DIGEST, KM_DIGEST_SHA_2_512),
             Tag(KM_TAG_ALLOW_WHILE_ON_BODY, 0),
             Tag(KM_TAG_USER_ID, 0xF00),
-            Tag(KM_TAG_CERTIFICATE_SUBJECT, b"gECC"),
+            Tag(KM_TAG_CERTIFICATE_SUBJECT, DEFAULT_ISSUER),
             Tag(
                 KM_TAG_CERTIFICATE_SERIAL,
                 b"\x01\x23\x45\x67\x89\xab\xcd\xef01234567",
@@ -543,11 +588,13 @@ def sb_test(tpm):
             Tag(KM_TAG_ATTESTATION_ID_MODEL, b"Brya"),
         ],
         rkp_blob1,
+        issuer,
     )
     print(f"Key blob[{len(key_blob)}]={key_blob.hex()}")
     print(f"Key cert[{len(cert)}]={cert.hex()}")
     with open("cert.der", "wb") as f:
         f.write(cert)
+    x509keymint.verify_certificate(cert)
 
     # expected blob header
     expected_tags = (
