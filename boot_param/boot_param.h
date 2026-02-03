@@ -35,9 +35,9 @@ extern "C" {
  * 1 - AP
  * 2 - HWDRM (not used)
  */
-#define BOOT_PARAM_DICE_CHAIN_GSC       0
-#define BOOT_PARAM_DICE_CHAIN_AP        1
-#define BOOT_PARAM_DICE_CHAIN_HWDRM     2
+#define BOOT_PARAM_DICE_CHAIN_GSC   0
+#define BOOT_PARAM_DICE_CHAIN_AP    1
+#define BOOT_PARAM_DICE_CHAIN_HWDRM 2
 
 /* Get (part of) BootParam structure for the specific chain:
  * [offset .. offset + size).
@@ -50,8 +50,7 @@ size_t get_boot_param_bytes_for_chain(
 	/* [IN] size of the BootParam struct to copy */
 	size_t size,
 	/* [IN] chain ID */
-	uint8_t chain_id
-);
+	uint8_t chain_id);
 
 /* Get (part of) BootParam structure for the main chain:
  * [offset .. offset + size).
@@ -75,14 +74,21 @@ size_t get_dice_chain_bytes_for_chain(
 	/* [IN] size of the data to copy */
 	size_t size,
 	/* [IN] chain ID */
-	uint8_t chain_id
-);
+	uint8_t chain_id);
 
 /* Get (part of) DiceChain structure for the main chain:
  * [offset .. offset + size).
  */
 #define get_dice_chain_bytes(d, o, s) \
 	get_dice_chain_bytes_for_chain(d, o, s, BOOT_PARAM_DICE_CHAIN_AP)
+
+/**
+ * @brief Get the boot mode
+ *
+ * @return 0 for error (BOOT_MODE_ERROR), or
+ * BOOT_MODE_NORMAL / BOOT_MODE_RECOVERY / BOOT_MODE_DEBUG
+ */
+uint8_t get_boot_mode(void);
 
 /* Sign data with attestation CDI key for the specific chain.
  */
@@ -92,8 +98,7 @@ bool sign_with_cdi_key(
 	/* [IN] data to sign */
 	const struct slice_ref_s data_to_sign,
 	/* [OUT] resulting signature */
-	uint8_t signature[ECDSA_SIG_BYTES]
-);
+	uint8_t signature[ECDSA_SIG_BYTES]);
 
 #ifdef __cplusplus
 } /* extern "C" */
