@@ -16,6 +16,24 @@
       "message": "the EC AICs use some flavor of EN S5 rails.\nis that still reasonable?",
       "revId": "5c13013913d018c455a41e44b1338870828f1a0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4218c3c_c2db4790",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352056
+      },
+      "writtenOn": "2026-02-03T18:31:43Z",
+      "side": 1,
+      "message": "That signal along with `ec-pg3` are and-wired to enable buck controller for 5V and 3.3V rails. The `rsmrst_pwrgd` is high when both rails are good. Both are enabled during G3-\u003eS5.\n\nI would say this signal is a better choice to ensure power is provided to sensors.",
+      "parentUuid": "45b849a1_2c05ded0",
+      "revId": "5c13013913d018c455a41e44b1338870828f1a0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
