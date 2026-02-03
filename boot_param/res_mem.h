@@ -13,22 +13,19 @@
 extern "C" {
 #endif
 
-#define GSC_EARLY_ENTROPY_SIZE 64
+#define GSC_EARLY_ENTROPY_SIZE	  64
 #define GSC_SESSION_KEY_SEED_SIZE 32
-#define GSC_AUTH_TOKEN_SIZE 32
-#define GSC_VERSIONED_SEED_SIZE 32
+#define GSC_AUTH_TOKEN_SIZE	  32
+#define GSC_VERSIONED_SEED_SIZE	  32
 
 /* The value of com.android.virt.name property in Trusty image's AVB vbmeta */
 static const char desktop_trusty_name_str[] = "desktop-trusty";
 /* Reserved memory blobs VM DTB compatible strings */
-static const char early_entropy_compat_str[] =
-	"google,early-entropy";
-static const char session_key_seed_compat_str[] =
-	"google,session-key-seed";
+static const char early_entropy_compat_str[] = "google,early-entropy";
+static const char session_key_seed_compat_str[] = "google,session-key-seed";
 static const char auth_token_key_seed_compat_str[] =
 	"google,auth-token-key-seed";
-static const char versioned_seed_compat_str[] =
-	"google,versioned-seed";
+static const char versioned_seed_compat_str[] = "google,versioned-seed";
 
 /* All values in the structure below are little-endian. */
 struct res_mem_hdr_s {
@@ -73,71 +70,54 @@ struct res_mem_s {
 	 * blobs entry.
 	 */
 	struct res_mem_strings_s {
-		uint8_t desktop_trusty_name
-				[sizeof(desktop_trusty_name_str)];
-		uint8_t early_entropy_compat
-				[sizeof(early_entropy_compat_str)];
-		uint8_t session_key_seed_compat
-				[sizeof(session_key_seed_compat_str)];
-		uint8_t auth_token_key_seed_compat
-				[sizeof(auth_token_key_seed_compat_str)];
-		uint8_t versioned_seed_compat
-				[sizeof(versioned_seed_compat_str)];
+		uint8_t desktop_trusty_name[sizeof(desktop_trusty_name_str)];
+		uint8_t early_entropy_compat[sizeof(early_entropy_compat_str)];
+		uint8_t session_key_seed_compat[sizeof(
+			session_key_seed_compat_str)];
+		uint8_t auth_token_key_seed_compat[sizeof(
+			auth_token_key_seed_compat_str)];
+		uint8_t versioned_seed_compat[sizeof(
+			versioned_seed_compat_str)];
 	} strings;
 };
 
-#define LE32_VALUE(value) \
-{ \
-	(uint8_t)((value) & 0x000000FF),         \
-	(uint8_t)(((value) & 0x0000FF00) >> 8),  \
-	(uint8_t)(((value) & 0x00FF0000) >> 16), \
-	(uint8_t)(((value) & 0xFF000000) >> 24)  \
-}
+#define LE32_VALUE(value)                                \
+	{ (uint8_t)((value) & 0x000000FF),               \
+		(uint8_t)(((value) & 0x0000FF00) >> 8),  \
+		(uint8_t)(((value) & 0x00FF0000) >> 16), \
+		(uint8_t)(((value) & 0xFF000000) >> 24) }
 
-#define STRING_OFFSET(name) \
-	LE32_VALUE( \
-		sizeof(struct res_mem_blobs_s) + \
-		offsetof(struct res_mem_strings_s, name) \
-	)
+#define STRING_OFFSET(name)                         \
+	LE32_VALUE(sizeof(struct res_mem_blobs_s) + \
+		   offsetof(struct res_mem_strings_s, name))
 
-#define BLOB_OFFSET(name) \
-	LE32_VALUE(offsetof(struct res_mem_blobs_s, name))
+#define BLOB_OFFSET(name) LE32_VALUE(offsetof(struct res_mem_blobs_s, name))
 
 #define LE32_FLAGS LE32_VALUE(1)
 
-#define RES_MEM_HDR_WITH_TYPE(blob_name, blob_type, compat_name) \
-{ \
-	STRING_OFFSET(desktop_trusty_name), \
-	BLOB_OFFSET(blob_name), \
-	LE32_VALUE(sizeof(blob_type)), \
-	STRING_OFFSET(compat_name), \
-	LE32_FLAGS \
-}
+#define RES_MEM_HDR_WITH_TYPE(blob_name, blob_type, compat_name)           \
+	{ STRING_OFFSET(desktop_trusty_name), BLOB_OFFSET(blob_name),      \
+		LE32_VALUE(sizeof(blob_type)), STRING_OFFSET(compat_name), \
+		LE32_FLAGS }
 
-#define RES_MEM_HDR_WITH_SIZE(blob_name, blob_size, compat_name) \
-{ \
-	STRING_OFFSET(desktop_trusty_name), \
-	BLOB_OFFSET(blob_name), \
-	LE32_VALUE(blob_size), \
-	STRING_OFFSET(compat_name), \
-	LE32_FLAGS \
-}
+#define RES_MEM_HDR_WITH_SIZE(blob_name, blob_size, compat_name)      \
+	{ STRING_OFFSET(desktop_trusty_name), BLOB_OFFSET(blob_name), \
+		LE32_VALUE(blob_size), STRING_OFFSET(compat_name),    \
+		LE32_FLAGS }
 
-static const struct res_mem_hdrs_s res_mem_hdrs = {
-	LE32_VALUE(4), /* count */
-	RES_MEM_HDR_WITH_SIZE(early_entropy, EARLY_ENTROPY_BYTES,
-			      early_entropy_compat),
-	RES_MEM_HDR_WITH_SIZE(session_key_seed, KEY_SEED_BYTES,
-			      session_key_seed_compat),
+static const struct res_mem_hdrs_s res_mem_hdrs = { LE32_VALUE(4), /* count */
+	RES_MEM_HDR_WITH_SIZE(
+		early_entropy, EARLY_ENTROPY_BYTES, early_entropy_compat),
+	RES_MEM_HDR_WITH_SIZE(
+		session_key_seed, KEY_SEED_BYTES, session_key_seed_compat),
 	RES_MEM_HDR_WITH_SIZE(auth_token_key_seed, KEY_SEED_BYTES,
-			      auth_token_key_seed_compat),
+		auth_token_key_seed_compat),
 	RES_MEM_HDR_WITH_TYPE(versioned_seed, struct versioned_seed_s,
-			      versioned_seed_compat)
-};
+		versioned_seed_compat) };
 
 #define set_res_mem_string(res_mem, field) \
-	__platform_memcpy(&res_mem->strings.field, field##_str, \
-			  sizeof(field##_str))
+	__platform_memcpy(                 \
+		&res_mem->strings.field, field##_str, sizeof(field##_str))
 
 #ifdef __cplusplus
 } /* extern "C" */

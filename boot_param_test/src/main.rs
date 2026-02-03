@@ -10,7 +10,7 @@ use coset::{iana, Algorithm, CborSerializable, CoseError, CoseKey, Label};
 
 use diced_open_dice::{
     bcc_handover_main_flow, bcc_handover_parse, derive_cdi_private_key_seed, hash,
-    keypair_from_seed_multialg, Config, DiceArtifacts, DiceContext, DiceError, DiceMode, Hash,
+    keypair_from_seed, Config, DiceArtifacts, DiceContext, DiceError, DiceMode, Hash,
     Hidden, InputValues, KeyAlgorithm, HASH_SIZE, HIDDEN_SIZE, VM_KEY_ALGORITHM,
 };
 
@@ -98,8 +98,8 @@ fn main() -> Result<()> {
 
     println!("--------------------------------");
     println!("Verifying original DICE with hwtrust");
-    let mut options = Options::vsr16();
-    options.verbose = true;
+    let mut options = Options::vsr17();
+    options.verbose = verbose;
     options.allow_any_mode = true;
     options.rkp_instance = RkpInstance::Default;
     let session = Session { options };
@@ -129,8 +129,12 @@ fn main() -> Result<()> {
     println!("Deriving CDI pubkey from CDI attest");
     let cdi_priv_key_seed = derive_cdi_private_key_seed(cdi_attest)?;
     verbose_dump(verbose, "CDI key seed", cdi_priv_key_seed.as_array());
+    let dice_context = DiceContext {
+        authority_algorithm: public_key.alg,
+        subject_algorithm: public_key.alg
+    };
     let (cdi_public_key, _) =
-        keypair_from_seed_multialg(cdi_priv_key_seed.as_array(), public_key.alg)?;
+        keypair_from_seed(Some(dice_context), cdi_priv_key_seed.as_array())?;
     verbose_dump(verbose, "CDI pubkey", &cdi_public_key);
     if (public_key_bytes.as_slice() != cdi_public_key) {
         bail!("Derived CDI pubkey doesn't match DICE chain");
