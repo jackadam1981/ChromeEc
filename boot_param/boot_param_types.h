@@ -20,9 +20,8 @@ extern "C" {
 #define ECDSA_SIG_BYTES	  (2 * ECDSA_POINT_BYTES) /* 32 byte R + 32 byte S */
 
 /* Sizes of GGSCBootParam fields */
-#define EARLY_ENTROPY_BYTES     64
-#define KEY_SEED_BYTES          32
-
+#define EARLY_ENTROPY_BYTES 64
+#define KEY_SEED_BYTES	    32
 
 /* UDS_ID and CDI_ID sizes */
 #define DICE_ID_BYTES	  20
@@ -32,10 +31,10 @@ extern "C" {
 #define BOOT_PARAM_CFG_DESCR_STAGE 2
 
 #if BOOT_PARAM_CFG_DESCR_STAGE == 1
-#define BOOT_PARAM_CFG_DESCR_MAP_COUNT 6
+#define BOOT_PARAM_CFG_DESCR_MAP_COUNT	      6
 #define BOOT_PARAM_CFG_DESCR_EXTRA_STAGE_SIZE 0
 #elif BOOT_PARAM_CFG_DESCR_STAGE == 2
-#define BOOT_PARAM_CFG_DESCR_MAP_COUNT 10
+#define BOOT_PARAM_CFG_DESCR_MAP_COUNT	      10
 #define BOOT_PARAM_CFG_DESCR_EXTRA_STAGE_SIZE 34
 #endif /* BOOT_PARAM_CFG_DESCR_STAGE */
 
@@ -48,11 +47,9 @@ struct slice_ref_s {
 	const uint8_t *data;
 };
 
-#define digest_as_slice(digest) \
-	{ DIGEST_BYTES, digest }
+#define digest_as_slice(digest) { DIGEST_BYTES, digest }
 
-#define digest_as_slice_mut(digest) \
-	{ DIGEST_BYTES, digest }
+#define digest_as_slice_mut(digest) { DIGEST_BYTES, digest }
 
 struct ecdsa_public_s {
 	uint8_t x[ECDSA_POINT_BYTES];
@@ -87,11 +84,11 @@ struct dice_config_s {
 	uint8_t gsc_type;
 };
 
-#define BOOT_PARAM_GSC_TYPE_H1B3X       0x00
-#define BOOT_PARAM_GSC_TYPE_H1D3C       0x04
-#define BOOT_PARAM_GSC_TYPE_NT11A1      0x10
-#define BOOT_PARAM_GSC_TYPE_NT11A2      0x11
-#define BOOT_PARAM_GSC_TYPE_UNKNOWN     0xFF
+#define BOOT_PARAM_GSC_TYPE_H1B3X   0x00
+#define BOOT_PARAM_GSC_TYPE_H1D3C   0x04
+#define BOOT_PARAM_GSC_TYPE_NT11A1  0x10
+#define BOOT_PARAM_GSC_TYPE_NT11A2  0x11
+#define BOOT_PARAM_GSC_TYPE_UNKNOWN 0xFF
 
 #ifdef __cplusplus
 } /* extern "C" */
