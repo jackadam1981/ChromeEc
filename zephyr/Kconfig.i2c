@@ -103,6 +103,18 @@ config SMBUS_WRITE_BLOCK_DATA_MAX
 	  The upper bound is the SMBus write block data size (32 bytes).
 	  A value of 0 disables single-buffer PEC transfers.
 
+config SMBUS_READ_BLOCK_DATA_MAX
+	int "Maximum SMBus read data size for single buffer transfers"
+	range 1 32 if PLATFORM_EC_SMB_PEC_CONTIGUOUS_BUFFER
+	default 32 if PLATFORM_EC_SMB_PEC_CONTIGUOUS_BUFFER
+	default 0
+	help
+	  Specify the maximum SMBus read data size for single buffer transfers.
+	  This limits temporary buffer size to prevent stack overflow.
+
+	  The upper bound is the SMBus read block data size (32 bytes).
+	  A value of 0 disables single-buffer PEC transfers.
+
 config PLATFORM_EC_I2C_NACK_RETRY_COUNT
 	int "I2C operation retry count when transaction error"
 	default 0
