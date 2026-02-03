@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fba12972_42b40d27",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-02-03T23:33:31Z",
+      "side": 1,
+      "message": "`rts3645`?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "c2880578f9fa9eacf6edb16bf5d2bbeef55d33f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2a3a9ba_c9a4a46d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-02-03T23:33:31Z",
+      "side": 1,
+      "message": "Build failed for `ptlrvp_mchp`. You also need to run presubmit checks to correct formatting issues.",
+      "revId": "c2880578f9fa9eacf6edb16bf5d2bbeef55d33f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc5182b6_24448982",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-02-03T23:33:31Z",
+      "side": 1,
+      "message": "I don\u0027t think this is necessary. You only need one `struct rt3645_info` at a time while you iterate `raw_data` in `rt3645_apply_update_data()`",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 63
+      },
+      "revId": "c2880578f9fa9eacf6edb16bf5d2bbeef55d33f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c9edd75_0869302f",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-02-03T23:33:31Z",
+      "side": 1,
+      "message": "Can you call this `expected_crc` or something more descriptive?",
+      "range": {
+        "startLine": 33,
+        "startChar": 21,
+        "endLine": 33,
+        "endChar": 24
+      },
+      "revId": "c2880578f9fa9eacf6edb16bf5d2bbeef55d33f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b94c40d0_48fe1408",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-02-03T23:33:31Z",
+      "side": 1,
+      "message": "The return values of `rt3645_set_page()` and `rt3645_write_reg()` are not being checked.",
+      "range": {
+        "startLine": 97,
+        "startChar": 2,
+        "endLine": 97,
+        "endChar": 4
+      },
+      "revId": "c2880578f9fa9eacf6edb16bf5d2bbeef55d33f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e540b49_6ac22304",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-02-03T23:33:31Z",
+      "side": 1,
+      "message": "Maybe LOG_DBG, and print a final LOG_INF at the end if all registers got written correctly.",
+      "range": {
+        "startLine": 100,
+        "startChar": 2,
+        "endLine": 100,
+        "endChar": 9
+      },
+      "revId": "c2880578f9fa9eacf6edb16bf5d2bbeef55d33f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb9b677e_4f72b315",
+        "filename": "zephyr/dts/bindings/imvp/richtek,rt3645.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-02-03T23:33:31Z",
+      "side": 1,
+      "message": "Extra space indent",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 3
+      },
+      "revId": "c2880578f9fa9eacf6edb16bf5d2bbeef55d33f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
