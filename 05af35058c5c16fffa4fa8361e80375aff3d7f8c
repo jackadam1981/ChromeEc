@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87c23338_b6e5906f",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-02-03T13:42:35Z",
+      "side": 1,
+      "message": "I think you can just use `__weak`",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 22
+      },
+      "revId": "05af35058c5c16fffa4fa8361e80375aff3d7f8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1145df6f_894d9e5d",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-02-03T13:42:35Z",
+      "side": 1,
+      "message": "Pleas add additional `()` around the conditions.",
+      "range": {
+        "startLine": 209,
+        "startChar": 5,
+        "endLine": 209,
+        "endChar": 24
+      },
+      "revId": "05af35058c5c16fffa4fa8361e80375aff3d7f8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "294cdd08_9260d13c",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-02-03T13:42:35Z",
+      "side": 1,
+      "message": "Please use {} as in the previous if.",
+      "range": {
+        "startLine": 266,
+        "startChar": 0,
+        "endLine": 267,
+        "endChar": 17
+      },
+      "revId": "05af35058c5c16fffa4fa8361e80375aff3d7f8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bedfe69_c564722a",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-02-03T13:42:35Z",
+      "side": 1,
+      "message": "Change 2025 to 2026 in all files.",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "05af35058c5c16fffa4fa8361e80375aff3d7f8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fc7164b_492af31f",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-02-03T13:42:35Z",
+      "side": 1,
+      "message": "Is this still needed?",
+      "range": {
+        "startLine": 31,
+        "startChar": 10,
+        "endLine": 31,
+        "endChar": 27
+      },
+      "revId": "05af35058c5c16fffa4fa8361e80375aff3d7f8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6483970e_beb43323",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-02-03T13:42:35Z",
+      "side": 1,
+      "message": "This is probably not needed if `SPI_HOLD_ON_CS` is not added.",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 16
+      },
+      "revId": "05af35058c5c16fffa4fa8361e80375aff3d7f8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c2db680_f08aec66",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-02-03T13:42:35Z",
+      "side": 1,
+      "message": "This is not related to SPI. Maybe rename the function?",
+      "range": {
+        "startLine": 76,
+        "startChar": 26,
+        "endLine": 76,
+        "endChar": 30
+      },
+      "revId": "05af35058c5c16fffa4fa8361e80375aff3d7f8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d1e344a_d6df4ef4",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-02-03T13:42:35Z",
+      "side": 1,
+      "message": "This is not related to SPI. Maybe rename the function?",
+      "range": {
+        "startLine": 94,
+        "startChar": 26,
+        "endLine": 94,
+        "endChar": 29
+      },
+      "revId": "05af35058c5c16fffa4fa8361e80375aff3d7f8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30cc45a6_056da974",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-02-03T13:42:35Z",
+      "side": 1,
+      "message": "Why busy wait instead of sleep?",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 12
+      },
+      "revId": "05af35058c5c16fffa4fa8361e80375aff3d7f8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "820938ff_6f25380b",
+        "filename": "zephyr/emul/emul_egis660.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-02-03T13:42:35Z",
+      "side": 1,
+      "message": "Fail SPI transfer if the reset pin is asserted.",
+      "revId": "05af35058c5c16fffa4fa8361e80375aff3d7f8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

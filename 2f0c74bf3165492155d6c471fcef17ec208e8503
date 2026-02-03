@@ -142,6 +142,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fa485d0_2ce823da",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-02-03T13:42:35Z",
+      "side": 1,
+      "message": "Workaround removed.",
+      "parentUuid": "0fc8e648_5183f93f",
+      "revId": "2f0c74bf3165492155d6c471fcef17ec208e8503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e04bf61_f2bfbe5e",
@@ -173,6 +191,24 @@
       "side": 1,
       "message": "should removed after resolved workaround",
       "parentUuid": "0e04bf61_f2bfbe5e",
+      "revId": "2f0c74bf3165492155d6c471fcef17ec208e8503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b536ee43_c399ab27",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-02-03T13:42:35Z",
+      "side": 1,
+      "message": "Workaround removed.",
+      "parentUuid": "ba3db91d_d88ac13f",
       "revId": "2f0c74bf3165492155d6c471fcef17ec208e8503",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -212,6 +248,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0351274_aed8366f",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-02-03T13:42:35Z",
+      "side": 1,
+      "message": "Workaround removed.",
+      "parentUuid": "501c5428_9007b984",
+      "revId": "2f0c74bf3165492155d6c471fcef17ec208e8503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b438f32_6153a096",
@@ -243,6 +297,24 @@
       "side": 1,
       "message": "should removed after resolved workaround",
       "parentUuid": "3b438f32_6153a096",
+      "revId": "2f0c74bf3165492155d6c471fcef17ec208e8503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f731de94_e885892c",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-02-03T13:42:35Z",
+      "side": 1,
+      "message": "Workaround removed.",
+      "parentUuid": "02071e5a_1308900f",
       "revId": "2f0c74bf3165492155d6c471fcef17ec208e8503",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -282,6 +354,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b835b67_69a9d743",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-02-03T13:42:35Z",
+      "side": 1,
+      "message": "Workaround removed.",
+      "parentUuid": "77dce6bb_477ae9c3",
+      "revId": "2f0c74bf3165492155d6c471fcef17ec208e8503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a536039c_0a4b593f",
@@ -313,6 +403,24 @@
       "side": 1,
       "message": "should removed after resolved workaround",
       "parentUuid": "a536039c_0a4b593f",
+      "revId": "2f0c74bf3165492155d6c471fcef17ec208e8503",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8b7b740_19041c55",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-02-03T13:42:35Z",
+      "side": 1,
+      "message": "Obsolete comment after removing the workaround.",
+      "parentUuid": "f57262d2_06f33d57",
       "revId": "2f0c74bf3165492155d6c471fcef17ec208e8503",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
