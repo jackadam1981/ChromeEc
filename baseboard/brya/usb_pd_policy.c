@@ -63,6 +63,7 @@ int pd_set_power_supply_ready(int port)
 
 	/* Provide Vbus. */
 	rv = ppc_vbus_source_enable(port, 1);
+	CPRINTS("_________usb_pd_policy_RV:%d", rv);
 	if (rv)
 		return rv;
 

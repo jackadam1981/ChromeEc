@@ -272,15 +272,21 @@ __maybe_unused static int nx20p3483_vbus_source_enable(int port, int enable)
 		int s;
 
 		rv = read_reg(port, NX20P348X_SWITCH_STATUS_REG, &s);
+		CPRINTS("_________NX20P348X_SWITCH_STATUS_REG:%d", s);
+		CPRINTS("_________RV:%d", rv);
+
 		if (rv != EC_SUCCESS)
 			return rv;
 
 		if (!!(s & (NX20P348X_SWITCH_STATUS_5VSRC |
 			    NX20P348X_SWITCH_STATUS_HVSRC)) == enable) {
-			if (enable)
+			if (enable) {
+				CPRINTS("flag set\n");
 				flags[port] |= NX20P348X_FLAGS_SOURCE_ENABLED;
-			else
+			} else {
+				CPRINTS("flag clear\n");
 				flags[port] &= ~NX20P348X_FLAGS_SOURCE_ENABLED;
+			}
 			return EC_SUCCESS;
 		}
 		crec_msleep(1);
