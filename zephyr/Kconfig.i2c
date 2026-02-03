@@ -89,6 +89,17 @@ config PLATFORM_EC_SMB_PEC_CONTIGUOUS_BUFFER
 	  which may result excessive clock stretching or prevent DMA-based
 	  I2C implementations from being used.
 
+config PLATFORM_EC_SMB_BLOCK_ACCESS_CONTIGUOUS
+	bool "Use single contiguous buffer for I2C DMA transfers"
+	help
+	  Enable this option to perform I2C block access operations using a
+	  single contiguous buffer and send it as one transfer.
+
+	  This allows block length and data bytes to be transferred together
+	  for both read and write operations, even when PEC is not enabled,
+	  avoiding split I2C transfers that may cause excessive clock stretching
+	  or prevent DMA-based I2C implementations from being used.
+
 config SMBUS_WRITE_BLOCK_DATA_MAX
 	int "Maximum SMBus write data size for single buffer transfers"
 	range 1 32 if PLATFORM_EC_SMB_PEC_CONTIGUOUS_BUFFER
@@ -105,6 +116,8 @@ config SMBUS_READ_BLOCK_DATA_MAX
 	int "Maximum SMBus read data size for single buffer transfers"
 	range 1 32 if PLATFORM_EC_SMB_PEC_CONTIGUOUS_BUFFER
 	default 32 if PLATFORM_EC_SMB_PEC_CONTIGUOUS_BUFFER
+	range 1 32 if PLATFORM_EC_SMB_BLOCK_ACCESS_CONTIGUOUS
+	default 32 if PLATFORM_EC_SMB_BLOCK_ACCESS_CONTIGUOUS
 	default 0
 	help
 	  Specify the maximum SMBus read data size for single buffer transfers.

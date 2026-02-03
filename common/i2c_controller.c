@@ -751,62 +751,130 @@ int i2c_read_sized_block(const int port, const uint16_t addr_flags, int offset,
 		int data_length = 0;
 
 		/*
-		 * Send device reg space offset, and read back block length.
-		 * Keep this session open without a stop.
+		 * Limit the transfer size to a single SMBus read block.
+		 * This ensures the temporary buffer used to block access
+		 * operations fits within the thread stack and avoids potential
+		 * stack overflow.
 		 */
-		rv = i2c_xfer_unlocked(port, addr_flags, &reg, 1, &block_length,
-				       1, I2C_XFER_START);
-		if (rv)
-			continue;
+		if (IS_ENABLED(
+			    CONFIG_PLATFORM_EC_SMB_BLOCK_ACCESS_CONTIGUOUS) &&
+		    max_len <= CONFIG_SMBUS_READ_BLOCK_DATA_MAX) {
+			if (IS_ENABLED(CONFIG_SMBUS_PEC) &&
+			    I2C_USE_PEC(addr_flags)) {
+				uint8_t addr_8bit = I2C_STRIP_FLAGS(addr_flags)
+						    << 1;
+				uint8_t out[3] = { addr_8bit, reg,
+						   addr_8bit | 1 };
+				uint8_t pec, pec_remote;
+				/* block_length + max length + PEC */
+				uint8_t read_buf[max_len + 2];
 
-		if (block_length > max_len)
-			data_length = max_len;
-		else
-			data_length = block_length;
+				/* block_length + data + PEC */
+				rv = i2c_xfer_unlocked(
+					port, addr_flags, &reg, 1, read_buf,
+					sizeof(read_buf),
+					I2C_XFER_START | I2C_XFER_STOP);
+				if (rv)
+					continue;
 
-		if (IS_ENABLED(CONFIG_SMBUS_PEC) && I2C_USE_PEC(addr_flags)) {
-			uint8_t addr_8bit = I2C_STRIP_FLAGS(addr_flags) << 1;
-			uint8_t out[3] = { addr_8bit, reg, addr_8bit | 1 };
-			uint8_t pec, pec_remote;
+				block_length = read_buf[0];
+				data_length = min(block_length, max_len);
 
-			rv = i2c_xfer_unlocked(port, addr_flags, 0, 0, data,
-					       data_length, 0);
+				/* Calculate PEC */
+				pec = cros_crc8(out, sizeof(out));
+				pec = cros_crc8_arg(&block_length, 1, pec);
+				pec = cros_crc8_arg(&read_buf[1], data_length,
+						    pec);
+				pec_remote = read_buf[block_length + 1];
+				if (pec != pec_remote) {
+					rv = EC_ERROR_CRC;
+					continue;
+				}
+
+				memcpy(data, &read_buf[1], data_length);
+			} else {
+				/* block_length + max length */
+				uint8_t read_buf[max_len + 1];
+
+				/* block_length + data */
+				rv = i2c_xfer_unlocked(
+					port, addr_flags, &reg, 1, read_buf,
+					sizeof(read_buf),
+					I2C_XFER_START | I2C_XFER_STOP);
+				if (rv)
+					continue;
+
+				block_length = read_buf[0];
+				data_length = min(block_length, max_len);
+
+				memcpy(data, &read_buf[1], data_length);
+			}
+		} else {
+			/*
+			 * Send device reg space offset, and read back block
+			 * length. Keep this session open without a stop.
+			 */
+			rv = i2c_xfer_unlocked(port, addr_flags, &reg, 1,
+					       &block_length, 1,
+					       I2C_XFER_START);
 			if (rv)
 				continue;
 
-			pec = cros_crc8(out, sizeof(out));
-			pec = cros_crc8_arg(&block_length, 1, pec);
-			pec = cros_crc8_arg(data, data_length, pec);
+			if (block_length > max_len)
+				data_length = max_len;
+			else
+				data_length = block_length;
 
-			/* read all remaining bytes */
-			block_length -= data_length;
-			while (block_length) {
-				uint8_t byte;
+			if (IS_ENABLED(CONFIG_SMBUS_PEC) &&
+			    I2C_USE_PEC(addr_flags)) {
+				uint8_t addr_8bit = I2C_STRIP_FLAGS(addr_flags)
+						    << 1;
+				uint8_t out[3] = { addr_8bit, reg,
+						   addr_8bit | 1 };
+				uint8_t pec, pec_remote;
+
+				rv = i2c_xfer_unlocked(port, addr_flags, 0, 0,
+						       data, data_length, 0);
+				if (rv)
+					continue;
+
+				pec = cros_crc8(out, sizeof(out));
+				pec = cros_crc8_arg(&block_length, 1, pec);
+				pec = cros_crc8_arg(data, data_length, pec);
+
+				/* read all remaining bytes */
+				block_length -= data_length;
+				while (block_length) {
+					uint8_t byte;
+
+					rv = i2c_xfer_unlocked(port, addr_flags,
+							       NULL, 0, &byte,
+							       1, 0);
+					if (rv)
+						break;
+					pec = cros_crc8_arg(&byte, 1, pec);
+					--block_length;
+				}
+				if (rv)
+					continue;
 
 				rv = i2c_xfer_unlocked(port, addr_flags, NULL,
-						       0, &byte, 1, 0);
+						       0, &pec_remote, 1,
+						       I2C_XFER_STOP);
 				if (rv)
-					break;
-				pec = cros_crc8_arg(&byte, 1, pec);
-				--block_length;
+					continue;
+
+				if (pec != pec_remote) {
+					rv = EC_ERROR_CRC;
+				}
+			} else {
+				rv = i2c_xfer_unlocked(port, addr_flags, 0, 0,
+						       data, data_length,
+						       I2C_XFER_STOP);
+				if (rv)
+					continue;
 			}
-			if (rv)
-				continue;
-
-			rv = i2c_xfer_unlocked(port, addr_flags, NULL, 0,
-					       &pec_remote, 1, I2C_XFER_STOP);
-			if (rv)
-				continue;
-
-			if (pec != pec_remote)
-				rv = EC_ERROR_CRC;
-		} else {
-			rv = i2c_xfer_unlocked(port, addr_flags, 0, 0, data,
-					       data_length, I2C_XFER_STOP);
-			if (rv)
-				continue;
 		}
-
 		/* execution reaches here implies rv=0, so we can exit now */
 		*read_len = data_length;
 		break;
