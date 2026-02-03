@@ -234,8 +234,14 @@ enum vendor_cmd_cc {
 	/* Enable/disable strongbox commands */
 	VENDOR_CC_SET_STRONGBOX_STATE = 80,
 
+	/* Read or read and increment DRM counter. */
+	VENDOR_CC_HW_DRM_COUNTER = 81,
+
+	/* Get/Set SPI drive setting. */
+	VENDOR_CC_SPI_DRIVE = 82,
+
 	/* Read slice of Owner Configuration space */
-	VENDOR_CC_READ_OWNERS_CONFIG = 81,
+	VENDOR_CC_READ_OWNERS_CONFIG = 83,
 
 	LAST_VENDOR_COMMAND = 65535,
 };
