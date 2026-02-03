@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58631152_b9b54dd2",
+        "filename": "common/fpsensor/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-02-03T00:21:39Z",
+      "side": 1,
+      "message": "Please only include the bot, for the same reasons as mentioned [here](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7539372/comments/7ffd56a3_6d51760e).\n\n```suggestion\ninclude chromiumos/owners:v1:/bots/OWNERS.copybot\n```",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 49
+      },
+      "revId": "b944443d9df507d73d4a1b9d8553b5c586392799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
