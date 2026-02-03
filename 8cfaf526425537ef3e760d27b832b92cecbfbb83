@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1eff1d3_22ac1062",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2026-02-03T01:04:01Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "ad6169af_673e0611",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 49
+      },
+      "revId": "8cfaf526425537ef3e760d27b832b92cecbfbb83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79d4de96_0a4e6a76",
@@ -37,6 +61,30 @@
       "writtenOn": "2026-02-03T00:14:08Z",
       "side": 1,
       "message": "We don\u0027t need to change the copyright",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 39
+      },
+      "revId": "8cfaf526425537ef3e760d27b832b92cecbfbb83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f039038_a4023b5a",
+        "filename": "util/migrated_tests.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2026-02-03T01:04:01Z",
+      "side": 1,
+      "message": "The repo upload hook complains about it",
+      "parentUuid": "79d4de96_0a4e6a76",
       "range": {
         "startLine": 3,
         "startChar": 0,
