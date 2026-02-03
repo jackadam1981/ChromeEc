@@ -46,6 +46,30 @@
       },
       "revId": "b944443d9df507d73d4a1b9d8553b5c586392799",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d22bade8_114a1920",
+        "filename": "common/fpsensor/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-02-03T17:26:55Z",
+      "side": 1,
+      "message": "Sorry, I meant for all the files. (Though the `servo` one should be left up to servo team. Looks like @haddowk@chromium.org is the [sheriff](http://shortn/_rxM7AcFUAC)).",
+      "parentUuid": "a6b8d381_fa38b7b1",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 49
+      },
+      "revId": "b944443d9df507d73d4a1b9d8553b5c586392799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
