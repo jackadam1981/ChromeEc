@@ -752,7 +752,7 @@ int i2c_read_sized_block(const int port, const uint16_t addr_flags, int offset,
 		 * Keep this session open without a stop.
 		 */
 		rv = i2c_xfer_unlocked(port, addr_flags, &reg, 1, &block_length,
-				       1, I2C_XFER_START);
+				       1, I2C_XFER_START | I2C_XFER_STOP);
 		if (rv)
 			continue;
 

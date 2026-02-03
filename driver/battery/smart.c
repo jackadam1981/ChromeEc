@@ -80,6 +80,8 @@ test_mockable int sb_read(int cmd, int *param)
 {
 	uint16_t addr_flags = BATTERY_ADDR_FLAGS;
 
+	//printk("sb_read\n");
+
 	if (sb_cutoff_or_in_progress())
 		return EC_ERROR_ACCESS_DENIED;
 
@@ -120,6 +122,8 @@ int sb_read_sized_block(int offset, uint8_t *data, int len)
 {
 	uint16_t addr_flags = BATTERY_ADDR_FLAGS;
 	int read_len = 0;
+
+	//printk("sb_read_sized_block\n");
 
 	if (sb_cutoff_or_in_progress())
 		return EC_ERROR_ACCESS_DENIED;
