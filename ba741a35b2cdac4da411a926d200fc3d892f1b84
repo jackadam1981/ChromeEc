@@ -16,6 +16,24 @@
       "message": "Wait to submit this until the main CL lands. If you made any changes to the main CL after uploading this one, cherry pick again.",
       "revId": "ba741a35b2cdac4da411a926d200fc3d892f1b84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc79f411_4c233fce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003039
+      },
+      "writtenOn": "2026-02-04T19:00:06Z",
+      "side": 1,
+      "message": "Thanks. Will do.\n\nThe two changes (ec main and ec-legacy) are identical.",
+      "parentUuid": "068412c6_efa6a7db",
+      "revId": "ba741a35b2cdac4da411a926d200fc3d892f1b84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
