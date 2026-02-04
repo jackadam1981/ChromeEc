@@ -16,6 +16,23 @@
       "message": "Failures on `helipilot`: http://b/476184679",
       "revId": "9c98c4c3f24f9ab43787320b8bfd9c935d49e5f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b0bd902_635bfa22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-02-04T19:50:56Z",
+      "side": 1,
+      "message": "\u003e This CL touches a file that was deleted at HEAD and is likely related to CrOS EC. CrOS EC has migrated to src/platform/ec-legacy. Please restructure your CL or move it to the correct repo(The Gerrit UI can be used to cherry-pick to the ec-legacy branch on your behalf). If you feel this message was applied in error, please reach out to jpmurphy@google.com to remove the CR-2 label. For more information, please see go/ec-legacy-branch\n\n@jpmurphy@google.com This file still exists in `main`, right?",
+      "revId": "9c98c4c3f24f9ab43787320b8bfd9c935d49e5f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
