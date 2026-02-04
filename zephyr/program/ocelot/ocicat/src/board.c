@@ -117,3 +117,15 @@ __override uint32_t board_override_feature_flags0(uint32_t flags0)
 	else
 		return flags0;
 }
+
+static void board_chipset_resume(void)
+{
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_hdmi_gate_ec), 1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
+
+static void board_chipset_suspend(void)
+{
+	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_hdmi_gate_ec), 0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
