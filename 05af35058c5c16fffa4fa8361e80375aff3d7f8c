@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92796c2e_151c6fc4",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 4412439
+      },
+      "writtenOn": "2026-02-04T03:48:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87c23338_b6e5906f",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 22
+      },
+      "revId": "05af35058c5c16fffa4fa8361e80375aff3d7f8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1145df6f_894d9e5d",
@@ -37,6 +61,30 @@
       "writtenOn": "2026-02-03T13:42:35Z",
       "side": 1,
       "message": "Pleas add additional `()` around the conditions.",
+      "range": {
+        "startLine": 209,
+        "startChar": 5,
+        "endLine": 209,
+        "endChar": 24
+      },
+      "revId": "05af35058c5c16fffa4fa8361e80375aff3d7f8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc0a7299_b4cd3837",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 4412439
+      },
+      "writtenOn": "2026-02-04T03:48:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1145df6f_894d9e5d",
       "range": {
         "startLine": 209,
         "startChar": 5,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "164429cd_4da5de2d",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 4412439
+      },
+      "writtenOn": "2026-02-04T03:48:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "294cdd08_9260d13c",
+      "range": {
+        "startLine": 266,
+        "startChar": 0,
+        "endLine": 267,
+        "endChar": 17
+      },
+      "revId": "05af35058c5c16fffa4fa8361e80375aff3d7f8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8bedfe69_c564722a",
@@ -83,6 +155,30 @@
       "writtenOn": "2026-02-03T13:42:35Z",
       "side": 1,
       "message": "Change 2025 to 2026 in all files.",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "05af35058c5c16fffa4fa8361e80375aff3d7f8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdd2ed49_2129c4a3",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4412439
+      },
+      "writtenOn": "2026-02-04T03:48:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bedfe69_c564722a",
       "range": {
         "startLine": 1,
         "startChar": 13,
@@ -118,6 +214,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cc808599_95957144",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 4412439
+      },
+      "writtenOn": "2026-02-04T03:48:57Z",
+      "side": 1,
+      "message": "we keep that for future use.",
+      "parentUuid": "0fc7164b_492af31f",
+      "range": {
+        "startLine": 31,
+        "startChar": 10,
+        "endLine": 31,
+        "endChar": 27
+      },
+      "revId": "05af35058c5c16fffa4fa8361e80375aff3d7f8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6483970e_beb43323",
         "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.c",
         "patchSetId": 26
@@ -129,6 +249,30 @@
       "writtenOn": "2026-02-03T13:42:35Z",
       "side": 1,
       "message": "This is probably not needed if `SPI_HOLD_ON_CS` is not added.",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 16
+      },
+      "revId": "05af35058c5c16fffa4fa8361e80375aff3d7f8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "450934c8_ac488723",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 4412439
+      },
+      "writtenOn": "2026-02-04T03:48:57Z",
+      "side": 1,
+      "message": "I think we can keep that for future use.",
+      "parentUuid": "6483970e_beb43323",
       "range": {
         "startLine": 59,
         "startChar": 2,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa98a66c_75579bdc",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 4412439
+      },
+      "writtenOn": "2026-02-04T03:48:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c2db680_f08aec66",
+      "range": {
+        "startLine": 76,
+        "startChar": 26,
+        "endLine": 76,
+        "endChar": 30
+      },
+      "revId": "05af35058c5c16fffa4fa8361e80375aff3d7f8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d1e344a_d6df4ef4",
@@ -175,6 +343,30 @@
       "writtenOn": "2026-02-03T13:42:35Z",
       "side": 1,
       "message": "This is not related to SPI. Maybe rename the function?",
+      "range": {
+        "startLine": 94,
+        "startChar": 26,
+        "endLine": 94,
+        "endChar": 29
+      },
+      "revId": "05af35058c5c16fffa4fa8361e80375aff3d7f8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f04fdd6f_d7a217ea",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 4412439
+      },
+      "writtenOn": "2026-02-04T03:48:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d1e344a_d6df4ef4",
       "range": {
         "startLine": 94,
         "startChar": 26,
@@ -210,6 +402,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "33630c23_7ff48206",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 4412439
+      },
+      "writtenOn": "2026-02-04T03:48:57Z",
+      "side": 1,
+      "message": "`./twister -v -i -T zephyr/test/fingerprint/drivers/egis660 --test fingerprint.drivers.egis660 -c` it will fail with sleep",
+      "parentUuid": "30cc45a6_056da974",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 12
+      },
+      "revId": "05af35058c5c16fffa4fa8361e80375aff3d7f8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "820938ff_6f25380b",
         "filename": "zephyr/emul/emul_egis660.c",
         "patchSetId": 26
@@ -221,6 +437,24 @@
       "writtenOn": "2026-02-03T13:42:35Z",
       "side": 1,
       "message": "Fail SPI transfer if the reset pin is asserted.",
+      "revId": "05af35058c5c16fffa4fa8361e80375aff3d7f8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47de9cd3_e62d10a4",
+        "filename": "zephyr/emul/emul_egis660.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 4412439
+      },
+      "writtenOn": "2026-02-04T03:48:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "820938ff_6f25380b",
       "revId": "05af35058c5c16fffa4fa8361e80375aff3d7f8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
