@@ -1,0 +1,623 @@
+/* Copyright 2026 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include <zephyr/dt-bindings/gpio/gpio.h>
+#include <ene/kb106x/kb1062.dtsi>
+#include <ene/kb106x/kb1062-pinctrl.dtsi>
+#include <zephyr/dt-bindings/input/input-event-codes.h>
+#include <cros/ene/kb106x.dtsi>
+#include <dt-bindings/i2c/i2c.h>
+
+/ {
+	model = "KB1062 board";
+	compatible = "ene,kb1062";
+
+	aliases {
+		i2c-0 = &i2c_bus0;
+		i2c-1 = &i2c_bus1;
+		i2c-2 = &i2c_bus2;
+		i2c-3 = &i2c_bus3;
+		i2c-4 = &i2c_bus4;
+		i2c-5 = &i2c_bus5;
+	};
+
+	chosen {
+		zephyr,sram = &sram0;
+		zephyr,console = &uart0;
+		zephyr,shell-uart = &uart0;
+		zephyr,flash = &flash0;
+		zephyr,flash-controller = &flash_controller;
+	};
+
+	named-i2c-ports {
+		compatible = "named-i2c-ports";
+	};
+
+	named-adc-channels {
+		compatible = "named-adc-channels";
+	};
+
+	soc {
+		i2c_bus0: i2c@40340000 {
+			compatible = "ene,kb106x-i2c";
+			reg = <0x40340000 0x1000>;
+			i2cs-reg = <0x40350000 0x40351000>;
+			interrupts = <15 1>, <16 1>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+			status = "disabled";
+			support-target-mode = <0>;
+			slave-num = <0>;
+		};
+		//smbus0: smbus0 {
+		//	compatible = "ene,kb106x-smbus","simple-bus";
+		//	#address-cells = <1>;
+		//	#size-cells = <0>;
+		//	i2c = <&i2c_bus0>;
+		//	status = "okay";
+		//};
+
+		i2c_bus1: i2c@40341000 {
+			compatible = "ene,kb106x-i2c";
+			reg = <0x40341000 0x1000>;
+			i2cs-reg = <0x40350000 0x40351000>;
+			interrupts = <15 1>, <16 1>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+			status = "disabled";
+			support-target-mode = <0>;
+			slave-num = <0>;
+		};
+		//smbus1: smbus1 {
+		//	compatible = "ene,kb106x-smbus","simple-bus";
+		//	#address-cells = <1>;
+		//	#size-cells = <0>;
+		//	i2c = <&i2c_bus1>;
+		//	status = "okay";
+		//};
+
+		i2c_bus2: i2c@40342000 {
+			compatible = "ene,kb106x-i2c";
+			reg = <0x40342000 0x1000>;
+			i2cs-reg = <0x40350000 0x40351000>;
+			interrupts = <15 1>, <16 1>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+			status = "disabled";
+			support-target-mode = <0>;
+			slave-num = <0>;
+		};
+		//smbus2: smbus2 {
+		//	compatible = "ene,kb106x-smbus","simple-bus";
+		//	#address-cells = <1>;
+		//	#size-cells = <0>;
+		//	i2c = <&i2c_bus2>;
+		//	status = "okay";
+		//};
+
+		i2c_bus3: i2c@40343000 {
+			compatible = "ene,kb106x-i2c";
+			reg = <0x40343000 0x1000>;
+			i2cs-reg = <0x40350000 0x40351000>;
+			interrupts = <15 1>, <16 1>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+			status = "disabled";
+			support-target-mode = <0>;
+			slave-num = <0>;
+		};
+		//smbus3: smbus3 {
+		//	compatible = "ene,kb106x-smbus","simple-bus";
+		//	#address-cells = <1>;
+		//	#size-cells = <0>;
+		//	i2c = <&i2c_bus3>;
+		//	status = "okay";
+		//};
+
+		i2c_bus4: i2c@40344000 {
+			compatible = "ene,kb106x-i2c";
+			reg = <0x40344000 0x1000>;
+			i2cs-reg = <0x40350000 0x40351000>;
+			interrupts = <15 1>, <16 1>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+			status = "disabled";
+			support-target-mode = <0>;
+			slave-num = <0>;
+		};
+		//smbus4: smbus4 {
+		//	compatible = "ene,kb106x-smbus","simple-bus";
+		//	#address-cells = <1>;
+		//	#size-cells = <0>;
+		//	i2c = <&i2c_bus4>;
+		//	status = "okay";
+		//};
+
+		i2c_bus5: i2c@40345000 {
+			compatible = "ene,kb106x-i2c";
+			reg = <0x40345000 0x1000>;
+			i2cs-reg = <0x40350000 0x40351000>;
+			interrupts = <15 1>, <16 1>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+			status = "disabled";
+			support-target-mode = <0>;
+			slave-num = <0>;
+		};
+		//smbus5: smbus5 {
+		//	compatible = "ene,kb106x-smbus","simple-bus";
+		//	#address-cells = <1>;
+		//	#size-cells = <0>;
+		//	i2c = <&i2c_bus5>;
+		//	status = "okay";
+		//};
+
+		tach0: tach@40100000 {
+			compatible = "ene,kb106x-tach";
+			reg = <0x40100000 0x10>;
+			status = "disabled";
+		};
+
+		tach1: tach@40100010 {
+			compatible = "ene,kb106x-tach";
+			reg = <0x40100010 0x10>;
+			status = "disabled";
+		};
+
+		kbd0: kbd@40110000 {
+			compatible = "ene,kb106x-kbd";
+			reg = <0x40110000 0x100>;
+			interrupts = <14 0>;
+			row-size = <8>;
+			col-size = <21>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+			status = "disabled";
+		};
+
+		espi0: espi@50200000 {
+			compatible = "ene,kb106x-espi";
+			reg = <0x50200000 0x1000>;
+			espivw-reg = <0x50202000>;
+			espivw-tab = <0x50202100>;
+			espioob-reg = <0x50203000>;
+			espifa-reg = <0x50204000>;
+			hif-reg = <0x50210000>;
+			kbc-reg = <0x50211000>;
+			eci-reg = <0x50212000>;
+			legi-reg = <0x50213000>;
+			dbi-reg = <0x50214000>;
+			mbx-reg = <0x50215000>;
+			uart-reg = <0x50216000>;
+			interrupts = <30 3>,   // 46-16
+			             <31 3>,
+			             <32 3>,
+			             <24 3>,
+			             <25 3>,
+			             <26 3>,
+			             <27 3>,
+			             <28 3>,
+			             <29 3>,
+			             <21 3>;
+			interrupt-names = "vwire", "oob", "flash", "kbc", "eci", "dbi", "legi", "mbx", "iotosram", "uart";
+			gpios = <&gpio0x1x 0x07 0>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+			status = "disabled";
+		};
+
+		fanpwm0: fanpwm@40200000 {
+			compatible = "ene,kb106x-pwm";
+			reg = <0x40200000 0x10>;
+			pwm-channel = <0>;
+			#pwm-cells = <3>;
+			status = "disabled";
+		};
+
+		fanpwm1: fanpwm@40200010 {
+			compatible = "ene,kb106x-pwm";
+			reg = <0x40200010 0x10>;
+			pwm-channel = <1>;
+			#pwm-cells = <3>;
+			status = "disabled";
+		};
+
+		ledpwm0: fanpwm@40220000 {
+			compatible = "ene,kb106x-pwm";
+			reg = <0x40220000 0x10>;
+			pwm-channel = <0>;
+			#pwm-cells = <3>;
+			status = "disabled";
+		};
+
+		ledpwm1: fanpwm@40220010 {
+			compatible = "ene,kb106x-pwm";
+			reg = <0x40220010 0x10>;
+			pwm-channel = <1>;
+			#pwm-cells = <3>;
+			status = "disabled";
+		};
+
+		bbram: bbram@40040000 {
+			compatible = "ene,kb106x-bbram";
+			reg = <0x40040000 0x84>;
+			bbram-size = <4>;
+			status = "disabled";
+		};
+	};
+};
+
+&pinctrl {
+	/* fan tachometer */
+	/omit-if-no-ref/ tach0_gpio14: tach0_gpio14 {
+		pinmux = <ENE_KB106X_PINMUX(0x14, PINMUX_FUNC_A)>;
+		input-enable;
+	};
+	/omit-if-no-ref/ tach1_gpio15: tach1_gpio15 {
+		pinmux = <ENE_KB106X_PINMUX(0x15, PINMUX_FUNC_A)>;
+		input-enable;
+	};
+	/omit-if-no-ref/ tach2_gpio43: tach2_gpio43 {
+		pinmux = <ENE_KB106X_PINMUX(0x43, PINMUX_FUNC_A)>;
+		input-enable;
+	};
+	/omit-if-no-ref/ tach3_gpio64: tach3_gpio64 {
+		pinmux = <ENE_KB106X_PINMUX(0x64, PINMUX_FUNC_A)>;
+		input-enable;
+	};
+	/* led pwm */
+	/omit-if-no-ref/ ledpwm0_gpio19: ledpwm0_gpio19 {
+		pinmux = <ENE_KB106X_PINMUX(0x19, PINMUX_FUNC_C)>;
+	};
+	/omit-if-no-ref/ ledpwm1_gpio54: ledpwm1_gpio54 {
+		pinmux = <ENE_KB106X_PINMUX(0x54, PINMUX_FUNC_B)>;
+	};
+};
+
+&flash0 {
+	write-block-size = <1>;
+	erase-block-size = <512>;
+};
+
+&bbram {
+	status = "okay";
+};
+
+//&clkctr{
+//	dpll-32k-src = <ENE_KB106X_CLK32K_SRC_NONE>;
+//	periph-32k-src = <ENE_KB106X_CLK32K_SRC_OSC32>;
+//	pinctrl-0 = <&xclki_gpio5d>;
+//	pinctrl-names = "default";
+//	status = "okay";
+//};
+
+&uart0 {
+	status = "okay";
+	current-speed = <115200>;
+	pinctrl-0 = <&ser0_tx_gpio16 &ser0_rx_gpio17>;
+	pinctrl-names = "default";
+};
+
+&gpio0x1x {
+	status = "okay";
+};
+
+&gpio2x3x {
+	status = "okay";
+};
+
+&gpio4x5x {
+	status = "okay";
+};
+
+&gpio6x7x {
+	status = "okay";
+};
+
+&adc0 {
+	status = "okay";
+	pinctrl-0 = <&adc0_gpio38 &adc1_gpio39 &adc2_gpio3a &adc3_gpio3b>;
+	pinctrl-names = "default";
+};
+
+//&pwm0 {
+//	status = "okay";
+//	pinctrl-0 = <&pwm0_gpio0f>;
+//	pinctrl-names = "default";
+//};
+//&pwm1 {
+//	status = "okay";
+//	pinctrl-0 = <&pwm1_gpio10>;
+//	pinctrl-names = "default";
+//};
+//&pwm2 {
+//	status = "okay";
+//	pinctrl-0 = <&pwm2_gpio11>;
+//	pinctrl-names = "default";
+//};
+//&pwm3 {
+//	status = "okay";
+//	pinctrl-0 = <&pwm3_gpio19>;
+//	pinctrl-names = "default";
+//};
+//
+//&wdog {
+//	status = "okay";
+//};
+//
+&fanpwm0 {
+	status = "okay";
+	pinctrl-0 = <&fanpwm0_gpio12>;
+	pinctrl-names = "default";
+};
+//&fanpwm1 {
+//	status = "okay";
+//	pinctrl-0 = <&fanpwm1_gpio13>;
+//	pinctrl-names = "default";
+//};
+//
+//&ledpwm0 {
+//	status = "okay";
+//	pinctrl-0 = <&ledpwm0_gpio19>;
+//	pinctrl-names = "default";
+//};
+&ledpwm1 {
+	status = "okay";
+	pinctrl-0 = <&ledpwm1_gpio54>;
+	pinctrl-names = "default";
+};
+
+&tach0 {
+	status = "okay";
+	pinctrl-0 = <&tach0_gpio14>;
+	pinctrl-names = "default";
+	pulses-per-round = <1>;
+	sample-time-us = <8>;
+};
+
+//&tach1 {
+//	status = "okay";
+//	pinctrl-0 = <&tach1_gpio15>;
+//	pinctrl-names = "default";
+//	pulses-per-round = <1>;
+//	sample-time-us = <16>;
+//};
+//
+//&tach2 {
+//	status = "okay";
+//	pinctrl-0 = <&tach2_gpio43>;
+//	pinctrl-names = "default";
+//	pulses-per-round = <1>;
+//	sample-time-us = <32>;
+//};
+//
+//&tach3 {
+//	status = "okay";
+//	pinctrl-0 = <&tach3_gpio64>;
+//	pinctrl-names = "default";
+//	pulses-per-round = <1>;
+//	sample-time-us = <64>;
+//};
+
+&espi0 {
+	status = "okay";
+	pinctrl-0 = <&espi_cs_gpio03 &espi_rst_gpio07>;
+	pinctrl-names = "default";
+};
+
+&i2c_bus0 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_STANDARD>;
+	pinctrl-0 = <&i2c0_clk_gpio44 &i2c0_dat_gpio45>;
+	pinctrl-names = "default";
+	support-target-mode = <0>;
+	slave-num = <0>;
+};
+
+//&i2c_bus1 {
+//	status = "okay";
+//	clock-frequency = <I2C_BITRATE_STANDARD>;
+//	pinctrl-0 = <&i2c1_clk_gpio46 &i2c1_dat_gpio47>;
+//	pinctrl-names = "default";
+//	support-target-mode = <0>;
+//	slave-num = <0>;
+//};
+//
+//&i2c_bus2 {
+//	status = "okay";
+//	clock-frequency = <I2C_BITRATE_STANDARD>;
+//	pinctrl-0 = <&i2c2_clk_gpio4a &i2c2_dat_gpio4b>;
+//	pinctrl-names = "default";
+//	support-target-mode = <0>;
+//	slave-num = <0>;
+//};
+//
+//&i2c_bus3 {
+//	status = "okay";
+//	clock-frequency = <I2C_BITRATE_STANDARD>;
+//	pinctrl-0 = <&i2c3_clk_gpio4c &i2c3_dat_gpio4d>;
+//	pinctrl-names = "default";
+//	support-target-mode = <0>;
+//	slave-num = <0>;
+//};
+//
+//&i2c_bus4 {
+//	status = "okay";
+//	clock-frequency = <I2C_BITRATE_STANDARD>;
+//	pinctrl-0 = <&i2c4_clk_gpio08 &i2c4_dat_gpio0d>;
+//	pinctrl-names = "default";
+//	support-target-mode = <0>;
+//	slave-num = <0>;
+//};
+//
+//&i2c_bus5 {
+//	status = "okay";
+//	clock-frequency = <I2C_BITRATE_STANDARD>;
+//	pinctrl-0 = <&i2c5_clk_gpio0b &i2c5_dat_gpio0c>;
+//	pinctrl-names = "default";
+//	support-target-mode = <0>;
+//	slave-num = <0>;
+//};
+//
+//&spi0 {
+//	/* share rom pinout sample code for control mult-spi-slave
+//	 * cs-gpios = <&gpio4x5x 0x1a GPIO_ACTIVE_LOW>,
+//	 *            <&gpio0x1x 0x02 GPIO_ACTIVE_LOW>;
+//	 * shr_cs0: spi-dev-0@0 {
+//	 *      // select set0 cs
+//	 * 	reg = <0>;
+//	 * };
+//	 * shr_cs1: spi-dev-1@1 {
+//	 *      // select set1 cs
+//	 * 	reg = <1>;
+//	 * };
+//	 */
+//
+//	status = "okay";
+//	cs-gpios = <&gpio4x5x 0x1a GPIO_ACTIVE_LOW>;
+//	shr_cs0: spi-dev-0@0 {
+//		reg = <0>;
+//	};
+//	/* default pinout */
+//	pinctrl-0 = <&shr_clk_gpio58 &shr_mosi_gpio5c &shr_miso_gpio5b>;
+//	/* suspend pinout */
+//	pinctrl-1 = <&shr_clk_off_gpio58 &shr_mosi_off_gpio5c &shr_miso_off_gpio5b >;
+//	pinctrl-names = "default","priv_start";
+//
+//
+//};
+//
+//&spi1 {
+//	/* shi normal pinout sample code for control mult-spi-slave
+//	 * status = "okay";
+//	 * cs-gpios = <&gpio6x7x 0x00 GPIO_ACTIVE_LOW>,
+//	 *            <&gpio0x1x 0x01 GPIO_ACTIVE_LOW>;
+//	 * shi_cs0: spi-dev-0@0 {
+//	 *      // select set0 cs
+//	 * 	reg = <0>;
+//	 * };
+//	 * shi_cs1: spi-dev-1@1 {
+//	 *      // select set1 cs
+//	 * 	reg = <1>;
+//	 * };
+//	 */
+//	 
+//	status = "okay";
+//	cs-gpios = <&gpio6x7x 0x00 GPIO_ACTIVE_LOW>;
+//	shi_cs0: spi-dev-0@0 {
+//		reg = <0>;
+//	};
+//	/* default pinout */
+//	pinctrl-0 = <&shi_clk_gpio61 &shi_mosi_gpio62 &shi_miso_gpio78 >;
+//	/* suspend pinout */
+//	pinctrl-1 = <&shi_clk_off_gpio61 &shi_mosi_off_gpio62 &shi_miso_off_gpio78 >;
+//	pinctrl-names = "default","priv_start";
+//};
+//
+//&ikb0 {
+//	/* keyboard pinout sample code
+//	 * // normal ikb pinout 
+//	 * pinctrl-0 = <&ksi00_gpio30 &ksi01_gpio31 &ksi02_gpio32 &ksi03_gpio33
+//	 *              &ksi04_gpio34 &ksi05_gpio35 &ksi06_gpio36 &ksi07_gpio37
+//	 *              &kso00_gpio20 &kso01_gpio21 &kso02_gpio22 &kso03_gpio23
+//	 *              &kso04_gpio24 &kso05_gpio25 &kso06_gpio26 &kso07_gpio27
+//	 *              &kso08_gpio28 &kso09_gpio29 &kso10_gpio2a &kso11_gpio2b
+//	 *              &kso12_gpio2c &kso13_gpio2d &kso14_gpio2e &kso15_gpio2f
+//	 *              &kso16_gpio48 &kso17_gpio49 &kso18_gpio4e &kso19_gpio4f
+//	 *              &kso20_gpio52 >;
+//	 *
+//	 * // nkro ikb pinout 
+//	 * pinctrl-0 = <&nkro_ksi00_gpio30 &nkro_ksi01_gpio31 &nkro_ksi02_gpio32
+//	 *              &nkro_ksi03_gpio33 &nkro_ksi04_gpio34 &nkro_ksi05_gpio35
+//	 *              &nkro_ksi06_gpio36 &nkro_ksi07_gpio37 &nkro_ksi08_gpio28
+//	 *              &nkro_ksi09_gpio29 &nkro_ksi10_gpio2a &nkro_ksi11_gpio2b
+//	 *              &nkro_ksi12_gpio2c &nkro_ksi13_gpio2d &nkro_ksi14_gpio2e
+//	 *              &nkro_ksi15_gpio2f &nkro_ksi16_gpio48 &nkro_ksi17_gpio49
+//	 *              &nkro_ksi18_gpio4e &nkro_ksi19_gpio4f &nkro_ksi20_gpio52
+//	 *              &nkro_kso00_gpio20 &nkro_kso01_gpio21 &nkro_kso02_gpio22
+//	 *              &nkro_kso03_gpio23 &nkro_kso04_gpio24 &nkro_kso05_gpio25
+//	 *              &nkro_kso06_gpio26 &nkro_kso07_gpio27 >;
+//	 */
+//
+//	status = "okay";
+//	pinctrl-0 = <&ksi00_gpio30 &ksi01_gpio31 &ksi02_gpio32 &ksi03_gpio33
+//		     &kso00_gpio20 &kso01_gpio21 &kso02_gpio22 &kso03_gpio23
+//		     &kso04_gpio24 &kso05_gpio25 &kso06_gpio26 &kso07_gpio27
+//		     &kso08_gpio28 &kso09_gpio29 &kso10_gpio2a &kso11_gpio2b
+//		     &kso12_gpio2c &kso13_gpio2d &kso14_gpio2e &kso15_gpio2f
+//		     &kso16_gpio48 &kso17_gpio49 &kso18_gpio4e &kso19_gpio4f
+//		     &kso20_gpio52 >;
+//		     &ksi04_gpio34 &ksi05_gpio35 &ksi06_gpio36 &ksi07_gpio37
+//	pinctrl-names = "default";
+//};
+
+&kbd0 {
+	/* keyboard pinout sample code
+	 * // normal ikb pinout 
+	 * pinctrl-0 = <&ksi00_gpio30 &ksi01_gpio31 &ksi02_gpio32 &ksi03_gpio33
+	 *              &ksi04_gpio34 &ksi05_gpio35 &ksi06_gpio36 &ksi07_gpio37
+	 *              &kso00_gpio20 &kso01_gpio21 &kso02_gpio22 &kso03_gpio23
+	 *              &kso04_gpio24 &kso05_gpio25 &kso06_gpio26 &kso07_gpio27
+	 *              &kso08_gpio28 &kso09_gpio29 &kso10_gpio2a &kso11_gpio2b
+	 *              &kso12_gpio2c &kso13_gpio2d &kso14_gpio2e &kso15_gpio2f
+	 *              &kso16_gpio48 &kso17_gpio49 &kso18_gpio4e &kso19_gpio4f
+	 *              &kso20_gpio52 >;
+	 *
+	 * // nkro ikb pinout 
+	 * pinctrl-0 = <&nkro_ksi00_gpio30 &nkro_ksi01_gpio31 &nkro_ksi02_gpio32
+	 *              &nkro_ksi03_gpio33 &nkro_ksi04_gpio34 &nkro_ksi05_gpio35
+	 *              &nkro_ksi06_gpio36 &nkro_ksi07_gpio37 &nkro_ksi08_gpio28
+	 *              &nkro_ksi09_gpio29 &nkro_ksi10_gpio2a &nkro_ksi11_gpio2b
+	 *              &nkro_ksi12_gpio2c &nkro_ksi13_gpio2d &nkro_ksi14_gpio2e
+	 *              &nkro_ksi15_gpio2f &nkro_ksi16_gpio48 &nkro_ksi17_gpio49
+	 *              &nkro_ksi18_gpio4e &nkro_ksi19_gpio4f &nkro_ksi20_gpio52
+	 *              &nkro_kso00_gpio20 &nkro_kso01_gpio21 &nkro_kso02_gpio22
+	 *              &nkro_kso03_gpio23 &nkro_kso04_gpio24 &nkro_kso05_gpio25
+	 *              &nkro_kso06_gpio26 &nkro_kso07_gpio27 >;
+	 */
+
+	status = "okay";
+	pinctrl-0 = <&ksi00_gpio30 &ksi01_gpio31 &ksi02_gpio32 &ksi03_gpio33
+		     &ksi04_gpio34 &ksi05_gpio35 &ksi06_gpio36 &ksi07_gpio37
+		     &kso00_gpio20 &kso01_gpio21 &kso02_gpio22 &kso03_gpio23
+		     &kso04_gpio24 &kso05_gpio25 &kso06_gpio26 &kso07_gpio27
+		     &kso08_gpio28 &kso09_gpio29 &kso10_gpio2a &kso11_gpio2b
+		     &kso12_gpio2c &kso13_gpio2d &kso14_gpio2e &kso15_gpio2f
+		     &kso16_gpio48 &kso17_gpio49 &kso18_gpio4e &kso19_gpio4f
+		     &kso20_gpio52 >;
+	pinctrl-names = "default";
+};
+
+//
+//&ps2_channel0 {
+//	status = "okay";
+//	pinctrl-0 = <>;
+//	pinctrl-names = "default";
+//};
+//
+//&ps2_channel1 {
+//	//status = "okay";
+//	pinctrl-0 = <&psclk1_gpio4a &psdat1_gpio4b>;
+//	pinctrl-names = "default";
+//};
+//
+//&ps2_channel2 {
+//	//status = "okay";
+//	pinctrl-0 = <&psclk2_gpio4c &psdat2_gpio4d>;
+//	pinctrl-names = "default";
+//};
+//
+//&ps2_channel3 {
+//	//status = "okay";
+//	pinctrl-0 = <&psclk3_gpio4e &psdat3_gpio4f>;
+//	pinctrl-names = "default";
+//};
+//
+//&peci0 {
+//	status = "okay";
+//	pinctrl-0 = <&peci_gpio7f>;
+//	pinctrl-names = "default";
+//};
+//
