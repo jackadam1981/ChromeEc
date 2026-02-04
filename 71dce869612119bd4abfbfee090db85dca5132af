@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "38453992_fc0c2596",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2026-02-04T15:26:54Z",
+      "side": 1,
+      "message": "I run tests pointed in the commit message, let me know if there are any other I should include. I checked for frs name and I could only see those under pdc. path and drivers. (probably old solution). All passed. This change was also checked manually in the b/457837894. Regarding PDC config I will ask for pd traces if we can see this field correctly setup.",
+      "parentUuid": "a525f3ea_221102d2",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 16
+      },
+      "revId": "71dce869612119bd4abfbfee090db85dca5132af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "39a69e19_b30f8bb4",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -78,6 +102,30 @@
       "side": 1,
       "message": "Also not sure what that does, I\u0027d suggest comparing against another PDC platform that enabled FRS (uldrenite)",
       "parentUuid": "5048183a_b4dcb0c5",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 31
+      },
+      "revId": "71dce869612119bd4abfbfee090db85dca5132af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "886bc3b8_c6027d04",
+        "filename": "zephyr/program/ocelot/ocelotrvp-ite/project.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2026-02-04T15:26:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dad67824_f8ee1d1f",
       "range": {
         "startLine": 10,
         "startChar": 0,
