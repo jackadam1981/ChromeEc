@@ -51,6 +51,24 @@
       "parentUuid": "962916b9_dc889121",
       "revId": "9c98c4c3f24f9ab43787320b8bfd9c935d49e5f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6e0dc46_8a649a99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531147
+      },
+      "writtenOn": "2026-02-04T23:32:55Z",
+      "side": 1,
+      "message": "Yes, this was done with a regex, I spot checked, but obviously this was an error.\n\nhttps://source.corp.google.com/h/chrome-internal/chromeos/superproject/+/main:src/platform/ec/util/renode/firmware_builder.py",
+      "parentUuid": "2b0bd902_635bfa22",
+      "revId": "9c98c4c3f24f9ab43787320b8bfd9c935d49e5f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
