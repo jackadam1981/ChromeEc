@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "106cae40_3f26d36d",
+        "filename": "zephyr/emul/emul_egis660.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-02-04T07:39:16Z",
+      "side": 1,
+      "message": "I know this code is copied from FPC1025, but I believe it\u0027s incorrect. You are using be32, but it is for 4-bytes vaules.  I guess it should be something like (untested):\n```\nuint8_t resp[3] \u003d {0}; -\u003e first byte will be 0\nsys_put_be16(data-\u003ehardware_id, \u0026resp[1]); -\u003e 1-2 bytes will have the HWID in BE\negis660_write_response(rx_bufs, resp, 3);\n```",
+      "revId": "df283eef3a81154eda82dab5ad3e077cd785da05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "924a93a1_c869463a",
+        "filename": "zephyr/test/fingerprint/drivers/egis660/boards/native_sim.overlay",
+        "patchSetId": 27
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-02-04T07:39:16Z",
+      "side": 1,
+      "message": "Fix formatting.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 24
+      },
+      "revId": "df283eef3a81154eda82dab5ad3e077cd785da05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf5774e4_92795709",
+        "filename": "zephyr/test/fingerprint/drivers/egis660/src/egis660.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-02-04T07:39:16Z",
+      "side": 1,
+      "message": "Uncomment these tests, after fixing emulator.",
+      "revId": "df283eef3a81154eda82dab5ad3e077cd785da05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

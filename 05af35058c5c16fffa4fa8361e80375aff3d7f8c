@@ -236,6 +236,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16c7b314_40af8e42",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-02-04T07:39:16Z",
+      "side": 1,
+      "message": "Ok.",
+      "parentUuid": "cc808599_95957144",
+      "range": {
+        "startLine": 31,
+        "startChar": 10,
+        "endLine": 31,
+        "endChar": 27
+      },
+      "revId": "05af35058c5c16fffa4fa8361e80375aff3d7f8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6483970e_beb43323",
@@ -273,6 +297,30 @@
       "side": 1,
       "message": "I think we can keep that for future use.",
       "parentUuid": "6483970e_beb43323",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 16
+      },
+      "revId": "05af35058c5c16fffa4fa8361e80375aff3d7f8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30e708c8_999ceca5",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-02-04T07:39:16Z",
+      "side": 1,
+      "message": "In such case, please add `SPI_HOLD_ON_CS` to the SPI config.",
+      "parentUuid": "450934c8_ac488723",
       "range": {
         "startLine": 59,
         "startChar": 2,
@@ -414,6 +462,30 @@
       "side": 1,
       "message": "`./twister -v -i -T zephyr/test/fingerprint/drivers/egis660 --test fingerprint.drivers.egis660 -c` it will fail with sleep",
       "parentUuid": "30cc45a6_056da974",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 12
+      },
+      "revId": "05af35058c5c16fffa4fa8361e80375aff3d7f8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00a81c6e_a113b865",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-02-04T07:39:16Z",
+      "side": 1,
+      "message": "So you need to debug what happens. Failing tests can not force us to implement incorrect code.",
+      "parentUuid": "33630c23_7ff48206",
       "range": {
         "startLine": 111,
         "startChar": 1,
