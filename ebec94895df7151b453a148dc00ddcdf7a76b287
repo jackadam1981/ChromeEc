@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "925e131a_276f503f",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1871,
+      "author": {
+        "id": 1293716
+      },
+      "writtenOn": "2026-02-05T09:46:13Z",
+      "side": 1,
+      "message": "Your logic will print the log below and `return 1` no matter meet criteria or not.\n\n26-02-05 08:46:03.278 ec:\u003e [I: ST0.209869 Debug: 0: sysctem_can_bootPING_STATUS\n\nBesides, does power_is_enough@power/mt8186.c include your new logic or not?\n\n\nThere are four times of `system_can_boot_ap` check in the attached log on bug.\n1st time: read 0\n2nd time: read 103\n3rd time: read 103\n4th time: read 103\n\n```\n26-02-05 08:46:03.278 ec:\u003e [I: ST0.209869 Debug: 0: sysctem_can_bootPING_STATUS\n26-02-05 08:46:03.286 I: STec:\u003e [0.1: 212432 Debug: syPING_STATUS\n26-02-05 08:46:03.289 sctem_can_boot_aI: STp: soc: 103]\n26-02-05 08:46:03.300 ec:\u003e [0.215972 I: CDebug: sysctem_c0an_boot_ap: soc:: Realtek: FW Version:  103]\n26-02-05 08:46:03.327 [0.284729 Debug: sysctem_can_boot_ap: soc: 103]\n```",
+      "revId": "ebec94895df7151b453a148dc00ddcdf7a76b287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
