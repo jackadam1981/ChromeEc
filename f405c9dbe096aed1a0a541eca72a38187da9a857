@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "971631f6_4bd39366",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2026-02-05T07:55:53Z",
+      "side": 1,
+      "message": "We can make this a CONFIG so other boards can change the default by changing the config without adding new code.",
+      "revId": "f405c9dbe096aed1a0a541eca72a38187da9a857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
