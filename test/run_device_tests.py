@@ -442,10 +442,12 @@ class Renode(Platform):
 
         # Tests failures that are independent of the board.
         if test_name in [
+            # go/keep-sorted start
             "fpsensor_hw",  # TODO(b/384743080)
             "power_utilization",  # Can't measure power on Renode.
             "production_app_test",  # TODO(b/384740370)
             "watchdog",  # TODO(b/390021699)
+            # go/keep-sorted end
         ]:
             return True
 
@@ -453,6 +455,7 @@ class Renode(Platform):
             if board_config.name == BLOONCHIPPER:
                 # bloonchipper Zephyr tests to skip on Renode.
                 if zephyr and test_name in [
+                    # go/keep-sorted start
                     "abort",  # TODO(b/384094781)
                     "benchmark",  # TODO(b/390253975)
                     "exception",  # TODO(b/388327673)
@@ -470,6 +473,7 @@ class Renode(Platform):
                     "zephyr_counter_basic_api_stm32_subsec",
                     # TODO(b/390255521)
                     "timer",
+                    # go/keep-sorted end
                 ]:
                     return True
 
@@ -477,24 +481,30 @@ class Renode(Platform):
                 if zephyr and test_config.config_name in [
                     # TODO(b/481786786): The four tests below are all disabled
                     # due to this issue.
+                    # go/keep-sorted start
                     "unaligned_access_bloonchipper_v2.0.4277",
                     "unaligned_access_bloonchipper_v2.0.5938",
                     "system_is_locked_wp_on_bloonchipper_v2.0.4277",
                     "system_is_locked_wp_on_bloonchipper_v2.0.5938",
+                    # go/keep-sorted end
                 ]:
                     return True
 
                 # bloonchipper EC tests to skip on Renode.
                 if test_name in [
+                    # go/keep-sorted start
                     "rtc_stm32f4",  # TODO(b/384991107)
+                    # go/keep-sorted end
                 ]:
                     return True
         elif board_config.name in [HELIPILOT, BUCCANEER, GWENDOLIN]:
             if test_name in [
+                # go/keep-sorted start
                 "exception",  # TODO(b/384730599)
                 "otp_key",  # TODO(b/385216796)
                 "ram_lock",  # TODO(b/385216805)
                 "rtc_npcx9",  # TODO(b/385217282)
+                # go/keep-sorted end
             ]:
                 return True
 
