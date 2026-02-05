@@ -73,7 +73,7 @@ static void board_suspend_handler(struct ap_power_ev_callback *cb,
 
 	case AP_POWER_SUSPEND:
 		value = 0;
-		i2c_target_driver_unregister(touchpad);
+		//i2c_target_driver_unregister(touchpad);
 		break;
 	}
 	gpio_pin_set_dt(GPIO_DT_FROM_NODELABEL(gpio_en_5v_usm), value);
