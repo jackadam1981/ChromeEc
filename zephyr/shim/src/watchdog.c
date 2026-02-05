@@ -8,6 +8,7 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "panic.h"
+#include "panic_trace.h"
 #include "panic_utils.h"
 #include "task.h"
 #include "watchdog.h"
@@ -267,6 +268,10 @@ __maybe_unused static void wdt_warning_handler(const struct device *wdt_dev,
 
 	if (IS_ENABLED(CONFIG_THREAD_MONITOR)) {
 		k_thread_foreach_unlocked(log_thread_info, NULL);
+	}
+
+	if (IS_ENABLED(CONFIG_PLATFORM_EC_PANIC_TRACE)) {
+		panic_trace_dump();
 	}
 
 	/* Save the current task id in panic info.

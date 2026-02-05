@@ -1888,6 +1888,17 @@
  */
 #undef CONFIG_PANIC_LOG_DEBUG
 
+/**
+ */
+#undef CONFIG_PANIC_TRACE
+/* Size of panic trace size in bytes. Must be a power of 2. */
+#define CONFIG_PANIC_TRACE_SIZE 2048
+/**
+ * Enables panic trace debug features,
+ * including the `panictrace` console command.
+ */
+#undef CONFIG_PANIC_TRACE_DEBUG
+
 /*
  * noinit_end_of_ram is a memory section placed at the very end
  * of used ram, where it is least likely to overlap with RO ram.

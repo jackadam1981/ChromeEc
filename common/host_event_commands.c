@@ -12,6 +12,7 @@
 #include "host_command.h"
 #include "lpc.h"
 #include "mkbp_event.h"
+#include "panic_trace.h"
 #include "power.h"
 #include "system.h"
 #include "task.h"
@@ -321,6 +322,14 @@ void host_set_events(host_event_t mask)
 	if (!((events & mask) != mask || (events_copy_b & mask) != mask))
 		return;
 
+	if (IS_ENABLED(CONFIG_PANIC_TRACE)) {
+		for (int i = 0; i < 64; i++) {
+			if (mask & (1 << i))
+				panic_trace_write_1(
+					PANIC_TRACE_TAG_HOST_EVENT_SET, i);
+		}
+	}
+
 	HOST_EVENT_CPRINTS("event set", mask);
 
 	if (!IS_ENABLED(CONFIG_ZTEST) &&
@@ -367,6 +376,15 @@ void host_clear_events(host_event_t mask)
 	/* return early if nothing changed */
 	if (!(events & mask))
 		return;
+
+	if (IS_ENABLED(CONFIG_PANIC_TRACE) &&
+	    panic_trace_tag_is_enabled(PANIC_TRACE_TAG_HOST_EVENT_CLEAR)) {
+		for (int i = 0; i < 64; i++) {
+			if (mask & (1 << i))
+				panic_trace_write_1(
+					PANIC_TRACE_TAG_HOST_EVENT_CLEAR, i);
+		}
+	}
 
 	HOST_EVENT_CPRINTS("event clear", mask);
 

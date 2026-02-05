@@ -76,4 +76,30 @@ config PLATFORM_EC_PANIC_LOG_DEBUG
 	  Enables panic log debug features, including
 	  the `paniclog` console command.
 
+config PLATFORM_EC_PANIC_TRACE
+	bool "Enable EC panic trace"
+	default n
+	select PLATFORM_EC_PRESERVED_RING_BUF
+	depends on !CROS_EC_RO || ZTEST
+	help
+	  When enabled, a high-resolution execution trace is kept in
+	  preserved uninitialized ram. The trace can be dumped
+	  after a panic for debugging.
+
+config PLATFORM_EC_PANIC_TRACE_SIZE
+	int "Size of EC panic trace in bytes"
+	default 1024
+	depends on PLATFORM_EC_PANIC_TRACE
+	help
+	  Size of the EC panic trace in entries (uint16_t).
+	  Must be a power of 2.
+
+config PLATFORM_EC_PANIC_TRACE_DEBUG
+	bool "Enables panic trace debug features"
+	default n
+	depends on PLATFORM_EC_PANIC_TRACE
+	help
+	  Enables panic trace debug features, including
+	  the `panictrace` console command.
+
 endif # PLATFORM_EC_PANIC
