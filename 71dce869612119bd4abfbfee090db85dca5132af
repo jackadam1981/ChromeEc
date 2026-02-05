@@ -134,6 +134,30 @@
       },
       "revId": "71dce869612119bd4abfbfee090db85dca5132af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9d11da0_0b1db9bb",
+        "filename": "zephyr/program/ocelot/ocelotrvp-ite/project.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-02-05T18:07:24Z",
+      "side": 1,
+      "message": "`CONFIG_PLATFORM_EC_USB_PD_FRS_PPC` is a TCPM option. We don\u0027t use PPCs (power path controllers) in PDC boards",
+      "parentUuid": "886bc3b8_c6027d04",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 31
+      },
+      "revId": "71dce869612119bd4abfbfee090db85dca5132af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
