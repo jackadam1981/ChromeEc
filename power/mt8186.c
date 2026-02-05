@@ -109,12 +109,13 @@ static bool power_is_enough(void)
 
 	poll_deadline.val = get_time().val + CAN_BOOT_AP_CHECK_TIMEOUT;
 
-	while (!system_can_boot_ap() &&
-	       !timestamp_expired(poll_deadline, NULL)) {
+	while (!timestamp_expired(poll_deadline, NULL)) {
+		if (system_can_boot_ap())
+			return 1;
 		crec_usleep(CAN_BOOT_AP_CHECK_WAIT);
 	}
 
-	return system_can_boot_ap();
+	return 0;
 }
 #endif /* CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON */
 
