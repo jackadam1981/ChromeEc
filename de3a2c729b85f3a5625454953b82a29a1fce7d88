@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c047fc93_ec249a8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2026-02-05T23:51:05Z",
+      "side": 1,
+      "message": "In addition to some lesser defects, this doesn\u0027t build yet. I\u0027m seeing linker errors for `pdc_power_mgmt` functions, even though `PDC_USB_PDC_POWER_MGMT` is enabled. Still debugging this.",
+      "revId": "de3a2c729b85f3a5625454953b82a29a1fce7d88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
