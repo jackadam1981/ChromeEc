@@ -62,6 +62,30 @@
       },
       "revId": "1a0c7f786bb6e82813afdba7d2e4a2f57591dfec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e21a000e_02b07df7",
+        "filename": "zephyr/program/ocelot/ocelotrvp-ite/project.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-02-05T18:52:11Z",
+      "side": 1,
+      "message": "See http://b/482060484 for a proposal on how to deal with this.",
+      "parentUuid": "828e1511_49d374a6",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 31
+      },
+      "revId": "1a0c7f786bb6e82813afdba7d2e4a2f57591dfec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
