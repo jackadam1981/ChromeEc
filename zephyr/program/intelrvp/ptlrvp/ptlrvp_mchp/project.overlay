@@ -12,6 +12,7 @@
 #include "fan.dtsi"
 #include "gpio.dtsi"
 #include "i2c.dts"
+#include "imvp.dtsi"
 #include "keyboard.dtsi"
 #include "vci.dtsi"
 #include "../battery.dtsi"
@@ -74,10 +75,7 @@
           col-size = <13>;
 };
 
-&charger_i2c {
-	cros_imvp: richtek-imvp@20 {
-		compatible = "richtek,rt3645";
-		status = "okay";
-		reg = <0x20>;
-	};
+&cros_imvp{
+		enable-gpios = <MCHP_GPIO_DECODE_226 GPIO_ACTIVE_HIGH>;
 };
+
