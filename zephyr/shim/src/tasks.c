@@ -90,7 +90,7 @@ static struct task_ctx_base_data *task_get_base_data(task_id_t cros_task_id)
 	return &shimmed_tasks_data[cros_task_id];
 }
 
-test_export_static k_tid_t get_idle_thread(void)
+k_tid_t get_idle_thread(void)
 {
 	extern struct k_thread z_idle_threads[];
 
@@ -131,6 +131,18 @@ test_mockable k_tid_t get_hostcmd_thread(void)
 #endif /* HAS_TASK_HOSTCMD */
 	__ASSERT(false, "HOSTCMD task is not enabled");
 	return NULL;
+}
+
+const char *task_get_name(task_id_t task_id)
+{
+	if (task_id == TASK_ID_INVALID) {
+		return "Invalid";
+	}
+	k_tid_t thread_id = task_id_to_thread_id(task_id);
+	if (thread_id == NULL) {
+		return "NULL";
+	}
+	return k_thread_name_get(thread_id);
 }
 
 k_tid_t task_id_to_thread_id(task_id_t task_id)
