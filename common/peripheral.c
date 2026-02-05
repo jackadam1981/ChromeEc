@@ -12,6 +12,7 @@
 
 #if defined(CONFIG_USB_PD_CONTROLLER)
 #include "usbc/pdc_power_mgmt.h"
+#include "zephyr/shim/include/i2c/i2c.h"
 #endif
 
 #ifdef CONFIG_HOSTCMD_LOCATE_CHIP
