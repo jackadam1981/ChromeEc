@@ -16,6 +16,24 @@
       "message": "If this isn\u0027t in ec-legacy, it should go there as well.",
       "revId": "35db6cb11bbbec83eb10c675f4adfc43e566cb9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c8b12db_85472bd1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3900655
+      },
+      "writtenOn": "2026-02-05T10:46:46Z",
+      "side": 1,
+      "message": "I see these code changes in the ec-legacy codebase eventhough `ec-legacy` is not mentioned in the `Cherry picks` section.",
+      "parentUuid": "4ae6683c_ef3c26bc",
+      "revId": "35db6cb11bbbec83eb10c675f4adfc43e566cb9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
