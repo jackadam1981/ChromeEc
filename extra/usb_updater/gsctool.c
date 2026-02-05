@@ -2633,13 +2633,13 @@ static int show_headers_versions(const struct image *image,
 		/* Print the devid if any slot has a non-zero devid. */
 		print_devid |= dev_id0_[slot_idx] | dev_id1_[slot_idx];
 		/*
-		 * If board ID is a 4-uppercase-letter string (as it ought to
+		 * If board ID is a 4-alphanumeric string (as it ought to
 		 * be), print it as 4 letters, otherwise print it as an 8-digit
 		 * hex.
 		 */
 		cur_bid = bid[slot_idx].id;
 		for (j = 0; j < sizeof(cur_bid); ++j)
-			if (!isupper(((const char *)&cur_bid)[j]))
+			if (!isalnum(((const char *)&cur_bid)[j]))
 				break;
 
 		if (j == sizeof(cur_bid)) {
@@ -4037,7 +4037,7 @@ void process_bid(struct transfer_descriptor *td,
 			print_machine_output("BID_FLAGS", "%08x", bid->flags);
 
 			for (int i = 0; i < 4; i++) {
-				if (!isupper(((const char *)bid)[i])) {
+				if (!isalnum(((const char *)bid)[i])) {
 					print_machine_output("BID_RLZ", "%s",
 							     "????");
 					return;
