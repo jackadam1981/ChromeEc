@@ -1865,8 +1865,10 @@ test_mockable int system_can_boot_ap(void)
 	/* Require a minimum battery level to power on. If battery isn't
 	 * present, battery_state_of_charge_abs returns false. */
 	if (battery_state_of_charge_abs(&soc) == EC_SUCCESS &&
-	    soc >= CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON)
+	    soc >= CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON) {
+		CPRINTS("Debug: sysctem_can_boot_ap: soc: %d", soc);
 		return 1;
+	}
 #endif
 
 #if defined(CONFIG_CHARGE_MANAGER) && \
