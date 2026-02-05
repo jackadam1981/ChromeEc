@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e1e92941_24d180e2",
+        "filename": "zephyr/dts/bindings/imvp/richtek,rt3645.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2026-02-05T21:52:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e09bad1_037dc3b4",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 88
+      },
+      "revId": "ad8ff0a0300528ba7d540624955a78f9d2f03799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "0a484701_98afb0e8",
         "filename": "zephyr/program/ocelot/rvp_imvp.dtsi",
         "patchSetId": 7
