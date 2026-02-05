@@ -799,6 +799,7 @@ static enum smf_state_result st_init_run(void *o)
 
 	switch (data->init_local_state) {
 	case INIT_PDC_ENABLE:
+		LOG_INF("PDC: INIT_PDC_ENABLE Start");
 		rv = rts54_enable(data->dev);
 		if (rv) {
 			LOG_ERR("RTK%d:, Internal(INIT_PDC_ENABLE)", cnum);
@@ -806,8 +807,10 @@ static enum smf_state_result st_init_run(void *o)
 			return SMF_EVENT_HANDLED;
 		}
 		init_write_cmd_and_change_state(data, INIT_PDC_GET_IC_STATUS);
+		LOG_INF("PDC: INIT_PDC_ENABLE End");
 		return SMF_EVENT_HANDLED;
 	case INIT_PDC_GET_IC_STATUS:
+		LOG_INF("PDC: PDC_GET_IC_STATUS Start");
 		rv = rts54_get_info(data->dev, &data->info, true);
 		if (rv) {
 			LOG_ERR("RTK%d:, Internal(INIT_PDC_GET_IC_STATUS)",
@@ -817,6 +820,7 @@ static enum smf_state_result st_init_run(void *o)
 		}
 		init_write_cmd_and_change_state(
 			data, INIT_PDC_SET_NOTIFICATION_ENABLE);
+		LOG_INF("PDC: PDC_GET_IC_STATUS End");
 		return SMF_EVENT_HANDLED;
 	case INIT_PDC_SET_NOTIFICATION_ENABLE:
 		rv = rts54_set_notification_enable(
@@ -1104,7 +1108,9 @@ static enum smf_state_result st_ping_status_run(void *o)
 	 * status. Otherwise PDC may be starved of time to execute commands.
 	 */
 	if (!sys_timepoint_expired(data->next_ping_status)) {
+		LOG_INF("rt54xx: st_ping_status_run wait start");
 		k_sleep(sys_timepoint_timeout(data->next_ping_status));
+		LOG_INF("rt54xx: st_ping_status_run wait end ");
 	}
 
 	/* Read the Ping Status */
@@ -2608,11 +2614,13 @@ static int rts54_set_comms_state(const struct device *dev, bool comms_active)
 		}
 
 		/* Wait for driver to enter the suspended state */
+		LOG_INF("rts54_set_comms_state wait start");
 		if (!WAIT_FOR((get_state(data) == ST_SUSPENDED),
 			      SUSPEND_TIMEOUT_USEC,
 			      k_sleep(K_MSEC(T_PING_STATUS)))) {
 			return -ETIMEDOUT;
 		}
+		LOG_INF("rts54_set_comms_state wait end");
 	}
 
 	return 0;
@@ -3216,6 +3224,7 @@ bool pdc_rts54xx_test_idle_wait(void)
 	for (int i = 0; i < 20; i++) {
 		num_finished = 0;
 
+		LOG("rts54xx_test_idle_wait");
 		k_msleep(100);
 		for (int port = 0; port < ARRAY_SIZE(pdc_data); port++) {
 			if (!device_is_ready(pdc_data[port]->dev)) {
