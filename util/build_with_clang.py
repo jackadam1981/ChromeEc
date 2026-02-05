@@ -149,6 +149,7 @@ BOARDS_THAT_COMPILE_SUCCESSFULLY_WITH_CLANG = [
     "moonbuggy",
     "morphius",
     "moxie",
+    "moxoe",
     "nami",
     "nautilus",
     "nightfury",
