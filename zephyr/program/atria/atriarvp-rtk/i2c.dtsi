@@ -1,0 +1,25 @@
+/* Copyright 2026 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	named-i2c-ports {
+		compatible = "named-i2c-ports";
+
+		i2c_ec_i2c_charger: ec_i2c_charger {
+			i2c-port = <&i2c_0>;
+			enum-names = "I2C_PORT_BATTERY";
+		};
+	};
+};
+
+&i2c_0 {
+	label = "I2C_PORT_BATTERY";
+	clock-frequency = <I2C_BITRATE_STANDARD>;
+
+	pinctrl-0 = <&i2c00_clk_gpio094
+		     &i2c00_data_gpio095>;
+	pinctrl-names = "default";
+	status = "okay";
+};
