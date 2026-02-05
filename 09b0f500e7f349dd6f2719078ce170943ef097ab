@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7723f17_737c72ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2026-02-05T16:17:15Z",
+      "side": 1,
+      "message": "What is the difference between FR_Swap_Type_C_Current_Capability_As_Initial_Sink and FR_Swap_Reqd_Type_C_Current_As_Initial_Source which one do we support?",
+      "revId": "09b0f500e7f349dd6f2719078ce170943ef097ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "434dd0c8_2a9c82fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2026-02-05T16:17:15Z",
+      "side": 1,
+      "message": "What is the difference between FR_Swap_Type_C_Current_Capability_As_Initial_Sink and FR_Swap_Reqd_Type_C_Current_As_Initial_Source which one do we support?",
+      "revId": "09b0f500e7f349dd6f2719078ce170943ef097ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19252b4c_59f6dfdd",
+        "filename": "zephyr/program/ocelot/matsu/matsu_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2026-02-05T16:17:15Z",
+      "side": 1,
+      "message": "Should it remain false? I can see that generated VIF has this field set to false with comment \u0027Fixed to False\u0027",
+      "range": {
+        "startLine": 174,
+        "startChar": 9,
+        "endLine": 174,
+        "endChar": 42
+      },
+      "revId": "09b0f500e7f349dd6f2719078ce170943ef097ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de339744_87dd8fa6",
+        "filename": "zephyr/program/ocelot/program.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 3773521
+      },
+      "writtenOn": "2026-02-05T16:17:15Z",
+      "side": 1,
+      "message": "As I understand this will propagate to all ocelot platforms, is that right?",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 31
+      },
+      "revId": "09b0f500e7f349dd6f2719078ce170943ef097ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
