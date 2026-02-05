@@ -453,6 +453,7 @@ class Renode(Platform):
             if board_config.name == BLOONCHIPPER:
                 # bloonchipper Zephyr tests to skip on Renode.
                 if zephyr and test_name in [
+                    # # go/keep-sorted start
                     "abort",  # TODO(b/384094781)
                     "benchmark",  # TODO(b/390253975)
                     "exception",  # TODO(b/388327673)
@@ -470,6 +471,7 @@ class Renode(Platform):
                     "zephyr_counter_basic_api_stm32_subsec",
                     # TODO(b/390255521)
                     "timer",
+                    # go/keep-sorted end
                 ]:
                     return True
 
