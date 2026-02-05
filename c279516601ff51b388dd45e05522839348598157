@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47e25cbc_deb24d4e",
+        "filename": "power/mt8186.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1293716
+      },
+      "writtenOn": "2026-02-05T03:30:04Z",
+      "side": 1,
+      "message": "Grogu will check charge_manager_get_power_limit_uw in system_can_boot_ap@src/platform/ec/common/system.c  \n\nGiven below is declared at src/platform/ec/zephyr/program/skywalker/grogu/project.conf\n`CONFIG_PLATFORM_EC_CHARGER_MIN_POWER_MW_FOR_POWER_ON\u003d15001`\n\n\nCould you please also try adding below in src/platform/ec/zephyr/program/skywalker/grogu/project.conf\n\n`CONFIG_PLATFORM_EC_CHARGER_MIN_BAT_PCT_FOR_POWER_ON\u003d3` to see if we can also address the issue *without* changing logic in power/mt8186.c ??",
+      "revId": "c279516601ff51b388dd45e05522839348598157",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
