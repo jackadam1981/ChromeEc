@@ -16,6 +16,52 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "1a0c7f786bb6e82813afdba7d2e4a2f57591dfec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91236241_af23cb4b",
+        "filename": "zephyr/program/ocelot/ocelotrvp-ite/project.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-02-05T18:05:25Z",
+      "side": 1,
+      "message": "Delete this line (`# Disable options...`), include a newline at end of file, and add comment stating that FRS is only being enabled for ITE because only SKU 3 supports FRS.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 36
+      },
+      "revId": "1a0c7f786bb6e82813afdba7d2e4a2f57591dfec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "828e1511_49d374a6",
+        "filename": "zephyr/program/ocelot/ocelotrvp-ite/project.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-02-05T18:05:25Z",
+      "side": 1,
+      "message": "FYI, all Ocelot RVP images include both the TI and RTK drivers and do runtime selection based on detected PDC chips. This means if somebody attaches an ITE AIC with RTK PDCs, FRS will still be activated. Is that OK? If not, we need to make FRS support a runtime-selectable property. Not terribly difficult to do.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 31
+      },
+      "revId": "1a0c7f786bb6e82813afdba7d2e4a2f57591dfec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
