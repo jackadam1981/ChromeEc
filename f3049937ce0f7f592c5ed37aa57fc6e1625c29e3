@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fa685d6a_804b09c0",
+        "filename": "util/ectool_usb/command.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2026-02-05T10:21:39Z",
+      "side": 1,
+      "message": "I agree that checksum should be checked before, but I think that it is better to return provided result if it is not success before checking length. For example GET_NEXT_EVENT command can return UNAVAILABLE results and in this case payload is empty. This is quite useful for receive_event implementation in ectool.py.",
+      "parentUuid": "9f40a871_e82e4856",
+      "revId": "f3049937ce0f7f592c5ed37aa57fc6e1625c29e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a656d668_257d0eb7",
         "filename": "util/ectool_usb/communication.py",
         "patchSetId": 3
@@ -71,6 +89,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "84b64079_118c20af",
+        "filename": "util/ectool_usb/communication.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2026-02-05T10:21:39Z",
+      "side": 1,
+      "message": "I made it two separate functions with quite different behaviour but now they are using common _wait_for_interrupt helper function.",
+      "parentUuid": "a656d668_257d0eb7",
+      "revId": "f3049937ce0f7f592c5ed37aa57fc6e1625c29e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ff2d3958_bd4889a6",
         "filename": "util/ectool_usb/communication.py",
         "patchSetId": 3
@@ -82,6 +118,24 @@
       "writtenOn": "2026-01-28T08:20:42Z",
       "side": 1,
       "message": "Isn\u0027t it possible to miss the event this way? E.g. if a tool waits for the response_ready IRQ_type here, and the host command handler triggers the event, before host command response is ready.",
+      "revId": "f3049937ce0f7f592c5ed37aa57fc6e1625c29e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f8487a2_bbb9fcaa",
+        "filename": "util/ectool_usb/communication.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 4405694
+      },
+      "writtenOn": "2026-02-05T10:21:39Z",
+      "side": 1,
+      "message": "Yes, it is possible. Actually this is exactly what happens when making this call:\npython3 ectool.py fpmode mode_capture pattern1 \u0026\u0026 python3 ectool.py wait_for_event fingerprint\nMKBP related interrupt is raised before response to fpmode interrupt and \u0027wait\u0027 function consumes and ignores event interrupt. I handle this by checking if there are any waiting events in cmd_wait_for_event implementation in ectool.py. I think this is sufficient for sequential processing in python tool.",
+      "parentUuid": "ff2d3958_bd4889a6",
       "revId": "f3049937ce0f7f592c5ed37aa57fc6e1625c29e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
