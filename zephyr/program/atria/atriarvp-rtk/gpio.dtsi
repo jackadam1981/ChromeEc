@@ -1,0 +1,72 @@
+/* Copyright 2026 The ChromiumOS Authors
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+ / {
+	aliases {
+		gpio-wp = &gpio_ec_wp_odl;
+	};
+
+	named-gpios {
+		compatible = "named-gpios";
+
+		/* The legacy system code requires GPIO_ENTERING_RW symbol */
+		gpio_ec_entering_rw: ec_entering_rw {
+			enum-name = "GPIO_ENTERING_RW";
+		};
+
+		gpio_ec_gsc_packet_mode: ec_gsc_packet_mode {
+			gpios = <&gpiob 6 GPIO_OUTPUT_LOW>;
+			enum-name = "GPIO_PACKET_MODE_EN";
+		};
+		gpio_ec_wp_odl: ec_wp_odl { /* SPI_WP_H1 */
+			gpios = <&gpiob 14 (GPIO_INPUT | GPIO_VOLTAGE_1P8)>;
+		};
+		gpio_ec_smc_wake_l: ec_smc_wake_l {
+			gpios = <&gpiof 6 (GPIO_ODR_HIGH | GPIO_VOLTAGE_1P8)>;
+		};
+		gpio_ec_en_edp_bl: ec_en_edp_bl { /* EC_BKOFF# */
+			gpios = <&gpiof 11 GPIO_ODR_HIGH>;
+			enum-name = "GPIO_ENABLE_BACKLIGHT";
+		};
+		gpio_ec_acok_od: ec_acok_od {
+			gpios = <&gpioh 0 GPIO_INPUT_PULL_UP>;
+			enum-name = "GPIO_AC_PRESENT";
+		};
+		gpio_ec_pwr_btn_odl: ec_pwr_btn_odl {
+			gpios = <&gpioh 3 GPIO_INPUT>;
+			enum-name = "GPIO_POWER_BUTTON_L";
+		};
+		gpio_lid_open: lid_open {
+			gpios = <&gpioh 5 GPIO_INPUT>;
+			enum-name = "GPIO_LID_OPEN";
+		};
+		gpio_ec_soc_pwr_btn_odl: ec_soc_pwr_btn_odl {
+			gpios = <&gpioh 12 GPIO_ODR_HIGH>;
+			enum-name = "GPIO_PCH_PWRBTN_L";
+		};
+	};
+
+	gpio-interrupts {
+		compatible = "cros-ec,gpio-interrupts";
+		int_ac_present: ac_present {
+			irq-pin = <&gpio_ec_acok_od>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "extpower_interrupt";
+		};
+		int_power_button: power_button {
+			irq-pin = <&gpio_ec_pwr_btn_odl>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "power_button_interrupt";
+		};
+		int_lid_open: lid_open {
+			irq-pin = <&gpio_lid_open>;
+			flags = <GPIO_INT_EDGE_BOTH>;
+			handler = "lid_interrupt";
+		};
+	};
+};
+
+/* The eSPI shim requires this GPIO nodelabel */
+gpio_ec_pch_wake_odl: &gpio_ec_smc_wake_l {};
