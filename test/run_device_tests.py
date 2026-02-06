@@ -490,11 +490,19 @@ class Renode(Platform):
                 ]:
                     return True
         elif board_config.name in [HELIPILOT, BUCCANEER, GWENDOLIN]:
+            # helipilot/buccaneer/gwendolin tests to skip on Renode for both EC and Zephyr
             if test_name in [
                 "exception",  # TODO(b/384730599)
                 "otp_key",  # TODO(b/385216796)
                 "ram_lock",  # TODO(b/385216805)
                 "rtc_npcx9",  # TODO(b/385217282)
+            ]:
+                return True
+
+            # helipilot/buccaneer/gwendolin Zephyr test "variants" to skip on Renode.
+            if zephyr and test_config.config_name in [
+                "panic_data_helipilot_v2.0.24337",
+                "panic_data_helipilot_v2.0.27609",
             ]:
                 return True
 
