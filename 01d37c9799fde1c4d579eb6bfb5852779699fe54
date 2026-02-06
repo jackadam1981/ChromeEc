@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a51458cb_a72e7de2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2026-02-06T01:12:58Z",
+      "side": 1,
+      "message": "please run through C formatter.",
+      "revId": "01d37c9799fde1c4d579eb6bfb5852779699fe54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55cfcb9d_ca774550",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2026-02-06T01:12:58Z",
+      "side": 1,
+      "message": "can this be static const?",
+      "revId": "01d37c9799fde1c4d579eb6bfb5852779699fe54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4345043_779d9e10",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2026-02-06T01:12:58Z",
+      "side": 1,
+      "message": "is the chip guaranteed to be in page 0 in all cases?\nmight as well set to -1 or similar to force setting the page\nat the beginning of the update sequence.",
+      "range": {
+        "startLine": 73,
+        "startChar": 17,
+        "endLine": 73,
+        "endChar": 18
+      },
+      "revId": "01d37c9799fde1c4d579eb6bfb5852779699fe54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1a681df_cc4d0bdf",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2026-02-06T01:12:58Z",
+      "side": 1,
+      "message": "RT3645_PAGE_GLOBAL?",
+      "range": {
+        "startLine": 161,
+        "startChar": 23,
+        "endLine": 161,
+        "endChar": 26
+      },
+      "revId": "01d37c9799fde1c4d579eb6bfb5852779699fe54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bee5522c_9b4fd55a",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2026-02-06T01:12:58Z",
+      "side": 1,
+      "message": "i would probably write this as\n`(status_reg \u0026 BIT(stat_bit))`",
+      "range": {
+        "startLine": 170,
+        "startChar": 8,
+        "endLine": 170,
+        "endChar": 37
+      },
+      "revId": "01d37c9799fde1c4d579eb6bfb5852779699fe54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df445043_15ff3d91",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2026-02-06T01:12:58Z",
+      "side": 1,
+      "message": "i\u0027d move this into *store_config(). see my comment there about\nsetting  prev_page  to force the page.",
+      "range": {
+        "startLine": 226,
+        "startChar": 3,
+        "endLine": 226,
+        "endChar": 49
+      },
+      "revId": "01d37c9799fde1c4d579eb6bfb5852779699fe54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f423cd3d_d5a34f7d",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2026-02-06T01:12:58Z",
+      "side": 1,
+      "message": "check return status? looks like we need more error checking here.",
+      "range": {
+        "startLine": 238,
+        "startChar": 3,
+        "endLine": 238,
+        "endChar": 28
+      },
+      "revId": "01d37c9799fde1c4d579eb6bfb5852779699fe54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
