@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9575b706_67d5d2a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-02-06T01:17:28Z",
+      "side": 1,
+      "message": "Do you see any",
+      "revId": "23e84580ab54276f2bdd9300e203447fba1a0b6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9db8a2c_d6af83f7",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-02-06T01:17:28Z",
+      "side": 1,
+      "message": "Do you see any ways to add a unit test, so we can prevent bugs like this in the future? (Not needed for this CL.)\n\nAt one point I was trying to refactor all of the code to avoid so much global state. It may be hard to test without all the inputs/outputs being part of the function signature.",
+      "range": {
+        "startLine": 788,
+        "startChar": 0,
+        "endLine": 788,
+        "endChar": 74
+      },
+      "revId": "23e84580ab54276f2bdd9300e203447fba1a0b6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a69e8e2_04e44bd9",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 838,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-02-06T01:17:28Z",
+      "side": 1,
+      "message": "It would be nice if we could use RAII for this so we don\u0027t mess it up in future changes.\n\nA few ideas:\n\nLocal to function:\n\n```\nstruct cleanup {\n  ~cleanup() { \n    OPENSSL_cleanse(\u0026fp_enc_buffer, sizeof(fp_enc_buffer)); \n  }\n} cleanup_guard;\n```\n\nMore generic like [`absl::MakeCleanup`](https://github.com/abseil/abseil-cpp/blob/master/absl/cleanup/cleanup.h):\n\n```\ntemplate \u003ctypename F\u003e\nstruct ScopedCleanup {\n    F func;\n    ~ScopedCleanup() { func(); }\n};\n\nstatic enum ec_status fp_commit_template(std::span\u003cconst uint8_t\u003e context)\n{\n    ScopedCleanup cleanup([\u0026] {\n        OPENSSL_cleanse(\u0026fp_enc_buffer, sizeof(fp_enc_buffer));\n    });\n    // ...\n```\n\nLet\u0027s do it in a followup CL if you think it\u0027s worth it. There may be other places where this pattern could be useful.",
+      "range": {
+        "startLine": 838,
+        "startChar": 0,
+        "endLine": 838,
+        "endChar": 57
+      },
+      "revId": "23e84580ab54276f2bdd9300e203447fba1a0b6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
