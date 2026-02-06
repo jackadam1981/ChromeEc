@@ -70,6 +70,30 @@
       },
       "revId": "dfda31269e109839fde927e555d4f2f9d56eac4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65fa7469_dd691a74",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1537933
+      },
+      "writtenOn": "2026-02-06T11:37:13Z",
+      "side": 1,
+      "message": "I have explored the different platforms but enabling and disabling fan using enable_gpio is getting used in case of setting fan rpm manually only (when using \"fanset\" ec command).\n \nI have further dig deeper into this to understand, Is there any difference between fan specification which is varying for different platforms and have below findings.\n\n1. As per fan datasheet used for RVP platform, It is mentioned that minimum RPM would be 2900+/-600 at dutycycle 0%. Hence I have seen this behavior that fan is\nspinning even rpm is set to 0.\n\n2. But for brya platform, fan datasheet references that RPM would be 0 if dutycycle set to 0%. below is the link for datasheet for brya.\nhttps://drive.google.com/drive/folders/1wz8ob6bQFYxBd9747MnkiefXRlq6ktjC\n\nSo this change seems to be a generic solution for handling different platforms with different fan specifications. Let me know what are your thoughts on this.",
+      "parentUuid": "0a6268b9_3462ec74",
+      "range": {
+        "startLine": 10,
+        "startChar": 51,
+        "endLine": 13,
+        "endChar": 15
+      },
+      "revId": "dfda31269e109839fde927e555d4f2f9d56eac4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
