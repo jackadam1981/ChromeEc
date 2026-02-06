@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46c09f4b_a9fd33e0",
+        "filename": "zephyr/program/bluey/mica/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2026-02-06T09:06:15Z",
+      "side": 1,
+      "message": "Change year to 2026",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "2478bbdcd3ae5d343b52545db47924c31b66e63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fccc11cb_e3d38fb8",
+        "filename": "zephyr/program/bluey/mica/fan.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2026-02-06T09:06:15Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "2478bbdcd3ae5d343b52545db47924c31b66e63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0480e87_111ba9a8",
+        "filename": "zephyr/program/bluey/mica/fan.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2026-02-06T09:06:15Z",
+      "side": 1,
+      "message": "Missing entry for enable-gpio\n\nplease add\n\n```\nenable-gpio \u003d \u003c\u0026gpio_ec_en_pp5000_fan\u003e;\n```",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 13
+      },
+      "revId": "2478bbdcd3ae5d343b52545db47924c31b66e63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "388b9815_9908f885",
+        "filename": "zephyr/program/bluey/mica/fan.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2026-02-06T09:06:15Z",
+      "side": 1,
+      "message": "Could you please confirm if this is as per fan datasheet ?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 19
+      },
+      "revId": "2478bbdcd3ae5d343b52545db47924c31b66e63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "650a10f3_4dc92dc5",
+        "filename": "zephyr/program/bluey/mica/gpios.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2026-02-06T09:06:15Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "2478bbdcd3ae5d343b52545db47924c31b66e63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b7da412_3636b2de",
+        "filename": "zephyr/program/bluey/mica/gpios.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2026-02-06T09:06:15Z",
+      "side": 1,
+      "message": "Could you please take an example from `bluey/bluey/gpios.dtsi` and mark all the unused gpios, interrupt and switchcap aliases.",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 1
+      },
+      "revId": "2478bbdcd3ae5d343b52545db47924c31b66e63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82ccea93_64a87368",
+        "filename": "zephyr/program/bluey/mica/gpios.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2026-02-06T09:06:15Z",
+      "side": 1,
+      "message": "Can all this settings and naming be as per schematics.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 3
+      },
+      "revId": "2478bbdcd3ae5d343b52545db47924c31b66e63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aaa6be78_2cdacad8",
+        "filename": "zephyr/program/bluey/mica/src/fan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 3391351
+      },
+      "writtenOn": "2026-02-06T09:06:15Z",
+      "side": 1,
+      "message": "this isn\u0027t required for this board, since the +3V_VREG_MISC defect shouldn\u0027t be for this board.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 2
+      },
+      "revId": "2478bbdcd3ae5d343b52545db47924c31b66e63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
