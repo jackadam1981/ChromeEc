@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "00ea7c53_ba88e6f1",
         "filename": "board/atlas_ish/board.c",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "Why is this code in board.c?\nIt is touchpad related. It could be reuse on other EC, \ncould driver/touchpad or even common/touchpad a better location?",
       "revId": "e020e80e42fb5d98a9fbe2bc1999cd2561943466",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "938cdb90_31d6ae11",
         "filename": "board/atlas_ish/centroiding",
@@ -31,10 +32,10 @@
       "side": 1,
       "message": "Is it time to move this code out of experimental? It is not experimental anymore :-).",
       "revId": "e020e80e42fb5d98a9fbe2bc1999cd2561943466",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "b93754b7_2abf1f2c",
         "filename": "board/atlas_ish/centroiding",
@@ -49,10 +50,10 @@
       "message": "Hi, the repository is named \u0027experimental-touch-fw\u0027 because we had no idea if we would ever use it in production at the beginning. The centroiding library has been used in Pixelbook\u0027s trackpad since then so we have reason to rename the repo. I would see how this can be done.",
       "parentUuid": "938cdb90_31d6ae11",
       "revId": "e020e80e42fb5d98a9fbe2bc1999cd2561943466",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "1f0dbf24_b6adf699",
         "filename": "board/atlas_ish/ec.tasklist",
@@ -72,10 +73,10 @@
         "endChar": 56
       },
       "revId": "e020e80e42fb5d98a9fbe2bc1999cd2561943466",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "5de14f2a_b58aa22d",
         "filename": "board/atlas_ish/gpio.inc",
@@ -89,10 +90,10 @@
       "side": 1,
       "message": "remove comment: everything in board/... is board specific.",
       "revId": "e020e80e42fb5d98a9fbe2bc1999cd2561943466",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "3d369091_2b8beab1",
         "filename": "board/atlas_ish/hid.h",
@@ -106,10 +107,10 @@
       "side": 1,
       "message": "Add source: https://usb.org/sites/default/files/documents/hid1_11.pdf?",
       "revId": "e020e80e42fb5d98a9fbe2bc1999cd2561943466",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "b61ddd6b_5afc8a1f",
         "filename": "board/atlas_ish/hid.h",
@@ -123,10 +124,10 @@
       "side": 1,
       "message": "It does not belong board. This is common HID code.",
       "revId": "e020e80e42fb5d98a9fbe2bc1999cd2561943466",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "50aa9128_e8e8177f",
         "filename": "board/atlas_ish/i2c_hid_master.c",
@@ -140,10 +141,10 @@
       "side": 1,
       "message": "use a less generic name, even if static.",
       "revId": "e020e80e42fb5d98a9fbe2bc1999cd2561943466",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "262d2515_10e75d5a",
         "filename": "board/atlas_ish/i2c_hid_master.c",
@@ -157,10 +158,10 @@
       "side": 1,
       "message": "EC is always little indian, consider using 16bit, or at least, use a macro.",
       "revId": "e020e80e42fb5d98a9fbe2bc1999cd2561943466",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "cf95b33a_03ec6ba2",
         "filename": "board/atlas_ish/ish_hid.c",
@@ -180,10 +181,10 @@
         "endChar": 17
       },
       "revId": "e020e80e42fb5d98a9fbe2bc1999cd2561943466",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "41b9e76b_7573f13e",
         "filename": "board/atlas_ish/tsc.c",
@@ -197,8 +198,287 @@
       "side": 1,
       "message": "This code belong in /driver directory.",
       "revId": "e020e80e42fb5d98a9fbe2bc1999cd2561943466",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ],
+  "submitRequirementResults": [
+    {
+      "submitRequirement": {
+        "name": "Admin-Approval",
+        "description": {
+          "value": "Changes to refs/meta/config must be approved by a git admin."
+        },
+        "applicabilityExpression": {
+          "value": {
+            "expressionString": "branch:refs/meta/config"
+          }
+        },
+        "submittabilityExpression": {
+          "expressionString": "(uploaderin:mdb/chrome-git-admins OR label:Code-Review\u003dMAX,group\u003dmdb/chrome-git-admins) AND label:Code-Review\u003dMAX,user\u003dnon_uploader AND -label:Code-Review\u003dMIN"
+        },
+        "overrideExpression": {
+          "value": {
+            "expressionString": "label:Bot-Commit\u003d+1 AND -label:Code-Review\u003dMIN"
+          }
+        },
+        "allowOverrideInChildProjects": false
+      },
+      "applicabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"branch:refs/meta/config"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["branch:refs/meta/config"],"atomExplanations":{"value":{"branch:refs/meta/config":""}}}
+      },
+      "submittabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"(uploaderin:mdb/chrome-git-admins OR label:Code-Review=MAX,group=mdb/chrome-git-admins) AND label:Code-Review=MAX,user=non_uploader AND -label:Code-Review=MIN"},"status":"NOT_EVALUATED","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":[],"atomExplanations":{"value":null}}
+      },
+      "overrideExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Bot-Commit=+1 AND -label:Code-Review=MIN"},"status":"NOT_EVALUATED","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":[],"atomExplanations":{"value":null}}
+      },
+      "patchSetCommitId": "e020e80e42fb5d98a9fbe2bc1999cd2561943466",
+      "legacy": {
+        "value": false
+      },
+      "forced": {},
+      "hidden": {}
+    },
+    {
+      "submitRequirement": {
+        "name": "BCID-Exit-Gate-Verified",
+        "description": {
+          "value": "BCID Exit Gate verification must be provided by the Exit Gate service."
+        },
+        "applicabilityExpression": {
+          "value": {
+            "expressionString": "is:bcid-exit-gate-applicable_gerrit"
+          }
+        },
+        "submittabilityExpression": {
+          "expressionString": "label:BCID-Exit-Gate-Verified\u003dMAX\u0026user\u003ddevtools-gerritcodereview-exitgate"
+        },
+        "overrideExpression": {},
+        "allowOverrideInChildProjects": false
+      },
+      "applicabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"is:bcid-exit-gate-applicable_gerrit"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["is:bcid-exit-gate-applicable_gerrit"],"atomExplanations":{"value":{"is:bcid-exit-gate-applicable_gerrit":""}}}
+      },
+      "submittabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"label:BCID-Exit-Gate-Verified=MAX&user=devtools-gerritcodereview-exitgate"},"status":"NOT_EVALUATED","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":[],"atomExplanations":{"value":null}}
+      },
+      "overrideExpressionResult": {},
+      "patchSetCommitId": "e020e80e42fb5d98a9fbe2bc1999cd2561943466",
+      "legacy": {
+        "value": false
+      },
+      "forced": {},
+      "hidden": {}
+    },
+    {
+      "submitRequirement": {
+        "name": "Code-Coverage",
+        "description": {
+          "value": "Submit requirement for the \u0027Code-Coverage\u0027 label"
+        },
+        "applicabilityExpression": {
+          "value": {
+            "expressionString": "-branch:refs/meta/config"
+          }
+        },
+        "submittabilityExpression": {
+          "expressionString": "label:Code-Coverage\u003dMAX,user\u003dnon_uploader OR -label:Code-Coverage\u003dMIN"
+        },
+        "overrideExpression": {
+          "value": {
+            "expressionString": "label:Bot-Commit\u003d+1"
+          }
+        },
+        "allowOverrideInChildProjects": true
+      },
+      "applicabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"-branch:refs/meta/config"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["branch:refs/meta/config"],"atomExplanations":{"value":{"branch:refs/meta/config":""}}}
+      },
+      "submittabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Code-Coverage=MAX,user=non_uploader OR -label:Code-Coverage=MIN"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["label:Code-Coverage=MAX,user=non_uploader","label:Code-Coverage=MIN"],"atomExplanations":{"value":{"label:Code-Coverage=MAX,user=non_uploader":"","label:Code-Coverage=MIN":""}}}
+      },
+      "overrideExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Bot-Commit=+1"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["label:Bot-Commit=+1"],"atomExplanations":{"value":{"label:Bot-Commit=+1":""}}}
+      },
+      "patchSetCommitId": "e020e80e42fb5d98a9fbe2bc1999cd2561943466",
+      "legacy": {
+        "value": false
+      },
+      "forced": {},
+      "hidden": {}
+    },
+    {
+      "submitRequirement": {
+        "name": "Code-Review",
+        "description": {
+          "value": "Submit requirement for the \u0027Code-Review\u0027 label"
+        },
+        "applicabilityExpression": {},
+        "submittabilityExpression": {
+          "expressionString": "label:Code-Review\u003dMAX,user\u003dnon_uploader -label:Code-Review\u003dMIN"
+        },
+        "overrideExpression": {
+          "value": {
+            "expressionString": "label:Bot-Commit\u003d+1 AND -label:Code-Review\u003dMIN"
+          }
+        },
+        "allowOverrideInChildProjects": true
+      },
+      "applicabilityExpressionResult": {},
+      "submittabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Code-Review=MAX,user=non_uploader -label:Code-Review=MIN"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":["label:Code-Review=MIN"],"failingAtoms":["label:Code-Review=MAX,user=non_uploader"],"atomExplanations":{"value":{"label:Code-Review=MAX,user=non_uploader":"","label:Code-Review=MIN":""}}}
+      },
+      "overrideExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Bot-Commit=+1 AND -label:Code-Review=MIN"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":["label:Code-Review=MIN"],"failingAtoms":["label:Bot-Commit=+1"],"atomExplanations":{"value":{"label:Bot-Commit=+1":"","label:Code-Review=MIN":""}}}
+      },
+      "patchSetCommitId": "e020e80e42fb5d98a9fbe2bc1999cd2561943466",
+      "legacy": {
+        "value": false
+      },
+      "forced": {},
+      "hidden": {}
+    },
+    {
+      "submitRequirement": {
+        "name": "MergeApprovedYolo",
+        "description": {
+          "value": "Submit requirement for Release-Owner (go/cros-merge-controls)"
+        },
+        "applicabilityExpression": {
+          "value": {
+            "expressionString": "branch:\"^refs/heads/release-R(13[2-9]|1[4-9][0-9]|[2-9][0-9]{2,}).+\\.B\""
+          }
+        },
+        "submittabilityExpression": {
+          "expressionString": "label:Release-Owner\u003dMAX"
+        },
+        "overrideExpression": {
+          "value": {
+            "expressionString": "uploader:chromeos-ci-prod@chromeos-bot.iam.gserviceaccount.com OR uploader:chromeos-ci-release@chromeos-bot.iam.gserviceaccount.com OR uploader:chromeos-ci-release@chromeos-release-bot.iam.gserviceaccount.com OR uploader:crostc-worker@crostc-chrotomation.iam.gserviceaccount.com"
+          }
+        },
+        "allowOverrideInChildProjects": true
+      },
+      "applicabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"branch:\"^refs/heads/release-R(13[2-9]|1[4-9][0-9]|[2-9][0-9]{2,}).+\\.B\""},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["branch:\"^refs/heads/release-R(13[2-9]|1[4-9][0-9]|[2-9][0-9]{2,}).+\\.B\""],"atomExplanations":{"value":{"branch:\"^refs/heads/release-R(13[2-9]|1[4-9][0-9]|[2-9][0-9]{2,}).+\\.B\"":""}}}
+      },
+      "submittabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Release-Owner=MAX"},"status":"NOT_EVALUATED","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":[],"atomExplanations":{"value":null}}
+      },
+      "overrideExpressionResult": {
+        "value": {"expression":{"expressionString":"uploader:chromeos-ci-prod@chromeos-bot.iam.gserviceaccount.com OR uploader:chromeos-ci-release@chromeos-bot.iam.gserviceaccount.com OR uploader:chromeos-ci-release@chromeos-release-bot.iam.gserviceaccount.com OR uploader:crostc-worker@crostc-chrotomation.iam.gserviceaccount.com"},"status":"NOT_EVALUATED","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":[],"atomExplanations":{"value":null}}
+      },
+      "patchSetCommitId": "e020e80e42fb5d98a9fbe2bc1999cd2561943466",
+      "legacy": {
+        "value": false
+      },
+      "forced": {},
+      "hidden": {}
+    },
+    {
+      "submitRequirement": {
+        "name": "No-Unresolved-Comments",
+        "description": {
+          "value": "Changes that have unresolved comments are not submittable. Unless overridden with Unresolved-Comment-Reason: \u003creason\u003e line in change message."
+        },
+        "applicabilityExpression": {
+          "value": {
+            "expressionString": "has:unresolved"
+          }
+        },
+        "submittabilityExpression": {
+          "expressionString": "-has:unresolved"
+        },
+        "overrideExpression": {
+          "value": {
+            "expressionString": "message:\"^.*Unresolved-Comment-Reason:.*\""
+          }
+        },
+        "allowOverrideInChildProjects": false
+      },
+      "applicabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"has:unresolved"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":["has:unresolved"],"failingAtoms":[],"atomExplanations":{"value":{"has:unresolved":""}}}
+      },
+      "submittabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"-has:unresolved"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":["has:unresolved"],"failingAtoms":[],"atomExplanations":{"value":{"has:unresolved":""}}}
+      },
+      "overrideExpressionResult": {
+        "value": {"expression":{"expressionString":"message:\"^.*Unresolved-Comment-Reason:.*\""},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["message:\"^.*Unresolved-Comment-Reason:.*\""],"atomExplanations":{"value":{"message:\"^.*Unresolved-Comment-Reason:.*\"":""}}}
+      },
+      "patchSetCommitId": "e020e80e42fb5d98a9fbe2bc1999cd2561943466",
+      "legacy": {
+        "value": false
+      },
+      "forced": {},
+      "hidden": {}
+    },
+    {
+      "submitRequirement": {
+        "name": "Review-Enforcement",
+        "description": {
+          "value": "Two trusted contributors must approve the change. Uploading the change or voting positively on Code-Review count as approval. For Google employees, using a trusted device is required (http://go/gerrit-onboarding#review-enforcement). For non-Google employees,  ReAuth is required (https://chromium.googlesource.com/chromium/src/+/HEAD/docs/gerrit_reauth.md)."
+        },
+        "applicabilityExpression": {
+          "value": {
+            "expressionString": "is:review-enforced_gerrit"
+          }
+        },
+        "submittabilityExpression": {
+          "expressionString": "is:review-enforcement-satisfied_gerrit"
+        },
+        "overrideExpression": {},
+        "allowOverrideInChildProjects": false
+      },
+      "applicabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"is:review-enforced_gerrit"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":["is:review-enforced_gerrit"],"failingAtoms":[],"atomExplanations":{"value":{"is:review-enforced_gerrit":""}}}
+      },
+      "submittabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"is:review-enforcement-satisfied_gerrit"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["is:review-enforcement-satisfied_gerrit"],"atomExplanations":{"value":{"is:review-enforcement-satisfied_gerrit":"No approvals present"}}}
+      },
+      "overrideExpressionResult": {},
+      "patchSetCommitId": "e020e80e42fb5d98a9fbe2bc1999cd2561943466",
+      "legacy": {
+        "value": false
+      },
+      "forced": {},
+      "hidden": {}
+    },
+    {
+      "submitRequirement": {
+        "name": "Verified",
+        "description": {
+          "value": "CI or human verified the change"
+        },
+        "applicabilityExpression": {
+          "value": {
+            "expressionString": "-branch:refs/meta/config"
+          }
+        },
+        "submittabilityExpression": {
+          "expressionString": "label:Verified\u003dMAX AND -label:Verified\u003dMIN"
+        },
+        "overrideExpression": {
+          "value": {
+            "expressionString": "label:Bot-Commit\u003d+1"
+          }
+        },
+        "allowOverrideInChildProjects": true
+      },
+      "applicabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"-branch:refs/meta/config"},"status":"PASS","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["branch:refs/meta/config"],"atomExplanations":{"value":{"branch:refs/meta/config":""}}}
+      },
+      "submittabilityExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Verified=MAX AND -label:Verified=MIN"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["label:Verified=MAX","label:Verified=MIN"],"atomExplanations":{"value":{"label:Verified=MAX":"","label:Verified=MIN":""}}}
+      },
+      "overrideExpressionResult": {
+        "value": {"expression":{"expressionString":"label:Bot-Commit=+1"},"status":"FAIL","errorMessage":{"value":null},"passingAtoms":[],"failingAtoms":["label:Bot-Commit=+1"],"atomExplanations":{"value":{"label:Bot-Commit=+1":""}}}
+      },
+      "patchSetCommitId": "e020e80e42fb5d98a9fbe2bc1999cd2561943466",
+      "legacy": {
+        "value": false
+      },
+      "forced": {},
+      "hidden": {}
     }
   ]
 }
