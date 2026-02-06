@@ -570,8 +570,15 @@ static int set_chg_ctrl_mode(enum ec_charge_control_mode mode)
 	return EC_SUCCESS;
 }
 
+static int discharging_max_c_prev;
+
 static inline int battery_too_hot(int batt_temp_c)
 {
+	//CPRINTS("@ @ @ discharging_max_c -> %dC", batt_info->discharging_max_c);
+	if (discharging_max_c_prev != batt_info->discharging_max_c)
+		CPRINTS("discharging_max_c -> %dC", batt_info->discharging_max_c);
+
+	discharging_max_c_prev = batt_info->discharging_max_c;
 	return (!(curr.batt.flags & BATT_FLAG_BAD_TEMPERATURE) &&
 		(batt_temp_c > batt_info->discharging_max_c));
 }
@@ -611,6 +618,8 @@ board_critical_shutdown_check(struct charge_state_data *curr)
 static int is_battery_critical(void)
 {
 	int batt_temp_c = DECI_KELVIN_TO_CELSIUS(curr.batt.temperature);
+
+	CPRINTS("Batt: %dC", batt_temp_c);
 
 	/*
 	 * TODO(crosbug.com/p/27642): The thermal loop should watch the battery
