@@ -47,15 +47,15 @@ i2c3ALT: &i2c3 {
                 cosmx_313-ac-38-a {
                         compatible = "cosmx,313-ac-38-a", "battery-smart";
                 };
-                cosmx_333-ac-3f-a {
-                        compatible = "cosmx,333-ac-3f-a", "battery-smart";
-                };
+                // cosmx_333-ac-3f-a {
+                //         compatible = "cosmx,333-ac-3f-a", "battery-smart";
+                // };
                 dynapack_313-27-38-a {
                         compatible = "dynapack,313-27-38-a", "battery-smart";
                 };
-                dynapack_313-27-3f-a {
-                        compatible = "dynapack,313-27-3f-a", "battery-smart";
-                };
+                // dynapack_313-27-3f-a {
+                //         compatible = "dynapack,313-27-3f-a", "battery-smart";
+                // };
                 dynapack_333-2d-38-a {
                         compatible = "dynapack,333-2d-38-a", "battery-smart";
                 };
