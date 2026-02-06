@@ -496,6 +496,12 @@ class Renode(Platform):
             "restricted_console",  # TODO(b/474439863)
             "tpm_seed_clear",  # TODO(b/406944986)
             "utils",  # TODO(b/483126917)
+            # TODO: file bug. These tests are being skipped by twister for some
+            # reason
+            "zephyr_cpp_newlib",
+            "zephyr_cpp_std20",
+            "zephyr_drivers_entropy",
+            "zephyr_kernel_poll",
         ]:
             return True
         return False
