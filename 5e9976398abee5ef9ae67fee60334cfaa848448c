@@ -22,6 +22,23 @@
       },
       "revId": "5e9976398abee5ef9ae67fee60334cfaa848448c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b01e1fb_d1d6ab8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-02-06T23:47:35Z",
+      "side": 1,
+      "message": "We\u0027ll need to make sure this gets synced to the `ec-legacy` branch.\n\nI\u0027m not sure if copybot is [set up to sync this file](http://b/480127970).",
+      "revId": "5e9976398abee5ef9ae67fee60334cfaa848448c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
