@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d112c74e_75fd2306",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2026-02-06T20:43:49Z",
+      "side": 1,
+      "message": "\u003e Do you see any\n\nI think this was supposed to be question about unit tests 😊",
+      "parentUuid": "9575b706_67d5d2a9",
+      "revId": "23e84580ab54276f2bdd9300e203447fba1a0b6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9db8a2c_d6af83f7",
@@ -31,6 +49,30 @@
       "writtenOn": "2026-02-06T01:17:28Z",
       "side": 1,
       "message": "Do you see any ways to add a unit test, so we can prevent bugs like this in the future? (Not needed for this CL.)\n\nAt one point I was trying to refactor all of the code to avoid so much global state. It may be hard to test without all the inputs/outputs being part of the function signature.",
+      "range": {
+        "startLine": 788,
+        "startChar": 0,
+        "endLine": 788,
+        "endChar": 74
+      },
+      "revId": "23e84580ab54276f2bdd9300e203447fba1a0b6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "019eb696_63e57b8d",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2026-02-06T20:43:49Z",
+      "side": 1,
+      "message": "\u003e Do you see any ways to add a unit test, so we can prevent bugs like this in the future?\n\nYup. https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7551951\n\n\u003e At one point I was trying to refactor all of the code to avoid so much global state.\n\nFirst of all, we have to stop sharing FPSENSOR state with HOSTCMD and CONSOLE tasks. This way we will avoid handling concurrency at all and we will gain better control about what we are returning from Host Command.",
+      "parentUuid": "d9db8a2c_d6af83f7",
       "range": {
         "startLine": 788,
         "startChar": 0,
