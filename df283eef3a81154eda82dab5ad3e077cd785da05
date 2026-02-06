@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "465530b8_34a133f3",
+        "filename": "zephyr/emul/emul_egis660.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-02-06T12:12:59Z",
+      "side": 1,
+      "message": "Isn\u0027t the first byte sent as 0, because sensor receives the command during the first byte?",
+      "parentUuid": "cf87c75e_ab0d267d",
+      "revId": "df283eef3a81154eda82dab5ad3e077cd785da05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "924a93a1_c869463a",
         "filename": "zephyr/test/fingerprint/drivers/egis660/boards/native_sim.overlay",
         "patchSetId": 27

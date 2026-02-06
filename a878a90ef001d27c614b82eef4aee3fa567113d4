@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "845b8cdf_1a5f06e2",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-02-06T12:12:59Z",
+      "side": 1,
+      "message": "Please use dedicated functions from [byteorder.h](https://github.com/zephyrproject-rtos/zephyr/blob/main/include/zephyr/sys/byteorder.h) like `sys_be16_to_cpu` if possible.",
+      "revId": "a878a90ef001d27c614b82eef4aee3fa567113d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e6b6bb2_3e741599",
+        "filename": "zephyr/emul/emul_egis660.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-02-06T12:12:59Z",
+      "side": 1,
+      "message": "Why did you change code of this code?",
+      "revId": "a878a90ef001d27c614b82eef4aee3fa567113d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
