@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75c8f1fa_9f3e77df",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-02-06T23:43:40Z",
+      "side": 1,
+      "message": "```suggestion\nThe equivalent of the Zephyr atomic_set() function\n(https://docs.zephyrproject.org/4.3.0/doxygen/html/group__atomic__apis.html#ga5f0555245d8932c2e7f7e94575e1a095)\nin EC is atomic_exchange().\n\nAdd atomic_set() to the EC code so that we can use it in code\nshared between EC and Zephyr.\n```",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 38
+      },
+      "revId": "5e9976398abee5ef9ae67fee60334cfaa848448c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
