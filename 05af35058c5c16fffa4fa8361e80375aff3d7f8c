@@ -331,6 +331,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4422e081_3fb9e948",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 4412439
+      },
+      "writtenOn": "2026-02-06T09:06:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30e708c8_999ceca5",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 16
+      },
+      "revId": "05af35058c5c16fffa4fa8361e80375aff3d7f8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c2db680_f08aec66",
@@ -486,6 +510,30 @@
       "side": 1,
       "message": "So you need to debug what happens. Failing tests can not force us to implement incorrect code.",
       "parentUuid": "33630c23_7ff48206",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 12
+      },
+      "revId": "05af35058c5c16fffa4fa8361e80375aff3d7f8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9036d9bf_1cee1621",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_pal.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 4412439
+      },
+      "writtenOn": "2026-02-06T09:06:02Z",
+      "side": 1,
+      "message": "Our private library has a latency of 1 millisecond for most of the time, so I previously referred to egis630 and fpc1025.",
+      "parentUuid": "00a81c6e_a113b865",
       "range": {
         "startLine": 111,
         "startChar": 1,
