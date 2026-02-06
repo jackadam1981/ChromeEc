@@ -16,6 +16,24 @@
       "message": "chip/npcx/espi.c: In function \u0027espi_vw_evt_pltrst\u0027:\nchip/npcx/espi.c:466:25: error: implicit declaration of function \u0027i8042_pause_to_host_queue\u0027 [-Wimplicit-function-declaration]\n  466 |                         i8042_pause_to_host_queue(false);",
       "revId": "1dcb94c8610aab363b81d09e298a0db07a0dffb0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98574cea_f71778ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2026-02-06T15:28:39Z",
+      "side": 1,
+      "message": "I think we need the other patch that was in the stack.",
+      "parentUuid": "f7b8274e_90d551fd",
+      "revId": "1dcb94c8610aab363b81d09e298a0db07a0dffb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
