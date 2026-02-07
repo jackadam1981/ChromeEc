@@ -114,6 +114,8 @@ struct pdc_info_t {
 	char driver_name[USB_PD_CHIP_INFO_DRIVER_NAME_LEN + 1];
 	/** If true, do not apply PDC FW updates to this port */
 	bool no_fw_update;
+	/** True if the PDC hardware supports FRS */
+	bool frs_supported;
 	/** Extra information (optional) */
 	uint16_t extra;
 };
@@ -137,6 +139,13 @@ struct pdc_hw_config_t {
 		struct i2c_dt_spec i2c;
 	};
 	bool ccd;
+};
+
+/**
+ * @brief FRS hardware support for PDC chip.
+ */
+struct pdc_hw_frs_support_t {
+	bool supported;
 };
 
 /**
@@ -242,6 +251,8 @@ typedef int (*pdc_get_info_t)(const struct device *dev, struct pdc_info_t *info,
 			      bool live);
 typedef int (*pdc_get_hw_config_t)(const struct device *dev,
 				   struct pdc_hw_config_t *config);
+typedef int (*pdc_get_hw_frs_support_t)(const struct device *dev,
+					struct pdc_hw_frs_support_t *frs_support);
 typedef int (*pdc_get_current_pdo_t)(const struct device *dev, uint32_t *pdo);
 typedef int (*pdc_read_power_level_t)(const struct device *dev);
 typedef int (*pdc_set_power_level_t)(const struct device *dev,
@@ -319,6 +330,7 @@ __subsystem struct pdc_driver_api {
 	pdc_read_power_level_t read_power_level;
 	pdc_get_info_t get_info;
 	pdc_get_hw_config_t get_hw_config;
+	pdc_get_hw_frs_support_t get_hw_frs_support;
 	pdc_set_power_level_t set_power_level;
 	pdc_reconnect_t reconnect;
 	pdc_update_retimer_fw_t update_retimer;
@@ -875,7 +887,7 @@ static inline int pdc_get_hw_config(const struct device *dev,
 	const struct pdc_driver_api *api =
 		(const struct pdc_driver_api *)dev->api;
 
-	__ASSERT(api->get_hw_config != NULL, "GET_INFO is not optional");
+	__ASSERT(api->get_hw_config != NULL, "GET_HW_CONFIG is not optional");
 
 	return api->get_hw_config(dev, config);
 }
@@ -1449,6 +1461,26 @@ static inline int pdc_set_frs(const struct device *dev, bool enable)
 	}
 
 	return api->set_frs(dev, enable);
+}
+
+/**
+ * @brief Get whether or not the PDC supports FRS.
+ *
+ * @param dev Pointer to the PDC device instance
+ * @param config Pointer to the PDC hardware configuration structure
+ * @return true if the PDC supports FRS, false otherwise.
+ */
+static inline int pdc_get_frs_supported(const struct device *dev,
+					 struct pdc_hw_frs_support_t *config)
+{
+	const struct pdc_driver_api *api =
+		(const struct pdc_driver_api *)dev->api;
+
+	if (api->get_hw_frs_support == NULL) {
+		return false;
+	}
+
+	return api->get_hw_frs_support(dev, config);
 }
 
 /**
