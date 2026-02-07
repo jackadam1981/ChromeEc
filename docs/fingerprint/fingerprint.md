@@ -120,18 +120,6 @@ See the [Unit Tests] documentation for details on how to [run the unit tests].
 (chroot) ~/trunk/src/platform/ec $ make BOARD=nocturne_fp utils-host -j
 ```
 
-## Build and run the `host_command` fuzz test
-
-<!-- mdformat off(b/139308852) -->
-*** note
-NOTE: For more details on fuzzing, see [Fuzz Testing in ChromeOS].
-***
-<!-- mdformat on -->
-
-```bash
-(chroot) ~/trunk/src/platform/ec $ make run-host_command_fuzz
-```
-
 ## Logs
 
 [`timberslide`] is a simple daemon that collects logs from the FPMCU and writes
