@@ -87,6 +87,24 @@
       "parentUuid": "a55d3b83_b70c1a2d",
       "revId": "a878a90ef001d27c614b82eef4aee3fa567113d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec4c0ae1_3ce1790d",
+        "filename": "zephyr/emul/emul_egis660.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 4412439
+      },
+      "writtenOn": "2026-02-09T13:48:57Z",
+      "side": 1,
+      "message": "I found the tests is referencing PAL layer. `test_pal_spi_write_read` -\u003e `z_impl_egis660_pal_spi_write_read` -\u003e `egis_sensor_spi_write_read`",
+      "parentUuid": "ee630e9d_b14c4a78",
+      "revId": "a878a90ef001d27c614b82eef4aee3fa567113d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
