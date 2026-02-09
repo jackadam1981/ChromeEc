@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b55b6e5a_857fa6be",
+        "filename": "zephyr/emul/emul_egis660.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 4412439
+      },
+      "writtenOn": "2026-02-09T03:12:02Z",
+      "side": 1,
+      "message": "the first bytes is dummy byte, will not be stored according to https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7155608/30/zephyr/drivers/fingerprint/fingerprint_egis660_pal.c#29",
+      "parentUuid": "465530b8_34a133f3",
+      "revId": "df283eef3a81154eda82dab5ad3e077cd785da05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "924a93a1_c869463a",
         "filename": "zephyr/test/fingerprint/drivers/egis660/boards/native_sim.overlay",
         "patchSetId": 27
