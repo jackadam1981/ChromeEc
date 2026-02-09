@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a8fb43f_f84dc40e",
+        "filename": "zephyr/program/bluey/mica/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4509619
+      },
+      "writtenOn": "2026-02-09T02:22:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46c09f4b_a9fd33e0",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "2478bbdcd3ae5d343b52545db47924c31b66e63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fccc11cb_e3d38fb8",
@@ -54,6 +78,30 @@
       "writtenOn": "2026-02-06T09:06:15Z",
       "side": 1,
       "message": "same here",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "2478bbdcd3ae5d343b52545db47924c31b66e63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f4814c1_acdd2b38",
+        "filename": "zephyr/program/bluey/mica/fan.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4509619
+      },
+      "writtenOn": "2026-02-09T02:22:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fccc11cb_e3d38fb8",
       "range": {
         "startLine": 1,
         "startChar": 13,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff494bf1_e5e35735",
+        "filename": "zephyr/program/bluey/mica/fan.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 4509619
+      },
+      "writtenOn": "2026-02-09T02:22:30Z",
+      "side": 1,
+      "message": "The config is just used to init project, and modifications will be made later for the mica hardware design.",
+      "parentUuid": "f0480e87_111ba9a8",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 13
+      },
+      "revId": "2478bbdcd3ae5d343b52545db47924c31b66e63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "388b9815_9908f885",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa08bcf2_183ca3d7",
+        "filename": "zephyr/program/bluey/mica/fan.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 4509619
+      },
+      "writtenOn": "2026-02-09T02:22:30Z",
+      "side": 1,
+      "message": "The config is just used to init project, and modifications will be made later for the mica hardware design.",
+      "parentUuid": "388b9815_9908f885",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 19
+      },
+      "revId": "2478bbdcd3ae5d343b52545db47924c31b66e63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "650a10f3_4dc92dc5",
@@ -123,6 +219,30 @@
       "writtenOn": "2026-02-06T09:06:15Z",
       "side": 1,
       "message": "same here",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "2478bbdcd3ae5d343b52545db47924c31b66e63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4536de0_a5bfa12f",
+        "filename": "zephyr/program/bluey/mica/gpios.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4509619
+      },
+      "writtenOn": "2026-02-09T02:22:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "650a10f3_4dc92dc5",
       "range": {
         "startLine": 1,
         "startChar": 13,
@@ -179,6 +299,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54bce43d_df99c849",
+        "filename": "zephyr/program/bluey/mica/gpios.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 4509619
+      },
+      "writtenOn": "2026-02-09T02:22:30Z",
+      "side": 1,
+      "message": "The config is just used to init project, and modifications will be made later for the mica hardware design.",
+      "parentUuid": "5b7da412_3636b2de",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 1
+      },
+      "revId": "2478bbdcd3ae5d343b52545db47924c31b66e63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12a79755_a59edded",
+        "filename": "zephyr/program/bluey/mica/gpios.dtsi",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 4509619
+      },
+      "writtenOn": "2026-02-09T02:22:30Z",
+      "side": 1,
+      "message": "The config is just used to init project, and modifications will be made later for the mica hardware design.",
+      "parentUuid": "82ccea93_64a87368",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 3
+      },
+      "revId": "2478bbdcd3ae5d343b52545db47924c31b66e63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aaa6be78_2cdacad8",
@@ -192,6 +360,30 @@
       "writtenOn": "2026-02-06T09:06:15Z",
       "side": 1,
       "message": "this isn\u0027t required for this board, since the +3V_VREG_MISC defect shouldn\u0027t be for this board.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 2
+      },
+      "revId": "2478bbdcd3ae5d343b52545db47924c31b66e63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "371f7666_3cf85836",
+        "filename": "zephyr/program/bluey/mica/src/fan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 4509619
+      },
+      "writtenOn": "2026-02-09T02:22:30Z",
+      "side": 1,
+      "message": "The config is just used to init project, and modifications will be made later for the mica hardware design.",
+      "parentUuid": "aaa6be78_2cdacad8",
       "range": {
         "startLine": 40,
         "startChar": 0,
