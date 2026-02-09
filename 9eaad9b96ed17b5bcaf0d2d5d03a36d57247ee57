@@ -22,6 +22,30 @@
       },
       "revId": "9eaad9b96ed17b5bcaf0d2d5d03a36d57247ee57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8626d0af_0b883cd2",
+        "filename": "zephyr/test/fingerprint/task/src/fpsensor_template.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 920,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2026-02-09T12:55:43Z",
+      "side": 1,
+      "message": "`~expected_enc_info.tag[0]` has type `int` and clang complains about implicit conversion from `int` to `uint8_t`. I decided to XOR with 0xFF, which does the same.",
+      "parentUuid": "9cd0b000_36ee19c9",
+      "range": {
+        "startLine": 920,
+        "startChar": 0,
+        "endLine": 920,
+        "endChar": 41
+      },
+      "revId": "9eaad9b96ed17b5bcaf0d2d5d03a36d57247ee57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
