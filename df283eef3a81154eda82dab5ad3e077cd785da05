@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be7ac371_d7fa39d1",
+        "filename": "zephyr/emul/emul_egis660.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-02-09T11:37:13Z",
+      "side": 1,
+      "message": "As I mentioned, PAL layer is not used in tests. From the emulator perspective, it shouldn\u0027t make difference how prepares the SPI packets, you need to handle the packets correctly. You can not make any assumptions how the SPI buffer set is prepared.",
+      "parentUuid": "b55b6e5a_857fa6be",
+      "revId": "df283eef3a81154eda82dab5ad3e077cd785da05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "924a93a1_c869463a",
         "filename": "zephyr/test/fingerprint/drivers/egis660/boards/native_sim.overlay",
         "patchSetId": 27
