@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddf3af35_fb36432e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2026-02-09T12:48:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75c8f1fa_9f3e77df",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 38
+      },
+      "revId": "5e9976398abee5ef9ae67fee60334cfaa848448c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b01e1fb_d1d6ab8b",
@@ -37,6 +61,24 @@
       "writtenOn": "2026-02-06T23:47:35Z",
       "side": 1,
       "message": "We\u0027ll need to make sure this gets synced to the `ec-legacy` branch.\n\nI\u0027m not sure if copybot is [set up to sync this file](http://b/480127970).",
+      "revId": "5e9976398abee5ef9ae67fee60334cfaa848448c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6deca70_15aefc56",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2026-02-09T12:48:21Z",
+      "side": 1,
+      "message": "Yeah. I think, I\u0027ll merge this CL first, then cherry-pick to `ec-legacy` if needed.",
+      "parentUuid": "8b01e1fb_d1d6ab8b",
       "revId": "5e9976398abee5ef9ae67fee60334cfaa848448c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
