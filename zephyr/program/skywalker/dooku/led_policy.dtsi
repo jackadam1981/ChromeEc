@@ -22,8 +22,9 @@
 			};
 		};
 
-		power-state-near-full {
+		power-state-near-full-s0 {
 			charge-state = "LED_PWRS_CHARGE_NEAR_FULL";
+			chipset-state = "POWER_S0";
 
 			battery-led {
 				led-id = "EC_LED_ID_BATTERY_LED";
@@ -34,8 +35,22 @@
 			};
 		};
 
-		power-state-discharge {
+		power-state-near-full-s5 {
+			charge-state = "LED_PWRS_CHARGE_NEAR_FULL";
+			chipset-state = "POWER_S5";
+
+			battery-led {
+				led-id = "EC_LED_ID_BATTERY_LED";
+
+				color-0 {
+					led-color = <&battery_led_white>;
+				};
+			};
+		};
+
+		power-state-discharge-s0 {
 			charge-state = "LED_PWRS_DISCHARGE";
+			chipset-state = "POWER_S0";
 			batt-lvl = <5 BATTERY_LEVEL_FULL>;
 
 			battery-led {
@@ -47,8 +62,49 @@
 			};
 		};
 
-		power-state-discharge-batt-low {
+		power-state-discharge-batt-low-s0 {
 			charge-state = "LED_PWRS_DISCHARGE";
+			chipset-state = "POWER_S0";
+			batt-lvl = <BATTERY_LEVEL_EMPTY 4>;
+
+			battery-led {
+				led-id = "EC_LED_ID_BATTERY_LED";
+
+				transition = "LED_TRANSITION_LINEAR";
+
+				/* Amber slow flashing */
+				color-0 {
+					led-color = <&battery_led_amber>;
+					period-ms = <0>;
+				};
+				color-1 {
+					led-color = <&battery_led_amber>;
+					period-ms = <125>;
+				};
+				color-2 {
+					led-color = <&battery_led_off>;
+					period-ms = <875>;
+				};
+			};
+		};
+
+		power-state-discharge-s5 {
+			charge-state = "LED_PWRS_DISCHARGE";
+			chipset-state = "POWER_S5";
+			batt-lvl = <5 BATTERY_LEVEL_FULL>;
+
+			battery-led {
+				led-id = "EC_LED_ID_BATTERY_LED";
+
+				color-0 {
+					led-color = <&battery_led_off>;
+				};
+			};
+		};
+
+		power-state-discharge-batt-low-s5 {
+			charge-state = "LED_PWRS_DISCHARGE";
+			chipset-state = "POWER_S5";
 			batt-lvl = <BATTERY_LEVEL_EMPTY 4>;
 
 			battery-led {
@@ -124,5 +180,55 @@
 			};
 		};
 
+		/*
+		 * Override battery LEDs for Dooku is non-power LED design,
+		 * blinking battery white LEDs to indicate system suspend
+		 * with non-charging state.
+		 */
+		power-state-discharge-s3 {
+			charge-state = "LED_PWRS_DISCHARGE";
+			chipset-state = "POWER_S3";
+
+			power-led {
+				led-id = "EC_LED_ID_BATTERY_LED";
+				transition = "LED_TRANSITION_LINEAR";
+
+				color-0 {
+					led-color = <&battery_led_white>;
+					period-ms = <1500>;
+				};
+				color-1 {
+					led-color = <&battery_led_off>;
+					period-ms = <1500>;
+				};
+				color-2 {
+					led-color = <&battery_led_off>;
+					period-ms = <1500>;
+				};
+			};
+		};
+
+		power-state-near-full-s3 {
+			charge-state = "LED_PWRS_CHARGE_NEAR_FULL";
+			chipset-state = "POWER_S3";
+
+			power-led {
+				led-id = "EC_LED_ID_BATTERY_LED";
+				transition = "LED_TRANSITION_LINEAR";
+
+				color-0 {
+					led-color = <&battery_led_white>;
+					period-ms = <1500>;
+				};
+				color-1 {
+					led-color = <&battery_led_off>;
+					period-ms = <1500>;
+				};
+				color-2 {
+					led-color = <&battery_led_off>;
+					period-ms = <1500>;
+				};
+			};
+		};
 	};
 };
