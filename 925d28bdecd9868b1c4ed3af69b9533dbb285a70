@@ -16,6 +16,24 @@
       "message": "```\ndevicetree error: \u0027enable-gpios\u0027 is marked as required in \u0027properties:\u0027 in /mnt/host/source/src/platform/ec/zephyr/dts/bindings/imvp/richtek,rt3645.yaml, but does not appear in \u003cNode /i2c@100/richtek-imvp@20 in ././rt3645/imvp.dts:7\u003e\nCMake Error at /mnt/host/source/src/third_party/zephyrproject/zephyr/cmake/modules/dts.cmake:312 (execute_process):\n  execute_process failed command indexes\n```",
       "revId": "925d28bdecd9868b1c4ed3af69b9533dbb285a70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a1ce610_cfbb59d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2026-02-09T22:42:33Z",
+      "side": 1,
+      "message": "Cleared the error. Now, unit test -\u003e\" ./twister -v -i -s drivers.rt3645 -p native_sim --coverage \" is success. But, coverage seems less. May be better to add coverage in seperate CL later, as it may take some time?",
+      "parentUuid": "fb4f072f_d50297e3",
+      "revId": "925d28bdecd9868b1c4ed3af69b9533dbb285a70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
