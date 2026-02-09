@@ -283,6 +283,14 @@ static int cros_system_rtk_hibernate(const struct device *dev, uint32_t seconds,
 	return 0;
 }
 
+extern uint64_t rts5912_get_idle_count(void);
+
+__maybe_unused static uint64_t
+cros_system_rtk_deep_sleep_ticks(const struct device *dev)
+{
+	return rts5912_get_idle_count();
+}
+
 static const struct cros_system_driver_api cros_system_driver_rtk_api = {
 	.get_reset_cause = cros_system_rtk_get_reset_cause,
 	.soc_reset = cros_system_rtk_soc_reset,
@@ -290,6 +298,9 @@ static const struct cros_system_driver_api cros_system_driver_rtk_api = {
 	.chip_vendor = cros_system_rtk_get_chip_vendor,
 	.chip_name = cros_system_rtk_get_chip_name,
 	.chip_revision = cros_system_rtk_get_chip_revision,
+#ifdef CONFIG_PM
+	.deep_sleep_ticks = cros_system_rtk_deep_sleep_ticks,
+#endif
 };
 #if CONFIG_CROS_SYSTEM_REALTEK_INIT_PRIORITY >= \
 	CONFIG_PLATFORM_EC_SYSTEM_PRE_INIT_PRIORITY
