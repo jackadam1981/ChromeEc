@@ -94,6 +94,30 @@
       },
       "revId": "dfda31269e109839fde927e555d4f2f9d56eac4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62ea6650_b620b8e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-02-09T21:33:47Z",
+      "side": 1,
+      "message": "Can you provide a link to the RVP fan datasheet?\n\nThis sounds like this should be a devicetree property to indicated that the fan continues spinning at 0% duty cycle.",
+      "parentUuid": "65fa7469_dd691a74",
+      "range": {
+        "startLine": 10,
+        "startChar": 51,
+        "endLine": 13,
+        "endChar": 15
+      },
+      "revId": "dfda31269e109839fde927e555d4f2f9d56eac4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
