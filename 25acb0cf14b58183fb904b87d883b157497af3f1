@@ -16,6 +16,23 @@
       "message": "case 1: The config is just used to init project, and modifications will be made later for the mica hardware design.\n\ncase 2: Build mica successfully.",
       "revId": "25acb0cf14b58183fb904b87d883b157497af3f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4893a45_f661e5d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4509619
+      },
+      "writtenOn": "2026-02-09T04:58:35Z",
+      "side": 1,
+      "message": "case 1: Using zmake build mica successfully to build Mica Zephyr EC firmware.",
+      "revId": "25acb0cf14b58183fb904b87d883b157497af3f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
