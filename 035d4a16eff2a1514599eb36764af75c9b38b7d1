@@ -16,6 +16,40 @@
       "message": "Removed some more superfluous stuff. Build warnings are now minimal and apparently triggered by preexisting issues outside this program. I think I\u0027ll find more stuff to delete, but PTAL.",
       "revId": "035d4a16eff2a1514599eb36764af75c9b38b7d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7640cb5_a230e0d6",
+        "filename": "common/peripheral.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2026-02-09T23:37:08Z",
+      "side": 1,
+      "message": "why is this change needed? I assume it\u0027s getting rid of some warning?",
+      "revId": "035d4a16eff2a1514599eb36764af75c9b38b7d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4a82632_cf9ea356",
+        "filename": "zephyr/program/atria/atriarvp-rtk/gpio.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2026-02-09T23:37:08Z",
+      "side": 1,
+      "message": "I still suggest using the Realtek GPIO defines (zephyr/include/zephyr/dt-bindings/gpio/realtek-gpio.h) for readability but I can add them in follow on patches",
+      "revId": "035d4a16eff2a1514599eb36764af75c9b38b7d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
