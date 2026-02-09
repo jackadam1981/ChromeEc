@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea394b45_c522e8bc",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 8809,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2026-02-09T13:40:55Z",
+      "side": 1,
+      "message": "```suggestion\n/*\n * ECC public key with no point compression as defined in\n * ANSI X9.62 section 4.3.6 (0x04||x||y), P256v1 curve.\n */\n```",
+      "revId": "ab315ec768aaf13efa8b4decddfab6f6264b9415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56f8da82_94cfbcc0",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 8811,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2026-02-09T13:40:55Z",
+      "side": 1,
+      "message": "```suggestion\n/* ECC signature, P256v1 curve, P1363 encoding (r||s) */\n```",
+      "revId": "ab315ec768aaf13efa8b4decddfab6f6264b9415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec036971_c98319c9",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 8823,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2026-02-09T13:40:55Z",
+      "side": 1,
+      "message": "Let\u0027s add a comment to each field. You can use my suggestion if it\u0027s correct.\n\n```suggestion\n        // Model public key.\n\tuint8_t pk_m[FP_ASCP_KEY_SIZE];\n\t// Model public key signature.\n\tuint8_t s_goog[FP_ASCP_SIGNATURE_SIZE];\n\t// Device public key.\n\tuint8_t pk_d[FP_ASCP_KEY_SIZE];\n\t// Device public key signature (signed using model key).\n\tuint8_t s_m[FP_ASCP_SIGNATURE_SIZE];\n\t// Ephemeral public key used in ECDH procedure.\n\tuint8_t pk_f[FP_ASCP_KEY_SIZE];\n\t// SHA256 hash of the firmware.\n\tuint8_t h_f[FP_ASCP_HASH_SIZE];\n\t// Signature of the SHA256( 0xC001 || h_f || pk_f) using device key.\n\tuint8_t s_d[FP_ASCP_SIGNATURE_SIZE];\n```",
+      "range": {
+        "startLine": 8817,
+        "startChar": 0,
+        "endLine": 8823,
+        "endChar": 37
+      },
+      "revId": "ab315ec768aaf13efa8b4decddfab6f6264b9415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a986224_cc58d3dd",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 8833,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2026-02-09T13:40:55Z",
+      "side": 1,
+      "message": "```suggestion\n\t// TA\u0027s ephemeral public key.\n\tuint8_t pk_g[FP_ASCP_KEY_SIZE];\n```",
+      "range": {
+        "startLine": 8833,
+        "startChar": 1,
+        "endLine": 8833,
+        "endChar": 32
+      },
+      "revId": "ab315ec768aaf13efa8b4decddfab6f6264b9415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
