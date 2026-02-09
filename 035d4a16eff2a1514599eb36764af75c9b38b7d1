@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "caa821ac_3eac1747",
+        "filename": "common/peripheral.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2026-02-09T23:41:56Z",
+      "side": 1,
+      "message": "It was to fix a build error, and then I forgot about it. I should actually figure out how to get rid of this before I merge.",
+      "parentUuid": "f7640cb5_a230e0d6",
+      "revId": "035d4a16eff2a1514599eb36764af75c9b38b7d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a4a82632_cf9ea356",
         "filename": "zephyr/program/atria/atriarvp-rtk/gpio.dtsi",
         "patchSetId": 4
