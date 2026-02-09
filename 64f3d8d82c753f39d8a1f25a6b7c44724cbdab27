@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3681e60e_7781df1b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1594262
+      },
+      "writtenOn": "2026-02-09T23:40:56Z",
+      "side": 1,
+      "message": "The previous build (https://cr-buildbucket.appspot.com/build/8690325221461855569) is being automatically retried for the following reasons:\n- Some child builders are now retryable:brya-cq\n\nDid you notice a bug or UX issue with this retry? Please provide feedback: go/cros-auto-retry-bug.\n",
+      "revId": "64f3d8d82c753f39d8a1f25a6b7c44724cbdab27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e2aa996_f3c66ddd",
