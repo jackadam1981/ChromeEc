@@ -16,6 +16,23 @@
       "message": "I\u0027ll start porting the code I have on top of this and will clean up any unnecessary code as I build on top of it. If we can get this merged in it would make it easier so I didn\u0027t have to also edit this code",
       "revId": "fb177c78db34e0796442ab01edff667196ee0664",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2db25594_c36da68c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1131142
+      },
+      "writtenOn": "2026-02-09T19:03:30Z",
+      "side": 1,
+      "message": "I have code for the power sequence variables, usbc runtime, temp sensors, battery, charger, and gpio ready to go. I reused some of the keyboard code from Ocelot (specifically kodkod) and that brings most things up for the RVP. The best bet might just be to bring in basic GPIO and go from there maybe look at the initial patch from Bernardo for ocelotrvp-rtk",
+      "revId": "fb177c78db34e0796442ab01edff667196ee0664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
