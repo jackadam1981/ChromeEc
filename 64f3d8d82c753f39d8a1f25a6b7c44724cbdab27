@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e2aa996_f3c66ddd",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 951,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-02-09T19:04:55Z",
+      "side": 1,
+      "message": "nit: Since this block and the `FP_TEMPLATE_DECRYPT` blocks are fairly long, how about just doing `return EC_RES_SUCCESS` instead of `break`? Then we should probably change line 984 to return an error since that would be the case where `params-\u003ecmd` is not one we recognize.\n\n\n\n```suggestion\n\t\treturn EC_RES_SUCCESS;\n```",
+      "range": {
+        "startLine": 951,
+        "startChar": 0,
+        "endLine": 951,
+        "endChar": 8
+      },
+      "revId": "64f3d8d82c753f39d8a1f25a6b7c44724cbdab27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69f690f4_b9c79e94",
+        "filename": "common/fpsensor/fpsensor.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 967,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-02-09T19:04:55Z",
+      "side": 1,
+      "message": "Review agent comment:\n\nIf `fp_set_sensor_mode` fails, `template_decryption_result` will remain `EC_RES_BUSY`.\n\nA subsequent call to `FP_TEMPLATE_GET_RESULT` would then incorrectly return `EC_RES_BUSY` instead of an error. \n\nConsider setting `template_decryption_result` to an error state here, for example:\n```\natomic_set(\u0026global_context.template_decryption_result, EC_RES_ERROR);\n```",
+      "range": {
+        "startLine": 967,
+        "startChar": 0,
+        "endLine": 967,
+        "endChar": 0
+      },
+      "revId": "64f3d8d82c753f39d8a1f25a6b7c44724cbdab27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90407c14_39032011",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 8709,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-02-09T19:04:55Z",
+      "side": 1,
+      "message": "Should we add padding so that data is 4-byte aligned?\n\n\n\n```suggestion\n\tuint8_t cmd;\n\tuint8_t reserved[3];\n\tuint8_t data[FLEXIBLE_ARRAY_MEMBER_SIZE];\n```",
+      "range": {
+        "startLine": 8708,
+        "startChar": 0,
+        "endLine": 8709,
+        "endChar": 42
+      },
+      "revId": "64f3d8d82c753f39d8a1f25a6b7c44724cbdab27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
