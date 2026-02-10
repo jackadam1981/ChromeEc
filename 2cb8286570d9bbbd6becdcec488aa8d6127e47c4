@@ -66,6 +66,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5323db6c_7da405eb",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 4333743
+      },
+      "writtenOn": "2026-02-10T08:11:06Z",
+      "side": 1,
+      "message": "1.Keep the same implementation as our 630 sensor, put hwid related process into private lib\n2. easy for maintenance, as difference ASIC design will be result in different HWID read process.",
+      "parentUuid": "650133f6_4a9089fc",
+      "revId": "2cb8286570d9bbbd6becdcec488aa8d6127e47c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f8199e46_cdd65610",
         "filename": "zephyr/drivers/fingerprint/fingerprint_egis660.c",
         "patchSetId": 33
@@ -100,6 +118,24 @@
       "writtenOn": "2026-02-10T06:52:01Z",
       "side": 1,
       "message": "Why did you move this as well to the private lib?",
+      "revId": "2cb8286570d9bbbd6becdcec488aa8d6127e47c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "263cd1a2_1b6429e5",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_private.h",
+        "patchSetId": 33
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 4333743
+      },
+      "writtenOn": "2026-02-10T08:11:06Z",
+      "side": 1,
+      "message": "not want to expose too many registers\u0027 related process outside our private sdk",
+      "parentUuid": "277f3d38_8c610214",
       "revId": "2cb8286570d9bbbd6becdcec488aa8d6127e47c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
