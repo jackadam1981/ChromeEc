@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c618bb6f_ad433070",
+        "filename": "common/peripheral.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2026-02-10T19:50:35Z",
+      "side": 1,
+      "message": "This is no longer \"necessary.\"",
+      "parentUuid": "caa821ac_3eac1747",
+      "revId": "035d4a16eff2a1514599eb36764af75c9b38b7d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4a82632_cf9ea356",
@@ -66,6 +84,24 @@
       "writtenOn": "2026-02-09T23:37:08Z",
       "side": 1,
       "message": "I still suggest using the Realtek GPIO defines (zephyr/include/zephyr/dt-bindings/gpio/realtek-gpio.h) for readability but I can add them in follow on patches",
+      "revId": "035d4a16eff2a1514599eb36764af75c9b38b7d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83d0394a_5dd4019b",
+        "filename": "zephyr/program/atria/atriarvp-rtk/gpio.dtsi",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2026-02-10T19:50:35Z",
+      "side": 1,
+      "message": "Done in following CL.",
+      "parentUuid": "a4a82632_cf9ea356",
       "revId": "035d4a16eff2a1514599eb36764af75c9b38b7d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
