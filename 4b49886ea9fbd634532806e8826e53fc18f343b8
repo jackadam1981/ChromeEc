@@ -16,6 +16,24 @@
       "message": "Shouldn\u0027t we put this change in the same CL as the logic fixing the critical issue? While counter-intuitive at first glance, it will prevent the case of accidentaly reverting the fix with bumped rollback number ending in a non-secure FW being allowed.",
       "revId": "4b49886ea9fbd634532806e8826e53fc18f343b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "201f517f_100d906f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-02-10T18:45:05Z",
+      "side": 1,
+      "message": "I think the change has already landed, so we can\u0027t do that at this point. How about creating a unit test that verifies that rollback is set to 1?\n\nWe could also add that check in the Tast / Java integration tests to verify the production firmware. cc @josienordrum@google.com",
+      "parentUuid": "9c9b17f9_bee2be74",
+      "revId": "4b49886ea9fbd634532806e8826e53fc18f343b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
