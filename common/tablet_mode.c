@@ -129,7 +129,13 @@ void tablet_set_mode(int mode, uint32_t trigger)
 		return;
 	}
 
+<<<<<<< HEAD   (06d4ebb1fbda2e2214932fd12d488915c8d7957f Grogu: Modify PDC default current limit)
 	if (IS_ENABLED(CONFIG_GMR_TABLET_MODE) &&
+||||||| BASE   (4974a8f62db3b373860a44854986c57c69766c15 Reland "ectool: Correct ectool exit codes")
+	if (IS_ENABLED(GMR_TABLET_MODE) &&
+=======
+	if (IS_ENABLED(GMR_TABLET_MODE) && !(trigger & TABLET_TRIGGER_BASE) &&
+>>>>>>> CHANGE (784de416d8f13926f0513c648bd56026a390f31f tablet-mode: Fix tablet mode switch failure after reboot)
 	    ((gmr_sensor_at_360 && !mode) || (gmr_sensor_at_0 && mode))) {
 		/*
 		 * If tablet mode is being forced by the user, then this logging
