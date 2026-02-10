@@ -2157,6 +2157,25 @@ ZTEST_USER(pdc_power_mgmt_api, test_set_new_power_request)
 	pdc_power_mgmt_set_max_voltage(max_voltage);
 }
 
+ZTEST_USER(pdc_power_mgmt_api, test_set_new_power_request_invalid)
+{
+	int prev_max_voltage = pdc_power_mgmt_get_max_voltage();
+
+	pdc_power_mgmt_set_max_voltage(4000);
+
+	/* Max voltage should not have changed since 4000mV is below the
+	 * minimum of 5000mV */
+	zassert_equal(prev_max_voltage, pdc_power_mgmt_get_max_voltage(),
+		      "Max voltage changed despite illegal request");
+
+	pdc_power_mgmt_set_max_voltage(50000);
+
+	/* Max voltage should not have changed since 50,000mV is above the
+	 * board maximum of 20,000mV */
+	zassert_equal(prev_max_voltage, pdc_power_mgmt_get_max_voltage(),
+		      "Max voltage changed despite illegal request");
+}
+
 ZTEST_USER(pdc_power_mgmt_api, test_request_source_voltage)
 {
 	uint32_t partner_src_pdos[] = {

@@ -5698,6 +5698,11 @@ mux_state_t pdc_power_mgmt_get_dp_mux_mode(int port)
 
 void pdc_power_mgmt_set_max_voltage(unsigned int mv)
 {
+	if (mv < PD_MIN_MV || mv > CONFIG_PLATFORM_EC_USB_PD_MAX_VOLTAGE_MV) {
+		LOG_ERR("PD: Ignore invalid voltage request (%umV)", mv);
+		return;
+	}
+
 	LOG_INF("PD: New maximum voltage: %dmV", mv);
 
 	pdc_max_request_mv = mv;
