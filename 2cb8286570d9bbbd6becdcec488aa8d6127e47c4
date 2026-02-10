@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bbb20997_56792288",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-02-10T06:52:01Z",
+      "side": 1,
+      "message": "`LOG_` macro adds the new line automatically.",
+      "range": {
+        "startLine": 137,
+        "startChar": 26,
+        "endLine": 137,
+        "endChar": 28
+      },
+      "revId": "2cb8286570d9bbbd6becdcec488aa8d6127e47c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b12fbd0e_16f6834f",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-02-10T06:52:01Z",
+      "side": 1,
+      "message": "`LOG_` macro adds the new line automatically.",
+      "range": {
+        "startLine": 140,
+        "startChar": 33,
+        "endLine": 140,
+        "endChar": 35
+      },
+      "revId": "2cb8286570d9bbbd6becdcec488aa8d6127e47c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "650133f6_4a9089fc",
         "filename": "zephyr/drivers/fingerprint/fingerprint_egis660.c",
         "patchSetId": 33
@@ -14,6 +60,46 @@
       "writtenOn": "2026-02-10T06:45:10Z",
       "side": 1,
       "message": "Why did you move implementation of `fp_sensor_get_hwid` to private lib?",
+      "revId": "2cb8286570d9bbbd6becdcec488aa8d6127e47c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8199e46_cdd65610",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-02-10T06:52:01Z",
+      "side": 1,
+      "message": "`LOG_` macro adds the new line automatically.",
+      "range": {
+        "startLine": 155,
+        "startChar": 27,
+        "endLine": 155,
+        "endChar": 29
+      },
+      "revId": "2cb8286570d9bbbd6becdcec488aa8d6127e47c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "277f3d38_8c610214",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660_private.h",
+        "patchSetId": 33
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-02-10T06:52:01Z",
+      "side": 1,
+      "message": "Why did you move this as well to the private lib?",
       "revId": "2cb8286570d9bbbd6becdcec488aa8d6127e47c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
