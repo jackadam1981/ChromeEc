@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1b2278a_73d1fc4c",
+        "filename": "zephyr/program/skywalker/jaina/project.conf",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2026-02-10T08:41:15Z",
+      "side": 1,
+      "message": "I think we don\u0027t need it.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 43
+      },
+      "revId": "04402be5ef5b041d55ff8f00cc19d44018c36928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2069c83b_2483fe2f",
+        "filename": "zephyr/program/skywalker/jaina/project.conf",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2026-02-10T08:41:15Z",
+      "side": 1,
+      "message": "I think we don\u0027t need it.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 34
+      },
+      "revId": "04402be5ef5b041d55ff8f00cc19d44018c36928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5555966b_284c41e0",
+        "filename": "zephyr/program/skywalker/jaina/project.conf",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2026-02-10T08:41:15Z",
+      "side": 1,
+      "message": "please remove it.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 34
+      },
+      "revId": "04402be5ef5b041d55ff8f00cc19d44018c36928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4366139f_9f501df6",
+        "filename": "zephyr/program/skywalker/jaina/project.overlay",
+        "patchSetId": 9
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2026-02-10T08:41:15Z",
+      "side": 1,
+      "message": "please remove it.",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 20
+      },
+      "revId": "04402be5ef5b041d55ff8f00cc19d44018c36928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "774e84ef_18b9f0b3",
+        "filename": "zephyr/program/skywalker/jaina/project.overlay",
+        "patchSetId": 9
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2026-02-10T08:41:15Z",
+      "side": 1,
+      "message": "Please remove this note. It will enable at `ite_generated.dtsi`",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 0
+      },
+      "revId": "04402be5ef5b041d55ff8f00cc19d44018c36928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99a6be50_2f0d8084",
+        "filename": "zephyr/program/skywalker/jaina/temp_sensor.dtsi",
+        "patchSetId": 9
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2026-02-10T08:41:15Z",
+      "side": 1,
+      "message": "```suggestion\n\t\tthermistor \u003d \u003c\u0026thermistor_3V3_100K_100K_4250B\u003e;\n```",
+      "range": {
+        "startLine": 10,
+        "startChar": 17,
+        "endLine": 10,
+        "endChar": 46
+      },
+      "revId": "04402be5ef5b041d55ff8f00cc19d44018c36928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13f908a4_dab4fae6",
+        "filename": "zephyr/program/skywalker/jaina/temp_sensor.dtsi",
+        "patchSetId": 9
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2026-02-10T08:41:15Z",
+      "side": 1,
+      "message": "```suggestion\n\u0026thermistor_3V3_100K_100K_4250B{\n```",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 31
+      },
+      "revId": "04402be5ef5b041d55ff8f00cc19d44018c36928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
