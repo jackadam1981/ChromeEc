@@ -157,6 +157,30 @@
       },
       "revId": "64f3d8d82c753f39d8a1f25a6b7c44724cbdab27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31f8b9cd_d78dcf1e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 8709,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-02-10T14:07:07Z",
+      "side": 1,
+      "message": "If I understood Tom correctly, the potential problem is that we are fully trusting compiler here that the offset of data member within `ec_params_fp_template_v1` is always the same (on host and on the EC side). I think I like the Tom\u0027s suggestion to add the reserved data as padding to make sure `data` member is at certain offset.",
+      "parentUuid": "88a00ad2_60f0ce1f",
+      "range": {
+        "startLine": 8708,
+        "startChar": 0,
+        "endLine": 8709,
+        "endChar": 42
+      },
+      "revId": "64f3d8d82c753f39d8a1f25a6b7c44724cbdab27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
