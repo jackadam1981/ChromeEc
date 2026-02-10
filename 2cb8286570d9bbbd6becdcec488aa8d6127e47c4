@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22222055_a8ed2f24",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 4412439
+      },
+      "writtenOn": "2026-02-10T13:12:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbb20997_56792288",
+      "range": {
+        "startLine": 137,
+        "startChar": 26,
+        "endLine": 137,
+        "endChar": 28
+      },
+      "revId": "2cb8286570d9bbbd6becdcec488aa8d6127e47c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b12fbd0e_16f6834f",
@@ -37,6 +61,30 @@
       "writtenOn": "2026-02-10T06:52:01Z",
       "side": 1,
       "message": "`LOG_` macro adds the new line automatically.",
+      "range": {
+        "startLine": 140,
+        "startChar": 33,
+        "endLine": 140,
+        "endChar": 35
+      },
+      "revId": "2cb8286570d9bbbd6becdcec488aa8d6127e47c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "833e59b9_6a41a106",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 4412439
+      },
+      "writtenOn": "2026-02-10T13:12:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b12fbd0e_16f6834f",
       "range": {
         "startLine": 140,
         "startChar": 33,
@@ -95,6 +143,30 @@
       "writtenOn": "2026-02-10T06:52:01Z",
       "side": 1,
       "message": "`LOG_` macro adds the new line automatically.",
+      "range": {
+        "startLine": 155,
+        "startChar": 27,
+        "endLine": 155,
+        "endChar": 29
+      },
+      "revId": "2cb8286570d9bbbd6becdcec488aa8d6127e47c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec66ac53_80035368",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 4412439
+      },
+      "writtenOn": "2026-02-10T13:12:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8199e46_cdd65610",
       "range": {
         "startLine": 155,
         "startChar": 27,
