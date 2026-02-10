@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f7a50c63_039b9131",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5702,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2026-02-10T03:28:05Z",
+      "side": 1,
+      "message": "dump `PD_MIN_MV` too and add tests for this.",
+      "parentUuid": "9792ce39_3b077ef2",
+      "revId": "c6f459410f21cf31fd652fc1a2e5d2f59a0004a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e5c6475d_7d91f1ad",
         "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
         "patchSetId": 1
