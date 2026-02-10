@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e5c6475d_7d91f1ad",
+        "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2162,
+      "author": {
+        "id": 1530058
+      },
+      "writtenOn": "2026-02-10T03:26:17Z",
+      "side": 1,
+      "message": "Nit: This function returns `unsigned int`",
+      "revId": "c6f459410f21cf31fd652fc1a2e5d2f59a0004a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f9217b41_b17fbaa5",
         "filename": "zephyr/test/pdc/src/generic/pdc_power_mgmt_api.c",
         "patchSetId": 1
