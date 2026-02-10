@@ -133,6 +133,7 @@ tests:
       - CONFIG_CHIPSET_API_MOCK=y
       - CONFIG_AP_EVENTS=n
       - CONFIG_TEST_AP_PWRSEQ_PP5500=y
+      - CONFIG_TEST_AP_PWRSEQ_FORCE_SHUTDOWN_PWROK=y
       - CONFIG_EEPROM=y
 
   intelrvp.ptlrvp.board_id:
