@@ -129,7 +129,7 @@ void tablet_set_mode(int mode, uint32_t trigger)
 		return;
 	}
 
-	if (IS_ENABLED(CONFIG_GMR_TABLET_MODE) &&
+	if (IS_ENABLED(GMR_TABLET_MODE) && !(trigger & TABLET_TRIGGER_BASE) &&
 	    ((gmr_sensor_at_360 && !mode) || (gmr_sensor_at_0 && mode))) {
 		/*
 		 * If tablet mode is being forced by the user, then this logging
