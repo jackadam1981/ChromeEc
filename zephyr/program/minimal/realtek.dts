@@ -19,4 +19,9 @@
 			enum-name = "GPIO_ENTERING_RW";
 		};
 	};
+
+        rtk_wake: rtk-wake {
+                compatible = "rtk,wake";
+                gpios = <RTS5912_GPIO122 GPIO_PULL_UP>;
+        };
 };

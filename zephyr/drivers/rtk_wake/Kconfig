@@ -1,0 +1,25 @@
+# Copyright 2026 The ChromiumOS Authors
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+config RTK_WAKE
+	bool "Realtek wake pin driver"
+	default y
+	depends on DT_HAS_RTK_WAKE_ENABLED
+	help
+	  Enable the Realtek wake pin driver. This driver configures a GPIO
+	  as an active low wake source.
+
+if RTK_WAKE
+
+module = RTK_WAKE
+module-str = rtk_wake
+source "subsys/logging/Kconfig.template.log_config"
+
+config RTK_WAKE_INIT_PRIORITY
+	int "Initialization priority"
+	default 50
+	help
+	  Initialization priority for the Realtek wake pin driver.
+
+endif # RTK_WAKE
