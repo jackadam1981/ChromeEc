@@ -52,6 +52,24 @@
       "parentUuid": "c99e3b7c_b4ab5779",
       "revId": "584411bfab099136d34c25f4c28881ef801b9633",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65873d37_80ace27a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2026-02-10T19:28:11Z",
+      "side": 1,
+      "message": "i don\u0027t think so. you could add a CQ depend here and try a CQ+1 with both patches,\nbut i don\u0027t think that\u0027s worth the effort here.\n\ni\u0027d just wait a few hours for the build to get straightened out.",
+      "parentUuid": "4ec413b7_8bb60d5c",
+      "revId": "584411bfab099136d34c25f4c28881ef801b9633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
