@@ -34,6 +34,23 @@
       "parentUuid": "f833b5f5_18200eed",
       "revId": "b21792c4fc91bedd9f2ed659534ec1e023016103",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ffd4d73_04801340",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-02-10T18:53:44Z",
+      "side": 1,
+      "message": "There is a regression in the EC repo affecting the CQ. This will be resolved soon. No issues with this CL",
+      "revId": "b21792c4fc91bedd9f2ed659534ec1e023016103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
