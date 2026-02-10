@@ -16,6 +16,24 @@
       "message": "I don\u0027t really get this stack. It looks like you\u0027re reverting our previous configuration decisions and then reverting those reverts in the next CL. That being said, the resulting VIF looks believable to me at first glance.",
       "revId": "b21792c4fc91bedd9f2ed659534ec1e023016103",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d01c4955_1e0d16fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003039
+      },
+      "writtenOn": "2026-02-10T18:30:25Z",
+      "side": 1,
+      "message": "I started with a VIF provided by TI for TBT-USBPD testing, and put it through the latest USB-IF VIF Tool to fully describe ports 0 and 2, where they weren\u0027t paying close attention to.",
+      "parentUuid": "f833b5f5_18200eed",
+      "revId": "b21792c4fc91bedd9f2ed659534ec1e023016103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
