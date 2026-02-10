@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "650133f6_4a9089fc",
+        "filename": "zephyr/drivers/fingerprint/fingerprint_egis660.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-02-10T06:45:10Z",
+      "side": 1,
+      "message": "Why did you move implementation of `fp_sensor_get_hwid` to private lib?",
+      "revId": "2cb8286570d9bbbd6becdcec488aa8d6127e47c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -105,6 +105,24 @@
       "parentUuid": "ee630e9d_b14c4a78",
       "revId": "a878a90ef001d27c614b82eef4aee3fa567113d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23cf8e2a_45d01f1c",
+        "filename": "zephyr/emul/emul_egis660.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-02-10T06:45:10Z",
+      "side": 1,
+      "message": "Yes, you are right, it is used while calling directly. I meant that it is not called by the lib in tests. Still, this is not a good usage of `spi_buf_set` structure. You are making assumption that there are 2 buffers in the `rx_bufs` set and the second buffer has enough memory.",
+      "parentUuid": "ec4c0ae1_3ce1790d",
+      "revId": "a878a90ef001d27c614b82eef4aee3fa567113d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
