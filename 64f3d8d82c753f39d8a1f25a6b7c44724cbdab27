@@ -181,6 +181,30 @@
       },
       "revId": "64f3d8d82c753f39d8a1f25a6b7c44724cbdab27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3cbe12b_d494d97d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 8709,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-02-10T19:43:59Z",
+      "side": 1,
+      "message": "@patrykd@google.com is right here. I wasn\u0027t paying attention to the `uint8_t` alignment on the array.\n\nOn the host vs EC difference: It should be the same since [`__ec_align4` adds `packed`](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/ec_commands.h;l\u003d662;drc\u003d59a803b52d4cdb6dce9be75c9fa30698de304c12).",
+      "parentUuid": "31f8b9cd_d78dcf1e",
+      "range": {
+        "startLine": 8708,
+        "startChar": 0,
+        "endLine": 8709,
+        "endChar": 42
+      },
+      "revId": "64f3d8d82c753f39d8a1f25a6b7c44724cbdab27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
