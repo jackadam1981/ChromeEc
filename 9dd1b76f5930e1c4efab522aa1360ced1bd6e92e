@@ -33,6 +33,24 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "9dd1b76f5930e1c4efab522aa1360ced1bd6e92e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c836ebab_ab80e44c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-02-10T23:44:53Z",
+      "side": 1,
+      "message": "Per today\u0027s USB-PD meeting we can enable FRS for all TI parts. It might be possible to encode this in the devicetree binding YAML files directly by overriding `frs-supported` to be default-true in `zephyr/dts/bindings/usbc/pdc/ti,tps6699-pdc.yaml`",
+      "parentUuid": "fb74771b_e04044fd",
+      "revId": "9dd1b76f5930e1c4efab522aa1360ced1bd6e92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

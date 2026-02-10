@@ -16,6 +16,29 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "0e285e39a32b0e4609472b012c71d8bc08814336",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec2fbf77_281c1d33",
+        "filename": "zephyr/drivers/usbc/pdc_tps6699x.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 2801,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-02-10T23:44:53Z",
+      "side": 1,
+      "message": "I think you can simplify this to just `return cfg-\u003efrs_supported` and make the method return type `bool`. It\u0027s static info so there aren\u0027t any error pathways to catch. Might also push the coverage % across the threshold.",
+      "range": {
+        "startLine": 2792,
+        "startChar": 0,
+        "endLine": 2801,
+        "endChar": 10
+      },
+      "revId": "0e285e39a32b0e4609472b012c71d8bc08814336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
