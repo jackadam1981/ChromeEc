@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9156ad58_24d1e417",
+        "filename": "zephyr/program/skywalker/jaina/project.conf",
+        "patchSetId": 13
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1564347
+      },
+      "writtenOn": "2026-02-11T09:06:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1389e9cd_096a29e0",
+      "revId": "ce6ada352d21f2a7d423489d97d631f45e115575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57cb3d32_95c4de09",
@@ -31,6 +49,24 @@
       "writtenOn": "2026-02-11T08:13:07Z",
       "side": 1,
       "message": "Move to usbc.dtsi",
+      "revId": "ce6ada352d21f2a7d423489d97d631f45e115575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cbde166_092ffa7d",
+        "filename": "zephyr/program/skywalker/jaina/project.overlay",
+        "patchSetId": 13
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1564347
+      },
+      "writtenOn": "2026-02-11T09:06:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57cb3d32_95c4de09",
       "revId": "ce6ada352d21f2a7d423489d97d631f45e115575",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "230fce98_78002668",
+        "filename": "zephyr/program/skywalker/jaina/usbc.dtsi",
+        "patchSetId": 13
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1564347
+      },
+      "writtenOn": "2026-02-11T09:06:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc1b4968_77747eb8",
+      "revId": "ce6ada352d21f2a7d423489d97d631f45e115575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8afa377_eb4473da",
@@ -65,6 +119,24 @@
       "writtenOn": "2026-02-11T08:13:07Z",
       "side": 1,
       "message": "Jaina use isl9238 as charger\nNeed to change \n```\n{\n\tcharger: isl9238@9 {\n\t\tcompatible \u003d \"intersil,isl923x\";\n\t\tstatus \u003d \"okay\";\n\t\treg \u003d \u003c0x9\u003e;\n\t};\n};\n```",
+      "revId": "ce6ada352d21f2a7d423489d97d631f45e115575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7827d350_ee1f4e63",
+        "filename": "zephyr/program/skywalker/jaina/usbc.dtsi",
+        "patchSetId": 13
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1564347
+      },
+      "writtenOn": "2026-02-11T09:06:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8afa377_eb4473da",
       "revId": "ce6ada352d21f2a7d423489d97d631f45e115575",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
