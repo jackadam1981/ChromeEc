@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86a91cb2_5aeccee4",
+        "filename": "zephyr/program/skywalker/jaina/project.conf",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2026-02-11T02:24:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1b2278a_73d1fc4c",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 43
+      },
+      "revId": "04402be5ef5b041d55ff8f00cc19d44018c36928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2069c83b_2483fe2f",
@@ -37,6 +61,30 @@
       "writtenOn": "2026-02-10T08:41:15Z",
       "side": 1,
       "message": "I think we don\u0027t need it.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 34
+      },
+      "revId": "04402be5ef5b041d55ff8f00cc19d44018c36928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f43bb744_cd04b74d",
+        "filename": "zephyr/program/skywalker/jaina/project.conf",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2026-02-11T02:24:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2069c83b_2483fe2f",
       "range": {
         "startLine": 31,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ee68422_23459a96",
+        "filename": "zephyr/program/skywalker/jaina/project.conf",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2026-02-11T02:24:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5555966b_284c41e0",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 34
+      },
+      "revId": "04402be5ef5b041d55ff8f00cc19d44018c36928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4366139f_9f501df6",
@@ -83,6 +155,30 @@
       "writtenOn": "2026-02-10T08:41:15Z",
       "side": 1,
       "message": "please remove it.",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 20
+      },
+      "revId": "04402be5ef5b041d55ff8f00cc19d44018c36928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd583c12_7ed3f128",
+        "filename": "zephyr/program/skywalker/jaina/project.overlay",
+        "patchSetId": 9
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2026-02-11T02:24:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4366139f_9f501df6",
       "range": {
         "startLine": 49,
         "startChar": 2,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f2ed798_84c87d3f",
+        "filename": "zephyr/program/skywalker/jaina/project.overlay",
+        "patchSetId": 9
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2026-02-11T02:24:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "774e84ef_18b9f0b3",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 0
+      },
+      "revId": "04402be5ef5b041d55ff8f00cc19d44018c36928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99a6be50_2f0d8084",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27b66c0d_7f3c484c",
+        "filename": "zephyr/program/skywalker/jaina/temp_sensor.dtsi",
+        "patchSetId": 9
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2026-02-11T02:24:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99a6be50_2f0d8084",
+      "range": {
+        "startLine": 10,
+        "startChar": 17,
+        "endLine": 10,
+        "endChar": 46
+      },
+      "revId": "04402be5ef5b041d55ff8f00cc19d44018c36928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13f908a4_dab4fae6",
@@ -152,6 +296,30 @@
       "writtenOn": "2026-02-10T08:41:15Z",
       "side": 1,
       "message": "```suggestion\n\u0026thermistor_3V3_100K_100K_4250B{\n```",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 31
+      },
+      "revId": "04402be5ef5b041d55ff8f00cc19d44018c36928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cef4590c_dab2139d",
+        "filename": "zephyr/program/skywalker/jaina/temp_sensor.dtsi",
+        "patchSetId": 9
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2026-02-11T02:24:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13f908a4_dab4fae6",
       "range": {
         "startLine": 25,
         "startChar": 1,
