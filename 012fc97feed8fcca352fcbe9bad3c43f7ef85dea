@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06c79b0e_ea34ce51",
+        "filename": "zephyr/drivers/i2c/i2c_scan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2026-02-11T18:05:53Z",
+      "side": 1,
+      "message": "do you really want to print this in the console? or is it a debugging leftover print? seems somewhat redundant, why would you want the console to be log this. Plus you could simplify the cycle if you drop it",
+      "revId": "012fc97feed8fcca352fcbe9bad3c43f7ef85dea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
