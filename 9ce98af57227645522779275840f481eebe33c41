@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebe74a3c_f6ed9f7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2026-02-11T16:03:52Z",
+      "side": 1,
+      "message": "This needs to be on ec-legacy branch. Only needed here if this driver is used by a Zephyr board.",
+      "revId": "9ce98af57227645522779275840f481eebe33c41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
