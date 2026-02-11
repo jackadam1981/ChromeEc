@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e2903f4_6444e741",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-02-11T00:57:56Z",
+      "side": 1,
+      "message": "Can be an automatic var in `rt3645_apply_update_data()`",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 41
+      },
+      "revId": "3bf6157881ae934baa65bf1e8516832f08b9d32e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6417d214_faff3987",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-02-11T00:57:56Z",
+      "side": 1,
+      "message": "These return values aren\u0027t getting checked. If they fail the code will proceed with a random uninitialized value for `status_reg`.",
+      "range": {
+        "startLine": 159,
+        "startChar": 2,
+        "endLine": 160,
+        "endChar": 50
+      },
+      "revId": "3bf6157881ae934baa65bf1e8516832f08b9d32e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0441f0df_02ff36f0",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-02-11T00:57:56Z",
+      "side": 1,
+      "message": "`rv` is never updated from its initial value of 1",
+      "range": {
+        "startLine": 179,
+        "startChar": 8,
+        "endLine": 179,
+        "endChar": 10
+      },
+      "revId": "3bf6157881ae934baa65bf1e8516832f08b9d32e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e504dc84_4bc59136",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-02-11T00:57:56Z",
+      "side": 1,
+      "message": "Make debug-level or remove. It\u0027s just a static three byte string.",
+      "range": {
+        "startLine": 196,
+        "startChar": 2,
+        "endLine": 196,
+        "endChar": 51
+      },
+      "revId": "3bf6157881ae934baa65bf1e8516832f08b9d32e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77e9f32a_3ac16f0e",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-02-11T00:57:56Z",
+      "side": 1,
+      "message": "Replace with a LOG_ERR if product ID could not be read or is incorrect value and `return rv;`",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 43
+      },
+      "revId": "3bf6157881ae934baa65bf1e8516832f08b9d32e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da4f789c_0a053771",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-02-11T00:57:56Z",
+      "side": 1,
+      "message": "Does this need to get relocked when the CRC matches? Also lots of these return values are not actually getting checked. Refactoring these nested if-statements would make this easier to read; you could use label(s) to handle the cleanup (relocking)\n\n```\nint rv \u003d 0;\n\nrv \u003d rt3645_set_cfg_mode(dev, config_seq, len);\nif (rv) {\n    LOG_ERR(...);\n    return rv;\n}\n\n...\n\nif (rt3645_crc_check(dev) \u003d\u003d EC_SUCCESS) {\n    LOG_INF(\"No update needed\");\n    rv \u003d 0;\n    goto cleanup;\n}\n\nrv \u003d rt3645_apply_update_data(dev);\nif (rv) {\n    LOG_ERR(...)\n    goto cleanup;\n}\n\n... further update steps ...\n\ncleanup:\nint lock_rv \u003d rt3645_lock_nvm(dev);\nif(lock_rv) {\n    LOG_ERR(...);\n    return lock_rv;\n}\n\nreturn rv;\n```",
+      "range": {
+        "startLine": 249,
+        "startChar": 2,
+        "endLine": 249,
+        "endChar": 23
+      },
+      "revId": "3bf6157881ae934baa65bf1e8516832f08b9d32e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
