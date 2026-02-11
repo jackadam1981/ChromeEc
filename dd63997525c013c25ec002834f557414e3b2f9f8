@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fc80d7a_43f3ff06",
+        "filename": "zephyr/emul/Kconfig",
+        "patchSetId": 34
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-02-11T09:03:53Z",
+      "side": 1,
+      "message": "It doesn\u0027t support low power mode",
+      "range": {
+        "startLine": 189,
+        "startChar": 59,
+        "endLine": 190,
+        "endChar": 7
+      },
+      "revId": "dd63997525c013c25ec002834f557414e3b2f9f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5c6aa1e_39b12f7f",
+        "filename": "zephyr/include/emul/emul_egis660.h",
+        "patchSetId": 34
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1438457
+      },
+      "writtenOn": "2026-02-11T09:03:53Z",
+      "side": 1,
+      "message": "This is not used after moving deep sleep to priv lib, right?",
+      "revId": "dd63997525c013c25ec002834f557414e3b2f9f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
