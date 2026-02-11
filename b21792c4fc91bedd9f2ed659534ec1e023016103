@@ -51,6 +51,52 @@
       "message": "There is a regression in the EC repo affecting the CQ. This will be resolved soon. No issues with this CL",
       "revId": "b21792c4fc91bedd9f2ed659534ec1e023016103",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64dff7bc_6e41673f",
+        "filename": "zephyr/program/fatcat/moonstone/moonstone_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2026-02-11T19:58:59Z",
+      "side": 1,
+      "message": "We need to keep this as \"1 TBT3 Compatible\".",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 97
+      },
+      "revId": "b21792c4fc91bedd9f2ed659534ec1e023016103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af386a8f_95817911",
+        "filename": "zephyr/program/fatcat/moonstone/moonstone_vif.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1527433
+      },
+      "writtenOn": "2026-02-11T19:58:59Z",
+      "side": 1,
+      "message": "This should be 0, I think it is based on the router ID field",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 226,
+        "endChar": 63
+      },
+      "revId": "b21792c4fc91bedd9f2ed659534ec1e023016103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
