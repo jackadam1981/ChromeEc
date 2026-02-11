@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfd1f18d_aabf3871",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2026-02-11T18:27:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e2903f4_6444e741",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 41
+      },
+      "revId": "3bf6157881ae934baa65bf1e8516832f08b9d32e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6417d214_faff3987",
@@ -37,6 +61,30 @@
       "writtenOn": "2026-02-11T00:57:56Z",
       "side": 1,
       "message": "These return values aren\u0027t getting checked. If they fail the code will proceed with a random uninitialized value for `status_reg`.",
+      "range": {
+        "startLine": 159,
+        "startChar": 2,
+        "endLine": 160,
+        "endChar": 50
+      },
+      "revId": "3bf6157881ae934baa65bf1e8516832f08b9d32e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3316ca9_e5fe2f38",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2026-02-11T18:27:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6417d214_faff3987",
       "range": {
         "startLine": 159,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b56a937_b4e016fc",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2026-02-11T18:27:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0441f0df_02ff36f0",
+      "range": {
+        "startLine": 179,
+        "startChar": 8,
+        "endLine": 179,
+        "endChar": 10
+      },
+      "revId": "3bf6157881ae934baa65bf1e8516832f08b9d32e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e504dc84_4bc59136",
@@ -83,6 +155,30 @@
       "writtenOn": "2026-02-11T00:57:56Z",
       "side": 1,
       "message": "Make debug-level or remove. It\u0027s just a static three byte string.",
+      "range": {
+        "startLine": 196,
+        "startChar": 2,
+        "endLine": 196,
+        "endChar": 51
+      },
+      "revId": "3bf6157881ae934baa65bf1e8516832f08b9d32e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b33afaec_ce6d55d1",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2026-02-11T18:27:07Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "e504dc84_4bc59136",
       "range": {
         "startLine": 196,
         "startChar": 2,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "542dec17_e18546df",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2026-02-11T18:27:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77e9f32a_3ac16f0e",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 43
+      },
+      "revId": "3bf6157881ae934baa65bf1e8516832f08b9d32e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da4f789c_0a053771",
@@ -129,6 +249,30 @@
       "writtenOn": "2026-02-11T00:57:56Z",
       "side": 1,
       "message": "Does this need to get relocked when the CRC matches? Also lots of these return values are not actually getting checked. Refactoring these nested if-statements would make this easier to read; you could use label(s) to handle the cleanup (relocking)\n\n```\nint rv \u003d 0;\n\nrv \u003d rt3645_set_cfg_mode(dev, config_seq, len);\nif (rv) {\n    LOG_ERR(...);\n    return rv;\n}\n\n...\n\nif (rt3645_crc_check(dev) \u003d\u003d EC_SUCCESS) {\n    LOG_INF(\"No update needed\");\n    rv \u003d 0;\n    goto cleanup;\n}\n\nrv \u003d rt3645_apply_update_data(dev);\nif (rv) {\n    LOG_ERR(...)\n    goto cleanup;\n}\n\n... further update steps ...\n\ncleanup:\nint lock_rv \u003d rt3645_lock_nvm(dev);\nif(lock_rv) {\n    LOG_ERR(...);\n    return lock_rv;\n}\n\nreturn rv;\n```",
+      "range": {
+        "startLine": 249,
+        "startChar": 2,
+        "endLine": 249,
+        "endChar": 23
+      },
+      "revId": "3bf6157881ae934baa65bf1e8516832f08b9d32e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69612928_6d38717d",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2026-02-11T18:27:07Z",
+      "side": 1,
+      "message": "Done!\n\nFor below snippet, if storing fails, NVM_PRGRM_FINISH_STAT_BIT itself in next step will not be set. Hence , need  error check with rv , only for program status read in 2nd step.\nSimilary for 2nd snippet of code , about loading of NVM.\nsnippet1:\n       /* Program  NVM */\n\trt3645_store_config(dev);\n\t/* Wait for 800ms */\n\tk_msleep(800);\n\trv \u003d rt3645_nvm_program_status(dev, NVM_PRGRM_FINISH_STAT_BIT);\n\tif (rv) {\n\t\tLOG_ERR(\"NVM Programming Failed\");\n\t\tgoto lock_imvp;\n\t}\n\nSnippet2:\n\n\t/* Restore NVM */\n\trt3645_load_config(dev);\n\t/* Wait for 100ms */\n\tk_msleep(100);\n\trv \u003d rt3645_nvm_program_status(dev, NVM_STAT_BITS);\n\tif (rv) {\n\t\tLOG_ERR(\"NVM Relaoding Failed\");\n\t\tgoto lock_imvp;\n\t}",
+      "parentUuid": "da4f789c_0a053771",
       "range": {
         "startLine": 249,
         "startChar": 2,
