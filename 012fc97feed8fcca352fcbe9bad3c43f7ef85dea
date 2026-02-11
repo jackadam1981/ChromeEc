@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "508cdd72_6af15d60",
+        "filename": "zephyr/drivers/i2c/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-02-11T22:32:20Z",
+      "side": 1,
+      "message": "We may want this behind a CONFIG_SYSTEM_UNLOCKED guard.  There is potential for hanging the bus if a device doesn\u0027t support a 1-byte read without an offset byte.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "012fc97feed8fcca352fcbe9bad3c43f7ef85dea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06c79b0e_ea34ce51",
         "filename": "zephyr/drivers/i2c/i2c_scan.c",
         "patchSetId": 6
@@ -32,6 +55,47 @@
       "side": 1,
       "message": "I did consider dropping the console print portion, but as this is basically supposed to be the same as the ec console i2c scan function, I thought having it dumped to the ISH console made sense. ISH logs are collected in the kernel and can be read.",
       "parentUuid": "06c79b0e_ea34ce51",
+      "revId": "012fc97feed8fcca352fcbe9bad3c43f7ef85dea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "492ae656_fc42517d",
+        "filename": "zephyr/drivers/i2c/i2c_scan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-02-11T22:32:20Z",
+      "side": 1,
+      "message": "My vote is to drop the console output. Most (all?) host commands don\u0027t directly generate output to the UART.  But I won\u0027t block if you want this to remain.",
+      "parentUuid": "eebb3fe3_a12ee882",
+      "revId": "012fc97feed8fcca352fcbe9bad3c43f7ef85dea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09350463_54893eeb",
+        "filename": "zephyr/program/trulo/kaladin-ish/i2c.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-02-11T22:32:20Z",
+      "side": 1,
+      "message": "Board changes should be in a separate CL from the functional changes.\n\nAlso, the main value of this command is for early bring-up.  I don\u0027t think this needs to be enabled on mature platforms.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 9
+      },
       "revId": "012fc97feed8fcca352fcbe9bad3c43f7ef85dea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
