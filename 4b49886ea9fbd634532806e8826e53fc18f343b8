@@ -34,6 +34,24 @@
       "parentUuid": "9c9b17f9_bee2be74",
       "revId": "4b49886ea9fbd634532806e8826e53fc18f343b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e17a548_bb1437c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2026-02-11T14:30:39Z",
+      "side": 1,
+      "message": "Created unit test https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7566424. It\u0027s only for Zephyr. I\u0027ll prepare EC unit test later.",
+      "parentUuid": "201f517f_100d906f",
+      "revId": "4b49886ea9fbd634532806e8826e53fc18f343b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
