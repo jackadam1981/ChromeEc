@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b72c6cd6_cbb3a6d8",
+        "filename": "zephyr/program/skywalker/jaina/project.conf",
+        "patchSetId": 12
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2026-02-11T03:26:36Z",
+      "side": 1,
+      "message": "skywalker have the same config, please remove it",
+      "revId": "cb22c39cca025f99b46fa3ef56bf450c597ebf7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5457e2c9_f420c897",
+        "filename": "zephyr/program/skywalker/jaina/project.conf",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2026-02-11T03:26:36Z",
+      "side": 1,
+      "message": "Jaina have no keypad, please remove it",
+      "revId": "cb22c39cca025f99b46fa3ef56bf450c597ebf7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96846d13_b7c4fa80",
+        "filename": "zephyr/program/skywalker/jaina/project.conf",
+        "patchSetId": 12
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2026-02-11T03:26:36Z",
+      "side": 1,
+      "message": "Please modify the value to meet jaina PDO setting",
+      "revId": "cb22c39cca025f99b46fa3ef56bf450c597ebf7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76ce16ea_555e0695",
+        "filename": "zephyr/program/skywalker/jaina/project.conf",
+        "patchSetId": 12
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2026-02-11T03:26:36Z",
+      "side": 1,
+      "message": "Jaina suuport volume button, please remove it.",
+      "revId": "cb22c39cca025f99b46fa3ef56bf450c597ebf7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fd53831_310497aa",
+        "filename": "zephyr/program/skywalker/jaina/project.conf",
+        "patchSetId": 12
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2026-02-11T03:26:36Z",
+      "side": 1,
+      "message": "Add `CONFIG_PLATFORM_EC_CHARGER_BQ25710_SENSE_RESISTOR_AC` and `CONFIG_PLATFORM_EC_CHARGER_BQ25710_SENSE_RESISTOR` for BQ25720 setting",
+      "revId": "cb22c39cca025f99b46fa3ef56bf450c597ebf7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d42d252_174e4beb",
+        "filename": "zephyr/program/skywalker/jaina/project.overlay",
+        "patchSetId": 12
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2026-02-11T03:26:36Z",
+      "side": 1,
+      "message": "Please add \n```\n\u0026i2c3 {\ntransfer-timeout-ms \u003d \u003c200\u003e;\n};\n```",
+      "revId": "cb22c39cca025f99b46fa3ef56bf450c597ebf7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
