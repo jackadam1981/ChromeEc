@@ -39,6 +39,30 @@
       },
       "revId": "18d0650501862414f7e2e04ff2a6aaec679be76b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0c4ae28_5dcb312b",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2026-02-11T18:28:26Z",
+      "side": 1,
+      "message": "Once auto update is complete, system continues to boot up to S0 state.\nIs there specific case, which is in your mind, where warmreset of AP is further expected, after the initial  system booting , post the auto update?",
+      "parentUuid": "585c1213_3b02e673",
+      "range": {
+        "startLine": 297,
+        "startChar": 0,
+        "endLine": 297,
+        "endChar": 37
+      },
+      "revId": "18d0650501862414f7e2e04ff2a6aaec679be76b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
