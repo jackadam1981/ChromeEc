@@ -16,6 +16,24 @@
       "message": "do you really want to print this in the console? or is it a debugging leftover print? seems somewhat redundant, why would you want the console to be log this. Plus you could simplify the cycle if you drop it",
       "revId": "012fc97feed8fcca352fcbe9bad3c43f7ef85dea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eebb3fe3_a12ee882",
+        "filename": "zephyr/drivers/i2c/i2c_scan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2026-02-11T18:09:37Z",
+      "side": 1,
+      "message": "I did consider dropping the console print portion, but as this is basically supposed to be the same as the ec console i2c scan function, I thought having it dumped to the ISH console made sense. ISH logs are collected in the kernel and can be read.",
+      "parentUuid": "06c79b0e_ea34ce51",
+      "revId": "012fc97feed8fcca352fcbe9bad3c43f7ef85dea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
