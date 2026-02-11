@@ -51,6 +51,24 @@
       "parentUuid": "fb74771b_e04044fd",
       "revId": "9dd1b76f5930e1c4efab522aa1360ced1bd6e92e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae0f47f4_c5ec42c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-02-11T00:14:39Z",
+      "side": 1,
+      "message": "Ok so DT bindings don\u0027t allow you to override a default value that you get through inclusion. But you might be able to figure something else out with the property allow/blocklists to make it true for TI and false for RTK\n\nhttps://docs.zephyrproject.org/latest/build/dts/bindings-syntax.html#include",
+      "parentUuid": "c836ebab_ab80e44c",
+      "revId": "9dd1b76f5930e1c4efab522aa1360ced1bd6e92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
