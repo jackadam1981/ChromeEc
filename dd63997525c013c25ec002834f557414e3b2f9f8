@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fef519ee_06a9c14a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 34
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 4412439
+      },
+      "writtenOn": "2026-02-11T16:34:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e6aca7e_8d3279bc",
+      "revId": "dd63997525c013c25ec002834f557414e3b2f9f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1fc80d7a_43f3ff06",
@@ -43,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2d3d9932_650544cd",
+        "filename": "zephyr/emul/Kconfig",
+        "patchSetId": 34
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 4412439
+      },
+      "writtenOn": "2026-02-11T16:34:50Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "1fc80d7a_43f3ff06",
+      "range": {
+        "startLine": 189,
+        "startChar": 59,
+        "endLine": 190,
+        "endChar": 7
+      },
+      "revId": "dd63997525c013c25ec002834f557414e3b2f9f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c5c6aa1e_39b12f7f",
         "filename": "zephyr/include/emul/emul_egis660.h",
         "patchSetId": 34
@@ -54,6 +96,24 @@
       "writtenOn": "2026-02-11T09:03:53Z",
       "side": 1,
       "message": "This is not used after moving deep sleep to priv lib, right?",
+      "revId": "dd63997525c013c25ec002834f557414e3b2f9f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7308cdb_8ffc8b95",
+        "filename": "zephyr/include/emul/emul_egis660.h",
+        "patchSetId": 34
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 4412439
+      },
+      "writtenOn": "2026-02-11T16:34:50Z",
+      "side": 1,
+      "message": "Yes, removed",
+      "parentUuid": "c5c6aa1e_39b12f7f",
       "revId": "dd63997525c013c25ec002834f557414e3b2f9f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
