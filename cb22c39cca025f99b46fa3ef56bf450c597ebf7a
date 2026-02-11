@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "383ea46e_da06380b",
+        "filename": "zephyr/program/skywalker/jaina/project.conf",
+        "patchSetId": 12
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1564347
+      },
+      "writtenOn": "2026-02-11T06:43:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b72c6cd6_cbb3a6d8",
+      "revId": "cb22c39cca025f99b46fa3ef56bf450c597ebf7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5457e2c9_f420c897",
@@ -31,6 +49,24 @@
       "writtenOn": "2026-02-11T03:26:36Z",
       "side": 1,
       "message": "Jaina have no keypad, please remove it",
+      "revId": "cb22c39cca025f99b46fa3ef56bf450c597ebf7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3262eee8_b205ea6c",
+        "filename": "zephyr/program/skywalker/jaina/project.conf",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1564347
+      },
+      "writtenOn": "2026-02-11T06:43:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5457e2c9_f420c897",
       "revId": "cb22c39cca025f99b46fa3ef56bf450c597ebf7a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5389f82_78fea65f",
+        "filename": "zephyr/program/skywalker/jaina/project.conf",
+        "patchSetId": 12
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1564347
+      },
+      "writtenOn": "2026-02-11T06:43:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96846d13_b7c4fa80",
+      "revId": "cb22c39cca025f99b46fa3ef56bf450c597ebf7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76ce16ea_555e0695",
@@ -65,6 +119,24 @@
       "writtenOn": "2026-02-11T03:26:36Z",
       "side": 1,
       "message": "Jaina suuport volume button, please remove it.",
+      "revId": "cb22c39cca025f99b46fa3ef56bf450c597ebf7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5888cf54_4f799af5",
+        "filename": "zephyr/program/skywalker/jaina/project.conf",
+        "patchSetId": 12
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1564347
+      },
+      "writtenOn": "2026-02-11T06:43:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76ce16ea_555e0695",
       "revId": "cb22c39cca025f99b46fa3ef56bf450c597ebf7a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cf37599_5bde72ed",
+        "filename": "zephyr/program/skywalker/jaina/project.conf",
+        "patchSetId": 12
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1564347
+      },
+      "writtenOn": "2026-02-11T06:43:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fd53831_310497aa",
+      "revId": "cb22c39cca025f99b46fa3ef56bf450c597ebf7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d42d252_174e4beb",
@@ -99,6 +189,24 @@
       "writtenOn": "2026-02-11T03:26:36Z",
       "side": 1,
       "message": "Please add \n```\n\u0026i2c3 {\ntransfer-timeout-ms \u003d \u003c200\u003e;\n};\n```",
+      "revId": "cb22c39cca025f99b46fa3ef56bf450c597ebf7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43033461_62da52e2",
+        "filename": "zephyr/program/skywalker/jaina/project.overlay",
+        "patchSetId": 12
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1564347
+      },
+      "writtenOn": "2026-02-11T06:43:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d42d252_174e4beb",
       "revId": "cb22c39cca025f99b46fa3ef56bf450c597ebf7a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
