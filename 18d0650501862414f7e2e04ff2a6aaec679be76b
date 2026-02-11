@@ -63,6 +63,30 @@
       },
       "revId": "18d0650501862414f7e2e04ff2a6aaec679be76b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b8e23f2_f867b93f",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-02-11T23:05:57Z",
+      "side": 1,
+      "message": "When the console command calls `rt3645_initiate_update()` below it follows with a message to \"Press powerbutton/enter \u0027powerbtn\u0027 to boot system\", so I assumed user intervention is required to proceed. Is that not the case?",
+      "parentUuid": "d0c4ae28_5dcb312b",
+      "range": {
+        "startLine": 297,
+        "startChar": 0,
+        "endLine": 297,
+        "endChar": 37
+      },
+      "revId": "18d0650501862414f7e2e04ff2a6aaec679be76b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
