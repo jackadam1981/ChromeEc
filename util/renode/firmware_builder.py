@@ -83,8 +83,16 @@ def test(_opts):
     # https://chrome-infra-packages.appspot.com/p/chromiumos/infra/tools/renode.
     cipd_renode_version = (
         "ebuild_source:"
+<<<<<<< HEAD   (fd0fb1375ee246d7b00e45e056426dc80ad1fea0 moxoe: init EC files)
         + "app-emulation/renode-1.15.3_p20241207,"
         + "dev-libs/icu-70.1-r2,"
+||||||| BASE   (8e1f3d98b94df5323e1f19689f2cecfe563ef599 ctn730: increase PCHG task stack size)
+        + "app-emulation/renode-1.16.0_p20260130,"
+        + "dev-libs/icu-70.1-r3,"
+=======
+        + "app-emulation/renode-1.16.0_p20260209,"
+        + "dev-libs/icu-70.1-r3,"
+>>>>>>> CHANGE (d4da819b61a64e1957968479ddf77f6bdb1f2878 renode: firmware_builder: Update renode to 1.16.0-20262009)
         + "dev-libs/openssl-3.2.1-r1,"
         + "dev-libs/userspace-rcu-0.13.2-r1,"
         + "dev-util/lttng-ust-2.12.1-r1"
