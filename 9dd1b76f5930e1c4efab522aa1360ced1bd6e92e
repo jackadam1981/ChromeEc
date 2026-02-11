@@ -87,6 +87,24 @@
       "parentUuid": "ae0f47f4_c5ec42c7",
       "revId": "9dd1b76f5930e1c4efab522aa1360ced1bd6e92e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66629896_80960046",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-02-11T23:13:29Z",
+      "side": 1,
+      "message": "I see. As written the DT will at least require TI nodes to either enable or disable FRS, so at least nobody can assume it will be automatically enabled for TI. (and we don\u0027t have to specify FRS off for RTK nodes which is nice).",
+      "parentUuid": "36f9e3a4_d6413497",
+      "revId": "9dd1b76f5930e1c4efab522aa1360ced1bd6e92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
