@@ -22,6 +22,30 @@
       },
       "revId": "5ea6a44267a7048a451f7c1949aeb1ef7d2c678c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cbc74fa_e390c08d",
+        "filename": "zephyr/program/tanjiro/sapphire/project.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2026-02-11T06:26:00Z",
+      "side": 1,
+      "message": "This is probably common for the CTN730, but we don\u0027t have another project using it to confirm.",
+      "parentUuid": "670bb5c9_c6bb5be0",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 27
+      },
+      "revId": "5ea6a44267a7048a451f7c1949aeb1ef7d2c678c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
