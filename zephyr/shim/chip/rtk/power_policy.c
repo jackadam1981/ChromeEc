@@ -11,6 +11,10 @@
 
 #include <soc.h>
 
+#include <zephyr/logging/log.h>
+
+LOG_MODULE_REGISTER(sleep);
+
 /* CROS PM policy handler */
 const struct pm_state_info *pm_policy_next_state(uint8_t cpu, int32_t ticks)
 {
@@ -28,6 +32,7 @@ const struct pm_state_info *pm_policy_next_state(uint8_t cpu, int32_t ticks)
 				break;
 			}
 			ret = &cpu_state_list[i];
+			LOG_INF("sleep");
 		}
 	}
 	return ret;
