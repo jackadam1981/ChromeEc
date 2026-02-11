@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3ea2b25_9c7406a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-02-11T23:59:48Z",
+      "side": 1,
+      "message": "Something like this may be clearer: \"Now the script replaces the RW section in the provided RO image with the RW section from the built image.\"",
+      "range": {
+        "startLine": 10,
+        "startChar": 51,
+        "endLine": 12,
+        "endChar": 11
+      },
+      "revId": "32a51d9af575ffe715b5d09ce9e59345d6a98cff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3b26010_96a44abb",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1684,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-02-11T23:59:48Z",
+      "side": 1,
+      "message": "The comment mentions replacing `RW_FW` and `SIG_RW`, but `replace_rw` copies the `EC_RW` section. For clarity, could you update the comment to match the code by mentioning `EC_RW`, or perhaps add a note clarifying that `EC_RW` encompasses both `RW_FW` and `SIG_RW`?",
+      "range": {
+        "startLine": 1684,
+        "startChar": 0,
+        "endLine": 1684,
+        "endChar": 0
+      },
+      "revId": "32a51d9af575ffe715b5d09ce9e59345d6a98cff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9a133c1_c173811d",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1689,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-02-11T23:59:48Z",
+      "side": 1,
+      "message": "The file at `image_path` is first read completely and then completely overwritten. You could simplify this by separating the read and write operations. This would make the intent clearer and avoid the need for `seek(0)` and `truncate()`.\n\n```python\n            dst_image \u003d bytearray(read_file_gsutil(test.ro_image))\n            with open(image_path, \"rb\") as image_file:\n                src_image \u003d image_file.read()\n\n            # Replace RW part in the destination image using source image\n            replace_rw(src_image, dst_image)\n\n            with open(image_path, \"wb\") as image_file:\n                image_file.write(dst_image)\n```",
+      "range": {
+        "startLine": 1689,
+        "startChar": 0,
+        "endLine": 1689,
+        "endChar": 0
+      },
+      "revId": "32a51d9af575ffe715b5d09ce9e59345d6a98cff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
