@@ -16,6 +16,29 @@
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
       "revId": "f19bbd35f105ac8fb41f7759ae8cd7e1049596ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2811c8af_7b1abab1",
+        "filename": "common/fpsensor/fpsensor_state.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-02-11T21:44:47Z",
+      "side": 1,
+      "message": "Maybe add a comment with a link to the bug, so people reading have some context on where this number came from:\n\n\n\n```suggestion\n\tstate-\u003edeadline.val \u003d now.val + (15 * SECOND);  /* b/478160541 */\n```",
+      "range": {
+        "startLine": 390,
+        "startChar": 0,
+        "endLine": 390,
+        "endChar": 47
+      },
+      "revId": "f19bbd35f105ac8fb41f7759ae8cd7e1049596ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
