@@ -16,6 +16,24 @@
       "message": "this should go to ec-legacy",
       "revId": "5f7f6f95008502a66f341c5916b4a5dbc58defdf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af704450_aa53f5b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2026-02-12T16:12:44Z",
+      "side": 1,
+      "message": "It was reverted on ec-legacy too. https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7561893\n\nI guess submitting here is optional.",
+      "parentUuid": "d7ff9d91_455c6975",
+      "revId": "5f7f6f95008502a66f341c5916b4a5dbc58defdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
