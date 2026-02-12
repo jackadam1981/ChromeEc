@@ -16,6 +16,24 @@
       "message": "Hi Boris,\n\nWe would like to be able to collect metrics containing PWM fan duty cycle information for brya boards, hence, as a prerequisite,  we need `EC_CMD_PWM_GET_FAN_DUTY` host command in order to query EC.\nCould you review this cherry-picked chain, please?\n\nRegards,\nAngela",
       "revId": "28eb4ed006375922a08443ee024d51842053f9ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef62bbd2_5cbbbbb4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2026-02-12T17:13:16Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "51fc6f2c_a8bb990e",
+      "revId": "28eb4ed006375922a08443ee024d51842053f9ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
