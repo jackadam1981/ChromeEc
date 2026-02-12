@@ -142,6 +142,30 @@
       },
       "revId": "dfda31269e109839fde927e555d4f2f9d56eac4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71380ceb_dbeb28d6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-02-12T23:53:14Z",
+      "side": 1,
+      "message": "Thanks.  This should be a devicetree property.   You can add a boolean to the `struct fan_conf` structure that indicates when the `enable_gpio` should be turned off because the duty cycle is 0.\n\nYou can add this new property to `cros-ec,fans.yaml` and the file `zephyr/shim/src/fan.c` to map the devicetree property to the new structure member.",
+      "parentUuid": "3ee46cdb_0cb43d20",
+      "range": {
+        "startLine": 10,
+        "startChar": 51,
+        "endLine": 13,
+        "endChar": 15
+      },
+      "revId": "dfda31269e109839fde927e555d4f2f9d56eac4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
