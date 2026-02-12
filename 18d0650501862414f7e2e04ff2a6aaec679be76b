@@ -87,6 +87,30 @@
       },
       "revId": "18d0650501862414f7e2e04ff2a6aaec679be76b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b40028a8_631665d4",
+        "filename": "zephyr/drivers/imvp/rt3645.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2026-02-12T06:47:01Z",
+      "side": 1,
+      "message": "For auto update, system boots by itself, post the update.\n\nIt is With console command update method, system waits in G3, after updation and waits for powerbtn press. This  wait at G3 will be useful for the user to see from the logs to see whether imvp is updated successfully or not. Also, as this is a user initiated update, he may expect to see the result. In case, if the board was already updated, that info also is logged- \"CRC Match. Imvp already updated\". THis info is also useful, if in future, after few cpfes , once autoupdate config is removed from board specific file, somebody takes a new board and wants to  ensure that imvp is updated or not and  he may not want to search back in eclogs  for  IMVP update success messages. Especially, people from other teams might not like to search through boot logs to find the update success message.",
+      "parentUuid": "0b8e23f2_f867b93f",
+      "range": {
+        "startLine": 297,
+        "startChar": 0,
+        "endLine": 297,
+        "endChar": 37
+      },
+      "revId": "18d0650501862414f7e2e04ff2a6aaec679be76b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
