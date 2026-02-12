@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49685773_6a1f1fa5",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1692,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-02-12T21:20:56Z",
+      "side": 1,
+      "message": "How about putting this in a helper function, similar to the `patch_image` function you had before?\n\nYou could call it something like `_patch_image_with_new_rw`",
+      "range": {
+        "startLine": 1692,
+        "startChar": 0,
+        "endLine": 1692,
+        "endChar": 0
+      },
+      "revId": "37a1ae203f5494913f2f67c5be52af294a6f357d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
