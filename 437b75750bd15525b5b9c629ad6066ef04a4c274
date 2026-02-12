@@ -16,6 +16,24 @@
       "message": "Changing the default here impacts other boards too.\nYou might want to override the value in project.overlay instead.",
       "revId": "437b75750bd15525b5b9c629ad6066ef04a4c274",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63e79a48_9675a304",
+        "filename": "zephyr/dts/bindings/battery/cosmx,313-ac-32-a.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2026-02-12T10:49:14Z",
+      "side": 1,
+      "message": "Hi Rex,\n\nThere is an example [here](https://source.chromium.org/chromiumos/_/chromium/chromiumos/platform/ec/+/2620ea7a864847e28d858480d0e4bc5d034ce368:zephyr/program/dev/dev.dtsi;l\u003d52;bpv\u003d1;bpt\u003d0;drc\u003d417e041f1dec5d7543e09b04fd6c502781613fd2) which modify the voltage_min.",
+      "parentUuid": "aea6035c_51b1590f",
+      "revId": "437b75750bd15525b5b9c629ad6066ef04a4c274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
