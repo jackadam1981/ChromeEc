@@ -177,6 +177,12 @@
         zephyr,deferred-init;
 };
 
+&i2c0 {
+        label = "I2C_CHARGER";
+        prescale-scl-low = <8>;
+        clock-frequency = <I2C_BITRATE_STANDARD>;
+};
+
 /*
  * When CBI in flash is enabled, setup RO flash layout as follows:
  *   RO binary:    0x00000:0x5DFFF
