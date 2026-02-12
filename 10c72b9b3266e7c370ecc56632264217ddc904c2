@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b31eb07f_85d2a445",
+        "filename": "zephyr/program/ocelot/ocelotrvp-rtk/gpio.dtsi",
+        "patchSetId": 9
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-02-12T18:45:22Z",
+      "side": 1,
+      "message": "Use the Realtek GPIO macros throughout.",
+      "range": {
+        "startLine": 16,
+        "startChar": 13,
+        "endLine": 16,
+        "endChar": 18
+      },
+      "revId": "10c72b9b3266e7c370ecc56632264217ddc904c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
