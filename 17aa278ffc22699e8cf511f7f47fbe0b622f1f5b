@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39453efd_895184b0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2026-02-12T10:33:01Z",
+      "side": 1,
+      "message": "I would suggest state the reason of changing in the commit message. Something like \"pd_set_suspend is no-op for PDC device and the correct function is pdc_power_mgmt_set_comms_state\".",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 1
+      },
+      "revId": "17aa278ffc22699e8cf511f7f47fbe0b622f1f5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
