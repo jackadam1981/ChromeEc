@@ -16,6 +16,24 @@
       "message": "This needs to be on ec-legacy branch. Only needed here if this driver is used by a Zephyr board.",
       "revId": "9ce98af57227645522779275840f481eebe33c41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04ecf4e8_de07570d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2026-02-12T05:10:20Z",
+      "side": 1,
+      "message": "Is go/ec-branch-cherry-pick-cop disabled now? Otherwise, we cannot cherry-pick this back to firmware branch.",
+      "parentUuid": "ebe74a3c_f6ed9f7d",
+      "revId": "9ce98af57227645522779275840f481eebe33c41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
