@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f35d7f88_70b06d56",
+        "filename": "zephyr/program/ocelot/ocelotrvp-rtk/i2c.dtsi",
+        "patchSetId": 11
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-02-12T18:51:18Z",
+      "side": 1,
+      "message": "Use Realtek GPIO macros.",
+      "range": {
+        "startLine": 50,
+        "startChar": 15,
+        "endLine": 50,
+        "endChar": 20
+      },
+      "revId": "25738748a362f9c904188a8562a48829b01ed50c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
