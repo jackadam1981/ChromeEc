@@ -79,6 +79,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "74e40ded_5f337a03",
+        "filename": "zephyr/drivers/i2c/i2c_scan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2026-02-12T14:24:12Z",
+      "side": 1,
+      "message": "yeah I\u0027d say drop it and simplify the code, one can still use the shell command.",
+      "parentUuid": "492ae656_fc42517d",
+      "revId": "012fc97feed8fcca352fcbe9bad3c43f7ef85dea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "09350463_54893eeb",
         "filename": "zephyr/program/trulo/kaladin-ish/i2c.dtsi",
         "patchSetId": 6
