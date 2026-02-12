@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "879656f9_31ebf265",
+        "filename": "zephyr/program/ocelot/ocelotrvp-rtk/i2c.dtsi",
+        "patchSetId": 10
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-02-12T18:49:30Z",
+      "side": 1,
+      "message": "You define this nodelabel only to delete it later.\n\nCan you just enable all the valid I2C buses in this CL?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 41
+      },
+      "revId": "9e55cac2026c09246e179e9876dfcb3f31c24a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
