@@ -177,6 +177,13 @@
         zephyr,deferred-init;
 };
 
+&i2c1 {
+        label = "I2C_SMB_BATT";
+        /* Only i2c1 uses 100kHz SMBus which needs data-hold-time */
+        data-hold-time = <10>;
+        clock-frequency = <50000>;
+};
+
 /*
  * When CBI in flash is enabled, setup RO flash layout as follows:
  *   RO binary:    0x00000:0x5DFFF
