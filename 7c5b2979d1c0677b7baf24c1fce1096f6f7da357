@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ba3e9a6_4403852c",
+        "filename": "zephyr/program/ocelot/ocelotrvp-rtk/power_signals.dtsi",
+        "patchSetId": 10
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-02-12T18:46:25Z",
+      "side": 1,
+      "message": "Use Realtek GPIO macros.",
+      "range": {
+        "startLine": 11,
+        "startChar": 11,
+        "endLine": 11,
+        "endChar": 16
+      },
+      "revId": "7c5b2979d1c0677b7baf24c1fce1096f6f7da357",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
