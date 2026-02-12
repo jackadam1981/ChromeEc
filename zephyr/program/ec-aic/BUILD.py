@@ -79,6 +79,30 @@ aic_ite_rtk_pdc = register_ite_project(
     ),
 )
 
+# RTK EC + RTK PDC project. Assumes a Realtek PDC evaluation board is connected
+# to the Realtek EC AIC/MECC.
+# Enables the PDC software stack and relevant devicetree nodes for two
+# USB-C ports, plus dependencies (e.g. charger)
+#
+# Connect the RTK evaluation board (EVB) as follows:
+#  * RTK SMBus (J4 "GPIO5" is SCL, J4 "GPIO6" is SDA) to AIC I2C3 bus
+#    * Note: I2C3 is 3.3V levels.
+#    * Requires rework to add probe wires to these signals
+#      * Add probe wire to WC_USBC_PD_CLK_AIC_3V3_IO at site R192
+#      * Add probe wire to WC_USBC_PD_DATA_AIC_3V3_IO at site R193
+#  * RTK EVB IRQ (J4 "GPIO4") to AIC SMC_WAKE_SCI_N_3V3_OD
+#    * Requires rework:
+#      * Add probe wire to SMC_WAKE_SCI_N_3V3_OD at site R83
+#  * Connect GND to AIC J3.3 or J3.4
+aic_ite_rtk_pdc = register_rtk_project(
+    project_name="rtk-aic-rtk-pdc",
+    extra_kconfig_files=(here / "rtk-aic" / "project_pdc.conf",),
+    extra_dt_overlays=(
+        here / "rtk-aic" / "project_pdc.overlay",
+        here / "rtj-aic" / "project_pdc_rtk.overlay",
+    ),
+)
+
 # Base NPCX (Nuvoton) project. This build assumes no additional hardware
 # attached to the AIC and serves as a minimal EC build.
 npcx_aic = register_nuvoton_project(
