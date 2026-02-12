@@ -53,6 +53,7 @@ from dataclasses import dataclass
 from dataclasses import field
 from enum import Enum
 import io
+import json
 import logging
 import os
 from pathlib import Path
@@ -62,7 +63,7 @@ import subprocess
 import sys
 import tempfile
 import time
-from typing import BinaryIO, Callable, Optional
+from typing import BinaryIO, Callable, Optional, Union
 
 # pylint: disable=import-error
 import colorama  # type: ignore[import]
@@ -1883,6 +1884,11 @@ def main():
         "--renode", help="Run tests with Renode emulator", action="store_true"
     )
 
+    parser.add_argument(
+        "--json",
+        help="Output file for test results in JSON format",
+    )
+
     args = parser.parse_args()
     logging.basicConfig(
         format="%(levelname)s:%(message)s", level=args.log_level
@@ -1917,9 +1923,11 @@ def main():
 
         colorama.init()
         exit_code = 0
+        json_output = {"tests": []}
         for test in test_list:
             # print results
             print('Test "' + test.config_name + '": ', end="")
+            test_status = "SKIPPED"
             if (test.skip_for_zephyr and args.zephyr) or platform.skip_test(
                 test, board_config, args.zephyr
             ):
@@ -1927,11 +1935,39 @@ def main():
             else:
                 if test.passed:
                     print(colorama.Fore.GREEN + "PASSED")
+                    test_status = "PASSED"
                 else:
                     print(colorama.Fore.RED + "FAILED")
+                    test_status = "FAILED"
                     exit_code = 1
 
             print(colorama.Style.RESET_ALL)
+
+            # Join logs list, which can contain bytes or lists of bytes
+            logs = []
+            for log_entry in test.logs:
+                if isinstance(log_entry, list):
+                    for line in log_entry:
+                        if isinstance(line, bytes):
+                            logs.append(line.decode(errors="replace"))
+                        else:
+                            logs.append(str(line))
+                elif isinstance(log_entry, bytes):
+                    logs.append(log_entry.decode(errors="replace"))
+                else:
+                    logs.append(str(log_entry))
+
+            json_output["tests"].append(
+                {
+                    "test_name": test.config_name,
+                    "status": test_status,
+                    "logs": "".join(logs),
+                }
+            )
+
+        if args.json:
+            with open(args.json, "w", encoding="utf-8") as f:
+                json.dump(json_output, f, indent=2)
 
         if exit_code != 0:
             print(
