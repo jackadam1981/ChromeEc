@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aea6035c_51b1590f",
+        "filename": "zephyr/dts/bindings/battery/cosmx,313-ac-32-a.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2026-02-12T08:26:48Z",
+      "side": 1,
+      "message": "Changing the default here impacts other boards too.\nYou might want to override the value in project.overlay instead.",
+      "revId": "437b75750bd15525b5b9c629ad6066ef04a4c274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
