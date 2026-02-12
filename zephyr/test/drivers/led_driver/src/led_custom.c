@@ -245,6 +245,16 @@ ZTEST(led_driver_custom, test_manual_control)
 
 	/* Re-enable auto control */
 	led_auto_control(EC_LED_ID_BATTERY_LED, 1);
+
+	k_sleep(K_MSEC(600));
+
+	/*
+	 * Verify LED pattern advances to White with auto-control back on.
+	 */
+	zassert_false(is_blue_on(),
+		      "LED should advance to Step 1 when auto-control is on");
+	zassert_true(is_white_on(),
+		     "LED should have advanced to White (Step 2)");
 }
 
 /*
