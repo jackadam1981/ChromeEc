@@ -16,6 +16,29 @@
       "message": "Thanks for contributing this --I\u0027ll be reviewing it shortly",
       "revId": "a4152693e0737f9481f6da378aa4daed1d7fb892",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77dc1594_3bc20ca7",
+        "filename": "zephyr/program/ocelot/ocelotrvp-rtk/gpio.dtsi",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-02-12T18:44:44Z",
+      "side": 1,
+      "message": "Nit - use the Realtek GPIO macros.",
+      "range": {
+        "startLine": 19,
+        "startChar": 13,
+        "endLine": 19,
+        "endChar": 22
+      },
+      "revId": "a4152693e0737f9481f6da378aa4daed1d7fb892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
