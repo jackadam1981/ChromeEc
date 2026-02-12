@@ -24,26 +24,61 @@
 
 #define X86_NON_DSX_MTL_FORCE_SHUTDOWN_TO_MS 50
 
+static bool force_shutdown_pch_pwrok_off;
+static bool force_shutdown_sys_pwrok_off;
+static bool force_shutdown_rsmrst_on;
+static bool force_shutdown_pp3300_off;
+static bool force_shutdown_pp5000_off;
+
 int mock_power_signal_set_ap_force_shutdown(enum power_signal signal, int value)
 {
-	if (power_signal_set_fake.call_count == 1) {
+	if (IS_ENABLED(CONFIG_TEST_AP_PWRSEQ_FORCE_SHUTDOWN_PWROK) &&
+	    (!force_shutdown_pch_pwrok_off || !force_shutdown_sys_pwrok_off)) {
+		switch (signal) {
+		case PWR_PCH_PWROK:
+			zassert_equal(value, 0, "Deassert PWR_PCH_PWROK");
+			force_shutdown_pch_pwrok_off = true;
+			return 0;
+		case PWR_EC_PCH_SYS_PWROK:
+			zassert_equal(value, 0,
+				      "Deassert PWR_EC_PCH_SYS_PWROK");
+			force_shutdown_sys_pwrok_off = true;
+			return 0;
+		default:
+			zassert_unreachable(
+				"Deassert PCH_PWROK, SYS_PWROK first. Got "
+				"signal: %d, value: %d",
+				signal, value);
+			return -1;
+		}
+	}
+
+	if (!force_shutdown_rsmrst_on) {
 		zassert_true(signal == PWR_EC_PCH_RSMRST && value == 1,
-			     "First call signal: %d, value: %d", signal, value);
+			     "Expected PCH_RSMRST. "
+			     "Got signal: %d, value: %d",
+			     signal, value);
+		force_shutdown_rsmrst_on = true;
 		return 0;
-	} else if (power_signal_set_fake.call_count == 2) {
+	}
+
+	if (!force_shutdown_pp3300_off) {
 		zassert_true(signal == PWR_EN_PP3300_A && value == 0,
-			     "Second call signal: %d, value: %d", signal,
-			     value);
+			     "Expected PP3300_A. "
+			     "Got  signal: %d, value: %d",
+			     signal, value);
+		force_shutdown_pp3300_off = true;
 		return 0;
 	}
-#if CONFIG_TEST_AP_PWRSEQ_PP5500
-	else if (power_signal_set_fake.call_count == 3) {
+
+	if (IS_ENABLED(CONFIG_TEST_AP_PWRSEQ_PP5500)) {
 		zassert_true(signal == PWR_EN_PP5000_A && value == 0,
-			     "Second call signal: %d, value: %d", signal,
-			     value);
+			     "Expected PP5000_A. "
+			     "Got signal: %d, value: %d",
+			     signal, value);
+		force_shutdown_pp5000_off = true;
 		return 0;
 	}
-#endif
 
 	zassert_unreachable(
 		"Wrong input received. power_signal_set_fake.call_count: %d, "
@@ -191,6 +226,13 @@ AP_POWER_CHIPSET_SUB_STATE_DEFINE(S0ix, NULL, x86_non_dsx_mtl_s0ix_run, NULL,
 static void board_power_before(void *fixture)
 {
 	ARG_UNUSED(fixture);
+
+	force_shutdown_pch_pwrok_off = false;
+	force_shutdown_sys_pwrok_off = false;
+	force_shutdown_rsmrst_on = false;
+	force_shutdown_pp3300_off = false;
+	force_shutdown_pp5000_off = false;
+
 	RESET_FAKE(power_signal_set);
 	RESET_FAKE(power_signal_get);
 	RESET_FAKE(power_wait_mask_signals_timeout);
@@ -206,13 +248,16 @@ ZTEST_USER(board_power, test_board_ap_power_force_shutdown)
 		mock_power_signal_set_ap_force_shutdown;
 	power_signal_get_fake.custom_fake =
 		mock_power_signal_get_ap_force_shutdown;
+
 	board_ap_power_force_shutdown();
 
-#if CONFIG_TEST_AP_PWRSEQ_PP5500
-	zassert_equal(3, power_signal_set_fake.call_count);
-#else
-	zassert_equal(2, power_signal_set_fake.call_count);
-#endif
+	if (IS_ENABLED(CONFIG_TEST_AP_PWRSEQ_PP5500)) {
+		zassert_true(force_shutdown_pp5000_off,
+			     "Expected to reach PP5000_A deassertion.");
+	} else {
+		zassert_true(force_shutdown_pp3300_off,
+			     "Expected to reach PP3300_A deassertion.");
+	}
 	zassert_equal(7, power_signal_get_fake.call_count);
 }
 
@@ -231,11 +276,14 @@ ZTEST_USER(board_power, test_board_ap_power_force_shutdown_timeout)
 
 	zassert_true((end_ms - start_ms) >=
 		     X86_NON_DSX_MTL_FORCE_SHUTDOWN_TO_MS);
-#if CONFIG_TEST_AP_PWRSEQ_PP5500
-	zassert_equal(power_signal_set_fake.call_count, 3);
-#else
-	zassert_equal(power_signal_set_fake.call_count, 2);
-#endif
+
+	if (IS_ENABLED(CONFIG_TEST_AP_PWRSEQ_PP5500)) {
+		zassert_true(force_shutdown_pp5000_off,
+			     "Expected to reach PP5000_A deassertion.");
+	} else {
+		zassert_true(force_shutdown_pp3300_off,
+			     "Expected to reach PP3300_A deassertion.");
+	}
 	zassert_true(power_signal_get_fake.call_count > 2);
 }
 
