@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d91655e8_01255c52",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-02-12T18:46:18Z",
+      "side": 1,
+      "message": "You can add `LOW_COVERAGE_REASON\u003dAdd FRS unit tests in b/339686045`.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 3
+      },
+      "revId": "14b6414422cc5b084fe9a53b86d38477f53eb21b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "dc5353ce_b594099e",
@@ -14,6 +37,29 @@
       "writtenOn": "2026-02-12T10:26:57Z",
       "side": 1,
       "message": "Automatically set CQ+1 by AutoRunner. See go/chromeos-cqw:auto-runner-doc for details. \nReport Bugs/Feedback: go/cros-auto-runner-bug. \n",
+      "revId": "14b6414422cc5b084fe9a53b86d38477f53eb21b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d28736a2_59d662f5",
+        "filename": "zephyr/subsys/pd_controller/pdc_power_mgmt.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 5846,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2026-02-12T18:46:18Z",
+      "side": 1,
+      "message": "We need to bounds check the `port` param. `pdc_power_mgmt_get_port_pdc_driver` will return NULL for invalid port numbers causing a segfault later inside `pdc_get_frs_supported()`\n\nYou can follow this pattern from other pdc_power_mgmt functions:\n\n```c\nif (!pdc_power_mgmt_is_pdc_port_valid(port_num)) {\n    return -ERANGE;\n}\n\nreturn pdc_get_frs_supported(pdc_data[port]-\u003eport.pdc);\n```",
+      "range": {
+        "startLine": 5846,
+        "startChar": 0,
+        "endLine": 5846,
+        "endChar": 72
+      },
       "revId": "14b6414422cc5b084fe9a53b86d38477f53eb21b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
