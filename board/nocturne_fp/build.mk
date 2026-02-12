@@ -63,6 +63,7 @@ test-list-y=\
        rollback \
        rollback_entropy \
        rollback_lock_panic \
+       rollback_minimal_version \
        rsa3 \
        rtc \
        sbrk \
