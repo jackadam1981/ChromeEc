@@ -40,6 +40,13 @@ config TEST_AP_PWRSEQ_PP5500
         help
           Enable PP5500 rail tests for board power.
 
+config TEST_AP_PWRSEQ_FORCE_SHUTDOWN_PWROK
+        bool "AP requires PWROK sequencing during forced shutdown"
+        help
+          Check for PCH_PWROK and EC_PCH_SYS_PWROK deassertion during AP
+          forced shutdown sequences. This is typically triggered by the
+          EC console apshutdown command.
+
 config TEST_PROJECT_INTELRVP_TCPC
 	bool "Run tests for tcpc.c"
 	help
