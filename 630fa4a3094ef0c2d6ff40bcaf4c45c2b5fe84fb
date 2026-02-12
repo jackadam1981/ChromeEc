@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b85491af_ca3181f6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-02-12T21:36:40Z",
+      "side": 1,
+      "message": "Maybe \"Add test to verify rollback minimal version matches RW version\"?",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 68
+      },
+      "revId": "630fa4a3094ef0c2d6ff40bcaf4c45c2b5fe84fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8deb7fbb_e7276c17",
+        "filename": "zephyr/test/hwtest/src/rollback_minimal_version.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-02-12T21:36:40Z",
+      "side": 1,
+      "message": "\"matches the expected value\"? (Looks like test is checking for equality and the `Kconfig` has \"matches\".",
+      "range": {
+        "startLine": 13,
+        "startChar": 49,
+        "endLine": 14,
+        "endChar": 17
+      },
+      "revId": "630fa4a3094ef0c2d6ff40bcaf4c45c2b5fe84fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd0a1bb4_f8ecb095",
+        "filename": "zephyr/test/hwtest/src/rollback_minimal_version.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-02-12T21:36:40Z",
+      "side": 1,
+      "message": "Same comment as [here](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7570964/comment/aa8fc8c6_68d72669/)\n\nUp to you.",
+      "range": {
+        "startLine": 28,
+        "startChar": 11,
+        "endLine": 28,
+        "endChar": 46
+      },
+      "revId": "630fa4a3094ef0c2d6ff40bcaf4c45c2b5fe84fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
