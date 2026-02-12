@@ -58,6 +58,12 @@ struct jump_data {
 		    */
 };
 
+/**
+ * Returns a pointer to the jump data structure if it has been initialized.
+ * Otherwise returns NULL.
+ */
+struct jump_data *get_jump_data(void);
+
 #ifdef __cplusplus
 }
 #endif
