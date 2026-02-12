@@ -127,16 +127,36 @@ static int load_time(timestamp_t *t)
 	return 1;
 }
 
-test_mockable struct panic_data *panic_get_data(void)
+static struct panic_data *get_panic_data_ptr(void)
 {
 	return (struct panic_data *)(__ram_data + RAM_DATA_SIZE -
 				     sizeof(struct panic_data));
 }
 
-test_mockable uintptr_t get_panic_data_start(void)
+struct panic_data *panic_get_data(void)
 {
-	return (uintptr_t)(__ram_data + RAM_DATA_SIZE -
-			   sizeof(struct panic_data));
+	struct panic_data *pdata = get_panic_data_ptr();
+
+	if (pdata->magic != PANIC_DATA_MAGIC)
+		return NULL;
+	return pdata;
+}
+
+uintptr_t get_panic_data_start(void)
+{
+	return (uintptr_t)get_panic_data_ptr();
+}
+
+struct panic_data *get_panic_data_write(void)
+{
+	struct panic_data *pdata = get_panic_data_ptr();
+
+	if (pdata->magic != PANIC_DATA_MAGIC) {
+		memset(pdata, 0, sizeof(*pdata));
+		pdata->magic = PANIC_DATA_MAGIC;
+		pdata->struct_size = sizeof(*pdata);
+	}
+	return pdata;
 }
 
 test_mockable void system_reset(int flags)
