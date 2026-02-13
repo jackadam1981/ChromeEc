@@ -45,6 +45,54 @@
       },
       "revId": "73c6e05c7711fec58d31bc555c783f78259c2d1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5467cdd9_17063d44",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2026-02-13T08:40:03Z",
+      "side": 1,
+      "message": "I would notice that when working on Zephyr bloonchipper.\n\nIt\u0027s hard to determine whether you got 0 because everything is working fine or some tool is filling section with 0x00 😂",
+      "parentUuid": "55697473_e8961183",
+      "range": {
+        "startLine": 9,
+        "startChar": 33,
+        "endLine": 9,
+        "endChar": 63
+      },
+      "revId": "73c6e05c7711fec58d31bc555c783f78259c2d1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90903dbf_d600ad7c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2026-02-13T08:40:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b75f9c9_526ba531",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 63
+      },
+      "revId": "73c6e05c7711fec58d31bc555c783f78259c2d1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
