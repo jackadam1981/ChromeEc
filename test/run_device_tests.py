@@ -53,6 +53,7 @@ from dataclasses import dataclass
 from dataclasses import field
 from enum import Enum
 import io
+import json
 import logging
 import os
 from pathlib import Path
@@ -62,7 +63,7 @@ import subprocess
 import sys
 import tempfile
 import time
-from typing import BinaryIO, Callable, Optional
+from typing import BinaryIO, Callable, Optional, Union
 
 # pylint: disable=import-error
 import colorama  # type: ignore[import]
@@ -1763,6 +1764,52 @@ def flash_and_run_test(
         return ret
 
 
+def write_json_results(
+    test_list: list[TestConfig],
+    output_file: str,
+    platform: Platform,
+    board_config: BoardConfig,
+    zephyr: bool,
+):
+    """Writes test results to a JSON file."""
+    json_output = {"tests": []}
+    for test in test_list:
+        test_status = "SKIP"
+        if not (
+            (test.skip_for_zephyr and zephyr)
+            or platform.skip_test(test, board_config, zephyr)
+        ):
+            if test.passed:
+                test_status = "PASS"
+            else:
+                test_status = "FAIL"
+
+        # Join logs list, which can contain bytes or lists of bytes
+        logs = []
+        for log_entry in test.logs:
+            if isinstance(log_entry, list):
+                for line in log_entry:
+                    if isinstance(line, bytes):
+                        logs.append(line.decode(errors="replace"))
+                    else:
+                        logs.append(str(line))
+            elif isinstance(log_entry, bytes):
+                logs.append(log_entry.decode(errors="replace"))
+            else:
+                logs.append(str(log_entry))
+
+        json_output["tests"].append(
+            {
+                "test_name": test.config_name,
+                "status": test_status,
+                "logs": "".join(logs),
+            }
+        )
+
+    with open(output_file, "w", encoding="utf-8") as f:
+        json.dump(json_output, f, indent=2)
+
+
 def parse_remote_arg(remote: str) -> str:
     """Convert the 'remote' input argument to IP address, if available."""
     if not remote:
@@ -1883,6 +1930,11 @@ def main():
         "--renode", help="Run tests with Renode emulator", action="store_true"
     )
 
+    parser.add_argument(
+        "--json",
+        help="Output file for test results in JSON format",
+    )
+
     args = parser.parse_args()
     logging.basicConfig(
         format="%(levelname)s:%(message)s", level=args.log_level
@@ -1932,6 +1984,11 @@ def main():
                     exit_code = 1
 
             print(colorama.Style.RESET_ALL)
+
+        if args.json:
+            write_json_results(
+                test_list, args.json, platform, board_config, args.zephyr
+            )
 
         if exit_code != 0:
             print(
