@@ -19,6 +19,13 @@
 	frame-size = <10240>; \
 	v4l2-pixel-format = "V4L2_PIX_FMT_GREY";
 
+#define EGIG630_IMAGE_COLLECTION_PROPS \
+	width = <80>; \
+	height = <64>; \
+	bits-per-pixel = <8>; \
+	frame-size = <26200>; \
+	v4l2-pixel-format = "V4L2_PIX_FMT_GREY";
+
 &spi1 {
 	fp_sensor: egis630@0 {
 		compatible = "egis,egis630";
@@ -54,6 +61,10 @@
 			config6 {
 				EGIG630_TEST_IMAGE_PROPS
 				capture-type = "FINGERPRINT_CAPTURE_TYPE_QUALITY_TEST";
+			};
+			config7 {
+				EGIG630_IMAGE_COLLECTION_PROPS
+				capture-type = "FINGERPRINT_CAPTURE_TYPE_VENDOR_FORMAT";
 			};
 		};
 
