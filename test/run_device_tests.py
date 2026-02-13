@@ -53,6 +53,7 @@ from dataclasses import dataclass
 from dataclasses import field
 from enum import Enum
 import io
+import json
 import logging
 import os
 from pathlib import Path
@@ -62,7 +63,7 @@ import subprocess
 import sys
 import tempfile
 import time
-from typing import BinaryIO, Callable, Optional
+from typing import BinaryIO, Callable, Optional, Union
 
 # pylint: disable=import-error
 import colorama  # type: ignore[import]
@@ -213,6 +214,14 @@ class ApplicationType(Enum):
 
     TEST = 1
     PRODUCTION = 2
+
+
+class TestStatus(Enum):
+    """Test execution status."""
+
+    PASS = "PASS"
+    FAIL = "FAIL"
+    SKIP = "SKIP"
 
 
 class FPSensorType(Enum):
@@ -562,6 +571,7 @@ class TestConfig:
     exclude_boards: list = field(default_factory=list)
     logs: list = field(init=False, default_factory=list)
     passed: bool = field(init=False, default=False)
+    status: TestStatus = field(init=False, default=TestStatus.FAIL)
     num_passes: int = field(init=False, default=0)
     num_fails: int = field(init=False, default=0)
     skip_for_zephyr: bool = False
@@ -1763,6 +1773,27 @@ def flash_and_run_test(
         return ret
 
 
+def write_json_results(
+    test_list: list[TestConfig],
+    output_file: str,
+):
+    """Writes test results to a JSON file."""
+    json_output = {"tests": []}
+    for test in test_list:
+        logs = [log_entry.decode(errors="replace") for log_entry in test.logs]
+
+        json_output["tests"].append(
+            {
+                "test_name": test.config_name,
+                "status": test.status.value,
+                "logs": "".join(logs),
+            }
+        )
+
+    with open(output_file, "w", encoding="utf-8") as f:
+        json.dump(json_output, f, indent=2)
+
+
 def parse_remote_arg(remote: str) -> str:
     """Convert the 'remote' input argument to IP address, if available."""
     if not remote:
@@ -1883,6 +1914,11 @@ def main():
         "--renode", help="Run tests with Renode emulator", action="store_true"
     )
 
+    parser.add_argument(
+        "--json",
+        help="Output file for test results in JSON format",
+    )
+
     args = parser.parse_args()
     logging.basicConfig(
         format="%(levelname)s:%(message)s", level=args.log_level
@@ -1910,28 +1946,33 @@ def main():
             if (test.skip_for_zephyr and args.zephyr) or platform.skip_test(
                 test, board_config, args.zephyr
             ):
+                test.status = TestStatus.SKIP
                 continue
             test.passed = flash_and_run_test(
                 test, platform, board_config, args, executor
             )
+            if test.passed:
+                test.status = TestStatus.PASS
+            else:
+                test.status = TestStatus.FAIL
 
         colorama.init()
         exit_code = 0
         for test in test_list:
             # print results
             print('Test "' + test.config_name + '": ', end="")
-            if (test.skip_for_zephyr and args.zephyr) or platform.skip_test(
-                test, board_config, args.zephyr
-            ):
+            if test.status == TestStatus.SKIP:
                 print(colorama.Fore.YELLOW + "SKIPPED")
+            elif test.status == TestStatus.PASS:
+                print(colorama.Fore.GREEN + "PASSED")
             else:
-                if test.passed:
-                    print(colorama.Fore.GREEN + "PASSED")
-                else:
-                    print(colorama.Fore.RED + "FAILED")
-                    exit_code = 1
+                print(colorama.Fore.RED + "FAILED")
+                exit_code = 1
 
             print(colorama.Style.RESET_ALL)
+
+        if args.json:
+            write_json_results(test_list, args.json)
 
         if exit_code != 0:
             print(
