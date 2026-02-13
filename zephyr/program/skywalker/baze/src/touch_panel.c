@@ -44,13 +44,21 @@ static K_WORK_DELAYABLE_DEFINE(touch_enable_deferred_data,
 void board_power_event_handler(struct ap_power_ev_callback *cb,
 			       struct ap_power_ev_data data)
 {
+	const struct gpio_dt_spec *const tpgpio_gpio =
+		GPIO_DT_FROM_NODELABEL(gpio_edp_bl_en_3v3);
+
 	switch (data.event) {
 	case AP_POWER_SHUTDOWN:
+		gpio_pin_interrupt_configure_dt(tpgpio_gpio, GPIO_INT_DISABLE);
 		/* Cancel touch_enable touch_disable k_work. */
 		k_work_cancel_delayable(&touch_enable_deferred_data);
 		k_work_cancel_delayable(&touch_disable_deferred_data);
 		gpio_pin_set_dt(
 			GPIO_DT_FROM_NODELABEL(gpio_ec_tchscr_report_en), 0);
+		break;
+	case AP_POWER_RESUME:
+		gpio_pin_interrupt_configure_dt(tpgpio_gpio,
+						GPIO_INT_EDGE_BOTH);
 		break;
 	default:
 		return;
@@ -155,7 +163,8 @@ static void touch_enable_init(void)
 	}
 
 	ap_power_ev_init_callback(&power_cb, board_power_event_handler,
-				  AP_POWER_SHUTDOWN | AP_POWER_HARD_OFF);
+				  AP_POWER_RESUME | AP_POWER_SHUTDOWN |
+					  AP_POWER_HARD_OFF);
 	ap_power_ev_add_callback(&power_cb);
 
 	touch_sequence_enable = true;
