@@ -3169,6 +3169,7 @@ static void tc_attached_src_entry(const int port)
 			 * This also sets the usb mux, which will be overridden
 			 * by the following usb_mux_set call: TODO(b/300694918)
 			 */
+			CPRINTS("C%d: Setting DFP", port);
 			tc_set_data_role(port, PD_ROLE_DFP);
 
 			/*
@@ -3180,10 +3181,20 @@ static void tc_attached_src_entry(const int port)
 			 * it shall:" with supplying Vconn, "Functionally
 			 * connect the USB TX/RX pairs"
 			 */
-			if (IS_ENABLED(CONFIG_USBC_SS_MUX))
+			if (IS_ENABLED(CONFIG_USBC_SS_MUX)) {
+				CPRINTS("C%d: Setting USB enabled", port);
 				usb_mux_set(port, USB_PD_MUX_USB_ENABLED,
 					    USB_SWITCH_CONNECT,
 					    tc[port].polarity);
+				/* This is probably where we should set
+				 * zSBUTermination to pass V.13. Setting safe
+				 * mode here would probably break USB for the
+				 * whole connection, so we'd need a way to
+				 * independently configure SBU. typec_set_sbu
+				 * might be a good place to add something like
+				 * this for virtual mux.
+				 */
+			}
 
 			/*
 			 * Start sourcing Vconn before Vbus to ensure
@@ -3338,6 +3349,13 @@ static void tc_attached_src_run(const int port)
 		bool tryWait;
 		enum usb_tc_state new_tc_state = TC_UNATTACHED_SNK;
 
+		CPRINTS("C%d: Detected CC disconnect", port);
+
+		/* Note: Could put the mux disconnect as early as here to save a
+		 * few ms. In practice, whatever advantage this offers is
+		 * overwhelmed by the apparent latency of the mux setting.
+		 */
+
 		if (IS_ENABLED(CONFIG_USB_PD_TRY_SRC))
 			tryWait = is_try_src_enabled(port) &&
 				  !TC_CHK_FLAG(port, TC_FLAGS_TS_DTS_PARTNER);
@@ -3473,6 +3491,17 @@ static void tc_attached_src_exit(const int port)
 	tc_src_power_off(port);
 
 	if (!TC_CHK_FLAG(port, TC_FLAGS_REQUEST_PR_SWAP)) {
+		/* This would otherwise happen in Unattached.SNK, after a 15 ms
+		 * transition through TryWait.SNK. Doing it here is more
+		 * consistent with the requirements of TD 4.6.5.V.17, but it's
+		 * not sufficient to change the observed behavior in the test.
+		 * The latency of the mux setting itself appears to control.
+		 */
+		CPRINTS("C%d: Disconnecting mux", port);
+		if (IS_ENABLED(CONFIG_USBC_SS_MUX))
+			usb_mux_set(port, USB_PD_MUX_NONE,
+				    USB_SWITCH_DISCONNECT, tc[port].polarity);
+
 		/* Attached.SRC exit - disable AutoDischargeDisconnect */
 		tcpm_enable_auto_discharge_disconnect(port, 0);
 

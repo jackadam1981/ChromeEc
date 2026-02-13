@@ -412,6 +412,7 @@ static int configure_mux(int port, int index, enum mux_config_type config,
 			 */
 			task_wait_event_mask(PD_EVENT_AP_MUX_DONE, 100 * MSEC);
 			ack_task[port] = TASK_ID_INVALID;
+			CPRINTS("Ack wait done");
 
 			crec_usleep(12.5 * MSEC);
 		}
@@ -892,8 +893,10 @@ DECLARE_HOST_COMMAND(EC_CMD_USB_PD_MUX_INFO, hc_usb_pd_mux_info,
  */
 void usb_mux_set_ack_complete(int port)
 {
-	if (ack_task[port] != TASK_ID_INVALID)
+	if (ack_task[port] != TASK_ID_INVALID) {
+		CPRINTS("Ack received");
 		task_set_event(ack_task[port], PD_EVENT_AP_MUX_DONE);
+	}
 }
 
 static enum ec_status hc_usb_pd_mux_ack(struct host_cmd_handler_args *args)
@@ -906,8 +909,10 @@ static enum ec_status hc_usb_pd_mux_ack(struct host_cmd_handler_args *args)
 	if (p->port >= board_get_usb_pd_port_count())
 		return EC_RES_INVALID_PARAM;
 
-	if (ack_task[p->port] != TASK_ID_INVALID)
+	if (ack_task[p->port] != TASK_ID_INVALID) {
+		CPRINTS("Ack received");
 		task_set_event(ack_task[p->port], PD_EVENT_AP_MUX_DONE);
+	}
 
 	usb_mux_set_ack_complete(p->port);
 

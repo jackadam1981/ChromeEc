@@ -2678,6 +2678,8 @@ static void pe_src_send_capabilities_run(int port)
 			/* We are PD connected */
 			PE_SET_FLAG(port, PE_FLAGS_PD_CONNECTION);
 			tc_pd_connection(port, 1);
+			// CPRINTS("C%d: Setting safe mode", port);
+			////usb_mux_set_safe_mode(port);
 
 			/*
 			 * Handle the Sink Request in

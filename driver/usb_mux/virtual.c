@@ -13,6 +13,9 @@
 #include "usb_mux.h"
 #include "util.h"
 
+#define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ##args)
+#define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ##args)
+
 /*
  * USB PD protocol configures the USB & DP mux state and USB PD policy
  * configures the HPD mux state. Both states are independent of each other
@@ -49,6 +52,7 @@ static inline void virtual_mux_update_state(int port, mux_state_t mux_state,
 	if (!IS_ENABLED(CONFIG_HOSTCMD_EVENTS))
 		return;
 
+	CPRINTS("Mux host event");
 	host_set_single_event(EC_HOST_EVENT_USB_MUX);
 
 	if (!IS_ENABLED(CONFIG_USB_MUX_AP_ACK_REQUEST))
@@ -65,8 +69,14 @@ static inline void virtual_mux_update_state(int port, mux_state_t mux_state,
 	 *
 	 * Note the AP will only ACK if the mux state changed in some way.
 	 */
-	if (previous_mux_state != mux_state)
+	if (previous_mux_state != mux_state) {
+		/* This never happens, even changing from USB to disconnected.
+		 * Why? Figuring this out would probably be prerequisite to
+		 * getting an accurate EC-side timing for the mux operation.
+		 */
+		CPRINTS("Ack required");
 		*ack_required = true;
+	}
 }
 
 static int virtual_init(const struct usb_mux *me)
