@@ -22,6 +22,30 @@
       },
       "revId": "63a766979333ce5c9f341170b87c252b775d1a8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07c910ca_f71698cf",
+        "filename": "zephyr/test/hwtest/src/rollback_entropy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2026-02-13T09:00:53Z",
+      "side": 1,
+      "message": "This test will be also running on new FPMCUs with rollback value set to 0 (`srebrna`, `niedzica`, `chudow`, etc).\n\nNevertheless, I see your point, but I prefer solving that using compile time asserts or Kconfig\u0027s `depends on` [like here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/program/fpmcu/Kconfig;l\u003d20-22;drc\u003deac5390bd8e66c1485c14525a84055394a6ec606) (Zephyr only). Let me know what do you think.\n\nI\u0027ll resolve this comment to merge this CL.",
+      "parentUuid": "aa8fc8c6_68d72669",
+      "range": {
+        "startLine": 82,
+        "startChar": 26,
+        "endLine": 82,
+        "endChar": 61
+      },
+      "revId": "63a766979333ce5c9f341170b87c252b775d1a8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
