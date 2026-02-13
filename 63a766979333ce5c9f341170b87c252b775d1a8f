@@ -46,6 +46,30 @@
       },
       "revId": "63a766979333ce5c9f341170b87c252b775d1a8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9248e00_0323edcd",
+        "filename": "zephyr/test/hwtest/src/rollback_entropy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2026-02-13T09:04:24Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "07c910ca_f71698cf",
+      "range": {
+        "startLine": 82,
+        "startChar": 26,
+        "endLine": 82,
+        "endChar": 61
+      },
+      "revId": "63a766979333ce5c9f341170b87c252b775d1a8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
