@@ -10,6 +10,7 @@ gets invoked by chromite/api/controller/firmware.py.
 """
 
 import getpass
+import json
 import os
 from pathlib import Path
 import subprocess
@@ -47,7 +48,9 @@ def bundle(opts):
         )
 
 
-def run_device_tests(board: str, working_dir: Path, zephyr: bool):
+def run_device_tests(
+    board: str, working_dir: Path, zephyr: bool, output_file: Path = None
+):
     """Run device tests on Renode emulator."""
     cmd = [
         "test/run_device_tests.py",
@@ -61,14 +64,17 @@ def run_device_tests(board: str, working_dir: Path, zephyr: bool):
     if zephyr:
         cmd.append("--zephyr")
 
-    subprocess.run(
+    if output_file:
+        cmd.extend(["--json", str(output_file)])
+
+    return subprocess.run(
         cmd,
         cwd=working_dir,
-        check=True,
+        check=False,
     )
 
 
-def test(_opts):
+def test(opts):
     """Runs EC unit tests with Renode."""
 
     working_dir = Path(__file__).parents[2].resolve()
@@ -125,8 +131,43 @@ def test(_opts):
     # TODO(b/371633141): Add a parallel option to run_device_tests.py to speed
     # this up. Right now the EC/Zephyr coverage builders take longer than this,
     # so it doesn't affect overall CQ time.
+    failed = False
+    results_files = []
+    output_dir = Path(opts.output_dir) if opts.output_dir else working_dir
+    output_dir.mkdir(parents=True, exist_ok=True)
+
     for board in ZEPHYR_BOARDS:
-        run_device_tests(board, working_dir, zephyr=True)
+        result_file = output_dir / f"{board}_results.json"
+        proc = run_device_tests(
+            board, working_dir, zephyr=True, output_file=result_file
+        )
+        if proc.returncode != 0:
+            failed = True
+        results_files.append((board, result_file))
+
+    # Aggregate results
+    final_results = {"tests": []}
+    for board, res_file in results_files:
+        if res_file.exists():
+            with open(res_file, "r", encoding="utf-8") as f:
+                try:
+                    data = json.load(f)
+                    for t in data.get("tests", []):
+                        # Prepend board name to test name to make it unique
+                        t["test_name"] = f"{board}.{t['test_name']}"
+                        final_results["tests"].append(t)
+                except json.JSONDecodeError:
+                    print(f"Failed to decode JSON from {res_file}")
+
+    # Write final results
+    output_path = output_dir / "test_results.json"
+    with open(output_path, "w", encoding="utf-8") as f:
+        json.dump(final_results, f, indent=2)
+
+    print(f"Test results written to {output_path}")
+
+    if failed:
+        raise subprocess.CalledProcessError(1, "run_device_tests")
 
 
 def main(args):
