@@ -10,10 +10,12 @@ gets invoked by chromite/api/controller/firmware.py.
 """
 
 import getpass
+import json
 import os
 from pathlib import Path
 import subprocess
 import sys
+from typing import Any, Dict, List, NamedTuple, Optional
 
 import firmware_builder_lib
 
@@ -28,13 +30,24 @@ ZEPHYR_BOARDS = [
 ]
 
 
-def build(_opts):
+BoardName = str
+ResultPath = Path
+
+
+class RenodeRunResult(NamedTuple):
+    """Result of the Renode test execution."""
+
+    success: bool
+    results: Dict[BoardName, ResultPath]
+
+
+def build(_opts: Any) -> int:
     """No-op."""
 
     return 0
 
 
-def bundle(opts):
+def bundle(opts: Any) -> None:
     """No-op."""
 
     # We don't produce any artifacts, but the info file is expected, so create
@@ -47,7 +60,13 @@ def bundle(opts):
         )
 
 
-def run_device_tests(board: str, working_dir: Path, zephyr: bool):
+def run_device_tests(
+    board: str,
+    working_dir: Path,
+    zephyr: bool,
+    output_file: Optional[Path] = None,
+    check: bool = True,
+) -> subprocess.CompletedProcess:
     """Run device tests on Renode emulator."""
     cmd = [
         "test/run_device_tests.py",
@@ -61,14 +80,69 @@ def run_device_tests(board: str, working_dir: Path, zephyr: bool):
     if zephyr:
         cmd.append("--zephyr")
 
-    subprocess.run(
+    if output_file:
+        cmd.extend(["--json", str(output_file)])
+
+    return subprocess.run(
         cmd,
         cwd=working_dir,
-        check=True,
+        check=check,
     )
 
 
-def test(_opts):
+def _run_renode_tests(
+    output_dir: Path, working_dir: Path, boards: List[BoardName]
+) -> RenodeRunResult:
+    """Runs Renode tests for all boards."""
+    success = True
+    results = {}
+
+    for board in boards:
+        result_file = output_dir / f"{board}_results.json"
+        proc = run_device_tests(
+            board, working_dir, zephyr=True, output_file=result_file, check=False
+        )
+        if proc.returncode != 0:
+            success = False
+        results[board] = result_file
+
+    return RenodeRunResult(success, results)
+
+
+def _aggregate_results(results: Dict[BoardName, ResultPath]) -> Dict[str, Any]:
+    """Aggregates results from individual board test runs."""
+    final_results = {"tests": []}
+    for board, result_file in results.items():
+        if not result_file.exists():
+            continue
+
+        with result_file.open("r", encoding="utf-8") as f:
+            try:
+                data = json.load(f)
+                tests = data.get("tests", [])
+                for t in tests:
+                    if isinstance(t, dict) and "test_name" in t:
+                        # Prepend board name to test name to make it unique
+                        t["test_name"] = f"{board}.{t['test_name']}"
+                    else:
+                        print(f"Warning: Unexpected test format in {result_file}: {t}")
+                final_results["tests"].extend(tests)
+            except json.JSONDecodeError:
+                print(f"Failed to decode JSON from {result_file}")
+
+    return final_results
+
+
+def _write_results(final_results: Dict[str, Any], output_dir: Path) -> None:
+    """Writes the aggregated test results to a file."""
+    output_path = output_dir / "test_results.json"
+    with output_path.open("w", encoding="utf-8") as f:
+        json.dump(final_results, f, indent=2)
+
+    print(f"Test results written to {output_path}")
+
+
+def test(opts: Any) -> None:
     """Runs EC unit tests with Renode."""
 
     working_dir = Path(__file__).parents[2].resolve()
@@ -125,8 +199,16 @@ def test(_opts):
     # TODO(b/371633141): Add a parallel option to run_device_tests.py to speed
     # this up. Right now the EC/Zephyr coverage builders take longer than this,
     # so it doesn't affect overall CQ time.
-    for board in ZEPHYR_BOARDS:
-        run_device_tests(board, working_dir, zephyr=True)
+    output_dir_val = getattr(opts, "output_dir", None)
+    output_dir = Path(output_dir_val) if output_dir_val else working_dir
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    run_result = _run_renode_tests(output_dir, working_dir, ZEPHYR_BOARDS)
+    final_results = _aggregate_results(run_result.results)
+    _write_results(final_results, output_dir)
+
+    if not run_result.success:
+        raise RuntimeError("One or more renode tests failed")
 
 
 def main(args):
@@ -145,7 +227,7 @@ def main(args):
     # Run selected sub command function
     try:
         opts.func(opts)
-    except subprocess.CalledProcessError:
+    except (subprocess.CalledProcessError, RuntimeError):
         ec_dir = os.path.dirname(__file__)
         failed_dir = os.path.join(ec_dir, ".failedboards")
         if os.path.isdir(failed_dir):
