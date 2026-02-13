@@ -55,6 +55,10 @@
 				EGIG630_TEST_IMAGE_PROPS
 				capture-type = "FINGERPRINT_CAPTURE_TYPE_QUALITY_TEST";
 			};
+			config7 {
+				EGIG630_TEST_IMAGE_PROPS
+				capture-type = "FINGERPRINT_CAPTURE_TYPE_VENDOR_FORMAT";
+			};
 		};
 
 		irq-gpios = <&gpio0 9 GPIO_ACTIVE_HIGH>;
