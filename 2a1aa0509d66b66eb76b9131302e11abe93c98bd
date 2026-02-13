@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3f090e3c_cc3c3060",
+        "filename": "util/dummy_test_results.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2026-02-13T00:40:52Z",
+      "side": 1,
+      "message": "Remove",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 5
+      },
+      "revId": "2a1aa0509d66b66eb76b9131302e11abe93c98bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "17a61018_8eb6c4d5",
         "filename": "util/run_device_tests_to_resultdb.py",
         "patchSetId": 2
