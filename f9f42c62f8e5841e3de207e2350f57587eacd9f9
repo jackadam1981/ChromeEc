@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "692bac2b_5095a645",
+        "filename": "test/rollback_minimal_version.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2026-02-13T10:36:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67aa83f7_406e4efa",
+      "range": {
+        "startLine": 10,
+        "startChar": 60,
+        "endLine": 11,
+        "endChar": 18
+      },
+      "revId": "f9f42c62f8e5841e3de207e2350f57587eacd9f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13bd9be4_1a7a5e93",
@@ -37,6 +61,30 @@
       "writtenOn": "2026-02-12T21:51:29Z",
       "side": 1,
       "message": "Same as [this comment](https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7570964/2/zephyr/test/hwtest/src/rollback_entropy.c#82).\n\nUp to you.",
+      "range": {
+        "startLine": 24,
+        "startChar": 18,
+        "endLine": 24,
+        "endChar": 41
+      },
+      "revId": "f9f42c62f8e5841e3de207e2350f57587eacd9f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4eaf3c3c_f5c43bd4",
+        "filename": "test/rollback_minimal_version.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2026-02-13T10:36:40Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "13bd9be4_1a7a5e93",
       "range": {
         "startLine": 24,
         "startChar": 18,
