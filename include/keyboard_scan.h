@@ -233,4 +233,6 @@ void test_keyboard_scan_debounce_reset(void);
 }
 #endif
 
+__override_proto int board_alt(const uint8_t *state);
+
 #endif /* __CROS_EC_KEYBOARD_SCAN_H */

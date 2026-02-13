@@ -3316,6 +3316,7 @@
  * you should be looking at overriding board_vivaldi_keybd_config() instead.
  */
 #undef CONFIG_KEYBOARD_CUSTOMIZATION
+#undef CONFIG_KEYBOARD_CUSTOMIZATION_ALT
 
 /*
  * Allow support multiple keyboard matrix for special key.

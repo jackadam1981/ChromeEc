@@ -472,6 +472,10 @@ void set_vol_up_key(uint8_t row, uint8_t col)
 		key_vol_up_col = col;
 	}
 }
+__overridable int board_alt(const uint8_t *state)
+{
+	return 0;
+}
 
 /**
  * Check special runtime key combinations.
@@ -514,11 +518,15 @@ static int check_runtime_keys(const uint8_t *state)
 		return 0;
 
 #ifndef CONFIG_KEYBOARD_MULTIPLE
+#ifdef CONFIG_KEYBOARD_CUSTOMIZATION_ALT
+	board_alt(state);
+#else
 	if (state[KEYBOARD_COL_RIGHT_ALT] !=
 		    KEYBOARD_ROW_TO_MASK(KEYBOARD_ROW_RIGHT_ALT) &&
 	    state[KEYBOARD_COL_LEFT_ALT] !=
 		    KEYBOARD_ROW_TO_MASK(KEYBOARD_ROW_LEFT_ALT))
 		return 0;
+#endif /* CONFIG_KEYBOARD_CUSTOMIZATION_ALT */
 #else
 	if (state[key_typ.col_right_alt] !=
 		    KEYBOARD_ROW_TO_MASK(key_typ.row_right_alt) &&

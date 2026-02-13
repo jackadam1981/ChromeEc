@@ -146,6 +146,11 @@ config PLATFORM_EC_KEYBOARD_CUSTOMIZATION
 	  than the top row, and you are looking only for top row customization,
 	  then you should be looking at overriding board_vivaldi_keybd_config() instead.
 
+config PLATFORM_EC_KEYBOARD_CUSTOMIZATION_ALT
+	bool "Support keyboard customization ALT"
+	help
+	Enable support for customization ALT
+
 config PLATFORM_EC_KEYBOARD_ROW_VOL_UP
 	int "Row position of volume-up key"
 	default 0

@@ -71,6 +71,22 @@
 				value = <1>;
 			};
 		};
+		keyboard {
+			enum-name = "FW_KEYBOARD";
+			start = <5>;
+			size = <2>;
+
+			keyboard-us {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_KEYBOARD_US";
+				value = <0>;
+			};
+			keyboard-jp {
+				compatible = "cros-ec,cbi-fw-config-value";
+				enum-name = "FW_KEYBOARD_JP";
+				value = <1>;
+			};
+		};
 		codec {
 			enum-name = "CODEC";
 			start = <22>;
