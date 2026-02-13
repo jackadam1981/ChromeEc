@@ -34,6 +34,24 @@
       "parentUuid": "7dffa792_db091173",
       "revId": "a2157dff3a51d9f27ffe4a09e26b1f40e284bb94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e96d0852_94fd0304",
+        "filename": "zephyr/dts/bindings/battery/cosmx,313-ac-32-a.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1564347
+      },
+      "writtenOn": "2026-02-13T02:17:35Z",
+      "side": 1,
+      "message": "Override the value in project.overlay\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/7574314\n\nWill abandon this CL",
+      "parentUuid": "132217b9_71846b6c",
+      "revId": "a2157dff3a51d9f27ffe4a09e26b1f40e284bb94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
