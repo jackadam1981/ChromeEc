@@ -34,6 +34,98 @@
       "parentUuid": "bca197fb_db66cb8b",
       "revId": "82843fd5f3fb5eb31cbc30c515d8894be2205164",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa90bbca_686b4a79",
+        "filename": "zephyr/program/atria/BUILD.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-02-13T18:31:51Z",
+      "side": 1,
+      "message": "This is already the default module list (see configlib.py).  No need to replicate here.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 43
+      },
+      "revId": "82843fd5f3fb5eb31cbc30c515d8894be2205164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cd2a044_7475f393",
+        "filename": "zephyr/program/atria/CMakeLists.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-02-13T18:31:51Z",
+      "side": 1,
+      "message": "Cmake files should use 2 spaces for indentation.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 22
+      },
+      "revId": "82843fd5f3fb5eb31cbc30c515d8894be2205164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02764a76_aba93de7",
+        "filename": "zephyr/program/atria/atriarvp-rtk/usbc.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-02-13T18:31:51Z",
+      "side": 1,
+      "message": "I\u0027d prefer that the USB-C and charger support is added as a separate CL, but I acknowledge that the dependencies are a mess.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 27
+      },
+      "revId": "82843fd5f3fb5eb31cbc30c515d8894be2205164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2f94bc7_6e1b1267",
+        "filename": "zephyr/program/atria/program.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2026-02-13T18:31:51Z",
+      "side": 1,
+      "message": "It would be better to enable this in a separate CL if you can get the dependencies straight.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 44
+      },
+      "revId": "82843fd5f3fb5eb31cbc30c515d8894be2205164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
