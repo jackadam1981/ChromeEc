@@ -1,0 +1,19 @@
+{
+  "tests": [
+    {
+      "test_name": "bloonchipper.aes",
+      "status": "PASS",
+      "logs": "AES test passed\nEverything looks good."
+    },
+    {
+      "test_name": "bloonchipper.fail_test",
+      "status": "FAIL",
+      "logs": "This test failed\nError on line 42."
+    },
+    {
+      "test_name": "bloonchipper.skip_test",
+      "status": "SKIP",
+      "logs": ""
+    }
+  ]
+}
