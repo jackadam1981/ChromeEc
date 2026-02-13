@@ -9,11 +9,13 @@ This is the entry point for the custom firmware builder workflow recipe.  It
 gets invoked by chromite/api/controller/firmware.py.
 """
 
+import argparse
 import getpass
 import os
 from pathlib import Path
 import subprocess
 import sys
+from typing import List
 
 import firmware_builder_lib
 
@@ -28,13 +30,13 @@ ZEPHYR_BOARDS = [
 ]
 
 
-def build(_opts):
+def build(_opts: argparse.Namespace) -> int:
     """No-op."""
 
     return 0
 
 
-def bundle(opts):
+def bundle(opts: argparse.Namespace) -> None:
     """No-op."""
 
     # We don't produce any artifacts, but the info file is expected, so create
@@ -47,7 +49,7 @@ def bundle(opts):
         )
 
 
-def run_device_tests(board: str, working_dir: Path, zephyr: bool):
+def run_device_tests(board: str, working_dir: Path, zephyr: bool) -> None:
     """Run device tests on Renode emulator."""
     cmd = [
         "test/run_device_tests.py",
@@ -68,7 +70,7 @@ def run_device_tests(board: str, working_dir: Path, zephyr: bool):
     )
 
 
-def test(_opts):
+def test(_opts: argparse.Namespace) -> None:
     """Runs EC unit tests with Renode."""
 
     working_dir = Path(__file__).parents[2].resolve()
@@ -129,7 +131,7 @@ def test(_opts):
         run_device_tests(board, working_dir, zephyr=True)
 
 
-def main(args):
+def main(args: List[str]) -> int:
     """Builds, bundles, or tests.
 
     Additionally, the tool reports build metrics.
