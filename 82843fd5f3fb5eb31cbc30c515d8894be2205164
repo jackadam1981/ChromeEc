@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40d6a881_d6b3a482",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2026-02-14T00:02:46Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "878d6ce4_7cbe6628",
+      "revId": "82843fd5f3fb5eb31cbc30c515d8894be2205164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa90bbca_686b4a79",
@@ -49,6 +67,30 @@
       "writtenOn": "2026-02-13T18:31:51Z",
       "side": 1,
       "message": "This is already the default module list (see configlib.py).  No need to replicate here.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 43
+      },
+      "revId": "82843fd5f3fb5eb31cbc30c515d8894be2205164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb055747_4f466bad",
+        "filename": "zephyr/program/atria/BUILD.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2026-02-14T00:02:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa90bbca_686b4a79",
       "range": {
         "startLine": 30,
         "startChar": 0,
@@ -82,6 +124,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f026cfdb_60a0128f",
+        "filename": "zephyr/program/atria/CMakeLists.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2026-02-14T00:02:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cd2a044_7475f393",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 22
+      },
+      "revId": "82843fd5f3fb5eb31cbc30c515d8894be2205164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02764a76_aba93de7",
@@ -105,6 +171,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68588569_8d5f9941",
+        "filename": "zephyr/program/atria/atriarvp-rtk/usbc.dtsi",
+        "patchSetId": 7
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2026-02-14T00:02:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02764a76_aba93de7",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 27
+      },
+      "revId": "82843fd5f3fb5eb31cbc30c515d8894be2205164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2f94bc7_6e1b1267",
@@ -118,6 +208,30 @@
       "writtenOn": "2026-02-13T18:31:51Z",
       "side": 1,
       "message": "It would be better to enable this in a separate CL if you can get the dependencies straight.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 44
+      },
+      "revId": "82843fd5f3fb5eb31cbc30c515d8894be2205164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c4891fa_165a8458",
+        "filename": "zephyr/program/atria/program.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2026-02-14T00:02:46Z",
+      "side": 1,
+      "message": "Done. That was gnarly.",
+      "parentUuid": "e2f94bc7_6e1b1267",
       "range": {
         "startLine": 27,
         "startChar": 0,
