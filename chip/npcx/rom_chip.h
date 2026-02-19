@@ -42,7 +42,7 @@ enum API_RETURN_STATUS_T {
 /*
  * Macro functions of ROM api functions
  */
-#define ADDR_DOWNLOAD_FROM_FLASH (*(volatile uint32_t *) 0x40)
+#define ADDR_DOWNLOAD_FROM_FLASH (*(volatile uint32_t *)(uintptr_t)0x40)
 #define download_from_flash(src_offset, dest_addr, size, sign, exe_addr, \
 	status) \
 	(((download_from_flash_ptr) ADDR_DOWNLOAD_FROM_FLASH) \

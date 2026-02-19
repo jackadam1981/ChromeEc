@@ -238,7 +238,7 @@ int main(int argc, char *argv[])
 							"-mode") == 0) {
 			mode_choose = TRUE;
 			arg_ind++;
-			if ((hdr_args[arg_ind] == NULL) ||
+			if ((hdr_args[arg_ind][0] == '\0') ||
 				(sscanf(hdr_args[arg_ind],
 					"%s", main_str_temp) != 1)) {
 				my_printf(TERR, "\nCannot read operation mode");
@@ -275,7 +275,7 @@ int main(int argc, char *argv[])
 
 		else if (str_cmp_no_case(hdr_args[arg_ind], "-chip") == 0) {
 			arg_ind++;
-			if ((hdr_args[arg_ind] == NULL) ||
+			if ((hdr_args[arg_ind][0] == '\0') ||
 				(sscanf(hdr_args[arg_ind],
 					"%s",
 					main_str_temp) != 1)) {
@@ -431,7 +431,7 @@ int main(int argc, char *argv[])
 		} else if (str_cmp_no_case(hdr_args[arg_ind],
 					   "-spimaxclk") == 0) {
 			arg_ind++;
-			if ((hdr_args[arg_ind] == NULL) ||
+			if ((hdr_args[arg_ind][0] == '\0') ||
 				(sscanf(hdr_args[arg_ind],
 					"%d", &main_temp) != 1)) {
 				my_printf(TERR, "\nCannot read SPI Flash Max");
@@ -444,7 +444,7 @@ int main(int argc, char *argv[])
 		} else if (str_cmp_no_case(hdr_args[arg_ind],
 			"-spiclkratio") == 0) {
 			arg_ind++;
-			if ((hdr_args[arg_ind] == NULL) ||
+			if ((hdr_args[arg_ind][0] == '\0') ||
 				(sscanf(hdr_args[arg_ind],
 				"%d", &main_temp) != 1)) {
 				my_printf(TERR,
@@ -458,7 +458,7 @@ int main(int argc, char *argv[])
 		} else if (str_cmp_no_case(hdr_args[arg_ind],
 					   "-spireadmode") == 0) {
 			arg_ind++;
-			if ((hdr_args[arg_ind] == NULL) ||
+			if ((hdr_args[arg_ind][0] == '\0') ||
 				(sscanf(hdr_args[arg_ind],
 						"%20s",
 						main_str_temp) != 1)) {
@@ -511,7 +511,7 @@ int main(int argc, char *argv[])
 		else if (str_cmp_no_case(hdr_args[arg_ind],
 					 "-fwloadaddr") == 0) {
 			arg_ind++;
-			if ((hdr_args[arg_ind] == NULL) ||
+			if ((hdr_args[arg_ind][0] == '\0') ||
 				(sscanf(hdr_args[arg_ind],
 					"%x",
 					&main_temp) != 1)) {
@@ -548,7 +548,7 @@ int main(int argc, char *argv[])
 				main_status = FALSE;
 			} else {
 				arg_ind++;
-				if ((hdr_args[arg_ind] == NULL) ||
+				if ((hdr_args[arg_ind][0] == '\0') ||
 					(sscanf(hdr_args[arg_ind],
 						"%x",
 						&main_temp) != 1)) {
@@ -569,7 +569,7 @@ int main(int argc, char *argv[])
 		} else if (str_cmp_no_case(hdr_args[arg_ind],
 					   "-crcstart") == 0) {
 			arg_ind++;
-			if ((hdr_args[arg_ind] == NULL) ||
+			if ((hdr_args[arg_ind][0] == '\0') ||
 				(sscanf(hdr_args[arg_ind],
 					"%x",
 					&main_temp) != 1)) {
@@ -592,7 +592,7 @@ int main(int argc, char *argv[])
 					   "-crcsize") == 0) {
 			arg_ind++;
 			main_temp = 0x00;
-			if (hdr_args[arg_ind] == NULL)
+			if (hdr_args[arg_ind][0] == '\0')
 				end_ptr = NULL;
 			else
 				main_temp = strtol(hdr_args[arg_ind],
@@ -612,7 +612,7 @@ int main(int argc, char *argv[])
 		/* -fwlen, Get the FW length. */
 		else if (str_cmp_no_case(hdr_args[arg_ind], "-fwlen") == 0) {
 			arg_ind++;
-			if ((hdr_args[arg_ind] == NULL) ||
+			if ((hdr_args[arg_ind][0] == '\0') ||
 				(sscanf(hdr_args[arg_ind],
 					"%x",
 					&main_temp) != 1)) {
@@ -627,7 +627,7 @@ int main(int argc, char *argv[])
 		else if (str_cmp_no_case(hdr_args[arg_ind],
 					 "-flashsize") == 0) {
 			arg_ind++;
-			if ((hdr_args[arg_ind] == NULL) ||
+			if ((hdr_args[arg_ind][0] == '\0') ||
 				(sscanf(hdr_args[arg_ind],
 					"%d",
 					&main_temp) != 1)) {
@@ -639,7 +639,7 @@ int main(int argc, char *argv[])
 		} else if (str_cmp_no_case(hdr_args[arg_ind],
 					   "-apisign") == 0) {
 			arg_ind++;
-			if ((hdr_args[arg_ind] == NULL) ||
+			if ((hdr_args[arg_ind][0] == '\0') ||
 				(sscanf(hdr_args[arg_ind],
 					"%s",
 					main_str_temp) != 1)) {
@@ -672,7 +672,7 @@ int main(int argc, char *argv[])
 		} else if (str_cmp_no_case(hdr_args[arg_ind],
 					   "-pointer") == 0) {
 			arg_ind++;
-			if ((hdr_args[arg_ind] == NULL) ||
+			if ((hdr_args[arg_ind][0] == '\0') ||
 				(sscanf(hdr_args[arg_ind],
 					"%x",
 					&main_temp) != 1)) {
@@ -710,7 +710,7 @@ int main(int argc, char *argv[])
 		else if (str_cmp_no_case(hdr_args[arg_ind], "-bhoffset") == 0) {
 			arg_ind++;
 			main_temp = 0x00;
-			if (hdr_args[arg_ind] == NULL)
+			if (hdr_args[arg_ind][0] == '\0')
 				end_ptr = NULL;
 			else
 				main_temp = strtol(hdr_args[arg_ind],

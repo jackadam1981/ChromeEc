@@ -1831,7 +1831,7 @@ static int sysinfo(struct ec_response_sysinfo *info)
 
 int cmd_sysinfo(int argc, char **argv)
 {
-	struct ec_response_sysinfo r;
+	struct ec_response_sysinfo r = { 0 };
 	enum sysinfo_fields fields = 0;
 	bool print_prefix = false;
 

@@ -1254,6 +1254,8 @@ DECLARE_HOST_COMMAND(EC_CMD_RTC_GET_ALARM,
 
 #endif /* CONFIG_HOSTCMD_RTC */
 #ifdef CONFIG_EXTERNAL_STORAGE
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Warray-bounds"
 void system_jump_to_booter(void)
 {
 	enum API_RETURN_STATUS_T status __attribute__((unused));
@@ -1321,6 +1323,7 @@ void system_jump_to_booter(void)
 	);
 #endif
 }
+#pragma GCC diagnostic pop
 
 uint32_t system_get_lfw_address()
 {

@@ -932,7 +932,10 @@ static int ftdi_config_i2c(struct ftdi_context *ftdi)
 		return -EIO;
 	}
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 	ret = ftdi_usb_purge_buffers(ftdi);
+#pragma GCC diagnostic pop
 	if (ret < 0)
 		fprintf(stderr, "Cannot purge buffers\n");
 
@@ -1072,7 +1075,10 @@ static int ftdi_send_special_waveform(struct common_hnd *chnd)
 		ret = 0;
 
 	/* clean everything to go back to regular I2C communication */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 	ftdi_usb_purge_buffers(ftdi);
+#pragma GCC diagnostic pop
 	ftdi_set_bitmode(ftdi, 0xff, BITMODE_RESET);
 	ftdi_config_i2c(ftdi);
 	ftdi_write_data(ftdi, release_lines, sizeof(release_lines));
@@ -2249,7 +2255,7 @@ static int parse_parameters(int argc, char **argv, struct iteflash_config *conf)
 static void sighandler(int signum)
 {
 	printf("\nCaught signal %d: %s\nExiting...\n",
-		signum, strsignal(signum));
+		signum, strsignal(signum) ? strsignal(signum) : "unknown");
 	exit_requested = 1;
 }
 

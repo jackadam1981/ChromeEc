@@ -41,7 +41,8 @@
 #define CONFIG_HOSTCMD_ESPI
 #define CONFIG_LED_COMMON
 #undef  CONFIG_LID_SWITCH
-#define CONFIG_LTO
+/* LTO with GCC 14 + arm-eabi can cause undefined reference to memcpy at link */
+#undef CONFIG_LTO
 #define CONFIG_PWM
 #define CONFIG_VBOOT_EFS2
 #define CONFIG_VBOOT_HASH
